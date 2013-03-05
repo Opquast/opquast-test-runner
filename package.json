@@ -1,0 +1,13 @@
+{
+    "name": "opquast-tests",
+    "fullName": "Opquast Test Framework (core code)",
+    "description": "",
+    "author": "Temesis SAS (http://www.temesis.com/)",
+    "contributors": [
+        "Fabrice Bonny <fabrice.bonny@temesis.com>",
+        "Mickael Hoareau <mickael.hoareau@temesis.com>",
+        "Olivier Meunier <olivier.meunier@temesis.com>"
+    ],
+    "version": "1.0",
+    "license": "MPL 2.0"
+}
