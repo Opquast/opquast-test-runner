@@ -2958,8 +2958,11 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             //
             $("a:not(:has(img))").each(function() {
                 //
-                var text = $.trim($(this).text()).toLowerCase(), title = $.trim($(this).attr("title")).toLowerCase();
-                var context = text + "%|%" + title, href = resolveURI($.trim($(this).attr("href")), doc.location.href), _this = this;
+                var text = $.trim($(this).text()).toLowerCase(),
+                    title = $.trim($(this).attr("title")).toLowerCase(),
+                    context = text + "%|%" + title,
+                    href = $.URL($.trim($(this).attr("href")).toString()),
+                    _this = this;
 
                 //
                 if ($.inArray(context, Object.keys(links)) == -1) {
@@ -3190,7 +3193,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                 //
                 if (reg.test(meta)) {
                     //
-                    var url = resolveURI(RegExp.$1, doc.location.href);
+                    var url = $.URL(RegExp.$1);
 
                     //
                     if (url && url != doc.location.href) {
@@ -3229,12 +3232,12 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             //
             $("a[href]:not([href='']):not([href^='#'])").each(function() {
                 //
-                var uri = resolveURI($(this).attr("href").trim(), doc.location.href);
+                var uri = $.URL($.trim($(this).attr("href")));
 
                 //
                 if (uri) {
                     //
-                    var host = getDomain(uri);
+                    var host = $.URL.getDomain(uri);
 
                     //
                     if (host) {
@@ -4168,7 +4171,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                 //
                 else if (reg2.test(refresh)) {
                     //
-                    var delay = parseInt(RegExp.$1, 10), url = resolveURI(RegExp.$2, doc.location.href);
+                    var delay = parseInt(RegExp.$1, 10),
+                        url = $.URL(RegExp.$2);
 
                     //
                     if (delay < 72000 && url == doc.location.href) {
