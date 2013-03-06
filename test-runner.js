@@ -6,6 +6,8 @@ const sbLib = require("sdk/loader/sandbox");
 const {readURISync} = require('sdk/net/url');
 const {descriptor} = require("toolkit/loader");
 
+const {validateOptions} = require("sdk/deprecated/api-utils");
+
 const {dnsLookup, extractEvents, xhr} = require("./utils/extras");
 const {har2res} = require("./utils/har-tools");
 
@@ -109,7 +111,7 @@ const createTestRunner = function(sandbox, plainText, har) {
             testIDs = options;
             options = {};
         }
-        options = options || {};
+        options = validateOptions(options || {}, requirements);
         testIDs = testIDs || [];
 
         // Load rules & rulesets
