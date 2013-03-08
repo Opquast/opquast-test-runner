@@ -438,7 +438,7 @@ var logger;
 
                             return {
                                 "src": "interne",
-                                "content": $(this).text(),
+                                "content": response.data,
                                 "sheet": sheet,
                                 "media": media
                             };

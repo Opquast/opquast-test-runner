@@ -1,13 +1,19 @@
 /*global CSSParser*/
-var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-za', 'ak', 'ak-gh', 'am', 'am-et', 'ar', 'ar-ae', 'ar-bh', 'ar-dz', 'ar-eg', 'ar-iq', 'ar-jo', 'ar-kw', 'ar-lb', 'ar-ly', 'ar-ma', 'ar-om', 'ar-qa', 'ar-sa', 'ar-sd', 'ar-sy', 'ar-tn', 'ar-ye', 'as', 'as-in', 'az', 'az-az', 'az-cyrl', 'az-cyrl-az', 'az-latn', 'az-latn-az', 'be', 'be-by', 'bg', 'bg-bg', 'bn', 'bn-bd', 'bn-in', 'bs', 'bs-ba', 'byn', 'byn-er', 'ca', 'ca-es', 'cch', 'cch-ng', 'cop', 'cs', 'cs-cz', 'cy', 'cy-gb', 'da', 'da-dk', 'de', 'de-at', 'de-be', 'de-ch', 'de-de', 'de-li', 'de-lu', 'dv', 'dv-mv', 'dz', 'dz-bt', 'ee', 'ee-gh', 'ee-tg', 'el', 'el-cy', 'el-gr', 'el-polyton', 'en', 'en-as', 'en-au', 'en-be', 'en-bw', 'en-bz', 'en-ca', 'en-dsrt', 'en-dsrt-us', 'en-gb', 'en-gu', 'en-hk', 'en-ie', 'en-in', 'en-jm', 'en-mh', 'en-mp', 'en-mt', 'en-na', 'en-nz', 'en-ph', 'en-pk', 'en-sg', 'en-shaw', 'en-tt', 'en-um', 'en-us', 'en-us-posix', 'en-vi', 'en-za', 'en-zw', 'eo', 'es', 'es-ar', 'es-bo', 'es-cl', 'es-co', 'es-cr', 'es-do', 'es-ec', 'es-es', 'es-gt', 'es-hn', 'es-mx', 'es-ni', 'es-pa', 'es-pe', 'es-pr', 'es-py', 'es-sv', 'es-us', 'es-uy', 'es-ve', 'et', 'et-ee', 'eu', 'eu-es', 'fa', 'fa-af', 'fa-ir', 'fi', 'fi-fi', 'fil', 'fil-ph', 'fo', 'fo-fo', 'fr', 'fr-be', 'fr-ca', 'fr-ch', 'fr-fr', 'fr-lu', 'fr-mc', 'fr-sn', 'fur', 'fur-it', 'ga', 'ga-ie', 'gaa', 'gaa-gh', 'gez', 'gez-er', 'gez-et', 'gl', 'gl-es', 'gu', 'gu-in', 'gv', 'gv-gb', 'ha', 'ha-arab', 'ha-arab-ng', 'ha-arab-sd', 'ha-gh', 'ha-latn', 'ha-latn-gh', 'ha-latn-ne', 'ha-latn-ng', 'ha-ne', 'ha-ng', 'ha-sd', 'haw', 'haw-us', 'he', 'he-il', 'hi', 'hi-in', 'hr', 'hr-hr', 'hu', 'hu-hu', 'hy', 'hy-am', 'hy-am-revised', 'ia', 'id', 'id-id', 'ig', 'ig-ng', 'ii', 'ii-cn', 'in', 'is', 'is-is', 'it', 'it-ch', 'it-it', 'iu', 'iw', 'ja', 'ja-jp', 'ka', 'ka-ge', 'kaj', 'kaj-ng', 'kam', 'kam-ke', 'kcg', 'kcg-ng', 'kfo', 'kfo-ci', 'kk', 'kk-cyrl', 'kk-cyrl-kz', 'kk-kz', 'kl', 'kl-gl', 'km', 'km-kh', 'kn', 'kn-in', 'ko', 'ko-kr', 'kok', 'kok-in', 'kpe', 'kpe-gn', 'kpe-lr', 'ku', 'ku-arab', 'ku-latn', 'ku-latn-tr', 'ku-tr', 'kw', 'kw-gb', 'ky', 'ky-kg', 'ln', 'ln-cd', 'ln-cg', 'lo', 'lo-la', 'lt', 'lt-lt', 'lv', 'lv-lv', 'mk', 'mk-mk', 'ml', 'ml-in', 'mn', 'mn-cn', 'mn-cyrl', 'mn-cyrl-mn', 'mn-mn', 'mn-mong', 'mn-mong-cn', 'mo', 'mr', 'mr-in', 'ms', 'ms-bn', 'ms-my', 'mt', 'mt-mt', 'my', 'my-mm', 'nb', 'nb-no', 'ne', 'ne-in', 'ne-np', 'nl', 'nl-be', 'nl-nl', 'nn', 'nn-no', 'no', 'nr', 'nr-za', 'nso', 'nso-za', 'ny', 'ny-mw', 'om', 'om-et', 'om-ke', 'or', 'or-in', 'pa', 'pa-arab', 'pa-arab-pk', 'pa-guru', 'pa-guru-in', 'pa-in', 'pa-pk', 'pl', 'pl-pl', 'ps', 'ps-af', 'pt', 'pt-br', 'pt-pt', 'ro', 'ro-md', 'ro-ro', 'ru', 'ru-ru', 'ru-ua', 'rw', 'rw-rw', 'sa', 'sa-in', 'se', 'se-fi', 'se-no', 'sh', 'sh-ba', 'sh-cs', 'sh-yu', 'si', 'si-lk', 'sid', 'sid-et', 'sk', 'sk-sk', 'sl', 'sl-si', 'so', 'so-dj', 'so-et', 'so-ke', 'so-so', 'sq', 'sq-al', 'sr', 'sr-ba', 'sr-cs', 'sr-cyrl', 'sr-cyrl-ba', 'sr-cyrl-cs', 'sr-cyrl-me', 'sr-cyrl-rs', 'sr-cyrl-yu', 'sr-latn', 'sr-latn-ba', 'sr-latn-cs', 'sr-latn-me', 'sr-latn-rs', 'sr-latn-yu', 'sr-me', 'sr-rs', 'sr-yu', 'ss', 'ss-sz', 'ss-za', 'st', 'st-ls', 'st-za', 'sv', 'sv-fi', 'sv-se', 'sw', 'sw-ke', 'sw-tz', 'syr', 'syr-sy', 'ta', 'ta-in', 'te', 'te-in', 'tg', 'tg-cyrl', 'tg-cyrl-tj', 'tg-tj', 'th', 'th-th', 'ti', 'ti-er', 'ti-et', 'tig', 'tig-er', 'tl', 'tn', 'tn-za', 'to', 'to-to', 'tr', 'tr-tr', 'trv', 'ts', 'ts-za', 'tt', 'tt-ru', 'ug', 'ug-arab', 'ug-arab-cn', 'ug-cn', 'uk', 'uk-ua', 'ur', 'ur-in', 'ur-pk', 'uz', 'uz-af', 'uz-arab', 'uz-arab-af', 'uz-cyrl', 'uz-cyrl-uz', 'uz-latn', 'uz-latn-uz', 'uz-uz', 've', 've-za', 'vi', 'vi-vn', 'wal', 'wal-et', 'wo', 'wo-latn', 'wo-latn-sn', 'wo-sn', 'xh', 'xh-za', 'yo', 'yo-ng', 'zh', 'zh-cn', 'zh-hans', 'zh-hans-cn', 'zh-hans-hk', 'zh-hans-mo', 'zh-hans-sg', 'zh-hant', 'zh-hant-hk', 'zh-hant-mo', 'zh-hant-tw', 'zh-hk', 'zh-mo', 'zh-sg', 'zh-tw', 'zu', 'zu-za'];
-var mimeHTML = ["text/html", "application/xhtml+xml"], mimeSyndication = ["application/rss+xml", "application/atom+xml", "application/xml", "text/xml"];
-var mimeMultimedia = ["application/x-shockwave-flash", "application/octet-stream", "application/x-silverlight-app", "application/xaml+xml", "application/x-ms-xbap", "application/vnd.rn-realmedia", "application/ogg", "image/svg+xml"];
-var genericFontStyle = ["serif", "sans-serif", "cursive", "fantasy", "monospace", "inherit"];
+var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-za', 'ak', 'ak-gh', 'am', 'am-et', 'ar', 'ar-ae', 'ar-bh', 'ar-dz', 'ar-eg', 'ar-iq', 'ar-jo', 'ar-kw', 'ar-lb', 'ar-ly', 'ar-ma', 'ar-om', 'ar-qa', 'ar-sa', 'ar-sd', 'ar-sy', 'ar-tn', 'ar-ye', 'as', 'as-in', 'az', 'az-az', 'az-cyrl', 'az-cyrl-az', 'az-latn', 'az-latn-az', 'be', 'be-by', 'bg', 'bg-bg', 'bn', 'bn-bd', 'bn-in', 'bs', 'bs-ba', 'byn', 'byn-er', 'ca', 'ca-es', 'cch', 'cch-ng', 'cop', 'cs', 'cs-cz', 'cy', 'cy-gb', 'da', 'da-dk', 'de', 'de-at', 'de-be', 'de-ch', 'de-de', 'de-li', 'de-lu', 'dv', 'dv-mv', 'dz', 'dz-bt', 'ee', 'ee-gh', 'ee-tg', 'el', 'el-cy', 'el-gr', 'el-polyton', 'en', 'en-as', 'en-au', 'en-be', 'en-bw', 'en-bz', 'en-ca', 'en-dsrt', 'en-dsrt-us', 'en-gb', 'en-gu', 'en-hk', 'en-ie', 'en-in', 'en-jm', 'en-mh', 'en-mp', 'en-mt', 'en-na', 'en-nz', 'en-ph', 'en-pk', 'en-sg', 'en-shaw', 'en-tt', 'en-um', 'en-us', 'en-us-posix', 'en-vi', 'en-za', 'en-zw', 'eo', 'es', 'es-ar', 'es-bo', 'es-cl', 'es-co', 'es-cr', 'es-do', 'es-ec', 'es-es', 'es-gt', 'es-hn', 'es-mx', 'es-ni', 'es-pa', 'es-pe', 'es-pr', 'es-py', 'es-sv', 'es-us', 'es-uy', 'es-ve', 'et', 'et-ee', 'eu', 'eu-es', 'fa', 'fa-af', 'fa-ir', 'fi', 'fi-fi', 'fil', 'fil-ph', 'fo', 'fo-fo', 'fr', 'fr-be', 'fr-ca', 'fr-ch', 'fr-fr', 'fr-lu', 'fr-mc', 'fr-sn', 'fur', 'fur-it', 'ga', 'ga-ie', 'gaa', 'gaa-gh', 'gez', 'gez-er', 'gez-et', 'gl', 'gl-es', 'gu', 'gu-in', 'gv', 'gv-gb', 'ha', 'ha-arab', 'ha-arab-ng', 'ha-arab-sd', 'ha-gh', 'ha-latn', 'ha-latn-gh', 'ha-latn-ne', 'ha-latn-ng', 'ha-ne', 'ha-ng', 'ha-sd', 'haw', 'haw-us', 'he', 'he-il', 'hi', 'hi-in', 'hr', 'hr-hr', 'hu', 'hu-hu', 'hy', 'hy-am', 'hy-am-revised', 'ia', 'id', 'id-id', 'ig', 'ig-ng', 'ii', 'ii-cn', 'in', 'is', 'is-is', 'it', 'it-ch', 'it-it', 'iu', 'iw', 'ja', 'ja-jp', 'ka', 'ka-ge', 'kaj', 'kaj-ng', 'kam', 'kam-ke', 'kcg', 'kcg-ng', 'kfo', 'kfo-ci', 'kk', 'kk-cyrl', 'kk-cyrl-kz', 'kk-kz', 'kl', 'kl-gl', 'km', 'km-kh', 'kn', 'kn-in', 'ko', 'ko-kr', 'kok', 'kok-in', 'kpe', 'kpe-gn', 'kpe-lr', 'ku', 'ku-arab', 'ku-latn', 'ku-latn-tr', 'ku-tr', 'kw', 'kw-gb', 'ky', 'ky-kg', 'ln', 'ln-cd', 'ln-cg', 'lo', 'lo-la', 'lt', 'lt-lt', 'lv', 'lv-lv', 'mk', 'mk-mk', 'ml', 'ml-in', 'mn', 'mn-cn', 'mn-cyrl', 'mn-cyrl-mn', 'mn-mn', 'mn-mong', 'mn-mong-cn', 'mo', 'mr', 'mr-in', 'ms', 'ms-bn', 'ms-my', 'mt', 'mt-mt', 'my', 'my-mm', 'nb', 'nb-no', 'ne', 'ne-in', 'ne-np', 'nl', 'nl-be', 'nl-nl', 'nn', 'nn-no', 'no', 'nr', 'nr-za', 'nso', 'nso-za', 'ny', 'ny-mw', 'om', 'om-et', 'om-ke', 'or', 'or-in', 'pa', 'pa-arab', 'pa-arab-pk', 'pa-guru', 'pa-guru-in', 'pa-in', 'pa-pk', 'pl', 'pl-pl', 'ps', 'ps-af', 'pt', 'pt-br', 'pt-pt', 'ro', 'ro-md', 'ro-ro', 'ru', 'ru-ru', 'ru-ua', 'rw', 'rw-rw', 'sa', 'sa-in', 'se', 'se-fi', 'se-no', 'sh', 'sh-ba', 'sh-cs', 'sh-yu', 'si', 'si-lk', 'sid', 'sid-et', 'sk', 'sk-sk', 'sl', 'sl-si', 'so', 'so-dj', 'so-et', 'so-ke', 'so-so', 'sq', 'sq-al', 'sr', 'sr-ba', 'sr-cs', 'sr-cyrl', 'sr-cyrl-ba', 'sr-cyrl-cs', 'sr-cyrl-me', 'sr-cyrl-rs', 'sr-cyrl-yu', 'sr-latn', 'sr-latn-ba', 'sr-latn-cs', 'sr-latn-me', 'sr-latn-rs', 'sr-latn-yu', 'sr-me', 'sr-rs', 'sr-yu', 'ss', 'ss-sz', 'ss-za', 'st', 'st-ls', 'st-za', 'sv', 'sv-fi', 'sv-se', 'sw', 'sw-ke', 'sw-tz', 'syr', 'syr-sy', 'ta', 'ta-in', 'te', 'te-in', 'tg', 'tg-cyrl', 'tg-cyrl-tj', 'tg-tj', 'th', 'th-th', 'ti', 'ti-er', 'ti-et', 'tig', 'tig-er', 'tl', 'tn', 'tn-za', 'to', 'to-to', 'tr', 'tr-tr', 'trv', 'ts', 'ts-za', 'tt', 'tt-ru', 'ug', 'ug-arab', 'ug-arab-cn', 'ug-cn', 'uk', 'uk-ua', 'ur', 'ur-in', 'ur-pk', 'uz', 'uz-af', 'uz-arab', 'uz-arab-af', 'uz-cyrl', 'uz-cyrl-uz', 'uz-latn', 'uz-latn-uz', 'uz-uz', 've', 've-za', 'vi', 'vi-vn', 'wal', 'wal-et', 'wo', 'wo-latn', 'wo-latn-sn', 'wo-sn', 'xh', 'xh-za', 'yo', 'yo-ng', 'zh', 'zh-cn', 'zh-hans', 'zh-hans-cn', 'zh-hans-hk', 'zh-hans-mo', 'zh-hans-sg', 'zh-hant', 'zh-hant-hk', 'zh-hant-mo', 'zh-hant-tw', 'zh-hk', 'zh-mo', 'zh-sg', 'zh-tw', 'zu', 'zu-za'],
+    mimeHTML = ["text/html", "application/xhtml+xml"],
+    mimeSyndication = ["application/rss+xml", "application/atom+xml", "application/xml", "text/xml"],
+    mimeMultimedia = ["application/x-shockwave-flash", "application/octet-stream", "application/x-silverlight-app", "application/xaml+xml", "application/x-ms-xbap", "application/vnd.rn-realmedia", "application/ogg", "image/svg+xml"],
+    jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
+    genericFontStyle = ["serif", "sans-serif", "cursive", "fantasy", "monospace", "inherit"],
+    atomNs = "http://www.w3.org/2005/Atom",
+    fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
 
-var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['cliquez ici', 'lire la suite', 'en savoir plus', "plus d'infos"];
-var cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws)\\.com/", "i");
-var analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i");
-var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i");
+var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
+    badLinks = ['cliquez ici', 'lire la suite', 'en savoir plus', "plus d'infos"],
+    cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws)\\.com/", "i"),
+    analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i"),
+    jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
+    regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i");
 
 (function($, window, undefined) {
     "use strict";
@@ -426,14 +432,12 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @return
      */
     window.cssAbsoluteFontSize = function cssAbsoluteFontSize(doc) {
-        var reg = new RegExp("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i");
-
         function callback(rule) {
             var result = [];
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
-                    if (rule.declarations[i]["property"] == "font-size" && reg.test(rule.declarations[i]["valueText"])) {
+                    if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
                     }
                 }
@@ -455,14 +459,12 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @return
      */
     window.cssAbsoluteFontSizeInForm = function cssAbsoluteFontSizeInForm(doc) {
-        var reg = new RegExp("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i");
-
         function callback(rule) {
             var result = [];
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
-                    if (rule.declarations[i]["property"] == "font-size" && reg.test(rule.declarations[i]["valueText"])) {
+                    if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         $(rule.mSelectorText).each(function() {
                             if ($.inArray(this.tagName.toUpperCase(), ["BUTTON", "INPUT", "SELECT", "TEXTAREA"]) != -1) {
                                 result.push(_getCssDetails(rule, i));
@@ -498,14 +500,12 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @return
      */
     window.cssAbsoluteFontSizeOnScreen = function cssAbsoluteFontSizeOnScreen(doc) {
-        var reg = new RegExp("[0-9.]+(p(t|c)|(c|m)m|in)", "i");
-
         function callback(rule) {
             var result = [];
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
-                    if (rule.declarations[i]["property"] == "font-size" && reg.test(rule.declarations[i]["valueText"])) {
+                    if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
                     }
                 }
@@ -543,8 +543,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             //
             $("body").find(":not(input[type='hidden'])").andSelf().filter(function() {
                 //
-                var _backgroundColor = $(this).css("background-color");
-                var _color = $(this).css("color");
+                var _backgroundColor = $(this).css("background-color"),
+                    _color = $(this).css("color");
 
                 //
                 if (_color == "rgb(0, 0, 0)") {
@@ -584,7 +584,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @return
      */
     window.cssBackgroundImage = function cssBackgroundImage(doc) {
-        var reg = new RegExp('^url\\(', "i");
+        var reg = new RegExp().compile('^url\\(', "i");
 
         function callback(rule) {
             var result = [];
@@ -840,7 +840,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-family") {
-                        var fontFamily = rule.declarations[i]["valueText"].split(","), font = fontFamily[fontFamily.length - 1].replace(/['"]/g, "").trim();
+                        var font = rule.declarations[i]["valueText"].split(",").slice(-1)[0].replace(/['"]/g, "").trim();
 
                         if ($.inArray(font, genericFontStyle) == -1) {
                             result.push(_getCssDetails(rule, i));
@@ -1182,14 +1182,12 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @return
      */
     window.cssPixelFontSize = function cssPixelFontSize(doc) {
-        var reg = new RegExp("[0-9.]+px", "i");
-
         function callback(rule) {
             var result = [];
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
-                    if (rule.declarations[i]["property"] == "font-size" && reg.test(rule.declarations[i]["valueText"])) {
+                    if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
                     }
                 }
@@ -1276,7 +1274,6 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
         //
         var result = [];
 
-        //
         //
         try {
             //
@@ -1369,9 +1366,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.cssUppercase = function cssUppercase(doc) {
         //
-        var result = [];
-        var exclusions = ["ABBR", "ACRONYM", "ADDRESS", "BLOCKQUOTE", "CITE", "CODE", "KBD", "PRE", "Q", "RP", "RT", "RUBY", "SAMP", "SUB", "SUP", "TIME", "VAR", "IFRAME", "SCRIPT"];
-        var reg = new RegExp().compile("^[^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*$", "g");
+        var result = [],
+            exclusions = ["ABBR", "ACRONYM", "ADDRESS", "BLOCKQUOTE", "CITE", "CODE", "KBD", "PRE", "Q", "RP", "RT", "RUBY", "SAMP", "SUB", "SUP", "TIME", "VAR", "IFRAME", "SCRIPT"],
+            reg = new RegExp().compile("^[^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*$", "g");
 
         //
         try {
@@ -1441,9 +1438,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @return
      */
     window.html404 = function html404(doc) {
-        var regApache = new RegExp().compile("<h1>\\s*Not Found\\s*</h1>\\s*<p>\\s*The requested URL /\\w+ was not found on this server.\\s*</p>\\s*<hr>\\s*<address>\\s*Apache/.* \\(.*\\) Server at .* Port \\d+\\s*</address>", "i");
-        var regIIS = new RegExp().compile("<h1>\\s*The page cannot be found\\s*</h1>[\\s|\\S]*<h2>\\s*HTTP Error 404 - File or directory not found.\\s*<br>\\s*Internet Information Services \\(IIS\\)\\s*</h2>\\s*<hr>\\s*<p>\\s*Technical Information \\(for support personnel\\)\\s*</p>", "i");
-        var regNginx = new RegExp().compile("<center>\\s*<h1>\\s*404 Not Found\\s*</h1>\\s*</center>\\s*<hr>\\s*<center>\\s*nginx\\s*</center>", "i");
+        var regApache = new RegExp().compile("<h1>\\s*Not Found\\s*</h1>\\s*<p>\\s*The requested URL /\\w+ was not found on this server.\\s*</p>\\s*<hr>\\s*<address>\\s*Apache/.* \\(.*\\) Server at .* Port \\d+\\s*</address>", "i"),
+            regIIS = new RegExp().compile("<h1>\\s*The page cannot be found\\s*</h1>[\\s|\\S]*<h2>\\s*HTTP Error 404 - File or directory not found.\\s*<br>\\s*Internet Information Services \\(IIS\\)\\s*</h2>\\s*<hr>\\s*<p>\\s*Technical Information \\(for support personnel\\)\\s*</p>", "i"),
+            regNginx = new RegExp().compile("<center>\\s*<h1>\\s*404 Not Found\\s*</h1>\\s*</center>\\s*<hr>\\s*<center>\\s*nginx\\s*</center>", "i");
 
         return XHR.get("/azertyuiopqsdfghjklmwxcvbn")
         .then(function(response) {
@@ -1754,7 +1751,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.htmlDefaultTitle = function htmlDefaultTitle(doc) {
         //
-        var result = [], reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
+        var result = [],
+            reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
 
         //
         try {
@@ -1856,7 +1854,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.htmlFakeList = function htmlFakeList(doc) {
         //
-        var result = [], reg1 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*(<br ?\?>)+){2,}$", "im"), reg2 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*){2,}$", "im");
+        var result = [],
+            reg1 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*(<br ?\?>)+){2,}$", "im"),
+            reg2 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*){2,}$", "im");
 
         //
         try {
@@ -1895,7 +1895,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.htmlFakeOrderedList = function htmlFakeOrderedList(doc) {
         //
-        var result = [], reg1 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*(<br ?\?>)+){2,}$", "im"), reg2 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*){2,}$", "im");
+        var result = [],
+            reg1 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*(<br ?\?>)+){2,}$", "im"),
+            reg2 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*){2,}$", "im");
 
         //
         try {
@@ -1953,7 +1955,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(val) { return val !== false; });
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch(err) {
             logger.error("htmlFavicon", err);
@@ -3098,7 +3100,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.metaCharset = function htmlMetaCharset(doc) {
         //
-        var result = [], charset = "", reg = new RegExp().compile("^.+charset=(.+)$", "i");
+        var result = [],
+            charset = "",
+            reg = new RegExp().compile("^.+charset=(.+)$", "i");
 
         //
         try {
@@ -3181,7 +3185,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.metaRefreshUrl = function htmlMetaRefreshUrl(doc) {
         //
-        var result = [], reg = new RegExp().compile("^\\d+\\s*;\\s*url=(.+)$", "i");
+        var result = [],
+            reg = new RegExp().compile("^\\d+\\s*;\\s*url=(.+)$", "i");
 
         //
         try {
@@ -3222,12 +3227,12 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.moreExtThenIntLinks = function htmlMoreExtThenIntLinks(doc) {
         //
-        var result = [], int = [], ext = [], domain;
+        var result = [], int = [], ext = [];
 
         //
         try {
             //
-            var aDomain = doc.location.host.split("."), domain = aDomain.slice(aDomain.length - 2, aDomain.length).join(".");
+            var domain = doc.location.host.split(".").slice(-2).join(".");
 
             //
             $("a[href]:not([href='']):not([href^='#'])").each(function() {
@@ -3242,7 +3247,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                     //
                     if (host) {
                         //
-                        var aLink = host.split("."), link = aLink.slice(aLink.length - 2, aLink.length).join(".");
+                        var link = host.split(".").slice(-2).join(".");
 
                         //
                         if (link == domain) {
@@ -3426,7 +3431,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.htmlSpaceBetweenLetters = function htmlSpaceBetweenLetters(doc) {
         //
-        var result = [], reg = new RegExp().compile("(\s+[A-Za-z]){3,}", "i");
+        var result = [],
+            reg = new RegExp().compile("(\s+[A-Za-z]){3,}", "i");
 
         //
         try {
@@ -3527,10 +3533,11 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.htmlUrlWithTermsNotInTitle = function htmlUrlWithTermsNotInTitle(doc) {
         //
-        var result = [];
-        var reg1 = new RegExp().compile("[\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "ig"), reg2 = new RegExp().compile("[^a-zA-Z0-9àáâãäåæçèéêëìíîïñòóôõöùúûüýÿ]", "ig");
-        var url = doc.location.href.toLowerCase().replace(/[àáâãäå]/ig, "a").replace(/æ/ig, "ae").replace(/ç/ig, "c").replace(/[èéêë]/ig, "e").replace(/[ìíîï]/ig, "i").replace(/ñ/ig, "n").replace(/[òóôõö]/ig, "o").replace(/œ/ig, "oe").replace(/[ùúûü]/ig, "u").replace(/[ýÿ]/ig, "y");
-        var terms = url.split(reg1);
+        var result = [],
+            reg1 = new RegExp().compile("[\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "ig"),
+            reg2 = new RegExp().compile("[^a-zA-Z0-9àáâãäåæçèéêëìíîïñòóôõöùúûüýÿ]", "ig"),
+            url = doc.location.href.toLowerCase().replace(/[àáâãäå]/ig, "a").replace(/æ/ig, "ae").replace(/ç/ig, "c").replace(/[èéêë]/ig, "e").replace(/[ìíîï]/ig, "i").replace(/ñ/ig, "n").replace(/[òóôõö]/ig, "o").replace(/œ/ig, "oe").replace(/[ùúûü]/ig, "u").replace(/[ýÿ]/ig, "y"),
+            terms = url.split(reg1);
 
         //
         try {
@@ -3569,7 +3576,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.htmlUrlWithUnsafeChars = function htmlUrlWithUnsafeChars(doc) {
         //
-        var result = [], reg = new RegExp().compile("[^a-z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "i");
+        var result = [],
+            reg = new RegExp().compile("[^a-z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "i");
 
         //
         try {
@@ -3772,15 +3780,16 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.countryDomain = function httpCountryDomain(doc) {
         //
-        var result = [], extensions = ["ad", "ae", "af", "ag", "ai", "al", "am", "an", "ao", "aq", "ar", "as", "at", "au", "aw", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bm", "bn", "bo", "br", "bs", "bt", "bv", "bw", "by", "bz", "ca", "cc", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr", "cu", "cv", "cx", "cy", "cz", "de", "dk", "dj", "dm", "do", "dz", "ec", "ee", "eg", "eh", "er", "es", "et", "fi", "fj", "fk", "fm", "fo", "fr", "fx", "ga", "gd", "ge", "gf", "gg", "gh", "gi", "gl", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "in", "io", "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km", "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr", "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "mh", "mk", "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mx", "mw", "my", "mz", "na", "nc", "nf", "ne", "ng", "ni", "nl", "no", "np", "nr", "nu", "nz", "om", "pa", "pe", "pf", "ph", "pk", "pl", "pm", "pn", "pq", "pr", "pt", "py", "pw", "qa", "re", "ro", "ru", "rw", "sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "st", "sv", "sy", "sz", "tc", "td", "tf", "th", "tj", "tm", "tn", "to", "tp", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "uk", "um", "us", "uy", "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "ye", "yt", "yu", "za", "zr", "zm", "zw"];
+        var result = [],
+            extensions = ["ad", "ae", "af", "ag", "ai", "al", "am", "an", "ao", "aq", "ar", "as", "at", "au", "aw", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bm", "bn", "bo", "br", "bs", "bt", "bv", "bw", "by", "bz", "ca", "cc", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr", "cu", "cv", "cx", "cy", "cz", "de", "dk", "dj", "dm", "do", "dz", "ec", "ee", "eg", "eh", "er", "es", "et", "fi", "fj", "fk", "fm", "fo", "fr", "fx", "ga", "gd", "ge", "gf", "gg", "gh", "gi", "gl", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "in", "io", "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km", "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr", "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "mh", "mk", "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mx", "mw", "my", "mz", "na", "nc", "nf", "ne", "ng", "ni", "nl", "no", "np", "nr", "nu", "nz", "om", "pa", "pe", "pf", "ph", "pk", "pl", "pm", "pn", "pq", "pr", "pt", "py", "pw", "qa", "re", "ro", "ru", "rw", "sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "st", "sv", "sy", "sz", "tc", "td", "tf", "th", "tj", "tm", "tn", "to", "tp", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "uk", "um", "us", "uy", "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "ye", "yt", "yu", "za", "zr", "zm", "zw"];
 
         //
         try {
             //
-            var aDomain = doc.location.host.split(".");
+            var tld = doc.location.host.split(".").slice(-1)[0];
 
             //
-            if ($.inArray(aDomain[aDomain.length - 1], extensions) != -1) {
+            if ($.inArray(tld, extensions) != -1) {
                 //
                 result.push(true);
             }
@@ -3813,10 +3822,10 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             if (response.status !== 200) {
                 return [];
             }
-            var tld = doc.location.host.split(".").slice(-1)[0].toLowerCase();
-            var data = $(response.data);
+            var tld = doc.location.host.split(".").slice(-1)[0].toLowerCase(),
+                data = $(response.data);
             if ($("geoplugin_countryCode", data).text().toLowerCase() === tld) {
-                return [true];
+                return [tld];
             }
             return [];
         })
@@ -3862,7 +3871,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.httpGzip = function httpGzip(doc) {
         //
-        var result = [], encoding = ["gzip", "deflate"], reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
+        var result = [],
+            encoding = ["gzip", "deflate"],
+            reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
 
         //
         try {
@@ -3959,7 +3970,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.httpGzipZippedResources = function httpGzipZippedResources(doc) {
         //
-        var result = [], encoding = ["gzip", "deflate"], reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
+        var result = [],
+            encoding = ["gzip", "deflate"],
+            reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
 
         //
         try {
@@ -4105,8 +4118,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
         var promises = [];
         try {
             $("img[width!=1][height!=1][longdesc]").each(function() {
-                var longdesc = $.trim($(this).attr("longdesc"));
-                var _img = this;
+                var longdesc = $.trim($(this).attr("longdesc")),
+                    _img = this;
 
                 if (longdesc === "") {
                     promises.push(Q.resolve(_getDetails(_img)));
@@ -4126,7 +4139,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(val) { return val !== false; });
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch(err) {
             logger.error("pingLongdesc", err);
@@ -4141,7 +4154,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.httpRefresh = function httpRefresh(doc) {
         //
-        var result = [], reg1 = new RegExp().compile("^(\\d+)$", "i"), reg2 = new RegExp().compile("^(\\d+)\\s*;\\s*url=(.+)$", "i");
+        var result = [],
+            reg1 = new RegExp().compile("^(\\d+)$", "i"),
+            reg2 = new RegExp().compile("^(\\d+)\\s*;\\s*url=(.+)$", "i");
 
         //
         try {
@@ -4503,10 +4518,10 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @todo manage attachments
      */
     window.resDownloadable = function httpResourceDownloadable(doc) {
-        var dl_extensions = ["pdf", "doc", "ods", "zip"],
+        var dl_extensions = ["pdf", "doc", "odt", "xls", "ods", "zip"],
             dl_families = ["application"],
             dl_types = ["msword", "pdf", "zip", "octet-stream"],
-            dl_reg = new RegExp("^vnd\.(oasis\.opendocument\.|\.ms-|openxmlformats-officedocument\.)", "i"),
+            dl_reg = new RegExp().compile("^vnd\.(oasis\.opendocument\.|\.ms-|openxmlformats-officedocument\.)", "i"),
             promises = [];
 
         try {
@@ -4540,7 +4555,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(val) { return val !== false; });
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -4581,7 +4596,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(val) { return val !== false; });
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -4597,8 +4612,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.rightCharset = function httpRightCharset(doc) {
         //
-        var regUnicode = new RegExp().compile("[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-\xBF]|[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}|\xED[\x80-\x9F][\x80-\xBF]|\xF0[\x90-\xBF][\x80-\xBF]{2}|[\xF1-\xF3][\x80-\xBF]{3}|\xF4[\x80-\x8F][\x80-\xBF]{2}", "m");
-        var result = [];
+        var regUnicode = new RegExp().compile("[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-\xBF]|[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}|\xED[\x80-\x9F][\x80-\xBF]|\xF0[\x90-\xBF][\x80-\xBF]{2}|[\xF1-\xF3][\x80-\xBF]{3}|\xF4[\x80-\x8F][\x80-\xBF]{2}", "m"),
+            result = [];
 
         //
         try {
@@ -4764,7 +4779,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.staticOneMonthCache = function httpStaticOneMonthCache(doc) {
         //
-        var result = [], reg = new RegExp().compile("max-age=([0-9]+)", "i");
+        var result = [],
+            reg = new RegExp().compile("max-age=([0-9]+)", "i");
 
         //
         try {
@@ -4820,10 +4836,12 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.staticOnMoreThan3Subdomains = function httpStaticOnMoreThan3Subdomains(doc) {
         //
-        var result = [], aDomain = doc.location.host.split("."), domain = aDomain.slice(aDomain.length - 2, aDomain.length).join(".");
+        var result = [];
 
         //
         try {
+            var domain = doc.location.host.split(".").slice(-2).join(".");
+        
             //
             sidecar.resources.forEach(function(element, index, array) {
                 //
@@ -4876,10 +4894,12 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.staticOnSameDomain = function httpStaticOnSameDomain(doc) {
         //
-        var result = [], aDomain = doc.location.host.split("."), domain = aDomain.slice(aDomain.length - 2, aDomain.length).join(".");
+        var result = [];
 
         //
         try {
+            var domain = doc.location.host.split(".").slice(-2).join(".");
+
             //
             sidecar.resources.forEach(function(element, index, array) {
                 //
@@ -4890,7 +4910,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                         && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
                         || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
-                    var _aDomain = element.uri.split("/")[2].split("."), _domain = _aDomain.slice(_aDomain.length - 2, _aDomain.length).join(".");
+                    var _domain = element.uri.split("/")[2].split(".").slice(-2).join(".");
 
                     //
                     if (doc.location.href != element.uri && _domain == domain) {
@@ -4919,7 +4939,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.staticVersionInName = function httpStaticVersionInName(doc) {
         //
-        var result = [], reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}\\.[a-zA-Z]{2,}$", "i");
+        var result = [],
+            reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}\\.[a-zA-Z]{2,}$", "i");
 
         //
         try {
@@ -4959,7 +4980,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.staticVersionInParams = function httpStaticVersionInParams(doc) {
         //
-        var result = [], reg = new RegExp().compile("[^\\?]+\\?(v=?)?[\\.0-9a-z]{3,}$", "i");
+        var result = [],
+            reg = new RegExp().compile("[^\\?]+\\?(v=?)?[\\.0-9a-z]{3,}$", "i");
 
         //
         try {
@@ -5039,7 +5061,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.staticWithParams = function httpStaticWithParams(doc) {
         //
-        var result = [], reg = new RegExp().compile("[^\\?]+\\?.+$", "i");;
+        var result = [],
+            reg = new RegExp().compile("[^\\?]+\\?.+$", "i");;
 
         //
         try {
@@ -5079,7 +5102,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.staticWithSeveralParams = function httpStaticWithSeveralParams(doc) {
         //
-        var result = [], reg = new RegExp().compile("[^\\?]+\\?.+&.+$", "i");;
+        var result = [],
+            reg = new RegExp().compile("[^\\?]+\\?.+&.+$", "i");;
 
         //
         try {
@@ -5159,24 +5183,25 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.httpWithAndWoWww = function httpWithAndWoWww(doc) {
         try {
-            var arrDomain = doc.location.host.split(".");
+            var aDomain = doc.location.host.split(".");
 
             // with www
-            if (arrDomain[0] == "www") {
-                arrDomain.shift();
+            if (aDomain[0] == "www") {
+                aDomain.shift();
             } else {
-                arrDomain.unshift("www");
+                aDomain.unshift("www");
             }
 
-            return XHR.partial(doc.location.protocol + "//" + arrDomain.join(".") + "/")
+            return XHR.partial(doc.location.protocol + "//" + aDomain.join(".") + "/")
             .then(function(response) {
                 if ($.inArray(response.status, [200, 301, 302, 304, 307]) !== -1) {
-                    return arrDomain.join(".");
+                    return [aDomain.join(".")];
                 }
+                return [];
             })
             .then(null, function(err) {
                 logger.error("httpWithAndWoWww", err);
-                return Q.resolve(false);
+                return Q.resolve([]);
             });
         } catch (err) {
             // Error Logging
@@ -5341,8 +5366,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @return
      */
     window.jsDocumentWrite = function jsDocumentWrite(doc) {
-        var reg = new RegExp("(document\\.write\\([^\\)]*\\))", "i"),
-            jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
+        var reg = new RegExp().compile("(document\\.write\\([^\\)]*\\))", "i"),
             promises = [];
 
         try {
@@ -5375,7 +5399,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(val) { return val !== false; });
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -5495,7 +5519,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.jsOnblurSubmit = function jsOnblurSubmit(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i"), exclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+        var result = [],
+            reg = new RegExp().compile("\\.submit\\s?", "i");
 
         //
         try {
@@ -5522,7 +5547,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             }
 
                             //
-                            else if ($.inArray(_function, exclusions) == -1) {
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
                                 try {
                                     var fn = window;
 
@@ -5603,7 +5628,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.jsOnchangeLocation = function jsOnchangeLocation(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.location[\\.=\\s]", "i"), exclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+        var result = [],
+            reg = new RegExp().compile("\\.location[\\.=\\s]", "i");
 
         //
         try {
@@ -5631,7 +5657,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             }
 
                             //
-                            else if ($.inArray(_function, exclusions) == -1) {
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
                                 try {
                                     var fn = window;
 
@@ -5670,7 +5696,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.jsOnchangeSubmit = function jsOnchangeSubmit(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i"), exclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+        var result = [],
+            reg = new RegExp().compile("\\.submit\\s?", "i");
 
         //
         try {
@@ -5698,7 +5725,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             }
 
                             //
-                            else if ($.inArray(_function, exclusions) == -1) {
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
                                 try {
                                     var fn = window;
 
@@ -5820,7 +5847,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.jsOnfocusBlur = function jsOnfocusBlur(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.blur\\s?", "i"), exclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+        var result = [],
+            reg = new RegExp().compile("\\.blur\\s?", "i");
 
         //
         try {
@@ -5848,7 +5876,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             }
 
                             //
-                            else if ($.inArray(_function, exclusions) == -1) {
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
                                 try {
                                     var fn = window;
 
@@ -5887,7 +5915,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.jsOnfocusSubmit = function jsOnfocusSubmit(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i"), exclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+        var result = [],
+            reg = new RegExp().compile("\\.submit\\s?", "i");
 
         //
         try {
@@ -5915,7 +5944,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             }
 
                             //
-                            else if ($.inArray(_function, exclusions) == -1) {
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
                                 try {
                                     var fn = window;
 
@@ -5996,7 +6025,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.jsOnmouseoutSubmit = function jsOnmouseoutSubmit(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i"), exclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+        var result = [],
+            reg = new RegExp().compile("\\.submit\\s?", "i");
 
         //
         try {
@@ -6024,7 +6054,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             }
 
                             //
-                            else if ($.inArray(_function, exclusions) == -1) {
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
                                 try {
                                     var fn = window;
 
@@ -6107,7 +6137,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.jsOnmouseoverSubmit = function jsOnmouseoverSubmit(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i"), exclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+        var result = [],
+            reg = new RegExp().compile("\\.submit\\s?", "i");
 
         //
         try {
@@ -6135,7 +6166,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             }
 
                             //
-                            else if ($.inArray(_function, exclusions) == -1) {
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
                                 try {
                                     var fn = window;
 
@@ -6253,7 +6284,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.jsPopUp = function jsPopUp(doc) {
         //
-        var result = [], reg = new RegExp().compile("(window|document)\\.open\\s?", "i"), exclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+        var result = [],
+            reg = new RegExp().compile("(window|document)\\.open\\s?", "i");
 
         //
         try {
@@ -6281,7 +6313,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             }
 
                             //
-                            else if ($.inArray(_function, exclusions) == -1) {
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
                                 try {
                                     var fn = window;
 
@@ -6319,10 +6351,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @return
      */
     window.jsRefresh = function jsRefresh(doc) {
-        var jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
-            reg1 = new RegExp("(\\.location\\.reload\\()", "i"),
-            reg2 = new RegExp("(\\.location\\.replace\\()", "i"),
-            reg3 = new RegExp("(\\.location\(\\.href\)?\s*=)", "i"),
+        var reg1 = new RegExp().compile("(\\.location\\.reload\\()", "i"),
+            reg2 = new RegExp().compile("(\\.location\\.replace\\()", "i"),
+            reg3 = new RegExp().compile("(\\.location\(\\.href\)?\s*=)", "i"),
             promises = [];
 
         try {
@@ -6369,7 +6400,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(val) { return val !== false; });
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -6385,7 +6416,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.jsResize = function jsResize(doc) {
         //
-        var result = [], reg = new RegExp().compile("window\\.resizeTo\\s?", "i"), exclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+        var result = [],
+            reg = new RegExp().compile("window\\.resizeTo\\s?", "i");
 
         //
         try {
@@ -6413,7 +6445,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             }
 
                             //
-                            else if ($.inArray(_function, exclusions) == -1) {
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
                                 try {
                                     var fn = window;
 
@@ -6451,8 +6483,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @return
      */
     window.jsSetInterval = function jsSetInterval(doc) {
-        var reg = new RegExp("setInterval\\(", "i"),
-            jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
+        var reg = new RegExp().compile("setInterval\\(", "i"),
             promises = [];
 
         try {
@@ -6485,7 +6516,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(val) { return val !== false; });
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -6501,8 +6532,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      * @return
      */
     window.jsSetTimeout = function jsSetTimeout(doc) {
-        var reg = new RegExp("setTimeout\\(", "i"),
-            jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
+        var reg = new RegExp().compile("setTimeout\\(", "i"),
             promises = [];
 
         try {
@@ -6535,7 +6565,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(val) { return val !== false; });
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -6587,7 +6617,6 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
     window.jsWindowOpen = function jsWindowOpen(doc) {
         //
         var reg = new RegExp().compile("(window|document)\\.open\\(", "i"),
-            jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
             promises = [];
 
         try {
@@ -6620,7 +6649,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(val) { return val !== false; });
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -6702,16 +6731,21 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             return false;
                         }
 
-                        var data = $.parseXML(response.data),
-                            result = [];
+                        var result = [], data;
 
-                        if (response.contentType == "application/rss+xml") {
+                        try {
+                            data = $.parseXML(response.data);
+                        }catch(e) {
+                            return false;
+                        }
+
+                        if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
                             $('link', data).each(function() {
                                 if ($.trim($(this).text()).substr(0, 1) == ".") {
                                     result.push(_getDetails(this));
                                 }
                             });
-                        } else if (response.contentType == "application/atom+xml") {
+                        } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
                             $('link', data).each(function() {
                                 if ($.trim($(this).attr("href")).substr(0, 1) == ".") {
                                     result.push(_getDetails(this));
@@ -6728,12 +6762,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var result = [];
-                res.filter(function(val) { return val !== false; })
-                .map(function(val) {
-                    result.push.apply(result, val);
-                });
-                return result;
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch(err) {
             // Error Logging
@@ -6763,10 +6792,15 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             return false;
                         }
 
-                        var data = $.parseXML(response.data),
-                            result = [];
+                        var result = [], data;
 
-                        if (response.contentType == "application/rss+xml") {
+                        try {
+                            data = $.parseXML(response.data);
+                        }catch(e) {
+                            return false;
+                        }
+
+                        if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
                             if ($.trim($("rss", data).attr("version")) == "2.0") {
                                 $("ttl", data).each(function() {
                                     result.push(_getDetails(this));
@@ -6795,12 +6829,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var result = [];
-                res.filter(function(val) { return val !== false; })
-                .map(function(val) {
-                    result.push.apply(result, val);
-                });
-                return result;
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch(err) {
             // Error Logging
@@ -6864,16 +6893,21 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
                             return false;
                         }
 
-                        var data = $.parseXML(response.data),
-                            result = [];
+                        var result = [], data;
+                        
+                        try {
+                            data = $.parseXML(response.data);
+                        }catch(e) {
+                            return false;
+                        }
 
-                        if (response.contentType == "application/rss+xml") {
+                        if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
                             $("item", data).each(function() {
                                 if ($("description", this).length == 0) {
                                     result.push(_getDetails(this));
                                 }
                             });
-                        } else if (response.contentType == "application/atom+xml") {
+                        } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
                             $("entry", data).each(function() {
                                 if ($("summary", this).length == 0) {
                                     result.push(_getDetails(this));
@@ -6890,12 +6924,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var result = [];
-                res.filter(function(val) { return val !== false; })
-                .map(function(val) {
-                    result.push.apply(result, val);
-                });
-                return result;
+                return res.some(function(v) v === false) ? false : res;
             });
         } catch(err) {
             // Error Logging
@@ -6918,7 +6947,7 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
         var _result = [];
         var sheets = doc.styleSheets;
         var styles = [];
-        var reg = new RegExp("^[.0-9]+(pt|pc|px|cm|mm|in|ex)$", "g");
+        var reg = new RegExp().compile("^[0-9.]+(p(t|c|x)|(c|m)m|in)$", "g");
 
         //
         function parseRule(rule) {
@@ -6971,11 +7000,11 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.linksWithSameHref = function(doc) {
         //
-        var _result = [];
-        var _done = [];
-        var _hrefs = {};
-        var _text = "";
-        var _reg= new RegExp("\\s{2,}", "g");
+        var _result = [],
+            _done = [],
+            _hrefs = {},
+            _text = "",
+            _reg= new RegExp().compile("\\s{2,}", "g");
 
         //
         $("a[href]", doc).each( function() {
@@ -7032,9 +7061,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.linksSpecialChars = function(doc) {
         //
-        var _result = [];
-        var _reg= new RegExp("[_% ]", "g");
-        var _reg_domain = new RegExp("^https?\:\/\/([^\/]+)", "i");
+        var _result = [],
+            _reg= new RegExp().compile("[_% ]", "g"),
+            _reg_domain = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
 
         // current URL
         if (_reg.test(doc.location.href)) {
@@ -7075,7 +7104,9 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.linksInternal = function(doc) {
         //
-        var _result = [], _reg = new RegExp("^https?\:\/\/([^\/]+)", "i"), _reg_doc = new RegExp("\.(pdf|doc)$", "i");
+        var _result = [],
+            _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i"),
+            _reg_doc = new RegExp().compile("\.(pdf|doc)$", "i");
 
         //
         $("a").each( function() {
@@ -7115,8 +7146,8 @@ var jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootoo
      */
     window.linksNavigation = function(doc) {
         //
-        var _result = [];
-        var _reg = new RegExp("^https?\:\/\/([^\/]+)", "i");
+        var _result = [],
+            _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
 
         //
         $("#navTools a[href], #thematicNav a[href], #transversalNav a[href]," +
