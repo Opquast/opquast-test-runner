@@ -1,8 +1,7 @@
 "use strict";
 
-const {extend} = require("sdk/core/heritage");
 const promise = require("sdk/core/promise");
-const sbLib = require("sdk/loader/sandbox");
+const SandBox = require("sdk/loader/sandbox");
 const {readURISync} = require('sdk/net/url');
 const {descriptor} = require("toolkit/loader");
 
@@ -18,29 +17,31 @@ const loadFile = function(path) {
     return readURISync(dataRoot + "/" + path);
 };
 
-const createTestRunner = function(sandbox, plainText, har) {
-    let injectJS = function(path) {
-        let code = null;
-        try {
-            code = loadFile(path);
-        } catch(e) {
-            throw new Error("Unable to open \"" + path + "\".");
+const createTestRunner = function(opts) {
+    // Global options
+    let requirements = {
+        sandbox: {
+            is: ["object"]
+        },
+        plainText: {
+            is: ["string"]
+        },
+        har: {
+            is: ["object"],
+            ok: function(val) typeof(val.entries) !== "undefined" && Array.isArray(val.entries)
+        },
+        extractObjects: {
+            map: function(val) typeof(val) === "boolean" && val || false
+        },
+        runOptions: {
+            map: function(val) typeof(val) === "object" && val || {}
         }
-
-        sbLib.evaluate(sandbox, code);
     };
 
-    let evaluate = function(func) {
-        let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
-        let code = "(" + func.toSource() + ").apply(this, " + args + ")";
-        return sbLib.evaluate(sandbox, code);
-    };
-
-    let resources = [];
-    let pageInfo = {};
+    let options = validateOptions(opts, requirements);
 
     // Tests runner options
-    let requirements = {
+    let runRequirements = {
         debug_validator: {
             map: function(val) typeof(val) === "boolean" ? val : false,
         },
@@ -54,6 +55,30 @@ const createTestRunner = function(sandbox, plainText, har) {
             map: function(val) typeof(val) === "number" ? parseInt(val) : 1000,
         }
     };
+    options.runOptions = validateOptions(options.runOptions, runRequirements);
+
+
+    let resources = [];
+    let pageInfo = {};
+
+
+    let injectJS = function(path) {
+        let code = null;
+        try {
+            code = loadFile(path);
+        } catch(e) {
+            throw new Error("Unable to open \"" + path + "\".");
+        }
+
+        SandBox.evaluate(options.sandbox, code);
+    };
+
+    let evaluate = function(func) {
+        let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
+        let code = "(" + func.toSource() + ").apply(this, " + args + ")";
+        return SandBox.evaluate(options.sandbox, code);
+    };
+
 
     let init = function() {
         // Set pageInfo and resources
@@ -71,8 +96,8 @@ const createTestRunner = function(sandbox, plainText, har) {
         });
 
         // Add some needed globals
-        let _xhr = xhrWrapper(evaluate, har);
-        Object.defineProperties(sandbox, descriptor({
+        let _xhr = xhrWrapper(evaluate, options.har);
+        Object.defineProperties(options.sandbox, descriptor({
             dnsLookup: dnsLookup,
             extractEvents: extractEvents,
             Q: promise,
@@ -88,30 +113,31 @@ const createTestRunner = function(sandbox, plainText, har) {
             return $.extractPageInfo();
         })));
 
-        // Extract flash objects
+        // Extract flash objects if asked for
+        if (!options.extractObjects) {
+            return promise.resolve().then(function() {
+                har2res(options.har, resources);
+            });
+        }
+
         return evaluate(function() {
             return $.extractObjects();
         })
         .then(function(swfObjects) {
             swfObjects.forEach(function(entry) {
                 if (entry !== null) {
-                    har.entries.push(entry);
+                    options.har.entries.push(entry);
                 }
             });
 
             // Convert resources
-            har2res(har, resources);
+            har2res(options.har, resources);
         });
     };
 
+
     // Tests runner
-    let runTests = function(options, testIDs) {
-        if (Array.isArray(options)) {
-            // options is not mandatory
-            testIDs = options;
-            options = {};
-        }
-        options = validateOptions(options || {}, requirements);
+    let runTests = function(testIDs) {
         testIDs = testIDs || [];
 
         // Load rules & rulesets
@@ -136,28 +162,27 @@ const createTestRunner = function(sandbox, plainText, har) {
             injectJS("lib/oqs-validator.js");
             injectJS("lib/oqs-tests.js");
 
-            return evaluate(function(plainText, pageInfo, resources, rules, rulesets, options) {
+            return evaluate(function(options, pageInfo, resources, rules, rulesets) {
                 let events = extractEvents(window);
                 this.sidecar = {
                     resources: resources,
                     events: events,
                     pageInfo: pageInfo,
-                    plainText: plainText
+                    plainText: options.plainText
                 };
 
                 // Set options
-                for (var k in options) {
-                    this[k] = options[k];
+                for (var k in options.runOptions) {
+                    this[k] = options.runOptions[k];
                 }
 
                 // Run tests
                 this.tests = rules;
                 this.criteria = rulesets;
                 return analyze(this.criteria).then(function(results) {
-                    // Crazy unicode conversion
                     return synthesize_results(results);
                 });
-            }, plainText, pageInfo, resources, rules, rulesets, options);
+            }, options, pageInfo, resources, rules, rulesets);
         });
     };
 
