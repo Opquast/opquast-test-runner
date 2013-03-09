@@ -70,22 +70,25 @@ var logger;
             if (!show_errors) {
                 return;
             }
-            var message = "============================\n";
 
+            let msg = "-------------------- ERROR\n" + tag + "\n";
+
+            if (typeof(error) === "string") {
+                msg += error;
+            }
             if (error.name) {
-                message += error.name;
+                msg += error.name;
             }
-
             if (error.message) {
-                message += ",\nMessage:\n" + error.message;
+                msg += "\nMessage:\n" + error.message;
             }
-
             if (error.stack) {
-                message += ",\nStack:\n " + error.stack;
+                msg += "\nStack:\n" + error.stack;
             }
-            message += "\n============================\n";
 
-            console.log(tag, message);
+            msg += "\n--------------------------\n";
+
+            console.log(msg);
         }
     };
     // (fin Logger)
@@ -1546,16 +1549,12 @@ var logger;
 
             //
             else if (language == "css") {
-                //
-                var parse = _analyseStylesheets(doc, "screen", []);
-
-                //
-                parse.forEach(function(element, index, array) {
-                    //
-                    if (reg.test(element.text)) {
-                        //
-                        _result.push(element.href);
-                    }
+                _analyseStylesheets(doc, "screen", []).then(function(parse) {
+                    parse.forEach(function(element, index, array) {
+                        if (reg.test(element.text)) {
+                            _result.push(element.href);
+                        }
+                    });
                 });
             }
 
@@ -1947,7 +1946,7 @@ var logger;
 
             // If the result is false, then, there has been an error
             if (result === false) {
-                logger.error('apply_test', 'Le test a échoué');
+                logger.error('apply_test', 'Test failed (' + test + ')');
 
                 _g_results.push('i');
                 _g_comments.push('Le test a échoué');
