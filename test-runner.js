@@ -12,6 +12,7 @@ const {har2res} = require("./utils/har-tools");
 
 // Javascript files location
 const dataRoot = require("sdk/url").URL("../data", module.uri);
+exports.dataRoot = dataRoot;
 
 const loadFile = function(path) {
     return readURISync(dataRoot + "/" + path);
