@@ -597,7 +597,8 @@ var logger;
         // not cached
         else {
             //
-            var _item = node, _attributes = _item.attributes;
+            var _item = node,
+                _attributes = _item.attributes;
 
             //
             tmp = {
@@ -645,6 +646,16 @@ var logger;
                 //
                 tmp.xpath = "/" + _item.localName;
             }
+
+            tmp.selector = _getSelector(_item);
+            try {
+                tmp.text = _item.outerHTML.replace(/</g, "&lt;").replace(/>/g, "&gt;").substr(0, 200);
+            } catch(e) {
+                try {
+                    tmp.text = (new XMLSerializer()).serializeToString(_item).replace(/</g, "&lt;").replace(/>/g, "&gt;").substr(0, 200);
+                } catch(e) {}
+            }
+
             // caching
             $(node).data("_details", tmp);
         }
