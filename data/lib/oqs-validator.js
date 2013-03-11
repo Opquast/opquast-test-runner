@@ -280,7 +280,7 @@ var logger;
                         sheet = parser.parse(response.data, false, false);
                     sheet._extra = {
                         "media": css.media,
-                        "href": css.href
+                        "href": src
                     };
                     sheet.resolveVariables(media);
 

@@ -3933,18 +3933,6 @@
             }
         }
     }, 
-    "11324": {
-        "CSS_MEDIA_HANDHELD": {
-            "onfalse": {
-                "comment": "aucune CSS pour le mobile (media handheld) n'a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "nc"
-            }, 
-            "ontrue": {
-                "comment": "au moins une CSS pour le mobile (media handheld) a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "c"
-            }
-        }
-    }, 
     "11361": {
         "IMG": {
             "onfalse": {
@@ -5385,18 +5373,6 @@
             }
         }
     }, 
-    "11500": {
-        "CSS_MEDIA_PRINT": {
-            "onfalse": {
-                "comment": "aucune CSS pour l'impression (media print) n'a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "nc"
-            }, 
-            "ontrue": {
-                "comment": "au moins une CSS pour l'impression (media print) a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "c"
-            }
-        }
-    }, 
     "11501": {
         "CSS_GENERIC_FONT": {
             "onfalse": {
@@ -5966,18 +5942,6 @@
             "ontrue": {
                 "comment": "plus de 3 polices d\u00e9finies", 
                 "result": "nc"
-            }
-        }
-    }, 
-    "11566": {
-        "CSS_MEDIA_HANDHELD": {
-            "onfalse": {
-                "comment": "aucune CSS pour le mobile (media handheld) n'a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "nc"
-            }, 
-            "ontrue": {
-                "comment": "au moins une CSS pour le mobile (media handheld) a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "c"
             }
         }
     }, 
@@ -6579,18 +6543,6 @@
             }
         }
     }, 
-    "13629": {
-        "CSS_MEDIA_PRINT": {
-            "onfalse": {
-                "comment": "aucune CSS pour l'impression (media print) n'a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "nc"
-            }, 
-            "ontrue": {
-                "comment": "au moins une CSS pour l'impression (media print) a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "c"
-            }
-        }
-    }, 
     "13630": {
         "CSS_GENERIC_FONT": {
             "onfalse": {
@@ -6728,18 +6680,6 @@
             "ontrue": {
                 "comment": "plus de 3 polices d\u00e9finies", 
                 "result": "nc"
-            }
-        }
-    }, 
-    "13657": {
-        "CSS_MEDIA_HANDHELD": {
-            "onfalse": {
-                "comment": "aucune CSS pour le mobile (media handheld) n'a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "nc"
-            }, 
-            "ontrue": {
-                "comment": "au moins une CSS pour le mobile (media handheld) a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "c"
             }
         }
     }, 
@@ -15280,18 +15220,6 @@
             "ontrue": {
                 "comment": "au moins un \u00e9lement avec un attribut VLINK a \u00e9t\u00e9 d\u00e9tect\u00e9", 
                 "result": "nc"
-            }
-        }
-    }, 
-    "19425": {
-        "CSS_MEDIA_PRINT": {
-            "onfalse": {
-                "comment": "aucune CSS pour l'impression (media print) n'a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "nc"
-            }, 
-            "ontrue": {
-                "comment": "au moins une CSS pour l'impression (media print) a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "c"
             }
         }
     }, 
@@ -27769,18 +27697,6 @@
             }
         }
     }, 
-    "639": {
-        "CSS_MEDIA_PRINT": {
-            "onfalse": {
-                "comment": "aucune CSS pour l'impression (media print) n'a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "nc"
-            }, 
-            "ontrue": {
-                "comment": "au moins une CSS pour l'impression (media print) a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "c"
-            }
-        }
-    }, 
     "645": {
         "HTTP_CONTENT_LANGUAGE": {
             "onfalse": {
@@ -28314,18 +28230,6 @@
             "ontrue": {
                 "comment": "au moins une ouverture dans une nouvelle fen\u00eatre a \u00e9t\u00e9 d\u00e9tect\u00e9", 
                 "result": "nc"
-            }
-        }
-    }, 
-    "705": {
-        "CSS_MEDIA_HANDHELD": {
-            "onfalse": {
-                "comment": "aucune CSS pour le mobile (media handheld) n'a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "nc"
-            }, 
-            "ontrue": {
-                "comment": "au moins une CSS pour le mobile (media handheld) a \u00e9t\u00e9 d\u00e9tect\u00e9e", 
-                "result": "c"
             }
         }
     }, 

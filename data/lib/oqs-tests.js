@@ -1017,68 +1017,19 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.cssMediaHandheld = function cssMediaHandheld(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            var sheets = doc.styleSheets;
-
-            // sheets walk
-            for (var i = 0; i < sheets.length; i++) {
-                //
-                var sheet = sheets.item(i);
-
-                // no media
-                if (sheet.media.length == 0 || (sheet.media.item && sheet.media.item(0) == "all")) {
-                    //
-                    var rules = sheet.cssRules;
-
-                    // rules walk
-                    for (var k = 0; k < rules.length; k++) {
-                        //
-                        var rule = rules[k];
-
-                        //
-                        if ($.inArray(rule.type, [CSSRule.MEDIA_RULE, CSSRule.IMPORT_RULE]) != -1) {
-                            // media walk
-                            for (var l = 0; l < rule.media.length; l++) {
-                                //
-                                var _media = rule.media.item && rule.media.item(l) || rule.media[l];
-                                if ($.startsWith(_media, "handheld") || $.startsWith(_media, "only handheld")) {
-                                    //
-                                    result.push(rule.parentStyleSheet.href);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                //
-                else {
-                    // media walk
-                    for (var j = 0; j < sheet.media.length; j++) {
-                        //
-                        var _media = sheet.media.item && sheet.media.item(j) || sheet.media[j];
-                        if ($.startsWith(_media, "handheld") || $.startsWith(_media, "only handheld")) {
-                            //
-                            result.push(sheet.href);
-                        }
-                    }
-                }
-            }
-        }
-
-        //
-        catch (err) {
+        let callback = [];
+    
+        return _analyseStylesheets(doc, "handheld", callback).then(function() {
+            return callback.filter(function(element) {
+                return element.media == "handheld";
+            }).map(function(element) {
+                return element.href;
+            });
+        }).then(null, function(err) {
             // Error Logging
             logger.error("cssMediaHandheld", err);
-            result = false;
-        }
-
-        //
-        return result;
+            return false;
+        });
     }
 
     /**
@@ -1087,68 +1038,19 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.cssMediaPrint = function cssMediaPrint(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            var sheets = doc.styleSheets;
-
-            // sheets walk
-            for (var i = 0; i < sheets.length; i++) {
-                //
-                var sheet = sheets.item(i);
-
-                // no media
-                if (sheet.media.length == 0 || (sheet.media.item && sheet.media.item(0) == "all")) {
-                    //
-                    var rules = sheet.cssRules;
-
-                    // rules walk
-                    for (var k = 0; k < rules.length; k++) {
-                        //
-                        var rule = rules[k];
-
-                        //
-                        if ($.inArray(rule.type, [CSSRule.MEDIA_RULE, CSSRule.IMPORT_RULE]) != -1) {
-                            // media walk
-                            for (var l = 0; l < rule.media.length; l++) {
-                                //
-                                var _media = rule.media.item && rule.media.item(l) || rule.media[l];
-                                if ($.startsWith(_media, "print") || $.startsWith(_media, "only print")) {
-                                    //
-                                    result.push(rule.parentStyleSheet.href);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                //
-                else {
-                    // media walk
-                    for (var j = 0; j < sheet.media.length; j++) {
-                        //
-                        var _media = sheet.media.item && sheet.media.item(j) || sheet.media[j];
-                        if ($.startsWith(_media, "print") || $.startsWith(_media, "only print")) {
-                            //
-                            result.push(sheet.href);
-                        }
-                    }
-                }
-            }
-        }
-
-        //
-        catch (err) {
+        function callback(rule) {
+            var result = [];
+            
+            result.push(rule.parentStyleSheet._extra);
+            
+            return result;
+        };
+    
+        return _analyseStylesheets(doc, "print", callback).then(null, function(err) {
             // Error Logging
             logger.error("cssMediaPrint", err);
-            result = false;
-        }
-
-        //
-        return result;
+            return false;
+        });
     }
 
     /**
