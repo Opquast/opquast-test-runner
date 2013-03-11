@@ -1950,7 +1950,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         try {
             sidecar.pageInfo.links.forEach(function(link) {
                 if ($.inArray((link.rel || "").toLowerCase(), ["icon", "shortcut icon"]) === -1) {
-                    return;
+                    return null;
                 }
                 promises.push(
                     XHR.partial(link.uri).then(function(response) {
@@ -1959,13 +1959,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         );
                     }).then(null, function(err) {
                         logger.error("htmlFavicon", err);
-                        return false;
+                        return null;
                     })
                 );
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch(err) {
             logger.error("htmlFavicon", err);
@@ -4139,7 +4139,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                             if (response.status === 404) {
                                 return _getDetails(_img);
                             }
-                            return false;
+                            return null;
                         }).then(null, function(err) {
                             logger.error("pingLongdesc", err);
                             return false;
@@ -4149,7 +4149,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch(err) {
             logger.error("pingLongdesc", err);
@@ -4547,7 +4547,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 promises.push(
                     XHR.partial(link.uri).then(function(response) {
                         if (response.status !== 200) {
-                            return false;
+                            return null;
                         }
                         var mime = response.contentType.split("/");
                         if ($.inArray(mime[0], dl_families) !== -1 &&
@@ -4556,7 +4556,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                             return link.uri;
                         }
 
-                        return false;
+                        return null;
                     }).then(null, function(err) {
                         logger.error("resDownloadable", err);
                         return false;
@@ -4565,7 +4565,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -4597,7 +4597,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                             return link.uri;
                         }
 
-                        return false;
+                        return null;
                     }).then(null, function(err) {
                         logger.error("resPdf", err);
                         return false;
@@ -4606,7 +4606,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -4851,7 +4851,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             var domain = doc.location.host.split(".").slice(-2).join(".");
-        
+
             //
             sidecar.resources.forEach(function(element, index, array) {
                 //
@@ -5399,7 +5399,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                                 return item.uri + " (" + match[0] + ")";
                             }
 
-                            return false;
+                            return null;
                         }).then(null, function(err) {
                             logger.error("jsDocumentWrite", err);
                             return false;
@@ -5409,7 +5409,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -6400,7 +6400,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                                 return item.uri + " (" + found + ")";
                             }
 
-                            return false;
+                            return null;
                         }).then(null, function(err) {
                             logger.error("jsRefresh", err);
                             return false;
@@ -6410,7 +6410,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -6516,7 +6516,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                                 return item.uri + " (" + match[0] + ")";
                             }
 
-                            return false;
+                            return null;
                         }).then(null, function(err) {
                             logger.error("jsSetInterval", err);
                             return false;
@@ -6526,7 +6526,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -6565,7 +6565,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                                 return item.uri + " (" + match[0] + ")";
                             }
 
-                            return false;
+                            return null;
                         }).then(null, function(err) {
                             logger.error("jsSetTimeout", err);
                             return false;
@@ -6575,7 +6575,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -6649,7 +6649,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                                 return item.uri + " (" + match[0] + ")";
                             }
 
-                            return false;
+                            return null;
                         }).then(null, function(err) {
                             logger.error("jsWindowOpen", err);
                             return false;
@@ -6659,7 +6659,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch (err) {
             // Error Logging
@@ -6678,13 +6678,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         return XHR.get("/robots.txt").then(function(response) {
             if (response.status !== 200) {
-                return false;
+                return [];
             }
             var match = reg.exec(response.data);
             if (match !== null) {
                 return [match[1]];
             }
-            return false;
+            return [];
         }).then(null, function(err) {
             // Error Logging
             logger.error("robotsPresence", err);
@@ -6702,11 +6702,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         return XHR.get("/robots.txt").then(function(response) {
             if (response.status !== 200) {
-                return false;
+                return [];
             }
             var match = reg.exec(response.data);
             if (match === null) {
-                return false;
+                return [];
             }
             var sitemap = $.trim(match[1]);
             return XHR.partial(sitemap).then(function(resp) {
@@ -6738,7 +6738,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 promises.push(
                     XHR.get(link.uri).then(function(response) {
                         if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
-                            return false;
+                            return null;
                         }
 
                         var result = [], data;
@@ -6746,7 +6746,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         try {
                             data = $.parseXML(response.data);
                         }catch(e) {
-                            return false;
+                            return null;
                         }
 
                         if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
@@ -6763,7 +6763,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                             });
                         }
 
-                        return result.length > 0 ? result : false;
+                        return result.length > 0 ? result : null;
                     }).then(null, function(err) {
                         logger.error("syndicationAbsoluteLinks", err);
                         return false;
@@ -6772,7 +6772,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch(err) {
             // Error Logging
@@ -6799,7 +6799,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 promises.push(
                     XHR.get(link.uri).then(function(response) {
                         if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
-                            return false;
+                            return null;
                         }
 
                         var result = [], data;
@@ -6807,7 +6807,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         try {
                             data = $.parseXML(response.data);
                         }catch(e) {
-                            return false;
+                            return null;
                         }
 
                         if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
@@ -6830,7 +6830,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                             result.push(_getDetails(this));
                         });
 
-                        return result.length > 0 ? result : false;
+                        return result.length > 0 ? result : null;
                     }).then(null, function(err) {
                         logger.error("syndicationCache", err);
                         return false;
@@ -6839,7 +6839,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch(err) {
             // Error Logging
@@ -6900,15 +6900,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 promises.push(
                     XHR.get(link.uri).then(function(response) {
                         if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
-                            return false;
+                            return null;
                         }
 
                         var result = [], data;
-                        
+
                         try {
                             data = $.parseXML(response.data);
                         }catch(e) {
-                            return false;
+                            return null;
                         }
 
                         if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
@@ -6925,7 +6925,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                             });
                         }
 
-                        return result.length > 0 ? result : false;
+                        return result.length > 0 ? result : null;
                     }).then(null, function(err) {
                         logger.error("syndicationSummary", err);
                         return false;
@@ -6934,7 +6934,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.some(function(v) v === false) ? false : res;
+                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
             });
         } catch(err) {
             // Error Logging

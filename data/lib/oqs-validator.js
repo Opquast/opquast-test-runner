@@ -1218,6 +1218,8 @@ var logger;
                 $.merge(res.comments, r.comments);
                 $.merge(res.details, r.details);
             });
+            res.comments = res.comments.filter(function(v) v !== null && v !== undefined);
+            res.details = res.details.filter(function(v) v !== null && v !== undefined);
             return res;
         }).then(null, function(err) {
             // Error Logging
