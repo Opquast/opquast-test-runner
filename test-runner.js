@@ -142,8 +142,7 @@ const createTestRunner = function(opts) {
         testIDs = testIDs || [];
 
         // Load rules & rulesets
-        let rules = JSON.parse(loadFile("rules.json"));
-        let rulesets = JSON.parse(loadFile("rulesets.json"));
+        let {rules, rulesets} = getRules();
 
         // Rulesets subset if needed
         if (testIDs.length > 0) {
@@ -196,6 +195,15 @@ const createTestRunner = function(opts) {
 };
 
 exports.create = createTestRunner;
+
+
+const getRules = function() {
+    return {
+        "rules": JSON.parse(loadFile("rules.json")),
+        "rulesets": JSON.parse(loadFile("rulesets.json"))
+    };
+};
+exports.getRules = getRules;
 
 
 const xhrWrapper = function(evaluate, har) {
