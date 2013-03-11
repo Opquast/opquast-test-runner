@@ -18,7 +18,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 (function($, window, undefined) {
     "use strict";
 
-    var content = $("body").text().trim(), aContent = $.unique(content.toLowerCase().split(" "));
+    var content = $("body").text().trim(),
+        aContent = $.unique(content.toLowerCase().split(" "));
+        
+    var inlineStyles = $("*[style]");
+    
+    var onfocusEvents = $("*[onfocus]"),
+        onblurEvents = $("*[onblur]"),
+        onchangeEvents = $("*[onchange]"),
+        onclickEvents = $("*[onclick]"),
+        onmouseoverEvents = $("*[onmouseover]"),
+        onmouseoutEvents = $("*[onmouseout]");
 
     /**
      *
@@ -7202,8 +7212,41 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
+    
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.cssFontInList = function(doc) {
+        function callback(rule) {
+            var result = [],
+                authorized = ["arial", "verdana", "helvetica", "tahoma", "sans-serif", "inherit"];
 
-    var inlineStyles = $("*[style]");
-    var onfocusEvents = $("*[onfocus]"), onblurEvents = $("*[onblur]"), onchangeEvents = $("*[onchange]"), onclickEvents = $("*[onclick]"), onmouseoverEvents = $("*[onmouseover]"), onmouseoutEvents = $("*[onmouseout]");
+            if (rule && rule.parentStyleSheet && rule.declarations) {
+                for (var i = 0; i < rule.declarations.length; i++) {
+                    if (rule.declarations[i]["property"] == "font-family") {
+                        var fonts = rule.declarations[i]["valueText"].split(";")[0].split(",").map(function(element) {
+                            return $.trim(element.toLowerCase().replace(/['"]/g, ""));
+                        });
+                        
+                        $.each(fonts, function(){
+                            if ($.inArray(this, authorized) == -1) {
+                                result.push(_getCssDetails(rule, i));
+                                return false;
+                            }
+                        });
+                    }
+                }
+            }
 
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
+            // Error Logging
+            logger.error("cssFontInList", err);
+            return false;
+        });
+    }
 })(jQuery, this);

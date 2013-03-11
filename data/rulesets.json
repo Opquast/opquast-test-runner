@@ -24174,13 +24174,13 @@
         }
     }, 
     "23266": {
-        "test26": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
             "onfalse": {
-                "comment": "aucune police ne poss\u00e8de une taille en unit\u00e9 absolue", 
+                "comment": "aucun FONT-SIZE d\u00e9finie en taille absolue n'a \u00e9t\u00e9 d\u00e9tect\u00e9", 
                 "result": "c"
             }, 
             "ontrue": {
-                "comment": "au moins une police poss\u00e8de une taille en unit\u00e9 absolue", 
+                "comment": "au moins un FONT-SIZE d\u00e9finie en taille absolue a \u00e9t\u00e9 d\u00e9tect\u00e9", 
                 "result": "nc"
             }
         }
