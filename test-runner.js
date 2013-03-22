@@ -3,6 +3,7 @@
 const promise = require("sdk/core/promise");
 const SandBox = require("sdk/loader/sandbox");
 const {readURISync} = require('sdk/net/url');
+const {clearTimeout, setTimeout} = require('sdk/timers');
 const {descriptor} = require("toolkit/loader");
 
 const {validateOptions} = require("sdk/deprecated/api-utils");
@@ -33,6 +34,9 @@ const createTestRunner = function(opts) {
         },
         extractObjects: {
             map: function(val) typeof(val) === "boolean" && val || false
+        },
+        timeout: {
+            map: function(val) parseInt(val) || -1
         },
         runOptions: {
             map: function(val) typeof(val) === "object" && val || {}
@@ -155,7 +159,16 @@ const createTestRunner = function(opts) {
             rulesets = _rulesets;
         }
 
-        return init()
+        let deferred = promise.defer();
+
+        let timeout = null;
+        if (options.timeout > 0) {
+            timeout = setTimeout(function() {
+                deferred.reject(new Error('Test timeout (' + options.timeout + ')'));
+            }, options.timeout);
+        };
+
+        init()
         .then(function() {
             // Now we can run tests
             injectJS("lib/cssParser.js");
@@ -183,7 +196,15 @@ const createTestRunner = function(opts) {
                     return synthesize_results(results);
                 });
             }, options, pageInfo, resources, rules, rulesets);
+        })
+        .then(function(result) {
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+            deferred.resolve(result);
         });
+
+        return deferred.promise;
     };
 
     return {
