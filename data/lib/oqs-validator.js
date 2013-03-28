@@ -1951,7 +1951,7 @@ var logger;
             return Q.reject(err);
         }
 
-        logger.log('apply_test', result);
+        logger.log('apply_test', JSON.stringify(result, null, 2));
         return Q.resolve(result).then(function(result) {
             var _g_results = [];
             var _g_comments = [];
@@ -1992,11 +1992,13 @@ var logger;
                     for (var subtest_id in test_actions.ontrue.chain) {
                         var subtest_actions = test_actions.ontrue.chain[subtest_id];
                         var subtest = tests[subtest_id];
-                        var _results = apply_test(doc, subtest, subtest_actions);
-
-                        _g_results = $.extend(_g_results, _results.results);
-                        _g_comments = $.extend(_g_comments, _results.comments);
-                        _g_details = $.extend(_g_details, _results.details);
+                        return apply_test(doc, subtest, subtest_actions).then(function(r) {
+                            return {
+                                'results': $.extend(_g_results, r.results),
+                                'comments': $.extend(_g_comments, r.comments),
+                                'details': $.extend(_g_details, r.details)
+                            };
+                        });
                     }
 
                     // no subtests
@@ -2017,11 +2019,13 @@ var logger;
                     for (var subtest_id in test_actions.onfalse.chain) {
                         var subtest_actions = test_actions.onfalse.chain[subtest_id];
                         var subtest = tests[subtest_id];
-                        var _results = apply_test(doc, subtest, subtest_actions);
-
-                        _g_results = $.extend(_g_results, _results.results);
-                        _g_comments = $.extend(_g_comments, _results.comments);
-                        _g_details = $.extend(_g_details, _results.details);
+                        return apply_test(doc, subtest, subtest_actions).then(function(r) {
+                            return {
+                                'results': $.extend(_g_results, r.results),
+                                'comments': $.extend(_g_comments, r.comments),
+                                'details': $.extend(_g_details, r.details)
+                            };
+                        });
                     }
 
                     // no subtests
