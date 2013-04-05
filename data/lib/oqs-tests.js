@@ -6622,6 +6622,24 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
+    
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.implicitSitemap = function implicitSitemap(doc) {
+        return XHR.partial("/sitemap.xml").then(function(response) {
+            if (response.status !== 200) {
+                return [];
+            }
+            return [true];
+        }).then(null, function(err) {
+            // Error Logging
+            logger.error("implicitSitemap", err);
+            return false;
+        });
+    }
 
     /**
      *
