@@ -9,7 +9,7 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
     fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
 
 var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
-    badLinks = ['cliquez ici', 'lire la suite', 'en savoir plus', "plus d'infos"],
+    badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"],
     cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws)\\.com/", "i"),
     analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i"),
     jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
@@ -20,9 +20,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
     var content = $("body").text().trim(),
         aContent = $.unique(content.toLowerCase().split(" "));
-        
+
     var inlineStyles = $("*[style]");
-    
+
     var onfocusEvents = $("*[onfocus]"),
         onblurEvents = $("*[onblur]"),
         onchangeEvents = $("*[onchange]"),
@@ -1018,7 +1018,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssMediaHandheld = function cssMediaHandheld(doc) {
         let callback = [];
-    
+
         return _analyseStylesheets(doc, "handheld", callback).then(function() {
             return callback.filter(function(element) {
                 return element.media == "handheld";
@@ -1040,12 +1040,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.cssMediaPrint = function cssMediaPrint(doc) {
         function callback(rule) {
             var result = [];
-            
+
             result.push(rule.parentStyleSheet._extra);
-            
+
             return result;
         };
-    
+
         return _analyseStylesheets(doc, "print", callback).then(null, function(err) {
             // Error Logging
             logger.error("cssMediaPrint", err);
@@ -1560,7 +1560,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         try {
             //
             $("area[alt]").each(function() {
-                if ($.inArray($.trim($(this).attr("alt")), badLinks) != -1) {
+                if ($.inArray($.trim($(this).attr("alt")).toLowerCase(), badLinks) != -1) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -1867,7 +1867,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch(err) {
             logger.error("htmlFavicon", err);
@@ -2722,7 +2723,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             $("a").has("img[alt]").filter(function() {
                 return $.trim($(this).text()) == "";
             }).each(function() {
-                if ($.inArray($.trim($("img", this).attr("alt")), badLinks) != -1) {
+                if ($.inArray($.trim($("img", this).attr("alt")).toLowerCase(), badLinks) != -1) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -3225,12 +3226,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlNonHttpAreaLinks = function htmlNonHttpAreaLinks(doc) {
         //
-        var result = [], protocols = ["http:", "https:", "javascript:"];
+        var result = [], protocols = ["http:", "https:", "javascript:", "ftp:", "ftps:"];
 
         //
         try {
             //
-            $("area[href^='ftp://'], area[href^='ftps://']").each(function() {
+            $("area[href]").each(function() {
                 //
                 if ($.inArray(this.protocol, protocols) == -1) {
                     //
@@ -3257,7 +3258,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlNonHttpLinks = function htmlNonHttpLinks(doc) {
         //
-        var result = [], protocols = ["http:", "https:", "javascript:"];
+        var result = [], protocols = ["http:", "https:", "javascript:", "ftp:", "ftps:"];
 
         //
         try {
@@ -4051,7 +4052,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch(err) {
             logger.error("pingLongdesc", err);
@@ -4467,7 +4469,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch (err) {
             // Error Logging
@@ -4508,7 +4511,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch (err) {
             // Error Logging
@@ -5311,7 +5315,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch (err) {
             // Error Logging
@@ -6312,7 +6317,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch (err) {
             // Error Logging
@@ -6428,7 +6434,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch (err) {
             // Error Logging
@@ -6477,7 +6484,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch (err) {
             // Error Logging
@@ -6561,7 +6569,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch (err) {
             // Error Logging
@@ -6622,7 +6631,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-    
+
     /**
      *
      * @param doc
@@ -6671,13 +6680,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
                         if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
                             $('link', data).each(function() {
-                                if ($.trim($(this).text()).substr(0, 1) == ".") {
+                                var link = $.trim($(this).text()), url = $.URL(link);
+                                if (url.toString() != link && url.toString() != link + '/' && url.scheme != 'mailto') {
                                     result.push(_getDetails(this));
                                 }
                             });
                         } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
-                            $('link', data).each(function() {
-                                if ($.trim($(this).attr("href")).substr(0, 1) == ".") {
+                            $('link[href!=""]', data).each(function() {
+                                var link = $.trim($(this).text()), url = $.URL(link);
+                                if (url.toString() != link && url.toString() != link + '/' && url.scheme != 'mailto') {
                                     result.push(_getDetails(this));
                                 }
                             });
@@ -6692,7 +6703,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch(err) {
             // Error Logging
@@ -6759,7 +6771,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch(err) {
             // Error Logging
@@ -6854,7 +6867,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                return res.filter(function(v) v !== null).some(function(v) v === false) ? false : res;
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false : _res;
             });
         } catch(err) {
             // Error Logging
@@ -7132,7 +7146,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-    
+
     /**
      *
      * @param doc
@@ -7149,7 +7163,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         var fonts = rule.declarations[i]["valueText"].split(";")[0].split(",").map(function(element) {
                             return $.trim(element.toLowerCase().replace(/['"]/g, ""));
                         });
-                        
+
                         $.each(fonts, function(){
                             if ($.inArray(this, authorized) == -1) {
                                 result.push(_getCssDetails(rule, i));
