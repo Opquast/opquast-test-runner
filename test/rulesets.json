@@ -1,0 +1,14 @@
+{
+    "APPLET": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment APPLET n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment APPLET a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    }
+}
