@@ -1,18 +1,19 @@
-"use strict";
+'use strict';
 
-const promise = require("sdk/core/promise");
-const SandBox = require("sdk/loader/sandbox");
+const {mix} = require('sdk/core/heritage');
+const promise = require('sdk/core/promise');
+const SandBox = require('sdk/loader/sandbox');
 const {readURISync} = require('sdk/net/url');
 const {clearTimeout, setTimeout} = require('sdk/timers');
-const {descriptor} = require("toolkit/loader");
+const {descriptor} = require('toolkit/loader');
 
-const {validateOptions} = require("sdk/deprecated/api-utils");
+const {validateOptions} = require('sdk/deprecated/api-utils');
 
-const {dnsLookup, extractEvents, xhr} = require("./utils/extras");
-const {har2res} = require("./utils/har-tools");
+const {dnsLookup, extractEvents, xhr} = require('./utils/extras');
+const {har2res} = require('./utils/har-tools');
 
 // Javascript files location
-const dataRoot = require("sdk/url").URL("../data", module.uri);
+const dataRoot = require('sdk/url').URL('../data', module.uri);
 exports.dataRoot = dataRoot;
 
 var JS_FILES = [];
@@ -80,23 +81,23 @@ const createTestRunner = function(opts) {
     // Global options
     let requirements = {
         sandbox: {
-            is: ["object"]
+            is: ['object']
         },
         plainText: {
-            is: ["string"]
+            is: ['string']
         },
         har: {
-            is: ["object"],
-            ok: function(val) typeof(val.entries) !== "undefined" && Array.isArray(val.entries)
+            is: ['object'],
+            ok: function(val) typeof(val.entries) !== 'undefined' && Array.isArray(val.entries)
         },
         extractObjects: {
-            map: function(val) typeof(val) === "boolean" && val || false
+            map: function(val) typeof(val) === 'boolean' && val || false
         },
         timeout: {
             map: function(val) parseInt(val) || -1
         },
         runOptions: {
-            map: function(val) typeof(val) === "object" && val || {}
+            map: function(val) typeof(val) === 'object' && val || {}
         }
     };
 
@@ -105,16 +106,16 @@ const createTestRunner = function(opts) {
     // Tests runner options
     let runRequirements = {
         debug_validator: {
-            map: function(val) typeof(val) === "boolean" ? val : false,
+            map: function(val) typeof(val) === 'boolean' ? val : false,
         },
         timing_validator: {
-            map: function(val) typeof(val) === "boolean" ? val : false,
+            map: function(val) typeof(val) === 'boolean' ? val : false,
         },
         show_errors: {
-            map: function(val) typeof(val) === "boolean" ? val : false,
+            map: function(val) typeof(val) === 'boolean' ? val : false,
         },
         config_saveAndRefresh_delay: {
-            map: function(val) typeof(val) === "number" ? parseInt(val) : 1000,
+            map: function(val) typeof(val) === 'number' ? parseInt(val) : 1000,
         }
     };
     options.runOptions = validateOptions(options.runOptions, runRequirements);
@@ -127,9 +128,9 @@ const createTestRunner = function(opts) {
     let injectJS = function(path) {
         let code = null;
         try {
-            code = loadFile(path);
+            code = readURISync(path);
         } catch(e) {
-            throw new Error("Unable to open \"" + path + "\".");
+            throw new Error('Unable to open "' + path + '".');
         }
 
         SandBox.evaluate(options.sandbox, code);
@@ -137,7 +138,7 @@ const createTestRunner = function(opts) {
 
     let evaluate = function(func) {
         let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
-        let code = "(" + func.toSource() + ").apply(this, " + args + ")";
+        let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
         return SandBox.evaluate(options.sandbox, code);
     };
 
@@ -282,7 +283,7 @@ const xhrWrapper = function(evaluate, har) {
             statusText: entry.response.statusText,
             headers: entry.response.headers,
             content_type: null,
-            data: partial ? "" : entry.response.content.text,
+            data: partial ? '' : entry.response.content.text,
             xml: null
         };
 
@@ -294,7 +295,7 @@ const xhrWrapper = function(evaluate, har) {
                 }
             });
 
-            return (value.length === 0) ? null : value.join(",");
+            return (value.length === 0) ? null : value.join(',');
         };
 
         return result;
@@ -302,7 +303,7 @@ const xhrWrapper = function(evaluate, har) {
 
     let _xhr = Object.create(xhr);
     _xhr.query = function(url, method, data, headers, partial) {
-        if (method === "GET" && har.entries !== undefined) {
+        if (method === 'GET' && har.entries !== undefined) {
             let entry = null;
             har.entries.forEach(function(v) {
                 if (v._url == url) {
