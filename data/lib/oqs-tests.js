@@ -1021,7 +1021,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         return _analyseStylesheets(doc, "handheld", callback).then(function() {
             return callback.filter(function(element) {
-                return element.media == "handheld";
+                var mediaText = element.media.mediaText;
+                return mediaText && $.inArray("handheld", mediaText.split(',')) != -1;
             }).map(function(element) {
                 return element.href;
             });
@@ -1038,15 +1039,16 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.cssMediaPrint = function cssMediaPrint(doc) {
-        function callback(rule) {
-            var result = [];
+        let callback = [];
 
-            result.push(rule.parentStyleSheet._extra);
-
-            return result;
-        };
-
-        return _analyseStylesheets(doc, "print", callback).then(null, function(err) {
+        return _analyseStylesheets(doc, "print", callback).then(function() {
+            return callback.filter(function(element) {
+                var mediaText = element.media.mediaText;
+                return mediaText && $.inArray("print", mediaText.split(',')) != -1;
+            }).map(function(element) {
+                return element.href;
+            });
+        }).then(null, function(err) {
             // Error Logging
             logger.error("cssMediaPrint", err);
             return false;

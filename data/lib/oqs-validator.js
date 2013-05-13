@@ -288,7 +288,7 @@ var logger;
                         "src": src,
                         "content": response.data,
                         "sheet": sheet,
-                        "media": media
+                        "media": css.media
                     }
                 }).then(null, function(err) {
                     logger.error("_analyseStylesheets", err);
@@ -314,7 +314,7 @@ var logger;
                     "src": "interne",
                     "content": $(this).text(),
                     "sheet": sheet,
-                    "media": media
+                    "media": _media
                 });
             }
         });
