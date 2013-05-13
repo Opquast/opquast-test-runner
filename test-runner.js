@@ -31,17 +31,32 @@ const addFilesToList = function(listRef) {
     };
 };
 
+const removeFilesFromList = function(listRef) {
+    return function() {
+        [].slice.call(arguments).forEach(function(f) {
+            if (listRef.indexOf(f) !== -1) {
+                listRef.splice(listRef.indexOf(f));
+            }
+        });
+    };
+};
 
 const addJSFiles = addFilesToList(JS_FILES);
+const removeJSFiles = removeFilesFromList(JS_FILES);
 exports.addJSFiles = addJSFiles;
+exports.removeJSFiles = removeJSFiles;
 
 
 const addRules = addFilesToList(RULES);
+const removeRules = removeFilesFromList(RULES);
 exports.addRules = addRules;
+exports.removeRules = removeRules;
 
 
 const addRuleSets = addFilesToList(RULESETS);
+const removeRuleSets = removeFilesFromList(RULESETS);
 exports.addRuleSets = addRuleSets;
+exports.removeRuleSets = removeRuleSets;
 
 
 const getRules = function() {
