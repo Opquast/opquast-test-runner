@@ -15,10 +15,67 @@ const {har2res} = require("./utils/har-tools");
 const dataRoot = require("sdk/url").URL("../data", module.uri);
 exports.dataRoot = dataRoot;
 
-const loadFile = function(path) {
-    return readURISync(dataRoot + "/" + path);
+var JS_FILES = [];
+var RULES = [];
+var RULESETS = [];
+
+
+const addFilesToList = function(listRef) {
+    return function() {
+        [].slice.call(arguments).forEach(function(f) {
+            if (listRef.indexOf(f) === -1) {
+                listRef.push(f);
+            }
+        });
+    };
 };
 
+
+const addJSFiles = addFilesToList(JS_FILES);
+exports.addJSFiles = addJSFiles;
+
+
+const addRules = addFilesToList(RULES);
+exports.addRules = addRules;
+
+
+const addRuleSets = addFilesToList(RULESETS);
+exports.addRuleSets = addRuleSets;
+
+
+const getRules = function() {
+    let result = {'rules': {}, 'rulesets': {}};
+
+    RULES.forEach(function(uri) {
+        result['rules'] = mix(result['rules'], JSON.parse(readURISync(uri)));
+    });
+    RULESETS.forEach(function(uri) {
+        result['rulesets'] = mix(result['rulesets'], JSON.parse(readURISync(uri)));
+    });
+
+    return result;
+};
+exports.getRules = getRules;
+
+
+const getJSFiles = function() {
+    return JS_FILES;
+};
+exports.getJSFiles = getJSFiles;
+
+
+// Default files
+addJSFiles(
+    dataRoot + '/lib/cssParser.js',
+    dataRoot + '/lib/oqs-validator.js',
+    dataRoot + '/lib/oqs-tests.js'
+);
+
+addRules(dataRoot + '/rules.json');
+addRuleSets(dataRoot + '/rulesets.json');
+
+
+// Test Runner
 const createTestRunner = function(opts) {
     // Global options
     let requirements = {
@@ -92,7 +149,7 @@ const createTestRunner = function(opts) {
         }
 
         // Inject jQuery & coexist with other versions
-        injectJS("lib/jquery-1.9.1.min.js");
+        injectJS(dataRoot + '/lib/jquery-1.9.1.min.js');
         evaluate(function() {
             // Doing this removes our jQuery from the page but provides a global
             // jQuery version in sandbox
@@ -113,7 +170,7 @@ const createTestRunner = function(opts) {
         _xhr.wrap('_XHR', 'XHR');
 
         // Extract page information
-        injectJS("lib/oqs-utils.js");
+        injectJS(dataRoot + '/lib/oqs-utils.js');
         Object.defineProperties(pageInfo, descriptor(evaluate(function() {
             return $.extractPageInfo();
         })));
@@ -171,9 +228,9 @@ const createTestRunner = function(opts) {
         init()
         .then(function() {
             // Now we can run tests
-            injectJS("lib/cssParser.js");
-            injectJS("lib/oqs-validator.js");
-            injectJS("lib/oqs-tests.js");
+            getJSFiles().forEach(function(uri) {
+                injectJS(uri);
+            });
 
             return evaluate(function(options, pageInfo, resources, rules, rulesets) {
                 let events = extractEvents(window);
@@ -216,15 +273,6 @@ const createTestRunner = function(opts) {
 };
 
 exports.create = createTestRunner;
-
-
-const getRules = function() {
-    return {
-        "rules": JSON.parse(loadFile("rules.json")),
-        "rulesets": JSON.parse(loadFile("rulesets.json"))
-    };
-};
-exports.getRules = getRules;
 
 
 const xhrWrapper = function(evaluate, har) {
