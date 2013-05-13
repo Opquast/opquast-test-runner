@@ -16,6 +16,7 @@ const SandBox = require("sdk/loader/sandbox");
 
 const wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
 const testRunner = require("opquast-tests/test-runner");
+const {addRuleSets} = require("opquast-tests/test-runner");
 
 const openTab = function() {
     let win = wm.getMostRecentWindow('navigator:browser');
@@ -100,13 +101,7 @@ let launchTests = function(domWindow, har) {
     let startTime = new Date();
 
     // Prepare checklists
-    /*let checklists = {};
-    getChecklistFiles().forEach(function(filename) {
-        let cl = JSON.parse(self.data.load(filename));
-        for (let k in cl) {
-            checklists[k] = cl[k];
-        }
-    });*/
+    let checklists = {};
 
     // New sandbox for testRunner
     let sandbox = SandBox.sandbox(domWindow, {
@@ -132,10 +127,12 @@ let launchTests = function(domWindow, har) {
         extractObjects: false
     });
 
+    addRuleSets(URL('rulesets.json', module.uri).toString());
+
     return runner.init()
     .then(function() {
         // Create a fake first request if void
-        /*if (runner.resources.length == 0) {
+        if (runner.resources.length == 0) {
             runner.resources.push({
                 date: domWindow.document.lastModified,
                 modified: domWindow.document.lastModified,
@@ -150,10 +147,10 @@ let launchTests = function(domWindow, har) {
                 status: 200,
                 status_text: "200 OK"
             });
-        }*/
+        }
 
         startTime = new Date();
-        return runner.run(['10058']);
+        return runner.run(Object.keys(checklists));
     })
     .then(function(results) {
         // Format result set
