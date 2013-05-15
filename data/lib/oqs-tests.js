@@ -3796,6 +3796,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             sidecar.resources.forEach(function(element, index, array) {
                 //
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                console.log('+-*/=/*-+-*/=/*-+-*/=/*-+-*/=/*-+-*/=/*-+-*/=/*-+-*/=/*-+-*/=/*-+-*/=/*-+');console.log(content_type);console.log(element.headers["content-length"]);console.log(element.headers["content-encoding"]);
 
                 // is text
                 if (content_type

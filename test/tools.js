@@ -12,6 +12,7 @@ const Q = require('sdk/core/promise');
 const {getBrowserForTab, getOwnerWindow} = require('sdk/tabs/utils');
 const {setTimeout, clearTimeout} = require('sdk/timers');
 const {URL} = require('sdk/url');
+const {readURI} = require('sdk/net/url');
 const SandBox = require("sdk/loader/sandbox");
 
 const wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
@@ -102,6 +103,9 @@ let launchTests = function(domWindow, har) {
 
     // Prepare checklists
     let checklists = {};
+    readURI(URL('rulesets.json', module.uri).toString(), {'sync': true}).then(function(result){
+        checklists = JSON.parse(result);
+    });
 
     // New sandbox for testRunner
     let sandbox = SandBox.sandbox(domWindow, {

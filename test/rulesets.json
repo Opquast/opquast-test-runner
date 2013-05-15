@@ -1,5 +1,16 @@
 {
-    "AUDIO": {
+    "A_NOT_ANCHOR": {
+        "A_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment A non ancre n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment A non ancre a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },"AUDIO": {
         "AUDIO": {
             "onfalse": {
                 "comment": "aucun \u00e9l\u00e9ment AUDIO n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
@@ -20,6 +31,18 @@
             "ontrue": {
                 "comment": "au moins un \u00e9l\u00e9ment AREA a \u00e9t\u00e9 d\u00e9tect\u00e9",
                 "result": "c"
+            }
+        }
+    },
+    "HTTP_GZIP": {
+        "HTTP_GZIP": {
+            "onfalse": {
+                "comment": "le serveur envoie des contenus compress\u00e9s aux clients qui les acceptent",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le serveur n'envoie pas de contenus compress\u00e9s aux clients qui les acceptent",
+                "result": "nc"
             }
         }
     }
