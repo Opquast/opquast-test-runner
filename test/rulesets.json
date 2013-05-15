@@ -250,5 +250,17 @@
                 "result": "c"
             }
         }
+    },
+    "HTTP_GZIP": {
+        "HTTP_GZIP": {
+            "onfalse": {
+                "comment": "le serveur envoie des contenus compressés aux clients qui les acceptent",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur n'envoie pas de contenus compressés aux clients qui les acceptent",
+                "result": "c"
+            }
+        }
     }
 }

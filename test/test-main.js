@@ -47,9 +47,10 @@ let [html, har] = listFixtures();
 
 html.forEach(function(v) {
     exports["test " + v] = function(assert, done) {
-        let [rule, expected] = v.split('/').slice(6, 8);
+        let [rule, expected] = v.split('/').slice(6, 8), close;
 
         openTab().then(function(result) {
+            close = result.close;
             return result.open(v);
         }).then(function(result) {
             let har = {'entries': []};
@@ -64,19 +65,20 @@ html.forEach(function(v) {
                 });
             } catch(e) {}
 
-            launchTests(result.browser.contentWindow, har).then(function(result){
-                result.tests.oaa_results.forEach(function(result) {
-                    if(result.id == rule) {
+            return launchTests(result.browser.contentWindow, har).then(function(result){
+                result.tests.oaa_results.forEach(function(test) {
+                    if(test.id == rule) {
                         if(expected == "true") {
-                            assert.ok(result.result == "c", rule + " true");
+                            assert.ok(test.result == "c", rule + " true");
                         } else if(expected == "false") {
-                            assert.ok(result.result == "nc", rule + " false");
+                            assert.ok(test.result == "nc", rule + " false");
                         }
                     }
                 });
+
             }).then(function(){
-                done();
-            }).then(null, console.exception);
+                return close();
+            }).then(null, console.exception).then(done);
         }).then(null, console.exception);
     };
 });
