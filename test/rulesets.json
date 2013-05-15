@@ -2,47 +2,252 @@
     "A_NOT_ANCHOR": {
         "A_NOT_ANCHOR": {
             "onfalse": {
-                "comment": "aucun \u00e9l\u00e9ment A non ancre n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "comment": "aucun élément A non ancre n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un \u00e9l\u00e9ment A non ancre a \u00e9t\u00e9 d\u00e9tect\u00e9",
-                "result": "c"
-            }
-        }
-    },"AUDIO": {
-        "AUDIO": {
-            "onfalse": {
-                "comment": "aucun \u00e9l\u00e9ment AUDIO n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un \u00e9l\u00e9ment AUDIO a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "comment": "au moins un élément A non ancre a été détecté",
                 "result": "c"
             }
         }
     },
-    "AREA": {
-        "AREA": {
+    "A_WO_TEXT_W_IMG_W_EMPTY_ALT_ATTR": {
+        "A_WO_TEXT_W_IMG_W_EMPTY_ALT_ATTR": {
             "onfalse": {
-                "comment": "aucun \u00e9l\u00e9ment AREA n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "comment": "aucun élément IMG seul enfant d'un élément A et avec un attribut ALT vide n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un \u00e9l\u00e9ment AREA a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "comment": "au moins un élément IMG seul enfant d'un élément A et avec un attribut ALT vide a été détecté",
                 "result": "c"
             }
         }
     },
-    "HTTP_GZIP": {
-        "HTTP_GZIP": {
+    "A_W_FILLED_HREF_ATTR_AND_WO_NEGATIVE_TABINDEX_ATTR": {
+        "A_W_FILLED_HREF_ATTR_AND_WO_NEGATIVE_TABINDEX_ATTR": {
             "onfalse": {
-                "comment": "le serveur envoie des contenus compress\u00e9s aux clients qui les acceptent",
-                "result": "c"
+                "comment": "aucun élément A avec un HREF n'a été détecté",
+                "result": "nc"
             },
             "ontrue": {
-                "comment": "le serveur n'envoie pas de contenus compress\u00e9s aux clients qui les acceptent",
+                "comment": "au moins un élément A avec un HREF a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_HREF_NOT_HTTP": {
+        "A_W_HREF_NOT_HTTP": {
+            "onfalse": {
+                "comment": "aucun élément A ouvrant un logiciel externe n'a été détecté",
                 "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A ouvrant un logiciel externe a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_IMG_ALT_ATTR_EQUALS_TO_TEXT": {
+        "A_W_IMG_ALT_ATTR_EQUALS_TO_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément A dont le texte et la valeur de l'attribut ALT d'un élément IMG qu'il contient sont identiques n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A dont le texte et la valeur de l'attribut ALT d'un élément IMG qu'il contient sont identiques a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_IMG_W_EMPTY_ALT_ATTR": {
+        "A_W_IMG_W_EMPTY_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A avec un IMG ayant un attribut ALT vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec un IMG ayant un attribut ALT vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_IMG_W_FILLED_ALT_ATTR": {
+        "A_W_IMG_W_FILLED_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A contenant un élément IMG ayant un attribut ALT non vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A contenant un élément IMG ayant un attribut ALT non vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_INVALID_TEXT_W_IMG_W_INVALID_ALT_ATTR": {
+        "A_W_INVALID_TEXT_W_IMG_W_INVALID_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A avec texte générique et contenant un IMG avec un attribut ALT générique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec texte générique et contenant un IMG avec un attribut ALT générique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TARGET_ATTR_BLANK": {
+        "A_W_TARGET_ATTR_BLANK": {
+            "onfalse": {
+                "comment": "aucun élément A avec un TARGET blank n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de l'attribut TARGET avec la valeur _BLANK sur l'élément A constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TARGET_ATTR_BLANK_W_IMG": {
+        "A_W_TARGET_ATTR_BLANK_W_IMG": {
+            "onfalse": {
+                "comment": "aucun élément A avec un TARGET blank n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec un TARGET blank a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TEXT_WO_IMG": {
+        "A_W_TEXT_WO_IMG": {
+            "onfalse": {
+                "comment": "aucun élément A avec texte et ne contenant aucun IMG n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec texte et ne contenant aucun IMG a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TEXT_WO_IMG_NOT_UNIQUE": {
+        "A_W_TEXT_WO_IMG_NOT_UNIQUE": {
+            "onfalse": {
+                "comment": "aucun élément A avec texte, ne contenant aucun IMG et avec un intitulé non unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec texte, ne contenant aucun IMG et avec un intitulé non unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TEXT_WO_IMG_W_INVALID_TITLE_ATTR": {
+        "A_W_TEXT_WO_IMG_W_INVALID_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A avec texte, ne contenant aucun IMG et avec un attribut TITLE vide, identique au texte ou générique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec texte, ne contenant aucun IMG et avec un attribut TITLE vide, identique au texte ou générique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TEXT_WO_IMG_W_TITLE_ATTR": {
+        "A_W_TEXT_WO_IMG_W_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A avec texte, ne contenant aucun IMG et avec un attribut TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec texte, ne contenant aucun IMG et avec un attribut TITLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TEXT_W_IMG": {
+        "A_W_TEXT_W_IMG": {
+            "onfalse": {
+                "comment": "aucun élément A avec texte et contenant un IMG n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec texte et contenant un IMG a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TEXT_W_IMG_NOT_UNIQUE": {
+        "A_W_TEXT_W_IMG_NOT_UNIQUE": {
+            "onfalse": {
+                "comment": "aucun élément A avec texte, contenant un IMG et avec un intitulé non unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec texte, contenant un IMG et avec un intitulé non unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TEXT_W_IMG_W_EMPTY_ALT_ATTR": {
+        "A_W_TEXT_W_IMG_W_EMPTY_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A avec un contenu textuel et un IMG avec un ALT vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation d'un attribut ALT non vide sur les éléments IMG descendant d'éléments A qui contiennent également du texte constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TEXT_W_IMG_W_EMPTY_TITLE_ATTR": {
+        "A_W_TEXT_W_IMG_W_EMPTY_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A avec texte, contenant un IMG et avec un attribut TITLE vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec texte, contenant un IMG et avec un attribut TITLE vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TEXT_W_IMG_W_TITLE_ATTR": {
+        "A_W_TEXT_W_IMG_W_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A avec texte, contenant un IMG et avec un attribut TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec texte, contenant un IMG et avec un attribut TITLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TITLE_ATTR": {
+        "A_W_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A avec un attribut TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec un attribut TITLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_W_TITLE_ATTR_SHORTER_THAN_TEXT": {
+        "A_W_TITLE_ATTR_SHORTER_THAN_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément A avec un title plus court que le contenu textuel n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de l'attribut TITLE avec une valeur plus courte que le contenu de l'élément A constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
             }
         }
     }
