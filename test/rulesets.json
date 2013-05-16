@@ -325,15 +325,13 @@
     },
     "A_NOT_ANCHOR": {
         "A_NOT_ANCHOR": {
-            "A_NOT_ANCHOR": {
-                "onfalse": {
-                    "comment": "aucun élément A non ancre n'a été détecté",
-                    "result": "nc"
-                },
-                "ontrue": {
-                    "comment": "au moins un élément A non ancre a été détecté",
-                    "result": "c"
-                }
+            "onfalse": {
+                "comment": "aucun élément A non ancre n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A non ancre a été détecté",
+                "result": "c"
             }
         }
     },

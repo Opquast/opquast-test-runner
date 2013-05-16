@@ -239,7 +239,7 @@ const createTestRunner = function(opts) {
             timeout = setTimeout(function() {
                 deferred.reject(new Error('Test timeout (' + options.timeout + ')'));
             }, options.timeout);
-        };
+        }
 
         init()
         .then(function() {
