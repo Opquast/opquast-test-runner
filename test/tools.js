@@ -98,7 +98,7 @@ const openTab = function() {
 };
 exports.openTab = openTab;
 
-let launchTests = function(domWindow, har) {
+let launchTests = function(domWindow, har, headers) {
     let startTime = new Date();
 
     // Prepare checklists
@@ -131,7 +131,19 @@ let launchTests = function(domWindow, har) {
         extractObjects: false
     });
 
+    // Add rulesets
     addRuleSets(URL('rulesets.json', module.uri).toString());
+
+    // Format headers
+    if(Object.keys(headers).length) {
+        let _headers = {};
+
+        Object.keys(headers).map(function(element){
+            _headers[element.toLowerCase()] = headers[element];
+        });
+
+        headers = _headers;
+    }
 
     return runner.init()
     .then(function() {
@@ -144,7 +156,7 @@ let launchTests = function(domWindow, har) {
                 content_type: domWindow.document.contentType,
                 charset: domWindow.document.characterSet,
                 size: domWindow.XMLSerializer().serializeToString(domWindow.document).length,
-                headers: {},
+                headers: headers,
                 uri: domWindow.location.href,
                 referrer: "",
                 method: "GET",

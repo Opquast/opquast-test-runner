@@ -34,38 +34,28 @@ const listFixtures = function() {
         return URL('fixtures/' + v.split('/').slice(4).join('/'), module.uri).toString();
     });
 
-    let har = fileList.filter(function(v) {
-        return v.split('.').pop() == 'har';
-    }).map(function(v) {
-        return URL('fixtures/' + v.split('/').slice(4).join('/'), module.uri).toString();
-    });
-
-    return [html, har];
+    return html;
 }
 
-let [html, har] = listFixtures();
+listFixtures().forEach(function(v) {
+    let aSlash = v.split('/'), aDot = v.split('.'), [rule, expected] = aSlash.slice(6, 8);
 
-html.forEach(function(v) {
-    exports["test " + v] = function(assert, done) {
-        let [rule, expected] = v.split('/').slice(6, 8), close;
+    exports["test " + rule + "-" + expected + (expected == 'true' ? aSlash.slice(-1).toString().split('.')[0] : "")] = function(assert, done) {
+        let close;
 
         openTab().then(function(result) {
             close = result.close;
             return result.open(v);
         }).then(function(result) {
-            let har = {'entries': []};
+            let headers, path = aDot.slice(0, -1).join('.') + '.json';
 
-            try {
-                let aPath = v.split('.');
-                aPath.pop();
-                let path = aPath.join('.') + '.har';
+            readURI(path, {'sync': true}).then(function(v){
+                headers = JSON.parse(v);
+            }).then(null, function(error) {
+                headers = {};
+            });
 
-                readURI(path, {'sync': true}).then(function(result){
-                    har = JSON.parse(result);
-                });
-            } catch(e) {}
-
-            return launchTests(result.browser.contentWindow, har).then(function(result){
+            return launchTests(result.browser.contentWindow, {'entries': []}, headers).then(function(result){
                 result.tests.oaa_results.forEach(function(test) {
                     if(test.id == rule) {
                         if(expected == "true") {

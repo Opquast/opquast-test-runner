@@ -1,12 +1,398 @@
 {
-    "A_NOT_ANCHOR": {
-        "A_NOT_ANCHOR": {
+    "ABBR_W_FILLED_TITLE_ATTR": {
+        "ABBR_W_FILLED_TITLE_ATTR": {
             "onfalse": {
-                "comment": "aucun élément A non ancre n'a été détecté",
+                "comment": "aucun élément ABBR sans TITLE non vide n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un élément A non ancre a été détecté",
+                "comment": "au moins un élément ABBR avec TITLE non vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "ACRONYM_W_FILLED_TITLE_ATTR": {
+        "ACRONYM_W_FILLED_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément ACRONYM sans TITLE non vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément ACRONYM avec un TITLE non vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "ALIGN_ATTR": {
+        "ALIGN_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut ALIGN n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut ALIGN a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "ALINK_ATTR": {
+        "ALINK_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut ALINK n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut ALINK a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET_IN_A": {
+        "APPLET_IN_A": {
+            "onfalse": {
+                "comment": "aucun élément APPLET dans un A n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET dans un A a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET_IN_BUTTON": {
+        "APPLET_IN_BUTTON": {
+            "onfalse": {
+                "comment": "aucun élément APPLET dans un BUTTON n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET dans un BUTTON a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET_NOT_IN_A_OR_BUTTON_WO_ANCHOR": {
+        "APPLET_NOT_IN_A_OR_BUTTON_WO_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément APPLET ni dans un A, ni dans un BUTTON sans ancre n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET ni dans un A, ni dans un BUTTON sans ancre a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET_WO_ALT_ATTR": {
+        "APPLET_WO_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément APPLET sans attribut ALT n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET sans attribut ALT a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET_WO_FILLED_ALT_ATTR": {
+        "APPLET_WO_FILLED_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément APPLET avec un attribut ALT vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET sans attribut ALT rempli a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET_W_ALT_ATTR": {
+        "APPLET_W_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément APPLET avec un attribut ALT n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET avec un attribut ALT a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET_W_ALT_ATTR_TERMS_NOT_IN_CONTENT": {
+        "APPLET_W_ALT_ATTR_TERMS_NOT_IN_CONTENT": {
+            "onfalse": {
+                "comment": "aucun élément APPLET dont les termes de l'attribut ALT ne sont pas aussi dans le contenu de la page n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET dont les termes de l'attribut ALT ne sont pas aussi dans le contenu de la page a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET_W_FILLED_ALT_ATTR": {
+        "APPLET_W_FILLED_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément APPLET avec un attribut ALT non vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET avec un attribut ALT non vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET_W_MORE_THAN_120_CHAR_ALT_ATTR": {
+        "APPLET_W_MORE_THAN_120_CHAR_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément APPLET avec un attribut ALT de plus de 120 caractères n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET avec un attribut ALT de plus de 120 caractères a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "APPLET_W_MORE_THAN_80_CHAR_ALT_ATTR": {
+        "APPLET_W_MORE_THAN_80_CHAR_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément APPLET avec un attribut ALT de plus de 80 caractères n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET avec un attribut ALT de plus de 80 caractères a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA": {
+        "AREA": {
+            "onfalse": {
+                "comment": "aucun élément AREA n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA_NOT_ANCHOR": {
+        "AREA_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément AREA ni vide, ni ancre n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA ni vide, ni ancre a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA_WO_FILLED_ALT_ATTR": {
+        "AREA_WO_FILLED_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément AREA avec un attribut ALT vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA avec un attribut ALT vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA_W_ALT_ATTR": {
+        "AREA_W_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément AREA avec un attribut ALT n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA avec un attribut ALT a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA_W_ALT_ATTR_TERMS_NOT_IN_CONTENT": {
+        "AREA_W_ALT_ATTR_TERMS_NOT_IN_CONTENT": {
+            "onfalse": {
+                "comment": "aucun élément AREA dont les termes de l'attribut ALT ne sont pas aussi dans le contenu de la page n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA dont les termes de l'attribut ALT ne sont pas aussi dans le contenu de la page a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA_W_EMPTY_ALT_ATTR": {
+        "AREA_W_EMPTY_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément AREA avec un attribut HREF et un attribut ALT vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA avec un attribut HREF et un attribut ALT vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA_W_FILLED_ALT_ATTR": {
+        "AREA_W_FILLED_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément AREA avec un attribut ALT non vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA avec un attribut ALT non vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA_W_HREF_NOT_HTTP": {
+        "AREA_W_HREF_NOT_HTTP": {
+            "onfalse": {
+                "comment": "aucun élément AREA ouvrant un logiciel externe n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA ouvrant un logiciel externe a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA_W_MORE_THAN_120_CHAR_ALT_ATTR": {
+        "AREA_W_MORE_THAN_120_CHAR_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément AREA avec un attribut ALT de plus de 120 caractères n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA avec un attribut ALT de plus de 120 caractères a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA_W_MORE_THAN_80_CHAR_ALT_ATTR": {
+        "AREA_W_MORE_THAN_80_CHAR_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément AREA avec un attribut ALT de plus de 80 caractères n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA avec un attribut ALT de plus de 80 caractères a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "AREA_W_TARGET_ATTR_BLANK": {
+        "AREA_W_TARGET_ATTR_BLANK": {
+            "onfalse": {
+                "comment": "aucun élément AREA avec un TARGET blank n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de l'attribut TARGET avec la valeur _BLANK sur l'élément AREA constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "AUDIO": {
+        "AUDIO": {
+            "onfalse": {
+                "comment": "aucun élément AUDIO n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AUDIO a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_NOT_ANCHOR": {
+        "A_NOT_ANCHOR": {
+            "A_NOT_ANCHOR": {
+                "onfalse": {
+                    "comment": "aucun élément A non ancre n'a été détecté",
+                    "result": "nc"
+                },
+                "ontrue": {
+                    "comment": "au moins un élément A non ancre a été détecté",
+                    "result": "c"
+                }
+            }
+        }
+    },
+    "A_NOT_ANCHOR_SELF_WO_TEXT": {
+        "A_NOT_ANCHOR_SELF_WO_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément A vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_NOT_ANCHOR_WO_TEXT": {
+        "A_NOT_ANCHOR_WO_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément A vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_WO_TEXT": {
+        "A_WO_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément A vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_WO_TEXT_W_IMG": {
+        "A_WO_TEXT_W_IMG": {
+            "onfalse": {
+                "comment": "aucun élément A vide et contenant un IMG n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A vide et contenant un IMG a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_WO_TEXT_W_IMG_NOT_UNIQUE": {
+        "A_WO_TEXT_W_IMG_NOT_UNIQUE": {
+            "onfalse": {
+                "comment": "aucun élément A vide, contenant un IMG et avec un intitulé non unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A vide, contenant un IMG et avec un intitulé non unique a été détecté",
                 "result": "c"
             }
         }
@@ -19,6 +405,30 @@
             },
             "ontrue": {
                 "comment": "au moins un élément IMG seul enfant d'un élément A et avec un attribut ALT vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_WO_TEXT_W_IMG_W_INVALID_TITLE_ATTR": {
+        "A_WO_TEXT_W_IMG_W_INVALID_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A vide, contenant un IMG et avec un attribut TITLE vide, identique au texte ou générique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A vide, contenant un IMG et avec un attribut TITLE vide, identique au texte ou générique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "A_WO_TEXT_W_IMG_W_TITLE_ATTR": {
+        "A_WO_TEXT_W_IMG_W_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A vide, contenant un IMG et avec un attribut TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A vide, contenant un IMG et avec un attribut TITLE a été détecté",
                 "result": "c"
             }
         }
