@@ -55,7 +55,7 @@ listFixtures().forEach(function(v) {
                 headers = {};
             });
 
-            return launchTests(result.browser.contentWindow, {'entries': []}, headers).then(function(result){
+            return launchTests(result.browser.contentWindow, {'entries': []}, headers, rule).then(function(result){
                 result.tests.oaa_results.forEach(function(test) {
                     if(test.id == rule) {
                         if(expected == "true") {
@@ -72,5 +72,7 @@ listFixtures().forEach(function(v) {
         }).then(null, console.exception);
     };
 });
+
+require("sdk/preferences/service").set("plugins.click_to_play", true);
 
 require("sdk/test").run(exports);

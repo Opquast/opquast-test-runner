@@ -98,7 +98,7 @@ const openTab = function() {
 };
 exports.openTab = openTab;
 
-let launchTests = function(domWindow, har, headers) {
+let launchTests = function(domWindow, har, headers, test) {
     let startTime = new Date();
 
     // Prepare checklists
@@ -166,7 +166,7 @@ let launchTests = function(domWindow, har, headers) {
         }
 
         startTime = new Date();
-        return runner.run(Object.keys(checklists));
+        return runner.run([test]);
     })
     .then(function(results) {
         // Format result set
