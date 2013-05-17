@@ -47,15 +47,18 @@ listFixtures().forEach(function(v) {
             close = result.close;
             return result.open(v);
         }).then(function(result) {
-            let headers, path = aDot.slice(0, -1).join('.') + '.json';
+            let headers, headersPath = aDot.slice(0, -1).join('.') + '.json', status;
 
-            readURI(path, {'sync': true}).then(function(v){
-                headers = JSON.parse(v);
+            readURI(headersPath, {'sync': true}).then(function(v){
+                let json = JSON.parse(v);
+                headers = json.headers;
+                status = json.status;
             }).then(null, function(error) {
                 headers = {};
+                status = 200;
             });
 
-            return launchTests(result.browser.contentWindow, {'entries': []}, headers, rule).then(function(result){
+            return launchTests(result.browser.contentWindow, {'entries': []}, headers, rule, status).then(function(result){
                 result.tests.oaa_results.forEach(function(test) {
                     if(test.id == rule) {
                         if(expected == "true") {

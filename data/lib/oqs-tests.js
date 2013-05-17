@@ -3793,28 +3793,27 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
                 //
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
-                // is text
-                if (content_type
-                        && (content_type.split("/")[0] == "text" || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1 || reg.test(content_type))
-                        && element.headers["content-length"] > 300) {
-                    //
-                    var tmp = _getHttpDetails(element.uri, element.headers);
+                return content_type
+                    && (content_type.split("/")[0] == "text" || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1 || reg.test(content_type))
+                    && element.headers["content-length"] > 300;
+            }).forEach(function(element, index, array) {
+                //
+                var tmp = _getHttpDetails(element.uri, element.headers);
 
-                    // has content-encoding
-                    if (element.headers["content-encoding"]) {
-                        // gzip or deflate
-                        if ($.inArray(element.headers["content-encoding"].toLowerCase(), encoding) == -1) {
-                            //
-                            result.push(tmp);
-                        }
-                    } else {
+                // has content-encoding
+                if (element.headers["content-encoding"]) {
+                    // gzip or deflate
+                    if ($.inArray(element.headers["content-encoding"].toLowerCase(), encoding) == -1) {
                         //
                         result.push(tmp);
                     }
+                } else {
+                    //
+                    result.push(tmp);
                 }
             });
         }

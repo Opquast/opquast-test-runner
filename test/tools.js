@@ -19,6 +19,11 @@ const wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindow
 const testRunner = require("opquast-tests/test-runner");
 const {addRuleSets} = require("opquast-tests/test-runner");
 
+const statuses = {
+    200: "200 OK",
+    404: "404 Not found"
+}
+
 const openTab = function() {
     let win = wm.getMostRecentWindow('navigator:browser');
     let container = win.gBrowser.tabContainer;
@@ -98,7 +103,7 @@ const openTab = function() {
 };
 exports.openTab = openTab;
 
-let launchTests = function(domWindow, har, headers, test) {
+let launchTests = function(domWindow, har, headers, test, status) {
     let startTime = new Date();
 
     // Prepare checklists
@@ -160,8 +165,8 @@ let launchTests = function(domWindow, har, headers, test) {
                 uri: domWindow.location.href,
                 referrer: "",
                 method: "GET",
-                status: 200,
-                status_text: "200 OK"
+                status: status,
+                status_text: statuses[status]
             });
         }
 

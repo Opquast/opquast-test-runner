@@ -1,4 +1,6 @@
 {
-    "Content-Encoding": "Gzip",
-    "Content-Length": 299
+    "headers": {
+        "Content-Encoding": "Gzip"
+    },
+    "status": 200
 }

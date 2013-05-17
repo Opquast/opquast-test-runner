@@ -1,4 +1,16 @@
 {
+    "404_DEFAULT": {
+        "404_DEFAULT": {
+            "onfalse": {
+                "comment": "aucune page 404 par défaut n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une page 404 par défaut a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "ABBR_W_FILLED_TITLE_ATTR": {
         "ABBR_W_FILLED_TITLE_ATTR": {
             "onfalse": {
@@ -7,6 +19,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément ABBR avec TITLE non vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "ACCESSKEY_ATTR": {
+        "ACCESSKEY_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément possèdant un attribut accesskey n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément ne possède un attribut accesskey a été détecté",
                 "result": "c"
             }
         }
@@ -935,6 +959,42 @@
             }
         }
     },
+    "COLOR_ATTR": {
+        "COLOR_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut COLOR n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut COLOR a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "DIR_ATTR": {
+        "DIR_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément avec un attribut DIR n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément avec un attribut DIR a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "DIR_W_INVALID_VALUE": {
+        "DIR_W_INVALID_VALUE": {
+            "onfalse": {
+                "comment": "aucun élément avec un attribut DIR ayant une valeur autre que ltr ou rtl n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément avec un attribut DIR ayant une valeur autre que ltr ou rtl a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "DIV_W_FAKE_LIST": {
         "DIV_W_FAKE_LIST": {
             "onfalse": {
@@ -1632,13 +1692,15 @@
         }
     },
     "IMG_W_FILLED_ALT_ATTR_OR_FILLED_LONGDESC_ATTR": {
-        "onfalse": {
-            "comment": "aucun élément IMG avec un attribut ALT ou LONGDESC non vide n'a été détecté",
-            "result": "na"
-        },
-        "ontrue": {
-            "comment": "au moins un élément IMG avec un attribut ALT ou LONGDESC non vide a été détecté",
-            "result": "i"
+        "IMG_W_FILLED_ALT_ATTR_OR_FILLED_LONGDESC_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément IMG avec un attribut ALT ou LONGDESC non vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG avec un attribut ALT ou LONGDESC non vide a été détecté",
+                "result": "c"
+            }
         }
     },
     "IMG_W_ISMAP_ATTR": {
@@ -2589,6 +2651,30 @@
             }
         }
     },
+    "LANG_ATTR": {
+        "LANG_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément avec un attribut LANG n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément avec un attribut LANG a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "LANG_W_INVALID_VALUE": {
+        "LANG_W_INVALID_VALUE": {
+            "onfalse": {
+                "comment": "aucun élément avec un attribut LANG invalide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément avec un attribut LANG invalide a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "LEGEND": {
         "LEGEND": {
             "onfalse": {
@@ -2613,6 +2699,30 @@
             }
         }
     },
+    "LEGEND_WO_TEXT": {
+        "LEGEND_WO_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément LEGEND vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément LEGEND vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "LEGEND_WO_UNIQUE_TEXT": {
+        "LEGEND_WO_UNIQUE_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément LEGEND avec un texte non unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de contenus identiques pour plusieurs éléments LEGEND constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
     "LI": {
         "LI": {
             "onfalse": {
@@ -2621,6 +2731,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément LI a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "LINK_ATTR": {
+        "LINK_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut LINK n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut LINK a été détecté",
                 "result": "c"
             }
         }
@@ -2709,6 +2831,18 @@
             }
         }
     },
+    "OBJECT": {
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "OPTGROUP": {
         "OPTGROUP": {
             "onfalse": {
@@ -2793,6 +2927,18 @@
             }
         }
     },
+    "P_W_FAKE_LIST": {
+        "P_W_FAKE_LIST": {
+            "onfalse": {
+                "comment": "aucune liste simulée n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation d'éléments P successifs commençant chacun leur contenu par -, –, —, * ou • constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
     "S": {
         "S": {
             "onfalse": {
@@ -2853,6 +2999,18 @@
             }
         }
     },
+    "STYLE_ATTR": {
+        "STYLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément avec un attribut STYLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément avec un attribut STYLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "TABLE": {
         "TABLE": {
             "onfalse": {
@@ -2873,6 +3031,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément TEXTAREA a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXT_ATTR": {
+        "TEXT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut TEXT n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut TEXT a été détecté",
                 "result": "c"
             }
         }
@@ -2945,6 +3115,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément VIDEO a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "VLINK_ATTR": {
+        "VLINK_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut VLINK n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut VLINK a été détecté",
                 "result": "c"
             }
         }
