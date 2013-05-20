@@ -1,4 +1,160 @@
 {
+    "H2_WO_H1": {
+        "H2_WO_H1": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H2 non pr\u00e9c\u00e9d\u00e9 d'un H1 n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H2 non pr\u00e9c\u00e9d\u00e9 d'un H1 a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H3_WO_H2": {
+        "H3_WO_H2": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H3 non pr\u00e9c\u00e9d\u00e9 d'un H2 n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H3 non pr\u00e9c\u00e9d\u00e9 d'un H2 a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H4_WO_H3": {
+        "H4_WO_H3": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H4 non pr\u00e9c\u00e9d\u00e9 d'un H3 n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H4 non pr\u00e9c\u00e9d\u00e9 d'un H3 a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H5_WO_H4": {
+        "H5_WO_H4": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H5 non pr\u00e9c\u00e9d\u00e9 d'un H4 n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H5 non pr\u00e9c\u00e9d\u00e9 d'un H4 a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H6_WO_H5": {
+        "H6_WO_H5": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H6 non pr\u00e9c\u00e9d\u00e9 d'un H5 n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H6 non pr\u00e9c\u00e9d\u00e9 d'un H5 a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H1_W_TERMS_IN_META_KEYWORDS": {
+        "H1_W_TERMS_IN_META_KEYWORDS": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H1 dont au moins un terme est dans le meta keywords n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H1 dont aucun terme n'est dans le meta keywords a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H2_W_TERMS_IN_META_KEYWORDS": {
+        "H2_W_TERMS_IN_META_KEYWORDS": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H2 dont au moins un terme est dans le meta keywords n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H2 dont aucun terme n'est dans le meta keywords a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H3_W_TERMS_IN_META_KEYWORDS": {
+        "H3_W_TERMS_IN_META_KEYWORDS": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H3 dont au moins un terme est dans le meta keywords n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H3 dont aucun terme n'est dans le meta keywords a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H4_W_TERMS_IN_META_KEYWORDS": {
+        "H4_W_TERMS_IN_META_KEYWORDS": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H4 dont au moins un terme est dans le meta keywords n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H4 dont aucun terme n'est dans le meta keywords a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H5_W_TERMS_IN_META_KEYWORDS": {
+        "H5_W_TERMS_IN_META_KEYWORDS": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H5 dont au moins un terme est dans le meta keywords n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H5 dont aucun terme n'est dans le meta keywords a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H6_W_TERMS_IN_META_KEYWORDS": {
+        "H6_W_TERMS_IN_META_KEYWORDS": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H6 dont au moins un terme est dans le meta keywords n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H6 dont aucun terme n'est dans le meta keywords a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "H1_TO_H6": {
+        "H1_TO_H6": {
+            "onfalse": {
+                "comment": "aucun H1, H2, H3, H4, H5 ni H6 n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un H1, H2, H3, H4, H5 ou H6 a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "H1_TO_H6_HIERACHICAL_ERROR": {
+        "H1_TO_H6_HIERACHICAL_ERROR": {
+            "onfalse": {
+                "comment": "aucune interruption dans la hi\u00e9rarchie des titres n'a \u00e9t\u00e9 d\u00e9tect\u00e9e",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une interruption dans la hi\u00e9rarchie des titres a \u00e9t\u00e9 d\u00e9tect\u00e9e",
+                "result": "nc"
+            }
+        }
+    },
     "404_DEFAULT": {
         "404_DEFAULT": {
             "onfalse": {

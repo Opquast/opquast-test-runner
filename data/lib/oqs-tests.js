@@ -1,34 +1,15 @@
 /*global CSSParser*/
-var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-za', 'ak', 'ak-gh', 'am', 'am-et', 'ar', 'ar-ae', 'ar-bh', 'ar-dz', 'ar-eg', 'ar-iq', 'ar-jo', 'ar-kw', 'ar-lb', 'ar-ly', 'ar-ma', 'ar-om', 'ar-qa', 'ar-sa', 'ar-sd', 'ar-sy', 'ar-tn', 'ar-ye', 'as', 'as-in', 'az', 'az-az', 'az-cyrl', 'az-cyrl-az', 'az-latn', 'az-latn-az', 'be', 'be-by', 'bg', 'bg-bg', 'bn', 'bn-bd', 'bn-in', 'bs', 'bs-ba', 'byn', 'byn-er', 'ca', 'ca-es', 'cch', 'cch-ng', 'cop', 'cs', 'cs-cz', 'cy', 'cy-gb', 'da', 'da-dk', 'de', 'de-at', 'de-be', 'de-ch', 'de-de', 'de-li', 'de-lu', 'dv', 'dv-mv', 'dz', 'dz-bt', 'ee', 'ee-gh', 'ee-tg', 'el', 'el-cy', 'el-gr', 'el-polyton', 'en', 'en-as', 'en-au', 'en-be', 'en-bw', 'en-bz', 'en-ca', 'en-dsrt', 'en-dsrt-us', 'en-gb', 'en-gu', 'en-hk', 'en-ie', 'en-in', 'en-jm', 'en-mh', 'en-mp', 'en-mt', 'en-na', 'en-nz', 'en-ph', 'en-pk', 'en-sg', 'en-shaw', 'en-tt', 'en-um', 'en-us', 'en-us-posix', 'en-vi', 'en-za', 'en-zw', 'eo', 'es', 'es-ar', 'es-bo', 'es-cl', 'es-co', 'es-cr', 'es-do', 'es-ec', 'es-es', 'es-gt', 'es-hn', 'es-mx', 'es-ni', 'es-pa', 'es-pe', 'es-pr', 'es-py', 'es-sv', 'es-us', 'es-uy', 'es-ve', 'et', 'et-ee', 'eu', 'eu-es', 'fa', 'fa-af', 'fa-ir', 'fi', 'fi-fi', 'fil', 'fil-ph', 'fo', 'fo-fo', 'fr', 'fr-be', 'fr-ca', 'fr-ch', 'fr-fr', 'fr-lu', 'fr-mc', 'fr-sn', 'fur', 'fur-it', 'ga', 'ga-ie', 'gaa', 'gaa-gh', 'gez', 'gez-er', 'gez-et', 'gl', 'gl-es', 'gu', 'gu-in', 'gv', 'gv-gb', 'ha', 'ha-arab', 'ha-arab-ng', 'ha-arab-sd', 'ha-gh', 'ha-latn', 'ha-latn-gh', 'ha-latn-ne', 'ha-latn-ng', 'ha-ne', 'ha-ng', 'ha-sd', 'haw', 'haw-us', 'he', 'he-il', 'hi', 'hi-in', 'hr', 'hr-hr', 'hu', 'hu-hu', 'hy', 'hy-am', 'hy-am-revised', 'ia', 'id', 'id-id', 'ig', 'ig-ng', 'ii', 'ii-cn', 'in', 'is', 'is-is', 'it', 'it-ch', 'it-it', 'iu', 'iw', 'ja', 'ja-jp', 'ka', 'ka-ge', 'kaj', 'kaj-ng', 'kam', 'kam-ke', 'kcg', 'kcg-ng', 'kfo', 'kfo-ci', 'kk', 'kk-cyrl', 'kk-cyrl-kz', 'kk-kz', 'kl', 'kl-gl', 'km', 'km-kh', 'kn', 'kn-in', 'ko', 'ko-kr', 'kok', 'kok-in', 'kpe', 'kpe-gn', 'kpe-lr', 'ku', 'ku-arab', 'ku-latn', 'ku-latn-tr', 'ku-tr', 'kw', 'kw-gb', 'ky', 'ky-kg', 'ln', 'ln-cd', 'ln-cg', 'lo', 'lo-la', 'lt', 'lt-lt', 'lv', 'lv-lv', 'mk', 'mk-mk', 'ml', 'ml-in', 'mn', 'mn-cn', 'mn-cyrl', 'mn-cyrl-mn', 'mn-mn', 'mn-mong', 'mn-mong-cn', 'mo', 'mr', 'mr-in', 'ms', 'ms-bn', 'ms-my', 'mt', 'mt-mt', 'my', 'my-mm', 'nb', 'nb-no', 'ne', 'ne-in', 'ne-np', 'nl', 'nl-be', 'nl-nl', 'nn', 'nn-no', 'no', 'nr', 'nr-za', 'nso', 'nso-za', 'ny', 'ny-mw', 'om', 'om-et', 'om-ke', 'or', 'or-in', 'pa', 'pa-arab', 'pa-arab-pk', 'pa-guru', 'pa-guru-in', 'pa-in', 'pa-pk', 'pl', 'pl-pl', 'ps', 'ps-af', 'pt', 'pt-br', 'pt-pt', 'ro', 'ro-md', 'ro-ro', 'ru', 'ru-ru', 'ru-ua', 'rw', 'rw-rw', 'sa', 'sa-in', 'se', 'se-fi', 'se-no', 'sh', 'sh-ba', 'sh-cs', 'sh-yu', 'si', 'si-lk', 'sid', 'sid-et', 'sk', 'sk-sk', 'sl', 'sl-si', 'so', 'so-dj', 'so-et', 'so-ke', 'so-so', 'sq', 'sq-al', 'sr', 'sr-ba', 'sr-cs', 'sr-cyrl', 'sr-cyrl-ba', 'sr-cyrl-cs', 'sr-cyrl-me', 'sr-cyrl-rs', 'sr-cyrl-yu', 'sr-latn', 'sr-latn-ba', 'sr-latn-cs', 'sr-latn-me', 'sr-latn-rs', 'sr-latn-yu', 'sr-me', 'sr-rs', 'sr-yu', 'ss', 'ss-sz', 'ss-za', 'st', 'st-ls', 'st-za', 'sv', 'sv-fi', 'sv-se', 'sw', 'sw-ke', 'sw-tz', 'syr', 'syr-sy', 'ta', 'ta-in', 'te', 'te-in', 'tg', 'tg-cyrl', 'tg-cyrl-tj', 'tg-tj', 'th', 'th-th', 'ti', 'ti-er', 'ti-et', 'tig', 'tig-er', 'tl', 'tn', 'tn-za', 'to', 'to-to', 'tr', 'tr-tr', 'trv', 'ts', 'ts-za', 'tt', 'tt-ru', 'ug', 'ug-arab', 'ug-arab-cn', 'ug-cn', 'uk', 'uk-ua', 'ur', 'ur-in', 'ur-pk', 'uz', 'uz-af', 'uz-arab', 'uz-arab-af', 'uz-cyrl', 'uz-cyrl-uz', 'uz-latn', 'uz-latn-uz', 'uz-uz', 've', 've-za', 'vi', 'vi-vn', 'wal', 'wal-et', 'wo', 'wo-latn', 'wo-latn-sn', 'wo-sn', 'xh', 'xh-za', 'yo', 'yo-ng', 'zh', 'zh-cn', 'zh-hans', 'zh-hans-cn', 'zh-hans-hk', 'zh-hans-mo', 'zh-hans-sg', 'zh-hant', 'zh-hant-hk', 'zh-hant-mo', 'zh-hant-tw', 'zh-hk', 'zh-mo', 'zh-sg', 'zh-tw', 'zu', 'zu-za'],
-    mimeHTML = ["text/html", "application/xhtml+xml"],
-    mimeSyndication = ["application/rss+xml", "application/atom+xml", "application/xml", "text/xml"],
-    mimeMultimedia = ["application/x-shockwave-flash", "application/octet-stream", "application/x-silverlight-app", "application/xaml+xml", "application/x-ms-xbap", "application/vnd.rn-realmedia", "application/ogg", "image/svg+xml"],
-    jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
-    genericFontStyle = ["serif", "sans-serif", "cursive", "fantasy", "monospace", "inherit"],
-    atomNs = "http://www.w3.org/2005/Atom",
-    fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-za', 'ak', 'ak-gh', 'am', 'am-et', 'ar', 'ar-ae', 'ar-bh', 'ar-dz', 'ar-eg', 'ar-iq', 'ar-jo', 'ar-kw', 'ar-lb', 'ar-ly', 'ar-ma', 'ar-om', 'ar-qa', 'ar-sa', 'ar-sd', 'ar-sy', 'ar-tn', 'ar-ye', 'as', 'as-in', 'az', 'az-az', 'az-cyrl', 'az-cyrl-az', 'az-latn', 'az-latn-az', 'be', 'be-by', 'bg', 'bg-bg', 'bn', 'bn-bd', 'bn-in', 'bs', 'bs-ba', 'byn', 'byn-er', 'ca', 'ca-es', 'cch', 'cch-ng', 'cop', 'cs', 'cs-cz', 'cy', 'cy-gb', 'da', 'da-dk', 'de', 'de-at', 'de-be', 'de-ch', 'de-de', 'de-li', 'de-lu', 'dv', 'dv-mv', 'dz', 'dz-bt', 'ee', 'ee-gh', 'ee-tg', 'el', 'el-cy', 'el-gr', 'el-polyton', 'en', 'en-as', 'en-au', 'en-be', 'en-bw', 'en-bz', 'en-ca', 'en-dsrt', 'en-dsrt-us', 'en-gb', 'en-gu', 'en-hk', 'en-ie', 'en-in', 'en-jm', 'en-mh', 'en-mp', 'en-mt', 'en-na', 'en-nz', 'en-ph', 'en-pk', 'en-sg', 'en-shaw', 'en-tt', 'en-um', 'en-us', 'en-us-posix', 'en-vi', 'en-za', 'en-zw', 'eo', 'es', 'es-ar', 'es-bo', 'es-cl', 'es-co', 'es-cr', 'es-do', 'es-ec', 'es-es', 'es-gt', 'es-hn', 'es-mx', 'es-ni', 'es-pa', 'es-pe', 'es-pr', 'es-py', 'es-sv', 'es-us', 'es-uy', 'es-ve', 'et', 'et-ee', 'eu', 'eu-es', 'fa', 'fa-af', 'fa-ir', 'fi', 'fi-fi', 'fil', 'fil-ph', 'fo', 'fo-fo', 'fr', 'fr-be', 'fr-ca', 'fr-ch', 'fr-fr', 'fr-lu', 'fr-mc', 'fr-sn', 'fur', 'fur-it', 'ga', 'ga-ie', 'gaa', 'gaa-gh', 'gez', 'gez-er', 'gez-et', 'gl', 'gl-es', 'gu', 'gu-in', 'gv', 'gv-gb', 'ha', 'ha-arab', 'ha-arab-ng', 'ha-arab-sd', 'ha-gh', 'ha-latn', 'ha-latn-gh', 'ha-latn-ne', 'ha-latn-ng', 'ha-ne', 'ha-ng', 'ha-sd', 'haw', 'haw-us', 'he', 'he-il', 'hi', 'hi-in', 'hr', 'hr-hr', 'hu', 'hu-hu', 'hy', 'hy-am', 'hy-am-revised', 'ia', 'id', 'id-id', 'ig', 'ig-ng', 'ii', 'ii-cn', 'in', 'is', 'is-is', 'it', 'it-ch', 'it-it', 'iu', 'iw', 'ja', 'ja-jp', 'ka', 'ka-ge', 'kaj', 'kaj-ng', 'kam', 'kam-ke', 'kcg', 'kcg-ng', 'kfo', 'kfo-ci', 'kk', 'kk-cyrl', 'kk-cyrl-kz', 'kk-kz', 'kl', 'kl-gl', 'km', 'km-kh', 'kn', 'kn-in', 'ko', 'ko-kr', 'kok', 'kok-in', 'kpe', 'kpe-gn', 'kpe-lr', 'ku', 'ku-arab', 'ku-latn', 'ku-latn-tr', 'ku-tr', 'kw', 'kw-gb', 'ky', 'ky-kg', 'ln', 'ln-cd', 'ln-cg', 'lo', 'lo-la', 'lt', 'lt-lt', 'lv', 'lv-lv', 'mk', 'mk-mk', 'ml', 'ml-in', 'mn', 'mn-cn', 'mn-cyrl', 'mn-cyrl-mn', 'mn-mn', 'mn-mong', 'mn-mong-cn', 'mo', 'mr', 'mr-in', 'ms', 'ms-bn', 'ms-my', 'mt', 'mt-mt', 'my', 'my-mm', 'nb', 'nb-no', 'ne', 'ne-in', 'ne-np', 'nl', 'nl-be', 'nl-nl', 'nn', 'nn-no', 'no', 'nr', 'nr-za', 'nso', 'nso-za', 'ny', 'ny-mw', 'om', 'om-et', 'om-ke', 'or', 'or-in', 'pa', 'pa-arab', 'pa-arab-pk', 'pa-guru', 'pa-guru-in', 'pa-in', 'pa-pk', 'pl', 'pl-pl', 'ps', 'ps-af', 'pt', 'pt-br', 'pt-pt', 'ro', 'ro-md', 'ro-ro', 'ru', 'ru-ru', 'ru-ua', 'rw', 'rw-rw', 'sa', 'sa-in', 'se', 'se-fi', 'se-no', 'sh', 'sh-ba', 'sh-cs', 'sh-yu', 'si', 'si-lk', 'sid', 'sid-et', 'sk', 'sk-sk', 'sl', 'sl-si', 'so', 'so-dj', 'so-et', 'so-ke', 'so-so', 'sq', 'sq-al', 'sr', 'sr-ba', 'sr-cs', 'sr-cyrl', 'sr-cyrl-ba', 'sr-cyrl-cs', 'sr-cyrl-me', 'sr-cyrl-rs', 'sr-cyrl-yu', 'sr-latn', 'sr-latn-ba', 'sr-latn-cs', 'sr-latn-me', 'sr-latn-rs', 'sr-latn-yu', 'sr-me', 'sr-rs', 'sr-yu', 'ss', 'ss-sz', 'ss-za', 'st', 'st-ls', 'st-za', 'sv', 'sv-fi', 'sv-se', 'sw', 'sw-ke', 'sw-tz', 'syr', 'syr-sy', 'ta', 'ta-in', 'te', 'te-in', 'tg', 'tg-cyrl', 'tg-cyrl-tj', 'tg-tj', 'th', 'th-th', 'ti', 'ti-er', 'ti-et', 'tig', 'tig-er', 'tl', 'tn', 'tn-za', 'to', 'to-to', 'tr', 'tr-tr', 'trv', 'ts', 'ts-za', 'tt', 'tt-ru', 'ug', 'ug-arab', 'ug-arab-cn', 'ug-cn', 'uk', 'uk-ua', 'ur', 'ur-in', 'ur-pk', 'uz', 'uz-af', 'uz-arab', 'uz-arab-af', 'uz-cyrl', 'uz-cyrl-uz', 'uz-latn', 'uz-latn-uz', 'uz-uz', 've', 've-za', 'vi', 'vi-vn', 'wal', 'wal-et', 'wo', 'wo-latn', 'wo-latn-sn', 'wo-sn', 'xh', 'xh-za', 'yo', 'yo-ng', 'zh', 'zh-cn', 'zh-hans', 'zh-hans-cn', 'zh-hans-hk', 'zh-hans-mo', 'zh-hans-sg', 'zh-hant', 'zh-hant-hk', 'zh-hant-mo', 'zh-hant-tw', 'zh-hk', 'zh-mo', 'zh-sg', 'zh-tw', 'zu', 'zu-za'], mimeHTML = ["text/html", "application/xhtml+xml"], mimeSyndication = ["application/rss+xml", "application/atom+xml", "application/xml", "text/xml"], mimeMultimedia = ["application/x-shockwave-flash", "application/octet-stream", "application/x-silverlight-app", "application/xaml+xml", "application/x-ms-xbap", "application/vnd.rn-realmedia", "application/ogg", "image/svg+xml"], jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"], genericFontStyle = ["serif", "sans-serif", "cursive", "fantasy", "monospace", "inherit"], atomNs = "http://www.w3.org/2005/Atom", fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
 
-var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
-    badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"],
-    cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws)\\.com/", "i"),
-    analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i"),
-    jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
-    regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i");
+var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"], cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws)\\.com/", "i"), analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i"), jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"), regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i");
 
-(function($, window, undefined) {
-    "use strict";
+(function($, window, undefined) {"use strict";
 
-    var content = $("body").text().trim(),
-        aContent = $.unique(content.toLowerCase().split(" "));
+    var content = $("body").text().trim(), aContent = $.unique(content.toLowerCase().split(" "));
 
     var inlineStyles = $("*[style]");
 
-    var onfocusEvents = $("*[onfocus]"),
-        onblurEvents = $("*[onblur]"),
-        onchangeEvents = $("*[onchange]"),
-        onclickEvents = $("*[onclick]"),
-        onmouseoverEvents = $("*[onmouseover]"),
-        onmouseoutEvents = $("*[onmouseout]");
+    var onfocusEvents = $("*[onfocus]"), onblurEvents = $("*[onblur]"), onchangeEvents = $("*[onchange]"), onclickEvents = $("*[onclick]"), onmouseoverEvents = $("*[onmouseover]"), onmouseoutEvents = $("*[onmouseout]");
 
     /**
      *
@@ -186,7 +167,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var keywords = [];
             try {
                 keywords = $("meta[name='keywords']").attr("content").trim().toLowerCase().split(" ");
-            } catch (e) {}
+            } catch (e) {
+            }
 
             //
             if (keywords.length == 0) {
@@ -200,7 +182,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var terms = $(this).text().trim().split(" ");
                 try {
                     terms = $.merge(terms, $.trim($("img", this).attr("alt")).toLowerCase().split(" "));
-                } catch(e) {}
+                } catch(e) {
+                }
 
                 //
                 terms.some(function(value) {
@@ -251,7 +234,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var terms = $(this).text().trim().split(" ");
                 try {
                     terms = $.merge(terms, $.trim($("img", this).attr("alt")).toLowerCase().split(" "));
-                } catch(e) {}
+                } catch(e) {
+                }
 
                 //
                 terms.some(function(value) {
@@ -462,7 +446,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -489,12 +472,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return result;
         }
 
-        var promises = [
-            _analyseStylesheets(doc, "screen", callback),
-            _analyseStylesheets(doc, "tv", callback),
-            _analyseStylesheets(doc, "handheld", callback),
-            _analyseStylesheets(doc, "projection", callback)
-        ];
+        var promises = [_analyseStylesheets(doc, "screen", callback), _analyseStylesheets(doc, "tv", callback), _analyseStylesheets(doc, "handheld", callback), _analyseStylesheets(doc, "projection", callback)];
 
         return Q.promised(Array).apply(null, promises).then(function(result) {
             return $.uniq($.deepMerge([], result));
@@ -503,7 +481,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -524,12 +501,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return result;
         }
 
-        var promises = [
-            _analyseStylesheets(doc, "screen", callback),
-            _analyseStylesheets(doc, "tv", callback),
-            _analyseStylesheets(doc, "handheld", callback),
-            _analyseStylesheets(doc, "projection", callback)
-        ];
+        var promises = [_analyseStylesheets(doc, "screen", callback), _analyseStylesheets(doc, "tv", callback), _analyseStylesheets(doc, "handheld", callback), _analyseStylesheets(doc, "projection", callback)];
 
         return Q.promised(Array).apply(null, promises).then(function(result) {
             return $.uniq($.deepMerge([], result));
@@ -538,7 +510,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -553,8 +524,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("body").find(":not(input[type='hidden'])").andSelf().filter(function() {
                 //
-                var _backgroundColor = $(this).css("background-color"),
-                    _color = $(this).css("color");
+                var _backgroundColor = $(this).css("background-color"), _color = $(this).css("color");
 
                 //
                 if (_color == "rgb(0, 0, 0)") {
@@ -587,7 +557,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -616,7 +585,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -633,7 +601,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     if (rule.declarations[i]["property"] == "background-position" && rule.declarations[i]["valueText"] != "0 0") {
                         var node = $(rule.mSelectorText);
 
-                        if(reg.test(node.css("background-image")) && node.css("background-repeat") == "no-repeat") {
+                        if (reg.test(node.css("background-image")) && node.css("background-repeat") == "no-repeat") {
                             result.push(_getCssDetails(rule, i));
                         }
 
@@ -650,7 +618,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -700,7 +667,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -750,7 +716,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      * @param doc
      * @return
@@ -783,7 +748,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -810,7 +774,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -837,7 +800,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -868,24 +830,20 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.cssHoverLinks = function cssHoverLinks(doc) {
-        var reg = new RegExp().compile("(^| )(a((#|\\.)[^ ]+)?|(#|\\.)[^ ]+):hover$", "i"),
-            reg2 = new RegExp().compile("^([-a-z]+-)?(height|width)$", "i"),
-            reg3 = new RegExp().compile("^(bottom|display|float|left|letter-spacing|position|right|text-align|text-indent|top)$", "i"),
-            reg4 = new RegExp().compile("^(font|border|margin|outline|padding)(-[-a-z]+)?$", "i");
+        var reg = new RegExp().compile("(^| )(a((#|\\.)[^ ]+)?|(#|\\.)[^ ]+):hover$", "i"), reg2 = new RegExp().compile("^([-a-z]+-)?(height|width)$", "i"), reg3 = new RegExp().compile("^(bottom|display|float|left|letter-spacing|position|right|text-align|text-indent|top)$", "i"), reg4 = new RegExp().compile("^(font|border|margin|outline|padding)(-[-a-z]+)?$", "i");
 
         function callback(rule) {
             var result = [];
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
-                    var selectors = rule.mSelectorText.split(",").map(function(element){
+                    var selectors = rule.mSelectorText.split(",").map(function(element) {
                         return $.trim(element);
                     });
 
@@ -893,9 +851,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         if (reg.test(selector)) {
                             var selectorOut = selector.replace(/:hover$/, ""), property = rule.declarations[i]["property"];
 
-                            if ($(selectorOut).get(0) && $(selectorOut).get(0).tagName.toUpperCase() == "A" &&
-                                (reg2.test(property) || reg3.test(property) || reg4.test(property)))
-                            {
+                            if ($(selectorOut).get(0) && $(selectorOut).get(0).tagName.toUpperCase() == "A" && (reg2.test(property) || reg3.test(property) || reg4.test(property))) {
                                 result.push(_getCssDetails(rule, i));
                             }
                         }
@@ -912,7 +868,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -930,8 +885,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if (element.image_info) {
                     //
                     images[element.uri] = {
-                        "width": element.image_info["width"] + "px",
-                        "height": element.image_info["height"] + "px"
+                        "width" : element.image_info["width"] + "px",
+                        "height" : element.image_info["height"] + "px"
                     };
                 }
             });
@@ -961,7 +916,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1011,13 +965,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      * @param doc
      * @return
      */
-    window.cssMediaHandheld = function cssMediaHandheld(doc) {
-        let callback = [];
+    window.cssMediaHandheld = function cssMediaHandheld(doc) { let
+        callback = [];
 
         return _analyseStylesheets(doc, "handheld", callback).then(function() {
             return callback.filter(function(element) {
@@ -1032,14 +985,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
      * @return
      */
-    window.cssMediaPrint = function cssMediaPrint(doc) {
-        let callback = [];
+    window.cssMediaPrint = function cssMediaPrint(doc) { let
+        callback = [];
 
         return _analyseStylesheets(doc, "print", callback).then(function() {
             return callback.filter(function(element) {
@@ -1054,7 +1006,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1089,7 +1040,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1116,7 +1066,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1129,7 +1078,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            $("table").each(function(){
+            $("table").each(function() {
                 //
                 var tableLayout = $(this).css("table-layout");
 
@@ -1151,7 +1100,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1178,7 +1126,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1214,7 +1161,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1245,7 +1191,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1272,7 +1217,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1280,15 +1224,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssUppercase = function cssUppercase(doc) {
         //
-        var result = [],
-            exclusions = ["ABBR", "ACRONYM", "ADDRESS", "BLOCKQUOTE", "CITE", "CODE", "KBD", "PRE", "Q", "RP", "RT", "RUBY", "SAMP", "SUB", "SUP", "TIME", "VAR", "IFRAME", "SCRIPT"],
-            reg = new RegExp().compile("^[^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*$", "g");
+        var result = [], exclusions = ["ABBR", "ACRONYM", "ADDRESS", "BLOCKQUOTE", "CITE", "CODE", "KBD", "PRE", "Q", "RP", "RT", "RUBY", "SAMP", "SUB", "SUP", "TIME", "VAR", "IFRAME", "SCRIPT"], reg = new RegExp().compile("^[^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*$", "g");
 
         //
         try {
             //
             var treeWalker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT, {
-                acceptNode: function(_node) {
+                acceptNode : function(_node) {
                     //
                     var node = $(_node);
 
@@ -1318,7 +1260,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1345,19 +1286,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.html404 = function html404(doc) {
-        var regApache = new RegExp().compile("<h1>\\s*Not Found\\s*</h1>\\s*<p>\\s*The requested URL /\\w+ was not found on this server.\\s*</p>\\s*<hr>\\s*<address>\\s*Apache/.* \\(.*\\) Server at .* Port \\d+\\s*</address>", "i"),
-            regIIS = new RegExp().compile("<h1>\\s*The page cannot be found\\s*</h1>[\\s|\\S]*<h2>\\s*HTTP Error 404 - File or directory not found.\\s*<br>\\s*Internet Information Services \\(IIS\\)\\s*</h2>\\s*<hr>\\s*<p>\\s*Technical Information \\(for support personnel\\)\\s*</p>", "i"),
-            regNginx = new RegExp().compile("<center>\\s*<h1>\\s*404 Not Found\\s*</h1>\\s*</center>\\s*<hr>\\s*<center>\\s*nginx\\s*</center>", "i");
+        var regApache = new RegExp().compile("<h1>\\s*Not Found\\s*</h1>\\s*<p>\\s*The requested URL /\\w+ was not found on this server.\\s*</p>\\s*<hr>\\s*<address>\\s*Apache/.* \\(.*\\) Server at .* Port \\d+\\s*</address>", "i"), regIIS = new RegExp().compile("<h1>\\s*The page cannot be found\\s*</h1>[\\s|\\S]*<h2>\\s*HTTP Error 404 - File or directory not found.\\s*<br>\\s*Internet Information Services \\(IIS\\)\\s*</h2>\\s*<hr>\\s*<p>\\s*Technical Information \\(for support personnel\\)\\s*</p>", "i"), regNginx = new RegExp().compile("<center>\\s*<h1>\\s*404 Not Found\\s*</h1>\\s*</center>\\s*<hr>\\s*<center>\\s*nginx\\s*</center>", "i");
 
-        return XHR.get("/azertyuiopqsdfghjklmwxcvbn")
-        .then(function(response) {
+        return XHR.get("/azertyuiopqsdfghjklmwxcvbn").then(function(response) {
             var result = [];
 
             if (response.data) {
@@ -1371,13 +1308,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             }
 
             return result;
-        })
-        .then(null, function(err) {
+        }).then(null, function(err) {
             logger.error("html404", err);
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1413,7 +1348,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1459,7 +1393,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1502,7 +1435,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1548,7 +1480,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1579,7 +1510,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1617,7 +1547,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1650,14 +1579,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         catch (err) {
             // Error Logging
-            logger.error("htmlDirAttribute", err);
+            logger.error("htmlAWithShortTitle", err);
             result = false;
         }
 
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1665,8 +1593,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlDefaultTitle = function htmlDefaultTitle(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
+        var result = [], reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
 
         //
         try {
@@ -1693,7 +1620,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1725,7 +1651,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1760,7 +1685,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1768,9 +1692,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlFakeList = function htmlFakeList(doc) {
         //
-        var result = [],
-            reg1 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*(<br ?\?>)+){2,}$", "im"),
-            reg2 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*){2,}$", "im");
+        var result = [], reg1 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*(<br ?\?>)+){2,}$", "im"), reg2 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*){2,}$", "im");
 
         //
         try {
@@ -1801,7 +1723,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1809,9 +1730,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlFakeOrderedList = function htmlFakeOrderedList(doc) {
         //
-        var result = [],
-            reg1 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*(<br ?\?>)+){2,}$", "im"),
-            reg2 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*){2,}$", "im");
+        var result = [], reg1 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*(<br ?\?>)+){2,}$", "im"), reg2 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*){2,}$", "im");
 
         //
         try {
@@ -1842,7 +1761,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1856,28 +1774,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if ($.inArray((link.rel || "").toLowerCase(), ["icon", "shortcut icon"]) === -1) {
                     return null;
                 }
-                promises.push(
-                    XHR.partial(link.uri).then(function(response) {
-                        return _getDetails(
-                            $(link.tag + "[href='" + link.href + "'][rel='" + link.rel + "']").get(0)
-                        );
-                    }).then(null, function(err) {
-                        logger.error("htmlFavicon", err);
-                        return null;
-                    })
-                );
+                promises.push(XHR.partial(link.uri).then(function(response) {
+                    return _getDetails($(link.tag + "[href='" + link.href + "'][rel='" + link.rel + "']").get(0));
+                }).then(null, function(err) {
+                    logger.error("htmlFavicon", err);
+                    return null;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch(err) {
             logger.error("htmlFavicon", err);
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -1909,7 +1822,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1950,7 +1862,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1982,7 +1893,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1992,7 +1902,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("1");
     }
-
     /**
      *
      * @param doc
@@ -2002,7 +1911,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("1");
     }
-
     /**
      *
      * @param doc
@@ -2034,7 +1942,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2044,7 +1951,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("2");
     }
-
     /**
      *
      * @param doc
@@ -2054,7 +1960,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("2");
     }
-
     /**
      *
      * @param doc
@@ -2086,7 +1991,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2096,7 +2000,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("3");
     }
-
     /**
      *
      * @param doc
@@ -2106,7 +2009,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("3");
     }
-
     /**
      *
      * @param doc
@@ -2138,7 +2040,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2148,7 +2049,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("4");
     }
-
     /**
      *
      * @param doc
@@ -2158,7 +2058,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("4");
     }
-
     /**
      *
      * @param doc
@@ -2190,7 +2089,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2200,7 +2098,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("5");
     }
-
     /**
      *
      * @param doc
@@ -2210,7 +2107,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("5");
     }
-
     /**
      *
      * @param doc
@@ -2242,7 +2138,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2252,7 +2147,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("6");
     }
-
     /**
      *
      * @param doc
@@ -2262,7 +2156,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("6");
     }
-
     /**
      *
      * @param doc
@@ -2300,7 +2193,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2347,7 +2239,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2396,7 +2287,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2414,8 +2304,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if (element.image_info) {
                     //
                     images[element.uri] = {
-                        "width": element.image_info["width"],
-                        "height": element.image_info["height"]
+                        "width" : element.image_info["width"],
+                        "height" : element.image_info["height"]
                     };
                 }
             });
@@ -2446,7 +2336,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2492,7 +2381,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2502,7 +2390,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlSameLabelsTitles("checkbox");
     }
-
     /**
      *
      * @param doc
@@ -2512,7 +2399,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("checkbox", false);
     }
-
     /**
      *
      * @param doc
@@ -2522,7 +2408,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlSameLabelsTitles("file");
     }
-
     /**
      *
      * @param doc
@@ -2532,7 +2417,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("file", false);
     }
-
     /**
      *
      * @param doc
@@ -2541,7 +2425,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.passwordSameLabelsTitles = function htmlInputPasswordSameLabelsTitles(doc) {
         return _htmlSameLabelsTitles("password");
     }
-
     /**
      *
      * @param doc
@@ -2551,7 +2434,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("password", false);
     }
-
     /**
      *
      * @param doc
@@ -2560,7 +2442,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.radioSameLabelsTitles = function htmlInputRadioSameLabelsTitles(doc) {
         return _htmlSameLabelsTitles("radio");
     }
-
     /**
      *
      * @param doc
@@ -2570,7 +2451,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("radio", false);
     }
-
     /**
      *
      * @param doc
@@ -2579,7 +2459,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.textSameLabelsTitles = function htmlInputTextSameLabelsTitles(doc) {
         return _htmlSameLabelsTitles("text");
     }
-
     /**
      *
      * @param doc
@@ -2589,7 +2468,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("text", false);
     }
-
     /**
      *
      * @param doc
@@ -2632,7 +2510,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2664,7 +2541,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2709,7 +2585,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2742,7 +2617,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2779,7 +2653,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2825,7 +2698,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2860,7 +2732,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2875,11 +2746,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("a:not(:has(img))").each(function() {
                 //
-                var text = $.trim($(this).text()).toLowerCase(),
-                    title = $.trim($(this).attr("title")).toLowerCase(),
-                    context = text + "%|%" + title,
-                    href = $.URL($.trim($(this).attr("href")).toString()),
-                    _this = this;
+                var text = $.trim($(this).text()).toLowerCase(), title = $.trim($(this).attr("title")).toLowerCase(), context = text + "%|%" + title, href = $.URL($.trim($(this).attr("href")).toString()), _this = this;
 
                 //
                 if ($.inArray(context, Object.keys(links)) == -1) {
@@ -2890,8 +2757,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 if (text != '') {
                     links[context].push({
-                        "href": href,
-                        "node": _this
+                        "href" : href,
+                        "node" : _this
                     });
                 }
             });
@@ -2939,7 +2806,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2974,7 +2840,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3007,7 +2872,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3015,9 +2879,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.metaCharset = function htmlMetaCharset(doc) {
         //
-        var result = [],
-            charset = "",
-            reg = new RegExp().compile("^.+charset=(.+)$", "i");
+        var result = [], charset = "", reg = new RegExp().compile("^.+charset=(.+)$", "i");
 
         //
         try {
@@ -3056,7 +2918,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3065,7 +2926,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.metaRefreshShort = function htmlMetaRefreshShort(doc) {
         //
-        var result = [],value = 0;
+        var result = [], value = 0;
 
         //
         try {
@@ -3092,7 +2953,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3100,8 +2960,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.metaRefreshUrl = function htmlMetaRefreshUrl(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("^\\d+\\s*;\\s*url=(.+)$", "i");
+        var result = [], reg = new RegExp().compile("^\\d+\\s*;\\s*url=(.+)$", "i");
 
         //
         try {
@@ -3134,7 +2993,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3191,7 +3049,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3220,7 +3077,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3252,7 +3108,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3284,7 +3139,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3319,7 +3173,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3328,7 +3181,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.selectSameLabelsTitles = function htmlSelectSameLabelsTitles(doc) {
         return _htmlSameLabelsTitles("select");
     }
-
     /**
      *
      * @param doc
@@ -3338,7 +3190,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("select", false);
     }
-
     /**
      *
      * @param doc
@@ -3346,8 +3197,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlSpaceBetweenLetters = function htmlSpaceBetweenLetters(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("(\s+[A-Za-z]){3,}", "i");
+        var result = [], reg = new RegExp().compile("(\s+[A-Za-z]){3,}", "i");
 
         //
         try {
@@ -3371,7 +3221,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3420,7 +3269,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3430,7 +3278,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlSameLabelsTitles("textarea");
     }
-
     /**
      *
      * @param doc
@@ -3440,7 +3287,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("textarea", false);
     }
-
     /**
      *
      * @param doc
@@ -3448,11 +3294,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlUrlWithTermsNotInTitle = function htmlUrlWithTermsNotInTitle(doc) {
         //
-        var result = [],
-            reg1 = new RegExp().compile("[\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "ig"),
-            reg2 = new RegExp().compile("[^a-zA-Z0-9àáâãäåæçèéêëìíîïñòóôõöùúûüýÿ]", "ig"),
-            url = doc.location.href.toLowerCase().replace(/[àáâãäå]/ig, "a").replace(/æ/ig, "ae").replace(/ç/ig, "c").replace(/[èéêë]/ig, "e").replace(/[ìíîï]/ig, "i").replace(/ñ/ig, "n").replace(/[òóôõö]/ig, "o").replace(/œ/ig, "oe").replace(/[ùúûü]/ig, "u").replace(/[ýÿ]/ig, "y"),
-            terms = url.split(reg1);
+        var result = [], reg1 = new RegExp().compile("[\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "ig"), reg2 = new RegExp().compile("[^a-zA-Z0-9àáâãäåæçèéêëìíîïñòóôõöùúûüýÿ]", "ig"), url = doc.location.href.toLowerCase().replace(/[àáâãäå]/ig, "a").replace(/æ/ig, "ae").replace(/ç/ig, "c").replace(/[èéêë]/ig, "e").replace(/[ìíîï]/ig, "i").replace(/ñ/ig, "n").replace(/[òóôõö]/ig, "o").replace(/œ/ig, "oe").replace(/[ùúûü]/ig, "u").replace(/[ýÿ]/ig, "y"), terms = url.split(reg1);
 
         //
         try {
@@ -3483,7 +3325,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3491,8 +3332,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlUrlWithUnsafeChars = function htmlUrlWithUnsafeChars(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("[^a-z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "i");
+        var result = [], reg = new RegExp().compile("[^a-z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "i");
 
         //
         try {
@@ -3524,7 +3364,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3541,11 +3380,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var url = element.uri.split("?")[0];
 
-                if($.inArray(url, urls) == -1) {
+                if ($.inArray(url, urls) == -1) {
                     //
-                    for each(var _url in urls) {
+                    for each (var _url in urls) {
                         //
-                        if(_url.toLowerCase() == url.toLowerCase()) {
+                        if (_url.toLowerCase() == url.toLowerCase()) {
                             //
                             result.push(url + " - " + _url);
                         } else {
@@ -3567,7 +3406,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3599,27 +3437,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.http404 = function http404(doc) {
-        return XHR.partial("/azertyuiopqsdfghjklmwxcvbn")
-        .then(function(response) {
+        return XHR.partial("/azertyuiopqsdfghjklmwxcvbn").then(function(response) {
             if (response.status == 404) {
                 return [true];
             }
 
             return [];
-        })
-        .then(null, function(err) {
+        }).then(null, function(err) {
             logger.error("http404", err);
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -3651,7 +3485,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3687,7 +3520,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3695,8 +3527,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.countryDomain = function httpCountryDomain(doc) {
         //
-        var result = [],
-            extensions = ["ad", "ae", "af", "ag", "ai", "al", "am", "an", "ao", "aq", "ar", "as", "at", "au", "aw", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bm", "bn", "bo", "br", "bs", "bt", "bv", "bw", "by", "bz", "ca", "cc", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr", "cu", "cv", "cx", "cy", "cz", "de", "dk", "dj", "dm", "do", "dz", "ec", "ee", "eg", "eh", "er", "es", "et", "fi", "fj", "fk", "fm", "fo", "fr", "fx", "ga", "gd", "ge", "gf", "gg", "gh", "gi", "gl", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "in", "io", "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km", "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr", "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "mh", "mk", "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mx", "mw", "my", "mz", "na", "nc", "nf", "ne", "ng", "ni", "nl", "no", "np", "nr", "nu", "nz", "om", "pa", "pe", "pf", "ph", "pk", "pl", "pm", "pn", "pq", "pr", "pt", "py", "pw", "qa", "re", "ro", "ru", "rw", "sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "st", "sv", "sy", "sz", "tc", "td", "tf", "th", "tj", "tm", "tn", "to", "tp", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "uk", "um", "us", "uy", "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "ye", "yt", "yu", "za", "zr", "zm", "zw"];
+        var result = [], extensions = ["ad", "ae", "af", "ag", "ai", "al", "am", "an", "ao", "aq", "ar", "as", "at", "au", "aw", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bm", "bn", "bo", "br", "bs", "bt", "bv", "bw", "by", "bz", "ca", "cc", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr", "cu", "cv", "cx", "cy", "cz", "de", "dk", "dj", "dm", "do", "dz", "ec", "ee", "eg", "eh", "er", "es", "et", "fi", "fj", "fk", "fm", "fo", "fr", "fx", "ga", "gd", "ge", "gf", "gg", "gh", "gi", "gl", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "in", "io", "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km", "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr", "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "mh", "mk", "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mx", "mw", "my", "mz", "na", "nc", "nf", "ne", "ng", "ni", "nl", "no", "np", "nr", "nu", "nz", "om", "pa", "pe", "pf", "ph", "pk", "pl", "pm", "pn", "pq", "pr", "pt", "py", "pw", "qa", "re", "ro", "ru", "rw", "sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "st", "sv", "sy", "sz", "tc", "td", "tf", "th", "tj", "tm", "tn", "to", "tp", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "uk", "um", "us", "uy", "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "ye", "yt", "yu", "za", "zr", "zm", "zw"];
 
         //
         try {
@@ -3720,7 +3551,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3729,27 +3559,22 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.countryServer = function httpCountryServer(doc) {
         var geoServerURL = "http://www.geoplugin.net/xml.gp";
 
-        return dnsLookup(doc.location.host)
-        .then(function(ip) {
+        return dnsLookup(doc.location.host).then(function(ip) {
             return XHR.get(geoServerURL + "?ip=" + ip);
-        })
-        .then(function(response) {
+        }).then(function(response) {
             if (response.status !== 200) {
                 return [];
             }
-            var tld = doc.location.host.split(".").slice(-1)[0].toLowerCase(),
-                data = $(response.data);
+            var tld = doc.location.host.split(".").slice(-1)[0].toLowerCase(), data = $(response.data);
             if ($("geoplugin_countryCode", data).text().toLowerCase() === tld) {
                 return [tld];
             }
             return [];
-        })
-        .then(null, function(err) {
+        }).then(null, function(err) {
             logger.error("countryServer", err);
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -3778,7 +3603,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3786,20 +3610,16 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.httpGzip = function httpGzip(doc) {
         //
-        var result = [],
-            encoding = ["gzip", "deflate"],
-            reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
+        var result = [], encoding = ["gzip", "deflate"], reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
 
         //
         try {
             //
-            sidecar.resources.filter(function(element){
+            sidecar.resources.filter(function(element) {
                 //
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
-                return content_type
-                    && (content_type.split("/")[0] == "text" || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1 || reg.test(content_type))
-                    && element.headers["content-length"] > 300;
+                return content_type && (content_type.split("/")[0] == "text" || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1 || reg.test(content_type)) && element.headers["content-length"] > 300;
             }).forEach(function(element, index, array) {
                 //
                 var tmp = _getHttpDetails(element.uri, element.headers);
@@ -3828,7 +3648,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3846,8 +3665,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 // is text
-                if (content_type
-                        && (content_type == "application/json" || $.endsWith(element.uri, ".json")) && element.headers["content-length"] > 300) {
+                if (content_type && (content_type == "application/json" || $.endsWith(element.uri, ".json")) && element.headers["content-length"] > 300) {
                     //
                     var tmp = _getHttpDetails(element.uri, element.headers);
 
@@ -3876,7 +3694,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3884,9 +3701,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.httpGzipZippedResources = function httpGzipZippedResources(doc) {
         //
-        var result = [],
-            encoding = ["gzip", "deflate"],
-            reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
+        var result = [], encoding = ["gzip", "deflate"], reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
 
         //
         try {
@@ -3896,9 +3711,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 // is not text
-                if (content_type
-                        && content_type.split("/")[0] != "text"
-                        && $.inArray(content_type, ["application/javascript", "application/x-javascript"]) == -1 && !reg.test(content_type)) {
+                if (content_type && content_type.split("/")[0] != "text" && $.inArray(content_type, ["application/javascript", "application/x-javascript"]) == -1 && !reg.test(content_type)) {
                     //
                     var tmp = _getHttpDetails(element.uri, element.headers);
 
@@ -3924,15 +3737,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.inlinks = function httpInlinks(doc) {
-        return XHR.get("https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=link:" + doc.location.host)
-        .then(function(response) {
+        return XHR.get("https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=link:" + doc.location.host).then(function(response) {
             if (response.status !== 200) {
                 return [];
             }
@@ -3941,13 +3752,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 return [data.responseData.cursor.estimatedResultCount + " liens entrants"];
             }
             return [];
-        })
-        .then(null, function(err) {
+        }).then(null, function(err) {
             logger.error("httpInlinks", err);
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -3965,8 +3774,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 // is text
-                if (content_type
-                        && (content_type == "application/json" || $.endsWith(element.uri, ".json"))) {
+                if (content_type && (content_type == "application/json" || $.endsWith(element.uri, ".json"))) {
                     //
                     result.push(element.uri);
                 }
@@ -3983,7 +3791,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4022,7 +3829,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4032,36 +3838,32 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         var promises = [];
         try {
             $("img[width!=1][height!=1][longdesc]").each(function() {
-                var longdesc = $.trim($(this).attr("longdesc")),
-                    _img = this;
+                var longdesc = $.trim($(this).attr("longdesc")), _img = this;
 
                 if (longdesc === "") {
                     promises.push(Q.resolve(_getDetails(_img)));
                 } else {
-                    promises.push(
-                        XHR.partial(longdesc).then(function(response) {
-                            if (response.status === 404) {
-                                return _getDetails(_img);
-                            }
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("pingLongdesc", err);
-                            return false;
-                        })
-                    );
+                    promises.push(XHR.partial(longdesc).then(function(response) {
+                        if (response.status === 404) {
+                            return _getDetails(_img);
+                        }
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("pingLongdesc", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch(err) {
             logger.error("pingLongdesc", err);
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -4069,17 +3871,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.httpRefresh = function httpRefresh(doc) {
         //
-        var result = [],
-            reg1 = new RegExp().compile("^(\\d+)$", "i"),
-            reg2 = new RegExp().compile("^(\\d+)\\s*;\\s*url=(.+)$", "i");
+        var result = [], reg1 = new RegExp().compile("^(\\d+)$", "i"), reg2 = new RegExp().compile("^(\\d+)\\s*;\\s*url=(.+)$", "i");
 
         //
         try {
-            var resources = sidecar.resources.filter(
-                function(item){
-                    return $.inArray(item["content_type"], mimeHTML) != -1 && item['status'] == 200;
-                }
-            );
+            var resources = sidecar.resources.filter(function(item) {
+                return $.inArray(item["content_type"], mimeHTML) != -1 && item['status'] == 200;
+            });
 
             //
             if (resources[0]["headers"]["refresh"]) {
@@ -4101,8 +3899,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 else if (reg2.test(refresh)) {
                     //
-                    var delay = parseInt(RegExp.$1, 10),
-                        url = $.URL(RegExp.$2);
+                    var delay = parseInt(RegExp.$1, 10), url = $.URL(RegExp.$2);
 
                     //
                     if (delay < 72000 && url == doc.location.href) {
@@ -4123,7 +3920,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4155,7 +3951,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4187,7 +3982,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4219,7 +4013,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4251,7 +4044,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4283,7 +4075,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4315,7 +4106,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4347,7 +4137,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4379,7 +4168,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4425,7 +4213,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4433,11 +4220,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @todo manage attachments
      */
     window.resDownloadable = function httpResourceDownloadable(doc) {
-        var dl_extensions = ["pdf", "doc", "odt", "xls", "ods", "zip"],
-            dl_families = ["application"],
-            dl_types = ["msword", "pdf", "zip", "octet-stream"],
-            dl_reg = new RegExp().compile("^vnd\.(oasis\.opendocument\.|\.ms-|openxmlformats-officedocument\.)", "i"),
-            promises = [];
+        var dl_extensions = ["pdf", "doc", "odt", "xls", "ods", "zip"], dl_families = ["application"], dl_types = ["msword", "pdf", "zip", "octet-stream"], dl_reg = new RegExp().compile("^vnd\.(oasis\.opendocument\.|\.ms-|openxmlformats-officedocument\.)", "i"), promises = [];
 
         try {
             sidecar.pageInfo.links.forEach(function(link) {
@@ -4449,29 +4232,25 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     return;
                 }
 
-                promises.push(
-                    XHR.partial(link.uri).then(function(response) {
-                        if (response.status !== 200) {
-                            return null;
-                        }
-                        var mime = response.contentType.split("/");
-                        if ($.inArray(mime[0], dl_families) !== -1 &&
-                            ($.inArray(mime[1], dl_types) !== -1 || dl_reg.test(mime[1]))
-                        ) {
-                            return link.uri;
-                        }
-
+                promises.push(XHR.partial(link.uri).then(function(response) {
+                    if (response.status !== 200) {
                         return null;
-                    }).then(null, function(err) {
-                        logger.error("resDownloadable", err);
-                        return false;
-                    })
-                );
+                    }
+                    var mime = response.contentType.split("/");
+                    if ($.inArray(mime[0], dl_families) !== -1 && ($.inArray(mime[1], dl_types) !== -1 || dl_reg.test(mime[1]))) {
+                        return link.uri;
+                    }
+
+                    return null;
+                }).then(null, function(err) {
+                    logger.error("resDownloadable", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -4479,7 +4258,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -4497,23 +4275,21 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     return;
                 }
 
-                promises.push(
-                    XHR.partial(link.uri).then(function(response) {
-                        if (response.status === 200 && response.contentType === "application/pdf") {
-                            return link.uri;
-                        }
+                promises.push(XHR.partial(link.uri).then(function(response) {
+                    if (response.status === 200 && response.contentType === "application/pdf") {
+                        return link.uri;
+                    }
 
-                        return null;
-                    }).then(null, function(err) {
-                        logger.error("resPdf", err);
-                        return false;
-                    })
-                );
+                    return null;
+                }).then(null, function(err) {
+                    logger.error("resPdf", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -4521,7 +4297,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -4529,8 +4304,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.rightCharset = function httpRightCharset(doc) {
         //
-        var regUnicode = new RegExp().compile("[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-\xBF]|[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}|\xED[\x80-\x9F][\x80-\xBF]|\xF0[\x90-\xBF][\x80-\xBF]{2}|[\xF1-\xF3][\x80-\xBF]{3}|\xF4[\x80-\x8F][\x80-\xBF]{2}", "m"),
-            result = [];
+        var regUnicode = new RegExp().compile("[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-\xBF]|[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}|\xED[\x80-\x9F][\x80-\xBF]|\xF0[\x90-\xBF][\x80-\xBF]{2}|[\xF1-\xF3][\x80-\xBF]{3}|\xF4[\x80-\x8F][\x80-\xBF]{2}", "m"), result = [];
 
         //
         try {
@@ -4554,7 +4328,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4572,8 +4345,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1)) {
+                if (content_type && ($.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1)) {
                     //
                     objects.push(element.uri);
                 }
@@ -4621,7 +4393,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4639,8 +4410,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1)) {
+                if (content_type && ($.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1)) {
                     //
                     objects.push(element.uri);
                 }
@@ -4688,7 +4458,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4696,8 +4465,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.staticOneMonthCache = function httpStaticOneMonthCache(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("max-age=([0-9]+)", "i");
+        var result = [], reg = new RegExp().compile("max-age=([0-9]+)", "i");
 
         //
         try {
@@ -4707,13 +4475,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 // is static
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (element.headers["cache-control"] && reg.test(element.headers["cache-control"])) {
                         //
-                        if(parseInt(RegExp.$1, 10) < 2592000) {
+                        if (parseInt(RegExp.$1, 10) < 2592000) {
                             //
                             result.push(_getHttpDetails(element.uri, element.headers));
                         }
@@ -4723,7 +4489,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         var now = Date.parse(new Date().toString());
 
                         //
-                        if(parseInt((expires - now) / 1000, 10) < 2592000) {
+                        if (parseInt((expires - now) / 1000, 10) < 2592000) {
                             //
                             result.push(_getHttpDetails(element.uri, element.headers));
                         }
@@ -4745,7 +4511,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4765,9 +4530,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     var subdomain = element.uri.split("/")[2];
 
@@ -4780,15 +4543,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
             //
             var tmp = [];
-            for each(var item in result) {
-                if($.inArray(item, tmp) == -1) {
+            for each (var item in result) {
+                if ($.inArray(item, tmp) == -1) {
                     tmp.push(item);
                 }
             }
             result = tmp;
 
             //
-            if(result.length < 4) {
+            if (result.length < 4) {
                 result = [];
             }
         }
@@ -4803,7 +4566,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4823,9 +4585,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     var _domain = element.uri.split("/")[2].split(".").slice(-2).join(".");
 
@@ -4848,7 +4608,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4856,8 +4615,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.staticVersionInName = function httpStaticVersionInName(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}\\.[a-zA-Z]{2,}$", "i");
+        var result = [], reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}\\.[a-zA-Z]{2,}$", "i");
 
         //
         try {
@@ -4867,9 +4625,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (reg.test(element.uri)) {
                         //
@@ -4889,7 +4645,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4897,8 +4652,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.staticVersionInParams = function httpStaticVersionInParams(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("[^\\?]+\\?(v=?)?[\\.0-9a-z]{3,}$", "i");
+        var result = [], reg = new RegExp().compile("[^\\?]+\\?(v=?)?[\\.0-9a-z]{3,}$", "i");
 
         //
         try {
@@ -4908,9 +4662,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (reg.test(element.uri)) {
                         //
@@ -4930,7 +4682,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4948,9 +4699,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (element.headers["set-cookie"]) {
                         //
@@ -4970,7 +4719,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4978,8 +4726,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.staticWithParams = function httpStaticWithParams(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("[^\\?]+\\?.+$", "i");;
+        var result = [], reg = new RegExp().compile("[^\\?]+\\?.+$", "i");
+        ;
 
         //
         try {
@@ -4989,9 +4737,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (reg.test(element.uri)) {
                         //
@@ -5011,7 +4757,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5019,8 +4764,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.staticWithSeveralParams = function httpStaticWithSeveralParams(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("[^\\?]+\\?.+&.+$", "i");;
+        var result = [], reg = new RegExp().compile("[^\\?]+\\?.+&.+$", "i");
+        ;
 
         //
         try {
@@ -5030,9 +4775,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (reg.test(element.uri)) {
                         //
@@ -5052,7 +4795,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5070,9 +4812,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (cdns.test(element.uri)) {
                         //
@@ -5092,7 +4832,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5109,14 +4848,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 aDomain.unshift("www");
             }
 
-            return XHR.partial(doc.location.protocol + "//" + aDomain.join(".") + "/")
-            .then(function(response) {
+            return XHR.partial(doc.location.protocol + "//" + aDomain.join(".") + "/").then(function(response) {
                 if ($.inArray(response.status, [200, 301, 302, 304, 307]) !== -1) {
                     return [aDomain.join(".")];
                 }
                 return [];
-            })
-            .then(null, function(err) {
+            }).then(null, function(err) {
                 logger.error("httpWithAndWoWww", err);
                 return Q.resolve([]);
             });
@@ -5126,7 +4863,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -5158,7 +4894,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5187,7 +4922,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5222,7 +4956,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5276,15 +5009,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.jsDocumentWrite = function jsDocumentWrite(doc) {
-        var reg = new RegExp().compile("(document\\.write\\([^\\)]*\\))", "i"),
-            promises = [];
+        var reg = new RegExp().compile("(document\\.write\\([^\\)]*\\))", "i"), promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -5299,25 +5030,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(
-                        XHR.get(item.uri).then(function(response) {
-                            var match = reg.exec(response.data);
-                            if (match !== null) {
-                                return item.uri + " (" + match[0] + ")";
-                            }
+                    promises.push(XHR.get(item.uri).then(function(response) {
+                        var match = reg.exec(response.data);
+                        if (match !== null) {
+                            return item.uri + " (" + match[0] + ")";
+                        }
 
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("jsDocumentWrite", err);
-                            return false;
-                        })
-                    );
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("jsDocumentWrite", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -5325,7 +5054,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -5358,7 +5086,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5393,7 +5120,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5429,7 +5155,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5437,8 +5162,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnblurSubmit = function jsOnblurSubmit(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i");
 
         //
         try {
@@ -5496,7 +5220,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5538,7 +5261,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5546,8 +5268,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnchangeLocation = function jsOnchangeLocation(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.location[\\.=\\s]", "i");
+        var result = [], reg = new RegExp().compile("\\.location[\\.=\\s]", "i");
 
         //
         try {
@@ -5606,7 +5327,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5614,8 +5334,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnchangeSubmit = function jsOnchangeSubmit(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i");
 
         //
         try {
@@ -5674,7 +5393,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5723,7 +5441,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5757,7 +5474,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5765,8 +5481,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnfocusBlur = function jsOnfocusBlur(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.blur\\s?", "i");
+        var result = [], reg = new RegExp().compile("\\.blur\\s?", "i");
 
         //
         try {
@@ -5825,7 +5540,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5833,8 +5547,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnfocusSubmit = function jsOnfocusSubmit(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i");
 
         //
         try {
@@ -5893,7 +5606,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5935,7 +5647,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5943,8 +5654,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnmouseoutSubmit = function jsOnmouseoutSubmit(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i");
 
         //
         try {
@@ -6003,7 +5713,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6047,7 +5756,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6055,8 +5763,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnmouseoverSubmit = function jsOnmouseoverSubmit(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i");
 
         //
         try {
@@ -6115,7 +5822,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6159,7 +5865,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6194,7 +5899,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6202,8 +5906,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsPopUp = function jsPopUp(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("(window|document)\\.open\\s?", "i");
+        var result = [], reg = new RegExp().compile("(window|document)\\.open\\s?", "i");
 
         //
         try {
@@ -6262,20 +5965,16 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.jsRefresh = function jsRefresh(doc) {
-        var reg1 = new RegExp().compile("(\\.location\\.reload\\()", "i"),
-            reg2 = new RegExp().compile("(\\.location\\.replace\\()", "i"),
-            reg3 = new RegExp().compile("(\\.location\(\\.href\)?\s*=)", "i"),
-            promises = [];
+        var reg1 = new RegExp().compile("(\\.location\\.reload\\()", "i"), reg2 = new RegExp().compile("(\\.location\\.replace\\()", "i"), reg3 = new RegExp().compile("(\\.location\(\\.href\)?\s*=)", "i"), promises = [];
 
         try {
-            if(sidecar.resources.some(function(element) {
+            if (sidecar.resources.some(function(element) {
                 return (doc.location.href === element.uri);
             }) === false) {
                 return Q.resolve([]);
@@ -6293,33 +5992,29 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(
-                        XHR.get(item.uri).then(function(response) {
-                            var m1 = reg1.exec(response.data),
-                                m2 = reg2.exec(response.data),
-                                m3 = reg3.exec(response.data);
+                    promises.push(XHR.get(item.uri).then(function(response) {
+                        var m1 = reg1.exec(response.data), m2 = reg2.exec(response.data), m3 = reg3.exec(response.data);
 
-                            if (m1 !== null || m2 !== null || m3 !== null) {
-                                var found = [m1, m2, m3].map(function(val) {
-                                    return val && val[1] || null;
-                                }).filter(function(val) {
-                                    return val !== null;
-                                }).join(", ");
-                                return item.uri + " (" + found + ")";
-                            }
+                        if (m1 !== null || m2 !== null || m3 !== null) {
+                            var found = [m1, m2, m3].map(function(val) {
+                                return val && val[1] || null;
+                            }).filter(function(val) {
+                                return val !== null;
+                            }).join(", ");
+                            return item.uri + " (" + found + ")";
+                        }
 
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("jsRefresh", err);
-                            return false;
-                        })
-                    );
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("jsRefresh", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6327,7 +6022,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6335,8 +6029,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsResize = function jsResize(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("window\\.resizeTo\\s?", "i");
+        var result = [], reg = new RegExp().compile("window\\.resizeTo\\s?", "i");
 
         //
         try {
@@ -6395,15 +6088,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.jsSetInterval = function jsSetInterval(doc) {
-        var reg = new RegExp().compile("setInterval\\(", "i"),
-            promises = [];
+        var reg = new RegExp().compile("setInterval\\(", "i"), promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -6418,25 +6109,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(
-                        XHR.get(item.uri).then(function(response) {
-                            var match = reg.exec(response.data);
-                            if (match !== null) {
-                                return item.uri + " (" + match[0] + ")";
-                            }
+                    promises.push(XHR.get(item.uri).then(function(response) {
+                        var match = reg.exec(response.data);
+                        if (match !== null) {
+                            return item.uri + " (" + match[0] + ")";
+                        }
 
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("jsSetInterval", err);
-                            return false;
-                        })
-                    );
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("jsSetInterval", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6444,7 +6133,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6452,8 +6140,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsSetTimeout = function jsSetTimeout(doc) {
-        var reg = new RegExp().compile("setTimeout\\(", "i"),
-            promises = [];
+        var reg = new RegExp().compile("setTimeout\\(", "i"), promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -6468,25 +6155,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(
-                        XHR.get(item.uri).then(function(response) {
-                            var match = reg.exec(response.data);
-                            if (match !== null) {
-                                return item.uri + " (" + match[0] + ")";
-                            }
+                    promises.push(XHR.get(item.uri).then(function(response) {
+                        var match = reg.exec(response.data);
+                        if (match !== null) {
+                            return item.uri + " (" + match[0] + ")";
+                        }
 
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("jsSetTimeout", err);
-                            return false;
-                        })
-                    );
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("jsSetTimeout", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6494,7 +6179,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6529,7 +6213,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6537,8 +6220,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsWindowOpen = function jsWindowOpen(doc) {
         //
-        var reg = new RegExp().compile("(window|document)\\.open\\(", "i"),
-            promises = [];
+        var reg = new RegExp().compile("(window|document)\\.open\\(", "i"), promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -6553,25 +6235,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(
-                        XHR.get(item.uri).then(function(response) {
-                            var match = reg.exec(response.data);
-                            if (match !== null) {
-                                return item.uri + " (" + match[0] + ")";
-                            }
+                    promises.push(XHR.get(item.uri).then(function(response) {
+                        var match = reg.exec(response.data);
+                        if (match !== null) {
+                            return item.uri + " (" + match[0] + ")";
+                        }
 
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("jsWindowOpen", err);
-                            return false;
-                        })
-                    );
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("jsWindowOpen", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6579,7 +6259,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6603,7 +6282,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -6632,7 +6310,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -6650,7 +6327,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -6665,47 +6341,45 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     return;
                 }
 
-                promises.push(
-                    XHR.get(link.uri).then(function(response) {
-                        if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
-                            return null;
-                        }
+                promises.push(XHR.get(link.uri).then(function(response) {
+                    if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
+                        return null;
+                    }
 
-                        var result = [], data;
+                    var result = [], data;
 
-                        try {
-                            data = $.parseXML(response.data);
-                        }catch(e) {
-                            return null;
-                        }
+                    try {
+                        data = $.parseXML(response.data);
+                    } catch(e) {
+                        return null;
+                    }
 
-                        if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
-                            $('link', data).each(function() {
-                                var link = $.trim($(this).text()), url = $.URL(link);
-                                if (url.toString() != link && url.toString() != link + '/' && url.scheme != 'mailto') {
-                                    result.push(_getDetails(this));
-                                }
-                            });
-                        } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
-                            $('link[href!=""]', data).each(function() {
-                                var link = $.trim($(this).text()), url = $.URL(link);
-                                if (url.toString() != link && url.toString() != link + '/' && url.scheme != 'mailto') {
-                                    result.push(_getDetails(this));
-                                }
-                            });
-                        }
+                    if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
+                        $('link', data).each(function() {
+                            var link = $.trim($(this).text()), url = $.URL(link);
+                            if (url.toString() != link && url.toString() != link + '/' && url.scheme != 'mailto') {
+                                result.push(_getDetails(this));
+                            }
+                        });
+                    } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
+                        $('link[href!=""]', data).each(function() {
+                            var link = $.trim($(this).text()), url = $.URL(link);
+                            if (url.toString() != link && url.toString() != link + '/' && url.scheme != 'mailto') {
+                                result.push(_getDetails(this));
+                            }
+                        });
+                    }
 
-                        return result.length > 0 ? result : null;
-                    }).then(null, function(err) {
-                        logger.error("syndicationAbsoluteLinks", err);
-                        return false;
-                    })
-                );
+                    return result.length > 0 ? result : null;
+                }).then(null, function(err) {
+                    logger.error("syndicationAbsoluteLinks", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch(err) {
             // Error Logging
@@ -6713,15 +6387,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.syndicationCache = function syndicationCache(doc) {
-        var syNS = "http://purl.org/rss/1.0/modules/syndication/",
-            promises = [];
+        var syNS = "http://purl.org/rss/1.0/modules/syndication/", promises = [];
 
         try {
             sidecar.pageInfo.links.forEach(function(link) {
@@ -6729,51 +6401,49 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     return;
                 }
 
-                promises.push(
-                    XHR.get(link.uri).then(function(response) {
-                        if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
-                            return null;
+                promises.push(XHR.get(link.uri).then(function(response) {
+                    if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
+                        return null;
+                    }
+
+                    var result = [], data;
+
+                    try {
+                        data = $.parseXML(response.data);
+                    } catch(e) {
+                        return null;
+                    }
+
+                    if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
+                        if ($.trim($("rss", data).attr("version")) == "2.0") {
+                            $("ttl", data).each(function() {
+                                result.push(_getDetails(this));
+                            });
                         }
+                    }
 
-                        var result = [], data;
+                    $.each(data.getElementsByTagNameNS(syNS, 'updatePeriod'), function() {
+                        result.push(_getDetails(this));
+                    });
 
-                        try {
-                            data = $.parseXML(response.data);
-                        }catch(e) {
-                            return null;
-                        }
+                    $.each(data.getElementsByTagNameNS(syNS, 'updateFrequency'), function() {
+                        result.push(_getDetails(this));
+                    });
 
-                        if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
-                            if ($.trim($("rss", data).attr("version")) == "2.0") {
-                                $("ttl", data).each(function() {
-                                    result.push(_getDetails(this));
-                                });
-                            }
-                        }
+                    $.each(data.getElementsByTagNameNS(syNS, 'updateBase'), function() {
+                        result.push(_getDetails(this));
+                    });
 
-                        $.each(data.getElementsByTagNameNS(syNS, 'updatePeriod'), function() {
-                            result.push(_getDetails(this));
-                        });
-
-                        $.each(data.getElementsByTagNameNS(syNS, 'updateFrequency'), function() {
-                            result.push(_getDetails(this));
-                        });
-
-                        $.each(data.getElementsByTagNameNS(syNS, 'updateBase'), function() {
-                            result.push(_getDetails(this));
-                        });
-
-                        return result.length > 0 ? result : null;
-                    }).then(null, function(err) {
-                        logger.error("syndicationCache", err);
-                        return false;
-                    })
-                );
+                    return result.length > 0 ? result : null;
+                }).then(null, function(err) {
+                    logger.error("syndicationCache", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch(err) {
             // Error Logging
@@ -6781,7 +6451,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6816,7 +6485,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6831,45 +6499,43 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     return;
                 }
 
-                promises.push(
-                    XHR.get(link.uri).then(function(response) {
-                        if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
-                            return null;
-                        }
+                promises.push(XHR.get(link.uri).then(function(response) {
+                    if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
+                        return null;
+                    }
 
-                        var result = [], data;
+                    var result = [], data;
 
-                        try {
-                            data = $.parseXML(response.data);
-                        }catch(e) {
-                            return null;
-                        }
+                    try {
+                        data = $.parseXML(response.data);
+                    } catch(e) {
+                        return null;
+                    }
 
-                        if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
-                            $("item", data).each(function() {
-                                if ($("description", this).length == 0) {
-                                    result.push(_getDetails(this));
-                                }
-                            });
-                        } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
-                            $("entry", data).each(function() {
-                                if ($("summary", this).length == 0) {
-                                    result.push(_getDetails(this));
-                                }
-                            });
-                        }
+                    if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
+                        $("item", data).each(function() {
+                            if ($("description", this).length == 0) {
+                                result.push(_getDetails(this));
+                            }
+                        });
+                    } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
+                        $("entry", data).each(function() {
+                            if ($("summary", this).length == 0) {
+                                result.push(_getDetails(this));
+                            }
+                        });
+                    }
 
-                        return result.length > 0 ? result : null;
-                    }).then(null, function(err) {
-                        logger.error("syndicationSummary", err);
-                        return false;
-                    })
-                );
+                    return result.length > 0 ? result : null;
+                }).then(null, function(err) {
+                    logger.error("syndicationSummary", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch(err) {
             // Error Logging
@@ -6877,7 +6543,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /***************************************************************************/
     /******************************** CTIE *************************************/
     /***************************************************************************/
@@ -6897,13 +6562,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         function parseRule(rule) {
             //
-            if (rule.type==CSSRule.STYLE_RULE) {
+            if (rule.type == CSSRule.STYLE_RULE) {
                 styles.push(rule.style);
-            } else if(rule.type==CSSRule.IMPORT_RULE) {
+            } else if (rule.type == CSSRule.IMPORT_RULE) {
                 //
                 var _rules = rule.styleSheet.cssRules;
 
-                for (i = 0; i < _rules.length; i++) {
+                for ( i = 0; i < _rules.length; i++) {
                     parseRule(_rules.item(i));
                 }
             }
@@ -6923,7 +6588,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         // styles walk
         for (var k = 0; k < styles.length; k++) {
             //
-            if(styles[k].fontSize !== "") {
+            if (styles[k].fontSize !== "") {
                 //
                 var _fontsize = styles[k].fontSize;
 
@@ -6937,7 +6602,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -6945,17 +6609,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.linksWithSameHref = function(doc) {
         //
-        var _result = [],
-            _done = [],
-            _hrefs = {},
-            _text = "",
-            _reg= new RegExp().compile("\\s{2,}", "g");
+        var _result = [], _done = [], _hrefs = {}, _text = "", _reg = new RegExp().compile("\\s{2,}", "g");
 
         //
-        $("a[href]", doc).each( function() {
+        $("a[href]", doc).each(function() {
             //
             var $clone = $(this).clone();
-            $("img", $clone).replaceWith( function() {
+            $("img", $clone).replaceWith(function() {
                 return " " + $(this).attr("alt") + " ";
             });
 
@@ -6963,7 +6623,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             _text = $.trim($clone.text()).replace(_reg, " ");
 
             //
-            if($.inArray(_text, _done) == -1) {
+            if ($.inArray(_text, _done) == -1) {
                 _done.push(_text);
                 _hrefs[_text] = $(this).attr("href");
             } else if (_hrefs[_text] != $(this).attr("href")) {
@@ -6976,7 +6636,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -6987,9 +6646,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         var _result = [];
 
         //
-        $("#contentBody a[href$='pdf'], #contentBody a[href$='doc']").each( function(){
+        $("#contentBody a[href$='pdf'], #contentBody a[href$='doc']").each(function() {
             //
-            if($("#relatedLinkBox a[href='" + $(this).attr("href") + "']").size() == 0) {
+            if ($("#relatedLinkBox a[href='" + $(this).attr("href") + "']").size() == 0) {
                 //
                 _result.push(_getDetails(this));
             }
@@ -6998,7 +6657,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -7006,9 +6664,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.linksSpecialChars = function(doc) {
         //
-        var _result = [],
-            _reg= new RegExp().compile("[_% ]", "g"),
-            _reg_domain = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
+        var _result = [], _reg = new RegExp().compile("[_% ]", "g"), _reg_domain = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
 
         // current URL
         if (_reg.test(doc.location.href)) {
@@ -7017,20 +6673,20 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         }
 
         // links
-        $("a[href]").each( function() {
+        $("a[href]").each(function() {
             //
             var _href = $.trim($(this).attr("href")), isInternal = true;
 
             //
             if (_reg_domain.test(_href)) {
                 //
-                if(RegExp.$1 != doc.location.hostname) {
+                if (RegExp.$1 != doc.location.hostname) {
                     isInternal = false;
                 }
             }
 
             //
-            if(isInternal) {
+            if (isInternal) {
                 //
                 if (_href.toLowerCase() != _href || _reg.test($(this).attr("href"))) {
                     _result.push(_getDetails(this));
@@ -7041,7 +6697,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -7049,30 +6704,28 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.linksInternal = function(doc) {
         //
-        var _result = [],
-            _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i"),
-            _reg_doc = new RegExp().compile("\.(pdf|doc)$", "i");
+        var _result = [], _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i"), _reg_doc = new RegExp().compile("\.(pdf|doc)$", "i");
 
         //
-        $("a").each( function() {
+        $("a").each(function() {
             //
             var _href = $.trim($(this).attr("href")), isInternal = true, isDoc = false;
 
             //
-            if(_reg_doc.test(_href)) {
+            if (_reg_doc.test(_href)) {
                 isDoc = true;
             }
 
             //
             if (!isDoc && _reg.test(_href)) {
                 //
-                if(RegExp.$1 != doc.location.hostname) {
+                if (RegExp.$1 != doc.location.hostname) {
                     isInternal = false;
                 }
             }
 
             //
-            if(!isDoc && isInternal) {
+            if (!isDoc && isInternal) {
                 //
                 if ($(this).attr("target") == "_blank") {
                     _result.push(_getDetails(this));
@@ -7083,7 +6736,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -7091,19 +6743,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.linksNavigation = function(doc) {
         //
-        var _result = [],
-            _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
+        var _result = [], _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
 
         //
-        $("#navTools a[href], #thematicNav a[href], #transversalNav a[href]," +
-            "#setcategoriesBox a[href]").each( function() {
+        $("#navTools a[href], #thematicNav a[href], #transversalNav a[href]," + "#setcategoriesBox a[href]").each(function() {
             //
             var _href = $.trim($(this).attr("href"));
 
             //
             if (_reg.test(_href)) {
                 //
-                if(RegExp.$1 != doc.location.hostname) {
+                if (RegExp.$1 != doc.location.hostname) {
                     _result.push(_getDetails(this));
                 }
             }
@@ -7112,7 +6762,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -7129,8 +6778,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var _fontSize = parseInt(node.css("font-size"));
 
             //
-            if(_fontSize / fontSize >= 0.75) {
-                node.children().each(function(){
+            if (_fontSize / fontSize >= 0.75) {
+                node.children().each(function() {
                     walk($(this));
                 });
             } else {
@@ -7147,7 +6796,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -7155,8 +6803,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssFontInList = function(doc) {
         function callback(rule) {
-            var result = [],
-                authorized = ["arial", "verdana", "helvetica", "tahoma", "sans-serif", "inherit"];
+            var result = [], authorized = ["arial", "verdana", "helvetica", "tahoma", "sans-serif", "inherit"];
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
@@ -7165,7 +6812,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                             return $.trim(element.toLowerCase().replace(/['"]/g, ""));
                         });
 
-                        $.each(fonts, function(){
+                        $.each(fonts, function() {
                             if ($.inArray(this, authorized) == -1) {
                                 result.push(_getCssDetails(rule, i));
                                 return false;

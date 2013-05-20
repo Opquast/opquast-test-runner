@@ -54,7 +54,7 @@
     "A_W_INVALID_TEXT_WO_IMG": "oqs@html:htmlLinksTextInvalid",
     "A_W_INVALID_TEXT_W_IMG_W_INVALID_ALT_ATTR": "oqs@html:htmlLinksWithInvalidText",
     "A_W_TARGET_ATTR_BLANK": "xpath@html://a[normalize-space(@href)!=''][translate(@target,'BLANK','blank')='_blank']",
-    "A_W_TARGET_ATTR_BLANK_W_IMG": "xpath@html://a[normalize-space(@href)!=''][translate(@target,'BLANK','blank')='_blank'][count(child::*)=count(child::img)][normalize-space(translate(.,' ',' '))='']",
+    "A_W_TARGET_ATTR_BLANK_W_IMG": "xpath@html://a[normalize-space(@href)!=''][translate(@target,'BLANK','blank')='_blank'][.//img][count(child::*)=count(child::img)][normalize-space(translate(.,' ',' '))='']",
     "A_W_TEXT_WO_IMG": "xpath@html://a[normalize-space(translate(.,' ',' '))!=''][not(.//img)]",
     "A_W_TEXT_WO_IMG_NOT_UNIQUE": "oqs@html:htmlLinksTextNotUnique",
     "A_W_TEXT_WO_IMG_W_INVALID_TITLE_ATTR": "oqs@html:htmlLinksTextWithInvalidTitle",
