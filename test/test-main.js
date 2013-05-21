@@ -17,7 +17,7 @@ const listFixtures = function() {
     fp.initWithPath(xpiPath);
     xpi.open(fp);
 
-    let entries = xpi.findEntries('resources/opquast-tests/tests/fixtures/*');
+    let entries = xpi.findEntries('resources/opquast-tests/tests/_fixtures/*');
     let entry;
     let fileList = [];
     while (entries.hasMore()) {
@@ -31,7 +31,7 @@ const listFixtures = function() {
     let html = fileList.filter(function(v) {
         return v.split('.').pop() == 'html';
     }).map(function(v) {
-        return URL('fixtures/' + v.split('/').slice(4).join('/'), module.uri).toString();
+        return URL('_fixtures/' + v.split('/').slice(4).join('/'), module.uri).toString();
     });
 
     return html;

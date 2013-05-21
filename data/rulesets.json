@@ -24266,7 +24266,7 @@
         }
     },
     "23314": {
-        "test5": {
+        "H1_TO_H6_HIERACHICAL_ERROR": {
             "onfalse": {
                 "comment": "aucune interruption dans la hiérarchie des titres",
                 "result": "c"
@@ -24509,7 +24509,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test17": {
+                    "TITLE_W_TEXT": {
                         "onfalse": {
                             "comment": "l'élément TITLE est vide",
                             "result": "nc"
@@ -24750,7 +24750,7 @@
         }
     },
     "23618": {
-        "test5": {
+        "H1_TO_H6_HIERACHICAL_ERROR": {
             "onfalse": {
                 "comment": "aucune interruption dans la hiérarchie des titres",
                 "result": "c"
@@ -24993,7 +24993,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test17": {
+                    "TITLE_W_TEXT": {
                         "onfalse": {
                             "comment": "l'élément TITLE est vide",
                             "result": "nc"
@@ -25222,7 +25222,7 @@
         }
     },
     "23955": {
-        "test5": {
+        "H1_TO_H6_HIERACHICAL_ERROR": {
             "onfalse": {
                 "comment": "aucune interruption dans la hiérarchie des titres",
                 "result": "c"
@@ -25489,7 +25489,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test17": {
+                    "TITLE_W_TEXT": {
                         "onfalse": {
                             "comment": "l'élément TITLE est vide",
                             "result": "nc"
@@ -25670,7 +25670,7 @@
         }
     },
     "24280": {
-        "test5": {
+        "H1_TO_H6_HIERACHICAL_ERROR": {
             "onfalse": {
                 "comment": "aucune interruption dans la hiérarchie des titres",
                 "result": "c"
@@ -25913,7 +25913,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test17": {
+                    "TITLE_W_TEXT": {
                         "onfalse": {
                             "comment": "l'élément TITLE est vide",
                             "result": "nc"
@@ -26118,7 +26118,7 @@
         }
     },
     "24608": {
-        "test5": {
+        "H1_TO_H6_HIERACHICAL_ERROR": {
             "onfalse": {
                 "comment": "aucune interruption dans la hiérarchie des titres",
                 "result": "c"
@@ -26361,7 +26361,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test17": {
+                    "TITLE_W_TEXT": {
                         "onfalse": {
                             "comment": "l'élément TITLE est vide",
                             "result": "nc"
@@ -26542,7 +26542,7 @@
         }
     },
     "26886": {
-        "test5": {
+        "H1_TO_H6_HIERACHICAL_ERROR": {
             "onfalse": {
                 "comment": "aucune interruption dans la hiérarchie des titres",
                 "result": "c"
@@ -26773,7 +26773,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test17": {
+                    "TITLE_W_TEXT": {
                         "onfalse": {
                             "comment": "l'élément TITLE est vide",
                             "result": "nc"

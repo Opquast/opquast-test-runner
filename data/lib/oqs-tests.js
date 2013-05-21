@@ -1331,7 +1331,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
                 var alt = $("img[alt]", this) && $.trim($("img[alt]", this).attr("alt")).toLowerCase();
 
                 //
-                if (text == "accessibilité" || alt == "accessibilité") {
+                if (text.indexOf("accessibility") !== -1 || alt.indexOf("accessibility") !== -1 ||
+                    text.indexOf("accessibilité") !== -1 || alt.indexOf("accessibilité") !== -1) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -1410,12 +1411,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
                 var context = $.trim($(this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase(), href = $.trim($(this).attr("href"));
 
                 //
-                if ($.inArray(context, Object.keys(links)) != -1) {
+                if ($.inArray(context, Object.keys(links)) != -1 && links[context] != href) {
                     //
-                    if (links[context] != href) {
-                        //
-                        result.push(_getDetails(this));
-                    }
+                    result.push(_getDetails(this));
                 }
 
                 //
@@ -2207,24 +2205,19 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
             //
             sidecar.resources.forEach(function(element, index, array) {
                 //
-                if (element.image_info) {
+                if (element.image_info && element.image_info.animated) {
                     //
-                    if (element.image_info.animated) {
-                        //
-                        animated.push(element.uri);
-                    }
+                    animated.push(element.uri);
                 }
             });
 
             //
             $("img").each(function() {
                 //
-                if ($.inArray(this.src, animated) != -1) {
+                if ($.inArray(this.src, animated) != -1 && $(this).parents("a:not([href^='#'])").size() == 0 &&
+                        $(this).parents("button:not([href^='#'])").size() == 0) {
                     //
-                    if ($(this).parents("a:not([href^='#'])").size() == 0 && $(this).parents("button:not([href^='#'])").size() == 0) {
-                        //
-                        result.push(_getDetails(this));
-                    }
+                    result.push(_getDetails(this));
                 }
             });
         }
@@ -2560,12 +2553,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
                 var context = $.trim($("img", this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase(), href = $.trim($(this).attr("href"));
 
                 //
-                if ($.inArray(context, Object.keys(links)) != -1) {
+                if ($.inArray(context, Object.keys(links)) != -1 && links[context] != href) {
                     //
-                    if (links[context] != href) {
-                        //
-                        result.push(_getDetails(this));
-                    }
+                    result.push(_getDetails(this));
                 }
 
                 //
@@ -2673,12 +2663,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
                 var href = $.trim($(this).attr("href"));
 
                 //
-                if ($.inArray(context, Object.keys(links)) != -1) {
+                if ($.inArray(context, Object.keys(links)) != -1 && links[context] != href) {
                     //
-                    if (links[context] != href) {
-                        //
-                        result.push(_getDetails(this));
-                    }
+                    result.push(_getDetails(this));
                 }
 
                 //
@@ -4182,12 +4169,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
             //
             sidecar.resources.forEach(function(element, index, array) {
                 //
-                if (element.image_info) {
+                if (element.image_info && element.image_info["animated"]) {
                     //
-                    if (element.image_info["animated"]) {
-                        //
-                        images.push(element.uri);
-                    }
+                    images.push(element.uri);
                 }
             });
             //
@@ -6465,12 +6449,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
             //
             sidecar.pageInfo.links.forEach(function(element, index, array) {
                 //
-                if (element.rel == "alternate") {
+                if (element.rel == "alternate" && $.inArray(element.type, ["application/rss+xml", "application/atom+xml"]) != -1) {
                     //
-                    if ($.inArray(element.type, ["application/rss+xml", "application/atom+xml"]) != -1) {
-                        //
-                        result.push(_getDetails($("link[rel='alternate'][href='" + element.href + "'][type='" + element.type + "']").get(0)));
-                    }
+                    result.push(_getDetails($("link[rel='alternate'][href='" + element.href + "'][type='" + element.type + "']").get(0)));
                 }
             });
         }
@@ -6667,7 +6648,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
         var _result = [], _reg = new RegExp().compile("[_% ]", "g"), _reg_domain = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
 
         // current URL
-        if (_reg.test(doc.location.href)) {
+        if (_reg.test(doc.location.hostname)) {
             //
             _result.push(doc.location.href);
         }
@@ -6678,11 +6659,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
             var _href = $.trim($(this).attr("href")), isInternal = true;
 
             //
-            if (_reg_domain.test(_href)) {
-                //
-                if (RegExp.$1 != doc.location.hostname) {
-                    isInternal = false;
-                }
+            if (_reg_domain.test(_href) && RegExp.$1 != doc.location.hostname) {
+                isInternal = false;
             }
 
             //
@@ -6707,7 +6685,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
         var _result = [], _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i"), _reg_doc = new RegExp().compile("\.(pdf|doc)$", "i");
 
         //
-        $("a").each(function() {
+        $("a[href]").each(function() {
             //
             var _href = $.trim($(this).attr("href")), isInternal = true, isDoc = false;
 
@@ -6717,19 +6695,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
             }
 
             //
-            if (!isDoc && _reg.test(_href)) {
-                //
-                if (RegExp.$1 != doc.location.hostname) {
-                    isInternal = false;
-                }
+            if (!isDoc && _reg.test(_href) && RegExp.$1 != doc.location.hostname) {
+                isInternal = false;
             }
 
             //
-            if (!isDoc && isInternal) {
-                //
-                if ($(this).attr("target") == "_blank") {
-                    _result.push(_getDetails(this));
-                }
+            if (!isDoc && isInternal && $(this).attr("target") == "_blank") {
+                _result.push(_getDetails(this));
             }
         });
 
@@ -6751,11 +6723,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
             var _href = $.trim($(this).attr("href"));
 
             //
-            if (_reg.test(_href)) {
-                //
-                if (RegExp.$1 != doc.location.hostname) {
-                    _result.push(_getDetails(this));
-                }
+            if (_reg.test(_href) && RegExp.$1 != doc.location.hostname) {
+                _result.push(_getDetails(this));
             }
         });
 

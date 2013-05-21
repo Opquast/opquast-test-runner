@@ -534,8 +534,7 @@
     "test13": "xpath@html://*[normalize-space(@class)='rightBox' or starts-with(normalize-space(@class),'rightBox ') or contains(@class,' rightBox ') or (contains(normalize-space(@class),' rightBox') and substring-after(normalize-space(@class),'rightBox')='')][position()=4]",
     "test14": "oqs@html:linksSpecialChars",
     "test15": "xpath@html://*[@class='path' or @class='breadcrumb']//a[@class='pathnav' or @class='breadcrumb'][position()=6]",
-    "test17": "xpath@html://title[normalize-space(text())!='']",
-    "test18": "xpath@html://a[@href]/following-sibling::*[local-name()='a'][position()=1]",
+    "test18": "xpath@html://a[@href]/following-sibling::*[position()=1][local-name()='a']",
     "test19": "oqs@html:linksWithSameHref",
     "test20": "oqs@html:linksInternal",
     "test21": "xpath@html://a[normalize-space(@target)!='_blank'][starts-with(@href,'http://') or starts-with(@href,'https://')]",
@@ -558,6 +557,5 @@
     "test41": "xpath@html://div[@id='transversalNav']//ul//ul//ul//ul",
     "test42": "xpath@html://a[starts-with(@href,'http://') or starts-with(@href,'https://')]",
     "test43": "oqs@html:linksNavigation",
-    "test5": "xpath@html://*[number(substring(local-name(),2,1))=substring(local-name(),2,1)][number(substring(local-name(),2,1))-1>number(substring(local-name(preceding-sibling::*[number(substring(local-name(),2,1))=substring(local-name(),2,1)][position()=1]),2,1))]",
     "test6": "xpath@html://table[.//tbody]"
 }

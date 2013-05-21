@@ -1,0 +1,9 @@
+p {
+    font-family: "Arial", "Verdana", "Helvetica", "Tahoma";
+}
+
+@media print {
+    p {
+        font-family: serif;
+    }
+}
