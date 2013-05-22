@@ -1,15 +1,32 @@
 /*global CSSParser*/
-var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-za', 'ak', 'ak-gh', 'am', 'am-et', 'ar', 'ar-ae', 'ar-bh', 'ar-dz', 'ar-eg', 'ar-iq', 'ar-jo', 'ar-kw', 'ar-lb', 'ar-ly', 'ar-ma', 'ar-om', 'ar-qa', 'ar-sa', 'ar-sd', 'ar-sy', 'ar-tn', 'ar-ye', 'as', 'as-in', 'az', 'az-az', 'az-cyrl', 'az-cyrl-az', 'az-latn', 'az-latn-az', 'be', 'be-by', 'bg', 'bg-bg', 'bn', 'bn-bd', 'bn-in', 'bs', 'bs-ba', 'byn', 'byn-er', 'ca', 'ca-es', 'cch', 'cch-ng', 'cop', 'cs', 'cs-cz', 'cy', 'cy-gb', 'da', 'da-dk', 'de', 'de-at', 'de-be', 'de-ch', 'de-de', 'de-li', 'de-lu', 'dv', 'dv-mv', 'dz', 'dz-bt', 'ee', 'ee-gh', 'ee-tg', 'el', 'el-cy', 'el-gr', 'el-polyton', 'en', 'en-as', 'en-au', 'en-be', 'en-bw', 'en-bz', 'en-ca', 'en-dsrt', 'en-dsrt-us', 'en-gb', 'en-gu', 'en-hk', 'en-ie', 'en-in', 'en-jm', 'en-mh', 'en-mp', 'en-mt', 'en-na', 'en-nz', 'en-ph', 'en-pk', 'en-sg', 'en-shaw', 'en-tt', 'en-um', 'en-us', 'en-us-posix', 'en-vi', 'en-za', 'en-zw', 'eo', 'es', 'es-ar', 'es-bo', 'es-cl', 'es-co', 'es-cr', 'es-do', 'es-ec', 'es-es', 'es-gt', 'es-hn', 'es-mx', 'es-ni', 'es-pa', 'es-pe', 'es-pr', 'es-py', 'es-sv', 'es-us', 'es-uy', 'es-ve', 'et', 'et-ee', 'eu', 'eu-es', 'fa', 'fa-af', 'fa-ir', 'fi', 'fi-fi', 'fil', 'fil-ph', 'fo', 'fo-fo', 'fr', 'fr-be', 'fr-ca', 'fr-ch', 'fr-fr', 'fr-lu', 'fr-mc', 'fr-sn', 'fur', 'fur-it', 'ga', 'ga-ie', 'gaa', 'gaa-gh', 'gez', 'gez-er', 'gez-et', 'gl', 'gl-es', 'gu', 'gu-in', 'gv', 'gv-gb', 'ha', 'ha-arab', 'ha-arab-ng', 'ha-arab-sd', 'ha-gh', 'ha-latn', 'ha-latn-gh', 'ha-latn-ne', 'ha-latn-ng', 'ha-ne', 'ha-ng', 'ha-sd', 'haw', 'haw-us', 'he', 'he-il', 'hi', 'hi-in', 'hr', 'hr-hr', 'hu', 'hu-hu', 'hy', 'hy-am', 'hy-am-revised', 'ia', 'id', 'id-id', 'ig', 'ig-ng', 'ii', 'ii-cn', 'in', 'is', 'is-is', 'it', 'it-ch', 'it-it', 'iu', 'iw', 'ja', 'ja-jp', 'ka', 'ka-ge', 'kaj', 'kaj-ng', 'kam', 'kam-ke', 'kcg', 'kcg-ng', 'kfo', 'kfo-ci', 'kk', 'kk-cyrl', 'kk-cyrl-kz', 'kk-kz', 'kl', 'kl-gl', 'km', 'km-kh', 'kn', 'kn-in', 'ko', 'ko-kr', 'kok', 'kok-in', 'kpe', 'kpe-gn', 'kpe-lr', 'ku', 'ku-arab', 'ku-latn', 'ku-latn-tr', 'ku-tr', 'kw', 'kw-gb', 'ky', 'ky-kg', 'ln', 'ln-cd', 'ln-cg', 'lo', 'lo-la', 'lt', 'lt-lt', 'lv', 'lv-lv', 'mk', 'mk-mk', 'ml', 'ml-in', 'mn', 'mn-cn', 'mn-cyrl', 'mn-cyrl-mn', 'mn-mn', 'mn-mong', 'mn-mong-cn', 'mo', 'mr', 'mr-in', 'ms', 'ms-bn', 'ms-my', 'mt', 'mt-mt', 'my', 'my-mm', 'nb', 'nb-no', 'ne', 'ne-in', 'ne-np', 'nl', 'nl-be', 'nl-nl', 'nn', 'nn-no', 'no', 'nr', 'nr-za', 'nso', 'nso-za', 'ny', 'ny-mw', 'om', 'om-et', 'om-ke', 'or', 'or-in', 'pa', 'pa-arab', 'pa-arab-pk', 'pa-guru', 'pa-guru-in', 'pa-in', 'pa-pk', 'pl', 'pl-pl', 'ps', 'ps-af', 'pt', 'pt-br', 'pt-pt', 'ro', 'ro-md', 'ro-ro', 'ru', 'ru-ru', 'ru-ua', 'rw', 'rw-rw', 'sa', 'sa-in', 'se', 'se-fi', 'se-no', 'sh', 'sh-ba', 'sh-cs', 'sh-yu', 'si', 'si-lk', 'sid', 'sid-et', 'sk', 'sk-sk', 'sl', 'sl-si', 'so', 'so-dj', 'so-et', 'so-ke', 'so-so', 'sq', 'sq-al', 'sr', 'sr-ba', 'sr-cs', 'sr-cyrl', 'sr-cyrl-ba', 'sr-cyrl-cs', 'sr-cyrl-me', 'sr-cyrl-rs', 'sr-cyrl-yu', 'sr-latn', 'sr-latn-ba', 'sr-latn-cs', 'sr-latn-me', 'sr-latn-rs', 'sr-latn-yu', 'sr-me', 'sr-rs', 'sr-yu', 'ss', 'ss-sz', 'ss-za', 'st', 'st-ls', 'st-za', 'sv', 'sv-fi', 'sv-se', 'sw', 'sw-ke', 'sw-tz', 'syr', 'syr-sy', 'ta', 'ta-in', 'te', 'te-in', 'tg', 'tg-cyrl', 'tg-cyrl-tj', 'tg-tj', 'th', 'th-th', 'ti', 'ti-er', 'ti-et', 'tig', 'tig-er', 'tl', 'tn', 'tn-za', 'to', 'to-to', 'tr', 'tr-tr', 'trv', 'ts', 'ts-za', 'tt', 'tt-ru', 'ug', 'ug-arab', 'ug-arab-cn', 'ug-cn', 'uk', 'uk-ua', 'ur', 'ur-in', 'ur-pk', 'uz', 'uz-af', 'uz-arab', 'uz-arab-af', 'uz-cyrl', 'uz-cyrl-uz', 'uz-latn', 'uz-latn-uz', 'uz-uz', 've', 've-za', 'vi', 'vi-vn', 'wal', 'wal-et', 'wo', 'wo-latn', 'wo-latn-sn', 'wo-sn', 'xh', 'xh-za', 'yo', 'yo-ng', 'zh', 'zh-cn', 'zh-hans', 'zh-hans-cn', 'zh-hans-hk', 'zh-hans-mo', 'zh-hans-sg', 'zh-hant', 'zh-hant-hk', 'zh-hant-mo', 'zh-hant-tw', 'zh-hk', 'zh-mo', 'zh-sg', 'zh-tw', 'zu', 'zu-za'], mimeHTML = ["text/html", "application/xhtml+xml"], mimeSyndication = ["application/rss+xml", "application/atom+xml", "application/xml", "text/xml"], mimeMultimedia = ["application/x-shockwave-flash", "application/octet-stream", "application/x-silverlight-app", "application/xaml+xml", "application/x-ms-xbap", "application/vnd.rn-realmedia", "application/ogg", "image/svg+xml"], jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"], genericFontStyle = ["serif", "sans-serif", "cursive", "fantasy", "monospace", "inherit"], atomNs = "http://www.w3.org/2005/Atom", fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-za', 'ak', 'ak-gh', 'am', 'am-et', 'ar', 'ar-ae', 'ar-bh', 'ar-dz', 'ar-eg', 'ar-iq', 'ar-jo', 'ar-kw', 'ar-lb', 'ar-ly', 'ar-ma', 'ar-om', 'ar-qa', 'ar-sa', 'ar-sd', 'ar-sy', 'ar-tn', 'ar-ye', 'as', 'as-in', 'az', 'az-az', 'az-cyrl', 'az-cyrl-az', 'az-latn', 'az-latn-az', 'be', 'be-by', 'bg', 'bg-bg', 'bn', 'bn-bd', 'bn-in', 'bs', 'bs-ba', 'byn', 'byn-er', 'ca', 'ca-es', 'cch', 'cch-ng', 'cop', 'cs', 'cs-cz', 'cy', 'cy-gb', 'da', 'da-dk', 'de', 'de-at', 'de-be', 'de-ch', 'de-de', 'de-li', 'de-lu', 'dv', 'dv-mv', 'dz', 'dz-bt', 'ee', 'ee-gh', 'ee-tg', 'el', 'el-cy', 'el-gr', 'el-polyton', 'en', 'en-as', 'en-au', 'en-be', 'en-bw', 'en-bz', 'en-ca', 'en-dsrt', 'en-dsrt-us', 'en-gb', 'en-gu', 'en-hk', 'en-ie', 'en-in', 'en-jm', 'en-mh', 'en-mp', 'en-mt', 'en-na', 'en-nz', 'en-ph', 'en-pk', 'en-sg', 'en-shaw', 'en-tt', 'en-um', 'en-us', 'en-us-posix', 'en-vi', 'en-za', 'en-zw', 'eo', 'es', 'es-ar', 'es-bo', 'es-cl', 'es-co', 'es-cr', 'es-do', 'es-ec', 'es-es', 'es-gt', 'es-hn', 'es-mx', 'es-ni', 'es-pa', 'es-pe', 'es-pr', 'es-py', 'es-sv', 'es-us', 'es-uy', 'es-ve', 'et', 'et-ee', 'eu', 'eu-es', 'fa', 'fa-af', 'fa-ir', 'fi', 'fi-fi', 'fil', 'fil-ph', 'fo', 'fo-fo', 'fr', 'fr-be', 'fr-ca', 'fr-ch', 'fr-fr', 'fr-lu', 'fr-mc', 'fr-sn', 'fur', 'fur-it', 'ga', 'ga-ie', 'gaa', 'gaa-gh', 'gez', 'gez-er', 'gez-et', 'gl', 'gl-es', 'gu', 'gu-in', 'gv', 'gv-gb', 'ha', 'ha-arab', 'ha-arab-ng', 'ha-arab-sd', 'ha-gh', 'ha-latn', 'ha-latn-gh', 'ha-latn-ne', 'ha-latn-ng', 'ha-ne', 'ha-ng', 'ha-sd', 'haw', 'haw-us', 'he', 'he-il', 'hi', 'hi-in', 'hr', 'hr-hr', 'hu', 'hu-hu', 'hy', 'hy-am', 'hy-am-revised', 'ia', 'id', 'id-id', 'ig', 'ig-ng', 'ii', 'ii-cn', 'in', 'is', 'is-is', 'it', 'it-ch', 'it-it', 'iu', 'iw', 'ja', 'ja-jp', 'ka', 'ka-ge', 'kaj', 'kaj-ng', 'kam', 'kam-ke', 'kcg', 'kcg-ng', 'kfo', 'kfo-ci', 'kk', 'kk-cyrl', 'kk-cyrl-kz', 'kk-kz', 'kl', 'kl-gl', 'km', 'km-kh', 'kn', 'kn-in', 'ko', 'ko-kr', 'kok', 'kok-in', 'kpe', 'kpe-gn', 'kpe-lr', 'ku', 'ku-arab', 'ku-latn', 'ku-latn-tr', 'ku-tr', 'kw', 'kw-gb', 'ky', 'ky-kg', 'ln', 'ln-cd', 'ln-cg', 'lo', 'lo-la', 'lt', 'lt-lt', 'lv', 'lv-lv', 'mk', 'mk-mk', 'ml', 'ml-in', 'mn', 'mn-cn', 'mn-cyrl', 'mn-cyrl-mn', 'mn-mn', 'mn-mong', 'mn-mong-cn', 'mo', 'mr', 'mr-in', 'ms', 'ms-bn', 'ms-my', 'mt', 'mt-mt', 'my', 'my-mm', 'nb', 'nb-no', 'ne', 'ne-in', 'ne-np', 'nl', 'nl-be', 'nl-nl', 'nn', 'nn-no', 'no', 'nr', 'nr-za', 'nso', 'nso-za', 'ny', 'ny-mw', 'om', 'om-et', 'om-ke', 'or', 'or-in', 'pa', 'pa-arab', 'pa-arab-pk', 'pa-guru', 'pa-guru-in', 'pa-in', 'pa-pk', 'pl', 'pl-pl', 'ps', 'ps-af', 'pt', 'pt-br', 'pt-pt', 'ro', 'ro-md', 'ro-ro', 'ru', 'ru-ru', 'ru-ua', 'rw', 'rw-rw', 'sa', 'sa-in', 'se', 'se-fi', 'se-no', 'sh', 'sh-ba', 'sh-cs', 'sh-yu', 'si', 'si-lk', 'sid', 'sid-et', 'sk', 'sk-sk', 'sl', 'sl-si', 'so', 'so-dj', 'so-et', 'so-ke', 'so-so', 'sq', 'sq-al', 'sr', 'sr-ba', 'sr-cs', 'sr-cyrl', 'sr-cyrl-ba', 'sr-cyrl-cs', 'sr-cyrl-me', 'sr-cyrl-rs', 'sr-cyrl-yu', 'sr-latn', 'sr-latn-ba', 'sr-latn-cs', 'sr-latn-me', 'sr-latn-rs', 'sr-latn-yu', 'sr-me', 'sr-rs', 'sr-yu', 'ss', 'ss-sz', 'ss-za', 'st', 'st-ls', 'st-za', 'sv', 'sv-fi', 'sv-se', 'sw', 'sw-ke', 'sw-tz', 'syr', 'syr-sy', 'ta', 'ta-in', 'te', 'te-in', 'tg', 'tg-cyrl', 'tg-cyrl-tj', 'tg-tj', 'th', 'th-th', 'ti', 'ti-er', 'ti-et', 'tig', 'tig-er', 'tl', 'tn', 'tn-za', 'to', 'to-to', 'tr', 'tr-tr', 'trv', 'ts', 'ts-za', 'tt', 'tt-ru', 'ug', 'ug-arab', 'ug-arab-cn', 'ug-cn', 'uk', 'uk-ua', 'ur', 'ur-in', 'ur-pk', 'uz', 'uz-af', 'uz-arab', 'uz-arab-af', 'uz-cyrl', 'uz-cyrl-uz', 'uz-latn', 'uz-latn-uz', 'uz-uz', 've', 've-za', 'vi', 'vi-vn', 'wal', 'wal-et', 'wo', 'wo-latn', 'wo-latn-sn', 'wo-sn', 'xh', 'xh-za', 'yo', 'yo-ng', 'zh', 'zh-cn', 'zh-hans', 'zh-hans-cn', 'zh-hans-hk', 'zh-hans-mo', 'zh-hans-sg', 'zh-hant', 'zh-hant-hk', 'zh-hant-mo', 'zh-hant-tw', 'zh-hk', 'zh-mo', 'zh-sg', 'zh-tw', 'zu', 'zu-za'],
+    mimeHTML = ["text/html", "application/xhtml+xml"],
+    mimeSyndication = ["application/rss+xml", "application/atom+xml", "application/xml", "text/xml"],
+    mimeMultimedia = ["application/x-shockwave-flash", "application/octet-stream", "application/x-silverlight-app", "application/xaml+xml", "application/x-ms-xbap", "application/vnd.rn-realmedia", "application/ogg", "image/svg+xml"],
+    jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
+    genericFontStyle = ["serif", "sans-serif", "cursive", "fantasy", "monospace", "inherit"],
+    atomNs = "http://www.w3.org/2005/Atom",
+    fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"],
+    badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"];
 
-var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"], cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws)\\.com/", "i"), analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i"), jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"), regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i");
+var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
+    cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws)\\.com/", "i"),
+    analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i"),
+    jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
+    regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i");
 
-(function($, window, undefined) {"use strict";
+(function($, window, undefined) {
+    "use strict";
 
-    var content = $("body").text().trim(), aContent = $.unique(content.toLowerCase().split(" "));
-
-    var inlineStyles = $("*[style]");
-
-    var onfocusEvents = $("*[onfocus]"), onblurEvents = $("*[onblur]"), onchangeEvents = $("*[onchange]"), onclickEvents = $("*[onclick]"), onmouseoverEvents = $("*[onmouseover]"), onmouseoutEvents = $("*[onmouseout]");
+    var content = $("body").text().trim(),
+        aContent = $.unique(content.toLowerCase().split(" ")),
+        inlineStyles = $("*[style]"),
+        onfocusEvents = $("*[onfocus]"),
+        onblurEvents = $("*[onblur]"),
+        onchangeEvents = $("*[onchange]"),
+        onclickEvents = $("*[onclick]"),
+        onmouseoverEvents = $("*[onmouseover]"),
+        onmouseoutEvents = $("*[onmouseout]");
 
     /**
      *
@@ -18,7 +35,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      */
     function _htmlFieldWithoutTitleAndLabel(type, implicit) {
         //
-        var result = [], fields = {}, i = 0, j = 0;
+        var result = [],
+            fields = {},
+            i = 0,
+            j = 0;
 
         //
         try {
@@ -32,9 +52,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
                     //
                     $("input:not([type='hidden']), select, textarea", $(this)).each(function() {
                         //
-                        var id = $.trim($(this).attr("id"));
-                        var title = $.trim($(this).attr("title")).toLowerCase();
-                        var label = _getAllText($("label[for='" + id + "']").get(0));
+                        var id = $.trim($(this).attr("id")),
+                            title = $.trim($(this).attr("title")).toLowerCase(),
+                            label = "";
+
+                        try {
+                            label = _getAllText($("label[for='" + id + "']").get(0));
+                        } catch(e) {}
 
                         //
                         if (implicit && label == "") {
@@ -64,9 +88,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
                         //
                         $("input:not([type='hidden']), select, textarea", $(this)).each(function() {
                             //
-                            var id = $.trim($(this).attr("id"));
-                            var title = $.trim($(this).attr("title")).toLowerCase();
-                            var label = _getAllText($("label[for='" + id + "']").get(0));
+                            var id = $.trim($(this).attr("id")),
+                                title = $.trim($(this).attr("title")).toLowerCase(),
+                                label = "";
+
+                            try {
+                                label = _getAllText($("label[for='" + id + "']").get(0));
+                            } catch(e) {}
 
                             //
                             if (implicit && label == "") {
@@ -272,7 +300,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      */
     function _htmlSameLabelsTitles(type) {
         //
-        var result = [], labels = [], titles = [], nodes = [];
+        var result = [],
+            labels = [],
+            titles = [],
+            nodes = [];
 
         //
         try {
@@ -283,10 +314,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
                     //
                     $("input, select, textarea", $(this)).each(function() {
                         //
-                        var id = $.trim($(this).attr("id"));
-                        var oLabel = $("label[for=" + id + "]");
-                        var label = oLabel ? $.trim(oLabel.text()).toLowerCase() : "";
-                        var title = $.trim($(this).attr("title")).toLowerCase();
+                        var id = $.trim($(this).attr("id")),
+                            oLabel = $("label[for=" + id + "]"),
+                            label = oLabel ? $.trim(oLabel.text()).toLowerCase() : "",
+                            title = $.trim($(this).attr("title")).toLowerCase();
 
                         // label hidden
                         if (oLabel && (oLabel.css("display") == "none" || oLabel.css("visibility") == "hidden")) {
@@ -331,10 +362,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
                         //
                         $("input, select, textarea", $(this)).each(function() {
                             //
-                            var id = $.trim($(this).attr("id"));
-                            var oLabel = $("label[for=" + id + "]");
-                            var label = oLabel ? $.trim(oLabel.text()).toLowerCase() : "";
-                            var title = $.trim($(this).attr("title")).toLowerCase();
+                            var id = $.trim($(this).attr("id")),
+                                oLabel = $("label[for=" + id + "]"),
+                                label = oLabel ? $.trim(oLabel.text()).toLowerCase() : "",
+                                title = $.trim($(this).attr("title")).toLowerCase();
 
                             // label hidden
                             if (oLabel && (oLabel.css("display") == "none" || oLabel.css("visibility") == "hidden")) {
@@ -378,7 +409,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
             //
             for (var node in nodes) {
                 // text is default type
-                var _tmp = _getDetails(nodes[node]), _type = "text";
+                var _tmp = _getDetails(nodes[node]),
+                    _type = "text";
 
                 //
                 if (_tmp["tag"] == "input") {
@@ -1828,28 +1860,25 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      */
     window.frameWithSameTitles = function htmlFrameWithSameTitles(doc) {
         //
-        var result = [];
+        var result = [],
+            frames = {};
 
         //
         try {
             //
-            $("frame").each(function() {
+            $("frame[title]").each(function() {
                 //
                 var title = $.trim($(this).attr("title")).toLowerCase(),
                     src = this.src.split("#")[0];
 
                 //
-                $("frame").each(function() {
+                if (title == '' || ($.inArray(title, Object.keys(frames)) != -1 && frames[title] != src)) {
                     //
-                    var _title = $.trim($(this).attr("title")).toLowerCase(),
-                        _src = this.src.split("#")[0];
-
+                    result.push(_getDetails(this));
+                } else {
                     //
-                    if ((_title == '' || _title == title) && _src != src) {
-                        //
-                        result.push(_getDetails(this));
-                    }
-                });
+                    frames[title] = src;
+                }
             });
         }
 
@@ -2164,14 +2193,16 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      */
     window.iframeWithSameTitles = function htmlIframeWithSameTitles(doc) {
         //
-        var result = [], iframes = {};
+        var result = [],
+            iframes = {};
 
         //
         try {
             //
             $("iframe[title]").each(function() {
                 //
-                var title = $.trim($(this).attr("title")).toLowerCase(), src = this.src.split("#")[0];
+                var title = $.trim($(this).attr("title")).toLowerCase(),
+                    src = this.src.split("#")[0];
 
                 //
                 if (title == '' || ($.inArray(title, Object.keys(iframes)) != -1 && iframes[title] != src)) {
@@ -5896,14 +5927,16 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      */
     window.jsPopUp = function jsPopUp(doc) {
         //
-        var result = [], reg = new RegExp().compile("(window|document)\\.open\\s?", "i");
+        var result = [],
+            reg = new RegExp().compile("(window|document)\\.open\\s?", "i");
 
         //
         try {
             //
             if ($("body").attr("onload")) {
                 //
-                var _onload = $("body").attr("onload"), functions = _onload.split(";");
+                var _onload = $("body").attr("onload"),
+                    functions = _onload.split(";");
 
                 //
                 functions.forEach(function(element, index, array) {
@@ -5961,7 +5994,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      * @return
      */
     window.jsRefresh = function jsRefresh(doc) {
-        var reg1 = new RegExp().compile("(\\.location\\.reload\\()", "i"), reg2 = new RegExp().compile("(\\.location\\.replace\\()", "i"), reg3 = new RegExp().compile("(\\.location\(\\.href\)?\s*=)", "i"), promises = [];
+        var reg1 = new RegExp().compile("(\\.location\\.reload\\()", "i"),
+            reg2 = new RegExp().compile("(\\.location\\.replace\\()", "i"),
+            reg3 = new RegExp().compile("(\\.location\(\\.href\)?\s*=)", "i"),
+            promises = [];
 
         try {
             if (sidecar.resources.some(function(element) {
@@ -5983,7 +6019,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
                     promises.push(XHR.get(item.uri).then(function(response) {
-                        var m1 = reg1.exec(response.data), m2 = reg2.exec(response.data), m3 = reg3.exec(response.data);
+                        var m1 = reg1.exec(response.data),
+                            m2 = reg2.exec(response.data),
+                            m3 = reg3.exec(response.data);
 
                         if (m1 !== null || m2 !== null || m3 !== null) {
                             var found = [m1, m2, m3].map(function(val) {
@@ -6026,7 +6064,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
             //
             if ($("body").attr("onload")) {
                 //
-                var _onload = $("body").attr("onload"), functions = _onload.split(";");
+                var _onload = $("body").attr("onload"),
+                    functions = _onload.split(";");
 
                 //
                 functions.forEach(function(element, index, array) {
