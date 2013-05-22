@@ -1331,6 +1331,66 @@
             }
         }
     },
+    "HTML_W_LANG_ATTR": {
+        "HTML_W_LANG_ATTR": {
+            "onfalse": {
+                "comment": "aucun attribut LANG sur l'élément HTML n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un attribut LANG sur l'élément HTML a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "HTML_W_LANG_ATTR_VALID": {
+        "HTML_W_LANG_ATTR_VALID": {
+            "onfalse": {
+                "comment": "l'attribut LANG de l'élément HTML est vide, absent ou incorrect",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "l'attribut LANG de l'élément HTML est correct",
+                "result": "c"
+            }
+        }
+    },
+    "HTML_W_CR": {
+        "HTML_W_CR": {
+            "onfalse": {
+                "comment": "le HTML ne contient pas de retours à la ligne inutiles",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le HTML contient des retours à la ligne inutiles",
+                "result": "c"
+            }
+        }
+    },
+    "HTML_W_REDUDANT_SPACES": {
+        "HTML_W_REDUDANT_SPACES": {
+            "onfalse": {
+                "comment": "le HTML contient des espaces inutiles",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le HTML contient pas d'espaces inutiles",
+                "result": "c"
+            }
+        }
+    },
+    "EVENTS": {
+        "EVENTS": {
+            "onfalse": {
+                "comment": "aucun onclick, onchange, onfocus, onblur, onmouseover ni onmouseout n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un onclick, onchange, onfocus, onblur, onmouseover ou onmouseout a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "FRAME_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
         "FRAME_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
             "onfalse": {
@@ -3023,6 +3083,186 @@
             }
         }
     },
+    "CSS_BACKGROUND_IMAGE": {
+        "CSS_BACKGROUND_IMAGE": {
+            "onfalse": {
+                "comment": "aucune image ajoutée par CSS n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une image ajoutée par CSS a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_CONTENT": {
+        "CSS_CONTENT": {
+            "onfalse": {
+                "comment": "aucun contenu textuel ajouté par CSS n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un contenu textuel ajouté par CSS a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_HOVER_LINKS": {
+        "CSS_HOVER_LINKS": {
+            "onfalse": {
+                "comment": "aucun style pouvant changer la mise en page des liens au survol n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un style pouvant changer la mise en page des liens au survol a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_W_CR": {
+        "CSS_W_CR": {
+            "onfalse": {
+                "comment": "aucune CSS avec des retours à la ligne inutiles n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS avec des retours à la ligne inutiles a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "FAVICON": {
+        "FAVICON": {
+            "onfalse": {
+                "comment": "aucun appel valide à un favicon n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un appel valide à un favicon a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "EMBED_WO_ALTERNATIVE": {
+        "EMBED_WO_ALTERNATIVE": {
+            "onfalse": {
+                "comment": "aucun élément EMBED sans alternative n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED sans alternative a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "DOCTYPE_PLACED": {
+        "DOCTYPE_PLACED": {
+            "onfalse": {
+                "comment": "le DOCTYPE est mal positionné",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le DOCTYPE est bien positionné",
+                "result": "c"
+            }
+        }
+    },
+    "EMBED_NOT_IN_A_OR_BUTTON_WO_ANCHOR": {
+        "EMBED_NOT_IN_A_OR_BUTTON_WO_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément EMBED ni dans un A, ni dans un BUTTON sans ancre n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED ni dans un A, ni dans un BUTTON sans ancre a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "DOCTYPE_PRESENT": {
+        "DOCTYPE_PRESENT": {
+            "onfalse": {
+                "comment": "le DOCTYPE est absent",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le DOCTYPE est présent",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_W_REDUDANT_SPACES": {
+        "CSS_W_REDUDANT_SPACES": {
+            "onfalse": {
+                "comment": "aucune CSS avec des espaces inutiles n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS avec des espaces inutiles a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_UPPERCASE": {
+        "CSS_UPPERCASE": {
+            "onfalse": {
+                "comment": "aucune suite de majuscules décoratives n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une suite de majuscules décoratives a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_UNDERLINE": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_IMG_RESIZE": {
+        "CSS_IMG_RESIZE": {
+            "onfalse": {
+                "comment": "aucun élément IMG avec un WIDTH ou HEIGHT redimensionné",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG avec un WIDTH ou HEIGHT redimensionné",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_GENERIC_FONT": {
+        "CSS_GENERIC_FONT": {
+            "onfalse": {
+                "comment": "aucune CSS ne se terminant par une police non générique n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS se terminant par une police non générique a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_FONTS_NUMBER": {
+        "CSS_FONTS_NUMBER": {
+            "onfalse": {
+                "comment": "pas plus de 3 polices définies",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "plus de 3 polices définies",
+                "result": "c"
+            }
+        }
+    },
     "CHARSET_UNICODE": {
         "CHARSET_UNICODE": {
             "onfalse": {
@@ -3031,6 +3271,30 @@
             },
             "ontrue": {
                 "comment": "l'encodage détecté est UTF-8",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
+            "onfalse": {
+                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_FOCUS_STYLE": {
+        "CSS_FOCUS_STYLE": {
+            "onfalse": {
+                "comment": "aucun outline supprimé",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de la propriété OUTLINE avec la valeur 0 ou NONE constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
                 "result": "c"
             }
         }

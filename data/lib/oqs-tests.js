@@ -563,10 +563,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      * @return
      */
     window.cssBackgroundImage = function cssBackgroundImage(doc) {
-        var reg = new RegExp().compile('^url\\(', "i");
-
         function callback(rule) {
-            var result = [];
+            var result = [], reg = new RegExp().compile('^url\\(', "i");;
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
@@ -591,10 +589,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      * @return
      */
     window.cssBackgroundImageInSprite = function cssBackgroundImageInSprite(doc) {
-        var reg = new RegExp().compile('^url\\(', "i");
-
         function callback(rule) {
-            var result = [];
+            var result = [], reg = new RegExp().compile('^url\\(', "i");;
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
@@ -728,8 +724,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
         try {
             //
             $("body").find("*").andSelf().each(function() {
-                var _before = getComputedStyle(this, ':before').getPropertyCSSValue('content').cssText;
-                var _after = getComputedStyle(this, ':after').getPropertyCSSValue('content').cssText;
+                var _before = getComputedStyle(this, ':before').getPropertyCSSValue('content').cssText,
+                    _after = getComputedStyle(this, ':after').getPropertyCSSValue('content').cssText;
 
                 if ($.inArray(_before, exclusions) == -1 || $.inArray(_after, exclusions) == -1) {
                     //
@@ -836,7 +832,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      * @return
      */
     window.cssHoverLinks = function cssHoverLinks(doc) {
-        var reg = new RegExp().compile("(^| )(a((#|\\.)[^ ]+)?|(#|\\.)[^ ]+):hover$", "i"), reg2 = new RegExp().compile("^([-a-z]+-)?(height|width)$", "i"), reg3 = new RegExp().compile("^(bottom|display|float|left|letter-spacing|position|right|text-align|text-indent|top)$", "i"), reg4 = new RegExp().compile("^(font|border|margin|outline|padding)(-[-a-z]+)?$", "i");
+        var reg = new RegExp().compile("(^| )(a((#|\\.)[^ ]+)?|(#|\\.)[^ ]+):hover$", "i"),
+            reg2 = new RegExp().compile("^([-a-z]+-)?(height|width)$", "i"),
+            reg3 = new RegExp().compile("^(bottom|display|float|left|letter-spacing|position|right|text-align|text-indent|top)$", "i"),
+            reg4 = new RegExp().compile("^(font|border|margin|outline|padding)(-[-a-z]+)?$", "i");
 
         function callback(rule) {
             var result = [];
@@ -1224,7 +1223,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      */
     window.cssUppercase = function cssUppercase(doc) {
         //
-        var result = [], exclusions = ["ABBR", "ACRONYM", "ADDRESS", "BLOCKQUOTE", "CITE", "CODE", "KBD", "PRE", "Q", "RP", "RT", "RUBY", "SAMP", "SUB", "SUP", "TIME", "VAR", "IFRAME", "SCRIPT"], reg = new RegExp().compile("^[^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*$", "g");
+        var result = [],
+            exclusions = ["ABBR", "ACRONYM", "ADDRESS", "BLOCKQUOTE", "CITE", "CODE", "KBD", "PRE", "Q", "RP", "RT", "RUBY", "SAMP", "SUB", "SUP", "TIME", "VAR", "IFRAME", "SCRIPT"],
+            reg = new RegExp().compile("^[^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*$", "g");
 
         //
         try {
@@ -1834,12 +1835,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
             //
             $("frame").each(function() {
                 //
-                var title = $.trim($(this).attr("title")).toLowerCase(), src = this.src.split("#")[0];
+                var title = $.trim($(this).attr("title")).toLowerCase(),
+                    src = this.src.split("#")[0];
 
                 //
                 $("frame").each(function() {
                     //
-                    var _title = $.trim($(this).attr("title")).toLowerCase(), _src = this.src.split("#")[0];
+                    var _title = $.trim($(this).attr("title")).toLowerCase(),
+                        _src = this.src.split("#")[0];
 
                     //
                     if ((_title == '' || _title == title) && _src != src) {
@@ -2515,7 +2518,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
         //
         try {
             //
-            var _lang = $.trim($("html").attr("lang")), _xml_lang = $.trim($("html").attr("xml:lang"));
+            var _lang = $.trim($("html").attr("lang")),
+                _xml_lang = $.trim($("html").attr("xml:lang"));
 
             //
             if (_lang != '' || _xml_lang != '') {
@@ -3405,7 +3409,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
         //
         try {
             //
-            var _lang = $.trim($("html").attr("lang")).split("-")[0].toLowerCase(), _xml_lang = $.trim($("html").attr("xml:lang")).split("-")[0].toLowerCase();
+            var _lang = $.trim($("html").attr("lang")).split("-")[0].toLowerCase(),
+                _xml_lang = $.trim($("html").attr("xml:lang")).split("-")[0].toLowerCase();
 
             //
             if ($.inArray(_lang, langs) != -1 || $.inArray(_xml_lang, langs) != -1) {
@@ -5045,7 +5050,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"), badLinks = ['c
      */
     window.jsEvents = function jsEvents(doc) {
         //
-        var result = [], nodes = [];
+        var result = [],
+            nodes = [];
 
         //
         try {
