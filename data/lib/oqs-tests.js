@@ -62,7 +62,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
                         //
                         if (implicit && label == "") {
-                            label = _getAllText($(this).parents("label").get(0));
+                            try {
+                                label = _getAllText($(this).parents("label").get(0));
+                            } catch(e) {}
                         }
 
                         //
@@ -449,6 +451,68 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         }
 
         //
+        return result;
+    }
+
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    function _detectFunction(exp, elements, attr) {
+        var result = [],
+            reg = new RegExp().compile(exp, "i");
+
+        //
+        elements.each(function() {
+            //
+            var _event = $.trim($(this).attr(attr)),
+                functions = _event.split(";");
+
+            //
+            functions.forEach(function(element, index, array) {
+                if (reg.test(element)) {
+                    //
+                    result.push(_function);
+                } else {
+                    //
+                    var aFunction = regFunction.exec(element);
+
+                    //
+                    if (aFunction && aFunction.length > 0) {
+                        //
+                        var _function = $.trim(aFunction[1]);
+
+                        //
+                        if (_function != "") {
+                            //
+                            if (reg.test(_function)) {
+                                //
+                                result.push(_event);
+                            }
+
+                            //
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
+                                try {
+                                    var fn = window;
+
+                                    for each (var i in _function.split(".")) {
+                                        fn = fn[i];
+                                    }
+
+                                    if (reg.test(fn.toString())) {
+                                        //
+                                        result.push(_function);
+                                    }
+                                } catch(err) {
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
         return result;
     }
 
@@ -2273,7 +2337,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlImageNotIndexable = function htmlImageNotIndexable(doc) {
         //
-        var result = [], formats = ["image/png", "image/gif", "image/jpeg", "image/jpg", "image/svg+xml"], images = [];
+        var result = [],
+            formats = ["image/png", "image/gif", "image/jpeg", "image/jpg", "image/svg+xml"],
+            images = [];
 
         //
         try {
@@ -2321,7 +2387,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlImageSize = function htmlImageSize(doc) {
         //
-        var result = [], images = {}, keys;
+        var result = [],
+            images = {},
+            keys;
 
         //
         try {
@@ -2377,8 +2445,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("img[alt!='']").each(function() {
                 //
-                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" ");
-                var found = false;
+                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" "),
+                    found = false;
 
                 //
                 terms.some(function(value) {
@@ -4983,14 +5051,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsClickEvent = function jsClickEvent(doc) {
         //
-        var result = [], types = ["button", "submit", "reset", "file", "image", "password", "radio", "checkbox"], tags = ["A", "AREA", "BUTTON", "INPUT"];
+        var result = [],
+            types = ["button", "submit", "reset", "file", "image", "password", "radio", "checkbox"],
+            tags = ["A", "AREA", "BUTTON", "INPUT"];
 
         //
         try {
             //
             for (var idx in sidecar.events) {
                 //
-                var found = false, node = sidecar.events[idx].node;
+                var found = false,
+                    node = sidecar.events[idx].node;
 
                 //
                 if (node.tagName) {
@@ -5183,52 +5254,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnblurSubmit = function jsOnblurSubmit(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onblurEvents.each(function() {
-                //
-                var _onblur = $.trim($(this).attr("onblur")), functions = _onblur.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                result.push(_onblur);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.submit\\s?", onblurEvents, "onblur");
         }
 
         //
@@ -5289,53 +5320,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnchangeLocation = function jsOnchangeLocation(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.location[\\.=\\s]", "i");
+        var result = [];
 
         //
         try {
             //
-            onchangeEvents.each(function() {
-                //
-                var _onchange = $.trim($(this).attr("onchange")), functions = _onchange.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onchange);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.location[\\.=\\s]", onchangeEvents, "onchange");
         }
 
         //
@@ -5355,53 +5345,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnchangeSubmit = function jsOnchangeSubmit(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onchangeEvents.each(function() {
-                //
-                var _onchange = $.trim($(this).attr("onchange")), functions = _onchange.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onchange);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.submit\\s?", onchangeEvents, "onchange");
         }
 
         //
@@ -5421,14 +5370,16 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnclick = function jsOnclick(doc) {
         //
-        var result = [], tags = ["A", "BUTTON", "SELECT", "TEXTAREA", "INPUT"];
+        var result = [],
+            tags = ["A", "BUTTON", "SELECT", "TEXTAREA", "INPUT"];
 
         //
         try {
             //
             for (var idx in sidecar.events) {
                 //
-                var found = false, node = sidecar.events[idx].node;
+                var found = false,
+                    node = sidecar.events[idx].node;
 
                 //
                 if (node.tagName) {
@@ -5502,53 +5453,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnfocusBlur = function jsOnfocusBlur(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.blur\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onfocusEvents.each(function() {
-                //
-                var _onfocus = $.trim($(this).attr("onfocus")), functions = _onfocus.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onfocus);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.blur\\s?", onfocusEvents, "onfocus");
         }
 
         //
@@ -5568,53 +5478,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnfocusSubmit = function jsOnfocusSubmit(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onfocusEvents.each(function() {
-                //
-                var _onfocus = $.trim($(this).attr("onfocus")), functions = _onfocus.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onfocus);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.submit\\s?", onfocusEvents, "onfocus");
         }
 
         //
@@ -5675,53 +5544,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnmouseoutSubmit = function jsOnmouseoutSubmit(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onmouseoutEvents.each(function() {
-                //
-                var _onmouseout = $.trim($(this).attr("onmouseout")), functions = _onmouseout.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onmouseout);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.submit\\s?", onmouseoutEvents, "onmouseout");
         }
 
         //
@@ -5784,53 +5612,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnmouseoverSubmit = function jsOnmouseoverSubmit(doc) {
         //
-        var result = [], reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onmouseoverEvents.each(function() {
-                //
-                var _onmouseover = $.trim($(this).attr("onmouseover")), functions = _onmouseover.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onmouseover);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.submit\\s?", onmouseoverEvents, "onmouseover");
         }
 
         //
@@ -5927,55 +5714,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsPopUp = function jsPopUp(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("(window|document)\\.open\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            if ($("body").attr("onload")) {
-                //
-                var _onload = $("body").attr("onload"),
-                    functions = _onload.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onload);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            }
+            result = _detectFunction("(window|document)\\.open\\s?", $("body"), "onload");
         }
 
         //
@@ -5994,9 +5738,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsRefresh = function jsRefresh(doc) {
-        var reg1 = new RegExp().compile("(\\.location\\.reload\\()", "i"),
-            reg2 = new RegExp().compile("(\\.location\\.replace\\()", "i"),
-            reg3 = new RegExp().compile("(\\.location\(\\.href\)?\s*=)", "i"),
+        var reg1 = new RegExp().compile("(location\\.reload\\()", "i"),
+            reg2 = new RegExp().compile("(location\\.replace\\()", "i"),
+            reg3 = new RegExp().compile("(location\(\\.href\)?\s*=)", "i"),
             promises = [];
 
         try {
@@ -6057,54 +5801,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsResize = function jsResize(doc) {
         //
-        var result = [], reg = new RegExp().compile("window\\.resizeTo\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            if ($("body").attr("onload")) {
-                //
-                var _onload = $("body").attr("onload"),
-                    functions = _onload.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onload);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            }
+            result = _detectFunction("(window\\.)?resizeTo\\s?", $("body"), "onload");
         }
 
         //

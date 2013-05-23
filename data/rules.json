@@ -557,5 +557,6 @@
     "test41": "xpath@html://div[@id='transversalNav']//ul//ul//ul//ul",
     "test42": "xpath@html://a[starts-with(@href,'http://') or starts-with(@href,'https://')]",
     "test43": "oqs@html:linksNavigation",
-    "test6": "xpath@html://table[.//tbody]"
+    "test6": "xpath@html://table[.//tbody]",
+    "test_1": "xpath@html://a[@href][normalize-space(text())='Mentions légales']"
 }

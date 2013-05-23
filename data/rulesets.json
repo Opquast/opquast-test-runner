@@ -1,4 +1,16 @@
 {
+    "28144": {
+        "test_1": {
+            "onfalse": {
+                "comment": "aucun lien Mentions légales n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un lien Mentions légales a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "10058": {
         "APPLET": {
             "onfalse": {

@@ -1,220 +1,4 @@
 {
-    "INPUT_W_TYPE_CHECKBOX_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
-        "INPUT_W_TYPE_CHECKBOX_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
-            "onfalse": {
-                "comment": "aucun élément INPUT de type CHECKBOX sans LABEL non vide et unique n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément INPUT de type CHECKBOX sans LABEL non vide et unique a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "INPUT_W_TYPE_FILE_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
-        "INPUT_W_TYPE_FILE_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
-            "onfalse": {
-                "comment": "aucun élément INPUT de type FILE sans LABEL non vide et unique n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément INPUT de type FILE sans LABEL non vide et unique a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "INPUT_W_TYPE_PASSWORD_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
-        "INPUT_W_TYPE_PASSWORD_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
-            "onfalse": {
-                "comment": "aucun élément INPUT de type PASSWORD sans LABEL non vide et unique n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément INPUT de type PASSWORD sans LABEL non vide et unique a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "INPUT_W_TYPE_RADIO_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
-        "INPUT_W_TYPE_RADIO_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
-            "onfalse": {
-                "comment": "aucun élément INPUT de type RADIO sans LABEL non vide et unique n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément INPUT de type RADIO sans LABEL non vide et unique a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "INPUT_W_TYPE_TEXT_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
-        "INPUT_W_TYPE_TEXT_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
-            "onfalse": {
-                "comment": "aucun élément INPUT de type TEXT sans LABEL non vide et unique n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément INPUT de type TEXT sans LABEL non vide et unique a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "INPUT_W_TYPE_CHECKBOX_WO_FILLED_AND_UNIQUE_LABEL": {
-        "INPUT_W_TYPE_CHECKBOX_WO_FILLED_AND_UNIQUE_LABEL": {
-            "onfalse": {
-                "comment": "aucun élément INPUT de type CHECKBOX sans LABEL unique n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément INPUT de type CHECKBOX sans LABEL unique a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "INPUT_W_TYPE_FILE_WO_FILLED_AND_UNIQUE_LABEL": {
-        "INPUT_W_TYPE_FILE_WO_FILLED_AND_UNIQUE_LABEL": {
-            "onfalse": {
-                "comment": "aucun élément INPUT de type FILE sans LABEL unique n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément INPUT de type FILE sans LABEL unique a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "INPUT_W_TYPE_PASSWORD_WO_FILLED_AND_UNIQUE_LABEL": {
-        "INPUT_W_TYPE_PASSWORD_WO_FILLED_AND_UNIQUE_LABEL": {
-            "onfalse": {
-                "comment": "aucun élément INPUT de type PASSWORD sans LABEL unique n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément INPUT de type PASSWORD sans LABEL unique a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "INPUT_W_TYPE_RADIO_WO_FILLED_AND_UNIQUE_LABEL": {
-        "INPUT_W_TYPE_RADIO_WO_FILLED_AND_UNIQUE_LABEL": {
-            "onfalse": {
-                "comment": "aucun élément INPUT de type RADIO sans LABEL unique n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément INPUT de type RADIO sans LABEL unique a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "INPUT_W_TYPE_TEXT_WO_FILLED_AND_UNIQUE_LABEL": {
-        "INPUT_W_TYPE_TEXT_WO_FILLED_AND_UNIQUE_LABEL": {
-            "onfalse": {
-                "comment": "aucun élément INPUT de type TEXT sans LABEL unique n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément INPUT de type TEXT sans LABEL unique a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "JS_RESIZE": {
-        "JS_RESIZE": {
-            "onfalse": {
-                "comment": "aucune fenêtre redimensionnée détectée",
-                "result": "na"
-            },
-            "ontrue": {
-                "comment": "au moins une fenêtre redimensionnée détectée",
-                "result": "c"
-            }
-        }
-    },
-    "JS_REFRESH": {
-        "JS_REFRESH": {
-            "onfalse": {
-                "comment": "la page n'est pas rafraîchie ou redirigée automatiquement",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "la page est rafraîchie ou redirigée automatiquement",
-                "result": "c"
-            }
-        }
-    },
-    "JS_BODY_ONLAD": {
-        "JS_BODY_ONLAD": {
-            "onfalse": {
-                "comment": "aucun événement au chargement de la page n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un événement au chargement de la page a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "JS_POPUP": {
-        "JS_POPUP": {
-            "onfalse": {
-                "comment": "aucune pop-up  n'a été détectée",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins une pop-up a été détectée",
-                "result": "c"
-            }
-        }
-    },
-    "JS_NEW_WINDOW": {
-        "JS_NEW_WINDOW": {
-            "onfalse": {
-                "comment": "aucun événement clavier ou souris n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un événement clavier ou souris a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "IFRAME_W_UNIQUE_SRC_ATTR_WO_UNIQUE_TITLE_ATTR": {
-        "IFRAME_W_UNIQUE_SRC_ATTR_WO_UNIQUE_TITLE_ATTR": {
-            "onfalse": {
-                "comment": "tous les IFRAME possèdent un attribut TITLE différents",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins deux IFRAME possèdent le même TITLE",
-                "result": "c"
-            }
-        }
-    },
-    "JS_W_CR": {
-        "JS_W_CR": {
-            "onfalse": {
-                "comment": "aucun JS avec des retours à la ligne inutiles n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un JS avec des retours à la ligne inutiles a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "JS_W_REDUDANT_SPACES": {
-        "JS_W_REDUDANT_SPACES": {
-            "onfalse": {
-                "comment": "aucun JS avec des espaces inutiles n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un JS avec des espaces inutiles a été détecté",
-                "result": "c"
-            }
-        }
-    },
     "404_DEFAULT": {
         "404_DEFAULT": {
             "onfalse": {
@@ -2231,6 +2015,18 @@
             }
         }
     },
+    "IFRAME_W_UNIQUE_SRC_ATTR_WO_UNIQUE_TITLE_ATTR": {
+        "IFRAME_W_UNIQUE_SRC_ATTR_WO_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "tous les IFRAME possèdent un attribut TITLE différents",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins deux IFRAME possèdent le même TITLE",
+                "result": "c"
+            }
+        }
+    },
     "IMG": {
         "IMG": {
             "onfalse": {
@@ -2239,6 +2035,30 @@
             },
             "ontrue": {
                 "comment": "au moins un élément IMG a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "IMG_ANIMATED": {
+        "IMG_ANIMATED": {
+            "onfalse": {
+                "comment": "aucun élément animé",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément animé",
+                "result": "c"
+            }
+        }
+    },
+    "IMG_ANIMATED_NOT_IN_BUTTON_NOT_IN_A": {
+        "IMG_ANIMATED_NOT_IN_BUTTON_NOT_IN_A": {
+            "onfalse": {
+                "comment": "aucun élément IMG animée ni dans un A, ni dans un BUTTON sans ancre n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG animée ni dans un A, ni dans un BUTTON sans ancre a été détecté",
                 "result": "c"
             }
         }
@@ -2263,6 +2083,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément IMG dans un BUTTON a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "IMG_NOT_INDEXABLE": {
+        "IMG_NOT_INDEXABLE": {
+            "onfalse": {
+                "comment": "aucun élément IMG dont le format n'est pas indexable par les moteurs de recherche n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG dont le format n'est pas indexable par les moteurs de recherche a été détecté",
                 "result": "c"
             }
         }
@@ -2311,6 +2143,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément IMG avec un attribut ALT a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "IMG_W_ALT_ATTR_TERMS_NOT_IN_CONTENT": {
+        "IMG_W_ALT_ATTR_TERMS_NOT_IN_CONTENT": {
+            "onfalse": {
+                "comment": "aucun élément IMG avec un attribut ALT dont les termes ne sont pas dans le contenu de la page n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG avec un attribut ALT dont les termes ne sont pas dans le contenu de la page a été détecté",
                 "result": "c"
             }
         }
@@ -2443,6 +2287,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément INPUT de type CHECKBOX sans ID unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "INPUT_W_TYPE_CHECKBOX_WO_FILLED_AND_UNIQUE_LABEL": {
+        "INPUT_W_TYPE_CHECKBOX_WO_FILLED_AND_UNIQUE_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type CHECKBOX sans LABEL unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type CHECKBOX sans LABEL unique a été détecté",
                 "result": "c"
             }
         }
@@ -2587,6 +2443,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément INPUT de type FILE sans ID unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "INPUT_W_TYPE_FILE_WO_FILLED_AND_UNIQUE_LABEL": {
+        "INPUT_W_TYPE_FILE_WO_FILLED_AND_UNIQUE_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type FILE sans LABEL unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type FILE sans LABEL unique a été détecté",
                 "result": "c"
             }
         }
@@ -2831,6 +2699,18 @@
             }
         }
     },
+    "INPUT_W_TYPE_PASSWORD_WO_FILLED_AND_UNIQUE_LABEL": {
+        "INPUT_W_TYPE_PASSWORD_WO_FILLED_AND_UNIQUE_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type PASSWORD sans LABEL unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type PASSWORD sans LABEL unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "INPUT_W_TYPE_PASSWORD_WO_FILLED_AND_UNIQUE_TITLE_ATTR": {
         "INPUT_W_TYPE_PASSWORD_WO_FILLED_AND_UNIQUE_TITLE_ATTR": {
             "onfalse": {
@@ -2971,6 +2851,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément INPUT de type RADIO sans ID unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "INPUT_W_TYPE_RADIO_WO_FILLED_AND_UNIQUE_LABEL": {
+        "INPUT_W_TYPE_RADIO_WO_FILLED_AND_UNIQUE_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type RADIO sans LABEL unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type RADIO sans LABEL unique a été détecté",
                 "result": "c"
             }
         }
@@ -3155,6 +3047,18 @@
             }
         }
     },
+    "INPUT_W_TYPE_TEXT_WO_FILLED_AND_UNIQUE_LABEL": {
+        "INPUT_W_TYPE_TEXT_WO_FILLED_AND_UNIQUE_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT sans LABEL unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type TEXT sans LABEL unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "INPUT_W_TYPE_TEXT_WO_FILLED_AND_UNIQUE_TITLE_ATTR": {
         "INPUT_W_TYPE_TEXT_WO_FILLED_AND_UNIQUE_TITLE_ATTR": {
             "onfalse": {
@@ -3271,6 +3175,306 @@
             },
             "ontrue": {
                 "comment": "au moins un élément INPUT de type TEXT avec un TITLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "JS_BODY_ONLAD": {
+        "JS_BODY_ONLAD": {
+            "onfalse": {
+                "comment": "aucun événement au chargement de la page n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un événement au chargement de la page a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_BLUR_ON_FOCUS": {
+        "JS_EVENT_BLUR_ON_FOCUS": {
+            "onfalse": {
+                "comment": "aucun ONFOCUS n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un ONFOCUS a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_CLICK": {
+        "JS_EVENT_CLICK": {
+            "onfalse": {
+                "comment": "aucun ONCLICK sur un élément focusable n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un ONCLICK sur un élément focusable a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_MOUSE_OR_KEYBOARD": {
+        "JS_EVENT_MOUSE_OR_KEYBOARD": {
+            "onfalse": {
+                "comment": "aucun élément avec onclick, onmouseover, onmouseout, onfocus ou onblur n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément avec onclick, onmouseover, onmouseout, onfocus ou onblur a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONBLUR_SUBMIT": {
+        "JS_EVENT_ONBLUR_SUBMIT": {
+            "onfalse": {
+                "comment": "aucun submit() sur un événement ONBLUR n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONBLUR pour déclencher la méthode SUBMIT constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONBLUR_WO_ONMOUSEOUT": {
+        "JS_EVENT_ONBLUR_WO_ONMOUSEOUT": {
+            "onfalse": {
+                "comment": "aucun ONBLUR sans ONMOUSEOUT n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONBLUR sans le gestionnaire d'événement ONMOUSEOUT constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONCHANGE_LOCATION": {
+        "JS_EVENT_ONCHANGE_LOCATION": {
+            "onfalse": {
+                "comment": "aucun ONCHANGE avec un location n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONCHANGE avec l'objet LOCATION constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONCHANGE_SUBMIT": {
+        "JS_EVENT_ONCHANGE_SUBMIT": {
+            "onfalse": {
+                "comment": "aucun submit() sur un événement ONCHANGE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONCHANGE pour déclencher la méthode SUBMIT constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONCLICK": {
+        "JS_EVENT_ONCLICK": {
+            "onfalse": {
+                "comment": "aucun élément avec ONCLICK n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONCLICK sur les éléments autres que A, AREA, BUTTON, SELECT, TEXTAREA ou INPUT constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONDOUBLECLICK": {
+        "JS_EVENT_ONDOUBLECLICK": {
+            "onfalse": {
+                "comment": "aucun élément avec ONDBLCLICK n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONDBCLICK constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONFOCUS_BLUR": {
+        "JS_EVENT_ONFOCUS_BLUR": {
+            "onfalse": {
+                "comment": "aucun blur() sur un événement ONFOCUS n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONFOCUS pour déclencher la méthode BLUR constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONFOCUS_SUBMIT": {
+        "JS_EVENT_ONFOCUS_SUBMIT": {
+            "onfalse": {
+                "comment": "aucun submit() sur un événement ONFOCUS n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONFOCUS pour déclencher la méthode SUBMIT constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONFOCUS_WO_ONMOUSEOVER": {
+        "JS_EVENT_ONFOCUS_WO_ONMOUSEOVER": {
+            "onfalse": {
+                "comment": "aucun ONFOCUS sans ONMOUSEOVER n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONFOCUS sans le gestionnaire d'événement ONMOUSEOVER constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONMOUSEOUT_SUBMIT": {
+        "JS_EVENT_ONMOUSEOUT_SUBMIT": {
+            "onfalse": {
+                "comment": "aucun submit() sur un événement ONMOUSEOUT n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONMOUSEOUT pour déclencher la méthode SUBMIT constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONMOUSEOUT_WO_ONBLUR": {
+        "JS_EVENT_ONMOUSEOUT_WO_ONBLUR": {
+            "onfalse": {
+                "comment": "aucun ONMOUSEOUT sans ONBLUR n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONMOUSEOUT sans le gestionnaire d'événement ONBLUR constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONMOUSEOVER_SUBMIT": {
+        "JS_EVENT_ONMOUSEOVER_SUBMIT": {
+            "onfalse": {
+                "comment": "aucun submit() sur un événement ONMOUSEOVER n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONMOUSEOVER pour déclencher la méthode SUBMIT constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONMOUSEOVER_WO_ONFOCUS": {
+        "JS_EVENT_ONMOUSEOVER_WO_ONFOCUS": {
+            "onfalse": {
+                "comment": "aucun ONMOUSEOVER sans ONFOCUS n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONMOUSEOVER sans le gestionnaire d'événement ONFOCUS constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_ONSCROLL": {
+        "JS_EVENT_ONSCROLL": {
+            "onfalse": {
+                "comment": "aucun élément avec ONSCROLL n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du gestionnaire d'événement ONSCROLL constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "JS_EVENT_SPECIFIC": {
+        "JS_EVENT_SPECIFIC": {
+            "onfalse": {
+                "comment": "aucun ONSCROLL, ONDBLCLICK ou ONCHANGE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un ONSCROLL, ONDBLCLICK ou ONCHANGE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "JS_NEW_WINDOW": {
+        "JS_NEW_WINDOW": {
+            "onfalse": {
+                "comment": "aucun événement clavier ou souris n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un événement clavier ou souris a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "JS_POPUP": {
+        "JS_POPUP": {
+            "onfalse": {
+                "comment": "aucune pop-up  n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une pop-up a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "JS_REFRESH": {
+        "JS_REFRESH": {
+            "onfalse": {
+                "comment": "la page n'est pas rafraîchie ou redirigée automatiquement",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "la page est rafraîchie ou redirigée automatiquement",
+                "result": "c"
+            }
+        }
+    },
+    "JS_RESIZE": {
+        "JS_RESIZE": {
+            "onfalse": {
+                "comment": "aucune fenêtre redimensionnée détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une fenêtre redimensionnée détectée",
+                "result": "c"
+            }
+        }
+    },
+    "JS_W_CR": {
+        "JS_W_CR": {
+            "onfalse": {
+                "comment": "aucun JS avec des retours à la ligne inutiles n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un JS avec des retours à la ligne inutiles a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "JS_W_REDUDANT_SPACES": {
+        "JS_W_REDUDANT_SPACES": {
+            "onfalse": {
+                "comment": "aucun JS avec des espaces inutiles n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un JS avec des espaces inutiles a été détecté",
                 "result": "c"
             }
         }
@@ -4147,6 +4351,18 @@
             },
             "ontrue": {
                 "comment": "au moins un TABLE complexe",
+                "result": "c"
+            }
+        }
+    },
+    "test_1": {
+        "test_1": {
+            "onfalse": {
+                "comment": "aucun lien Mentions légales n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un lien Mentions légales a été détecté",
                 "result": "c"
             }
         }
