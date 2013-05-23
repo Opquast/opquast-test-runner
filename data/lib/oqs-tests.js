@@ -4392,7 +4392,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.rightCharset = function httpRightCharset(doc) {
         //
-        var regUnicode = new RegExp().compile("[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-\xBF]|[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}|\xED[\x80-\x9F][\x80-\xBF]|\xF0[\x90-\xBF][\x80-\xBF]{2}|[\xF1-\xF3][\x80-\xBF]{3}|\xF4[\x80-\x8F][\x80-\xBF]{2}", "m"), result = [];
+        var regUnicode = new RegExp().compile("[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-\xBF]|[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}|\xED[\x80-\x9F][\x80-\xBF]|\xF0[\x90-\xBF][\x80-\xBF]{2}|[\xF1-\xF3][\x80-\xBF]{3}|\xF4[\x80-\x8F][\x80-\xBF]{2}", "m"),
+            result = [];
 
         //
         try {
@@ -5259,7 +5260,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            result = _detectFunction("\\.submit\\s?", onblurEvents, "onblur");
+            result = _detectFunction("\\.submit", onblurEvents, "onblur");
         }
 
         //
@@ -5325,7 +5326,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            result = _detectFunction("\\.location[\\.=\\s]", onchangeEvents, "onchange");
+            result = _detectFunction("location(?:(?:\\.href)?\\s*=|\\.replace)", onchangeEvents, "onchange");
         }
 
         //
@@ -5350,7 +5351,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            result = _detectFunction("\\.submit\\s?", onchangeEvents, "onchange");
+            result = _detectFunction("\\.submit", onchangeEvents, "onchange");
         }
 
         //
@@ -5458,7 +5459,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            result = _detectFunction("\\.blur\\s?", onfocusEvents, "onfocus");
+            result = _detectFunction("\\.blur", onfocusEvents, "onfocus");
         }
 
         //
@@ -5483,7 +5484,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            result = _detectFunction("\\.submit\\s?", onfocusEvents, "onfocus");
+            result = _detectFunction("\\.submit", onfocusEvents, "onfocus");
         }
 
         //
@@ -5549,7 +5550,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            result = _detectFunction("\\.submit\\s?", onmouseoutEvents, "onmouseout");
+            result = _detectFunction("\\.submit", onmouseoutEvents, "onmouseout");
         }
 
         //
@@ -5617,7 +5618,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            result = _detectFunction("\\.submit\\s?", onmouseoverEvents, "onmouseover");
+            result = _detectFunction("\\.submit", onmouseoverEvents, "onmouseover");
         }
 
         //
@@ -5719,7 +5720,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            result = _detectFunction("(window|document)\\.open\\s?", $("body"), "onload");
+            result = _detectFunction("(?:window|document)\\.open", $("body"), "onload");
         }
 
         //
@@ -5738,9 +5739,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsRefresh = function jsRefresh(doc) {
-        var reg1 = new RegExp().compile("(location\\.reload\\()", "i"),
-            reg2 = new RegExp().compile("(location\\.replace\\()", "i"),
-            reg3 = new RegExp().compile("(location\(\\.href\)?\s*=)", "i"),
+        var reg1 = new RegExp().compile("location\\.reload", "i"),
+            reg2 = new RegExp().compile("location\\.replace", "i"),
+            reg3 = new RegExp().compile("location(?:\\.href)?\\s*=", "i"),
             promises = [];
 
         try {
@@ -5806,7 +5807,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            result = _detectFunction("(window\\.)?resizeTo\\s?", $("body"), "onload");
+            result = _detectFunction("resizeTo", $("body"), "onload");
         }
 
         //

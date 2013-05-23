@@ -1,0 +1,3 @@
+function formSubmit() {
+    this.submit();
+}
