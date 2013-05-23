@@ -1,4 +1,16 @@
 {
+    "SELECT_W_3_OPTIONS": {
+        "SELECT_W_3_OPTIONS": {
+            "onfalse": {
+                "comment": "aucun élément SELECT avec 3 OPTION ou plus n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec 3 OPTION ou plus a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "META_REFRESH_W_DELAY": {
         "META_REFRESH_W_DELAY": {
             "onfalse": {
