@@ -2969,7 +2969,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.metaCharset = function htmlMetaCharset(doc) {
         //
-        var result = [], charset = "", reg = new RegExp().compile("^.+charset=(.+)$", "i");
+        var result = [],
+            charset = "",
+            reg = new RegExp().compile("^.+charset=(.+)$", "i");
 
         //
         try {
@@ -3016,7 +3018,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.metaRefreshShort = function htmlMetaRefreshShort(doc) {
         //
-        var result = [], value = 0;
+        var result = [],
+            value = 0;
 
         //
         try {
@@ -3050,7 +3053,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.metaRefreshUrl = function htmlMetaRefreshUrl(doc) {
         //
-        var result = [], reg = new RegExp().compile("^\\d+\\s*;\\s*url=(.+)$", "i");
+        var result = [],
+            reg = new RegExp().compile("^\\d+\\s*;\\s*url=(.+)$", "i");
 
         //
         try {

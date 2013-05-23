@@ -40,7 +40,7 @@ const listFixtures = function() {
 listFixtures().forEach(function(v) {
     let aSlash = v.split('/'), aDot = v.split('.'), [rule, expected] = aSlash.slice(7, 9);
 
-    exports["test " + rule + "-" + expected + (expected == 'true' ? aSlash.slice(-1).toString().split('.')[0] : "")] = function(assert, done) {
+    exports["test " + rule + "-" + expected + "-" + aSlash.slice(-1).toString().split('.')[0]] = function(assert, done) {
         let close;
 
         openTab().then(function(result) {

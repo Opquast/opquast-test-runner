@@ -1,208 +1,4 @@
 {
-    "SELECT_W_3_OPTIONS": {
-        "SELECT_W_3_OPTIONS": {
-            "onfalse": {
-                "comment": "aucun élément SELECT avec 3 OPTION ou plus n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément SELECT avec 3 OPTION ou plus a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "META_REFRESH_W_DELAY": {
-        "META_REFRESH_W_DELAY": {
-            "onfalse": {
-                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec délai n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec délai est présent",
-                "result": "c"
-            }
-        }
-    },
-    "META_REFRESH": {
-        "META_REFRESH": {
-            "onfalse": {
-                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh est présent",
-                "result": "c"
-            }
-        }
-    },
-    "META_REFRESH_WO_DELAY": {
-        "META_REFRESH_WO_DELAY": {
-            "onfalse": {
-                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh sans délai n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh sans délai est présent",
-                "result": "c"
-            }
-        }
-    },
-    "META_KEYWORDS_W_MORE_THAN_10_TERMS": {
-        "META_KEYWORDS_W_MORE_THAN_10_TERMS": {
-            "onfalse": {
-                "comment": "le META KEYWORDS contient 10 termes ou moins",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "le META KEYWORDS contient plus de 10 termes",
-                "result": "c"
-            }
-        }
-    },
-    "META_DESCRIPTION_W_MORE_THAN_250_CHAR": {
-        "META_DESCRIPTION_W_MORE_THAN_250_CHAR": {
-            "onfalse": {
-                "comment": "le META DESCRIPTION contient moins de 250 caractères",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "le META DESCRIPTION contient plus de 250 caractères",
-                "result": "c"
-            }
-        }
-    },
-    "META_CHARSET_VALID": {
-        "META_CHARSET_VALID": {
-            "onfalse": {
-                "comment": "aucun élément META CONTENT-TYPE précisant le CHARSET n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "le META CONTENT-TYPE précisant le CHARSET est présent",
-                "result": "c"
-            }
-        }
-    },
-    "META_CHARSET_REAL": {
-        "META_CHARSET_REAL": {
-            "onfalse": {
-                "comment": "le CHARSET précisé par le META CONTENT-TYPE ne correspond pas au charset réél",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "le CHARSET précisé par le META CONTENT-TYPE correspond au charset réél",
-                "result": "c"
-            }
-        }
-    },
-    "META_DESCRIPTION_FILLED": {
-        "META_DESCRIPTION_FILLED": {
-            "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "META_KEYWORDS_FILLED": {
-        "META_KEYWORDS_FILLED": {
-            "onfalse": {
-                "comment": "aucun élément META KEYWORDS non vide n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un élément META KEYWORDS non vide a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "META_REFRESH_SHORT": {
-        "META_REFRESH_SHORT": {
-            "onfalse": {
-                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte est présent",
-                "result": "c"
-            }
-        }
-    },
-    "META_REFRESH_URL": {
-        "META_REFRESH_URL": {
-            "onfalse": {
-                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une URL n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une URL est présent",
-                "result": "c"
-            }
-        }
-    },
-    "MORE_EXT_THEN_INT_LINKS": {
-        "MORE_EXT_THEN_INT_LINKS": {
-            "onfalse": {
-                "comment": "la page comporte plus de liens internes que de liens externes",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "la page comporte plus de liens externes que de liens internes",
-                "result": "c"
-            }
-        }
-    },
-    "LIST_W_MORE_THAN_3_LEVELS": {
-        "LIST_W_MORE_THAN_3_LEVELS": {
-            "onfalse": {
-                "comment": "aucun élément LI à plus de trois niveaux d'imbrication n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément LI à plus de trois niveaux d'imbrication a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "LINK_STYLESHEET": {
-        "LINK_STYLESHEET": {
-            "onfalse": {
-                "comment": "aucun élément LINK avec l'attribut REL ayant la valeur STYLESHEET n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un LINK avec l'attribut REL ayant la valeur STYLESHEET",
-                "result": "c"
-            }
-        }
-    },
-    "LINK_REL_ICON": {
-        "LINK_REL_ICON": {
-            "onfalse": {
-                "comment": "aucun élément LINK avec l'attribut REL ayant la valeur ICON n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un LINK avec l'attribut REL ayant la valeur ICON",
-                "result": "c"
-            }
-        }
-    },
-    "LINK_REL_SHORTCUT_ICON": {
-        "LINK_REL_SHORTCUT_ICON": {
-            "onfalse": {
-                "comment": "aucun élément LINK avec l'attribut REL ayant la valeur ICON ou SHORTCUT ICON n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un LINK avec l'attribut REL ayant la valeur SHORTCUT ICON",
-                "result": "c"
-            }
-        }
-    },
     "404_DEFAULT": {
         "404_DEFAULT": {
             "onfalse": {
@@ -3695,6 +3491,66 @@
             }
         }
     },
+    "LABEL_EQUALS_TO_ANOTHER_LABEL_IN_FIELDSET": {
+        "LABEL_EQUALS_TO_ANOTHER_LABEL_IN_FIELDSET": {
+            "onfalse": {
+                "comment": "aucun élément LABEL identique dans le même FIELDSET n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de contenus identiques pour plusieurs éléments LABEL dans un même élément FIELDSET constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "LABEL_WO_FOR_ATTR": {
+        "LABEL_WO_FOR_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément LABEL sans attribut FOR n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément LABEL sans attribut FOR a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "LABEL_W_FOR_ATTR": {
+        "LABEL_W_FOR_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément LABEL avec attribut FOR n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément LABEL avec attribut FOR a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "LABEL_W_FOR_ATTR_EMPTY": {
+        "LABEL_W_FOR_ATTR_EMPTY": {
+            "onfalse": {
+                "comment": "aucun élément LABEL avec un attribut FOR vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément LABEL avec un attribut FOR vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "LABEL_W_FOR_ATTR_UNKNOWN": {
+        "LABEL_W_FOR_ATTR_UNKNOWN": {
+            "onfalse": {
+                "comment": "aucun élément LABEL avec un attribut FOR dont la valeur ne correspondant à aucune valeur d'attribut ID d'un élément du même formulaire n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément LABEL avec un attribut FOR dont la valeur ne correspondant à aucune valeur d'attribut ID d'un élément du même formulaire a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "LANG_ATTR": {
         "LANG_ATTR": {
             "onfalse": {
@@ -3791,6 +3647,42 @@
             }
         }
     },
+    "LINK_REL_ICON": {
+        "LINK_REL_ICON": {
+            "onfalse": {
+                "comment": "aucun élément LINK avec l'attribut REL ayant la valeur ICON n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un LINK avec l'attribut REL ayant la valeur ICON",
+                "result": "c"
+            }
+        }
+    },
+    "LINK_REL_SHORTCUT_ICON": {
+        "LINK_REL_SHORTCUT_ICON": {
+            "onfalse": {
+                "comment": "aucun élément LINK avec l'attribut REL ayant la valeur ICON ou SHORTCUT ICON n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un LINK avec l'attribut REL ayant la valeur SHORTCUT ICON",
+                "result": "c"
+            }
+        }
+    },
+    "LINK_STYLESHEET": {
+        "LINK_STYLESHEET": {
+            "onfalse": {
+                "comment": "aucun élément LINK avec l'attribut REL ayant la valeur STYLESHEET n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un LINK avec l'attribut REL ayant la valeur STYLESHEET",
+                "result": "c"
+            }
+        }
+    },
     "LISTING": {
         "LISTING": {
             "onfalse": {
@@ -3799,6 +3691,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément LISTING a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "LIST_W_MORE_THAN_3_LEVELS": {
+        "LIST_W_MORE_THAN_3_LEVELS": {
+            "onfalse": {
+                "comment": "aucun élément LI à plus de trois niveaux d'imbrication n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément LI à plus de trois niveaux d'imbrication a été détecté",
                 "result": "c"
             }
         }
@@ -3839,6 +3743,126 @@
             }
         }
     },
+    "META_CHARSET_REAL": {
+        "META_CHARSET_REAL": {
+            "onfalse": {
+                "comment": "le CHARSET précisé par le META CONTENT-TYPE ne correspond pas au charset réél",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le CHARSET précisé par le META CONTENT-TYPE correspond au charset réél",
+                "result": "c"
+            }
+        }
+    },
+    "META_CHARSET_VALID": {
+        "META_CHARSET_VALID": {
+            "onfalse": {
+                "comment": "aucun élément META CONTENT-TYPE précisant le CHARSET n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le META CONTENT-TYPE précisant le CHARSET est présent",
+                "result": "c"
+            }
+        }
+    },
+    "META_DESCRIPTION_FILLED": {
+        "META_DESCRIPTION_FILLED": {
+            "onfalse": {
+                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "META_DESCRIPTION_W_MORE_THAN_250_CHAR": {
+        "META_DESCRIPTION_W_MORE_THAN_250_CHAR": {
+            "onfalse": {
+                "comment": "le META DESCRIPTION contient moins de 250 caractères",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le META DESCRIPTION contient plus de 250 caractères",
+                "result": "c"
+            }
+        }
+    },
+    "META_KEYWORDS_FILLED": {
+        "META_KEYWORDS_FILLED": {
+            "onfalse": {
+                "comment": "aucun élément META KEYWORDS non vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément META KEYWORDS non vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "META_KEYWORDS_W_MORE_THAN_10_TERMS": {
+        "META_KEYWORDS_W_MORE_THAN_10_TERMS": {
+            "onfalse": {
+                "comment": "le META KEYWORDS contient 10 termes ou moins",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le META KEYWORDS contient plus de 10 termes",
+                "result": "c"
+            }
+        }
+    },
+    "META_REFRESH": {
+        "META_REFRESH": {
+            "onfalse": {
+                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh est présent",
+                "result": "c"
+            }
+        }
+    },
+    "META_REFRESH_SHORT": {
+        "META_REFRESH_SHORT": {
+            "onfalse": {
+                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte est présent",
+                "result": "c"
+            }
+        }
+    },
+    "META_REFRESH_URL": {
+        "META_REFRESH_URL": {
+            "onfalse": {
+                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une URL n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une URL est présent",
+                "result": "c"
+            }
+        }
+    },
+    "META_REFRESH_WO_DELAY": {
+        "META_REFRESH_WO_DELAY": {
+            "onfalse": {
+                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh sans délai n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh sans délai est présent",
+                "result": "c"
+            }
+        }
+    },
     "META_REFRESH_W_DELAY": {
         "META_REFRESH_W_DELAY": {
             "onfalse": {
@@ -3847,6 +3871,18 @@
             },
             "ontrue": {
                 "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec délai est présent",
+                "result": "c"
+            }
+        }
+    },
+    "MORE_EXT_THEN_INT_LINKS": {
+        "MORE_EXT_THEN_INT_LINKS": {
+            "onfalse": {
+                "comment": "la page comporte plus de liens internes que de liens externes",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "la page comporte plus de liens externes que de liens internes",
                 "result": "c"
             }
         }
@@ -3883,6 +3919,30 @@
             },
             "ontrue": {
                 "comment": "au moins un élément OBJECT a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "OBJECT_IN_A": {
+        "OBJECT_IN_A": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT dans un A n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT dans un A a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "OBJECT_IN_BUTTON": {
+        "OBJECT_IN_BUTTON": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT dans un BUTTON n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT dans un BUTTON a été détecté",
                 "result": "c"
             }
         }
@@ -4015,6 +4075,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément SELECT a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_W_3_OPTIONS": {
+        "SELECT_W_3_OPTIONS": {
+            "onfalse": {
+                "comment": "aucun élément SELECT avec 3 OPTION ou plus n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec 3 OPTION ou plus a été détecté",
                 "result": "c"
             }
         }
@@ -4250,7 +4322,7 @@
     "test15": {
         "test15": {
             "onfalse": {
-                "comment": "a navigation thématique comporte 5 niveaux ou moins de profondeur",
+                "comment": "la navigation thématique comporte 5 niveaux ou moins de profondeur",
                 "result": "nc"
             },
             "ontrue": {
