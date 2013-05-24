@@ -4475,6 +4475,54 @@
             }
         }
     },
+    "TITLE_W_DEFAULT_VALUE": {
+        "TITLE_W_DEFAULT_VALUE": {
+            "onfalse": {
+                "comment": "aucun élément TITLE avec une valeur par défaut n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément TITLE avec une valeur par défaut a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TITLE_W_MORE_THAN_80_CHAR": {
+        "TITLE_W_MORE_THAN_80_CHAR": {
+            "onfalse": {
+                "comment": "le TITLE contient 80 caractères ou moins",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le TITLE contient plus de 80 caractères",
+                "result": "c"
+            }
+        }
+    },
+    "TITLE_W_TEXT": {
+        "TITLE_W_TEXT": {
+            "onfalse": {
+                "comment": "TITLE est vide",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "TITLE est rempli",
+                "result": "c"
+            }
+        }
+    },
+    "TITLE_WO_TEXT": {
+        "TITLE_WO_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément TITLE vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément TITLE vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "TT": {
         "TT": {
             "onfalse": {
