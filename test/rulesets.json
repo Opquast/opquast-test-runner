@@ -3447,7 +3447,7 @@
         "JS_RESIZE": {
             "onfalse": {
                 "comment": "aucune fenêtre redimensionnée détectée",
-                "result": "na"
+                "result": "nc"
             },
             "ontrue": {
                 "comment": "au moins une fenêtre redimensionnée détectée",
@@ -3947,6 +3947,66 @@
             }
         }
     },
+    "OBJECT_NOT_IN_A_OR_BUTTON_WO_ANCHOR": {
+        "OBJECT_NOT_IN_A_OR_BUTTON_WO_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT ni dans un A, ni dans un BUTTON sans ancre n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT ni dans un A, ni dans un BUTTON sans ancre a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "OBJECT_WO_ALTERNATIVE": {
+        "OBJECT_WO_ALTERNATIVE": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT sans alternative n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT sans alternative a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "OBJECT_W_TYPE_IMAGE_W_ALT": {
+        "OBJECT_W_TYPE_IMAGE_W_ALT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT avec le type IMAGE et un attribut ALT n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT avec le type IMAGE et un attribut ALT a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "OBJECT_W_TYPE_IMAGE_W_MORE_THAN_80_CHAR_ALT": {
+        "OBJECT_W_TYPE_IMAGE_W_MORE_THAN_80_CHAR_ALT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT avec le type IMAGE dont le texte de l'attribut ALT dépasse 80 caractères n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT avec le type IMAGE dont le texte de l'attribut ALT dépasse 80 caractères a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "OBJECT_W_WMODE_ATTR_OPAQUE_OR_TRANSPARENT": {
+        "OBJECT_W_WMODE_ATTR_OPAQUE_OR_TRANSPARENT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT avec un WMODE transparent ou opaque n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation du paramètre WMODE avec la valeur TRANSPARENT ou OPAQUE pour l'élément OBJECT constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
     "OPTGROUP": {
         "OPTGROUP": {
             "onfalse": {
@@ -4007,6 +4067,18 @@
             }
         }
     },
+    "POSITIVE_TABINDEX_ATTR": {
+        "POSITIVE_TABINDEX_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément avec un TABINDEX n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément avec un TABINDEX a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "PRE": {
         "PRE": {
             "onfalse": {
@@ -4043,6 +4115,54 @@
             }
         }
     },
+    "ROBOTS_PRESENCE": {
+        "ROBOTS_PRESENCE": {
+            "onfalse": {
+                "comment": "le robots.txt à la racine du site est absent ou vide",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le robots.txt à la racine du site est présent et non vide",
+                "result": "c"
+            }
+        }
+    },
+    "RSS_ABSOLUTE_LINKS": {
+        "RSS_ABSOLUTE_LINKS": {
+            "onfalse": {
+                "comment": "aucun hyperlien non absolu dans les fils de syndication n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un hyperlien non absolu dans les fils de syndication a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "RSS_CACHE": {
+        "RSS_CACHE": {
+            "onfalse": {
+                "comment": "absence de MAJ",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "présence de MAJ",
+                "result": "c"
+            }
+        }
+    },
+    "RSS_PRESENCE": {
+        "RSS_PRESENCE": {
+            "onfalse": {
+                "comment": "absence de syndication",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "présence de syndication",
+                "result": "c"
+            }
+        }
+    },
     "S": {
         "S": {
             "onfalse": {
@@ -4067,6 +4187,42 @@
             }
         }
     },
+    "SCRIPT_AT_END": {
+        "SCRIPT_AT_END": {
+            "onfalse": {
+                "comment": "au moins un élément SCRIPT non placé à la fin du code a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "aucun élément SCRIPT non placé à la fin du code n'a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SCRIPT_IN_HEAD": {
+        "SCRIPT_IN_HEAD": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT dans le HEAD n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SCRIPT dans le HEAD a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SCRIPT_WO_SRC": {
+        "SCRIPT_WO_SRC": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT interne n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SCRIPT interne a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "SELECT": {
         "SELECT": {
             "onfalse": {
@@ -4087,6 +4243,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément SELECT avec 3 OPTION ou plus a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SPACE_BETWEEN_LETTERS": {
+        "SPACE_BETWEEN_LETTERS": {
+            "onfalse": {
+                "comment": "aucun espace utilisé pour positionner des lettres n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un espace utilisé pour positionner des lettres a été détecté",
                 "result": "c"
             }
         }
@@ -4127,6 +4295,18 @@
             }
         }
     },
+    "STYLE_INTERNAL": {
+        "STYLE_INTERNAL": {
+            "onfalse": {
+                "comment": "aucun élément STYLE avec du code CSS interne n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément STYLE avec du code CSS interne a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "TABLE": {
         "TABLE": {
             "onfalse": {
@@ -4135,6 +4315,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément TABLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TARGET_BLANK": {
+        "TARGET_BLANK": {
+            "onfalse": {
+                "comment": "aucune ouverture dans une nouvelle fenêtre n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ouverture dans une nouvelle fenêtre a été détecté",
                 "result": "c"
             }
         }

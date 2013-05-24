@@ -3291,7 +3291,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlSpaceBetweenLetters = function htmlSpaceBetweenLetters(doc) {
         //
-        var result = [], reg = new RegExp().compile("(\s+[A-Za-z]){3,}", "i");
+        var result = [],
+            reg = new RegExp().compile("(?:\\s+[A-Za-z]){3,}", "im");
 
         //
         try {
@@ -3388,7 +3389,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlUrlWithTermsNotInTitle = function htmlUrlWithTermsNotInTitle(doc) {
         //
-        var result = [], reg1 = new RegExp().compile("[\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "ig"), reg2 = new RegExp().compile("[^a-zA-Z0-9àáâãäåæçèéêëìíîïñòóôõöùúûüýÿ]", "ig"), url = doc.location.href.toLowerCase().replace(/[àáâãäå]/ig, "a").replace(/æ/ig, "ae").replace(/ç/ig, "c").replace(/[èéêë]/ig, "e").replace(/[ìíîï]/ig, "i").replace(/ñ/ig, "n").replace(/[òóôõö]/ig, "o").replace(/œ/ig, "oe").replace(/[ùúûü]/ig, "u").replace(/[ýÿ]/ig, "y"), terms = url.split(reg1);
+        var result = [],
+            reg1 = new RegExp().compile("[\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "ig"), reg2 = new RegExp().compile("[^a-zA-Z0-9àáâãäåæçèéêëìíîïñòóôõöùúûüýÿ]", "ig"), url = doc.location.href.toLowerCase().replace(/[àáâãäå]/ig, "a").replace(/æ/ig, "ae").replace(/ç/ig, "c").replace(/[èéêë]/ig, "e").replace(/[ìíîï]/ig, "i").replace(/ñ/ig, "n").replace(/[òóôõö]/ig, "o").replace(/œ/ig, "oe").replace(/[ùúûü]/ig, "u").replace(/[ýÿ]/ig, "y"), terms = url.split(reg1);
 
         //
         try {
@@ -3426,7 +3428,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlUrlWithUnsafeChars = function htmlUrlWithUnsafeChars(doc) {
         //
-        var result = [], reg = new RegExp().compile("[^a-z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "i");
+        var result = [],
+            reg = new RegExp().compile("[^a-z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "i");
 
         //
         try {
@@ -3705,7 +3708,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.httpGzip = function httpGzip(doc) {
         //
-        var result = [], encoding = ["gzip", "deflate"], reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
+        var result = [],
+            encoding = ["gzip", "deflate"],
+            reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
 
         //
         try {
@@ -3796,7 +3801,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.httpGzipZippedResources = function httpGzipZippedResources(doc) {
         //
-        var result = [], encoding = ["gzip", "deflate"], reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
+        var result = [],
+            encoding = ["gzip", "deflate"],
+            reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
 
         //
         try {
@@ -3966,7 +3973,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.httpRefresh = function httpRefresh(doc) {
         //
-        var result = [], reg1 = new RegExp().compile("^(\\d+)$", "i"), reg2 = new RegExp().compile("^(\\d+)\\s*;\\s*url=(.+)$", "i");
+        var result = [],
+            reg1 = new RegExp().compile("^(\\d+)$", "i"),
+            reg2 = new RegExp().compile("^(\\d+)\\s*;\\s*url=(.+)$", "i");
 
         //
         try {
@@ -4009,130 +4018,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         catch (err) {
             // Error Logging
             logger.error("httpRefresh", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.httpResource403 = function httpResource403(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            sidecar.resources.forEach(function(element, index, array) {
-                //
-                if (element.status == "403" && element.referrer == "") {
-                    //
-                    result.push(element.uri);
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("httpResource403", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.httpResource403MoreThan3k = function httpResource403MoreThan3k(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            sidecar.resources.forEach(function(element, index, array) {
-                //
-                if (element.status == "403" && element.referrer == "" && parseInt(element["headers"]["content-length"], 10) > 3000) {
-                    //
-                    result.push(element.uri);
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("httpResource403MoreThan3k", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.httpResource404 = function httpResource404(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            sidecar.resources.forEach(function(element, index, array) {
-                //
-                if (element.status == "404" && element.referrer == "") {
-                    //
-                    result.push(element.uri);
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("httpResource404", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.httpResource404MoreThan3k = function httpResource404MoreThan3k(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            sidecar.resources.forEach(function(element, index, array) {
-                //
-                if (element.status == "404" && element.referrer == "" && parseInt(element["headers"]["content-length"], 10) > 3000) {
-                    //
-                    result.push(element.uri);
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("httpResource404MoreThan3k", err);
             result = false;
         }
 
@@ -4312,7 +4197,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @todo manage attachments
      */
     window.resDownloadable = function httpResourceDownloadable(doc) {
-        var dl_extensions = ["pdf", "doc", "odt", "xls", "ods", "zip"], dl_families = ["application"], dl_types = ["msword", "pdf", "zip", "octet-stream"], dl_reg = new RegExp().compile("^vnd\.(oasis\.opendocument\.|\.ms-|openxmlformats-officedocument\.)", "i"), promises = [];
+        var dl_extensions = ["pdf", "doc", "odt", "xls", "ods", "zip"],
+            dl_families = ["application"],
+            dl_types = ["msword", "pdf", "zip", "octet-stream"],
+            dl_reg = new RegExp().compile("^vnd\.(oasis\.opendocument\.|\.ms-|openxmlformats-officedocument\.)", "i"),
+            promises = [];
 
         try {
             sidecar.pageInfo.links.forEach(function(link) {
@@ -4558,7 +4447,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.staticOneMonthCache = function httpStaticOneMonthCache(doc) {
         //
-        var result = [], reg = new RegExp().compile("max-age=([0-9]+)", "i");
+        var result = [],
+            reg = new RegExp().compile("max-age=([0-9]+)", "i");
 
         //
         try {
@@ -4708,7 +4598,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.staticVersionInName = function httpStaticVersionInName(doc) {
         //
-        var result = [], reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}\\.[a-zA-Z]{2,}$", "i");
+        var result = [],
+            reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}\\.[a-zA-Z]{2,}$", "i");
 
         //
         try {
@@ -4745,7 +4636,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.staticVersionInParams = function httpStaticVersionInParams(doc) {
         //
-        var result = [], reg = new RegExp().compile("[^\\?]+\\?(v=?)?[\\.0-9a-z]{3,}$", "i");
+        var result = [],
+            reg = new RegExp().compile("[^\\?]+\\?(v=?)?[\\.0-9a-z]{3,}$", "i");
 
         //
         try {
@@ -4819,7 +4711,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.staticWithParams = function httpStaticWithParams(doc) {
         //
-        var result = [], reg = new RegExp().compile("[^\\?]+\\?.+$", "i");
+        var result = [],
+            reg = new RegExp().compile("[^\\?]+\\?.+$", "i");
         ;
 
         //
@@ -4857,7 +4750,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.staticWithSeveralParams = function httpStaticWithSeveralParams(doc) {
         //
-        var result = [], reg = new RegExp().compile("[^\\?]+\\?.+&.+$", "i");
+        var result = [],
+            reg = new RegExp().compile("[^\\?]+\\?.+&.+$", "i");
         ;
 
         //
@@ -6129,7 +6023,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.syndicationCache = function syndicationCache(doc) {
-        var syNS = "http://purl.org/rss/1.0/modules/syndication/", promises = [];
+        var syNS = "http://purl.org/rss/1.0/modules/syndication/",
+            promises = [];
 
         try {
             sidecar.pageInfo.links.forEach(function(link) {

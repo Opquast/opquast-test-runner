@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>OBJECT_NOT_IN_A_OR_BUTTON_WO_ANCHOR - false</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <a href="bla"><object data="bla"></object></a>
+        <button href="bla">
+            <object data="bla"></object>
+        </button>
+        <a href="bla"><object classid="bla"></object></a>
+        <button href="bla">
+            <object classid="bla"></object>
+        </button>
+        <a href="bla"><object>
+            <param />
+        </object></a>
+        <button href="bla">
+            <object>
+                <param />
+            </object>
+        </button>
+        <script src="script.js"></script>
+    </body>
+</html>
