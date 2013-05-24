@@ -4259,6 +4259,102 @@
             }
         }
     },
+    "STATIC_ONE_MONTH_CACHE": {
+        "STATIC_ONE_MONTH_CACHE": {
+            "onfalse": {
+                "comment": "aucune ressource statique n'a une mise en cache de moins d'un mois n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource statique a une mise en cache de moins d'un mois a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "STATIC_ON_MORE_THAN_3_SUBDOMAINS": {
+        "STATIC_ON_MORE_THAN_3_SUBDOMAINS": {
+            "onfalse": {
+                "comment": "les ressources statiques sont servies depuis 3 sous-domaines ou moins",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "les ressources statiques sont servies depuis plus de 3 sous-domaines",
+                "result": "c"
+            }
+        }
+    },
+    "STATIC_ON_SAME_DOMAIN": {
+        "STATIC_ON_SAME_DOMAIN": {
+            "onfalse": {
+                "comment": "aucune ressource statique servie depuis le même domaine n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource statique servie depuis le même domaine a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "STATIC_VERSION_IN_NAME": {
+        "STATIC_VERSION_IN_NAME": {
+            "onfalse": {
+                "comment": "aucune ressource statique ayant un numéro de version dans son URL n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource statique ayant un numéro de version dans son URL a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "STATIC_VERSION_IN_PARAMS": {
+        "STATIC_VERSION_IN_PARAMS": {
+            "onfalse": {
+                "comment": "aucune ressource statique ayant un numéro de version en paramètre n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource statique ayant un numéro de version en paramètre a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "STATIC_W_COOKIE": {
+        "STATIC_W_COOKIE": {
+            "onfalse": {
+                "comment": "aucune ressource statique servie avec un cookie n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource statique servie avec un cookie a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "STATIC_W_PARAMS": {
+        "STATIC_W_PARAMS": {
+            "onfalse": {
+                "comment": "aucune ressource statique ayant de paramètres dans son URL n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource statique ayant des paramètres dans son URL a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "STATIC_W_SEVERAL_PARAMS": {
+        "STATIC_W_SEVERAL_PARAMS": {
+            "onfalse": {
+                "comment": "aucune ressource statique ayant des paramètres multiples dans son URL n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource statique ayant des paramètres multiples dans son URL a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "STRIKE": {
         "STRIKE": {
             "onfalse": {
