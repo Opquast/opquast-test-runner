@@ -4415,6 +4415,270 @@
             }
         }
     },
+    "TABLE_FOR_COMPLEX_DATA": {
+        "TABLE_FOR_COMPLEX_DATA": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données complexes n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données complexes a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_COMPLEX_DATA_WO_FILLED_SUMMARY_ATTR": {
+        "TABLE_FOR_COMPLEX_DATA_WO_FILLED_SUMMARY_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données complexes sans attribut summary rempli n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données complexes sans attribut summary rempli a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA": {
+        "TABLE_FOR_DATA": {
+            "onfalse": {
+                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA2": {
+        "TABLE_FOR_DATA2": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA2_W_TH": {
+        "TABLE_FOR_DATA2_W_TH": {
+            "onfalse": {
+                "comment": "au moins un élément TABLE de données sans TH a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "aucun élément TABLE de données sans TH n'a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA3": {
+        "TABLE_FOR_DATA3": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA3_WO_FILLED_AND_UNIQUE_SUMMARY": {
+        "TABLE_FOR_DATA3_WO_FILLED_AND_UNIQUE_SUMMARY": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données sans attribut SUMMARY rempli et unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données sans attribut SUMMARY rempli et unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA3_WO_SUMMARY": {
+        "TABLE_FOR_DATA3_WO_SUMMARY": {
+            "onfalse": {
+                "comment": "tous les TABLE de données ont des SUMMARY",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données sans SUMMARY a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA3_W_SUMMARY": {
+        "TABLE_FOR_DATA3_W_SUMMARY": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données avec un attribut SUMMARY n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données avec un attribut SUMMARY a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA3_W_SUMMARY_EQUALS_TO_CAPTION": {
+        "TABLE_FOR_DATA3_W_SUMMARY_EQUALS_TO_CAPTION": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données avec un attribut SUMMARY dont le texte est le même que celui du CAPTION n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données avec un attribut SUMMARY dont le texte est le même que celui du CAPTION a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA4": {
+        "TABLE_FOR_DATA4": {
+            "onfalse": {
+                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA4_WO_TH": {
+        "TABLE_FOR_DATA4_WO_TH": {
+            "onfalse": {
+                "comment": "aucun élément TABLE sans élément TH, alors qu'il contient un élément CAPTION ou possède un attribut SUMMARY, n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE sans élément TH, alors qu'il contient un élément CAPTION ou possède un attribut SUMMARY, a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA_WO_CAPTION": {
+        "TABLE_FOR_DATA_WO_CAPTION": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données sans CAPTION n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données sans CAPTION a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA_WO_FILLED_AND_UNIQUE_CAPTION": {
+        "TABLE_FOR_DATA_WO_FILLED_AND_UNIQUE_CAPTION": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données sans CAPTION rempli et unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données sans CAPTION rempli et unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA_WO_FILLED_SUMMARY": {
+        "TABLE_FOR_DATA_WO_FILLED_SUMMARY": {
+            "onfalse": {
+                "comment": "aucun élément TABLE contenant un élément TH ou CAPTION et un avec attribut SUMMARY vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE contenant un élément TH ou CAPTION et un avec attribut SUMMARY vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA_WO_SUMMARY": {
+        "TABLE_FOR_DATA_WO_SUMMARY": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données sans SUMMARY n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation des éléments TABLE sans attribut SUMMARY et contenant au moins un élément TH ou un élément CAPTION constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA_WO_TH": {
+        "TABLE_FOR_DATA_WO_TH": {
+            "onfalse": {
+                "comment": "aucun élément TABLE sans élément TH, alors qu'il contient un élément CAPTION ou possède un attribut SUMMARY, n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE sans élément TH, alors qu'il contient un élément CAPTION ou possède un attribut SUMMARY, a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_FOR_DATA_W_CAPTION": {
+        "TABLE_FOR_DATA_W_CAPTION": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données avec un CAPTION n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de données avec CAPTION a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_LAYOUT": {
+        "TABLE_LAYOUT": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de mise en page n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de mise en page a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_LAYOUT_WO_EMPTY_SUMMARY": {
+        "TABLE_LAYOUT_WO_EMPTY_SUMMARY": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de mise en page sans attribut SUMMARY vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de mise en page sans attribut SUMMARY vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_LAYOUT_W_SUMMARY": {
+        "TABLE_LAYOUT_W_SUMMARY": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de mise en page avec un attribut SUMMARY n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE de mise en page avec un attribut SUMMARY a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_FAKE_TH": {
+        "TABLE_W_FAKE_TH": {
+            "onfalse": {
+                "comment": "aucun élément TABLE avec des TH simulés n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE avec des TH simulés a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "TARGET_BLANK": {
         "TARGET_BLANK": {
             "onfalse": {
@@ -4627,6 +4891,42 @@
             },
             "ontrue": {
                 "comment": "au moins un élément UL a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "URL_W_TERMS_NOT_IN_TITLE": {
+        "URL_W_TERMS_NOT_IN_TITLE": {
+            "onfalse": {
+                "comment": "aucun des termes présents dans l'URL n'est présent dans le titre",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un des termes présents dans l'URL est présent dans le titre",
+                "result": "c"
+            }
+        }
+    },
+    "URL_W_UNSAFE_CHARS": {
+        "URL_W_UNSAFE_CHARS": {
+            "onfalse": {
+                "comment": "aucune URL avec un caractère considéré comme non sûr n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une URL avec un caractère considéré comme non sûr a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "URL_W_VARIANTS": {
+        "URL_W_VARIANTS": {
+            "onfalse": {
+                "comment": "aucune ressource ne présente de variations dans la casse de son URL",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource présente des variations dans la casse de son URL a été détecté",
                 "result": "c"
             }
         }
