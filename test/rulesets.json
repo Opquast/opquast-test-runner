@@ -4463,6 +4463,78 @@
             }
         }
     },
+    "TH_W_ID": {
+        "TH_W_ID": {
+            "onfalse": {
+                "comment": "aucun élément TH avec un attribut ID n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TH avec un attribut ID a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TH_W_INVALID_SCOPE_ATTR": {
+        "TH_W_INVALID_SCOPE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TH avec un attribut SCOPE ayant une valeur autre que row ou col n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TH avec un attribut SCOPE ayant une valeur autre que row ou col a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TH_W_SCOPE_ATTR": {
+        "TH_W_SCOPE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TH avec un attribut SCOPE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TH avec un attribut SCOPE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TH_WO_FILLED_AND_UNIQUE_ID": {
+        "TH_WO_FILLED_AND_UNIQUE_ID": {
+            "onfalse": {
+                "comment": "aucun élément TH sans attribut ID unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TH sans attribut ID unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TH_WO_FILLED_AND_UNIQUE_ID_WO_SCOPE_ATTR": {
+        "TH_WO_FILLED_AND_UNIQUE_ID_WO_SCOPE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TH sans ID unique ni SCOPE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TH sans ID unique ni SCOPE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TH_WO_SCOPE_ATTR_WO_ID": {
+        "TH_WO_SCOPE_ATTR_WO_ID": {
+            "onfalse": {
+                "comment": "aucun élément TH sans attribut SCOPE ou ID n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TH sans attribut SCOPE ni ID a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "TITLE": {
         "TITLE": {
             "onfalse": {
