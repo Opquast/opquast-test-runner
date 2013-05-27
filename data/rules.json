@@ -480,7 +480,7 @@
     "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": "xpath@html://table[@summary][caption][normalize-space(@summary)!=''][normalize-space(@summary)=normalize-space(caption)]",
     "TABLE_W_SUMMARY_WO_TH": "xpath@html://table[normalize-space(@summary)!=''][not(thead/tr/th)][not(tbody/tr/th)]",
     "TABLE_W_TH": "xpath@html://table[thead/tr/th or tbody/tr/th]",
-    "TABLE_W_TH_LINE_OR_COLUMN": "xpath@html://table[.//tr[./th[following-sibling::th or @colspan or @rowspan]][following-sibling::tr/th[following-sibling::th or @colspan or @rowspan]]]",
+    "TABLE_W_TH_LINE_OR_COLUMN": "xpath@html://table[.//tr[1][th[following-sibling::th or @colspan or @rowspan]]][.//tr[2][th[following-sibling::th or @colspan or @rowspan]]]",
     "TABLE_W_TH_WO_CAPTION": "xpath@html://table[thead/tr/th or tbody/tr/th][./*[position()=1][local-name()!='caption']]",
     "TARGET_BLANK": "oqs@html:htmlNewWindow",
     "TD_WO_HEADERS_ATTR_W_TH_WITH_ID": "xpath@html://td[normalize-space(translate(.,' ',' '))!=''][normalize-space(@headers)=''][ancestor::table//th[normalize-space(@id)!='']]",

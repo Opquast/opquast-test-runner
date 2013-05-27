@@ -4667,6 +4667,30 @@
             }
         }
     },
+    "TABLE_WO_FIXED_LAYOUT": {
+        "TABLE_WO_FIXED_LAYOUT": {
+            "onfalse": {
+                "comment": "aucun élément TABLE avec un table-layout non fixe n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE avec un table-layout non fixe a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_WO_UNIQUE_SUMMARY_ATTR": {
+        "TABLE_WO_UNIQUE_SUMMARY_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TABLE avec SUMMARY non unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de contenus identiques pour plusieurs attributs SUMMARY constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
     "TABLE_W_CAPTION": {
         "TABLE_W_CAPTION": {
             "onfalse": {
@@ -4723,6 +4747,102 @@
             },
             "ontrue": {
                 "comment": "L'utilisation d'éléments TD quand l'ensemble des cellules d'une ligne contient du texte en gras constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_FILLED_AND_UNIQUE_SUMMARY_ATTR": {
+        "TABLE_W_FILLED_AND_UNIQUE_SUMMARY_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TABLE avec un attribut SUMMARY vide ou non unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE avec un attribut SUMMARY vide ou non unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_SUMMARY_ATTR": {
+        "TABLE_W_SUMMARY_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TABLE possédant un attribut SUMMARY n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE possédant un attribut SUMMARY a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_SUMMARY_ATTR_AND_CAPTION": {
+        "TABLE_W_SUMMARY_ATTR_AND_CAPTION": {
+            "onfalse": {
+                "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
+        "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
+            "onfalse": {
+                "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_SUMMARY_WO_TH": {
+        "TABLE_W_SUMMARY_WO_TH": {
+            "onfalse": {
+                "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant uniquement des cellules TD n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant uniquement des cellules TD a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_TH": {
+        "TABLE_W_TH": {
+            "onfalse": {
+                "comment": "aucun élément TABLE contenant des éléments TH n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE contenant des éléments TH a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_TH_LINE_OR_COLUMN": {
+        "TABLE_W_TH_LINE_OR_COLUMN": {
+            "onfalse": {
+                "comment": "aucun élément TABLE contenant des éléments TH n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE contenant des éléments TH a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_TH_WO_CAPTION": {
+        "TABLE_W_TH_WO_CAPTION": {
+            "onfalse": {
+                "comment": "aucun élément TABLE sans élément CAPTION alors qu'il contient au moins un élément TH n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE sans élément CAPTION alors qu'il contient au moins un élément TH a été détecté",
                 "result": "c"
             }
         }
