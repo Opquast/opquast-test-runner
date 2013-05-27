@@ -904,7 +904,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-family") {
-                        var font = rule.declarations[i]["valueText"].split(",").slice(-1)[0].replace(/['"]/g, "").trim();
+                        var font = rule.declarations[i]["valueText"].split(",").pop().replace(/['"]/g, "").trim();
 
                         if ($.inArray(font, genericFontStyle) == -1) {
                             result.push(_getCssDetails(rule, i));
@@ -3629,12 +3629,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.countryDomain = function httpCountryDomain(doc) {
         //
-        var result = [], extensions = ["ad", "ae", "af", "ag", "ai", "al", "am", "an", "ao", "aq", "ar", "as", "at", "au", "aw", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bm", "bn", "bo", "br", "bs", "bt", "bv", "bw", "by", "bz", "ca", "cc", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr", "cu", "cv", "cx", "cy", "cz", "de", "dk", "dj", "dm", "do", "dz", "ec", "ee", "eg", "eh", "er", "es", "et", "fi", "fj", "fk", "fm", "fo", "fr", "fx", "ga", "gd", "ge", "gf", "gg", "gh", "gi", "gl", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "in", "io", "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km", "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr", "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "mh", "mk", "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mx", "mw", "my", "mz", "na", "nc", "nf", "ne", "ng", "ni", "nl", "no", "np", "nr", "nu", "nz", "om", "pa", "pe", "pf", "ph", "pk", "pl", "pm", "pn", "pq", "pr", "pt", "py", "pw", "qa", "re", "ro", "ru", "rw", "sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "st", "sv", "sy", "sz", "tc", "td", "tf", "th", "tj", "tm", "tn", "to", "tp", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "uk", "um", "us", "uy", "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "ye", "yt", "yu", "za", "zr", "zm", "zw"];
+        var result = [],
+            extensions = ["ad", "ae", "af", "ag", "ai", "al", "am", "an", "ao", "aq", "ar", "as", "at", "au", "aw", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bm", "bn", "bo", "br", "bs", "bt", "bv", "bw", "by", "bz", "ca", "cc", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr", "cu", "cv", "cx", "cy", "cz", "de", "dk", "dj", "dm", "do", "dz", "ec", "ee", "eg", "eh", "er", "es", "et", "fi", "fj", "fk", "fm", "fo", "fr", "fx", "ga", "gd", "ge", "gf", "gg", "gh", "gi", "gl", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "in", "io", "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km", "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr", "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "mh", "mk", "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mx", "mw", "my", "mz", "na", "nc", "nf", "ne", "ng", "ni", "nl", "no", "np", "nr", "nu", "nz", "om", "pa", "pe", "pf", "ph", "pk", "pl", "pm", "pn", "pq", "pr", "pt", "py", "pw", "qa", "re", "ro", "ru", "rw", "sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "st", "sv", "sy", "sz", "tc", "td", "tf", "th", "tj", "tm", "tn", "to", "tp", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "uk", "um", "us", "uy", "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "ye", "yt", "yu", "za", "zr", "zm", "zw"];
 
         //
         try {
             //
-            var tld = doc.location.host.split(".").slice(-1)[0];
+            var tld = doc.location.host.split(".").pop().toLowerCase();
 
             //
             if ($.inArray(tld, extensions) != -1) {
@@ -3667,7 +3668,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             if (response.status !== 200) {
                 return [];
             }
-            var tld = doc.location.host.split(".").slice(-1)[0].toLowerCase(), data = $(response.data);
+            var tld = doc.location.host.split(".").pop().toLowerCase(), data = $(response.data);
             if ($("geoplugin_countryCode", data).text().toLowerCase() === tld) {
                 return [tld];
             }
@@ -4213,7 +4214,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 // This is crazy, we should not check every link on a page
                 // Attempt to reduce to some extensions. Not perfect but fine enough
                 var url = $.URL(link.uri);
-                if ($.inArray(url.path.split(".").slice(-1)[0], dl_extensions) === -1) {
+                if ($.inArray(url.path.split(".").pop().toLowerCase(), dl_extensions) === -1) {
                     return;
                 }
 
@@ -4256,7 +4257,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 // This is crazy, we should not check every link on a page
                 // Attempt to reduce to pdf extension. Not perfect but fine enough
                 var url = $.URL(link.uri);
-                if (url.path.split(".").slice(-1)[0] !== "pdf") {
+                if (url.path.split(".").pop().toLowerCase() !== "pdf") {
                     return;
                 }
 

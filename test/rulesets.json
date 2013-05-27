@@ -4019,6 +4019,42 @@
             }
         }
     },
+    "OPTGROUP_WO_FILLED_AND_UNIQUE_LABEL_ATTR": {
+        "OPTGROUP_WO_FILLED_AND_UNIQUE_LABEL_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément OPTGROUP appartenant au même élément SELECT et ayant un attribut LABEL de valeur identique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "plusieurs éléments OPTGROUP appartenant au même élément SELECT et ayant un attribut LABEL de valeur identique ont été détectés",
+                "result": "c"
+            }
+        }
+    },
+    "OPTGROUP_WO_FILLED_LABEL_ATTR": {
+        "OPTGROUP_WO_FILLED_LABEL_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément OPTGROUP avec un attribut LABEL vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OPTGROUP avec un attribut LABEL vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "OPTGROUP_WO_LABEL_ATTR": {
+        "OPTGROUP_WO_LABEL_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément OPTGROUP sans attribut LABEL n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OPTGROUP sans attribut LABEL a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "OPTION": {
         "OPTION": {
             "onfalse": {
@@ -4235,6 +4271,138 @@
             }
         }
     },
+    "SELECT_WO_FILLED_AND_UNIQUE_ID": {
+        "SELECT_WO_FILLED_AND_UNIQUE_ID": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans ID unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT sans ID unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_WO_FILLED_AND_UNIQUE_LABEL": {
+        "SELECT_WO_FILLED_AND_UNIQUE_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans LABEL unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT sans LABEL unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_WO_FILLED_AND_UNIQUE_TITLE_ATTR": {
+        "SELECT_WO_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans TITLE vide ou non unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec TITLE vide ou non unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_WO_FILLED_TITLE_ATTR": {
+        "SELECT_WO_FILLED_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans TITLE vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec TITLE vide a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+        "SELECT_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans LABEL et sans TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT sans LABEL et sans TITLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+        "SELECT_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans TITLE rempli et sans ID unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans TITLE rempli et sans ID unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_WO_ID": {
+        "SELECT_WO_ID": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans ID n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de l'élément SELECT sans attribut ID constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_WO_LABEL": {
+        "SELECT_WO_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans LABEL n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec LABEL a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_WO_NEGATIVE_TABINDEX_ATTR": {
+        "SELECT_WO_NEGATIVE_TABINDEX_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément SELECT avec un attribut TABINDEX négatif n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec un attribut TABINDEX négatif a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_WO_TITLE_ATTR_WO_ANY_LABEL": {
+        "SELECT_WO_TITLE_ATTR_WO_ANY_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans TITLE et sans LABEL n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT sans TITLE et sans LABEL a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
+        "SELECT_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans TITLE ou LABEL unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT sans TITLE ou LABEL unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "SELECT_W_3_OPTIONS": {
         "SELECT_W_3_OPTIONS": {
             "onfalse": {
@@ -4243,6 +4411,54 @@
             },
             "ontrue": {
                 "comment": "au moins un élément SELECT avec 3 OPTION ou plus a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_W_3_OPTIONS_WO_OPTGROUP": {
+        "SELECT_W_3_OPTIONS_WO_OPTGROUP": {
+            "onfalse": {
+                "comment": "aucun élément SELECT avec 3 OPTION ou plus et sans OPTGROUP n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec 3 OPTION ou plus et sans OPTGROUP a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_W_ANY_LABEL_WO_FILLED_AND_UNIQUE_ID": {
+        "SELECT_W_ANY_LABEL_WO_FILLED_AND_UNIQUE_ID": {
+            "onfalse": {
+                "comment": "aucun élément SELECT avec un LABEL et sans ID non vide et unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec un LABEL et sans ID non vide et unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+        "SELECT_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément SELECT avec un TITLE non vide et unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec un TITLE non vide et unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "SELECT_W_OPTGROUP_W_FILLED_AND_UNIQUE_LABEL_ATTR": {
+        "SELECT_W_OPTGROUP_W_FILLED_AND_UNIQUE_LABEL_ATTR": {
+            "onfalse": {
+                "comment": "tous les OPTGROUP possèdent un LABEL non vide et unique",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OPTGROUP sans LABEL non vide et unique a été détecté",
                 "result": "c"
             }
         }
@@ -4867,6 +5083,174 @@
             },
             "ontrue": {
                 "comment": "au moins un élément TEXTAREA a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_FILLED_AND_UNIQUE_ID": {
+        "TEXTAREA_WO_FILLED_AND_UNIQUE_ID": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans ID unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans ID unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_FILLED_AND_UNIQUE_LABEL": {
+        "TEXTAREA_WO_FILLED_AND_UNIQUE_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans LABEL unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans LABEL unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_FILLED_AND_UNIQUE_TITLE_ATTR": {
+        "TEXTAREA_WO_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans TITLE non vide et unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans TITLE non vide et unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+        "TEXTAREA_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans LABEL et sans TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans LABEL et sans TITLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+        "TEXTAREA_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans TITLE rempli et sans ID unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans TITLE rempli et sans ID unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_ID": {
+        "TEXTAREA_WO_ID": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans ID n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de l'élément TEXTAREA sans attribut ID constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_LABEL": {
+        "TEXTAREA_WO_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans LABEL n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans LABEL a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_NEGATIVE_TABINDEX_ATTR": {
+        "TEXTAREA_WO_NEGATIVE_TABINDEX_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA avec un attribut TABINDEX négatif n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA avec un attribut TABINDEX négatif a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_TITLE": {
+        "TEXTAREA_WO_TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans attribut TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans attribut TITLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_TITLE_ATTR_WO_ANY_LABEL": {
+        "TEXTAREA_WO_TITLE_ATTR_WO_ANY_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans TITLE et sans LABEL n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans TITLE et sans LABEL a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
+        "TEXTAREA_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans TITLE ou LABEL non vide et unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans TITLE ou LABEL non vide et unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_W_ANY_LABEL_WO_FILLED_AND_UNIQUE_ID": {
+        "TEXTAREA_W_ANY_LABEL_WO_FILLED_AND_UNIQUE_ID": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA avec un LABEL et sans ID non vide et unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA avec un LABEL et sans ID non vide et unique a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_W_DEFAULT_VALUE": {
+        "TEXTAREA_W_DEFAULT_VALUE": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA avec une valeur par défaut n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA avec une valeur par défaut a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TEXTAREA_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+        "TEXTAREA_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA avec un TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA avec un TITLE a été détecté",
                 "result": "c"
             }
         }
