@@ -4667,6 +4667,30 @@
             }
         }
     },
+    "TABLE_W_CAPTION": {
+        "TABLE_W_CAPTION": {
+            "onfalse": {
+                "comment": "aucun élément TABLE contenant un élément CAPTION n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE contenant un élément CAPTION a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_CAPTION_WO_TH": {
+        "TABLE_W_CAPTION_WO_TH": {
+            "onfalse": {
+                "comment": "aucun élément TABLE contenant uniquement des cellules TD et un élément CAPTION n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE contenant uniquement des cellules TD et un élément CAPTION a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "TABLE_W_FAKE_TH": {
         "TABLE_W_FAKE_TH": {
             "onfalse": {
@@ -4675,6 +4699,30 @@
             },
             "ontrue": {
                 "comment": "au moins un élément TABLE avec des TH simulés a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_FAKE_TH_COLUMN": {
+        "TABLE_W_FAKE_TH_COLUMN": {
+            "onfalse": {
+                "comment": "aucun élément TABLE avec une colonne de TH simulés n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation d'éléments TD quand l'ensemble des cellules d'une colonne contient du texte en gras constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "TABLE_W_FAKE_TH_LINE": {
+        "TABLE_W_FAKE_TH_LINE": {
+            "onfalse": {
+                "comment": "aucun élément TABLE avec une ligne de TH simulés n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation d'éléments TD quand l'ensemble des cellules d'une ligne contient du texte en gras constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
                 "result": "c"
             }
         }
@@ -4727,42 +4775,6 @@
             }
         }
     },
-    "TH_W_ID": {
-        "TH_W_ID": {
-            "onfalse": {
-                "comment": "aucun élément TH avec un attribut ID n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément TH avec un attribut ID a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "TH_W_INVALID_SCOPE_ATTR": {
-        "TH_W_INVALID_SCOPE_ATTR": {
-            "onfalse": {
-                "comment": "aucun élément TH avec un attribut SCOPE ayant une valeur autre que row ou col n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément TH avec un attribut SCOPE ayant une valeur autre que row ou col a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "TH_W_SCOPE_ATTR": {
-        "TH_W_SCOPE_ATTR": {
-            "onfalse": {
-                "comment": "aucun élément TH avec un attribut SCOPE n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément TH avec un attribut SCOPE a été détecté",
-                "result": "c"
-            }
-        }
-    },
     "TH_WO_FILLED_AND_UNIQUE_ID": {
         "TH_WO_FILLED_AND_UNIQUE_ID": {
             "onfalse": {
@@ -4799,6 +4811,42 @@
             }
         }
     },
+    "TH_W_ID": {
+        "TH_W_ID": {
+            "onfalse": {
+                "comment": "aucun élément TH avec un attribut ID n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TH avec un attribut ID a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TH_W_INVALID_SCOPE_ATTR": {
+        "TH_W_INVALID_SCOPE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TH avec un attribut SCOPE ayant une valeur autre que row ou col n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TH avec un attribut SCOPE ayant une valeur autre que row ou col a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TH_W_SCOPE_ATTR": {
+        "TH_W_SCOPE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TH avec un attribut SCOPE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TH avec un attribut SCOPE a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "TITLE": {
         "TITLE": {
             "onfalse": {
@@ -4807,6 +4855,18 @@
             },
             "ontrue": {
                 "comment": "un élement TITLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TITLE_WO_TEXT": {
+        "TITLE_WO_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément TITLE vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément TITLE vide a été détecté",
                 "result": "c"
             }
         }
@@ -4847,18 +4907,6 @@
             }
         }
     },
-    "TITLE_WO_TEXT": {
-        "TITLE_WO_TEXT": {
-            "onfalse": {
-                "comment": "aucun élément TITLE vide n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un élément TITLE vide a été détecté",
-                "result": "c"
-            }
-        }
-    },
     "TT": {
         "TT": {
             "onfalse": {
@@ -4879,6 +4927,18 @@
             },
             "ontrue": {
                 "comment": "L'utilisation de l'élément U constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "UNIQUE_ID": {
+        "UNIQUE_ID": {
+            "onfalse": {
+                "comment": "aucun élément ne possède un attribut ID non unique n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément possède un attribut ID non unique a été détecté",
                 "result": "c"
             }
         }

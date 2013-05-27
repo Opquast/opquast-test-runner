@@ -12616,28 +12616,7 @@
         }
     },
     "19235": {
-        "TABLE_W_CAPTION": {
-            "onfalse": {
-                "comment": "aucun élément TABLE contenant un élément CAPTION n'a été détecté",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "TABLE_W_CAPTION_WO_TH": {
-                        "onfalse": {
-                            "comment": "aucun élément TABLE contenant uniquement des cellules TD et un élément CAPTION n'a été détecté",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un élément TABLE contenant uniquement des cellules TD et un élément CAPTION a été détecté",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément TABLE contenant un élément CAPTION a été détecté",
-                "result": "i"
-            }
-        }
+
     },
     "19236": {
         "CENTER": {
