@@ -1,3 +1,0 @@
-{
-    "test_1": "xpath@html://a[@href][normalize-space(text())='Mentions légales']"
-}

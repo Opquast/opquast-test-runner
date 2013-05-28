@@ -21,40 +21,42 @@ var RULES = [];
 var RULESETS = [];
 
 
-const addFilesToList = function(listRef) {
+const addFilesToList = function(name, listRef) {
     return function() {
         [].slice.call(arguments).forEach(function(f) {
             if (listRef.indexOf(f) === -1) {
                 listRef.push(f);
+                console.debug('Added ' + name + ': ' + f);
             }
         });
     };
 };
 
-const removeFilesFromList = function(listRef) {
+const removeFilesFromList = function(name, listRef) {
     return function() {
         [].slice.call(arguments).forEach(function(f) {
             if (listRef.indexOf(f) !== -1) {
                 listRef.splice(listRef.indexOf(f));
+                console.debug('Removed ' + name + ': ' + f);
             }
         });
     };
 };
 
-const addJSFiles = addFilesToList(JS_FILES);
-const removeJSFiles = removeFilesFromList(JS_FILES);
+const addJSFiles = addFilesToList('JS file', JS_FILES);
+const removeJSFiles = removeFilesFromList('JS file', JS_FILES);
 exports.addJSFiles = addJSFiles;
 exports.removeJSFiles = removeJSFiles;
 
 
-const addRules = addFilesToList(RULES);
-const removeRules = removeFilesFromList(RULES);
+const addRules = addFilesToList('rules', RULES);
+const removeRules = removeFilesFromList('rules', RULES);
 exports.addRules = addRules;
 exports.removeRules = removeRules;
 
 
-const addRuleSets = addFilesToList(RULESETS);
-const removeRuleSets = removeFilesFromList(RULESETS);
+const addRuleSets = addFilesToList('rulesets', RULESETS);
+const removeRuleSets = removeFilesFromList('rulesets', RULESETS);
 exports.addRuleSets = addRuleSets;
 exports.removeRuleSets = removeRuleSets;
 
