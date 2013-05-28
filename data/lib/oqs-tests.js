@@ -104,17 +104,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                             }
 
                             //
-                            if (fields[i][title] == undefined) {
-                                fields[i][title] = {};
+                            if (fields[i][j][title] == undefined) {
+                                fields[i][j][title] = {};
                             }
 
                             //
-                            if (fields[i][title][label] == undefined) {
-                                fields[i][title][label] = [];
+                            if (fields[i][j][title][label] == undefined) {
+                                fields[i][j][title][label] = [];
                             }
 
                             //
-                            fields[i][title][label].push(_getDetails(this));
+                            fields[i][j][title][label].push(_getDetails(this));
                         });
                         //
                         i++;

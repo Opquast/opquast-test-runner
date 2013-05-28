@@ -519,7 +519,7 @@
     "TITLE_W_TEXT": "xpath@html://title[normalize-space(translate(.,' ',' '))!='']",
     "TT": "xpath@html://tt",
     "U": "xpath@html://u",
-    "UNIQUE_ID": "xpath@html://*[normalize-space(@id)=normalize-space(preceding::*/@id)]",
+    "UNIQUE_ID": "xpath@html://*[@id][normalize-space(@id)=normalize-space(preceding::*/@id) or normalize-space(@id)=normalize-space(following::*/@id)]",
     "UNORDERED_LIST": "xpath@html://ul",
     "URI_UNIQUE_IN_PAGE": "oqs@html:uriUniqueInPage",
     "URL_W_TERMS_NOT_IN_TITLE": "oqs@html:htmlUrlWithTermsNotInTitle",
