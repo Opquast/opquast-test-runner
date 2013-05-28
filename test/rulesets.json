@@ -5075,6 +5075,78 @@
             }
         }
     },
+    "TD_WO_HEADERS_ATTR_W_TH_WITH_ID": {
+        "TD_WO_HEADERS_ATTR_W_TH_WITH_ID": {
+            "onfalse": {
+                "comment": "aucun élément TD sans attribut HEADERS alors que l'élément TH qui s'y rapporte possède un attribut ID n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TD sans attribut HEADERS alors que l'élément TH qui s'y rapporte possède un attribut ID a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TD_WO_TH": {
+        "TD_WO_TH": {
+            "onfalse": {
+                "comment": "aucun élément TD dont l'attribut HEADERS ne correspond à aucun TH n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TD dont l'attribut HEADERS ne correspond à aucun TH a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TD_WO_TH_OR_W_TH_WO_SCOPE_ATTR": {
+        "TD_WO_TH_OR_W_TH_WO_SCOPE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TD dont le HEADERS ne correspond à aucun TH n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TD dont le HEADERS ne correspond à aucun TH a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TD_W_EMPTY_HEADERS_ATTR": {
+        "TD_W_EMPTY_HEADERS_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TD avec HEADERS vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "L'utilisation d'éléments TD quand l'ensemble des cellules d'une colonne contient du texte en gras constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "c"
+            }
+        }
+    },
+    "TD_W_HEADERS_ATTR": {
+        "TD_W_HEADERS_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TD avec un attribut HEADERS n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TD avec un attribut HEADERS a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "TD_W_HEADERS_ATTR_UNKNOWN": {
+        "TD_W_HEADERS_ATTR_UNKNOWN": {
+            "onfalse": {
+                "comment": "aucun élément TD avec un attribut HEADERS dont le contenu ne correspond à aucune valeur d'attribut ID dans le même élément TABLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TD avec un attribut HEADERS dont le contenu ne correspond à aucune valeur d'attribut ID dans le même élément TABLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "TEXTAREA": {
         "TEXTAREA": {
             "onfalse": {
