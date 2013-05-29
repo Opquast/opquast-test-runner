@@ -1,0 +1,5 @@
+@media all, not handheld {
+	body {
+		font-family: sans-serif;
+	}
+}
