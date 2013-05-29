@@ -9,20 +9,68 @@
 const {Cc, Ci} = require('chrome');
 
 const Q = require('sdk/core/promise');
+const file = require("sdk/io/file");
+const SandBox = require("sdk/loader/sandbox");
+const {readURI} = require('sdk/net/url');
+const self = require("sdk/self");
+const {pathFor} = require("system");
 const {getBrowserForTab, getOwnerWindow} = require('sdk/tabs/utils');
+const {startServerAsync} = require('sdk/test/httpd');
 const {setTimeout, clearTimeout} = require('sdk/timers');
 const {URL} = require('sdk/url');
-const {readURI} = require('sdk/net/url');
-const SandBox = require("sdk/loader/sandbox");
 
-const wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
 const testRunner = require("opquast-tests/test-runner");
 const {addRuleSets} = require("opquast-tests/test-runner");
+
+const wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
+
 
 const statuses = {
     200: "200 OK",
     404: "404 Not found"
 }
+
+const openPage = function(url) {
+    let win = wm.getMostRecentWindow('navigator:browser');
+    let tab = win.gBrowser.tabContainer.getItemAtIndex(0);
+    let browser = getBrowserForTab(tab);
+
+    let D = Q.defer();
+    let timeout;
+
+    function _load() {
+        clearTimeout(timeout)
+        browser.removeEventListener('load', _load, true);
+        setTimeout(function() {
+            D.resolve({
+                url: url,
+                tab: tab,
+                browser: browser,
+                loadFailed:false
+            });
+        }, 500);
+    }
+
+    // in case on no load event (error during a request for ex),
+    // we should be able to continue tests
+    timeout = setTimeout(function() {
+        browser.removeEventListener('load', _load, true);
+        D.resolve({
+            url: url,
+            tab: tab,
+            browser: browser,
+            loadFailed:true
+        });
+    }, 5000);
+
+    browser.addEventListener('load', _load, true);
+
+    browser.loadURI(url);
+
+    return D.promise;
+};
+exports.openPage = openPage;
+
 
 const openTab = function() {
     let win = wm.getMostRecentWindow('navigator:browser');
@@ -206,3 +254,157 @@ let launchTests = function(domWindow, har, headers, test, status) {
 };
 
 exports.launchTests = launchTests;
+
+
+const getXPIContent = function(glob) {
+    let fp = Cc['@mozilla.org/file/local;1'].createInstance(Ci.nsILocalFile);
+    let xpi = Cc["@mozilla.org/libjar/zip-reader;1"].createInstance(Ci.nsIZipReader);
+
+    let baseURI = URL("/", module.uri);
+    let basePath = file.dirname(URL(module.uri).path);
+
+    let path = file.join(pathFor("ProfD"), "extensions", self.id + ".xpi");
+    fp.initWithPath(path);
+    xpi.open(fp);
+
+    let entries = xpi.findEntries("resources" + basePath + "/" + glob);
+    let entry;
+    let fileList = [];
+    while (entries.hasMore()) {
+        entry = entries.getNext();
+        if (!xpi.getEntry(entry).isDirectory) {
+            fileList.push(entry);
+        }
+    }
+
+    fileList.sort();
+    return fileList.map(function(v) {
+        return {
+            "url": URL(v.split("/").slice(1).join("/"), baseURI).toString(),
+            "entry": v.split("/").slice(basePath.split("/").length).join("/")
+        };
+    });
+};
+exports.getXPIContent = getXPIContent;
+
+
+const getHTMLFixtures = function(glob) {
+    let result = {};
+
+    getXPIContent(glob).forEach(function(v) {
+        let {url, entry} = v;
+        let base = url.split("/").slice(0, -1).join("/") + "/";
+        let ext = entry.split(".").slice(-1).join("");
+
+        if (result[base] === undefined) {
+            result[base] = {
+                //"files": [],
+                "html": [],
+                "json": []
+            };
+        }
+
+        if (ext === "html") {
+            result[base]["html"].push(url);
+        }
+        else if (ext === "json") {
+            result[base]["json"].push(url);
+        }
+
+        //result[base]["files"].push(url);
+    });
+
+    return result;
+};
+exports.getHTMLFixtures = getHTMLFixtures;
+
+
+const startServer = function(port) {
+    let server = startServerAsync(port);
+    let root = URL("http://" + server._host + ":" + server._port + "/")
+
+    let getURI = function(path) {
+        return URL(path, root);
+    };
+
+    let setRoot = function(rootURI) {
+        server.registerPrefixHandler("/", function(request, response) {
+            try {
+                let resURI = URL(request._path.substr(1), rootURI);
+                let ext = resURI.split(".").slice(-1).join("");
+                let mime = "text/plain; charset=UTF-8";
+                let contents;
+
+                if (MIME_TYPES[ext] !== undefined) {
+                    mime = MIME_TYPES[ext];
+                }
+
+                if (rootURI == resURI) {
+                    return httpError(request, response);
+                }
+
+                try {
+                    contents = readBinaryURI(resURI);
+                }
+                catch(e) {
+                    return httpError(request, response);
+                }
+
+                response.setStatusLine(request.httpVersion, 200, "OK");
+                response.setHeader("Content-Type", mime);
+                response.processAsync();
+                response.write(contents)
+                response.finish();
+            }
+            catch(e) {
+                console.exception(e);
+                throw(e);
+            }
+        });
+    };
+
+    let httpError = function(request, response) {
+        response.setStatusLine(request.httpVersion, 404, 'NOT FOUND');
+        response.setHeader("Content-Type", "text/plain; charset=UTF-8");
+        response.processAsync();
+        response.write("NOT FOUND");
+        response.finish();
+    };
+
+    let readBinaryURI = function(uri) {
+        let ioservice = Cc['@mozilla.org/network/io-service;1'].getService(Ci.nsIIOService);
+        let channel = ioservice.newChannel(uri, 'UTF-8', null);
+        let stream = Cc['@mozilla.org/binaryinputstream;1'].
+                      createInstance(Ci.nsIBinaryInputStream);
+        stream.setInputStream(channel.open());
+
+        let data = '';
+        while (true) {
+            let available = stream.available();
+            if (available <= 0)
+                break;
+            data += stream.readBytes(available);
+        }
+        stream.close();
+
+        return data;
+    };
+
+    return {
+        getURI: getURI,
+        setRoot: setRoot,
+        port: server.port
+    }
+};
+exports.startServer = startServer;
+
+
+const MIME_TYPES = {
+    'css': 'text/css; charset=utf-8',
+    'html': 'text/html; charset=utf-8',
+    'js': 'application/javascript; charset=utf-8',
+    'png': 'image/png',
+    'jpg': 'image/jpeg',
+    'jpeg': 'image/jpeg',
+    'gif': 'image/gif'
+};
