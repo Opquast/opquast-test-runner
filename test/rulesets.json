@@ -1,4 +1,40 @@
 {
+    "HTTP_CHARSET": {
+        "HTTP_CHARSET": {
+            "onfalse": {
+                "comment": "le serveur n'envoie pas les informations relatives au jeu de caractères employé",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur envoie les informations relatives au jeu de caractères employé",
+                "result": "c"
+            }
+        }
+    },
+    "ROBOTS_W_VALID_SITEMAP": {
+        "ROBOTS_W_VALID_SITEMAP": {
+            "onfalse": {
+                "comment": "le robots.txt est absent ou n'indique pas de sitemap",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le robots.txt est présent et indique un sitemap",
+                "result": "c"
+            }
+        }
+    },
+    "IMPLICIT_SITEMAP": {
+        "IMPLICIT_SITEMAP": {
+            "onfalse": {
+                "comment": "aucun sitemap n'a été trouvé",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un sitemap a été trouvé à la racine du site",
+                "result": "c"
+            }
+        }
+    },
     "404_DEFAULT": {
         "404_DEFAULT": {
             "onfalse": {

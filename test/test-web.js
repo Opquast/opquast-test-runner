@@ -5,10 +5,8 @@ const file = require("file");
 const self = require("self");
 const {pathFor} = require("system");
 
-let fixtures = getHTMLFixtures('fixtures/rules-debug/*')
-
+let fixtures = getHTMLFixtures('fixtures/rules-debug/*');
 let server = startServer(9000);
-
 
 Object.keys(fixtures).forEach(function(root) {
     fixtures[root].html.forEach(function(html_file) {
@@ -42,5 +40,5 @@ Object.keys(fixtures).forEach(function(root) {
     });
 });
 
-
+require("sdk/preferences/service").set("plugins.click_to_play", true);
 require("sdk/test").run(exports);

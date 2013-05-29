@@ -5,15 +5,13 @@ const file = require("file");
 const self = require("self");
 const {pathFor} = require("system");
 
-let fixtures = getHTMLFixtures('fixtures/rules/*')
-
-let server = startServer(9000);
-
+let fixtures = getHTMLFixtures('fixtures/rules/*'),
+    server = startServer(9000);
 
 Object.keys(fixtures).forEach(function(root) {
     fixtures[root].html.forEach(function(html_file) {
-        let [rule, expected, filename] = html_file.split("/").slice(-3);
-        let test_id = [rule, expected, filename.split(".").slice(0, -1).join("")].join("_");
+        let [rule, expected, filename] = html_file.split("/").slice(-3),
+            test_id = [rule, expected, filename.split(".").slice(0, -1).join("")].join("_");
 
         exports['test ' + test_id] = function(assert, done) {
             server.setRoot(root);
@@ -22,27 +20,19 @@ Object.keys(fixtures).forEach(function(root) {
             openPage(html_uri).then(function(result) {
                 let har = getHarObject(result.browser.contentWindow, html_file, fixtures[root].json);
 
-                return launchTests(result.browser.contentWindow, har, rule)
-                .then(function(res){
+                return launchTests(result.browser.contentWindow, har, rule).then(function(res){
                     res.tests.oaa_results.forEach(function(test) {
                         if(test.id == rule) {
-                            if(expected == "true") {
-                                assert.ok(test.result == "c", rule + " true");
-                            } else if(expected == "false") {
-                                assert.ok(test.result == "nc", rule + " false");
-                            }
+                            assert.ok((expected == "true" && test.result == "c") || (expected == "false" && test.result == "nc"), rule + " " + expected);
                         }
                     });
                 });
-            })
-            .then(null, function(e) {
+            }).then(null, function(e) {
                 console.exception(e);
-            })
-            .then(done);
+            }).then(done);
         };
     });
 });
 
 require("sdk/preferences/service").set("plugins.click_to_play", true);
-
 require("sdk/test").run(exports);
