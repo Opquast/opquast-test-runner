@@ -1,0 +1,10 @@
+{
+    "*": {
+        "status": 404,
+        "statusText": "NOT FOUND"
+    },
+    "/test.gif": {
+        "status": 500,
+        "statusText": "ERROR"
+    }
+}

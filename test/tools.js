@@ -8,6 +8,7 @@
 
 const {Cc, Ci} = require('chrome');
 
+const {mix} = require('sdk/core/heritage');
 const Q = require('sdk/core/promise');
 const file = require("sdk/io/file");
 const SandBox = require("sdk/loader/sandbox");
@@ -151,7 +152,111 @@ const openTab = function() {
 };
 exports.openTab = openTab;
 
-let launchTests = function(domWindow, har, headers, test, status) {
+
+let fakeHarEntry = function(window, url) {
+    let mimeType = "",
+        charset = "",
+        contents = "";
+
+    if (typeof(url) === "undefined") {
+        url = window.location.href;
+        mimeType = window.document.contentType;
+        charset = window.document.characterSet;
+        contents = window.XMLSerializer().serializeToString(window.document);
+    }
+
+    return {
+        '_url': url,
+        '_path': URL(url).path,
+        'pageref': url,
+        'startedDateTime': new Date().toISOString(),
+        'time': 0,
+        'request': {
+            'method': 'GET',
+            'url': url,
+            'httpVersion': 'HTTP/1.1',
+            'cookied': [],
+            'headers': [],
+            'queryString': [],
+            'postData': {},
+            'headerSize': -1,
+            'bodySize': -1
+        },
+        'response': {
+            'status': 200,
+            'statusText': 'OK',
+            'httpVersion': 'HTTP/1.1',
+            'cookies': [],
+            'headers': [],
+            'content': {
+                'size': 0,
+                'compression': undefined,
+                'mimeType': mimeType,
+                'text': contents
+            },
+            'redirectURL': '',
+            'headersSize': -1,
+            'bodySize': contents.length,
+            '_contentType': mimeType,
+            '_contentCharset': charset,
+            '_referrer': window.document.referrer,
+            '_imageInfo': undefined
+        },
+        'cache': {},
+        'timings': {
+            'send': 0,
+            'wait': 0,
+            'receive': 0
+        }
+    };
+};
+
+
+const getHarObject = function(window, htmlFile, jsonFiles) {
+    let entries = [fakeHarEntry(window)];
+
+    let jsonFileAll = htmlFile.split("/").slice(0, -1).join("/") + "/_all.json",
+        jsonFileOne = htmlFile.split(".").slice(0, -1).join(".") + ".json",
+        jsonAll,
+        jsonOne;
+
+    if (jsonFiles.indexOf(jsonFileAll) !== -1) {
+        jsonAll = JSON.parse(readBinaryURI(jsonFileAll));
+    }
+    if (jsonFiles.indexOf(jsonFileOne) !== -1) {
+        jsonOne = JSON.parse(readBinaryURI(jsonFileOne));
+    }
+
+    if (jsonAll && jsonAll["*"]) {
+        jsonAll[entries[0]._path] = jsonAll["*"];
+        delete(jsonAll["*"]);
+    }
+    if (jsonAll && jsonOne) {
+        jsonOne = mix(jsonAll, jsonOne);
+    }
+
+    Object.keys(jsonOne).forEach(function(k) {
+        if (k == entries[0]._path) {
+            entries[0].response = mix(entries[0].response, jsonOne[k]);
+            return;
+        }
+
+        let entry = fakeHarEntry(window, URL(k, entries[0]._url).toString());
+        entry.response = mix(entry.response, jsonOne[k]);
+        entries.push(entry);
+    });
+
+    entries = entries.map(function(v, i) {
+        v._id = i;
+        return v;
+    });
+
+    return {"entries": entries};
+};
+exports.getHarObject = getHarObject;
+
+
+let launchTests = function(domWindow, har, test) {
     let startTime = new Date();
 
     // Prepare checklists
@@ -187,40 +292,7 @@ let launchTests = function(domWindow, har, headers, test, status) {
     // Add rulesets
     addRuleSets(URL('rulesets.json', module.uri).toString());
 
-    // Format headers
-    if(Object.keys(headers).length) {
-        let _headers = {};
-
-        Object.keys(headers).map(function(element){
-            _headers[element.toLowerCase()] = headers[element];
-        });
-
-        headers = _headers;
-    }
-
-    return runner.init()
-    .then(function() {
-        // Create a fake first request if void
-        if (runner.resources.length == 0) {
-            runner.resources.push({
-                date: domWindow.document.lastModified,
-                modified: domWindow.document.lastModified,
-                expires: null,
-                content_type: domWindow.document.contentType,
-                charset: domWindow.document.characterSet,
-                size: domWindow.XMLSerializer().serializeToString(domWindow.document).length,
-                headers: headers,
-                uri: domWindow.location.href,
-                referrer: "",
-                method: "GET",
-                status: status,
-                status_text: statuses[status]
-            });
-        }
-
-        startTime = new Date();
-        return runner.run([test]);
-    })
+    return runner.run([test])
     .then(function(results) {
         // Format result set
         return {
@@ -371,25 +443,6 @@ const startServer = function(port) {
         response.finish();
     };
 
-    let readBinaryURI = function(uri) {
-        let ioservice = Cc['@mozilla.org/network/io-service;1'].getService(Ci.nsIIOService);
-        let channel = ioservice.newChannel(uri, 'UTF-8', null);
-        let stream = Cc['@mozilla.org/binaryinputstream;1'].
-                      createInstance(Ci.nsIBinaryInputStream);
-        stream.setInputStream(channel.open());
-
-        let data = '';
-        while (true) {
-            let available = stream.available();
-            if (available <= 0)
-                break;
-            data += stream.readBytes(available);
-        }
-        stream.close();
-
-        return data;
-    };
-
     return {
         getURI: getURI,
         setRoot: setRoot,
@@ -407,4 +460,24 @@ const MIME_TYPES = {
     'jpg': 'image/jpeg',
     'jpeg': 'image/jpeg',
     'gif': 'image/gif'
+};
+
+
+const readBinaryURI = function(uri) {
+    let ioservice = Cc['@mozilla.org/network/io-service;1'].getService(Ci.nsIIOService);
+    let channel = ioservice.newChannel(uri, 'UTF-8', null);
+    let stream = Cc['@mozilla.org/binaryinputstream;1'].
+                  createInstance(Ci.nsIBinaryInputStream);
+    stream.setInputStream(channel.open());
+
+    let data = '';
+    while (true) {
+        let available = stream.available();
+        if (available <= 0)
+            break;
+        data += stream.readBytes(available);
+    }
+    stream.close();
+
+    return data;
 };
