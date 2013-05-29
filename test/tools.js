@@ -231,20 +231,28 @@ const getHarObject = function(window, htmlFile, jsonFiles) {
         jsonAll[entries[0]._path] = jsonAll["*"];
         delete(jsonAll["*"]);
     }
-    if (jsonAll && jsonOne) {
-        jsonOne = mix(jsonAll, jsonOne);
+
+    if (jsonAll) {
+        if (jsonOne) {
+            jsonOne = mix(jsonAll, jsonOne);
+        }
+        else {
+            jsonOne = jsonAll;
+        }
     }
 
-    Object.keys(jsonOne).forEach(function(k) {
-        if (k == entries[0]._path) {
-            entries[0].response = mix(entries[0].response, jsonOne[k]);
-            return;
-        }
+    if (typeof(jsonOne) === "object") {
+        Object.keys(jsonOne).forEach(function(k) {
+            if (k == entries[0]._path) {
+                entries[0].response = mix(entries[0].response, jsonOne[k]);
+                return;
+            }
 
-        let entry = fakeHarEntry(window, URL(k, entries[0]._url).toString());
-        entry.response = mix(entry.response, jsonOne[k]);
-        entries.push(entry);
-    });
+            let entry = fakeHarEntry(window, URL(k, entries[0]._url).toString());
+            entry.response = mix(entry.response, jsonOne[k]);
+            entries.push(entry);
+        });
+    }
 
     entries = entries.map(function(v, i) {
         v._id = i;
