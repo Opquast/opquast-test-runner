@@ -1,83 +1,54 @@
 "use strict";
-const {openTab, launchTests} = require("tools");
-const {URL} = require("sdk/url");
-const {readURI} = require("sdk/net/url");
+const {openPage, getHarObject, launchTests2, getHTMLFixtures, startServer} = require("./tools");
 
-const {Cc, Ci} = require("chrome");
-const {pathFor} = require("system");
 const file = require("file");
 const self = require("self");
+const {pathFor} = require("system");
 
-const listFixtures = function() {
-    let xpiPath = file.join(pathFor("ProfD"), 'extensions', self.id + '.xpi');
+let fixtures = getHTMLFixtures('fixtures/rulesets/*')
 
-    let fp = Cc['@mozilla.org/file/local;1'].createInstance(Ci.nsILocalFile);
-    let xpi = Cc["@mozilla.org/libjar/zip-reader;1"].createInstance(Ci.nsIZipReader);
+let server = startServer(9000);
 
-    fp.initWithPath(xpiPath);
-    xpi.open(fp);
 
-    let entries = xpi.findEntries('resources/opquast-tests/tests/fixtures/rulesets/*');
-    let entry;
-    let fileList = [];
-    while (entries.hasMore()) {
-        entry = entries.getNext();
-        if (!xpi.getEntry(entry).isDirectory) {
-            fileList.push(entry);
-        }
-    }
+Object.keys(fixtures).forEach(function(root) {
+    fixtures[root].html.forEach(function(html_file) {
+        let [rule, filename] = html_file.split("/").slice(-2);
+        let test_id = [rule, filename.split(".").slice(0, -1).join("")].join("_");
 
-    fileList.sort();
-    let html = fileList.filter(function(v) {
-        return v.split('.').pop() == 'html';
-    }).map(function(v) {
-        return URL('fixtures/rulesets/' + v.split('/').slice(5).join('/'), module.uri).toString();
-    });
+        exports['test ' + test_id] = function(assert, done) {
+            server.setRoot(root);
+            let html_uri = server.getURI(html_file.split("/").pop());
 
-    return html;
-}
+            openPage(html_uri).then(function(result) {
+                let foo = {}, bar={'c':0,'nc':0,'na':0,'i':0};
+                let har = getHarObject(result.browser.contentWindow, html_file, fixtures[root].json);
 
-listFixtures().forEach(function(v) {
-    let aSlash = v.split('/'), aDot = v.split('.'), [rule, expected] = aSlash.slice(7, 9);
-
-    exports["test " + rule + "-" + expected + "-" + aSlash.slice(-1).toString().split('.')[0]] = function(assert, done) {
-        let close;
-
-        openTab().then(function(result) {
-            close = result.close;
-            return result.open(v);
-        }).then(function(result) {
-            let headers, headersPath = aDot.slice(0, -1).join('.') + '.json', status;
-
-            readURI(headersPath, {'sync': true}).then(function(v){
-                let json = JSON.parse(v);
-                headers = json.headers;
-                status = json.status;
-            }).then(null, function(error) {
-                headers = {};
-                status = 200;
-            });
-
-            return launchTests(result.browser.contentWindow, {'entries': []}, headers, rule, status).then(function(result){
-                result.tests.oaa_results.forEach(function(test) {
-                    if(test.id == rule) {
-                        if(expected == "p") {
-                            assert.ok(test.result == "c", rule + " true");
-                        } else if(expected == "f") {
-                            assert.ok(test.result == "nc", rule + " false");
-                        } else if(expected == "na") {
-                            assert.ok(test.result == "na", rule + " false");
-                        } else if(expected == "ct") {
-                            assert.ok(test.result == "i", rule + " false");
-                        }
-                    }
+                result.browser.contentWindow.document.querySelector("meta[http-equiv=X-results]").getAttribute('content').split(',').map(function(element){
+                    let aElement = element.split(':')
+                    foo[aElement[0].toLowerCase()] = parseInt(aElement[1], 10);
                 });
 
-            }).then(function(){
-                return close();
-            }).then(null, console.exception).then(done);
-        }).then(null, console.exception);
-    };
+                return launchTests2(result.browser.contentWindow, har, rule).then(function(result){
+                    result.tests.oaa_results.forEach(function(test) {
+                        test.results_list.map(function(element){
+                            bar[element]++;
+                        });
+
+                        if(test.id == rule) {
+                            let x = Object.keys(foo).every(function(element){
+                                return foo[element] == bar[element];
+                            });
+                            assert.ok(x == true, rule);
+                        }
+                    });
+                })
+            })
+            .then(null, function(e) {
+                console.exception(e);
+            })
+            .then(done);
+        };
+    });
 });
 
 require("sdk/preferences/service").set("plugins.click_to_play", true);

@@ -1,79 +1,46 @@
 "use strict";
-const {openTab, launchTests} = require("tools");
-const {URL} = require("sdk/url");
-const {readURI} = require("sdk/net/url");
+const {openPage, getHarObject, launchTests, getHTMLFixtures, startServer} = require("./tools");
 
-const {Cc, Ci} = require("chrome");
-const {pathFor} = require("system");
 const file = require("file");
 const self = require("self");
+const {pathFor} = require("system");
 
-const listFixtures = function() {
-    let xpiPath = file.join(pathFor("ProfD"), 'extensions', self.id + '.xpi');
+let fixtures = getHTMLFixtures('fixtures/rules/*')
 
-    let fp = Cc['@mozilla.org/file/local;1'].createInstance(Ci.nsILocalFile);
-    let xpi = Cc["@mozilla.org/libjar/zip-reader;1"].createInstance(Ci.nsIZipReader);
+let server = startServer(9000);
 
-    fp.initWithPath(xpiPath);
-    xpi.open(fp);
 
-    let entries = xpi.findEntries('resources/opquast-tests/tests/fixtures/rules/*');
-    let entry;
-    let fileList = [];
-    while (entries.hasMore()) {
-        entry = entries.getNext();
-        if (!xpi.getEntry(entry).isDirectory) {
-            fileList.push(entry);
-        }
-    }
+Object.keys(fixtures).forEach(function(root) {
+    fixtures[root].html.forEach(function(html_file) {
+        let [rule, expected, filename] = html_file.split("/").slice(-3);
+        let test_id = [rule, expected, filename.split(".").slice(0, -1).join("")].join("_");
 
-    fileList.sort();
-    let html = fileList.filter(function(v) {
-        return v.split('.').pop() == 'html';
-    }).map(function(v) {
-        return URL('fixtures/rules/' + v.split('/').slice(5).join('/'), module.uri).toString();
-    });
+        exports['test ' + test_id] = function(assert, done) {
+            server.setRoot(root);
+            let html_uri = server.getURI(html_file.split("/").slice(-1));
 
-    return html;
-}
+            openPage(html_uri).then(function(result) {
+                let har = getHarObject(result.browser.contentWindow, html_file, fixtures[root].json);
 
-listFixtures().forEach(function(v) {
-    let aSlash = v.split('/'), aDot = v.split('.'), [rule, expected] = aSlash.slice(7, 9);
-
-    exports["test " + rule + "-" + expected + "-" + aSlash.slice(-1).toString().split('.')[0]] = function(assert, done) {
-        let close;
-
-        openTab().then(function(result) {
-            close = result.close;
-            return result.open(v);
-        }).then(function(result) {
-            let headers, headersPath = aDot.slice(0, -1).join('.') + '.json', status;
-
-            readURI(headersPath, {'sync': true}).then(function(v){
-                let json = JSON.parse(v);
-                headers = json.headers;
-                status = json.status;
-            }).then(null, function(error) {
-                headers = {};
-                status = 200;
-            });
-
-            return launchTests(result.browser.contentWindow, {'entries': []}, headers, rule, status).then(function(result){
-                result.tests.oaa_results.forEach(function(test) {
-                    if(test.id == rule) {
-                        if(expected == "true") {
-                            assert.ok(test.result == "c", rule + " true");
-                        } else if(expected == "false") {
-                            assert.ok(test.result == "nc", rule + " false");
+                return launchTests(result.browser.contentWindow, har, rule)
+                .then(function(res){
+                    res.tests.oaa_results.forEach(function(test) {
+                        if(test.id == rule) {
+                            if(expected == "true") {
+                                assert.ok(test.result == "c", rule + " true");
+                            } else if(expected == "false") {
+                                assert.ok(test.result == "nc", rule + " false");
+                            }
                         }
-                    }
+                    });
                 });
-
-            }).then(function(){
-                return close();
-            }).then(null, console.exception).then(done);
-        }).then(null, console.exception);
-    };
+            })
+            .then(null, function(e) {
+                console.exception(e);
+            })
+            .then(done);
+        };
+    });
 });
 
 require("sdk/preferences/service").set("plugins.click_to_play", true);

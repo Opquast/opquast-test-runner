@@ -336,6 +336,78 @@ let launchTests = function(domWindow, har, test) {
 exports.launchTests = launchTests;
 
 
+let launchTests2 = function(domWindow, har, test) {
+    let startTime = new Date();
+
+    // Prepare checklists
+    let checklists = {};
+    readURI(URL('../data/rulesets.json', module.uri).toString(), {'sync': true}).then(function(result){
+        checklists = JSON.parse(result);
+    });
+
+    // New sandbox for testRunner
+    let sandbox = SandBox.sandbox(domWindow, {
+        sandboxPrototype: domWindow,
+        wantXrays: false,
+        wantComponents: false
+    });
+
+    // Get page code
+    let plainText = "";
+    har.entries.forEach(function(entry) {
+        if (plainText !== "") return;
+        if (entry._url === domWindow.location.href) {
+            plainText = entry.response.content.text || "";
+        }
+    });
+
+    // Launch tests
+    let runner = testRunner.create({
+        sandbox: sandbox,
+        har: har,
+        plainText: plainText,
+        extractObjects: false
+    });
+
+    // Add rulesets
+    addRuleSets(URL('../data/rulesets.json', module.uri).toString());
+
+    return runner.run([test])
+    .then(function(results) {
+        // Format result set
+        return {
+            "tests": {
+                "title": runner.pageInfo.title || "",
+                "links": runner.pageInfo.links || [],
+                "images": runner.pageInfo.images || [],
+                "stats": runner.pageInfo.stats,
+                "resources": runner.resources || [],
+                "oaa_results": results.filter(function(v) {
+                    return v.id in checklists;
+                }).map(function(v) {
+                    v["criterion"] = checklists[v.id];
+                    v["details"] = v.details.map(function(d) {
+                        if (typeof(d.selector) !== "undefined") {
+                            return {
+                                "selector": d.selector,
+                                "text": d.text
+                            };
+                        }
+                        return d;
+                    });
+                    return v;
+                }),
+                "datetime": (new Date()).toISOString(),
+                "timer": Math.round((new Date() - startTime) / 10) / 100
+            },
+            "checklists": checklists
+        };
+    });
+};
+
+exports.launchTests2 = launchTests2;
+
+
 const getXPIContent = function(glob) {
     let fp = Cc['@mozilla.org/file/local;1'].createInstance(Ci.nsILocalFile);
     let xpi = Cc["@mozilla.org/libjar/zip-reader;1"].createInstance(Ci.nsIZipReader);
