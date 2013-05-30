@@ -1,0 +1,10 @@
+{
+    "*": {
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    }
+}

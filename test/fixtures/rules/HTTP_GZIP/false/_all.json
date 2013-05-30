@@ -1,0 +1,13 @@
+{
+    "*": {
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "Gzip"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    }
+}

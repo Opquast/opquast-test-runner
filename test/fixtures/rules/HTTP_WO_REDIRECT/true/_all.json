@@ -1,0 +1,6 @@
+{
+    "/test.html": {
+        "status": "301",
+        "statusText": "Moved Permanently"
+    }
+}

@@ -1,40 +1,4 @@
 {
-    "HTTP_CHARSET": {
-        "HTTP_CHARSET": {
-            "onfalse": {
-                "comment": "le serveur n'envoie pas les informations relatives au jeu de caractères employé",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "le serveur envoie les informations relatives au jeu de caractères employé",
-                "result": "c"
-            }
-        }
-    },
-    "ROBOTS_W_VALID_SITEMAP": {
-        "ROBOTS_W_VALID_SITEMAP": {
-            "onfalse": {
-                "comment": "le robots.txt est absent ou n'indique pas de sitemap",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "le robots.txt est présent et indique un sitemap",
-                "result": "c"
-            }
-        }
-    },
-    "IMPLICIT_SITEMAP": {
-        "IMPLICIT_SITEMAP": {
-            "onfalse": {
-                "comment": "aucun sitemap n'a été trouvé",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un sitemap a été trouvé à la racine du site",
-                "result": "c"
-            }
-        }
-    },
     "404_DEFAULT": {
         "404_DEFAULT": {
             "onfalse": {
@@ -1967,6 +1931,66 @@
             }
         }
     },
+    "HTTP_404": {
+        "HTTP_404": {
+            "onfalse": {
+                "comment": "le serveur ne renvoie pas d'entête HTTP 404",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur renvoie un entête HTTP 404",
+                "result": "c"
+            }
+        }
+    },
+    "HTTP_CACHE": {
+        "HTTP_CACHE": {
+            "onfalse": {
+                "comment": "le serveur envoie les informations permettant la mise en cache des contenus",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur n'envoie pas d'information permettant la mise en cache des contenus",
+                "result": "c"
+            }
+        }
+    },
+    "HTTP_CDN_PRESENCE": {
+        "HTTP_CDN_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun CDN détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un CDN détecté",
+                "result": "c"
+            }
+        }
+    },
+    "HTTP_CHARSET": {
+        "HTTP_CHARSET": {
+            "onfalse": {
+                "comment": "le serveur n'envoie pas les informations relatives au jeu de caractères employé",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur envoie les informations relatives au jeu de caractères employé",
+                "result": "c"
+            }
+        }
+    },
+    "HTTP_CONTENT_LANGUAGE": {
+        "HTTP_CONTENT_LANGUAGE": {
+            "onfalse": {
+                "comment": "le serveur n'envoie pas l'indication de la langue principale du contenu",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur envoie l'indication de la langue principale du contenu",
+                "result": "c"
+            }
+        }
+    },
     "HTTP_GZIP": {
         "HTTP_GZIP": {
             "onfalse": {
@@ -1975,6 +1999,66 @@
             },
             "ontrue": {
                 "comment": "le serveur n'envoie pas de contenus compressés aux clients qui les acceptent",
+                "result": "c"
+            }
+        }
+    },
+    "HTTP_GZIP_JSON": {
+        "HTTP_GZIP_JSON": {
+            "onfalse": {
+                "comment": "le serveur envoie des JSON compressés aux clients qui les acceptent",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur n'envoie pas de JSON compressés aux clients qui les acceptent",
+                "result": "c"
+            }
+        }
+    },
+    "HTTP_GZIP_ZIPPED_RESOURCES": {
+        "HTTP_GZIP_ZIPPED_RESOURCES": {
+            "onfalse": {
+                "comment": "le serveur ne recompresse aucun contenu déjà compressé nativement",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur recompresse au moins un contenu déjà compressé nativement",
+                "result": "c"
+            }
+        }
+    },
+    "HTTP_JSON": {
+        "HTTP_JSON": {
+            "onfalse": {
+                "comment": "aucun JSON détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un JSON détecté",
+                "result": "c"
+            }
+        }
+    },
+    "HTTP_REFRESH": {
+        "HTTP_REFRESH": {
+            "onfalse": {
+                "comment": "le serveur n'envoie pas de commande de rafraîchissement de la page",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur envoie une commande de rafraîchissement de la page",
+                "result": "c"
+            }
+        }
+    },
+    "HTTP_WO_REDIRECT": {
+        "HTTP_WO_REDIRECT": {
+            "onfalse": {
+                "comment": "au moins une redirection HTTP a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "aucune redirection HTTP n'a été détectée",
                 "result": "c"
             }
         }
@@ -2275,6 +2359,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément IMG avec des dimensions différentes des dimensions réelles a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "IMPLICIT_SITEMAP": {
+        "IMPLICIT_SITEMAP": {
+            "onfalse": {
+                "comment": "aucun sitemap n'a été trouvé",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un sitemap a été trouvé à la racine du site",
                 "result": "c"
             }
         }
@@ -4195,6 +4291,18 @@
             },
             "ontrue": {
                 "comment": "le robots.txt à la racine du site est présent et non vide",
+                "result": "c"
+            }
+        }
+    },
+    "ROBOTS_W_VALID_SITEMAP": {
+        "ROBOTS_W_VALID_SITEMAP": {
+            "onfalse": {
+                "comment": "le robots.txt est absent ou n'indique pas de sitemap",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le robots.txt est présent et indique un sitemap",
                 "result": "c"
             }
         }

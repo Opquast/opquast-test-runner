@@ -11219,6 +11219,18 @@
             }
         }
     },
+    "16267": {
+        "HTTP_404": {
+            "onfalse": {
+                "comment": "le serveur ne renvoie pas d'entête HTTP 404",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur renvoie un entête HTTP 404",
+                "result": "c"
+            }
+        }
+    },
     "16657": {
         "APPLET": {
             "onfalse": {
@@ -11410,6 +11422,18 @@
             "ontrue": {
                 "comment": "au moins une ressource statique servie avec un cookie a été détecté",
                 "result": "nc"
+            }
+        }
+    },
+    "19039": {
+        "HTTP_WO_REDIRECT": {
+            "onfalse": {
+                "comment": "au moins une redirection HTTP a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "aucune redirection HTTP n'a été détectée",
+                "result": "c"
             }
         }
     },
@@ -27579,6 +27603,18 @@
             "ontrue": {
                 "comment": "au moins une page 404 par défaut a été détecté",
                 "result": "nc"
+            }
+        }
+    },
+    "578": {
+        "HTTP_404": {
+            "onfalse": {
+                "comment": "le serveur ne renvoie pas d'entête HTTP 404",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur renvoie un entête HTTP 404",
+                "result": "c"
             }
         }
     },
