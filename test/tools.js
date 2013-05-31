@@ -504,6 +504,16 @@ const startServer = function(port) {
 
                 response.setStatusLine(request.httpVersion, 200, "OK");
                 response.setHeader("Content-Type", mime);
+
+                // Add more headers using a file named "<path>.headers" (JSON format)
+                try {
+                    let headers = JSON.parse(readBinaryURI(resURI + '.headers'));
+                    for (let k in headers) {
+                        response.setHeader(k, headers[k]);
+                    }
+                }
+                catch(e) {}
+
                 response.processAsync();
                 response.write(contents)
                 response.finish();
