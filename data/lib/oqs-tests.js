@@ -5202,6 +5202,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         events.push(element.type);
                     }
                 });
+
+                //
                 if ($.inArray("blur", events) != -1 && events.length == 1) {
                     //
                     result.push(_getDetails(sidecar.events[idx].node));
@@ -5426,6 +5428,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         events.push(element.type);
                     }
                 });
+
+                //
                 if ($.inArray("focus", events) != -1 && events.length == 1) {
                     //
                     result.push(_getDetails(sidecar.events[idx].node));
@@ -5487,7 +5491,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 sidecar.events[idx].events.forEach(function(element, index, array) {
                     //
-                    if ($.inArray(element.type, ["blur", "mouseout"]) != -1) {
+                    if ($.inArray(element.type, ["mouseout", "blur"]) != -1) {
                         //
                         events.push(element.type);
                     }
@@ -5555,7 +5559,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 sidecar.events[idx].events.forEach(function(element, index, array) {
                     //
-                    if ($.inArray(element.type, ["focus", "mouseover"]) != -1) {
+                    if ($.inArray(element.type, ["mouseover", "focus"]) != -1) {
                         //
                         events.push(element.type);
                     }
