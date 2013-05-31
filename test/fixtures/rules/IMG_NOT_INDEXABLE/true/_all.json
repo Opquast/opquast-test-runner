@@ -1,0 +1,10 @@
+{
+    "/test.bmp": {
+        "_url": "http://localhost:9000/test.bmp",
+        "_imageInfo": {
+            "width": 10,
+            "height": 10
+        },
+        "_contentType": "image/x-bmp"
+    }
+}

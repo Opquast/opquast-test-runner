@@ -4283,6 +4283,54 @@
             }
         }
     },
+    "RESOURCE_403": {
+        "RESOURCE_403": {
+            "onfalse": {
+                "comment": "aucune ressource en 403 n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource en 403 a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "RESOURCE_403_MORE_THAN_3K": {
+        "RESOURCE_403_MORE_THAN_3K": {
+            "onfalse": {
+                "comment": "aucune ressource en 403 de plus de 3 Ko n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource en 403 de plus de 3 Ko a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "RESOURCE_404": {
+        "RESOURCE_404": {
+            "onfalse": {
+                "comment": "aucune ressource en 404 n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource en 404 a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "RESOURCE_404_MORE_THAN_3K": {
+        "RESOURCE_404_MORE_THAN_3K": {
+            "onfalse": {
+                "comment": "aucune ressource en 404 de plus de 3 Ko n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource en 404 de plus de 3 Ko a été détectée",
+                "result": "c"
+            }
+        }
+    },
     "ROBOTS_PRESENCE": {
         "ROBOTS_PRESENCE": {
             "onfalse": {

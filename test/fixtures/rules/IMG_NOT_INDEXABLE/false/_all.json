@@ -1,0 +1,26 @@
+{
+    "/test.png": {
+        "_url": "http://localhost:9000/test.png",
+        "_imageInfo": {
+            "width": 10,
+            "height": 10
+        },
+        "_contentType": "image/png"
+    },
+    "/test.gif": {
+        "_url": "http://localhost:9000/test.gif",
+        "_imageInfo": {
+            "width": 10,
+            "height": 10
+        },
+        "_contentType": "image/gif"
+    },
+    "/test.jpg": {
+        "_url": "http://localhost:9000/test.jpg",
+        "_imageInfo": {
+            "width": 10,
+            "height": 10
+        },
+        "_contentType": "image/jpeg"
+    }
+}

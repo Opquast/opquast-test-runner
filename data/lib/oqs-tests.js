@@ -814,14 +814,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssContent = function cssContent(doc) {
         //
-        var result = [], exclusions = ["", '', " ", ' ', '" "', "' '", '"."', "'.'", "none"];
+        var result = [],
+            exclusions = ["", "normal", "none", "open-quote", "close-quote", "no-open-quote", "no-close-quote", "inherit"];
 
         //
         try {
             //
             $("body").find("*").andSelf().each(function() {
-                var _before = getComputedStyle(this, ':before').getPropertyCSSValue('content').cssText,
-                    _after = getComputedStyle(this, ':after').getPropertyCSSValue('content').cssText;
+                var _before = getComputedStyle(this, ':before').getPropertyCSSValue('content').cssText.replace(/[."']/g, ''),
+                    _after = getComputedStyle(this, ':after').getPropertyCSSValue('content').cssText.replace(/[."']/g, '');
 
                 if ($.inArray(_before, exclusions) == -1 || $.inArray(_after, exclusions) == -1) {
                     //
@@ -970,7 +971,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssImageSize = function cssImageSize(doc) {
         //
-        var result = [], images = {};
+        var result = [],
+            images = {};
 
         //
         try {
@@ -985,18 +987,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     };
                 }
             });
+
             //
             $("img").each(function() {
                 //
                 var src = this.src;
 
                 //
-                if ($.inArray(src, Object.keys(images)) != -1) {
+                if ($.inArray(src, Object.keys(images)) != -1 &&
+                        (images[src]["width"] != $(this).css("width") || images[src]["height"] != $(this).css("height"))) {
                     //
-                    if (images[src]["width"] != $(this).css("width") || images[src]["height"] != $(this).css("height")) {
-                        //
-                        result.push(_getDetails(this));
-                    }
+                    result.push(_getDetails(this));
                 }
             });
         }
@@ -1321,7 +1322,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         var result = [],
             exclusions = ["ABBR", "ACRONYM", "ADDRESS", "BLOCKQUOTE", "CITE", "CODE", "KBD", "PRE", "Q", "RP", "RT", "RUBY", "SAMP", "SUB", "SUP", "TIME", "VAR", "IFRAME", "SCRIPT"],
-            reg = new RegExp().compile("^[^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*$", "g");
+            reg = new RegExp().compile("^[^a-z0-9]*[A-Z][^a-z0-9]*[A-Z][^a-z0-9]*[A-Z][^a-z0-9]*$", "g");
 
         //
         try {
@@ -1329,10 +1330,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var treeWalker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT, {
                 acceptNode : function(_node) {
                     //
-                    var node = $(_node);
-
-                    //
-                    if ($.inArray(_node.tagName.toUpperCase(), exclusions) == -1 && reg.test(node.text()) && node.css("text-decoration") != "uppercase") {
+                    if ($.inArray(_node.tagName.toUpperCase(), exclusions) == -1 && reg.test($(_node).clone().children().remove().end().text())) {
                         return NodeFilter.FILTER_ACCEPT;
                     }
 
@@ -2296,7 +2294,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlImageAnimatedNotInButtonOrA = function htmlImageAnimatedNotInButtonOrA(doc) {
         //
-        var result = [], animated = [];
+        var result = [],
+            animated = [];
 
         //
         try {
@@ -2357,13 +2356,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     }
                 }
             });
+
             //
             $("img").each(function() {
                 //
-                var src = this.src;
-
-                //
-                if ($.inArray(src, images) != -1) {
+                if ($.inArray(this.src, images) != -1) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -2388,8 +2385,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.htmlImageSize = function htmlImageSize(doc) {
         //
         var result = [],
-            images = {},
-            keys;
+            images = {};
 
         //
         try {
@@ -2406,15 +2402,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             //
-            keys = Object.keys(images);
-
-            //
             $("img[width][height]").each(function() {
                 //
                 var src = this.src;
 
                 //
-                if ($.inArray(src, keys) != -1 && (images[src]["width"] != $.trim($(this).attr("width")) || images[src]["height"] != $.trim($(this).attr("height")))) {
+                if ($.inArray(src, Object.keys(images)) != -1 &&
+                        (images[src]["width"] != $.trim($(this).attr("width")) || images[src]["height"] != $.trim($(this).attr("height")))) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -4161,7 +4155,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.resAnimated = function httpResourceAnimated(doc) {
         //
-        var result = [], images = [];
+        var result = [],
+            images = [];
 
         //
         try {
@@ -4173,13 +4168,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     images.push(element.uri);
                 }
             });
+
             //
             $("img").each(function() {
                 //
-                var src = this.src;
-
-                //
-                if ($.inArray(src, images) != -1) {
+                if ($.inArray(this.src, images) != -1) {
                     //
                     result.push(_getDetails(this));
                 }

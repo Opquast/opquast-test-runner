@@ -261,7 +261,8 @@ var logger;
      * @return
      */
     window._analyseStylesheets = function _analyseStylesheets(doc, media, callback) {
-        var css, src,
+        var css,
+            src,
             promises = [],
             extSheets = doc.styleSheets,
             intSheets = $("style");
@@ -333,8 +334,7 @@ var logger;
                 subPromises.push(_analyseStylesheet(val.sheet, val.media, callback));
             });
             return Q.promised(Array).apply(null, subPromises);
-        })
-        .then(function(res) {
+        }).then(function(res) {
             var result = [];
             res.forEach(function(val) {
                 $.deepMerge(result, val);
@@ -1527,7 +1527,9 @@ var logger;
      */
     function apply_regexp_test(doc, test, language) {
         //
-        var _result = [], reg = new RegExp().compile(test, "i"), scripts = doc.scripts;
+        var _result = [],
+            reg = new RegExp().compile(test, "i"),
+            scripts = doc.scripts;
 
         //
         try {
@@ -1541,8 +1543,8 @@ var logger;
 
             //
             else if (language == "http") {
-                var _headers = "";
-                var resources = sidecar.resources.filter(
+                var _headers = "",
+                    resources = sidecar.resources.filter(
                     function(item){return item["content_type"] == "text/html" || item["content_type"] == "application/xhtml+xml";}
                 );
 
@@ -1576,8 +1578,8 @@ var logger;
                 //
                 $("script").each(function() {
                     //
-                    var _src = $(this).attr("src");
-                    var _data = $(this).text();
+                    var _src = $(this).attr("src"),
+                        _data = $(this).text();
 
                     // external
                     if (_src && _src.length) {

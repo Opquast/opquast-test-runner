@@ -1,7 +1,0 @@
-p:before {
-    content: "";
-}
-
-p:after {
-    content: close-quote;
-}

@@ -1,0 +1,10 @@
+{
+    "/test.gif": {
+        "_url": "http://localhost:9000/test.gif",
+        "_imageInfo": {
+            "width": 10,
+            "height": 10,
+            "animated": true
+        }
+    }
+}
