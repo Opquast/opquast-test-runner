@@ -1,45 +1,120 @@
-"use strict";
+'use strict';
 
-const promise = require("sdk/core/promise");
-const SandBox = require("sdk/loader/sandbox");
+const {mix} = require('sdk/core/heritage');
+const promise = require('sdk/core/promise');
+const SandBox = require('sdk/loader/sandbox');
 const {readURISync} = require('sdk/net/url');
 const {clearTimeout, setTimeout} = require('sdk/timers');
-const {descriptor} = require("toolkit/loader");
+const {descriptor} = require('toolkit/loader');
 
-const {validateOptions} = require("sdk/deprecated/api-utils");
+const {validateOptions} = require('sdk/deprecated/api-utils');
 
-const {dnsLookup, extractEvents, xhr} = require("./utils/extras");
-const {har2res} = require("./utils/har-tools");
+const {dnsLookup, extractEvents, xhr} = require('./utils/extras');
+const {har2res} = require('./utils/har-tools');
 
 // Javascript files location
-const dataRoot = require("sdk/url").URL("../data", module.uri);
+const dataRoot = require('sdk/url').URL('../data', module.uri);
 exports.dataRoot = dataRoot;
 
-const loadFile = function(path) {
-    return readURISync(dataRoot + "/" + path);
+var JS_FILES = [];
+var RULES = [];
+var RULESETS = [];
+
+
+const addFilesToList = function(name, listRef) {
+    return function() {
+        [].slice.call(arguments).forEach(function(f) {
+            if (listRef.indexOf(f) === -1) {
+                listRef.push(f);
+                console.debug('Added ' + name + ': ' + f);
+            }
+        });
+    };
 };
 
+const removeFilesFromList = function(name, listRef) {
+    return function() {
+        [].slice.call(arguments).forEach(function(f) {
+            if (listRef.indexOf(f) !== -1) {
+                listRef.splice(listRef.indexOf(f));
+                console.debug('Removed ' + name + ': ' + f);
+            }
+        });
+    };
+};
+
+const addJSFiles = addFilesToList('JS file', JS_FILES);
+const removeJSFiles = removeFilesFromList('JS file', JS_FILES);
+exports.addJSFiles = addJSFiles;
+exports.removeJSFiles = removeJSFiles;
+
+
+const addRules = addFilesToList('rules', RULES);
+const removeRules = removeFilesFromList('rules', RULES);
+exports.addRules = addRules;
+exports.removeRules = removeRules;
+
+
+const addRuleSets = addFilesToList('rulesets', RULESETS);
+const removeRuleSets = removeFilesFromList('rulesets', RULESETS);
+exports.addRuleSets = addRuleSets;
+exports.removeRuleSets = removeRuleSets;
+
+
+const getRules = function() {
+    let result = {'rules': {}, 'rulesets': {}};
+
+    RULES.forEach(function(uri) {
+        result['rules'] = mix(result['rules'], JSON.parse(readURISync(uri)));
+    });
+    RULESETS.forEach(function(uri) {
+        result['rulesets'] = mix(result['rulesets'], JSON.parse(readURISync(uri)));
+    });
+
+    return result;
+};
+exports.getRules = getRules;
+
+
+const getJSFiles = function() {
+    return JS_FILES;
+};
+exports.getJSFiles = getJSFiles;
+
+
+// Default files
+addJSFiles(
+    dataRoot + '/lib/cssParser.js',
+    dataRoot + '/lib/oqs-validator.js',
+    dataRoot + '/lib/oqs-tests.js'
+);
+
+addRules(dataRoot + '/rules.json');
+addRuleSets(dataRoot + '/rulesets.json');
+
+
+// Test Runner
 const createTestRunner = function(opts) {
     // Global options
     let requirements = {
         sandbox: {
-            is: ["object"]
+            is: ['object']
         },
         plainText: {
-            is: ["string"]
+            is: ['string']
         },
         har: {
-            is: ["object"],
-            ok: function(val) typeof(val.entries) !== "undefined" && Array.isArray(val.entries)
+            is: ['object'],
+            ok: function(val) typeof(val.entries) !== 'undefined' && Array.isArray(val.entries)
         },
         extractObjects: {
-            map: function(val) typeof(val) === "boolean" && val || false
+            map: function(val) typeof(val) === 'boolean' && val || false
         },
         timeout: {
             map: function(val) parseInt(val) || -1
         },
         runOptions: {
-            map: function(val) typeof(val) === "object" && val || {}
+            map: function(val) typeof(val) === 'object' && val || {}
         }
     };
 
@@ -48,16 +123,16 @@ const createTestRunner = function(opts) {
     // Tests runner options
     let runRequirements = {
         debug_validator: {
-            map: function(val) typeof(val) === "boolean" ? val : false,
+            map: function(val) typeof(val) === 'boolean' ? val : false,
         },
         timing_validator: {
-            map: function(val) typeof(val) === "boolean" ? val : false,
+            map: function(val) typeof(val) === 'boolean' ? val : false,
         },
         show_errors: {
-            map: function(val) typeof(val) === "boolean" ? val : false,
+            map: function(val) typeof(val) === 'boolean' ? val : false,
         },
         config_saveAndRefresh_delay: {
-            map: function(val) typeof(val) === "number" ? parseInt(val) : 1000,
+            map: function(val) typeof(val) === 'number' ? parseInt(val) : 1000,
         }
     };
     options.runOptions = validateOptions(options.runOptions, runRequirements);
@@ -70,9 +145,9 @@ const createTestRunner = function(opts) {
     let injectJS = function(path) {
         let code = null;
         try {
-            code = loadFile(path);
+            code = readURISync(path);
         } catch(e) {
-            throw new Error("Unable to open \"" + path + "\".");
+            throw new Error('Unable to open "' + path + '".');
         }
 
         SandBox.evaluate(options.sandbox, code);
@@ -80,7 +155,7 @@ const createTestRunner = function(opts) {
 
     let evaluate = function(func) {
         let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
-        let code = "(" + func.toSource() + ").apply(this, " + args + ")";
+        let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
         return SandBox.evaluate(options.sandbox, code);
     };
 
@@ -92,7 +167,7 @@ const createTestRunner = function(opts) {
         }
 
         // Inject jQuery & coexist with other versions
-        injectJS("lib/jquery-1.9.1.min.js");
+        injectJS(dataRoot + '/lib/jquery-1.9.1.min.js');
         evaluate(function() {
             // Doing this removes our jQuery from the page but provides a global
             // jQuery version in sandbox
@@ -113,7 +188,7 @@ const createTestRunner = function(opts) {
         _xhr.wrap('_XHR', 'XHR');
 
         // Extract page information
-        injectJS("lib/oqs-utils.js");
+        injectJS(dataRoot + '/lib/oqs-utils.js');
         Object.defineProperties(pageInfo, descriptor(evaluate(function() {
             return $.extractPageInfo();
         })));
@@ -166,14 +241,14 @@ const createTestRunner = function(opts) {
             timeout = setTimeout(function() {
                 deferred.reject(new Error('Test timeout (' + options.timeout + ')'));
             }, options.timeout);
-        };
+        }
 
         init()
         .then(function() {
             // Now we can run tests
-            injectJS("lib/cssParser.js");
-            injectJS("lib/oqs-validator.js");
-            injectJS("lib/oqs-tests.js");
+            getJSFiles().forEach(function(uri) {
+                injectJS(uri);
+            });
 
             return evaluate(function(options, pageInfo, resources, rules, rulesets) {
                 let events = extractEvents(window);
@@ -218,15 +293,6 @@ const createTestRunner = function(opts) {
 exports.create = createTestRunner;
 
 
-const getRules = function() {
-    return {
-        "rules": JSON.parse(loadFile("rules.json")),
-        "rulesets": JSON.parse(loadFile("rulesets.json"))
-    };
-};
-exports.getRules = getRules;
-
-
 const xhrWrapper = function(evaluate, har) {
     let entryToResponse = function(entry, partial) {
         let result = {
@@ -234,7 +300,7 @@ const xhrWrapper = function(evaluate, har) {
             statusText: entry.response.statusText,
             headers: entry.response.headers,
             content_type: null,
-            data: partial ? "" : entry.response.content.text,
+            data: partial ? '' : entry.response.content.text,
             xml: null
         };
 
@@ -246,7 +312,7 @@ const xhrWrapper = function(evaluate, har) {
                 }
             });
 
-            return (value.length === 0) ? null : value.join(",");
+            return (value.length === 0) ? null : value.join(',');
         };
 
         return result;
@@ -254,7 +320,7 @@ const xhrWrapper = function(evaluate, har) {
 
     let _xhr = Object.create(xhr);
     _xhr.query = function(url, method, data, headers, partial) {
-        if (method === "GET" && har.entries !== undefined) {
+        if (method === 'GET' && har.entries !== undefined) {
             let entry = null;
             har.entries.forEach(function(v) {
                 if (v._url == url) {
