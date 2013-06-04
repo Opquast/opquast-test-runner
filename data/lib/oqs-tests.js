@@ -898,6 +898,46 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
+    window.cssOutline = function cssOutline(doc) {
+        var reg = new RegExp().compile("(^| )([^ ]+):focus$", "i");
+
+        function callback(rule) {
+            var result = [];
+
+            if (rule && rule.parentStyleSheet && rule.declarations) {
+                for (var i = 0; i < rule.declarations.length; i++) {
+                    var selectors = rule.mSelectorText.split(",").map(function(element) {
+                        return $.trim(element);
+                    });alert(selectors);
+
+                    for each (var selector in selectors) {
+                        if (reg.test(selector)) {
+                            var selectorOut = selector.replace(/:focus/, "");
+
+                            if ($(selectorOut).get(0) &&
+                                    ((rule.declarations[i]["property"] == "outline-style" && rule.declarations[i]["valueText"] == "none") ||
+                                    (rule.declarations[i]["property"] == "outline-width" && parseInt(rule.declarations[i]["valueText"], 10) == 0))) {
+                                result.push(_getCssDetails(rule, i));
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
+            // Error Logging
+            logger.error("cssOutline", err);
+            return false;
+        });
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
     window.cssGenericFont = function cssGenericFont(doc) {
         function callback(rule) {
             var result = [];
@@ -1387,7 +1427,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.html404 = function html404(doc) {
-        var regApache = new RegExp().compile("<h1>\\s*Not Found\\s*</h1>\\s*<p>\\s*The requested URL /\\w+ was not found on this server.\\s*</p>\\s*<hr>\\s*<address>\\s*Apache/.* \\(.*\\) Server at .* Port \\d+\\s*</address>", "i"), regIIS = new RegExp().compile("<h1>\\s*The page cannot be found\\s*</h1>[\\s|\\S]*<h2>\\s*HTTP Error 404 - File or directory not found.\\s*<br>\\s*Internet Information Services \\(IIS\\)\\s*</h2>\\s*<hr>\\s*<p>\\s*Technical Information \\(for support personnel\\)\\s*</p>", "i"), regNginx = new RegExp().compile("<center>\\s*<h1>\\s*404 Not Found\\s*</h1>\\s*</center>\\s*<hr>\\s*<center>\\s*nginx\\s*</center>", "i");
+        var regApache = new RegExp().compile("<h1>\\s*Not Found\\s*</h1>\\s*<p>\\s*The requested URL /\\w+ was not found on this server.\\s*</p>\\s*<hr>\\s*<address>\\s*Apache/.* \\(.*\\) Server at .* Port \\d+\\s*</address>", "i"),
+            regIIS = new RegExp().compile("<h1>\\s*The page cannot be found\\s*</h1>[\\s|\\S]*<h2>\\s*HTTP Error 404 - File or directory not found.\\s*<br>\\s*Internet Information Services \\(IIS\\)\\s*</h2>\\s*<hr>\\s*<p>\\s*Technical Information \\(for support personnel\\)\\s*</p>", "i"),
+            regNginx = new RegExp().compile("<center>\\s*<h1>\\s*404 Not Found\\s*</h1>\\s*</center>\\s*<hr>\\s*<center>\\s*nginx\\s*</center>", "i");
 
         return XHR.get("/azertyuiopqsdfghjklmwxcvbn").then(function(response) {
             var result = [];
@@ -3088,12 +3130,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.moreExtThenIntLinks = function htmlMoreExtThenIntLinks(doc) {
         //
-        var result = [], int = [], ext = [];
+        var result = [],
+            int = [],
+            ext = [];
 
         //
         try {
             //
-            var domain = doc.location.host.split(".").slice(-2).join(".");
+            var domain = doc.location.hostname.split(".").slice(-2).join(".");
 
             //
             $("a[href]:not([href='']):not([href^='#'])").each(function() {
@@ -3473,7 +3517,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             sidecar.resources.forEach(function(element, index, array) {
                 //
-                var url = element.uri.split("?")[0];
+                var url = element.uri.split("?")[0],
+                    found = false;
 
                 if ($.inArray(url, urls) == -1) {
                     //
@@ -3482,17 +3527,20 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         if (_url.toLowerCase() == url.toLowerCase()) {
                             //
                             result.push(url + " - " + _url);
-                        } else {
-                            //
-                            urls.push(url);
+                            found = true;
                         }
+                    }
+
+                    if(!found){
+                        //
+                        urls.push(url);
                     }
                 }
             });
         }
 
         //
-        catch (err) {
+        catch (err) {alert(err);
             // Error Logging
             logger.error("urlWithVariants", err);
             result = false;
@@ -3629,7 +3677,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            var tld = doc.location.host.split(".").pop().toLowerCase();
+            var tld = doc.location.hostname.split(".").pop().toLowerCase();
 
             //
             if ($.inArray(tld, extensions) != -1) {
@@ -3656,13 +3704,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.countryServer = function httpCountryServer(doc) {
         var geoServerURL = "http://www.geoplugin.net/xml.gp";
 
-        return dnsLookup(doc.location.host).then(function(ip) {
+        return dnsLookup(doc.location.hostname).then(function(ip) {
             return XHR.get(geoServerURL + "?ip=" + ip);
         }).then(function(response) {
             if (response.status !== 200) {
                 return [];
             }
-            var tld = doc.location.host.split(".").pop().toLowerCase(), data = $(response.data);
+            var tld = doc.location.hostname.split(".").pop().toLowerCase(), data = $(response.data);
             if ($("geoplugin_countryCode", data).text().toLowerCase() === tld) {
                 return [tld];
             }
@@ -3684,7 +3732,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            if (doc.location.host.length > 30) {
+            if (doc.location.hostname.length > 30) {
                 //
                 result.push(true);
             }
@@ -3845,7 +3893,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.inlinks = function httpInlinks(doc) {
-        return XHR.get("https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=link:" + doc.location.host).then(function(response) {
+        return XHR.get("https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=link:" + doc.location.hostname).then(function(response) {
             if (response.status !== 200) {
                 return [];
             }
@@ -4316,7 +4364,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.resMultimedia = function httpResourceMultimedia(doc) {
         //
-        var result = [], mm_families = ["audio", "video"], objects = [];
+        var result = [],
+            mm_families = ["audio", "video"],
+            objects = [];
 
         //
         try {
@@ -4331,6 +4381,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     objects.push(element.uri);
                 }
             });
+
             //
             $("embed").each(function() {
                 //
@@ -4341,6 +4392,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     result.push(_getDetails(this));
                 }
             });
+
             //
             $("object").each(function() {
                 //
@@ -4350,7 +4402,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if ($.inArray(src, objects) != -1) {
                     result.push(_getDetails(this));
                 } else {
-                    $("param[name]", this).each(function() {
+                    $("param[name='src']", this).each(function() {
                         //
                         var src = _absolutizeURL($(this).attr("value"));
 
@@ -4381,7 +4433,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.resMultimediaWoAudio = function httpResourceMultimediaWoAudio(doc) {
         //
-        var result = [], mm_families = ["video"], objects = [];
+        var result = [],
+            mm_families = ["video"],
+            objects = [];
 
         //
         try {
@@ -4396,6 +4450,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     objects.push(element.uri);
                 }
             });
+
             //
             $("embed").each(function() {
                 //
@@ -4406,6 +4461,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     result.push(_getDetails(this));
                 }
             });
+
             //
             $("object").each(function() {
                 //
@@ -4415,7 +4471,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if ($.inArray(src, objects) != -1) {
                     result.push(_getDetails(this));
                 } else {
-                    $("param[name]", this).each(function() {
+                    $("param[name='src']", this).each(function() {
                         //
                         var src = _absolutizeURL($(this).attr("value"));
 
@@ -4467,8 +4523,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         }
                     } else if (element.headers["expires"]) {
                         //
-                        var expires = Date.parse(element.headers["expires"]);
-                        var now = Date.parse(new Date().toString());
+                        var expires = Date.parse(element.headers["expires"]),
+                            now = Date.parse(new Date().toString());
 
                         //
                         if (parseInt((expires - now) / 1000, 10) < 2592000) {
@@ -4504,7 +4560,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            var domain = doc.location.host.split(".").slice(-2).join(".");
+            var domain = doc.location.hostname.split(".").slice(-2).join(".");
 
             //
             sidecar.resources.forEach(function(element, index, array) {
@@ -4514,7 +4570,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
-                    var subdomain = element.uri.split("/")[2];
+                    var subdomain = $.URL.getDomain(element.uri);
 
                     if (subdomain != domain && $.endsWith(subdomain, domain)) {
                         //
@@ -4559,7 +4615,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            var domain = doc.location.host.split(".").slice(-2).join(".");
+            var domain = doc.location.hostname.split(".").slice(-2).join(".");
 
             //
             sidecar.resources.forEach(function(element, index, array) {
@@ -4569,7 +4625,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
-                    var _domain = element.uri.split("/")[2].split(".").slice(-2).join(".");
+                    var _domain = $.URL.getDomain(element.uri).split(".").slice(-2).join(".");
 
                     //
                     if (doc.location.href != element.uri && _domain == domain) {
@@ -4598,7 +4654,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.staticVersionInName = function httpStaticVersionInName(doc) {
         //
         var result = [],
-            reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}\\.[a-zA-Z]{2,}$", "i");
+            reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}(\\.min)?\\.[a-zA-Z]{2,}$", "i");
 
         //
         try {
@@ -4608,7 +4664,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type && ($.inArray(content_type.split("/")[0], ["text"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type, ["text/css", "text/javascript", "application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (reg.test(element.uri)) {
                         //
@@ -4646,7 +4702,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type && ($.inArray(content_type.split("/")[0], ["text"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type, ["text/css", "text/javascript", "application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (reg.test(element.uri)) {
                         //
@@ -5687,6 +5743,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
             });
 
+            promises.push(Q.resolve(_detectFunction("location\\.", $("body"), "onload")));
+
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
                 return _res.some(function(v) v === false) ? false :_res;
@@ -5980,7 +6038,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         return null;
                     }
 
-                    var result = [], data;
+                    var result = [],
+                        data;
 
                     try {
                         data = $.parseXML(response.data);
@@ -5990,15 +6049,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
                     if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
                         $('link', data).each(function() {
-                            var link = $.trim($(this).text()), url = $.URL(link);
-                            if (url.toString() != link && url.toString() != link + '/' && url.scheme != 'mailto') {
+                            var link = $.trim($(this).text()),
+                                url = $.URL(link);
+                            if (url.toString() != link && url.toString() != (link + '/') && url.scheme != 'mailto') {
                                 result.push(_getDetails(this));
                             }
                         });
                     } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
                         $('link[href!=""]', data).each(function() {
-                            var link = $.trim($(this).text()), url = $.URL(link);
-                            if (url.toString() != link && url.toString() != link + '/' && url.scheme != 'mailto') {
+                            var link = $.trim($(this).attr('href')),
+                                url = $.URL(link);
+                            if (url.toString() != link && url.toString() != (link + '/') && url.scheme != 'mailto') {
                                 result.push(_getDetails(this));
                             }
                         });
@@ -6041,7 +6102,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         return null;
                     }
 
-                    var result = [], data;
+                    var result = [],
+                        data;
 
                     try {
                         data = $.parseXML(response.data);
@@ -6136,7 +6198,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         return null;
                     }
 
-                    var result = [], data;
+                    var result = [],
+                        data;
 
                     try {
                         data = $.parseXML(response.data);
@@ -6296,7 +6359,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.linksSpecialChars = function(doc) {
         //
-        var _result = [], _reg = new RegExp().compile("[_% ]", "g"), _reg_domain = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
+        var _result = [],
+            _reg = new RegExp().compile("[A_Z_% ]", "g"),
+            _reg_domain = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
 
         // current URL
         if (_reg.test(doc.location.hostname)) {
@@ -6333,7 +6398,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.linksInternal = function(doc) {
         //
-        var _result = [], _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i"), _reg_doc = new RegExp().compile("\.(pdf|doc)$", "i");
+        var _result = [],
+            _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i"),
+            _reg_doc = new RegExp().compile("\.(pdf|doc)$", "i");
 
         //
         $("a[href]").each(function() {
@@ -6366,7 +6433,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.linksNavigation = function(doc) {
         //
-        var _result = [], _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
+        var _result = [],
+            _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
 
         //
         $("#navTools a[href], #thematicNav a[href], #transversalNav a[href]," + "#setcategoriesBox a[href]").each(function() {

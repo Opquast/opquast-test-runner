@@ -1223,6 +1223,18 @@
             }
         }
     },
+    "DOCTYPE_VALID": {
+        "DOCTYPE_VALID": {
+            "onfalse": {
+                "comment": "aucune DTD placée avant l'élément HTML et conforme aux recommandations du W3C n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "une DTD placée avant l'élément HTML et conforme aux recommandations du W3C a été détectée",
+                "result": "c"
+            }
+        }
+    },
     "EMBED": {
         "EMBED": {
             "onfalse": {
@@ -4331,6 +4343,54 @@
             }
         }
     },
+    "RESOURCE_DOWNLOADABLE": {
+        "RESOURCE_DOWNLOADABLE": {
+            "onfalse": {
+                "comment": "aucune ressource téléchargeable n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource téléchargeable a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "RESOURCE_MULTIMEDIA": {
+        "RESOURCE_MULTIMEDIA": {
+            "onfalse": {
+                "comment": "aucune ressource multimédia n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource multimédia a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "RESOURCE_MULTIMEDIA_WO_AUDIO": {
+        "RESOURCE_MULTIMEDIA_WO_AUDIO": {
+            "onfalse": {
+                "comment": "aucune ressource multimédia n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource multimédia a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "RESOURCE_PDF": {
+        "RESOURCE_PDF": {
+            "onfalse": {
+                "comment": "aucun document PDF n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un document PDF a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "ROBOTS_PRESENCE": {
         "ROBOTS_PRESENCE": {
             "onfalse": {
@@ -4387,6 +4447,18 @@
             },
             "ontrue": {
                 "comment": "présence de syndication",
+                "result": "c"
+            }
+        }
+    },
+    "RSS_SUMMARY": {
+        "RSS_SUMMARY": {
+            "onfalse": {
+                "comment": "aucune entrée de syndication sans résumé",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une entrée de syndication sans résumé",
                 "result": "c"
             }
         }

@@ -1,0 +1,7 @@
+p.bla1:focus {
+    outline-width: 0px;
+}
+
+p.bla2:focus {
+    outline: none
+}

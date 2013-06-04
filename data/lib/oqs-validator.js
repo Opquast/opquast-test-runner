@@ -264,62 +264,62 @@ var logger;
         var css,
             src,
             promises = [],
-            extSheets = doc.styleSheets,
-            intSheets = $("style");
+            _styleSheets = doc.styleSheets;
 
-        for (var i = 0; i < extSheets.length; i++) {
-            css = extSheets.item(i);
+        for (var i = 0; i < _styleSheets.length; i++) {
+            css = _styleSheets.item(i);
 
+            // internal
             if (css.ownerNode.tagName.toUpperCase() === "STYLE") {
-                continue;
-            }
-
-            src = css.href;
-            promises.push(
-                XHR.get(src).then(function(response) {
+                if ($.trim($(this).text()) != "") {
                     var parser = new CSSParser(),
-                        sheet = parser.parse(response.data, false, false);
+                        sheet = parser.parse($(this).text(), false, false),
+                        _media = $.trim($(this).attr("media")).split(" ");
+
+                    _media.pop("");
                     sheet._extra = {
-                        "media": css.media,
-                        "href": src
+                        "media": _media,
+                        "href": "interne"
                     };
                     sheet.resolveVariables(media);
 
-                    return {
-                        "src": src,
-                        "content": response.data,
+                    promises.push({
+                        "src": "interne",
+                        "content": $(this).text(),
                         "sheet": sheet,
-                        "media": css.media
-                    }
-                }).then(null, function(err) {
-                    logger.error("_analyseStylesheets", err);
-                    return false;
-                })
-            );
+                        "media": _media
+                    });
+                }
+            }
+
+            // external
+            else {
+                src = css.href;
+                promises.push(
+                    XHR.get(src).then(function(response) {
+                        var parser = new CSSParser(),
+                            sheet = parser.parse(response.data, false, false);
+                        sheet._extra = {
+                            "media": css.media,
+                            "href": src
+                        };
+                        sheet.resolveVariables(media);
+
+                        return {
+                            "src": src,
+                            "content": response.data,
+                            "sheet": sheet,
+                            "media": css.media
+                        }
+                    }).then(null, function(err) {
+                        logger.error("_analyseStylesheets", err);
+                        return false;
+                    })
+                );
+            }
         }
 
-        intSheets.each(function() {
-            if ($.trim($(this).text()) != "") {
-                var parser = new CSSParser(),
-                    sheet = parser.parse($(this).text(), false, false),
-                    _media = $.trim($(this).attr("media")).split(" ");
-
-                _media.pop("");
-                sheet._extra = {
-                    "media": _media,
-                    "href": "interne"
-                };
-                sheet.resolveVariables(media);
-
-                promises.push({
-                    "src": "interne",
-                    "content": $(this).text(),
-                    "sheet": sheet,
-                    "media": _media
-                });
-            }
-        });
-
+        //
         return Q.promised(Array).apply(null, promises).then(function(res) {
             var subPromises = [];
             res.filter(function(val) {
@@ -1566,7 +1566,7 @@ var logger;
             else if (language == "css") {
                 _analyseStylesheets(doc, "screen", []).then(function(parse) {
                     parse.forEach(function(element, index, array) {
-                        if (reg.test(element.text)) {
+                        if (reg.test(element.content)) {
                             _result.push(element.href);
                         }
                     });
@@ -1661,8 +1661,8 @@ var logger;
         var _result = [], dt = "", reg1 = new RegExp().compile('<!DOCTYPE[^>]*>', "i"), reg2 = new RegExp().compile('^\\s*<!DOCTYPE[^>]*>', "i");
         //@formatter:off
         var doctypes = [
-            '<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN" "">',
-            '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "">',
+            '<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">',
+            '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">',
             '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
             '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
             '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">',

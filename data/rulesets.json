@@ -12303,6 +12303,18 @@
             }
         }
     },
+    "19191": {
+        "CSS_FOCUS_STYLE": {
+            "onfalse": {
+                "comment": "aucun outline supprimé",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de la propriété OUTLINE avec la valeur 0 ou NONE constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "nc"
+            }
+        }
+    },
     "19195": {
         "TABLE_W_FAKE_TH_LINE": {
             "onfalse": {
@@ -22790,6 +22802,18 @@
             }
         }
     },
+    "21719": {
+        "CSS_FOCUS_STYLE": {
+            "onfalse": {
+                "comment": "aucun outline supprimé",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de la propriété OUTLINE avec la valeur 0 ou NONE constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "nc"
+            }
+        }
+    },
     "21722": {
         "LIST_W_MORE_THAN_3_LEVELS": {
             "onfalse": {
@@ -27530,6 +27554,18 @@
                     }
                 },
                 "comment": "au moins un élément IFRAME a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "557": {
+        "CSS_FOCUS_STYLE": {
+            "onfalse": {
+                "comment": "aucun outline supprimé",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de la propriété OUTLINE avec la valeur 0 ou NONE constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
                 "result": "i"
             }
         }

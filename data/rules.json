@@ -95,7 +95,7 @@
     "CSS_CONTENT": "oqs@css:cssContent",
     "CSS_DIRECTION": "oqs@css:cssDirection",
     "CSS_DISPLAY_NONE": "oqs@css:cssDisplayNone",
-    "CSS_FOCUS_STYLE": "regexp@css:outline[^:]*:[^;}]*(0(px)?|none)[\\s;}]",
+    "CSS_FOCUS_STYLE": "oqs@css:cssOutline",
     "CSS_FONTS_NUMBER": "oqs@css:cssNumberOfFonts",
     "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": "oqs@css:cssAbsoluteFontSize",
     "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_IN_FORM": "oqs@css:cssAbsoluteFontSizeInForm",

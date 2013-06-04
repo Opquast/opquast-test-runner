@@ -1,0 +1,11 @@
+{
+    "http://example.com/style.css": {
+        "_contentType": "text/css"
+    },
+    "http://example.com/test.png": {
+        "_contentType": "image/png"
+    },
+    "http://example.com/script.js": {
+        "_contentType": "text/javascript"
+    }
+}

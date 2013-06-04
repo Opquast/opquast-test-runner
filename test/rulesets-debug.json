@@ -525,16 +525,6 @@
             }
         }
     },
-    "19191": {
-        "CSS_FOCUS_STYLE": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "nc"
-            }
-        }
-    },
     "19192": {
         "CSS_TEXT_ALIGN_JUSTIFY": {
             "onfalse": {
@@ -734,16 +724,6 @@
             }
         }
     },
-    "21719": {
-        "CSS_FOCUS_STYLE": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "nc"
-            }
-        }
-    },
     "21743": {
         "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_ON_SCREEN": {
             "onfalse": {
@@ -826,16 +806,6 @@
         "RESOURCE_DOWNLOADABLE": {
             "onfalse": {
                 "result": "na"
-            },
-            "ontrue": {
-                "result": "i"
-            }
-        }
-    },
-    "557": {
-        "CSS_FOCUS_STYLE": {
-            "onfalse": {
-                "result": "c"
             },
             "ontrue": {
                 "result": "i"
