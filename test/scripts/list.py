@@ -21,12 +21,12 @@ rulesets_json += rulesets_json_debug
 print 'rules'
 for rule in rules_json:
      if not exists(join(getcwd(), rules_path, rule) + '/') and not exists(join(getcwd(), rules_debug_path, rule) + '/') and not exists(join(getcwd(), rules_stock_path, rule) + '/'):
-         print rule
- 
-print 'rulesets'
-for ruleset in rulesets_json:
-     if not exists(join(getcwd(), rulesets_path, ruleset) + '/') and not exists(join(getcwd(), rulesets_debug_path, ruleset) + '/') and not exists(join(getcwd(), rulesets_stock_path, ruleset) + '/'):
-         print ruleset
+         print '\t' + rule
+  
+# print 'rulesets'
+# for ruleset in rulesets_json:
+#      if not exists(join(getcwd(), rulesets_path, ruleset) + '/') and not exists(join(getcwd(), rulesets_debug_path, ruleset) + '/') and not exists(join(getcwd(), rulesets_stock_path, ruleset) + '/'):
+#          print '\t' + ruleset
  
 print 'rules done'
 for dir in listdir(rules_path):
@@ -48,12 +48,12 @@ for dir in listdir(rulesets_path):
     if dir not in rulesets_json:
         print '\t' + dir
          
-print 'rulesets debug'
-for dir in listdir(rulesets_debug_path):
-    if dir not in rulesets_json:
-         print '\t' + dir
+# print 'rulesets debug'
+# for dir in listdir(rulesets_debug_path):
+#     if dir not in rulesets_json:
+#          print '\t' + dir
           
-print 'rulesets stock'
-for dir in listdir(rulesets_stock_path):
-    if dir not in rulesets_json:
-        print '\t' + dir
+# print 'rulesets stock'
+# for dir in listdir(rulesets_stock_path):
+#     if dir not in rulesets_json:
+#         print '\t' + dir

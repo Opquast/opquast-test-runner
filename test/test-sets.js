@@ -5,7 +5,7 @@ const file = require("file");
 const self = require("self");
 const {pathFor} = require("system");
 
-let fixtures = getHTMLFixtures('fixtures/rulesets-stock/*'),
+let fixtures = getHTMLFixtures('fixtures/rulesets/*'),
     server = startServer(9000);
 
 Object.keys(fixtures).forEach(function(root) {
@@ -49,4 +49,5 @@ Object.keys(fixtures).forEach(function(root) {
 });
 
 require("sdk/preferences/service").set("plugins.click_to_play", true);
+require("sdk/preferences/service").set("accessibility.blockautorefresh", true);
 require("sdk/test").run(exports);

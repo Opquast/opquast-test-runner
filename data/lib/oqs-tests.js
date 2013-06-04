@@ -660,7 +660,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssBackgroundImage = function cssBackgroundImage(doc) {
         function callback(rule) {
-            var result = [], reg = new RegExp().compile('^url\\(', "i");;
+            var result = [],
+                reg = new RegExp().compile('^url\\(', "i");;
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
@@ -908,7 +909,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 for (var i = 0; i < rule.declarations.length; i++) {
                     var selectors = rule.mSelectorText.split(",").map(function(element) {
                         return $.trim(element);
-                    });alert(selectors);
+                    });
 
                     for each (var selector in selectors) {
                         if (reg.test(selector)) {
@@ -1276,8 +1277,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("body").find("*").andSelf().each(function() {
                 //
-                var _backgroundImage = $(this).css("background-image");
-                var _textIndent = $(this).css("text-indent");
+                var _backgroundImage = $(this).css("background-image"),
+                    _textIndent = $(this).css("text-indent");
 
                 //
                 if (_backgroundImage != "none" && parseFloat(_textIndent) < 0) {
@@ -3540,7 +3541,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         }
 
         //
-        catch (err) {alert(err);
+        catch (err) {
             // Error Logging
             logger.error("urlWithVariants", err);
             result = false;
