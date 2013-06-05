@@ -155,14 +155,12 @@ exports.openTab = openTab;
 
 let fakeHarEntry = function(window, url) {
     let mimeType = "",
-        charset = "",
-        contents = "";
+        charset = "";
 
     if (typeof(url) === "undefined") {
         url = window.location.href;
         mimeType = window.document.contentType;
         charset = window.document.characterSet;
-        contents = window.XMLSerializer().serializeToString(window.document);
     }
 
     return {
@@ -192,11 +190,11 @@ let fakeHarEntry = function(window, url) {
                 'size': 0,
                 'compression': undefined,
                 'mimeType': mimeType,
-                'text': contents
+                'text': ''
             },
             'redirectURL': '',
             'headersSize': -1,
-            'bodySize': contents.length,
+            'bodySize': 0,
             '_contentType': mimeType,
             '_contentCharset': charset,
             '_referrer': window.document.referrer,
@@ -215,6 +213,12 @@ let fakeHarEntry = function(window, url) {
 const getHarObject = function(window, htmlFile, jsonFiles) {
     let entries = [fakeHarEntry(window)];
 
+    // Read page source
+    entries[0].response.content.text = readBinaryURI(htmlFile);
+    entries[0].response.content.size = entries[0].response.content.text.length;
+    entries[0].response.bodySize = entries[0].response.content.text.length;
+
+    // Read JSON overrides
     let jsonFileAll = htmlFile.split("/").slice(0, -1).join("/") + "/_all.json",
         jsonFileOne = htmlFile.split(".").slice(0, -1).join(".") + ".json",
         jsonAll,
@@ -280,20 +284,11 @@ let _launchTests = function(domWindow, har, test, path) {
         wantComponents: false
     });
 
-    // Get page code
-    let plainText = "";
-    har.entries.forEach(function(entry) {
-        if (plainText !== "") return;
-        if (entry._url === domWindow.location.href) {
-            plainText = entry.response.content.text || "";
-        }
-    });
-
     // Launch tests
     let runner = testRunner.create({
         sandbox: sandbox,
         har: har,
-        plainText: plainText,
+        plainText: har.entries[0].response.content.text,
         extractObjects: false
     });
 
