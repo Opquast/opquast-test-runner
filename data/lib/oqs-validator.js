@@ -1658,7 +1658,9 @@ var logger;
      */
     function apply_doctype_test(doc, test, language) {
         //
-        var _result = [], dt = "", reg1 = new RegExp().compile('<!DOCTYPE[^>]*>', "i"), reg2 = new RegExp().compile('^\\s*<!DOCTYPE[^>]*>', "i");
+        var _result = [], dt = "",
+            reg1 = new RegExp().compile('<!DOCTYPE[^>]*>', "i"),
+            reg2 = new RegExp().compile('^\\s*<!DOCTYPE[^>]*>', "i");
         //@formatter:off
         var doctypes = [
             '<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">',
@@ -1757,19 +1759,6 @@ var logger;
                         if ($.inArray(dt, doctypes) != -1) {
                             //
                             _result.push(dt);
-                        }
-                    }
-
-                    //
-                    else {
-                        for (var i in doctypes) {
-                            //
-                            var reg = new RegExp().compile(doctypes[i], "i");
-
-                            //
-                            if (reg.test(sidecar.plainText)) {
-                                _result.push(RegExp.$1);
-                            }
                         }
                     }
                 }

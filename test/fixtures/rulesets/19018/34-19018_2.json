@@ -1,0 +1,11 @@
+{
+    "http://statichost/style.css": {
+        "_contentType": "text/css"
+    },
+    "http://statichost/test.png": {
+        "_contentType": "image/png"
+    },
+    "http://statichost/script.js": {
+        "_contentType": "text/javascript"
+    }
+}

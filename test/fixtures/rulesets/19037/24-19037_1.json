@@ -1,0 +1,17 @@
+{
+    "/style.css": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "Set-Cookie",
+                "value": "name=value"
+            }
+        ]
+    },
+    "/test.png": {
+        "_contentType": "image/png"
+    },
+    "/script.js": {
+        "_contentType": "text/javascript"
+    }
+}

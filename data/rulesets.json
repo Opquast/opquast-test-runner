@@ -755,9 +755,21 @@
         "DOCTYPE_PRESENT": {
             "onfalse": {
                 "comment": "le DOCTYPE est absent",
-                "result": "i"
+                "result": "na"
             },
             "ontrue": {
+                "chain": {
+                    "DOCTYPE_PLACED": {
+                        "onfalse": {
+                            "comment": "le DOCTYPE est mal positionné",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "le DOCTYPE est bien positionné",
+                            "result": "c"
+                        }
+                    }
+                },
                 "comment": "le DOCTYPE est présent",
                 "result": "c"
             }
@@ -11517,7 +11529,7 @@
             },
             "ontrue": {
                 "comment": "au moins une ressource statique ayant un numéro de version en paramètre a été détecté",
-                "result": "nc"
+                "result": "c"
             }
         }
     },
