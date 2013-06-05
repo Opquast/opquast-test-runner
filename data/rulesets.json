@@ -11568,11 +11568,11 @@
                     "RESOURCE_404_MORE_THAN_3K": {
                         "onfalse": {
                             "comment": "aucune ressource en 404 de plus de 3 Ko n'a été détectée",
-                            "result": "nc"
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins une ressource en 404 de plus de 3 Ko a été détectée",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -11592,11 +11592,11 @@
                     "RESOURCE_403_MORE_THAN_3K": {
                         "onfalse": {
                             "comment": "aucune ressource en 403 de plus de 3 Ko n'a été détectée",
-                            "result": "nc"
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins une ressource en 403 de plus de 3 Ko a été détectée",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -26859,6 +26859,386 @@
                 },
                 "comment": "au moins un TABLE complexe",
                 "result": "i"
+            }
+        }
+    },
+    "28032": {
+        "HTTP_GZIP": {
+            "onfalse": {
+                "comment": "le serveur envoie des contenus compressés aux clients qui les acceptent",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le serveur n'envoie pas de contenus compressés aux clients qui les acceptent",
+                "result": "nc"
+            }
+        }
+    },
+    "28033": {
+        "HTTP_CACHE": {
+            "onfalse": {
+                "comment": "le serveur envoie les informations permettant la mise en cache des contenus",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le serveur n'envoie pas d'information permettant la mise en cache des contenus",
+                "result": "nc"
+            }
+        }
+    },
+    "28034": {
+        "HTTP_CHARSET": {
+            "onfalse": {
+                "comment": "le serveur n'envoie pas les informations relatives au jeu de caractères employé",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur envoie les informations relatives au jeu de caractères employé",
+                "result": "c"
+            }
+        }
+    },
+    "28035": {
+        "ROBOTS_PRESENCE": {
+            "onfalse": {
+                "comment": "le robots.txt à la racine du site est absent ou vide",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le robots.txt à la racine du site est présent et non vide",
+                "result": "c"
+            }
+        }
+    },
+    "28037": {
+        "APPLET_W_FILLED_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément APPLET avec un attribut ALT non vide n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "APPLET_W_ALT_ATTR_TERMS_NOT_IN_CONTENT": {
+                        "onfalse": {
+                            "comment": "aucun élément APPLET dont les termes de l'attribut ALT ne sont pas aussi dans le contenu de la page n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément APPLET dont les termes de l'attribut ALT ne sont pas aussi dans le contenu de la page a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément APPLET avec un attribut ALT non vide a été détecté",
+                "result": "i"
+            }
+        },
+        "AREA_W_FILLED_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément AREA avec un attribut ALT non vide n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "AREA_W_ALT_ATTR_TERMS_NOT_IN_CONTENT": {
+                        "onfalse": {
+                            "comment": "aucun élément AREA dont les termes de l'attribut ALT ne sont pas aussi dans le contenu de la page n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément AREA dont les termes de l'attribut ALT ne sont pas aussi dans le contenu de la page a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément AREA avec un attribut ALT non vide a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG_W_FILLED_ALT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément IMG avec un attribut ALT non vide n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "IMG_W_ALT_ATTR_TERMS_NOT_IN_CONTENT": {
+                        "onfalse": {
+                            "comment": "aucun élément IMG avec un attribut ALT dont les termes ne sont pas dans le contenu de la page n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément IMG avec un attribut ALT dont les termes ne sont pas dans le contenu de la page a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément IMG avec un attribut ALT non vide a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "28039": {
+        "TITLE_W_MORE_THAN_80_CHAR": {
+            "onfalse": {
+                "comment": "le TITLE contient 80 caractères ou moins",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le TITLE contient plus de 80 caractères",
+                "result": "nc"
+            }
+        }
+    },
+    "28064": {
+        "CSS_UPPERCASE": {
+            "onfalse": {
+                "comment": "aucune suite de majuscules décoratives n'a été détectée",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une suite de majuscules décoratives a été détectée",
+                "result": "nc"
+            }
+        }
+    },
+    "28066": {
+        "CSS_GENERIC_FONT": {
+            "onfalse": {
+                "comment": "aucune CSS ne se terminant par une police non générique n'a été détectée",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS se terminant par une police non générique a été détectée",
+                "result": "nc"
+            }
+        }
+    },
+    "28068": {
+        "FONT": {
+            "onfalse": {
+                "comment": "aucun élément FONT n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FONT a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "28076": {
+        "BORDER_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut BORDER n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut BORDER a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "28089": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
+                "result": "nc"
+            }
+        }
+    },
+    "28097": {
+        "SCRIPT": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SCRIPT_WO_SRC": {
+                        "onfalse": {
+                            "comment": "aucun élément SCRIPT interne n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément SCRIPT interne a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément SCRIPT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "28103": {
+        "SCRIPT": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SCRIPT_IN_HEAD": {
+                        "onfalse": {
+                            "chain": {
+                                "SCRIPT_AT_END": {
+                                    "onfalse": {
+                                        "comment": "au moins un élément SCRIPT non placé à la fin du code a été détecté",
+                                        "result": "nc"
+                                    },
+                                    "ontrue": {
+                                        "comment": "aucun élément SCRIPT non placé à la fin du code n'a été détecté",
+                                        "result": "c"
+                                    }
+                                }
+                            },
+                            "comment": "aucun élément SCRIPT dans le HEAD n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément SCRIPT dans le HEAD a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément SCRIPT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "28105": {
+        "FAVICON": {
+            "onfalse": {
+                "comment": "aucun appel valide à un favicon n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un appel valide à un favicon a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "28111": {
+        "LABEL": {
+            "onfalse": {
+                "comment": "aucun élément LABEL n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "LABEL_WO_FOR_ATTR": {
+                        "onfalse": {
+                            "comment": "aucun élément LABEL sans attribut FOR n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément LABEL sans attribut FOR a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément LABEL a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "28115": {
+        "HTML_W_LANG_ATTR": {
+            "onfalse": {
+                "comment": "aucun attribut LANG sur l'élément HTML n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un attribut LANG sur l'élément HTML a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "28119": {
+        "META_CHARSET_VALID": {
+            "onfalse": {
+                "comment": "aucun élément META CONTENT-TYPE précisant le CHARSET n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "META_CHARSET_REAL": {
+                        "onfalse": {
+                            "comment": "le CHARSET précisé par le META CONTENT-TYPE ne correspond pas au charset réél",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "le CHARSET précisé par le META CONTENT-TYPE correspond au charset réél",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "le META CONTENT-TYPE précisant le CHARSET est présent",
+                "result": "i"
+            }
+        }
+    },
+    "28128": {
+        "DOCTYPE_VALID": {
+            "onfalse": {
+                "comment": "aucune DTD placée avant l'élément HTML et conforme aux recommandations du W3C n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "une DTD placée avant l'élément HTML et conforme aux recommandations du W3C a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "28134": {
+        "IMG": {
+            "onfalse": {
+                "comment": "aucun élément IMG n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CSS_IMG_RESIZE": {
+                        "onfalse": {
+                            "comment": "aucun élément IMG avec un WIDTH ou HEIGHT redimensionné",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément IMG avec un WIDTH ou HEIGHT redimensionné",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément IMG a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "28140": {
+        "H1": {
+            "onfalse": {
+                "comment": "aucun élément H1 n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément H1 a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "28144": {
+        "test_1": {
+            "onfalse": {
+                "comment": "aucun lien Mentions légales n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un lien Mentions légales a été détecté",
+                "result": "c"
             }
         }
     },

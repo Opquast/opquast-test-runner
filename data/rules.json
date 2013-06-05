@@ -559,5 +559,6 @@
     "test42": "xpath@html://a[starts-with(@href,'http://') or starts-with(@href,'https://')]",
     "test43": "oqs@html:linksNavigation",
     "test5": "xpath@html://*[number(substring(local-name(),2,1))=substring(local-name(),2,1)][number(substring(local-name(),2,1))-1>number(substring(local-name(preceding-sibling::*[number(substring(local-name(),2,1))=substring(local-name(),2,1)][position()=1]),2,1))]",
-    "test6": "xpath@html://table[.//tbody]"
+    "test6": "xpath@html://table[.//tbody]",
+    "test_1": "xpath@html://a[@href][normalize-space(text())='Mentions légales']"
 }
