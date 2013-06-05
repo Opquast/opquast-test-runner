@@ -117,7 +117,7 @@
     "CSS_W_REDUDANT_SPACES": "regexp@css:\\s{2,}",
     "DIR_ATTR": "xpath@html://*[@dir]",
     "DIR_W_INVALID_VALUE": "oqs@html:htmlDirAttribute",
-    "DIV_W_FAKE_LIST": "xpath@html://div[(starts-with(normalize-space(translate(.,' ',' ')),'*') and following-sibling::div[starts-with(normalize-space(translate(.,' ',' ')),'*')]) or (starts-with(normalize-space(translate(.,' ',' ')),'-') and following-sibling::div[starts-with(normalize-space(translate(.,' ',' ')),'-')]) or (starts-with(normalize-space(translate(.,' ',' ')),'\u2022') and following-sibling::div[starts-with(normalize-space(translate(.,' ',' ')),'\u2022')])]",
+    "DIV_W_FAKE_LIST": "xpath@html://div[(starts-with(normalize-space(translate(.,' ',' ')),'*') and following-sibling::div[starts-with(normalize-space(translate(.,' ',' ')),'*')]) or (starts-with(normalize-space(translate(.,' ',' ')),'-') and following-sibling::div[starts-with(normalize-space(translate(.,' ',' ')),'-')]) or (starts-with(normalize-space(translate(.,' ',' ')),'•') and following-sibling::div[starts-with(normalize-space(translate(.,' ',' ')),'•')])]",
     "DL": "xpath@html://dl",
     "DL_WO_DT_FIRST": "xpath@html://dl/*[position()=1][local-name()!='dt']",
     "DOCTYPE_DOM_VALID": "defer@html:dom_valid",
@@ -395,7 +395,7 @@
     "POSITIVE_TABINDEX_ATTR": "xpath@html://*[@tabindex>=0]",
     "PRE": "xpath@html://pre",
     "P_WO_TEXT": "xpath@html://p[normalize-space(translate(.,' ',' '))=''][not(.//img) and not(.//input[translate(@type,'SUBMIT','submit')='submit' or translate(@type,'IMAGE','image')='image' or translate(@type,'TEX','tex')='text' or not(@type) or translate(@type,'PASWORD','pasword')='password']) and not(.//textarea) and not(.//applet) and not(.//embed) and not(.//object)]",
-    "P_W_FAKE_LIST": "xpath@html://p[(starts-with(normalize-space(translate(.,' ',' ')),'*') and following-sibling::p[starts-with(normalize-space(translate(.,' ',' ')),'*')]) or (starts-with(normalize-space(translate(.,' ',' ')),'-') and following-sibling::p[starts-with(normalize-space(translate(.,' ',' ')),'-')]) or (starts-with(normalize-space(translate(.,' ',' ')),'\u2022') and following-sibling::p[starts-with(normalize-space(translate(.,' ',' ')),'\u2022')])]",
+    "P_W_FAKE_LIST": "xpath@html://p[(starts-with(normalize-space(translate(.,' ',' ')),'*') and following-sibling::p[starts-with(normalize-space(translate(.,' ',' ')),'*')]) or (starts-with(normalize-space(translate(.,' ',' ')),'-') and following-sibling::p[starts-with(normalize-space(translate(.,' ',' ')),'-')]) or (starts-with(normalize-space(translate(.,' ',' ')),'•') and following-sibling::p[starts-with(normalize-space(translate(.,' ',' ')),'•')])]",
     "RESOURCE_403": "oqs@http:httpResource403",
     "RESOURCE_403_MORE_THAN_3K": "oqs@http:httpResource403MoreThan3k",
     "RESOURCE_404": "oqs@http:httpResource404",
@@ -506,9 +506,9 @@
     "TEXTAREA_W_FILLED_AND_UNIQUE_TITLE_ATTR": "xpath@html://textarea[normalize-space(@title)!=''][not(normalize-space(@title)=normalize-space(preceding::*/@title) or normalize-space(@title)=normalize-space(following::*/@title))]",
     "TEXT_ATTR": "xpath@html://*[@text]",
     "TH": "xpath@html://th",
+    "TH_WO_FILLED_AND_UNIQUE_ID": "xpath@html://th[normalize-space(@id)='' or normalize-space(@id)=normalize-space(preceding::th/@id)]",
     "TH_WO_FILLED_AND_UNIQUE_ID_WO_SCOPE_ATTR": "xpath@html://th[normalize-space(@id)='' or normalize-space(@id)=normalize-space(preceding::th/@id)][not(@scope) or (normalize-space(@scope)!='' and normalize-space(@scope)!='col' and normalize-space(@scope)!='colgroup' and normalize-space(@scope)!='row' and normalize-space(@scope)!='rowgroup')]",
     "TH_WO_SCOPE_ATTR_WO_ID": "xpath@html://th[not(@scope)][not(@id)]",
-    "TH_WO_FILLED_AND_UNIQUE_ID": "xpath@html://th[normalize-space(@id)='' or normalize-space(@id)=normalize-space(preceding::th/@id)]",
     "TH_W_ID": "xpath@html://th[@id]",
     "TH_W_INVALID_SCOPE_ATTR": "xpath@html://th[@scope][normalize-space(@scope)!='col'][normalize-space(@scope)!='row']",
     "TH_W_SCOPE_ATTR": "xpath@html://th[@scope]",
@@ -557,5 +557,6 @@
     "test41": "xpath@html://div[@id='transversalNav']//ul//ul//ul//ul",
     "test42": "xpath@html://a[starts-with(@href,'http://') or starts-with(@href,'https://')]",
     "test43": "oqs@html:linksNavigation",
-    "test6": "xpath@html://table[.//tbody]"
+    "test6": "xpath@html://table[.//tbody]",
+    "test_1": "xpath@html://a[@href][normalize-space(text())='Mentions légales']"
 }

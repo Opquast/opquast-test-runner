@@ -1,0 +1,6 @@
+{
+    "/test.png": {
+        "status": 404,
+        "statusText": "NOT FOUND"
+    }
+}
