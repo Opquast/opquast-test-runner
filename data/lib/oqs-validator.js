@@ -269,53 +269,56 @@ var logger;
         for (var i = 0; i < _styleSheets.length; i++) {
             css = _styleSheets.item(i);
 
-            // internal
-            if (css.ownerNode.tagName.toUpperCase() === "STYLE") {
-                if ($.trim($(this).text()) != "") {
-                    var parser = new CSSParser(),
-                        sheet = parser.parse($(this).text(), false, false),
-                        _media = $.trim($(this).attr("media")).split(" ");
+            if($.inArray(media, css.media) != -1 || $.inArray("all", css.media) != -1) {
+                // internal
+                if (css.ownerNode.tagName.toUpperCase() === "STYLE") {
+                    var text = $.trim($(css.ownerNode).text());
 
-                    _media.pop("");
-                    sheet._extra = {
-                        "media": _media,
-                        "href": "interne"
-                    };
-                    sheet.resolveVariables(media);
-
-                    promises.push({
-                        "src": "interne",
-                        "content": $(this).text(),
-                        "sheet": sheet,
-                        "media": _media
-                    });
-                }
-            }
-
-            // external
-            else {
-                src = css.href;
-                promises.push(
-                    XHR.get(src).then(function(response) {
+                    if (text != "") {
                         var parser = new CSSParser(),
-                            sheet = parser.parse(response.data, false, false);
+                            sheet = parser.parse(text, false, false);
+
                         sheet._extra = {
                             "media": css.media,
-                            "href": src
+                            "href": "interne"
                         };
                         sheet.resolveVariables(media);
 
-                        return {
-                            "src": src,
-                            "content": response.data,
+                        promises.push({
+                            "src": "interne",
+                            "content": text,
                             "sheet": sheet,
-                            "media": css.media
-                        }
-                    }).then(null, function(err) {
-                        logger.error("_analyseStylesheets", err);
-                        return false;
-                    })
-                );
+                            "media": media
+                        });
+                    }
+                }
+
+                // external
+                else {
+                    src = css.href;
+                    promises.push(
+                        XHR.get(src).then(function(response) {
+                            var parser = new CSSParser(),
+                                sheet = parser.parse(response.data, false, false);
+
+                            sheet._extra = {
+                                "media": css.media,
+                                "href": src
+                            };
+                            sheet.resolveVariables(media);
+
+                            return {
+                                "src": src,
+                                "content": response.data,
+                                "sheet": sheet,
+                                "media": media
+                            }
+                        }).then(null, function(err) {
+                            logger.error("_analyseStylesheets", err);
+                            return false;
+                        })
+                    );
+                }
             }
         }
 
@@ -406,14 +409,15 @@ var logger;
                 //
                 var _media = rule.media.item && rule.media.item(l) || rule.media[l];
                 if ($.startsWith(_media, media) || $.startsWith(_media, "only " + media) || _media == "all") {
-                    var rules = rule.cssRules;
+                    var rules = rule.cssRules,
+                        result = [];
 
                     // rules walk
                     for (var k = 0; k < rules.length; k++) {
-                        var rule = rules[k];
-
-                        return _analyseRule(rule, media, callback);
+                        result.push(_analyseRule(rules[k], media, callback));
                     }
+
+                    return result;
                 }
             }
         }
@@ -425,9 +429,9 @@ var logger;
             for (var l = 0; l < rule.media.length; l++) {
                 var _media = rule.media.item && rule.media.item(l) || rule.media[l];
                 if ($.startsWith(_media, media) || $.startsWith(_media, "only " + media) || _media == "all") {
-                    var re = new RegExp().compile("(url\\()?'?\"?([^'\"\\)]*)", "i");
-                    re.test(rule.href);
-                    var href = $.trim(RegExp.$2);
+                    var re = new RegExp().compile("['\"]([^'\"\\)]*)['\"]", "i");
+                    rule.href.match(re);
+                    var href = $.trim(RegExp.$1);
 
                     promises.push(
                         XHR.get(href).then(function(response) {
@@ -1544,8 +1548,9 @@ var logger;
             //
             else if (language == "http") {
                 var _headers = "",
-                    resources = sidecar.resources.filter(
-                    function(item){return item["content_type"] == "text/html" || item["content_type"] == "application/xhtml+xml";}
+                    resources = sidecar.resources.filter(function(item){
+                        return item["content_type"] == "text/html" || item["content_type"] == "application/xhtml+xml";
+                    }
                 );
 
                 //

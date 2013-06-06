@@ -905,7 +905,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     var selectors = rule.mSelectorText.split(",").map(function(element) {
                         return $.trim(element);
