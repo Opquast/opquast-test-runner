@@ -2690,7 +2690,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 return $.trim($(this).text()) == "";
             }).each(function() {
                 //
-                var context = $.trim($("img", this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase(), href = $.trim($(this).attr("href"));
+                var context = $.trim($("img", this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase(),
+                    href = $.trim($(this).attr("href"));
 
                 //
                 if ($.inArray(context, Object.keys(links)) != -1 && links[context] != href) {

@@ -269,6 +269,10 @@ var logger;
         for (var i = 0; i < _styleSheets.length; i++) {
             css = _styleSheets.item(i);
 
+            if(css.media.length == 0) {
+                css.media.appendMedium("all");
+            }
+
             if($.inArray(media, css.media) != -1 || $.inArray("all", css.media) != -1) {
                 // internal
                 if (css.ownerNode.tagName.toUpperCase() === "STYLE") {
