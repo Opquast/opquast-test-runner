@@ -1,0 +1,32 @@
+{
+    "/112-28032_1.html": {
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "gzip"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/112-28032_1.js": {
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "deflate"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/112-28032_1.css": {
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 300
+            }
+        ]
+    }
+}

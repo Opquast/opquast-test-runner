@@ -1,0 +1,35 @@
+{
+    "/80-579_1.html": {
+        "_contentType": "text/html",
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "gzip"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/32-11318_1.js": {
+        "_contentType": "text/javascript",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 300
+            }
+        ]
+    },
+    "/32-11318_1.css": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "deflate"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    }
+}

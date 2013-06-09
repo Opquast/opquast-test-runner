@@ -1,0 +1,29 @@
+{
+    "/80-11440_1.html": {
+        "_contentType": "text/html",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/80-11440_1.html": {
+        "_contentType": "text/javascript",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/80-11440_1.html": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    }
+}

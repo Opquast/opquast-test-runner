@@ -995,6 +995,30 @@
             }
         }
     },
+    "COUNTRY_DOMAIN": {
+        "COUNTRY_DOMAIN": {
+            "onfalse": {
+                "comment": "le domaine ne correspond pas à une zone géographique",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le domaine correspond à une zone géographique",
+                "result": "c"
+            }
+        }
+    },
+    "COUNTRY_SERVER": {
+        "COUNTRY_SERVER": {
+            "onfalse": {
+                "comment": "le serveur n'est pas dans la zone géographique du domaine",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le serveur est dans la zone géographique du domaine",
+                "result": "c"
+            }
+        }
+    },
     "CSS_BACKGROUND_IMAGE": {
         "CSS_BACKGROUND_IMAGE": {
             "onfalse": {
@@ -1199,6 +1223,30 @@
             }
         }
     },
+    "DOCTYPE_DOM_VALID": {
+        "DOCTYPE_DOM_VALID": {
+            "onfalse": {
+                "comment": "au moins une syntaxe d'attribut erronée ou une imbrication d'éléments non conforme a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "aucune syntaxe d'attribut erronée ni imbrication d'éléments non conforme n'a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "DOCTYPE_HTML_VALID": {
+        "DOCTYPE_HTML_VALID": {
+            "onfalse": {
+                "comment": "le code est conforme au DOCTYPE",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le code n'est pas conforme au DOCTYPE",
+                "result": "c"
+            }
+        }
+    },
     "DOCTYPE_PLACED": {
         "DOCTYPE_PLACED": {
             "onfalse": {
@@ -1219,6 +1267,18 @@
             },
             "ontrue": {
                 "comment": "le DOCTYPE est présent",
+                "result": "c"
+            }
+        }
+    },
+    "DOCTYPE_TAGS_CLOSED": {
+        "DOCTYPE_TAGS_CLOSED": {
+            "onfalse": {
+                "comment": "Les balises HTML sont bien fermées",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "Les balises HTML sont mal fermées",
                 "result": "c"
             }
         }
@@ -2075,6 +2135,18 @@
             }
         }
     },
+    "HTTP_WWW": {
+        "HTTP_WWW": {
+            "onfalse": {
+                "comment": "le site ne fonctionne pas avec et sans www.",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le site fonctionne avec et sans www.",
+                "result": "c"
+            }
+        }
+    },
     "IFRAME": {
         "IFRAME": {
             "onfalse": {
@@ -2383,6 +2455,18 @@
             },
             "ontrue": {
                 "comment": "un sitemap a été trouvé à la racine du site",
+                "result": "c"
+            }
+        }
+    },
+    "INLINKS": {
+        "INLINKS": {
+            "onfalse": {
+                "comment": "moins de 3 liens entrants vers le domaine",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins 3 liens entrants vers le domaine",
                 "result": "c"
             }
         }

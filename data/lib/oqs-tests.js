@@ -1310,8 +1310,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            $(":not(a)").filter(function() {
-                if ($(this).text().trim() != "" && $(this).css("text-decoration") == "underline" && $(this).parents("a").size() == 0) {
+            $("body").find(":not(a)").andSelf().filter(function() {
+                return $(this).text().trim() != "";
+            }).each(function() {
+                if($(this).css("text-decoration") == "underline" && $(this).parents("a").size() == 0) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -1903,7 +1905,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.htmlFavicon = function htmlFavicon(doc) {
-        var result = [], promises = [];
+        var result = [],
+            promises = [];
 
         try {
             sidecar.pageInfo.links.forEach(function(link) {
@@ -1911,7 +1914,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     return null;
                 }
                 promises.push(XHR.partial(link.uri).then(function(response) {
-                    return _getDetails($(link.tag + "[href='" + link.href + "'][rel='" + link.rel + "']").get(0));
+                    if($.inArray(response.status, [200, 301, 302, 304, 307]) !== -1) {
+                        return _getDetails($(link.tag + "[href='" + link.href + "'][rel='" + link.rel + "']").get(0));
+                    }
+                    return null;
                 }).then(null, function(err) {
                     logger.error("htmlFavicon", err);
                     return null;
