@@ -14,29 +14,25 @@ const xmlhttprequest = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"];
 
 
 const extractEvents = function(win) {
-    var tw = win.document.createTreeWalker(
+    let tw = win.document.createTreeWalker(
         win.document,
         win.NodeFilter.SHOW_ELEMENT,
-        {
-            acceptNode: function(node){
-                return win.NodeFilter.FILTER_ACCEPT
-            }
-        },
+        null,
         false
     );
-    var events = [];
+    let events = [], eventList = [];
 
     do {
-        var event_list = [];
+        eventList = [];
         esl.getListenerInfoFor(tw.currentNode,{}).forEach(function(value, key, array) {
             if (typeof(value.toSource) === "function") {
-                event_list.push(value);
+                eventList.push(value);
             }
         });
-        if (event_list.length > 0) {
-            events.push({'node': tw.currentNode, 'events': event_list});
+        if (eventList.length > 0) {
+            events.push({'node': tw.currentNode, 'events': eventList});
         }
-    } while (tw.nextNode());
+    } while(tw.nextNode());
 
     return events;
 };
