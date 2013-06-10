@@ -6,6 +6,8 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
     jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
     genericFontStyle = ["serif", "sans-serif", "cursive", "fantasy", "monospace", "inherit"],
     atomNs = "http://www.w3.org/2005/Atom",
+    dcatNs = "http://www.w3.org/ns/dcat#",
+    dctNs = "http://purl.org/dc/terms/",
     fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"],
     badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"];
 
@@ -6246,6 +6248,24 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.odPresence = function odPresence(doc) {
+        return XHR.partial(doc.location.href + '.rdf').then(function(response) {
+            if (response.status !== 200) {
+                return [];
+            }
+            return [doc.location.href + '.rdf'];
+        }).then(null, function(err) {
+            // Error Logging
+            logger.error("odPresence", err);
+            return false;
+        });
+    }
+
     /***************************************************************************/
     /******************************** CTIE *************************************/
     /***************************************************************************/

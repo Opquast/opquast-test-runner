@@ -1,4 +1,38 @@
 {
+    "30002": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_TITLE": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans titre n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans titre a été détecté",
+                            "result": "nc"
+                        }
+                    },
+                    "OD_DATASET_EMPTY_DESCRIPTION": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans description n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans description a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "10058": {
         "APPLET": {
             "onfalse": {

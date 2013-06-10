@@ -1297,25 +1297,25 @@ var logger;
             //
             else if (language == "css") {
                 // Regexps
-                var reg = new RegExp().compile("^(.+)\\[(.+)\\]$", "i");
-                var reg_not = new RegExp().compile("^(.+)\\[not\\((.+)\\)\\]$", "i");
+                var reg = new RegExp().compile("^(.+)\\[(.+)\\]$", "i"),
+                    reg_not = new RegExp().compile("^(.+)\\[not\\((.+)\\)\\]$", "i");
 
                 //
-                var starts_with = new RegExp().compile("^starts-with\\(@(.+), ?'(.+)'\\)$", "i");
-                var ends_with = new RegExp().compile("^ends-with\\(@(.+), ?'(.+)'\\)$", "i");
-                var contains = new RegExp().compile("^contains\\(@(.+), ?'(.+)'\\)$", "i");
-                var equals = new RegExp().compile("^@(.+), ?'(.+)'$", "i");
-                var presence = new RegExp().compile("^@(.+)$", "i");
+                var starts_with = new RegExp().compile("^starts-with\\(@(.+), ?'(.+)'\\)$", "i"),
+                    ends_with = new RegExp().compile("^ends-with\\(@(.+), ?'(.+)'\\)$", "i"),
+                    contains = new RegExp().compile("^contains\\(@(.+), ?'(.+)'\\)$", "i"),
+                    equals = new RegExp().compile("^@(.+), ?'(.+)'$", "i"),
+                    presence = new RegExp().compile("^@(.+)$", "i");
 
                 //
-                var inversion = false;
-                var _comparison = "";
-                var _selector = "";
-                var _test = "";
-                var _property = "";
-                var _value = "";
-                var _result = [];
-                var sheets = doc.styleSheets;
+                var inversion = false,
+                    _comparison = "",
+                    _selector = "",
+                    _test = "",
+                    _property = "",
+                    _value = "",
+                    _result = [],
+                    sheets = doc.styleSheets;
 
                 // inversion
                 if (reg_not.test(test)) {
@@ -1504,6 +1504,46 @@ var logger;
                 else {
                     return _result;
                 }
+            }
+
+            //
+            else if (language == "opendata") {
+                //
+                logger.log(Object('apply_xpath_test', doc));
+                logger.log(Object('apply_xpath_test', test));
+                logger.log(Object('apply_xpath_test', XPathResult.ORDERED_NODE_SNAPSHOT_TYPE));
+
+                //
+                return XHR.get(doc.location.href + '.rdf').then(function(response) {
+                    //
+                    function nsResolver(prefix) {
+                        var ns = {
+                            'xhtml': 'http://www.w3.org/1999/xhtml',
+                            'dcat': 'http://www.w3.org/ns/dcat#',
+                            'dct': 'http://purl.org/dc/terms/',
+                        };
+                        return ns[prefix] || null;
+                    }
+
+                    //
+                    var _result = [],
+                        xml = new DOMParser().parseFromString(response.data, "text/xml"),
+                        nodesSnapshot = xml.evaluate(test, xml, nsResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);alert(test);
+
+                    //
+                    logger.log(Object('apply_xpath_test', _result));
+
+                    //
+                    for (var i = 0; i < nodesSnapshot.snapshotLength; i++) {
+                        //
+                        _result.push(_getDetails(nodesSnapshot.snapshotItem(i)));
+                    }
+
+                    //
+                    return _result;
+                }).then(null, function(err) {alert(err);
+                    return false;
+                });
             }
         }
 
