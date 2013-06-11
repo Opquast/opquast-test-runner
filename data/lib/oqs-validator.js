@@ -1528,7 +1528,7 @@ var logger;
                     //
                     var _result = [],
                         xml = new DOMParser().parseFromString(response.data, "text/xml"),
-                        nodesSnapshot = xml.evaluate(test, xml, nsResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);alert(test);
+                        nodesSnapshot = xml.evaluate(test, xml, nsResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
                     //
                     logger.log(Object('apply_xpath_test', _result));
@@ -1541,7 +1541,7 @@ var logger;
 
                     //
                     return _result;
-                }).then(null, function(err) {alert(err);
+                }).then(null, function(err) {
                     return false;
                 });
             }
@@ -2029,19 +2029,28 @@ var logger;
             if (result.length > 0) {
                 // subtests
                 if (test_actions.ontrue.chain) {
+                    var promises = [];
+
                     for (var subtest_id in test_actions.ontrue.chain) {
                         var subtest_actions = test_actions.ontrue.chain[subtest_id];
                         var subtest = tests[subtest_id];
-                        return apply_test(doc, subtest, subtest_actions).then(function(r) {
-                            return {
-                                'results': $.extend(_g_results, r.results),
-                                'comments': $.extend(_g_comments, r.comments),
-                                'details': $.extend(_g_details, r.details)
-                            };
-                        });
+                        promises.push(apply_test(doc, subtest, subtest_actions));
                     }
 
-                    // no subtests
+                    return Q.promised(Array).apply(null, promises).then(function(res){
+                        res.forEach(function(r) {
+                            $.merge(_g_results, r.results);
+                            $.merge(_g_comments, r.comments);
+                            $.merge(_g_details, r.details);
+                        });
+                        return {
+                            results: _g_results,
+                            comments: _g_comments,
+                            details: _g_details
+                        };
+                    });
+
+                // no subtests
                 } else {
                     _g_results.push(test_actions.ontrue.result);
                     _g_comments.push(test_actions.ontrue.comment);
@@ -2056,19 +2065,23 @@ var logger;
             else {
                 // subtests
                 if (test_actions.onfalse.chain) {
+                    var promises = [];
+
                     for (var subtest_id in test_actions.onfalse.chain) {
                         var subtest_actions = test_actions.onfalse.chain[subtest_id];
                         var subtest = tests[subtest_id];
-                        return apply_test(doc, subtest, subtest_actions).then(function(r) {
-                            return {
-                                'results': $.extend(_g_results, r.results),
-                                'comments': $.extend(_g_comments, r.comments),
-                                'details': $.extend(_g_details, r.details)
-                            };
-                        });
+                        promises.push(apply_test(doc, subtest, subtest_actions));
                     }
 
-                    // no subtests
+                    return Q.promised(Array).apply(null, promises).then(function(res){
+                        return {
+                            'results': $.extend(_g_results, res.results),
+                            'comments': $.extend(_g_comments, res.comments),
+                            'details': $.extend(_g_details, res.details)
+                        };
+                    });
+
+                // no subtests
                 } else {
                     _g_results.push(test_actions.onfalse.result);
                     _g_comments.push(test_actions.onfalse.comment);
