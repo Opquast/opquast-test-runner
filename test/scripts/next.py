@@ -19,7 +19,7 @@ for key, value in json_sets.items():
         sets[val].append(key)
 
 for key, value in sets.items():
-    if len(value) > 6:
+    if len(value) > 4:
         todo = False
         for val in value:
             if not exists(join(getcwd(), 'test/fixtures/rulesets/', val) + '/') and \
