@@ -1297,25 +1297,25 @@ var logger;
             //
             else if (language == "css") {
                 // Regexps
-                var reg = new RegExp().compile("^(.+)\\[(.+)\\]$", "i");
-                var reg_not = new RegExp().compile("^(.+)\\[not\\((.+)\\)\\]$", "i");
+                var reg = new RegExp().compile("^(.+)\\[(.+)\\]$", "i"),
+                    reg_not = new RegExp().compile("^(.+)\\[not\\((.+)\\)\\]$", "i");
 
                 //
-                var starts_with = new RegExp().compile("^starts-with\\(@(.+), ?'(.+)'\\)$", "i");
-                var ends_with = new RegExp().compile("^ends-with\\(@(.+), ?'(.+)'\\)$", "i");
-                var contains = new RegExp().compile("^contains\\(@(.+), ?'(.+)'\\)$", "i");
-                var equals = new RegExp().compile("^@(.+), ?'(.+)'$", "i");
-                var presence = new RegExp().compile("^@(.+)$", "i");
+                var starts_with = new RegExp().compile("^starts-with\\(@(.+), ?'(.+)'\\)$", "i"),
+                    ends_with = new RegExp().compile("^ends-with\\(@(.+), ?'(.+)'\\)$", "i"),
+                    contains = new RegExp().compile("^contains\\(@(.+), ?'(.+)'\\)$", "i"),
+                    equals = new RegExp().compile("^@(.+), ?'(.+)'$", "i"),
+                    presence = new RegExp().compile("^@(.+)$", "i");
 
                 //
-                var inversion = false;
-                var _comparison = "";
-                var _selector = "";
-                var _test = "";
-                var _property = "";
-                var _value = "";
-                var _result = [];
-                var sheets = doc.styleSheets;
+                var inversion = false,
+                    _comparison = "",
+                    _selector = "",
+                    _test = "",
+                    _property = "",
+                    _value = "",
+                    _result = [],
+                    sheets = doc.styleSheets;
 
                 // inversion
                 if (reg_not.test(test)) {
@@ -1504,6 +1504,50 @@ var logger;
                 else {
                     return _result;
                 }
+            }
+
+            //
+            else if (language == "opendata") {
+                //
+                logger.log(Object('apply_xpath_test', doc));
+                logger.log(Object('apply_xpath_test', test));
+                logger.log(Object('apply_xpath_test', XPathResult.ORDERED_NODE_SNAPSHOT_TYPE));
+
+                //
+                return XHR.get(doc.location.href + '.rdf').then(function(response) {
+                    //
+                    function nsResolver(prefix) {
+                        var ns = {
+                            'xhtml': 'http://www.w3.org/1999/xhtml',
+                            'dcat': 'http://www.w3.org/ns/dcat#',
+                            'dct': 'http://purl.org/dc/terms/',
+                            'foaf': 'http://xmlns.com/foaf/0.1/',
+                            'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
+                            'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+                            'adms': 'http://www.w3.org/ns/adms#'
+                        };
+                        return ns[prefix] || null;
+                    }
+
+                    //
+                    var _result = [],
+                        xml = new DOMParser().parseFromString(response.data, "text/xml"),
+                        nodesSnapshot = xml.evaluate(test, xml, nsResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+
+                    //
+                    logger.log(Object('apply_xpath_test', _result));
+
+                    //
+                    for (var i = 0; i < nodesSnapshot.snapshotLength; i++) {
+                        //
+                        _result.push(_getDetails(nodesSnapshot.snapshotItem(i)));
+                    }
+
+                    //
+                    return _result;
+                }).then(null, function(err) {
+                    return false;
+                });
             }
         }
 
@@ -1989,19 +2033,28 @@ var logger;
             if (result.length > 0) {
                 // subtests
                 if (test_actions.ontrue.chain) {
+                    var promises = [];
+
                     for (var subtest_id in test_actions.ontrue.chain) {
                         var subtest_actions = test_actions.ontrue.chain[subtest_id];
                         var subtest = tests[subtest_id];
-                        return apply_test(doc, subtest, subtest_actions).then(function(r) {
-                            return {
-                                'results': $.extend(_g_results, r.results),
-                                'comments': $.extend(_g_comments, r.comments),
-                                'details': $.extend(_g_details, r.details)
-                            };
-                        });
+                        promises.push(apply_test(doc, subtest, subtest_actions));
                     }
 
-                    // no subtests
+                    return Q.promised(Array).apply(null, promises).then(function(res){
+                        res.forEach(function(r) {
+                            $.merge(_g_results, r.results);
+                            $.merge(_g_comments, r.comments);
+                            $.merge(_g_details, r.details);
+                        });
+                        return {
+                            results: _g_results,
+                            comments: _g_comments,
+                            details: _g_details
+                        };
+                    });
+
+                // no subtests
                 } else {
                     _g_results.push(test_actions.ontrue.result);
                     _g_comments.push(test_actions.ontrue.comment);
@@ -2016,19 +2069,23 @@ var logger;
             else {
                 // subtests
                 if (test_actions.onfalse.chain) {
+                    var promises = [];
+
                     for (var subtest_id in test_actions.onfalse.chain) {
                         var subtest_actions = test_actions.onfalse.chain[subtest_id];
                         var subtest = tests[subtest_id];
-                        return apply_test(doc, subtest, subtest_actions).then(function(r) {
-                            return {
-                                'results': $.extend(_g_results, r.results),
-                                'comments': $.extend(_g_comments, r.comments),
-                                'details': $.extend(_g_details, r.details)
-                            };
-                        });
+                        promises.push(apply_test(doc, subtest, subtest_actions));
                     }
 
-                    // no subtests
+                    return Q.promised(Array).apply(null, promises).then(function(res){
+                        return {
+                            'results': $.extend(_g_results, res.results),
+                            'comments': $.extend(_g_comments, res.comments),
+                            'details': $.extend(_g_details, res.details)
+                        };
+                    });
+
+                // no subtests
                 } else {
                     _g_results.push(test_actions.onfalse.result);
                     _g_comments.push(test_actions.onfalse.comment);

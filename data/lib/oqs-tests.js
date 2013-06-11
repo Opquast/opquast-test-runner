@@ -6246,6 +6246,24 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.odPresence = function odPresence(doc) {
+        return XHR.partial(doc.location.href + '.rdf').then(function(response) {
+            if (response.status !== 200) {
+                return [];
+            }
+            return [doc.location.href + '.rdf'];
+        }).then(null, function(err) {
+            // Error Logging
+            logger.error("odPresence", err);
+            return false;
+        });
+    }
+
     /***************************************************************************/
     /******************************** CTIE *************************************/
     /***************************************************************************/

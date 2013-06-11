@@ -1,0 +1,16 @@
+<rdf:RDF xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dct="http://purl.org/dc/terms/" xmlns:adms="http://www.w3.org/ns/adms#">
+    <dcat:Dataset rdf:about="">
+        <dct:title></dct:title>
+        <dct:description></dct:description>
+        <rdfs:label></rdfs:label>
+        <dct:identifier></dct:identifier>
+        <dcat:theme></dcat:theme>
+        <dct:license rdf:resource="">Creative Commons</dct:license>
+        <dct:relation>
+            <rdf:Description>
+                <rdfs:label>license</rdfs:label>
+                <rdf:value></rdf:value>
+            </rdf:Description>
+        </dct:relation>
+    </dcat:Dataset>
+</rdf:RDF>

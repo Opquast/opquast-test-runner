@@ -27278,6 +27278,280 @@
             }
         }
     },
+    "29981": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_THEME": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans vocabulaire n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans vocabulaire a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29982": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_LICENSE": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans licence n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans licence a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29986": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_CONTACT": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans contact n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans contact a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29989": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_IDENTIFIER": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans identifiant n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans identifiant a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29990": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_VERSION": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans version n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans version a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29997": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_LOCATION": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans date de localisation n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans date de localisation a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29998": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_MODIFIED": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans date de modification n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans date de modification a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29999": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_PUBLISHER": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans responsable n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans responsable a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "30001": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_CREATED": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans date de publication n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans date de publication a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "30002": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_DESCRIPTION": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans description n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans description a été détecté",
+                            "result": "nc"
+                        }
+                    },
+                    "OD_DATASET_EMPTY_TITLE": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans titre n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans titre a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "30028": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_FREQUENCY": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans fréquence de mise-à-jour n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans fréquence de mise-à-jour a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "500": {
         "IMG": {
             "onfalse": {
