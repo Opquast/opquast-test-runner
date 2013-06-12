@@ -2,11 +2,6 @@
     <dcat:Dataset rdf:about="">
         <dct:title></dct:title>
         <dct:description></dct:description>
-        <dct:relation>
-            <rdf:Description>
-                <rdfs:label>Frequency</rdfs:label>
-                <rdf:value>annual</rdf:value>
-            </rdf:Description>
-        </dct:relation>
+        <adms:contactPoint rdf:resource="http://www.example.com/"/>
     </dcat:Dataset>
 </rdf:RDF>

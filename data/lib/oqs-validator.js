@@ -1524,9 +1524,10 @@ var logger;
                             'foaf': 'http://xmlns.com/foaf/0.1/',
                             'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
                             'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-                            'adms': 'http://www.w3.org/ns/adms#'
+                            'adms': 'http://www.w3.org/ns/adms#',
+                            'ecodp': 'http://ec.europa.eu/open-data/ontologie/ec-odp#'
                         };
-                        return ns[prefix] || null;
+                        return ns[prefix];
                     }
 
                     //
