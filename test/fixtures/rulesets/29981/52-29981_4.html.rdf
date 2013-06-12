@@ -2,13 +2,10 @@
     <dcat:Dataset rdf:about="">
         <dct:title></dct:title>
         <dct:description></dct:description>
-        <rdfs:label></rdfs:label>
-        <dct:identifier></dct:identifier>
-        <dcat:theme></dcat:theme>
         <dct:relation>
             <rdf:Description>
                 <rdfs:label>theme</rdfs:label>
-                <rdf:value>theme1</rdf:value>
+                <rdf:value>theme</rdf:value>
             </rdf:Description>
         </dct:relation>
     </dcat:Dataset>

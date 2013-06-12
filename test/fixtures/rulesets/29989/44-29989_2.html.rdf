@@ -2,11 +2,12 @@
     <dcat:Dataset rdf:about="">
         <dct:title></dct:title>
         <dct:description></dct:description>
-        <rdfs:label></rdfs:label>
         <dct:identifier></dct:identifier>
-        <dcat:theme></dcat:theme>
-        <dct:license rdf:resource=""></dct:license>
-        <dct:rights rdf:resource=""></dct:rights>
-        <dct:publisher></dct:publisher>
+        <dct:relation>
+            <rdf:Description>
+                <rdfs:label>identifier</rdfs:label>
+                <rdf:value></rdf:value>
+            </rdf:Description>
+        </dct:relation>
     </dcat:Dataset>
 </rdf:RDF>

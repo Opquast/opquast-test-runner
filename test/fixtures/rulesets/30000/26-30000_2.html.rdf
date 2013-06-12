@@ -1,17 +1,13 @@
-<rdf:RDF xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dct="http://purl.org/dc/terms/">
-    <dcat:Dataset rdf:about="http://data.gov.uk//dataset/taking_part-englands_survey_of_culture_leisure_and_sport">
-        <dct:description>Survey on the extent and nature of engagement and non-engagement in culture, leisure and sport among adults aged 16 years and above.
-            Source agency: Culture, Media and Sport
-            Designation: National Statistics
-            Language: English
-            Alternative title: PSA21</dct:description>
-        <dct:title>Taking Part: England's survey of culture, leisure and sport</dct:title>
-        <dct:publisher>
-            <rdf:description>
-                <foaf:name>Conseil général de la Gironde</foaf:name>
-                <foaf:mbox rdf:resource="mailto:datalocale@cg33.fr"/>
-            </rdf:description>
-        </dct:publisher>
-        <dct:modified>2013-06-01</dct:modified>
+<rdf:RDF xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dct="http://purl.org/dc/terms/" xmlns:adms="http://www.w3.org/ns/adms#">
+    <dcat:Dataset rdf:about="">
+        <dct:title></dct:title>
+        <dct:description></dct:description>
+        <dct:modified></dct:modified>
+        <dct:relation>
+            <rdf:Description>
+                <rdfs:label>modified</rdfs:label>
+                <rdf:value></rdf:value>
+            </rdf:Description>
+        </dct:relation>
     </dcat:Dataset>
 </rdf:RDF>

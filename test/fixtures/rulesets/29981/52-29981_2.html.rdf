@@ -2,8 +2,6 @@
     <dcat:Dataset rdf:about="">
         <dct:title></dct:title>
         <dct:description></dct:description>
-        <rdfs:label></rdfs:label>
-        <dct:identifier></dct:identifier>
         <dcat:theme></dcat:theme>
         <dct:relation>
             <rdf:Description>

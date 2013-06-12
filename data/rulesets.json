@@ -27406,7 +27406,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "OD_DATASET_EMPTY_LOCATION": {
+                    "OD_DATASET_EMPTY_SPATIAL": {
                         "onfalse": {
                             "comment": "aucun jeu de données sans date de localisation n'a été détecté",
                             "result": "c"
@@ -27430,13 +27430,13 @@
             },
             "ontrue": {
                 "chain": {
-                    "OD_DATASET_EMPTY_MODIFIED": {
+                    "OD_DATASET_EMPTY_LANGUAGE": {
                         "onfalse": {
-                            "comment": "aucun jeu de données sans date de modification n'a été détecté",
+                            "comment": "aucun jeu de données sans langue n'a été détecté",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins jeu de données sans date de modification a été détecté",
+                            "comment": "au moins jeu de données sans langue a été détecté",
                             "result": "nc"
                         }
                     }
@@ -27470,6 +27470,30 @@
             }
         }
     },
+    "30000": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_MODIFIED": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans date de mise-à-jour n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans date de mise-à-jour a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "30001": {
         "OD_PRESENCE": {
             "onfalse": {
@@ -27478,7 +27502,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "OD_DATASET_EMPTY_CREATED": {
+                    "OD_DATASET_EMPTY_ISSUED": {
                         "onfalse": {
                             "comment": "aucun jeu de données sans date de publication n'a été détecté",
                             "result": "c"
@@ -27536,7 +27560,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "OD_DATASET_EMPTY_FREQUENCY": {
+                    "OD_DATASET_EMPTY_PERIODICITY": {
                         "onfalse": {
                             "comment": "aucun jeu de données sans fréquence de mise-à-jour n'a été détecté",
                             "result": "c"

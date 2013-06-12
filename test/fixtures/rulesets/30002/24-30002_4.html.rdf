@@ -1,0 +1,16 @@
+<rdf:RDF xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dct="http://purl.org/dc/terms/" xmlns:adms="http://www.w3.org/ns/adms#">
+    <dcat:Dataset rdf:about="">
+        <dct:relation>
+            <rdf:Description>
+                <rdfs:label>title</rdfs:label>
+                <rdf:value>titre</rdf:value>
+            </rdf:Description>
+        </dct:relation>
+        <dct:relation>
+            <rdf:Description>
+                <rdfs:label>description</rdfs:label>
+                <rdf:value>description</rdf:value>
+            </rdf:Description>
+        </dct:relation>
+    </dcat:Dataset>
+</rdf:RDF>

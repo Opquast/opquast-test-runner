@@ -1,28 +1,7 @@
-<rdf:RDF xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dct="http://purl.org/dc/terms/">
-    <dcat:Dataset rdf:about="http://data.gov.uk//dataset/taking_part-englands_survey_of_culture_leisure_and_sport">
-        <dct:description></dct:description>
-        <dcat:keyword>active-sport</dcat:keyword>
-        <dcat:keyword>archives</dcat:keyword>
-        <dcat:keyword>arts</dcat:keyword>
-        <dcat:keyword>attendance</dcat:keyword>
-        <dcat:keyword>broadcasting</dcat:keyword>
-        <dcat:keyword>culture-and-sport</dcat:keyword>
-        <dcat:keyword>engagement</dcat:keyword>
-        <dcat:keyword>gambling</dcat:keyword>
-        <dcat:keyword>historic-environment</dcat:keyword>
-        <dcat:keyword>leisure</dcat:keyword>
-        <dcat:keyword>leisure-and-culture</dcat:keyword>
-        <dcat:keyword>libraries</dcat:keyword>
-        <dcat:keyword>licensing</dcat:keyword>
-        <dcat:keyword>museums-and-galleries</dcat:keyword>
-        <dcat:keyword>opportunity</dcat:keyword>
-        <dcat:keyword>participation</dcat:keyword>
-        <dcat:keyword>people</dcat:keyword>
-        <dcat:keyword>people-and-places</dcat:keyword>
-        <foaf:homepage rdf:resource="http://data.gov.uk//dataset/taking_part-englands_survey_of_culture_leisure_and_sport"></foaf:homepage>
-        <rdfs:label>taking_part-englands_survey_of_culture_leisure_and_sport</rdfs:label>
-        <dct:identifier>taking_part-englands_survey_of_culture_leisure_and_sport</dct:identifier>
+<rdf:RDF xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dct="http://purl.org/dc/terms/" xmlns:adms="http://www.w3.org/ns/adms#">
+    <dcat:Dataset rdf:about="">
         <dct:title></dct:title>
+        <dct:description></dct:description>
         <dct:location>France</dct:location>
     </dcat:Dataset>
 </rdf:RDF>
