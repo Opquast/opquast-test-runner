@@ -86,11 +86,11 @@
     "OD_DATASET_EMPTY_SPATIAL": {
         "OD_DATASET_EMPTY_SPATIAL": {
             "onfalse": {
-                "comment": "aucun jeu de données sans date de localisation n'a été détecté",
+                "comment": "aucun jeu de données sans localisation n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins jeu de données sans date de localisation a été détecté",
+                "comment": "au moins jeu de données sans localisation a été détecté",
                 "result": "c"
             }
         }
