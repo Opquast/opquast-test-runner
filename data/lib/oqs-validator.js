@@ -1527,7 +1527,7 @@ var logger;
                             'adms': 'http://www.w3.org/ns/adms#',
                             'ecodp': 'http://ec.europa.eu/open-data/ontologie/ec-odp#'
                         };
-                        return ns[prefix];
+                        return ns[prefix] || null;
                     }
 
                     //
