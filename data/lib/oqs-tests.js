@@ -1830,7 +1830,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlFakeList = function htmlFakeList(doc) {
         //
-        var result = [], reg1 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*(<br ?\?>)+){2,}$", "im"), reg2 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*){2,}$", "im");
+        var result = [],
+            reg1 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*(<br ?\?>)+){2,}$", "im"),
+            reg2 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*){2,}$", "im");
 
         //
         try {
@@ -1868,7 +1870,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlFakeOrderedList = function htmlFakeOrderedList(doc) {
         //
-        var result = [], reg1 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*(<br ?\?>)+){2,}$", "im"), reg2 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*){2,}$", "im");
+        var result = [],
+            reg1 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*(<br ?\?>)+){2,}$", "im"),
+            reg2 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*){2,}$", "im");
 
         //
         try {
@@ -4776,7 +4780,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         var result = [],
             reg = new RegExp().compile("[^\\?]+\\?.+$", "i");
-        ;
 
         //
         try {
@@ -6275,10 +6278,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.noRelativeSize = function(doc) {
         //
-        var _result = [];
-        var sheets = doc.styleSheets;
-        var styles = [];
-        var reg = new RegExp().compile("^[0-9.]+(p(t|c|x)|(c|m)m|in)$", "g");
+        var _result = [],
+            sheets = doc.styleSheets,
+            styles = [],
+            reg = new RegExp().compile("^([0-9.]+(p(t|c|x)|(c|m)m|in))$", "g");
 
         //
         function parseRule(rule) {
@@ -6314,7 +6317,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var _fontsize = styles[k].fontSize;
 
                 //
-                if (_fontsize.test(reg)) {
+                if (reg.test(_fontsize)) {
                     _result.push(RegExp.$1);
                 }
             }
@@ -6487,8 +6490,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.minimumFontSize = function(doc) {
         //
-        var _result = [];
-        var fontSize = parseInt($("html").css("font-size"));
+        var _result = [],
+            fontSize = parseInt($("html").css("font-size")) * .75;
 
         //
         function walk(node) {
@@ -6496,7 +6499,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var _fontSize = parseInt(node.css("font-size"));
 
             //
-            if (_fontSize / fontSize >= 0.75) {
+            if (_fontSize >= fontSize) {
                 node.children().each(function() {
                     walk($(this));
                 });

@@ -5,7 +5,7 @@ from shutil import move
 
 sets = {}
 json_sets = load(open('data/rulesets.json'))
-json_criteria = load(open('criteria.json'))
+json_criteria = load(open('test/scripts/criteria.json'))
 
 for key, value in json_sets.items():
     if key in ['TABLE', 'FORM', 'LIST', 'IMG']:

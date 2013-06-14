@@ -6362,11 +6362,11 @@
     "test32": {
         "test32": {
             "onfalse": {
-                "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                "comment": "aucun PDF en dehors de la boîte en savoir plus",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un DOC en dehors de la boîte en savoir plus",
+                "comment": "au moins un PDF en dehors de la boîte en savoir plus",
                 "result": "c"
             }
         }
@@ -6380,6 +6380,18 @@
             "ontrue": {
                 "comment": "au moins un DOC",
                 "result": "c"
+            }
+        }
+    },
+    "test34": {
+        "test34": {
+            "onfalse": {
+                "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un DOC en dehors de la boîte en savoir plus",
+                "result": "nc"
             }
         }
     },
