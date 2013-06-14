@@ -6330,7 +6330,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.linksWithSameHref = function(doc) {
         //
-        var _result = [], _done = [], _hrefs = {}, _text = "", _reg = new RegExp().compile("\\s{2,}", "g");
+        var _result = [],
+            _done = [],
+            _hrefs = {},
+            _text = "",
+            _reg = new RegExp().compile("\\s{2,}", "g");
 
         //
         $("a[href]", doc).each(function() {
@@ -6460,7 +6464,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksNavigation = function(doc) {
         //
         var _result = [],
-            _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
+            _reg = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i");
 
         //
         $("#navTools a[href], #thematicNav a[href], #transversalNav a[href]," + "#setcategoriesBox a[href]").each(function() {
