@@ -24225,12 +24225,12 @@
     "23269": {
         "test27": {
             "onfalse": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "result": "nc"
             }
         }
     },
@@ -24317,11 +24317,11 @@
     "23315": {
         "test36": {
             "onfalse": {
-                "comment": "aucun H1 dans le contenu",
+                "comment": "un seul H1 dans le contenu",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins un H1 dans le contenu",
+                "comment": "au moins 2 H1 dans le contenu",
                 "result": "nc"
             }
         },

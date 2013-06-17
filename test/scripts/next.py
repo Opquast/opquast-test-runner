@@ -17,17 +17,24 @@ for key, value in json_sets.items():
     except:
         sets[val] = []
         sets[val].append(key)
+        
+todo = False
+done = False
+rest = 0
 
 for key, value in sets.items():
-    if len(value) > 4:
-        todo = False
+    if len(value) > 2:
         for val in value:
             if not exists(join(getcwd(), 'test/fixtures/rulesets/', val) + '/') and \
                     not exists(join(getcwd(), 'test/fixtures/rulesets-debug/', val) + '/') and \
                     not exists(join(getcwd(), 'test/fixtures/rulesets-stock/', val) + '/'):
-                todo = True
-            
-        if todo:
+                if done == False:
+                    todo = True
+
+        if done:
+            rest += 1            
+        
+        if todo and done == False:
             for val in value:
                 if exists(join(getcwd(), 'test/fixtures/rulesets/', val) + '/'):
                     move(join(getcwd(), 'test/fixtures/rulesets/', val), join(getcwd(), 'test/fixtures/'))
@@ -40,4 +47,6 @@ for key, value in sets.items():
                     name = json_criteria[val].replace('.', '-').replace('[', '').replace(']', '') + '-' + str(val)
                     open(join(getcwd(), 'test/fixtures/', val, name + '_1.html'), 'w').close()
                     open(join(getcwd(), 'test/fixtures/', val, name + '_2.html'), 'w').close()
-            break
+            done = True
+            
+print "encore %s" % (rest / 3)

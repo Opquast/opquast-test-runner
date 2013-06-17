@@ -6394,7 +6394,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         var _result = [],
             _reg = new RegExp().compile("[A_Z_% ]", "g"),
-            _reg_domain = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
+            _reg_domain = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i");
 
         // current URL
         if (_reg.test(doc.location.hostname)) {
@@ -6432,13 +6432,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksInternal = function(doc) {
         //
         var _result = [],
-            _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i"),
+            _reg = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i"),
             _reg_doc = new RegExp().compile("\.(pdf|doc)$", "i");
 
         //
         $("a[href]").each(function() {
             //
-            var _href = $.trim($(this).attr("href")), isInternal = true, isDoc = false;
+            var _href = $.trim($(this).attr("href")),
+                isInternal = true,
+                isDoc = false;
 
             //
             if (_reg_doc.test(_href)) {
@@ -6524,7 +6526,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssFontInList = function(doc) {
         function callback(rule) {
-            var result = [], authorized = ["arial", "verdana", "helvetica", "tahoma", "sans-serif", "inherit"];
+            var result = [],
+                authorized = ["arial", "verdana", "helvetica", "tahoma", "sans-serif", "inherit"];
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {

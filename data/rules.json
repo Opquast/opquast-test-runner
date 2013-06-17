@@ -459,7 +459,7 @@
     "TABLE_W_FILLED_AND_UNIQUE_SUMMARY_ATTR": "xpath@html://table[normalize-space(@summary)='' or normalize-space(@summary)=normalize-space(preceding::table/@summary)]",
     "TABLE_W_SUMMARY_ATTR": "xpath@html://table[@summary]",
     "TABLE_W_SUMMARY_ATTR_AND_CAPTION": "xpath@html://table[@summary][caption]",
-    "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": "xpath@html://table[@summary][caption][normalize-space(@summary)!=''][normalize-space(@summary)=normalize-space(caption)]",
+    "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": "xpath@html://table[normalize-space(@summary)!=''][normalize-space(@summary)=normalize-space(caption)]",
     "TABLE_W_SUMMARY_WO_TH": "xpath@html://table[normalize-space(@summary)!=''][not(thead/tr/th)][not(tbody/tr/th)]",
     "TABLE_W_TH": "xpath@html://table[thead/tr/th or tbody/tr/th]",
     "TABLE_W_TH_LINE_OR_COLUMN": "xpath@html://table[.//tr[1][th[following-sibling::th or @colspan or @rowspan]]][.//tr[2][th[following-sibling::th or @colspan or @rowspan]]]",
