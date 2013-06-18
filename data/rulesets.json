@@ -1464,11 +1464,11 @@
                             "chain": {
                                 "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                                     "onfalse": {
-                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                                         "result": "i"
                                     },
                                     "ontrue": {
-                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                                         "result": "nc"
                                     }
                                 }
@@ -10234,11 +10234,11 @@
                             "chain": {
                                 "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                                     "onfalse": {
-                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                                         "result": "i"
                                     },
                                     "ontrue": {
-                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                                         "result": "nc"
                                     }
                                 }
@@ -12613,11 +12613,11 @@
                 "chain": {
                     "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                         "onfalse": {
-                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                             "result": "nc"
                         }
                     }
@@ -13680,11 +13680,11 @@
                 "chain": {
                     "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                         "onfalse": {
-                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                             "result": "nc"
                         }
                     }
@@ -16086,11 +16086,11 @@
                 "chain": {
                     "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                         "onfalse": {
-                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                             "result": "nc"
                         }
                     }
@@ -16134,11 +16134,11 @@
                 "chain": {
                     "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                         "onfalse": {
-                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                             "result": "nc"
                         }
                     }
@@ -21607,11 +21607,11 @@
                             "chain": {
                                 "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                                     "onfalse": {
-                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                                         "result": "i"
                                     },
                                     "ontrue": {
-                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                                         "result": "nc"
                                     }
                                 }

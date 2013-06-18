@@ -1,0 +1,3 @@
+  opquast-tests/tests/test-rules.test test30_true_1: failure
+  opquast-tests/tests/test-rules.test test32_false_index: failure
+  opquast-tests/tests/test-rules.test test34_true_1: failure

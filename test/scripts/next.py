@@ -23,7 +23,7 @@ done = False
 rest = 0
 
 for key, value in sets.items():
-    if len(value) > 2:
+    if len(value) > 1:
         for val in value:
             if not exists(join(getcwd(), 'test/fixtures/rulesets/', val) + '/') and \
                     not exists(join(getcwd(), 'test/fixtures/rulesets-debug/', val) + '/') and \
@@ -49,4 +49,4 @@ for key, value in sets.items():
                     open(join(getcwd(), 'test/fixtures/', val, name + '_2.html'), 'w').close()
             done = True
             
-print "encore %s" % (rest / 3)
+print "encore %s" % rest
