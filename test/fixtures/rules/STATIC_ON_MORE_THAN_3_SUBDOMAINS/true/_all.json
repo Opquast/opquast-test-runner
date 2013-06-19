@@ -1,0 +1,14 @@
+{
+    "http://css.localhost/style.css": {
+        "_contentType": "text/css"
+    },
+    "http://img1.localhost/test.png": {
+        "_contentType": "image/png"
+    },
+    "http://img2.localhost/test.png": {
+        "_contentType": "image/png"
+    },
+    "http://js.localhost/script.js": {
+        "_contentType": "text/javascript"
+    }
+}

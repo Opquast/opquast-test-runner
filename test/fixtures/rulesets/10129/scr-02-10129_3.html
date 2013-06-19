@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-desc" content="onclick sur a, area, button ou input type button, submit, reset, file, image, password, radio ou checkbox" />
+		<meta http-equiv="X-results" content="C:0,NC:0,NA:1,I:0" />
+		<title>testcase SCR-02</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	</head>
+	</head>
+	<body>
+		<a onclick="cliquer();" href="">plop</a>
+		<map name="map1">
+			<area id="plop1" href="http://www.example.com/" shape="rect" coords="0,0,20,20" alt="" />
+		</map>
+		<p>
+			<img src="fixe.jpg" usemap="#map1" alt=""/>
+		</p>
+		<button onclick="cliquer();"></button>
+		<input type="button" onclick="javascript:cliquer();" />
+		<input type="submit" onclick="cliquer();" />
+		<input id="plop2" type="reset" onclick="cliquer();" />
+		<input type="file" onclick="cliquer();" />
+		<input type="image" onclick="cliquer();" />
+		<input type="password" onclick="cliquer();" />
+		<input type="radio" onclick="cliquer();" />
+		<input type="checkbox" onclick="cliquer();" />
+		<script type="text/javascript">
+			function modifieTexte() {
+				var item = document.getElementById("plop1");
+				item.setAttribute("alt", "plop2");
+			}
+
+			document.getElementById("plop1").addEventListener("click", modifieTexte, false);
+
+			$("#plop2").click(function() {
+				$(this).set("title", "plop2");
+			});
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif
+}
+
+p {
+    font-family: Times, serif
+}
+
+div {
+    font-family: Courier, monospace
+}
+
+span {
+    font-family: fantasy;
+}
+
+pre {
+    font-family: cursive;
+}

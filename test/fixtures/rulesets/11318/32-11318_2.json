@@ -1,0 +1,29 @@
+{
+    "/32-11318_2.html": {
+        "_contentType": "text/html",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/32-11318_2.js": {
+        "_contentType": "text/javascript",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/32-11318_2.css": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    }
+}

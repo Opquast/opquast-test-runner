@@ -1,0 +1,31 @@
+{
+    "/1.html": {
+        "headers": [
+            {
+                "name": "expires",
+                "value": "Mon, 01 Jan 2052 00:00:00 GMT"
+            }
+        ]
+    },
+    "/style.css": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "expires",
+                "value": "Mon, 01 Jan 2052 00:00:00 GMT"
+            }
+        ]
+    },
+    "/test.png": {
+        "_contentType": "image/png"
+    },
+    "/script.js": {
+        "_contentType": "text/javascript",
+        "headers": [
+            {
+                "name": "expires",
+                "value": "Mon, 01 Jan 2052 00:00:00 GMT"
+            }
+        ]
+    }
+}

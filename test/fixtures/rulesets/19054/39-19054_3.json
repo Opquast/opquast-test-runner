@@ -1,0 +1,12 @@
+{
+    "/test.png": {
+        "status": 403,
+        "statusText": "FORBIDDEN",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": "3001"
+            }
+        ]
+    }
+}

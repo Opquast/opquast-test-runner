@@ -6,11 +6,11 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
     jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
     genericFontStyle = ["serif", "sans-serif", "cursive", "fantasy", "monospace", "inherit"],
     atomNs = "http://www.w3.org/2005/Atom",
-    fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"];
+    fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"],
+    badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"];
 
 var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
-    badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"],
-    cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws)\\.com/", "i"),
+    cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
     analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i"),
     jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
     regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i");
@@ -19,11 +19,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     "use strict";
 
     var content = $("body").text().trim(),
-        aContent = $.unique(content.toLowerCase().split(" "));
-
-    var inlineStyles = $("*[style]");
-
-    var onfocusEvents = $("*[onfocus]"),
+        aContent = $.unique(content.toLowerCase().split(" ")),
+        inlineStyles = $("*[style]"),
+        onfocusEvents = $("*[onfocus]"),
         onblurEvents = $("*[onblur]"),
         onchangeEvents = $("*[onchange]"),
         onclickEvents = $("*[onclick]"),
@@ -37,7 +35,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     function _htmlFieldWithoutTitleAndLabel(type, implicit) {
         //
-        var result = [], fields = {}, i = 0, j = 0;
+        var result = [],
+            fields = {},
+            i = 0,
+            j = 0;
 
         //
         try {
@@ -51,13 +52,19 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     //
                     $("input:not([type='hidden']), select, textarea", $(this)).each(function() {
                         //
-                        var id = $.trim($(this).attr("id"));
-                        var title = $.trim($(this).attr("title")).toLowerCase();
-                        var label = _getAllText($("label[for='" + id + "']").get(0));
+                        var id = $.trim($(this).attr("id")),
+                            title = $.trim($(this).attr("title")).toLowerCase(),
+                            label = "";
+
+                        try {
+                            label = _getAllText($("label[for='" + id + "']").get(0));
+                        } catch(e) {}
 
                         //
                         if (implicit && label == "") {
-                            label = _getAllText($(this).parents("label").get(0));
+                            try {
+                                label = _getAllText($(this).parents("label").get(0));
+                            } catch(e) {}
                         }
 
                         //
@@ -83,9 +90,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         //
                         $("input:not([type='hidden']), select, textarea", $(this)).each(function() {
                             //
-                            var id = $.trim($(this).attr("id"));
-                            var title = $.trim($(this).attr("title")).toLowerCase();
-                            var label = _getAllText($("label[for='" + id + "']").get(0));
+                            var id = $.trim($(this).attr("id")),
+                                title = $.trim($(this).attr("title")).toLowerCase(),
+                                label = "";
+
+                            try {
+                                label = _getAllText($("label[for='" + id + "']").get(0));
+                            } catch(e) {}
 
                             //
                             if (implicit && label == "") {
@@ -93,17 +104,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                             }
 
                             //
-                            if (fields[i][title] == undefined) {
-                                fields[i][title] = {};
+                            if (fields[i][j][title] == undefined) {
+                                fields[i][j][title] = {};
                             }
 
                             //
-                            if (fields[i][title][label] == undefined) {
-                                fields[i][title][label] = [];
+                            if (fields[i][j][title][label] == undefined) {
+                                fields[i][j][title][label] = [];
                             }
 
                             //
-                            fields[i][title][label].push(_getDetails(this));
+                            fields[i][j][title][label].push(_getDetails(this));
                         });
                         //
                         i++;
@@ -186,7 +197,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var keywords = [];
             try {
                 keywords = $("meta[name='keywords']").attr("content").trim().toLowerCase().split(" ");
-            } catch (e) {}
+            } catch (e) {
+            }
 
             //
             if (keywords.length == 0) {
@@ -200,7 +212,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var terms = $(this).text().trim().split(" ");
                 try {
                     terms = $.merge(terms, $.trim($("img", this).attr("alt")).toLowerCase().split(" "));
-                } catch(e) {}
+                } catch(e) {
+                }
 
                 //
                 terms.some(function(value) {
@@ -251,7 +264,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var terms = $(this).text().trim().split(" ");
                 try {
                     terms = $.merge(terms, $.trim($("img", this).attr("alt")).toLowerCase().split(" "));
-                } catch(e) {}
+                } catch(e) {
+                }
 
                 //
                 terms.some(function(value) {
@@ -288,7 +302,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     function _htmlSameLabelsTitles(type) {
         //
-        var result = [], labels = [], titles = [], nodes = [];
+        var result = [],
+            labels = [],
+            titles = [],
+            nodes = [];
 
         //
         try {
@@ -299,10 +316,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     //
                     $("input, select, textarea", $(this)).each(function() {
                         //
-                        var id = $.trim($(this).attr("id"));
-                        var oLabel = $("label[for=" + id + "]");
-                        var label = oLabel ? $.trim(oLabel.text()).toLowerCase() : "";
-                        var title = $.trim($(this).attr("title")).toLowerCase();
+                        var id = $.trim($(this).attr("id")),
+                            oLabel = $("label[for=" + id + "]"),
+                            label = oLabel ? $.trim(oLabel.text()).toLowerCase() : "",
+                            title = $.trim($(this).attr("title")).toLowerCase();
 
                         // label hidden
                         if (oLabel && (oLabel.css("display") == "none" || oLabel.css("visibility") == "hidden")) {
@@ -347,10 +364,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         //
                         $("input, select, textarea", $(this)).each(function() {
                             //
-                            var id = $.trim($(this).attr("id"));
-                            var oLabel = $("label[for=" + id + "]");
-                            var label = oLabel ? $.trim(oLabel.text()).toLowerCase() : "";
-                            var title = $.trim($(this).attr("title")).toLowerCase();
+                            var id = $.trim($(this).attr("id")),
+                                oLabel = $("label[for=" + id + "]"),
+                                label = oLabel ? $.trim(oLabel.text()).toLowerCase() : "",
+                                title = $.trim($(this).attr("title")).toLowerCase();
 
                             // label hidden
                             if (oLabel && (oLabel.css("display") == "none" || oLabel.css("visibility") == "hidden")) {
@@ -394,7 +411,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             for (var node in nodes) {
                 // text is default type
-                var _tmp = _getDetails(nodes[node]), _type = "text";
+                var _tmp = _getDetails(nodes[node]),
+                    _type = "text";
 
                 //
                 if (_tmp["tag"] == "input") {
@@ -441,6 +459,68 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
+    function _detectFunction(exp, elements, attr) {
+        var result = [],
+            reg = new RegExp().compile(exp, "i");
+
+        //
+        elements.each(function() {
+            //
+            var _event = $.trim($(this).attr(attr)),
+                functions = _event.split(";");
+
+            //
+            functions.forEach(function(element, index, array) {
+                if (reg.test(element)) {
+                    //
+                    result.push(_function);
+                } else {
+                    //
+                    var aFunction = regFunction.exec(element);
+
+                    //
+                    if (aFunction && aFunction.length > 0) {
+                        //
+                        var _function = $.trim(aFunction[1]);
+
+                        //
+                        if (_function != "") {
+                            //
+                            if (reg.test(_function)) {
+                                //
+                                result.push(_event);
+                            }
+
+                            //
+                            else if ($.inArray(_function, fonctionExclusions) == -1) {
+                                try {
+                                    var fn = window;
+
+                                    for each (var i in _function.split(".")) {
+                                        fn = fn[i];
+                                    }
+
+                                    if (reg.test(fn.toString())) {
+                                        //
+                                        result.push(_function);
+                                    }
+                                } catch(err) {
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        return result;
+    }
+
+    /**
+     *
+     * @param doc
+     * @return
+     */
     window.cssAbsoluteFontSize = function cssAbsoluteFontSize(doc) {
         function callback(rule) {
             var result = [];
@@ -462,7 +542,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -489,12 +568,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return result;
         }
 
-        var promises = [
-            _analyseStylesheets(doc, "screen", callback),
-            _analyseStylesheets(doc, "tv", callback),
-            _analyseStylesheets(doc, "handheld", callback),
-            _analyseStylesheets(doc, "projection", callback)
-        ];
+        var promises = [_analyseStylesheets(doc, "screen", callback), _analyseStylesheets(doc, "tv", callback), _analyseStylesheets(doc, "handheld", callback), _analyseStylesheets(doc, "projection", callback)];
 
         return Q.promised(Array).apply(null, promises).then(function(result) {
             return $.uniq($.deepMerge([], result));
@@ -503,7 +577,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -524,12 +597,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return result;
         }
 
-        var promises = [
-            _analyseStylesheets(doc, "screen", callback),
-            _analyseStylesheets(doc, "tv", callback),
-            _analyseStylesheets(doc, "handheld", callback),
-            _analyseStylesheets(doc, "projection", callback)
-        ];
+        var promises = [_analyseStylesheets(doc, "screen", callback), _analyseStylesheets(doc, "tv", callback), _analyseStylesheets(doc, "handheld", callback), _analyseStylesheets(doc, "projection", callback)];
 
         return Q.promised(Array).apply(null, promises).then(function(result) {
             return $.uniq($.deepMerge([], result));
@@ -538,7 +606,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -553,8 +620,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("body").find(":not(input[type='hidden'])").andSelf().filter(function() {
                 //
-                var _backgroundColor = $(this).css("background-color"),
-                    _color = $(this).css("color");
+                var _backgroundColor = $(this).css("background-color"), _color = $(this).css("color");
 
                 //
                 if (_color == "rgb(0, 0, 0)") {
@@ -587,17 +653,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.cssBackgroundImage = function cssBackgroundImage(doc) {
-        var reg = new RegExp().compile('^url\\(', "i");
-
         function callback(rule) {
-            var result = [];
+            var result = [],
+                reg = new RegExp().compile('^url\\(', "i");;
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
@@ -616,24 +680,21 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.cssBackgroundImageInSprite = function cssBackgroundImageInSprite(doc) {
-        var reg = new RegExp().compile('^url\\(', "i");
-
         function callback(rule) {
-            var result = [];
+            var result = [], reg = new RegExp().compile('^url\\(', "i");;
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "background-position" && rule.declarations[i]["valueText"] != "0 0") {
                         var node = $(rule.mSelectorText);
 
-                        if(reg.test(node.css("background-image")) && node.css("background-repeat") == "no-repeat") {
+                        if (reg.test(node.css("background-image")) && node.css("background-repeat") == "no-repeat") {
                             result.push(_getCssDetails(rule, i));
                         }
 
@@ -650,7 +711,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -700,7 +760,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -750,21 +809,21 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      * @param doc
      * @return
      */
     window.cssContent = function cssContent(doc) {
         //
-        var result = [], exclusions = ["", '', " ", ' ', '" "', "' '", '"."', "'.'", "none"];
+        var result = [],
+            exclusions = ["", "normal", "none", "open-quote", "close-quote", "no-open-quote", "no-close-quote", "inherit"];
 
         //
         try {
             //
             $("body").find("*").andSelf().each(function() {
-                var _before = getComputedStyle(this, ':before').getPropertyCSSValue('content').cssText;
-                var _after = getComputedStyle(this, ':after').getPropertyCSSValue('content').cssText;
+                var _before = getComputedStyle(this, ':before').getPropertyCSSValue('content').cssText.replace(/[."']/g, ''),
+                    _after = getComputedStyle(this, ':after').getPropertyCSSValue('content').cssText.replace(/[."']/g, '');
 
                 if ($.inArray(_before, exclusions) == -1 || $.inArray(_after, exclusions) == -1) {
                     //
@@ -783,7 +842,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -810,7 +868,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -837,7 +894,46 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.cssOutline = function cssOutline(doc) {
+        var reg = new RegExp().compile("(^| )([^ ]+):focus$", "i");
 
+        function callback(rule) {
+            var result = [];
+
+            if (rule && rule.declarations) {
+                for (var i = 0; i < rule.declarations.length; i++) {
+                    var selectors = rule.mSelectorText.split(",").map(function(element) {
+                        return $.trim(element);
+                    });
+
+                    for each (var selector in selectors) {
+                        if (reg.test(selector)) {
+                            var selectorOut = selector.replace(/:focus/, "");
+
+                            if ($(selectorOut).get(0) &&
+                                    ((rule.declarations[i]["property"] == "outline-style" && rule.declarations[i]["valueText"] == "none") ||
+                                    (rule.declarations[i]["property"] == "outline-width" && parseInt(rule.declarations[i]["valueText"], 10) == 0))) {
+                                result.push(_getCssDetails(rule, i));
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
+            // Error Logging
+            logger.error("cssOutline", err);
+            return false;
+        });
+    }
     /**
      *
      * @param doc
@@ -850,7 +946,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-family") {
-                        var font = rule.declarations[i]["valueText"].split(",").slice(-1)[0].replace(/['"]/g, "").trim();
+                        var font = rule.declarations[i]["valueText"].split(",").pop().replace(/['"]/g, "").trim();
 
                         if ($.inArray(font, genericFontStyle) == -1) {
                             result.push(_getCssDetails(rule, i));
@@ -868,7 +964,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -885,7 +980,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
             if (rule && rule.parentStyleSheet && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
-                    var selectors = rule.mSelectorText.split(",").map(function(element){
+                    var selectors = rule.mSelectorText.split(",").map(function(element) {
                         return $.trim(element);
                     });
 
@@ -893,9 +988,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         if (reg.test(selector)) {
                             var selectorOut = selector.replace(/:hover$/, ""), property = rule.declarations[i]["property"];
 
-                            if ($(selectorOut).get(0) && $(selectorOut).get(0).tagName.toUpperCase() == "A" &&
-                                (reg2.test(property) || reg3.test(property) || reg4.test(property)))
-                            {
+                            if ($(selectorOut).get(0) && $(selectorOut).get(0).tagName.toUpperCase() == "A" && (reg2.test(property) || reg3.test(property) || reg4.test(property))) {
                                 result.push(_getCssDetails(rule, i));
                             }
                         }
@@ -912,7 +1005,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -920,7 +1012,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssImageSize = function cssImageSize(doc) {
         //
-        var result = [], images = {};
+        var result = [],
+            images = {};
 
         //
         try {
@@ -930,23 +1023,22 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if (element.image_info) {
                     //
                     images[element.uri] = {
-                        "width": element.image_info["width"] + "px",
-                        "height": element.image_info["height"] + "px"
+                        "width" : element.image_info["width"] + "px",
+                        "height" : element.image_info["height"] + "px"
                     };
                 }
             });
+
             //
             $("img").each(function() {
                 //
                 var src = this.src;
 
                 //
-                if ($.inArray(src, Object.keys(images)) != -1) {
+                if ($.inArray(src, Object.keys(images)) != -1 &&
+                        (images[src]["width"] != $(this).css("width") || images[src]["height"] != $(this).css("height"))) {
                     //
-                    if (images[src]["width"] != $(this).css("width") || images[src]["height"] != $(this).css("height")) {
-                        //
-                        result.push(_getDetails(this));
-                    }
+                    result.push(_getDetails(this));
                 }
             });
         }
@@ -961,7 +1053,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1011,17 +1102,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      * @param doc
      * @return
      */
-    window.cssMediaHandheld = function cssMediaHandheld(doc) {
-        let callback = [];
+    window.cssMediaHandheld = function cssMediaHandheld(doc) { let
+        callback = [];
 
         return _analyseStylesheets(doc, "handheld", callback).then(function() {
             return callback.filter(function(element) {
-                return element.media == "handheld";
+                var mediaText = element.media.mediaText;
+                return mediaText && $.inArray("handheld", mediaText.split(',')) != -1;
             }).map(function(element) {
                 return element.href;
             });
@@ -1031,28 +1122,27 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
      * @return
      */
-    window.cssMediaPrint = function cssMediaPrint(doc) {
-        function callback(rule) {
-            var result = [];
+    window.cssMediaPrint = function cssMediaPrint(doc) { let
+        callback = [];
 
-            result.push(rule.parentStyleSheet._extra);
-
-            return result;
-        };
-
-        return _analyseStylesheets(doc, "print", callback).then(null, function(err) {
+        return _analyseStylesheets(doc, "print", callback).then(function() {
+            return callback.filter(function(element) {
+                var mediaText = element.media.mediaText;
+                return mediaText && $.inArray("print", mediaText.split(',')) != -1;
+            }).map(function(element) {
+                return element.href;
+            });
+        }).then(null, function(err) {
             // Error Logging
             logger.error("cssMediaPrint", err);
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1087,7 +1177,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1114,7 +1203,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1127,7 +1215,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            $("table").each(function(){
+            $("table").each(function() {
                 //
                 var tableLayout = $(this).css("table-layout");
 
@@ -1149,7 +1237,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1176,7 +1263,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1191,8 +1277,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("body").find("*").andSelf().each(function() {
                 //
-                var _backgroundImage = $(this).css("background-image");
-                var _textIndent = $(this).css("text-indent");
+                var _backgroundImage = $(this).css("background-image"),
+                    _textIndent = $(this).css("text-indent");
 
                 //
                 if (_backgroundImage != "none" && parseFloat(_textIndent) < 0) {
@@ -1212,7 +1298,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1225,8 +1310,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            $(":not(a)").filter(function() {
-                if ($(this).text().trim() != "" && $(this).css("text-decoration") == "underline" && $(this).parents("a").size() == 0) {
+            $("body").find(":not(a)").andSelf().filter(function() {
+                return $(this).text().trim() != "";
+            }).each(function() {
+                if($(this).css("text-decoration") == "underline" && $(this).parents("a").size() == 0) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -1243,7 +1330,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1270,7 +1356,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1280,18 +1365,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         var result = [],
             exclusions = ["ABBR", "ACRONYM", "ADDRESS", "BLOCKQUOTE", "CITE", "CODE", "KBD", "PRE", "Q", "RP", "RT", "RUBY", "SAMP", "SUB", "SUP", "TIME", "VAR", "IFRAME", "SCRIPT"],
-            reg = new RegExp().compile("^[^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*[A-Z][^a-z]*$", "g");
+            reg = new RegExp().compile("^[^a-z0-9]*[A-Z][^a-z0-9]*[A-Z][^a-z0-9]*[A-Z][^a-z0-9]*$", "g");
 
         //
         try {
             //
             var treeWalker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT, {
-                acceptNode: function(_node) {
+                acceptNode : function(_node) {
                     //
-                    var node = $(_node);
-
-                    //
-                    if ($.inArray(_node.tagName.toUpperCase(), exclusions) == -1 && reg.test(node.text()) && node.css("text-decoration") != "uppercase") {
+                    if ($.inArray(_node.tagName.toUpperCase(), exclusions) == -1 && reg.test($(_node).clone().children().remove().end().text())) {
                         return NodeFilter.FILTER_ACCEPT;
                     }
 
@@ -1316,7 +1398,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1343,19 +1424,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.html404 = function html404(doc) {
-        var regApache = new RegExp().compile("<h1>\\s*Not Found\\s*</h1>\\s*<p>\\s*The requested URL /\\w+ was not found on this server.\\s*</p>\\s*<hr>\\s*<address>\\s*Apache/.* \\(.*\\) Server at .* Port \\d+\\s*</address>", "i"),
+        var regApache = new RegExp().compile("<h1>\\s*Not Found\\s*</h1>\\s*<p>\\s*The requested URL /\\w+ was not found on this server.\\s*</p>\\s*<hr>\\s*<address>\\s*Apache/.* \\(.*\\).* Server at .* Port \\d+\\s*</address>", "i"),
             regIIS = new RegExp().compile("<h1>\\s*The page cannot be found\\s*</h1>[\\s|\\S]*<h2>\\s*HTTP Error 404 - File or directory not found.\\s*<br>\\s*Internet Information Services \\(IIS\\)\\s*</h2>\\s*<hr>\\s*<p>\\s*Technical Information \\(for support personnel\\)\\s*</p>", "i"),
-            regNginx = new RegExp().compile("<center>\\s*<h1>\\s*404 Not Found\\s*</h1>\\s*</center>\\s*<hr>\\s*<center>\\s*nginx\\s*</center>", "i");
+            regNginx = new RegExp().compile("<center>\\s*<h1>\\s*404 Not Found\\s*</h1>\\s*</center>\\s*<hr>\\s*<center>\\s*nginx.*\\s*</center>", "i");
 
-        return XHR.get("/azertyuiopqsdfghjklmwxcvbn")
-        .then(function(response) {
+        return XHR.get("/azertyuiopqsdfghjklmwxcvbn").then(function(response) {
             var result = [];
 
             if (response.data) {
@@ -1369,13 +1448,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             }
 
             return result;
-        })
-        .then(null, function(err) {
+        }).then(null, function(err) {
             logger.error("html404", err);
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -1394,7 +1471,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var alt = $("img[alt]", this) && $.trim($("img[alt]", this).attr("alt")).toLowerCase();
 
                 //
-                if (text == "accessibilité" || alt == "accessibilité") {
+                if (text.indexOf("accessibility") !== -1 || alt.indexOf("accessibility") !== -1 ||
+                    text.indexOf("accessibilité") !== -1 || alt.indexOf("accessibilité") !== -1) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -1411,7 +1489,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1457,7 +1534,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1475,12 +1551,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var context = $.trim($(this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase(), href = $.trim($(this).attr("href"));
 
                 //
-                if ($.inArray(context, Object.keys(links)) != -1) {
+                if ($.inArray(context, Object.keys(links)) != -1 && links[context] != href) {
                     //
-                    if (links[context] != href) {
-                        //
-                        result.push(_getDetails(this));
-                    }
+                    result.push(_getDetails(this));
                 }
 
                 //
@@ -1500,7 +1573,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1546,7 +1618,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1577,7 +1648,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1615,7 +1685,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1648,14 +1717,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         catch (err) {
             // Error Logging
-            logger.error("htmlDirAttribute", err);
+            logger.error("htmlAWithShortTitle", err);
             result = false;
         }
 
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1663,8 +1731,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlDefaultTitle = function htmlDefaultTitle(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
+        var result = [], reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \\d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
 
         //
         try {
@@ -1691,7 +1758,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1723,7 +1789,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1758,7 +1823,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1799,7 +1863,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1840,42 +1903,40 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.htmlFavicon = function htmlFavicon(doc) {
-        var result = [], promises = [];
+        var result = [],
+            promises = [];
 
         try {
             sidecar.pageInfo.links.forEach(function(link) {
                 if ($.inArray((link.rel || "").toLowerCase(), ["icon", "shortcut icon"]) === -1) {
                     return null;
                 }
-                promises.push(
-                    XHR.partial(link.uri).then(function(response) {
-                        return _getDetails(
-                            $(link.tag + "[href='" + link.href + "'][rel='" + link.rel + "']").get(0)
-                        );
-                    }).then(null, function(err) {
-                        logger.error("htmlFavicon", err);
-                        return null;
-                    })
-                );
+                promises.push(XHR.partial(link.uri).then(function(response) {
+                    if($.inArray(response.status, [200, 301, 302, 304, 307]) !== -1) {
+                        return _getDetails($(link.tag + "[href='" + link.href + "'][rel='" + link.rel + "']").get(0));
+                    }
+                    return null;
+                }).then(null, function(err) {
+                    logger.error("htmlFavicon", err);
+                    return null;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch(err) {
             logger.error("htmlFavicon", err);
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -1907,7 +1968,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1915,26 +1975,25 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.frameWithSameTitles = function htmlFrameWithSameTitles(doc) {
         //
-        var result = [];
+        var result = [],
+            frames = {};
 
         //
         try {
             //
-            $("frame").each(function() {
+            $("frame[title]").each(function() {
                 //
-                var title = $.trim($(this).attr("title")).toLowerCase(), src = this.src.split("#")[0];
+                var title = $.trim($(this).attr("title")).toLowerCase(),
+                    src = this.src.split("#")[0];
 
                 //
-                $("frame").each(function() {
+                if (title == '' || ($.inArray(title, Object.keys(frames)) != -1 && frames[title] != src)) {
                     //
-                    var _title = $.trim($(this).attr("title")).toLowerCase(), _src = this.src.split("#")[0];
-
+                    result.push(_getDetails(this));
+                } else {
                     //
-                    if ((_title == '' || _title == title) && _src != src) {
-                        //
-                        result.push(_getDetails(this));
-                    }
-                });
+                    frames[title] = src;
+                }
             });
         }
 
@@ -1948,7 +2007,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1980,7 +2038,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -1990,7 +2047,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("1");
     }
-
     /**
      *
      * @param doc
@@ -2000,7 +2056,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("1");
     }
-
     /**
      *
      * @param doc
@@ -2032,7 +2087,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2042,7 +2096,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("2");
     }
-
     /**
      *
      * @param doc
@@ -2052,7 +2105,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("2");
     }
-
     /**
      *
      * @param doc
@@ -2084,7 +2136,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2094,7 +2145,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("3");
     }
-
     /**
      *
      * @param doc
@@ -2104,7 +2154,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("3");
     }
-
     /**
      *
      * @param doc
@@ -2136,7 +2185,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2146,7 +2194,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("4");
     }
-
     /**
      *
      * @param doc
@@ -2156,7 +2203,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("4");
     }
-
     /**
      *
      * @param doc
@@ -2188,7 +2234,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2198,7 +2243,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("5");
     }
-
     /**
      *
      * @param doc
@@ -2208,7 +2252,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("5");
     }
-
     /**
      *
      * @param doc
@@ -2240,7 +2283,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2250,7 +2292,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsInMetaKeywords("6");
     }
-
     /**
      *
      * @param doc
@@ -2260,7 +2301,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlHeaderWithTermsNotInContent("6");
     }
-
     /**
      *
      * @param doc
@@ -2268,14 +2308,16 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.iframeWithSameTitles = function htmlIframeWithSameTitles(doc) {
         //
-        var result = [], iframes = {};
+        var result = [],
+            iframes = {};
 
         //
         try {
             //
             $("iframe[title]").each(function() {
                 //
-                var title = $.trim($(this).attr("title")).toLowerCase(), src = this.src.split("#")[0];
+                var title = $.trim($(this).attr("title")).toLowerCase(),
+                    src = this.src.split("#")[0];
 
                 //
                 if (title == '' || ($.inArray(title, Object.keys(iframes)) != -1 && iframes[title] != src)) {
@@ -2298,7 +2340,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2306,31 +2347,27 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlImageAnimatedNotInButtonOrA = function htmlImageAnimatedNotInButtonOrA(doc) {
         //
-        var result = [], animated = [];
+        var result = [],
+            animated = [];
 
         //
         try {
             //
             sidecar.resources.forEach(function(element, index, array) {
                 //
-                if (element.image_info) {
+                if (element.image_info && element.image_info.animated) {
                     //
-                    if (element.image_info.animated) {
-                        //
-                        animated.push(element.uri);
-                    }
+                    animated.push(element.uri);
                 }
             });
 
             //
             $("img").each(function() {
                 //
-                if ($.inArray(this.src, animated) != -1) {
+                if ($.inArray(this.src, animated) != -1 && $(this).parents("a:not([href^='#'])").size() == 0 &&
+                        $(this).parents("button:not([href^='#'])").size() == 0) {
                     //
-                    if ($(this).parents("a:not([href^='#'])").size() == 0 && $(this).parents("button:not([href^='#'])").size() == 0) {
-                        //
-                        result.push(_getDetails(this));
-                    }
+                    result.push(_getDetails(this));
                 }
             });
         }
@@ -2345,7 +2382,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2353,7 +2389,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlImageNotIndexable = function htmlImageNotIndexable(doc) {
         //
-        var result = [], formats = ["image/png", "image/gif", "image/jpeg", "image/jpg", "image/svg+xml"], images = [];
+        var result = [],
+            formats = ["image/png", "image/gif", "image/jpeg", "image/jpg", "image/svg+xml"],
+            images = [];
 
         //
         try {
@@ -2371,13 +2409,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     }
                 }
             });
+
             //
             $("img").each(function() {
                 //
-                var src = this.src;
-
-                //
-                if ($.inArray(src, images) != -1) {
+                if ($.inArray(this.src, images) != -1) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -2394,7 +2430,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2402,7 +2437,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlImageSize = function htmlImageSize(doc) {
         //
-        var result = [], images = {}, keys;
+        var result = [],
+            images = {};
 
         //
         try {
@@ -2412,14 +2448,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if (element.image_info) {
                     //
                     images[element.uri] = {
-                        "width": element.image_info["width"],
-                        "height": element.image_info["height"]
+                        "width" : element.image_info["width"],
+                        "height" : element.image_info["height"]
                     };
                 }
             });
-
-            //
-            keys = Object.keys(images);
 
             //
             $("img[width][height]").each(function() {
@@ -2427,7 +2460,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var src = this.src;
 
                 //
-                if ($.inArray(src, keys) != -1 && (images[src]["width"] != $.trim($(this).attr("width")) || images[src]["height"] != $.trim($(this).attr("height")))) {
+                if ($.inArray(src, Object.keys(images)) != -1 &&
+                        (images[src]["width"] != $.trim($(this).attr("width")) || images[src]["height"] != $.trim($(this).attr("height")))) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -2444,7 +2478,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2459,8 +2492,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("img[alt!='']").each(function() {
                 //
-                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" ");
-                var found = false;
+                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" "),
+                    found = false;
 
                 //
                 terms.some(function(value) {
@@ -2490,7 +2523,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2500,7 +2532,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlSameLabelsTitles("checkbox");
     }
-
     /**
      *
      * @param doc
@@ -2510,7 +2541,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("checkbox", false);
     }
-
     /**
      *
      * @param doc
@@ -2520,7 +2550,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlSameLabelsTitles("file");
     }
-
     /**
      *
      * @param doc
@@ -2530,7 +2559,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("file", false);
     }
-
     /**
      *
      * @param doc
@@ -2539,7 +2567,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.passwordSameLabelsTitles = function htmlInputPasswordSameLabelsTitles(doc) {
         return _htmlSameLabelsTitles("password");
     }
-
     /**
      *
      * @param doc
@@ -2549,7 +2576,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("password", false);
     }
-
     /**
      *
      * @param doc
@@ -2558,7 +2584,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.radioSameLabelsTitles = function htmlInputRadioSameLabelsTitles(doc) {
         return _htmlSameLabelsTitles("radio");
     }
-
     /**
      *
      * @param doc
@@ -2568,7 +2593,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("radio", false);
     }
-
     /**
      *
      * @param doc
@@ -2577,7 +2601,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.textSameLabelsTitles = function htmlInputTextSameLabelsTitles(doc) {
         return _htmlSameLabelsTitles("text");
     }
-
     /**
      *
      * @param doc
@@ -2587,7 +2610,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("text", false);
     }
-
     /**
      *
      * @param doc
@@ -2630,7 +2652,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2643,7 +2664,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            var _lang = $.trim($("html").attr("lang")), _xml_lang = $.trim($("html").attr("xml:lang"));
+            var _lang = $.trim($("html").attr("lang")),
+                _xml_lang = $.trim($("html").attr("xml:lang"));
 
             //
             if (_lang != '' || _xml_lang != '') {
@@ -2662,7 +2684,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2679,15 +2700,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 return $.trim($(this).text()) == "";
             }).each(function() {
                 //
-                var context = $.trim($("img", this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase(), href = $.trim($(this).attr("href"));
+                var context = $.trim($("img", this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase(),
+                    href = $.trim($(this).attr("href"));
 
                 //
-                if ($.inArray(context, Object.keys(links)) != -1) {
+                if ($.inArray(context, Object.keys(links)) != -1 && links[context] != href) {
                     //
-                    if (links[context] != href) {
-                        //
-                        result.push(_getDetails(this));
-                    }
+                    result.push(_getDetails(this));
                 }
 
                 //
@@ -2707,7 +2726,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2740,7 +2758,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2777,7 +2794,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2798,12 +2814,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var href = $.trim($(this).attr("href"));
 
                 //
-                if ($.inArray(context, Object.keys(links)) != -1) {
+                if ($.inArray(context, Object.keys(links)) != -1 && links[context] != href) {
                     //
-                    if (links[context] != href) {
-                        //
-                        result.push(_getDetails(this));
-                    }
+                    result.push(_getDetails(this));
                 }
 
                 //
@@ -2823,7 +2836,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2858,7 +2870,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2873,11 +2884,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("a:not(:has(img))").each(function() {
                 //
-                var text = $.trim($(this).text()).toLowerCase(),
-                    title = $.trim($(this).attr("title")).toLowerCase(),
-                    context = text + "%|%" + title,
-                    href = $.URL($.trim($(this).attr("href")).toString()),
-                    _this = this;
+                var text = $.trim($(this).text()).toLowerCase(), title = $.trim($(this).attr("title")).toLowerCase(), context = text + "%|%" + title, href = $.URL($.trim($(this).attr("href")).toString()), _this = this;
 
                 //
                 if ($.inArray(context, Object.keys(links)) == -1) {
@@ -2888,8 +2895,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 if (text != '') {
                     links[context].push({
-                        "href": href,
-                        "node": _this
+                        "href" : href,
+                        "node" : _this
                     });
                 }
             });
@@ -2937,7 +2944,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -2972,7 +2978,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3005,7 +3010,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3054,7 +3058,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3063,7 +3066,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.metaRefreshShort = function htmlMetaRefreshShort(doc) {
         //
-        var result = [],value = 0;
+        var result = [],
+            value = 0;
 
         //
         try {
@@ -3090,7 +3094,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3132,7 +3135,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3140,12 +3142,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.moreExtThenIntLinks = function htmlMoreExtThenIntLinks(doc) {
         //
-        var result = [], int = [], ext = [];
+        var result = [],
+            int = [],
+            ext = [];
 
         //
         try {
             //
-            var domain = doc.location.host.split(".").slice(-2).join(".");
+            var domain = doc.location.hostname.split(".").slice(-2).join(".");
 
             //
             $("a[href]:not([href='']):not([href^='#'])").each(function() {
@@ -3189,36 +3193,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.htmlNewWindow = function htmlNewWindow(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            $("a[target='_blank'], area[target='_blank'], form[target='_blank']").each(function() {
-                //
-                result.push(_getDetails(this));
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("htmlNewWindow", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-
     /**
      *
      * @param doc
@@ -3226,7 +3200,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlNonHttpAreaLinks = function htmlNonHttpAreaLinks(doc) {
         //
-        var result = [], protocols = ["http:", "https:", "javascript:", "ftp:", "ftps:"];
+        var result = [],
+            protocols = ["http:", "https:", "javascript:", "ftp:", "ftps:"];
 
         //
         try {
@@ -3250,7 +3225,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3282,7 +3256,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3317,7 +3290,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3326,7 +3298,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.selectSameLabelsTitles = function htmlSelectSameLabelsTitles(doc) {
         return _htmlSameLabelsTitles("select");
     }
-
     /**
      *
      * @param doc
@@ -3336,7 +3307,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("select", false);
     }
-
     /**
      *
      * @param doc
@@ -3345,7 +3315,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.htmlSpaceBetweenLetters = function htmlSpaceBetweenLetters(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("(\s+[A-Za-z]){3,}", "i");
+            reg = new RegExp().compile("(?:\\s+[A-Za-z]){3,}", "im");
 
         //
         try {
@@ -3369,7 +3339,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3418,7 +3387,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3428,7 +3396,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlSameLabelsTitles("textarea");
     }
-
     /**
      *
      * @param doc
@@ -3438,7 +3405,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _htmlFieldWithoutTitleAndLabel("textarea", false);
     }
-
     /**
      *
      * @param doc
@@ -3481,7 +3447,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3522,7 +3487,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3530,26 +3494,31 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.urlWithVariants = function htmlUrlWithVariants(doc) {
         //
-        var result = [], urls = [];
+        var result = [],
+            urls = [];
 
         //
         try {
             //
             sidecar.resources.forEach(function(element, index, array) {
                 //
-                var url = element.uri.split("?")[0];
+                var url = element.uri.split("?")[0],
+                    found = false;
 
-                if($.inArray(url, urls) == -1) {
+                if ($.inArray(url, urls) == -1) {
                     //
-                    for each(var _url in urls) {
+                    for each (var _url in urls) {
                         //
-                        if(_url.toLowerCase() == url.toLowerCase()) {
+                        if (_url.toLowerCase() == url.toLowerCase()) {
                             //
                             result.push(url + " - " + _url);
-                        } else {
-                            //
-                            urls.push(url);
+                            found = true;
                         }
+                    }
+
+                    if(!found){
+                        //
+                        urls.push(url);
                     }
                 }
             });
@@ -3565,7 +3534,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3578,7 +3546,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            var _lang = $.trim($("html").attr("lang")).split("-")[0].toLowerCase(), _xml_lang = $.trim($("html").attr("xml:lang")).split("-")[0].toLowerCase();
+            var _lang = $.trim($("html").attr("lang")).split("-")[0].toLowerCase(),
+                _xml_lang = $.trim($("html").attr("xml:lang")).split("-")[0].toLowerCase();
 
             //
             if ($.inArray(_lang, langs) != -1 || $.inArray(_xml_lang, langs) != -1) {
@@ -3597,27 +3566,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.http404 = function http404(doc) {
-        return XHR.partial("/azertyuiopqsdfghjklmwxcvbn")
-        .then(function(response) {
+        return XHR.partial("/azertyuiopqsdfghjklmwxcvbn").then(function(response) {
             if (response.status == 404) {
                 return [true];
             }
 
             return [];
-        })
-        .then(null, function(err) {
+        }).then(null, function(err) {
             logger.error("http404", err);
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -3649,7 +3614,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3685,7 +3649,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3699,7 +3662,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            var tld = doc.location.host.split(".").slice(-1)[0];
+            var tld = doc.location.hostname.split(".").pop().toLowerCase();
 
             //
             if ($.inArray(tld, extensions) != -1) {
@@ -3718,7 +3681,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3727,27 +3689,22 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.countryServer = function httpCountryServer(doc) {
         var geoServerURL = "http://www.geoplugin.net/xml.gp";
 
-        return dnsLookup(doc.location.host)
-        .then(function(ip) {
+        return dnsLookup(doc.location.hostname).then(function(ip) {
             return XHR.get(geoServerURL + "?ip=" + ip);
-        })
-        .then(function(response) {
+        }).then(function(response) {
             if (response.status !== 200) {
                 return [];
             }
-            var tld = doc.location.host.split(".").slice(-1)[0].toLowerCase(),
-                data = $(response.data);
+            var tld = doc.location.hostname.split(".").pop().toLowerCase(), data = $(response.data);
             if ($("geoplugin_countryCode", data).text().toLowerCase() === tld) {
                 return [tld];
             }
             return [];
-        })
-        .then(null, function(err) {
+        }).then(null, function(err) {
             logger.error("countryServer", err);
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -3760,7 +3717,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            if (doc.location.host.length > 30) {
+            if (doc.location.hostname.length > 30) {
                 //
                 result.push(true);
             }
@@ -3776,7 +3733,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3791,28 +3747,25 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
-                // is text
-                if (content_type
-                        && (content_type.split("/")[0] == "text" || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1 || reg.test(content_type))
-                        && element.headers["content-length"] > 300) {
-                    //
-                    var tmp = _getHttpDetails(element.uri, element.headers);
+                return content_type && (content_type.split("/")[0] == "text" || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1 || reg.test(content_type)) && element.headers["content-length"] > 300;
+            }).forEach(function(element, index, array) {
+                //
+                var tmp = _getHttpDetails(element.uri, element.headers);
 
-                    // has content-encoding
-                    if (element.headers["content-encoding"]) {
-                        // gzip or deflate
-                        if ($.inArray(element.headers["content-encoding"].toLowerCase(), encoding) == -1) {
-                            //
-                            result.push(tmp);
-                        }
-                    } else {
+                // has content-encoding
+                if (element.headers["content-encoding"]) {
+                    // gzip or deflate
+                    if ($.inArray(element.headers["content-encoding"].toLowerCase(), encoding) == -1) {
                         //
                         result.push(tmp);
                     }
+                } else {
+                    //
+                    result.push(tmp);
                 }
             });
         }
@@ -3827,7 +3780,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3835,7 +3787,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.httpGzipJson = function httpGzipJson(doc) {
         //
-        var result = [], encoding = ["gzip", "deflate"];
+        var result = [],
+            encoding = ["gzip", "deflate"];
 
         //
         try {
@@ -3845,8 +3798,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 // is text
-                if (content_type
-                        && (content_type == "application/json" || $.endsWith(element.uri, ".json")) && element.headers["content-length"] > 300) {
+                if (content_type && (content_type == "application/json" || $.endsWith(element.uri, ".json")) && element.headers["content-length"] > 300) {
                     //
                     var tmp = _getHttpDetails(element.uri, element.headers);
 
@@ -3875,7 +3827,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -3895,9 +3846,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 // is not text
-                if (content_type
-                        && content_type.split("/")[0] != "text"
-                        && $.inArray(content_type, ["application/javascript", "application/x-javascript"]) == -1 && !reg.test(content_type)) {
+                if (content_type && content_type.split("/")[0] != "text" && $.inArray(content_type, ["application/javascript", "application/x-javascript"]) == -1 && !reg.test(content_type)) {
                     //
                     var tmp = _getHttpDetails(element.uri, element.headers);
 
@@ -3923,15 +3872,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.inlinks = function httpInlinks(doc) {
-        return XHR.get("https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=link:" + doc.location.host)
-        .then(function(response) {
+        return XHR.get("https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=link:" + doc.location.hostname).then(function(response) {
             if (response.status !== 200) {
                 return [];
             }
@@ -3940,13 +3887,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 return [data.responseData.cursor.estimatedResultCount + " liens entrants"];
             }
             return [];
-        })
-        .then(null, function(err) {
+        }).then(null, function(err) {
             logger.error("httpInlinks", err);
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -3964,8 +3909,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 // is text
-                if (content_type
-                        && (content_type == "application/json" || $.endsWith(element.uri, ".json"))) {
+                if (content_type && (content_type == "application/json" || $.endsWith(element.uri, ".json"))) {
                     //
                     result.push(element.uri);
                 }
@@ -3982,7 +3926,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4021,7 +3964,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4031,36 +3973,32 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         var promises = [];
         try {
             $("img[width!=1][height!=1][longdesc]").each(function() {
-                var longdesc = $.trim($(this).attr("longdesc")),
-                    _img = this;
+                var longdesc = $.trim($(this).attr("longdesc")), _img = this;
 
                 if (longdesc === "") {
                     promises.push(Q.resolve(_getDetails(_img)));
                 } else {
-                    promises.push(
-                        XHR.partial(longdesc).then(function(response) {
-                            if (response.status === 404) {
-                                return _getDetails(_img);
-                            }
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("pingLongdesc", err);
-                            return false;
-                        })
-                    );
+                    promises.push(XHR.partial(longdesc).then(function(response) {
+                        if (response.status === 404) {
+                            return _getDetails(_img);
+                        }
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("pingLongdesc", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch(err) {
             logger.error("pingLongdesc", err);
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -4074,11 +4012,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            var resources = sidecar.resources.filter(
-                function(item){
-                    return $.inArray(item["content_type"], mimeHTML) != -1 && item['status'] == 200;
-                }
-            );
+            var resources = sidecar.resources.filter(function(item) {
+                return $.inArray(item["content_type"], mimeHTML) != -1 && item['status'] == 200;
+            });
 
             //
             if (resources[0]["headers"]["refresh"]) {
@@ -4100,8 +4036,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 else if (reg2.test(refresh)) {
                     //
-                    var delay = parseInt(RegExp.$1, 10),
-                        url = $.URL(RegExp.$2);
+                    var delay = parseInt(RegExp.$1, 10), url = $.URL(RegExp.$2);
 
                     //
                     if (delay < 72000 && url == doc.location.href) {
@@ -4122,7 +4057,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4154,7 +4088,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4186,7 +4119,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4218,7 +4150,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4250,135 +4181,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.httpResource403 = function httpResource403(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            sidecar.resources.forEach(function(element, index, array) {
-                //
-                if (element.status == "403" && element.referrer == "") {
-                    //
-                    result.push(element.uri);
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("httpResource403", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.httpResource403MoreThan3k = function httpResource403MoreThan3k(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            sidecar.resources.forEach(function(element, index, array) {
-                //
-                if (element.status == "403" && element.referrer == "" && parseInt(element["headers"]["content-length"], 10) > 3000) {
-                    //
-                    result.push(element.uri);
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("httpResource403MoreThan3k", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.httpResource404 = function httpResource404(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            sidecar.resources.forEach(function(element, index, array) {
-                //
-                if (element.status == "404" && element.referrer == "") {
-                    //
-                    result.push(element.uri);
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("httpResource404", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.httpResource404MoreThan3k = function httpResource404MoreThan3k(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            sidecar.resources.forEach(function(element, index, array) {
-                //
-                if (element.status == "404" && element.referrer == "" && parseInt(element["headers"]["content-length"], 10) > 3000) {
-                    //
-                    result.push(element.uri);
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("httpResource404MoreThan3k", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-
     /**
      *
      * @param doc
@@ -4386,28 +4188,24 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.resAnimated = function httpResourceAnimated(doc) {
         //
-        var result = [], images = [];
+        var result = [],
+            images = [];
 
         //
         try {
             //
             sidecar.resources.forEach(function(element, index, array) {
                 //
-                if (element.image_info) {
+                if (element.image_info && element.image_info["animated"]) {
                     //
-                    if (element.image_info["animated"]) {
-                        //
-                        images.push(element.uri);
-                    }
+                    images.push(element.uri);
                 }
             });
+
             //
             $("img").each(function() {
                 //
-                var src = this.src;
-
-                //
-                if ($.inArray(src, images) != -1) {
+                if ($.inArray(this.src, images) != -1) {
                     //
                     result.push(_getDetails(this));
                 }
@@ -4424,7 +4222,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4444,33 +4241,29 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 // This is crazy, we should not check every link on a page
                 // Attempt to reduce to some extensions. Not perfect but fine enough
                 var url = $.URL(link.uri);
-                if ($.inArray(url.path.split(".").slice(-1)[0], dl_extensions) === -1) {
+                if ($.inArray(url.path.split(".").pop().toLowerCase(), dl_extensions) === -1) {
                     return;
                 }
 
-                promises.push(
-                    XHR.partial(link.uri).then(function(response) {
-                        if (response.status !== 200) {
-                            return null;
-                        }
-                        var mime = response.contentType.split("/");
-                        if ($.inArray(mime[0], dl_families) !== -1 &&
-                            ($.inArray(mime[1], dl_types) !== -1 || dl_reg.test(mime[1]))
-                        ) {
-                            return link.uri;
-                        }
-
+                promises.push(XHR.partial(link.uri).then(function(response) {
+                    if (response.status !== 200) {
                         return null;
-                    }).then(null, function(err) {
-                        logger.error("resDownloadable", err);
-                        return false;
-                    })
-                );
+                    }
+                    var mime = response.contentType.split("/");
+                    if ($.inArray(mime[0], dl_families) !== -1 && ($.inArray(mime[1], dl_types) !== -1 || dl_reg.test(mime[1]))) {
+                        return link.uri;
+                    }
+
+                    return null;
+                }).then(null, function(err) {
+                    logger.error("resDownloadable", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -4478,7 +4271,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -4492,27 +4284,25 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 // This is crazy, we should not check every link on a page
                 // Attempt to reduce to pdf extension. Not perfect but fine enough
                 var url = $.URL(link.uri);
-                if (url.path.split(".").slice(-1)[0] !== "pdf") {
+                if (url.path.split(".").pop().toLowerCase() !== "pdf") {
                     return;
                 }
 
-                promises.push(
-                    XHR.partial(link.uri).then(function(response) {
-                        if (response.status === 200 && response.contentType === "application/pdf") {
-                            return link.uri;
-                        }
+                promises.push(XHR.partial(link.uri).then(function(response) {
+                    if (response.status === 200 && response.contentType === "application/pdf") {
+                        return link.uri;
+                    }
 
-                        return null;
-                    }).then(null, function(err) {
-                        logger.error("resPdf", err);
-                        return false;
-                    })
-                );
+                    return null;
+                }).then(null, function(err) {
+                    logger.error("resPdf", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -4520,7 +4310,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -4553,7 +4342,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4561,7 +4349,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.resMultimedia = function httpResourceMultimedia(doc) {
         //
-        var result = [], mm_families = ["audio", "video"], objects = [];
+        var result = [],
+            mm_families = ["audio", "video"],
+            objects = [];
 
         //
         try {
@@ -4571,12 +4361,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1)) {
+                if (content_type && ($.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1)) {
                     //
                     objects.push(element.uri);
                 }
             });
+
             //
             $("embed").each(function() {
                 //
@@ -4587,6 +4377,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     result.push(_getDetails(this));
                 }
             });
+
             //
             $("object").each(function() {
                 //
@@ -4596,7 +4387,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if ($.inArray(src, objects) != -1) {
                     result.push(_getDetails(this));
                 } else {
-                    $("param[name]", this).each(function() {
+                    $("param[name='src']", this).each(function() {
                         //
                         var src = _absolutizeURL($(this).attr("value"));
 
@@ -4620,7 +4411,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4628,7 +4418,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.resMultimediaWoAudio = function httpResourceMultimediaWoAudio(doc) {
         //
-        var result = [], mm_families = ["video"], objects = [];
+        var result = [],
+            mm_families = ["video"],
+            objects = [];
 
         //
         try {
@@ -4638,12 +4430,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1)) {
+                if (content_type && ($.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1)) {
                     //
                     objects.push(element.uri);
                 }
             });
+
             //
             $("embed").each(function() {
                 //
@@ -4654,6 +4446,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     result.push(_getDetails(this));
                 }
             });
+
             //
             $("object").each(function() {
                 //
@@ -4663,7 +4456,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if ($.inArray(src, objects) != -1) {
                     result.push(_getDetails(this));
                 } else {
-                    $("param[name]", this).each(function() {
+                    $("param[name='src']", this).each(function() {
                         //
                         var src = _absolutizeURL($(this).attr("value"));
 
@@ -4687,7 +4480,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4706,23 +4498,21 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 // is static
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (element.headers["cache-control"] && reg.test(element.headers["cache-control"])) {
                         //
-                        if(parseInt(RegExp.$1, 10) < 2592000) {
+                        if (parseInt(RegExp.$1, 10) < 2592000) {
                             //
                             result.push(_getHttpDetails(element.uri, element.headers));
                         }
                     } else if (element.headers["expires"]) {
                         //
-                        var expires = Date.parse(element.headers["expires"]);
-                        var now = Date.parse(new Date().toString());
+                        var expires = Date.parse(element.headers["expires"]),
+                            now = Date.parse(new Date().toString());
 
                         //
-                        if(parseInt((expires - now) / 1000, 10) < 2592000) {
+                        if (parseInt((expires - now) / 1000, 10) < 2592000) {
                             //
                             result.push(_getHttpDetails(element.uri, element.headers));
                         }
@@ -4744,7 +4534,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4756,7 +4545,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            var domain = doc.location.host.split(".").slice(-2).join(".");
+            var domain = doc.location.hostname.split(".").slice(-2).join(".");
 
             //
             sidecar.resources.forEach(function(element, index, array) {
@@ -4764,11 +4553,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
-                    var subdomain = element.uri.split("/")[2];
+                    var subdomain = $.URL.getDomain(element.uri);
 
                     if (subdomain != domain && $.endsWith(subdomain, domain)) {
                         //
@@ -4779,15 +4566,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
             //
             var tmp = [];
-            for each(var item in result) {
-                if($.inArray(item, tmp) == -1) {
+            for each (var item in result) {
+                if ($.inArray(item, tmp) == -1) {
                     tmp.push(item);
                 }
             }
             result = tmp;
 
             //
-            if(result.length < 4) {
+            if (result.length < 4) {
                 result = [];
             }
         }
@@ -4802,7 +4589,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4814,7 +4600,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            var domain = doc.location.host.split(".").slice(-2).join(".");
+            var domain = doc.location.hostname.split(".").slice(-2).join(".");
 
             //
             sidecar.resources.forEach(function(element, index, array) {
@@ -4822,11 +4608,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
-                    var _domain = element.uri.split("/")[2].split(".").slice(-2).join(".");
+                    var _domain = $.URL.getDomain(element.uri).split(".").slice(-2).join(".");
 
                     //
                     if (doc.location.href != element.uri && _domain == domain) {
@@ -4847,7 +4631,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4856,7 +4639,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.staticVersionInName = function httpStaticVersionInName(doc) {
         //
         var result = [],
-            reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}\\.[a-zA-Z]{2,}$", "i");
+            reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}(\\.min)?\\.[a-zA-Z]{2,}$", "i");
 
         //
         try {
@@ -4866,9 +4649,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type, ["text/css", "text/javascript", "application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (reg.test(element.uri)) {
                         //
@@ -4888,7 +4669,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4907,9 +4687,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type, ["text/css", "text/javascript", "application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (reg.test(element.uri)) {
                         //
@@ -4929,7 +4707,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4947,9 +4724,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (element.headers["set-cookie"]) {
                         //
@@ -4969,7 +4744,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -4978,7 +4752,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.staticWithParams = function httpStaticWithParams(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("[^\\?]+\\?.+$", "i");;
+            reg = new RegExp().compile("[^\\?]+\\?.+$", "i");
 
         //
         try {
@@ -4988,9 +4762,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (reg.test(element.uri)) {
                         //
@@ -5010,7 +4782,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5019,7 +4790,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.staticWithSeveralParams = function httpStaticWithSeveralParams(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("[^\\?]+\\?.+&.+$", "i");;
+            reg = new RegExp().compile("[^\\?]+\\?.+&.+$", "i");
+        ;
 
         //
         try {
@@ -5029,9 +4801,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (reg.test(element.uri)) {
                         //
@@ -5051,7 +4821,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5069,9 +4838,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 //
-                if (content_type
-                        && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1
-                        || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
                     //
                     if (cdns.test(element.uri)) {
                         //
@@ -5091,7 +4858,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5108,14 +4874,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 aDomain.unshift("www");
             }
 
-            return XHR.partial(doc.location.protocol + "//" + aDomain.join(".") + "/")
-            .then(function(response) {
+            return XHR.partial(doc.location.protocol + "//" + aDomain.join(".") + "/").then(function(response) {
                 if ($.inArray(response.status, [200, 301, 302, 304, 307]) !== -1) {
                     return [aDomain.join(".")];
                 }
                 return [];
-            })
-            .then(null, function(err) {
+            }).then(null, function(err) {
                 logger.error("httpWithAndWoWww", err);
                 return Q.resolve([]);
             });
@@ -5125,7 +4889,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -5133,7 +4896,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.httpWoRedirect = function httpWoRedirect(doc) {
         //
-        var result = [], redirect = ["301", "302", "307"];
+        var result = [],
+            redirect = ["301", "302", "307"];
 
         //
         try {
@@ -5157,7 +4921,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5186,7 +4949,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5221,7 +4983,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5229,14 +4990,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsClickEvent = function jsClickEvent(doc) {
         //
-        var result = [], types = ["button", "submit", "reset", "file", "image", "password", "radio", "checkbox"], tags = ["A", "AREA", "BUTTON", "INPUT"];
+        var result = [],
+            types = ["button", "submit", "reset", "file", "image", "password", "radio", "checkbox"],
+            tags = ["A", "AREA", "BUTTON", "INPUT"];
 
         //
         try {
             //
             for (var idx in sidecar.events) {
                 //
-                var found = false, node = sidecar.events[idx].node;
+                var found = false,
+                    node = sidecar.events[idx].node;
 
                 //
                 if (node.tagName) {
@@ -5275,15 +5039,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.jsDocumentWrite = function jsDocumentWrite(doc) {
-        var reg = new RegExp().compile("(document\\.write\\([^\\)]*\\))", "i"),
-            promises = [];
+        var reg = new RegExp().compile("(document\\.write\\([^\\)]*\\))", "i"), promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -5298,25 +5060,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(
-                        XHR.get(item.uri).then(function(response) {
-                            var match = reg.exec(response.data);
-                            if (match !== null) {
-                                return item.uri + " (" + match[0] + ")";
-                            }
+                    promises.push(XHR.get(item.uri).then(function(response) {
+                        var match = reg.exec(response.data);
+                        if (match !== null) {
+                            return item.uri + " (" + match[0] + ")";
+                        }
 
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("jsDocumentWrite", err);
-                            return false;
-                        })
-                    );
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("jsDocumentWrite", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -5324,7 +5084,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -5332,7 +5091,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsEvents = function jsEvents(doc) {
         //
-        var result = [], nodes = [];
+        var result = [],
+            nodes = [];
 
         //
         try {
@@ -5357,7 +5117,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5392,7 +5151,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5428,7 +5186,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5436,53 +5193,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnblurSubmit = function jsOnblurSubmit(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onblurEvents.each(function() {
-                //
-                var _onblur = $.trim($(this).attr("onblur")), functions = _onblur.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                result.push(_onblur);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.submit", onblurEvents, "onblur");
         }
 
         //
@@ -5495,7 +5211,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5520,6 +5235,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         events.push(element.type);
                     }
                 });
+
+                //
                 if ($.inArray("blur", events) != -1 && events.length == 1) {
                     //
                     result.push(_getDetails(sidecar.events[idx].node));
@@ -5537,7 +5254,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5545,54 +5261,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnchangeLocation = function jsOnchangeLocation(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.location[\\.=\\s]", "i");
+        var result = [];
 
         //
         try {
             //
-            onchangeEvents.each(function() {
-                //
-                var _onchange = $.trim($(this).attr("onchange")), functions = _onchange.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onchange);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("location(?:(?:\\.href)?\\s*=|\\.replace)", onchangeEvents, "onchange");
         }
 
         //
@@ -5605,7 +5279,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5613,54 +5286,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnchangeSubmit = function jsOnchangeSubmit(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onchangeEvents.each(function() {
-                //
-                var _onchange = $.trim($(this).attr("onchange")), functions = _onchange.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onchange);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.submit", onchangeEvents, "onchange");
         }
 
         //
@@ -5673,7 +5304,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5681,14 +5311,16 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnclick = function jsOnclick(doc) {
         //
-        var result = [], tags = ["A", "BUTTON", "SELECT", "TEXTAREA", "INPUT"];
+        var result = [],
+            tags = ["A", "BUTTON", "SELECT", "TEXTAREA", "INPUT"];
 
         //
         try {
             //
             for (var idx in sidecar.events) {
                 //
-                var found = false, node = sidecar.events[idx].node;
+                var found = false,
+                    node = sidecar.events[idx].node;
 
                 //
                 if (node.tagName) {
@@ -5722,7 +5354,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5756,7 +5387,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5764,54 +5394,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnfocusBlur = function jsOnfocusBlur(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.blur\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onfocusEvents.each(function() {
-                //
-                var _onfocus = $.trim($(this).attr("onfocus")), functions = _onfocus.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onfocus);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.blur", onfocusEvents, "onfocus");
         }
 
         //
@@ -5824,7 +5412,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5832,54 +5419,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnfocusSubmit = function jsOnfocusSubmit(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onfocusEvents.each(function() {
-                //
-                var _onfocus = $.trim($(this).attr("onfocus")), functions = _onfocus.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onfocus);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.submit", onfocusEvents, "onfocus");
         }
 
         //
@@ -5892,7 +5437,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5917,6 +5461,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         events.push(element.type);
                     }
                 });
+
+                //
                 if ($.inArray("focus", events) != -1 && events.length == 1) {
                     //
                     result.push(_getDetails(sidecar.events[idx].node));
@@ -5934,7 +5480,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -5942,54 +5487,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnmouseoutSubmit = function jsOnmouseoutSubmit(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onmouseoutEvents.each(function() {
-                //
-                var _onmouseout = $.trim($(this).attr("onmouseout")), functions = _onmouseout.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onmouseout);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.submit", onmouseoutEvents, "onmouseout");
         }
 
         //
@@ -6002,7 +5505,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6022,7 +5524,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 sidecar.events[idx].events.forEach(function(element, index, array) {
                     //
-                    if ($.inArray(element.type, ["blur", "mouseout"]) != -1) {
+                    if ($.inArray(element.type, ["mouseout", "blur"]) != -1) {
                         //
                         events.push(element.type);
                     }
@@ -6046,7 +5548,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6054,54 +5555,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsOnmouseoverSubmit = function jsOnmouseoverSubmit(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("\\.submit\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            onmouseoverEvents.each(function() {
-                //
-                var _onmouseover = $.trim($(this).attr("onmouseover")), functions = _onmouseover.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onmouseover);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            });
+            result = _detectFunction("\\.submit", onmouseoverEvents, "onmouseover");
         }
 
         //
@@ -6114,7 +5573,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6134,7 +5592,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 sidecar.events[idx].events.forEach(function(element, index, array) {
                     //
-                    if ($.inArray(element.type, ["focus", "mouseover"]) != -1) {
+                    if ($.inArray(element.type, ["mouseover", "focus"]) != -1) {
                         //
                         events.push(element.type);
                     }
@@ -6158,7 +5616,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6193,7 +5650,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6201,54 +5657,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsPopUp = function jsPopUp(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("(window|document)\\.open\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            if ($("body").attr("onload")) {
-                //
-                var _onload = $("body").attr("onload"), functions = _onload.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onload);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            }
+            result = _detectFunction("(?:window|document)\\.open", $("body"), "onload");
         }
 
         //
@@ -6261,20 +5675,19 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.jsRefresh = function jsRefresh(doc) {
-        var reg1 = new RegExp().compile("(\\.location\\.reload\\()", "i"),
-            reg2 = new RegExp().compile("(\\.location\\.replace\\()", "i"),
-            reg3 = new RegExp().compile("(\\.location\(\\.href\)?\s*=)", "i"),
+        var reg1 = new RegExp().compile("location\\.reload", "i"),
+            reg2 = new RegExp().compile("location\\.replace", "i"),
+            reg3 = new RegExp().compile("location(?:\\.href)?\\s*=", "i"),
             promises = [];
 
         try {
-            if(sidecar.resources.some(function(element) {
+            if (sidecar.resources.some(function(element) {
                 return (doc.location.href === element.uri);
             }) === false) {
                 return Q.resolve([]);
@@ -6292,33 +5705,33 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(
-                        XHR.get(item.uri).then(function(response) {
-                            var m1 = reg1.exec(response.data),
-                                m2 = reg2.exec(response.data),
-                                m3 = reg3.exec(response.data);
+                    promises.push(XHR.get(item.uri).then(function(response) {
+                        var m1 = reg1.exec(response.data),
+                            m2 = reg2.exec(response.data),
+                            m3 = reg3.exec(response.data);
 
-                            if (m1 !== null || m2 !== null || m3 !== null) {
-                                var found = [m1, m2, m3].map(function(val) {
-                                    return val && val[1] || null;
-                                }).filter(function(val) {
-                                    return val !== null;
-                                }).join(", ");
-                                return item.uri + " (" + found + ")";
-                            }
+                        if (m1 !== null || m2 !== null || m3 !== null) {
+                            var found = [m1, m2, m3].map(function(val) {
+                                return val && val[1] || null;
+                            }).filter(function(val) {
+                                return val !== null;
+                            }).join(", ");
+                            return item.uri + " (" + found + ")";
+                        }
 
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("jsRefresh", err);
-                            return false;
-                        })
-                    );
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("jsRefresh", err);
+                        return false;
+                    }));
                 }
             });
 
+            promises.push(Q.resolve(_detectFunction("location\\.", $("body"), "onload")));
+
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6326,7 +5739,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6334,54 +5746,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsResize = function jsResize(doc) {
         //
-        var result = [],
-            reg = new RegExp().compile("window\\.resizeTo\\s?", "i");
+        var result = [];
 
         //
         try {
             //
-            if ($("body").attr("onload")) {
-                //
-                var _onload = $("body").attr("onload"), functions = _onload.split(";");
-
-                //
-                functions.forEach(function(element, index, array) {
-                    //
-                    var aFunction = regFunction.test(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
-                        //
-                        var _function = $.trim(aFunction[1]);
-
-                        //
-                        if (_function != "") {
-                            //
-                            if (reg.test(_function)) {
-                                //
-                                result.push(_onload);
-                            }
-
-                            //
-                            else if ($.inArray(_function, fonctionExclusions) == -1) {
-                                try {
-                                    var fn = window;
-
-                                    for each (var i in _function.split(".")) {
-                                        fn = fn[i];
-                                    }
-
-                                    if (reg.test(fn.toString())) {
-                                        //
-                                        result.push(_function);
-                                    }
-                                } catch(err) {
-                                }
-                            }
-                        }
-                    }
-                });
-            }
+            result = _detectFunction("resizeTo", $("body"), "onload");
         }
 
         //
@@ -6394,15 +5764,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
      * @return
      */
     window.jsSetInterval = function jsSetInterval(doc) {
-        var reg = new RegExp().compile("setInterval\\(", "i"),
-            promises = [];
+        var reg = new RegExp().compile("setInterval\\(", "i"), promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -6417,25 +5785,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(
-                        XHR.get(item.uri).then(function(response) {
-                            var match = reg.exec(response.data);
-                            if (match !== null) {
-                                return item.uri + " (" + match[0] + ")";
-                            }
+                    promises.push(XHR.get(item.uri).then(function(response) {
+                        var match = reg.exec(response.data);
+                        if (match !== null) {
+                            return item.uri + " (" + match[0] + ")";
+                        }
 
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("jsSetInterval", err);
-                            return false;
-                        })
-                    );
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("jsSetInterval", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6443,7 +5809,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6451,8 +5816,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsSetTimeout = function jsSetTimeout(doc) {
-        var reg = new RegExp().compile("setTimeout\\(", "i"),
-            promises = [];
+        var reg = new RegExp().compile("setTimeout\\(", "i"), promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -6467,25 +5831,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(
-                        XHR.get(item.uri).then(function(response) {
-                            var match = reg.exec(response.data);
-                            if (match !== null) {
-                                return item.uri + " (" + match[0] + ")";
-                            }
+                    promises.push(XHR.get(item.uri).then(function(response) {
+                        var match = reg.exec(response.data);
+                        if (match !== null) {
+                            return item.uri + " (" + match[0] + ")";
+                        }
 
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("jsSetTimeout", err);
-                            return false;
-                        })
-                    );
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("jsSetTimeout", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6493,7 +5855,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6528,7 +5889,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6536,8 +5896,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsWindowOpen = function jsWindowOpen(doc) {
         //
-        var reg = new RegExp().compile("(window|document)\\.open\\(", "i"),
-            promises = [];
+        var reg = new RegExp().compile("(window|document)\\.open\\(", "i"), promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -6552,25 +5911,23 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(
-                        XHR.get(item.uri).then(function(response) {
-                            var match = reg.exec(response.data);
-                            if (match !== null) {
-                                return item.uri + " (" + match[0] + ")";
-                            }
+                    promises.push(XHR.get(item.uri).then(function(response) {
+                        var match = reg.exec(response.data);
+                        if (match !== null) {
+                            return item.uri + " (" + match[0] + ")";
+                        }
 
-                            return null;
-                        }).then(null, function(err) {
-                            logger.error("jsWindowOpen", err);
-                            return false;
-                        })
-                    );
+                        return null;
+                    }).then(null, function(err) {
+                        logger.error("jsWindowOpen", err);
+                        return false;
+                    }));
                 }
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6578,7 +5935,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6602,7 +5958,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -6631,7 +5986,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -6649,7 +6003,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
-
     /**
      *
      * @param doc
@@ -6664,47 +6017,48 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     return;
                 }
 
-                promises.push(
-                    XHR.get(link.uri).then(function(response) {
-                        if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
-                            return null;
-                        }
+                promises.push(XHR.get(link.uri).then(function(response) {
+                    if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
+                        return null;
+                    }
 
-                        var result = [], data;
+                    var result = [],
+                        data;
 
-                        try {
-                            data = $.parseXML(response.data);
-                        }catch(e) {
-                            return null;
-                        }
+                    try {
+                        data = $.parseXML(response.data);
+                    } catch(e) {
+                        return null;
+                    }
 
-                        if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
-                            $('link', data).each(function() {
-                                var link = $.trim($(this).text()), url = $.URL(link);
-                                if (url.toString() != link && url.toString() != link + '/' && url.scheme != 'mailto') {
-                                    result.push(_getDetails(this));
-                                }
-                            });
-                        } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
-                            $('link[href!=""]', data).each(function() {
-                                var link = $.trim($(this).text()), url = $.URL(link);
-                                if (url.toString() != link && url.toString() != link + '/' && url.scheme != 'mailto') {
-                                    result.push(_getDetails(this));
-                                }
-                            });
-                        }
+                    if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
+                        $('link', data).each(function() {
+                            var link = $.trim($(this).text()),
+                                url = $.URL(link);
+                            if (url.toString() != link && url.toString() != (link + '/') && url.scheme != 'mailto') {
+                                result.push(_getDetails(this));
+                            }
+                        });
+                    } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
+                        $('link[href!=""]', data).each(function() {
+                            var link = $.trim($(this).attr('href')),
+                                url = $.URL(link);
+                            if (url.toString() != link && url.toString() != (link + '/') && url.scheme != 'mailto') {
+                                result.push(_getDetails(this));
+                            }
+                        });
+                    }
 
-                        return result.length > 0 ? result : null;
-                    }).then(null, function(err) {
-                        logger.error("syndicationAbsoluteLinks", err);
-                        return false;
-                    })
-                );
+                    return result.length > 0 ? result : null;
+                }).then(null, function(err) {
+                    logger.error("syndicationAbsoluteLinks", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch(err) {
             // Error Logging
@@ -6712,7 +6066,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6728,51 +6081,50 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     return;
                 }
 
-                promises.push(
-                    XHR.get(link.uri).then(function(response) {
-                        if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
-                            return null;
+                promises.push(XHR.get(link.uri).then(function(response) {
+                    if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
+                        return null;
+                    }
+
+                    var result = [],
+                        data;
+
+                    try {
+                        data = $.parseXML(response.data);
+                    } catch(e) {
+                        return null;
+                    }
+
+                    if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
+                        if ($.trim($("rss", data).attr("version")) == "2.0") {
+                            $("ttl", data).each(function() {
+                                result.push(_getDetails(this));
+                            });
                         }
+                    }
 
-                        var result = [], data;
+                    $.each(data.getElementsByTagNameNS(syNS, 'updatePeriod'), function() {
+                        result.push(_getDetails(this));
+                    });
 
-                        try {
-                            data = $.parseXML(response.data);
-                        }catch(e) {
-                            return null;
-                        }
+                    $.each(data.getElementsByTagNameNS(syNS, 'updateFrequency'), function() {
+                        result.push(_getDetails(this));
+                    });
 
-                        if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
-                            if ($.trim($("rss", data).attr("version")) == "2.0") {
-                                $("ttl", data).each(function() {
-                                    result.push(_getDetails(this));
-                                });
-                            }
-                        }
+                    $.each(data.getElementsByTagNameNS(syNS, 'updateBase'), function() {
+                        result.push(_getDetails(this));
+                    });
 
-                        $.each(data.getElementsByTagNameNS(syNS, 'updatePeriod'), function() {
-                            result.push(_getDetails(this));
-                        });
-
-                        $.each(data.getElementsByTagNameNS(syNS, 'updateFrequency'), function() {
-                            result.push(_getDetails(this));
-                        });
-
-                        $.each(data.getElementsByTagNameNS(syNS, 'updateBase'), function() {
-                            result.push(_getDetails(this));
-                        });
-
-                        return result.length > 0 ? result : null;
-                    }).then(null, function(err) {
-                        logger.error("syndicationCache", err);
-                        return false;
-                    })
-                );
+                    return result.length > 0 ? result : null;
+                }).then(null, function(err) {
+                    logger.error("syndicationCache", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch(err) {
             // Error Logging
@@ -6780,7 +6132,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         }
     }
-
     /**
      *
      * @param doc
@@ -6795,12 +6146,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             sidecar.pageInfo.links.forEach(function(element, index, array) {
                 //
-                if (element.rel == "alternate") {
+                if (element.rel == "alternate" && $.inArray(element.type, ["application/rss+xml", "application/atom+xml"]) != -1) {
                     //
-                    if ($.inArray(element.type, ["application/rss+xml", "application/atom+xml"]) != -1) {
-                        //
-                        result.push(_getDetails($("link[rel='alternate'][href='" + element.href + "'][type='" + element.type + "']").get(0)));
-                    }
+                    result.push(_getDetails($("link[rel='alternate'][href='" + element.href + "'][type='" + element.type + "']").get(0)));
                 }
             });
         }
@@ -6815,7 +6163,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
-
     /**
      *
      * @param doc
@@ -6830,51 +6177,67 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     return;
                 }
 
-                promises.push(
-                    XHR.get(link.uri).then(function(response) {
-                        if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
-                            return null;
-                        }
+                promises.push(XHR.get(link.uri).then(function(response) {
+                    if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
+                        return null;
+                    }
 
-                        var result = [], data;
+                    var result = [],
+                        data;
 
-                        try {
-                            data = $.parseXML(response.data);
-                        }catch(e) {
-                            return null;
-                        }
+                    try {
+                        data = $.parseXML(response.data);
+                    } catch(e) {
+                        return null;
+                    }
 
-                        if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
-                            $("item", data).each(function() {
-                                if ($("description", this).length == 0) {
-                                    result.push(_getDetails(this));
-                                }
-                            });
-                        } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
-                            $("entry", data).each(function() {
-                                if ($("summary", this).length == 0) {
-                                    result.push(_getDetails(this));
-                                }
-                            });
-                        }
+                    if (response.contentType == "application/rss+xml" || data.documentElement.tagName.toLowerCase() == "rss") {
+                        $("item", data).each(function() {
+                            if ($("description", this).length == 0) {
+                                result.push(_getDetails(this));
+                            }
+                        });
+                    } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
+                        $("entry", data).each(function() {
+                            if ($("summary", this).length == 0) {
+                                result.push(_getDetails(this));
+                            }
+                        });
+                    }
 
-                        return result.length > 0 ? result : null;
-                    }).then(null, function(err) {
-                        logger.error("syndicationSummary", err);
-                        return false;
-                    })
-                );
+                    return result.length > 0 ? result : null;
+                }).then(null, function(err) {
+                    logger.error("syndicationSummary", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false : _res;
+                return _res.some(function(v) v === false) ? false :_res;
             });
         } catch(err) {
             // Error Logging
             logger.error("syndicationSummary", err);
             return false;
         }
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.odPresence = function odPresence(doc) {
+        return XHR.partial(doc.location.href + '.rdf').then(function(response) {
+            if (response.status !== 200) {
+                return [];
+            }
+            return [doc.location.href + '.rdf'];
+        }).then(null, function(err) {
+            // Error Logging
+            logger.error("odPresence", err);
+            return false;
+        });
     }
 
     /***************************************************************************/
@@ -6888,21 +6251,21 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.noRelativeSize = function(doc) {
         //
-        var _result = [];
-        var sheets = doc.styleSheets;
-        var styles = [];
-        var reg = new RegExp().compile("^[0-9.]+(p(t|c|x)|(c|m)m|in)$", "g");
+        var _result = [],
+            sheets = doc.styleSheets,
+            styles = [],
+            reg = new RegExp().compile("^([0-9.]+(p(t|c|x)|(c|m)m|in))$", "g");
 
         //
         function parseRule(rule) {
             //
-            if (rule.type==CSSRule.STYLE_RULE) {
+            if (rule.type == CSSRule.STYLE_RULE) {
                 styles.push(rule.style);
-            } else if(rule.type==CSSRule.IMPORT_RULE) {
+            } else if (rule.type == CSSRule.IMPORT_RULE) {
                 //
                 var _rules = rule.styleSheet.cssRules;
 
-                for (i = 0; i < _rules.length; i++) {
+                for ( i = 0; i < _rules.length; i++) {
                     parseRule(_rules.item(i));
                 }
             }
@@ -6922,12 +6285,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         // styles walk
         for (var k = 0; k < styles.length; k++) {
             //
-            if(styles[k].fontSize !== "") {
+            if (styles[k].fontSize !== "") {
                 //
                 var _fontsize = styles[k].fontSize;
 
                 //
-                if (_fontsize.test(reg)) {
+                if (reg.test(_fontsize)) {
                     _result.push(RegExp.$1);
                 }
             }
@@ -6936,7 +6299,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -6948,13 +6310,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             _done = [],
             _hrefs = {},
             _text = "",
-            _reg= new RegExp().compile("\\s{2,}", "g");
+            _reg = new RegExp().compile("\\s{2,}", "g");
 
         //
-        $("a[href]", doc).each( function() {
+        $("a[href]", doc).each(function() {
             //
             var $clone = $(this).clone();
-            $("img", $clone).replaceWith( function() {
+            $("img", $clone).replaceWith(function() {
                 return " " + $(this).attr("alt") + " ";
             });
 
@@ -6962,7 +6324,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             _text = $.trim($clone.text()).replace(_reg, " ");
 
             //
-            if($.inArray(_text, _done) == -1) {
+            if ($.inArray(_text, _done) == -1) {
                 _done.push(_text);
                 _hrefs[_text] = $(this).attr("href");
             } else if (_hrefs[_text] != $(this).attr("href")) {
@@ -6975,7 +6337,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -6986,9 +6347,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         var _result = [];
 
         //
-        $("#contentBody a[href$='pdf'], #contentBody a[href$='doc']").each( function(){
+        $("#contentBody a[href$='pdf'], #contentBody a[href$='doc']").each(function() {
             //
-            if($("#relatedLinkBox a[href='" + $(this).attr("href") + "']").size() == 0) {
+            if ($("#relatedLinkBox a[href='" + $(this).attr("href") + "']").size() == 0) {
                 //
                 _result.push(_getDetails(this));
             }
@@ -6997,7 +6358,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -7006,30 +6366,27 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksSpecialChars = function(doc) {
         //
         var _result = [],
-            _reg= new RegExp().compile("[_% ]", "g"),
-            _reg_domain = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
+            _reg = new RegExp().compile("[A_Z_% ]", "g"),
+            _reg_domain = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i");
 
         // current URL
-        if (_reg.test(doc.location.href)) {
+        if (_reg.test(doc.location.hostname)) {
             //
             _result.push(doc.location.href);
         }
 
         // links
-        $("a[href]").each( function() {
+        $("a[href]").each(function() {
             //
             var _href = $.trim($(this).attr("href")), isInternal = true;
 
             //
-            if (_reg_domain.test(_href)) {
-                //
-                if(RegExp.$1 != doc.location.hostname) {
-                    isInternal = false;
-                }
+            if (_reg_domain.test(_href) && RegExp.$1 != doc.location.hostname) {
+                isInternal = false;
             }
 
             //
-            if(isInternal) {
+            if (isInternal) {
                 //
                 if (_href.toLowerCase() != _href || _reg.test($(this).attr("href"))) {
                     _result.push(_getDetails(this));
@@ -7040,7 +6397,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -7049,40 +6405,35 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksInternal = function(doc) {
         //
         var _result = [],
-            _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i"),
+            _reg = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i"),
             _reg_doc = new RegExp().compile("\.(pdf|doc)$", "i");
 
         //
-        $("a").each( function() {
+        $("a[href]").each(function() {
             //
-            var _href = $.trim($(this).attr("href")), isInternal = true, isDoc = false;
+            var _href = $.trim($(this).attr("href")),
+                isInternal = true,
+                isDoc = false;
 
             //
-            if(_reg_doc.test(_href)) {
+            if (_reg_doc.test(_href)) {
                 isDoc = true;
             }
 
             //
-            if (!isDoc && _reg.test(_href)) {
-                //
-                if(RegExp.$1 != doc.location.hostname) {
-                    isInternal = false;
-                }
+            if (!isDoc && _reg.test(_href) && RegExp.$1 != doc.location.hostname) {
+                isInternal = false;
             }
 
             //
-            if(!isDoc && isInternal) {
-                //
-                if ($(this).attr("target") == "_blank") {
-                    _result.push(_getDetails(this));
-                }
+            if (!isDoc && isInternal && $(this).attr("target") == "_blank") {
+                _result.push(_getDetails(this));
             }
         });
 
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -7091,27 +6442,22 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksNavigation = function(doc) {
         //
         var _result = [],
-            _reg = new RegExp().compile("^https?\:\/\/([^\/]+)", "i");
+            _reg = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i");
 
         //
-        $("#navTools a[href], #thematicNav a[href], #transversalNav a[href]," +
-            "#setcategoriesBox a[href]").each( function() {
+        $("#navTools a[href], #thematicNav a[href], #transversalNav a[href]," + "#setcategoriesBox a[href]").each(function() {
             //
             var _href = $.trim($(this).attr("href"));
 
             //
-            if (_reg.test(_href)) {
-                //
-                if(RegExp.$1 != doc.location.hostname) {
-                    _result.push(_getDetails(this));
-                }
+            if (_reg.test(_href) && RegExp.$1 != doc.location.hostname) {
+                _result.push(_getDetails(this));
             }
         });
 
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -7119,8 +6465,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.minimumFontSize = function(doc) {
         //
-        var _result = [];
-        var fontSize = parseInt($("html").css("font-size"));
+        var _result = [],
+            fontSize = parseInt($("html").css("font-size")) * .75;
 
         //
         function walk(node) {
@@ -7128,8 +6474,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var _fontSize = parseInt(node.css("font-size"));
 
             //
-            if(_fontSize / fontSize >= 0.75) {
-                node.children().each(function(){
+            if (_fontSize >= fontSize) {
+                node.children().each(function() {
                     walk($(this));
                 });
             } else {
@@ -7146,7 +6492,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         return _result;
     }
-
     /**
      *
      * @param doc
@@ -7164,7 +6509,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                             return $.trim(element.toLowerCase().replace(/['"]/g, ""));
                         });
 
-                        $.each(fonts, function(){
+                        $.each(fonts, function() {
                             if ($.inArray(this, authorized) == -1) {
                                 result.push(_getCssDetails(rule, i));
                                 return false;

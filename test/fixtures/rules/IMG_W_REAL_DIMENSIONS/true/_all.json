@@ -1,0 +1,9 @@
+{
+    "/test.png": {
+        "_url": "http://localhost:9000/test.png",
+        "_imageInfo": {
+            "width": 15,
+            "height": 20
+        }
+    }
+}

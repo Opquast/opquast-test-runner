@@ -1,0 +1,14 @@
+{
+    "/style.css": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "Set-Cookie",
+                "value": "name=value"
+            }
+        ]
+    },
+    "/script.js": {
+        "_contentType": "text/javascript"
+    }
+}

@@ -261,64 +261,72 @@ var logger;
      * @return
      */
     window._analyseStylesheets = function _analyseStylesheets(doc, media, callback) {
-        var css, src,
+        var css,
+            src,
             promises = [],
-            extSheets = doc.styleSheets,
-            intSheets = $("style");
+            _styleSheets = doc.styleSheets;
 
-        for (var i = 0; i < extSheets.length; i++) {
-            css = extSheets.item(i);
+        for (var i = 0; i < _styleSheets.length; i++) {
+            css = _styleSheets.item(i);
 
-            if (css.ownerNode.tagName.toUpperCase() === "STYLE") {
-                continue;
+            if(css.media.length == 0) {
+                css.media.appendMedium("all");
             }
 
-            src = css.href;
-            promises.push(
-                XHR.get(src).then(function(response) {
-                    var parser = new CSSParser(),
-                        sheet = parser.parse(response.data, false, false);
-                    sheet._extra = {
-                        "media": css.media,
-                        "href": src
-                    };
-                    sheet.resolveVariables(media);
+            if($.inArray(media, css.media) != -1 || $.inArray("all", css.media) != -1) {
+                // internal
+                if (css.ownerNode.tagName.toUpperCase() === "STYLE") {
+                    var text = $.trim($(css.ownerNode).text());
 
-                    return {
-                        "src": src,
-                        "content": response.data,
-                        "sheet": sheet,
-                        "media": media
+                    if (text != "") {
+                        var parser = new CSSParser(),
+                            sheet = parser.parse(text, false, false);
+
+                        sheet._extra = {
+                            "media": css.media,
+                            "href": "interne"
+                        };
+                        sheet.resolveVariables(media);
+
+                        promises.push({
+                            "src": "interne",
+                            "content": text,
+                            "sheet": sheet,
+                            "media": media
+                        });
                     }
-                }).then(null, function(err) {
-                    logger.error("_analyseStylesheets", err);
-                    return false;
-                })
-            );
+                }
+
+                // external
+                else {
+                    src = css.href;
+                    promises.push(
+                        XHR.get(src).then(function(response) {
+                            var parser = new CSSParser(),
+                                sheet = parser.parse(response.data, false, false);
+
+                            sheet._extra = {
+                                "media": css.media,
+                                "href": src
+                            };
+                            sheet.resolveVariables(media);
+
+                            return {
+                                "src": src,
+                                "content": response.data,
+                                "sheet": sheet,
+                                "media": media
+                            }
+                        }).then(null, function(err) {
+                            logger.error("_analyseStylesheets", err);
+                            return false;
+                        })
+                    );
+                }
+            }
         }
 
-        intSheets.each(function() {
-            if ($.trim($(this).text()) != "") {
-                var parser = new CSSParser(),
-                    sheet = parser.parse($(this).text(), false, false),
-                    _media = $.trim($(this).attr("media")).split(" ");
-
-                _media.pop("");
-                sheet._extra = {
-                    "media": _media,
-                    "href": "interne"
-                };
-                sheet.resolveVariables(media);
-
-                promises.push({
-                    "src": "interne",
-                    "content": $(this).text(),
-                    "sheet": sheet,
-                    "media": media
-                });
-            }
-        });
-
+        //
         return Q.promised(Array).apply(null, promises).then(function(res) {
             var subPromises = [];
             res.filter(function(val) {
@@ -333,8 +341,7 @@ var logger;
                 subPromises.push(_analyseStylesheet(val.sheet, val.media, callback));
             });
             return Q.promised(Array).apply(null, subPromises);
-        })
-        .then(function(res) {
+        }).then(function(res) {
             var result = [];
             res.forEach(function(val) {
                 $.deepMerge(result, val);
@@ -406,14 +413,15 @@ var logger;
                 //
                 var _media = rule.media.item && rule.media.item(l) || rule.media[l];
                 if ($.startsWith(_media, media) || $.startsWith(_media, "only " + media) || _media == "all") {
-                    var rules = rule.cssRules;
+                    var rules = rule.cssRules,
+                        result = [];
 
                     // rules walk
                     for (var k = 0; k < rules.length; k++) {
-                        var rule = rules[k];
-
-                        return _analyseRule(rule, media, callback);
+                        result.push(_analyseRule(rules[k], media, callback));
                     }
+
+                    return result;
                 }
             }
         }
@@ -425,9 +433,9 @@ var logger;
             for (var l = 0; l < rule.media.length; l++) {
                 var _media = rule.media.item && rule.media.item(l) || rule.media[l];
                 if ($.startsWith(_media, media) || $.startsWith(_media, "only " + media) || _media == "all") {
-                    var re = new RegExp().compile("(url\\()?'?\"?([^'\"\\)]*)", "i");
-                    re.test(rule.href);
-                    var href = $.trim(RegExp.$2);
+                    var re = new RegExp().compile("['\"]([^'\"\\)]*)['\"]", "i");
+                    rule.href.match(re);
+                    var href = $.trim(RegExp.$1);
 
                     promises.push(
                         XHR.get(href).then(function(response) {
@@ -1259,19 +1267,16 @@ var logger;
                 //
                 if (document.contentType == "application/xhtml+xml") {
                     //
-                    function nsResolver(prefix) {
+                    nsResolver = function(prefix) {
                         return 'http://www.w3.org/1999/xhtml';
                     }
 
                     // replace tags by xhtml:tags and reverse for functions (like count() or text())
                     test = test.replace(new RegExp("(/+)([^@])", "g"), "$1xhtml:$2").replace(new RegExp("(::)([^@])", "g"), "$1xhtml:$2").replace(new RegExp("xhtml:([-a-zA-Z]+\\()", "g"), "$1");
-
-                    //
-                    nodesSnapshot = doc.evaluate(test, doc, nsResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-                } else {
-                    //
-                    nodesSnapshot = doc.evaluate(test, doc, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                 }
+
+                //
+                nodesSnapshot = doc.evaluate(test, doc, nsResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
                 //
                 logger.log(Object('apply_xpath_test', _result));
@@ -1289,25 +1294,25 @@ var logger;
             //
             else if (language == "css") {
                 // Regexps
-                var reg = new RegExp().compile("^(.+)\\[(.+)\\]$", "i");
-                var reg_not = new RegExp().compile("^(.+)\\[not\\((.+)\\)\\]$", "i");
+                var reg = new RegExp().compile("^(.+)\\[(.+)\\]$", "i"),
+                    reg_not = new RegExp().compile("^(.+)\\[not\\((.+)\\)\\]$", "i");
 
                 //
-                var starts_with = new RegExp().compile("^starts-with\\(@(.+), ?'(.+)'\\)$", "i");
-                var ends_with = new RegExp().compile("^ends-with\\(@(.+), ?'(.+)'\\)$", "i");
-                var contains = new RegExp().compile("^contains\\(@(.+), ?'(.+)'\\)$", "i");
-                var equals = new RegExp().compile("^@(.+), ?'(.+)'$", "i");
-                var presence = new RegExp().compile("^@(.+)$", "i");
+                var starts_with = new RegExp().compile("^starts-with\\(@(.+), ?'(.+)'\\)$", "i"),
+                    ends_with = new RegExp().compile("^ends-with\\(@(.+), ?'(.+)'\\)$", "i"),
+                    contains = new RegExp().compile("^contains\\(@(.+), ?'(.+)'\\)$", "i"),
+                    equals = new RegExp().compile("^@(.+), ?'(.+)'$", "i"),
+                    presence = new RegExp().compile("^@(.+)$", "i");
 
                 //
-                var inversion = false;
-                var _comparison = "";
-                var _selector = "";
-                var _test = "";
-                var _property = "";
-                var _value = "";
-                var _result = [];
-                var sheets = doc.styleSheets;
+                var inversion = false,
+                    _comparison = "",
+                    _selector = "",
+                    _test = "",
+                    _property = "",
+                    _value = "",
+                    _result = [],
+                    sheets = doc.styleSheets;
 
                 // inversion
                 if (reg_not.test(test)) {
@@ -1497,6 +1502,53 @@ var logger;
                     return _result;
                 }
             }
+
+            //
+            else if (language == "opendata") {
+                //
+                logger.log(Object('apply_xpath_test', doc));
+                logger.log(Object('apply_xpath_test', test));
+                logger.log(Object('apply_xpath_test', XPathResult.ORDERED_NODE_SNAPSHOT_TYPE));
+
+                //
+                return XHR.get(doc.location.href + '.rdf').then(function(response) {
+                    //
+                    function nsResolver(prefix) {
+                        var ns = {
+                            'xhtml': 'http://www.w3.org/1999/xhtml',
+                            'dcat': 'http://www.w3.org/ns/dcat#',
+                            'dct': 'http://purl.org/dc/terms/',
+                            'foaf': 'http://xmlns.com/foaf/0.1/',
+                            'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
+                            'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+                            'adms': 'http://www.w3.org/ns/adms#',
+                            'ecodp': 'http://ec.europa.eu/open-data/ontologie/ec-odp#',
+                            'skos': 'http://www.w3.org/2004/02/skos/core#',
+                            'owl': 'http://www.w3.org/2002/07/owl#'
+                        };
+                        return ns[prefix] || null;
+                    }
+
+                    //
+                    var _result = [],
+                        xml = new DOMParser().parseFromString(response.data, "text/xml"),
+                        nodesSnapshot = xml.evaluate(test, xml, nsResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+
+                    //
+                    logger.log(Object('apply_xpath_test', _result));
+
+                    //
+                    for (var i = 0; i < nodesSnapshot.snapshotLength; i++) {
+                        //
+                        _result.push(_getDetails(nodesSnapshot.snapshotItem(i)));
+                    }
+
+                    //
+                    return _result;
+                }).then(null, function(err) {
+                    return false;
+                });
+            }
         }
 
         //
@@ -1527,7 +1579,9 @@ var logger;
      */
     function apply_regexp_test(doc, test, language) {
         //
-        var _result = [], reg = new RegExp().compile(test, "i"), scripts = doc.scripts;
+        var _result = [],
+            reg = new RegExp().compile(test, "i"),
+            scripts = doc.scripts;
 
         //
         try {
@@ -1541,9 +1595,10 @@ var logger;
 
             //
             else if (language == "http") {
-                var _headers = "";
-                var resources = sidecar.resources.filter(
-                    function(item){return item["content_type"] == "text/html" || item["content_type"] == "application/xhtml+xml";}
+                var _headers = "",
+                    resources = sidecar.resources.filter(function(item){
+                        return item["content_type"] == "text/html" || item["content_type"] == "application/xhtml+xml";
+                    }
                 );
 
                 //
@@ -1564,7 +1619,7 @@ var logger;
             else if (language == "css") {
                 _analyseStylesheets(doc, "screen", []).then(function(parse) {
                     parse.forEach(function(element, index, array) {
-                        if (reg.test(element.text)) {
+                        if (reg.test(element.content)) {
                             _result.push(element.href);
                         }
                     });
@@ -1576,8 +1631,8 @@ var logger;
                 //
                 $("script").each(function() {
                     //
-                    var _src = $(this).attr("src");
-                    var _data = $(this).text();
+                    var _src = $(this).attr("src"),
+                        _data = $(this).text();
 
                     // external
                     if (_src && _src.length) {
@@ -1656,11 +1711,13 @@ var logger;
      */
     function apply_doctype_test(doc, test, language) {
         //
-        var _result = [], dt = "", reg1 = new RegExp().compile('<!DOCTYPE[^>]*>', "i"), reg2 = new RegExp().compile('^\\s*<!DOCTYPE[^>]*>', "i");
+        var _result = [], dt = "",
+            reg1 = new RegExp().compile('<!DOCTYPE[^>]*>', "i"),
+            reg2 = new RegExp().compile('^\\s*<!DOCTYPE[^>]*>', "i");
         //@formatter:off
         var doctypes = [
-            '<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN" "">',
-            '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "">',
+            '<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">',
+            '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">',
             '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
             '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
             '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">',
@@ -1755,19 +1812,6 @@ var logger;
                         if ($.inArray(dt, doctypes) != -1) {
                             //
                             _result.push(dt);
-                        }
-                    }
-
-                    //
-                    else {
-                        for (var i in doctypes) {
-                            //
-                            var reg = new RegExp().compile(doctypes[i], "i");
-
-                            //
-                            if (reg.test(sidecar.plainText)) {
-                                _result.push(RegExp.$1);
-                            }
                         }
                     }
                 }
@@ -1986,23 +2030,33 @@ var logger;
             }
 
             // If the test return something, then, the test is positive
-            if (result.length > 0) {
+            else if (result.length > 0) {
                 // subtests
                 if (test_actions.ontrue.chain) {
+                    var promises = [];
+
                     for (var subtest_id in test_actions.ontrue.chain) {
                         var subtest_actions = test_actions.ontrue.chain[subtest_id];
                         var subtest = tests[subtest_id];
-                        return apply_test(doc, subtest, subtest_actions).then(function(r) {
-                            return {
-                                'results': $.extend(_g_results, r.results),
-                                'comments': $.extend(_g_comments, r.comments),
-                                'details': $.extend(_g_details, r.details)
-                            };
-                        });
+                        promises.push(apply_test(doc, subtest, subtest_actions));
                     }
 
-                    // no subtests
-                } else {
+                    return Q.promised(Array).apply(null, promises).then(function(res){
+                        res.forEach(function(r) {
+                            $.merge(_g_results, r.results);
+                            $.merge(_g_comments, r.comments);
+                            $.merge(_g_details, r.details);
+                        });
+                        return {
+                            results: _g_results,
+                            comments: _g_comments,
+                            details: _g_details
+                        };
+                    });
+                }
+
+                // no subtests
+                else {
                     _g_results.push(test_actions.ontrue.result);
                     _g_comments.push(test_actions.ontrue.comment);
 
@@ -2016,24 +2070,34 @@ var logger;
             else {
                 // subtests
                 if (test_actions.onfalse.chain) {
+                    var promises = [];
+
                     for (var subtest_id in test_actions.onfalse.chain) {
                         var subtest_actions = test_actions.onfalse.chain[subtest_id];
                         var subtest = tests[subtest_id];
-                        return apply_test(doc, subtest, subtest_actions).then(function(r) {
-                            return {
-                                'results': $.extend(_g_results, r.results),
-                                'comments': $.extend(_g_comments, r.comments),
-                                'details': $.extend(_g_details, r.details)
-                            };
-                        });
+                        promises.push(apply_test(doc, subtest, subtest_actions));
                     }
 
-                    // no subtests
-                } else {
+                    return Q.promised(Array).apply(null, promises).then(function(res){
+                        res.forEach(function(r) {
+                            $.merge(_g_results, r.results);
+                            $.merge(_g_comments, r.comments);
+                            $.merge(_g_details, r.details);
+                        });
+                        return {
+                            results: _g_results,
+                            comments: _g_comments,
+                            details: _g_details
+                        };
+                    });
+                }
+
+                // no subtests
+                else {
                     _g_results.push(test_actions.onfalse.result);
                     _g_comments.push(test_actions.onfalse.comment);
 
-                    if (test_actions.onfalse.result == "nc" || test_actions.ontrue.result == "i") {
+                    if (test_actions.onfalse.result == "nc" || test_actions.onfalse.result == "i") {
                         _g_details = $.extend(_g_details, result);
                     }
                 }

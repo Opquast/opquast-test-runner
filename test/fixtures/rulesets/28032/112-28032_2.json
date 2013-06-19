@@ -1,0 +1,26 @@
+{
+    "/112-28032_2.html": {
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/112-28032_2.js": {
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/112-28032_2.css": {
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    }
+}

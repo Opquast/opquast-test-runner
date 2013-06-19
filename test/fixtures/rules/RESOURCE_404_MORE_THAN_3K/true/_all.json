@@ -1,0 +1,12 @@
+{
+    "/test.png": {
+        "status": 404,
+        "statusText": "NOT FOUND",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": "3001"
+            }
+        ]
+    }
+}

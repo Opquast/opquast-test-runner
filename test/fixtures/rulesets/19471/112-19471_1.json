@@ -1,0 +1,35 @@
+{
+    "/112-19471_1.html": {
+        "_contentType": "text/html",
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "gzip"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/112-19471_1.html": {
+        "_contentType": "text/javascript",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 300
+            }
+        ]
+    },
+    "/112-19471_1.html": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "deflate"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    }
+}

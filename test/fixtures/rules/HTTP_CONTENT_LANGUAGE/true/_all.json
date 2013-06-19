@@ -1,0 +1,10 @@
+{
+    "*": {
+        "headers": [
+            {
+                "name": "content-language",
+                "value": "fr"
+            }
+        ]
+    }
+}

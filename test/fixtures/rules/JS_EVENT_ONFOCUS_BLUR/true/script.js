@@ -1,0 +1,3 @@
+function bla() {
+    this.blur();
+}

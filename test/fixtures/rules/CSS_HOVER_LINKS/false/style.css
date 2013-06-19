@@ -1,0 +1,15 @@
+p:hover {
+    width: 50%;
+}
+
+p:hover {
+    float: left;
+}
+
+p:hover {
+    border: 1px solid red
+}
+
+a:hover {
+    background-color: blue
+}

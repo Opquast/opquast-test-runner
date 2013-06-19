@@ -755,9 +755,21 @@
         "DOCTYPE_PRESENT": {
             "onfalse": {
                 "comment": "le DOCTYPE est absent",
-                "result": "i"
+                "result": "na"
             },
             "ontrue": {
+                "chain": {
+                    "DOCTYPE_PLACED": {
+                        "onfalse": {
+                            "comment": "le DOCTYPE est mal positionné",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "le DOCTYPE est bien positionné",
+                            "result": "c"
+                        }
+                    }
+                },
                 "comment": "le DOCTYPE est présent",
                 "result": "c"
             }
@@ -1452,11 +1464,11 @@
                             "chain": {
                                 "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                                     "onfalse": {
-                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                                         "result": "i"
                                     },
                                     "ontrue": {
-                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                                         "result": "nc"
                                     }
                                 }
@@ -10222,11 +10234,11 @@
                             "chain": {
                                 "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                                     "onfalse": {
-                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                                         "result": "i"
                                     },
                                     "ontrue": {
-                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                                         "result": "nc"
                                     }
                                 }
@@ -11517,7 +11529,7 @@
             },
             "ontrue": {
                 "comment": "au moins une ressource statique ayant un numéro de version en paramètre a été détecté",
-                "result": "nc"
+                "result": "c"
             }
         }
     },
@@ -12303,6 +12315,18 @@
             }
         }
     },
+    "19191": {
+        "CSS_FOCUS_STYLE": {
+            "onfalse": {
+                "comment": "aucun outline supprimé",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de la propriété OUTLINE avec la valeur 0 ou NONE constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "nc"
+            }
+        }
+    },
     "19195": {
         "TABLE_W_FAKE_TH_LINE": {
             "onfalse": {
@@ -12589,11 +12613,11 @@
                 "chain": {
                     "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                         "onfalse": {
-                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                             "result": "nc"
                         }
                     }
@@ -13656,11 +13680,11 @@
                 "chain": {
                     "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                         "onfalse": {
-                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                             "result": "nc"
                         }
                     }
@@ -16062,11 +16086,11 @@
                 "chain": {
                     "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                         "onfalse": {
-                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                             "result": "nc"
                         }
                     }
@@ -16110,11 +16134,11 @@
                 "chain": {
                     "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                         "onfalse": {
-                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                            "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                            "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                             "result": "nc"
                         }
                     }
@@ -21583,11 +21607,11 @@
                             "chain": {
                                 "TABLE_W_SUMMARY_ATTR_EQUALS_TO_CAPTION": {
                                     "onfalse": {
-                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques n'a été détecté",
+                                        "comment": "aucun élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques n'a été détecté",
                                         "result": "i"
                                     },
                                     "ontrue": {
-                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenu sont identiques a été détecté",
+                                        "comment": "au moins un élément TABLE avec un attribut SUMMARY et contenant un élément CAPTION dont les contenus sont identiques a été détecté",
                                         "result": "nc"
                                     }
                                 }
@@ -22787,6 +22811,18 @@
                 },
                 "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh est présent",
                 "result": "i"
+            }
+        }
+    },
+    "21719": {
+        "CSS_FOCUS_STYLE": {
+            "onfalse": {
+                "comment": "aucun outline supprimé",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de la propriété OUTLINE avec la valeur 0 ou NONE constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "nc"
             }
         }
     },
@@ -24189,12 +24225,12 @@
     "23269": {
         "test27": {
             "onfalse": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "result": "nc"
             }
         }
     },
@@ -24281,11 +24317,11 @@
     "23315": {
         "test36": {
             "onfalse": {
-                "comment": "aucun H1 dans le contenu",
+                "comment": "un seul H1 dans le contenu",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins un H1 dans le contenu",
+                "comment": "au moins 2 H1 dans le contenu",
                 "result": "nc"
             }
         },
@@ -24454,11 +24490,11 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
+                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
                             "result": "nc"
                         }
                     }
@@ -24474,7 +24510,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test32": {
+                    "test34": {
                         "onfalse": {
                             "comment": "aucun DOC en dehors de la boîte en savoir plus",
                             "result": "c"
@@ -27242,6 +27278,304 @@
             }
         }
     },
+    "29981": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_THEME": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans vocabulaire n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans vocabulaire a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29982": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_LICENSE": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans licence n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans licence a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29986": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_CONTACT": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans contact n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans contact a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29989": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_IDENTIFIER": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans identifiant n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans identifiant a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29990": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_VERSION": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans version n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans version a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29997": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_SPATIAL": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans localisation n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans localisation a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29998": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_LANGUAGE": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans langue n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans langue a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "29999": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_PUBLISHER": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans responsable n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans responsable a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "30000": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_MODIFIED": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans date de mise-à-jour n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans date de mise-à-jour a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "30001": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_ISSUED": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans date de publication n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans date de publication a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "30002": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_DESCRIPTION": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans description n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans description a été détecté",
+                            "result": "nc"
+                        }
+                    },
+                    "OD_DATASET_EMPTY_TITLE": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans titre n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans titre a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "30028": {
+        "OD_PRESENCE": {
+            "onfalse": {
+                "comment": "aucun jeu de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "OD_DATASET_EMPTY_PERIODICITY": {
+                        "onfalse": {
+                            "comment": "aucun jeu de données sans fréquence de mise-à-jour n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins jeu de données sans fréquence de mise-à-jour a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un jeu de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "500": {
         "IMG": {
             "onfalse": {
@@ -27910,6 +28244,18 @@
                     }
                 },
                 "comment": "au moins un élément IFRAME a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "557": {
+        "CSS_FOCUS_STYLE": {
+            "onfalse": {
+                "comment": "aucun outline supprimé",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de la propriété OUTLINE avec la valeur 0 ou NONE constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
                 "result": "i"
             }
         }

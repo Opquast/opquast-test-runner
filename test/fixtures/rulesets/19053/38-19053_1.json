@@ -1,0 +1,6 @@
+{
+    "/test.png": {
+        "status": 403,
+        "statusText": "FORBIDDEN"
+    }
+}

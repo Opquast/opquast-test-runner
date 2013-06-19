@@ -1,0 +1,11 @@
+{
+    "http://localhost:8000/style.css": {
+        "_contentType": "text/css"
+    },
+    "http://img.localhost:8000/test.png": {
+        "_contentType": "image/png"
+    },
+    "http://js.localhost:8000/script.js": {
+        "_contentType": "text/javascript"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "/style.css": {
+        "_contentType": "text/css"
+    },
+    "/script.js?foo": {
+        "_contentType": "text/javascript"
+    }
+}

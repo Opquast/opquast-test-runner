@@ -1,0 +1,35 @@
+{
+    "/21-19012_1.html": {
+        "_contentType": "text/html",
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "gzip"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/21-19012_1.html": {
+        "_contentType": "text/javascript",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 300
+            }
+        ]
+    },
+    "/21-19012_1.html": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "deflate"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    }
+}

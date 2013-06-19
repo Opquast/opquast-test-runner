@@ -1,0 +1,8 @@
+{
+    "/test.mp3": {
+        "_contentType": "audio/mpeg"
+    },
+    "/flash.swf": {
+        "_contentType": "application/x-shockwave-flash"
+    }
+}
