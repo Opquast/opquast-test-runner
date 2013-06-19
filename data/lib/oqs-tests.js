@@ -3198,37 +3198,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.htmlNewWindow = function htmlNewWindow(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            $("a[target='_blank'], area[target='_blank'], form[target='_blank']").each(function() {
-                //
-                result.push(_getDetails(this));
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("htmlNewWindow", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-    /**
-     *
-     * @param doc
-     * @return
-     */
     window.htmlNonHttpAreaLinks = function htmlNonHttpAreaLinks(doc) {
         //
-        var result = [], protocols = ["http:", "https:", "javascript:", "ftp:", "ftps:"];
+        var result = [],
+            protocols = ["http:", "https:", "javascript:", "ftp:", "ftps:"];
 
         //
         try {

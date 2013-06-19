@@ -464,7 +464,7 @@
     "TABLE_W_TH": "xpath@html://table[thead/tr/th or tbody/tr/th]",
     "TABLE_W_TH_LINE_OR_COLUMN": "xpath@html://table[.//tr[1][th[following-sibling::th or @colspan or @rowspan]]][.//tr[2][th[following-sibling::th or @colspan or @rowspan]]]",
     "TABLE_W_TH_WO_CAPTION": "xpath@html://table[thead/tr/th or tbody/tr/th][./*[position()=1][local-name()!='caption']]",
-    "TARGET_BLANK": "oqs@html:htmlNewWindow",
+    "TARGET_BLANK": "xpath@html:*[@target='_blank'][local-name()='a' or local-name()='area' or local-name()='form']",
     "TD_WO_HEADERS_ATTR_W_TH_WITH_ID": "xpath@html://td[normalize-space(translate(.,' ',' '))!=''][normalize-space(@headers)=''][ancestor::table//th[normalize-space(@id)!='']]",
     "TD_WO_TH": "xpath@html://td[ancestor::table//th][not(normalize-space(@headers)=ancestor::table//th/@id)][not(starts-with(normalize-space(@headers),concat(ancestor::table//th/@id,' ')))][not(contains(normalize-space(@headers),concat(' ',ancestor::table//th/@id,' ')))][not(contains(normalize-space(@headers),concat(' ',ancestor::table//th/@id)) and substring-after(normalize-space(@headers),concat(' ',ancestor::table//th/@id))='')]",
     "TD_WO_TH_OR_W_TH_WO_SCOPE_ATTR": "xpath@html://td[ancestor::table//th[not(@scope) or (normalize-space(@scope)!='' and normalize-space(@scope)!='col' and normalize-space(@scope)!='colgroup' and normalize-space(@scope)!='row' and normalize-space(@scope)!='rowgroup')]][not(@headers=ancestor::table//th/@id)]",

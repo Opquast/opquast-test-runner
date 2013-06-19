@@ -1267,19 +1267,16 @@ var logger;
                 //
                 if (document.contentType == "application/xhtml+xml") {
                     //
-                    function nsResolver(prefix) {
+                    nsResolver = function(prefix) {
                         return 'http://www.w3.org/1999/xhtml';
                     }
 
                     // replace tags by xhtml:tags and reverse for functions (like count() or text())
                     test = test.replace(new RegExp("(/+)([^@])", "g"), "$1xhtml:$2").replace(new RegExp("(::)([^@])", "g"), "$1xhtml:$2").replace(new RegExp("xhtml:([-a-zA-Z]+\\()", "g"), "$1");
-
-                    //
-                    nodesSnapshot = doc.evaluate(test, doc, nsResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-                } else {
-                    //
-                    nodesSnapshot = doc.evaluate(test, doc, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                 }
+
+                //
+                nodesSnapshot = doc.evaluate(test, doc, nsResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 
                 //
                 logger.log(Object('apply_xpath_test', _result));
@@ -2033,7 +2030,7 @@ var logger;
             }
 
             // If the test return something, then, the test is positive
-            if (result.length > 0) {
+            else if (result.length > 0) {
                 // subtests
                 if (test_actions.ontrue.chain) {
                     var promises = [];
@@ -2056,9 +2053,10 @@ var logger;
                             details: _g_details
                         };
                     });
+                }
 
                 // no subtests
-                } else {
+                else {
                     _g_results.push(test_actions.ontrue.result);
                     _g_comments.push(test_actions.ontrue.comment);
 
@@ -2081,19 +2079,25 @@ var logger;
                     }
 
                     return Q.promised(Array).apply(null, promises).then(function(res){
+                        res.forEach(function(r) {
+                            $.merge(_g_results, r.results);
+                            $.merge(_g_comments, r.comments);
+                            $.merge(_g_details, r.details);
+                        });
                         return {
-                            'results': $.extend(_g_results, res.results),
-                            'comments': $.extend(_g_comments, res.comments),
-                            'details': $.extend(_g_details, res.details)
+                            results: _g_results,
+                            comments: _g_comments,
+                            details: _g_details
                         };
                     });
+                }
 
                 // no subtests
-                } else {
+                else {
                     _g_results.push(test_actions.onfalse.result);
                     _g_comments.push(test_actions.onfalse.comment);
 
-                    if (test_actions.onfalse.result == "nc" || test_actions.ontrue.result == "i") {
+                    if (test_actions.onfalse.result == "nc" || test_actions.onfalse.result == "i") {
                         _g_details = $.extend(_g_details, result);
                     }
                 }

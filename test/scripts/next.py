@@ -11,7 +11,7 @@ for key, value in json_sets.items():
     if key in ['TABLE', 'FORM', 'LIST', 'IMG']:
         continue
     
-    val = dumps(value)
+    val = dumps(value).replace('"nc"', '""').replace('"c"', '""').replace('"na"', '""').replace('"i"', '""')
     try:
         sets[val].append(key)
     except:
