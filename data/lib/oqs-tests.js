@@ -3973,7 +3973,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         var promises = [];
         try {
             $("img[width!=1][height!=1][longdesc]").each(function() {
-                var longdesc = $.trim($(this).attr("longdesc")), _img = this;
+                var longdesc = $.trim($(this).attr("longdesc")),
+                    _img = this;
 
                 if (longdesc === "") {
                     promises.push(Q.resolve(_getDetails(_img)));
