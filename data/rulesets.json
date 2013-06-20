@@ -2169,7 +2169,7 @@
                 "chain": {
                     "JS_POPUP": {
                         "onfalse": {
-                            "comment": "aucune pop-up  n'a été détectée",
+                            "comment": "aucune pop-up n'a été détectée",
                             "result": "i"
                         },
                         "ontrue": {
