@@ -329,7 +329,6 @@
     "LIST_W_MORE_THAN_3_LEVELS": "xpath@html://li[ancestor::li[ancestor::li[ancestor::li]]]",
     "LI_WO_TEXT": "xpath@html://li[normalize-space(translate(.,' ',' '))=''][count(.//img[normalize-space(@alt)=''])=count(.//img)][count(.//input[translate(@type,'SUBMIT','submit')='submit'][normalize-space(@value)=''])=count(.//input[translate(@type,'SUBMIT','submit')='submit'])][count(.//input[translate(@type,'IMAGE','image')='image'][normalize-space(@alt)=''])=count(.//input[translate(@type,'IMAGE','image')='image'])][not(.//input[translate(@type,'TEX','tex')='text' or not(@type) or translate(@type,'PASWORD','pasword')='password'])][not(.//textarea)][not(.//applet)][not(.//embed)][not(.//object)]",
     "MARQUEE": "xpath@html://marquee",
-    "META": "xpath@html://meta",
     "META_CHARSET_REAL": "oqs@html:rightCharset",
     "META_CHARSET_VALID": "oqs@html:metaCharset",
     "META_DESCRIPTION_FILLED": "xpath@html://meta[translate(@name,'DESCRIPTON','descripton')='description'][normalize-space(@content)!='']",

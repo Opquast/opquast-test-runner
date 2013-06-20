@@ -1524,7 +1524,8 @@ var logger;
                             'adms': 'http://www.w3.org/ns/adms#',
                             'ecodp': 'http://ec.europa.eu/open-data/ontologie/ec-odp#',
                             'skos': 'http://www.w3.org/2004/02/skos/core#',
-                            'owl': 'http://www.w3.org/2002/07/owl#'
+                            'owl': 'http://www.w3.org/2002/07/owl#',
+                            'void': 'http://rdfs.org/ns/void#'
                         };
                         return ns[prefix] || null;
                     }

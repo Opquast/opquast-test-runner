@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-desc" content="page avec onfocus" />
+		<meta http-equiv="X-results" content="C:0,NC:0,NA:0,I:1" />
+		<title>testcase 218</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	</head>
+	<body>
+		<form>
+			<input onfocus="javascript:this.blur();"/>
+			<input id="plop1" />
+		</form>
+		<a href="http://www.example.com/" id="plop2">plop</a>
+		<script type="text/javascript">
+			function noFocus() {
+				var item = document.getElementById("plop1");
+				item.blur();
+			}
+
+			document.getElementById("plop1").addEventListener("focus", noFocus, false);
+
+			$("#plop2").focus(function() {
+				$(this).blur();
+			});
+
+		</script>
+	</body>
+</html>

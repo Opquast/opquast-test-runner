@@ -23,7 +23,7 @@ done = False
 rest = 0
 
 for key, value in sets.items():
-    if len(value) > 1:
+    if len(value) > 0:
         for val in value:
             if not exists(join(getcwd(), 'test/fixtures/rulesets/', val) + '/') and \
                     not exists(join(getcwd(), 'test/fixtures/rulesets-debug/', val) + '/') and \

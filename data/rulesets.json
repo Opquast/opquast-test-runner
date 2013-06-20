@@ -13479,9 +13479,9 @@
         }
     },
     "19285": {
-        "META": {
+        "META_REFRESH": {
             "onfalse": {
-                "comment": "aucun élément META n'a été détecté",
+                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -13497,7 +13497,7 @@
                         }
                     }
                 },
-                "comment": "au moins un élément META a été détecté",
+                "comment": "au moins un élément META avec un attribut HTTP-EQUIV ayant la valeur refresh a été détecté",
                 "result": "i"
             }
         }
@@ -14235,9 +14235,9 @@
         }
     },
     "19370": {
-        "META": {
+        "META_REFRESH": {
             "onfalse": {
-                "comment": "aucun élément META n'a été détecté",
+                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -14253,7 +14253,7 @@
                         }
                     }
                 },
-                "comment": "au moins un élément META a été détecté",
+                "comment": "au moins un élément META avec un attribut HTTP-EQUIV ayant la valeur refresh a été détecté",
                 "result": "i"
             }
         }
@@ -27413,7 +27413,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins jeu de données sans localisation a été détecté",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },

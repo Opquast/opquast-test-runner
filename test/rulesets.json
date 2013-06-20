@@ -4127,18 +4127,6 @@
             }
         }
     },
-    "META": {
-        "META": {
-            "onfalse": {
-                "comment": "aucun élément META n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément META a été détecté",
-                "result": "c"
-            }
-        }
-    },
     "META_CHARSET_REAL": {
         "META_CHARSET_REAL": {
             "onfalse": {
