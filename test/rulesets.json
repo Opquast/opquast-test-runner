@@ -5162,11 +5162,11 @@
     "TABLE_FOR_DATA": {
         "TABLE_FOR_DATA": {
             "onfalse": {
-                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                 "result": "c"
             }
         }

@@ -1377,7 +1377,7 @@
                 "chain": {
                     "TABLE_FOR_DATA": {
                         "onfalse": {
-                            "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                            "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                             "result": "i"
                         },
                         "ontrue": {
@@ -1393,7 +1393,7 @@
                                     }
                                 }
                             },
-                            "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                            "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                             "result": "i"
                         }
                     }
@@ -5436,7 +5436,7 @@
     "11507": {
         "TABLE_FOR_DATA": {
             "onfalse": {
-                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -5452,7 +5452,7 @@
                         }
                     }
                 },
-                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                 "result": "i"
             }
         }
@@ -10147,7 +10147,7 @@
                 "chain": {
                     "TABLE_FOR_DATA": {
                         "onfalse": {
-                            "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                            "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                             "result": "i"
                         },
                         "ontrue": {
@@ -10163,7 +10163,7 @@
                                     }
                                 }
                             },
-                            "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                            "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                             "result": "i"
                         }
                     }
@@ -13649,7 +13649,7 @@
     "19298": {
         "TABLE_FOR_DATA": {
             "onfalse": {
-                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -13665,7 +13665,7 @@
                         }
                     }
                 },
-                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                 "result": "i"
             }
         }
@@ -13697,7 +13697,7 @@
     "19301": {
         "TABLE_FOR_DATA": {
             "onfalse": {
-                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -13713,7 +13713,7 @@
                         }
                     }
                 },
-                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                 "result": "i"
             }
         }
@@ -15935,7 +15935,7 @@
     "19450": {
         "TABLE_FOR_DATA": {
             "onfalse": {
-                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -15951,7 +15951,7 @@
                         }
                     }
                 },
-                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                 "result": "i"
             }
         }
@@ -18215,7 +18215,7 @@
     "21364": {
         "TABLE_FOR_DATA": {
             "onfalse": {
-                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -18231,7 +18231,7 @@
                         }
                     }
                 },
-                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                 "result": "i"
             }
         }
@@ -21645,7 +21645,7 @@
     "21597": {
         "TABLE_FOR_DATA": {
             "onfalse": {
-                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -21661,7 +21661,7 @@
                         }
                     }
                 },
-                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                 "result": "i"
             }
         }
@@ -21669,7 +21669,7 @@
     "21598": {
         "TABLE_FOR_DATA": {
             "onfalse": {
-                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -21685,7 +21685,7 @@
                         }
                     }
                 },
-                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                 "result": "i"
             }
         }
@@ -24711,12 +24711,10 @@
             "onfalse": {
                 "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
                 "result": "c"
-                
             },
             "ontrue": {
                 "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
                 "result": "nc"
-                
             }
         }
     },
@@ -25184,7 +25182,7 @@
         "test27": {
             "onfalse": {
                 "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "c" 
+                "result": "c"
             },
             "ontrue": {
                 "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
@@ -28937,7 +28935,7 @@
     "646": {
         "TABLE_FOR_DATA": {
             "onfalse": {
-                "comment": "aucun élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY n'a été détecté",
+                "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -28953,7 +28951,7 @@
                         }
                     }
                 },
-                "comment": "au moins un élément TABLE contenant un élément CAPTION ou avec un attribut SUMMARY a été détecté",
+                "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
                 "result": "i"
             }
         }
