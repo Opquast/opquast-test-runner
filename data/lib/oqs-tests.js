@@ -208,18 +208,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("h" + level).each(function() {
                 //
-                var found = false;
-                var terms = $(this).text().trim().split(" ");
+                var found = false,
+                    terms = $(this).text().trim().split(" ");
+
                 try {
                     terms = $.merge(terms, $.trim($("img", this).attr("alt")).toLowerCase().split(" "));
-                } catch(e) {
-                }
+                } catch(e) {}
 
                 //
-                terms.some(function(value) {
+                found = terms.some(function(value) {
                     //
                     if ($.inArray(value, keywords) != -1) {
-                        found = true;
                         return true;
                     } else {
                         return false;
@@ -260,18 +259,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("h" + level).each(function() {
                 //
-                var found = false;
-                var terms = $(this).text().trim().split(" ");
+                var found = false,
+                    terms = $(this).text().trim().split(" ");
+
                 try {
                     terms = $.merge(terms, $.trim($("img", this).attr("alt")).toLowerCase().split(" "));
-                } catch(e) {
-                }
+                } catch(e) {}
 
                 //
-                terms.some(function(value) {
+                found = terms.some(function(value) {
                     //
                     if ($.inArray(value, content) != -1) {
-                        found = true;
                         return true;
                     } else {
                         return false;
@@ -1503,14 +1501,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("applet[alt!='']").each(function() {
                 //
-                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" ");
-                var found = false;
+                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" "),
+                    found = false;
 
                 //
-                terms.some(function(value) {
+                found = terms.some(function(value) {
                     //
                     if ($.inArray(value, aContent) != -1) {
-                        found = true;
                         return true;
                     } else {
                         return false;
@@ -1587,14 +1584,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("area[alt!='']").each(function() {
                 //
-                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" ");
-                var found = false;
+                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" "),
+                    found = false;
 
                 //
-                terms.some(function(value) {
+                found = terms.some(function(value) {
                     //
                     if ($.inArray(value, aContent) != -1) {
-                        found = true;
                         return true;
                     } else {
                         return false;
@@ -2496,10 +2492,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     found = false;
 
                 //
-                terms.some(function(value) {
+                found = terms.some(function(value) {
                     //
                     if ($.inArray(value, aContent) != -1) {
-                        found = true;
                         return true;
                     } else {
                         return false;
