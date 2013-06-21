@@ -522,7 +522,6 @@
     "test23": "xpath@html://table[.//tbody][not(@summary)]",
     "test24": "xpath@html://table[.//tbody][not(.//th)]",
     "test25": "oqs@css:minimumFontSize",
-    "test26": "oqs@css:noRelativeSize",
     "test27": "oqs@css:cssFontInList",
     "test28": "xpath@html://div[@id='thematicNav']//div[@class='navOn']",
     "test29": "xpath@html://div[@id='thematicNav']//div[@id='subNav']",

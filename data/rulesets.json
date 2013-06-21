@@ -24317,11 +24317,11 @@
     "23315": {
         "test36": {
             "onfalse": {
-                "comment": "un seul H1 dans le contenu",
+                "comment": "moins de deux H1 dans le contenu",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins 2 H1 dans le contenu",
+                "comment": "au moins deux H1 dans le contenu",
                 "result": "nc"
             }
         },
@@ -24683,13 +24683,13 @@
         }
     },
     "23570": {
-        "test26": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
             "onfalse": {
-                "comment": "aucune police ne possède une taille en unité absolue",
+                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police possède une taille en unité absolue",
+                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
                 "result": "nc"
             }
         }
@@ -24801,11 +24801,11 @@
     "23619": {
         "test36": {
             "onfalse": {
-                "comment": "aucun H1 dans le contenu",
+                "comment": "moins de deux H1 dans le contenu",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins un H1 dans le contenu",
+                "comment": "au moins deux H1 dans le contenu",
                 "result": "nc"
             }
         },
@@ -24974,11 +24974,11 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
+                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
                             "result": "nc"
                         }
                     }
@@ -24994,7 +24994,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test32": {
+                    "test34": {
                         "onfalse": {
                             "comment": "aucun DOC en dehors de la boîte en savoir plus",
                             "result": "c"
@@ -25167,13 +25167,13 @@
         }
     },
     "23910": {
-        "test26": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
             "onfalse": {
-                "comment": "aucune police ne possède une taille en unité absolue",
+                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police possède une taille en unité absolue",
+                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
                 "result": "nc"
             }
         }
@@ -25273,11 +25273,11 @@
     "23956": {
         "test36": {
             "onfalse": {
-                "comment": "aucun H1 dans le contenu",
+                "comment": "moins de deux H1 dans le contenu",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins un H1 dans le contenu",
+                "comment": "au moins deux H1 dans le contenu",
                 "result": "nc"
             }
         },
@@ -25292,7 +25292,7 @@
             }
         }
     },
-    "23979": {
+    "20119": {
         "test6": {
             "onfalse": {
                 "comment": "aucun TABLE complexe",
@@ -25470,11 +25470,11 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
+                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
                             "result": "nc"
                         }
                     }
@@ -25490,7 +25490,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test32": {
+                    "test34": {
                         "onfalse": {
                             "comment": "aucun DOC en dehors de la boîte en savoir plus",
                             "result": "c"
@@ -25602,7 +25602,7 @@
             }
         }
     },
-    "24235": {
+    "20162": {
         "test25": {
             "onfalse": {
                 "comment": "aucune police ne possède une taille inférieure à 75% ou 0.75em",
@@ -25614,31 +25614,54 @@
             }
         }
     },
-    "24236": {
-        "test26": {
+    "20163": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
             "onfalse": {
-                "comment": "aucune police ne possède une taille en unité absolue",
+                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police possède une taille en unité absolue",
+                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
                 "result": "nc"
             }
         }
     },
-    "24238": {
+    "20165": {
         "test27": {
             "onfalse": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "result": "nc"
             }
         }
     },
-    "24272": {
+    "20199": {
+        "test42": {
+            "onfalse": {
+                "comment": "aucun lien externe",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test21": {
+                        "onfalse": {
+                            "comment": "aucun lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un lien externe",
+                "result": "i"
+            }
+        }
+    },"23505": {
         "test42": {
             "onfalse": {
                 "comment": "aucun lien externe",
@@ -25662,7 +25685,7 @@
             }
         }
     },
-    "24274": {
+    "20201": {
         "test1": {
             "onfalse": {
                 "comment": "l'attribut LANG de HTML est rempli",
@@ -25674,7 +25697,7 @@
             }
         }
     },
-    "24275": {
+    "20202": {
         "FRAME": {
             "onfalse": {
                 "comment": "aucun élément FRAME n'a été détecté",
@@ -25706,7 +25729,7 @@
             }
         }
     },
-    "24280": {
+    "20207": {
         "H1_TO_H6_HIERACHICAL_ERROR": {
             "onfalse": {
                 "comment": "aucune interruption dans la hiérarchie des titres",
@@ -25718,14 +25741,14 @@
             }
         }
     },
-    "24281": {
+    "20208": {
         "test36": {
             "onfalse": {
-                "comment": "aucun H1 dans le contenu",
+                "comment": "moins de deux H1 dans le contenu",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins un H1 dans le contenu",
+                "comment": "au moins deux H1 dans le contenu",
                 "result": "nc"
             }
         },
@@ -25740,7 +25763,7 @@
             }
         }
     },
-    "24323": {
+    "20250": {
         "test11": {
             "onfalse": {
                 "comment": "aucun élément DIV avec l'id relatedLinkBox",
@@ -25764,7 +25787,7 @@
             }
         }
     },
-    "24325": {
+    "20252": {
         "test38": {
             "onfalse": {
                 "comment": "aucun élément avec la classe rightBox",
@@ -25800,7 +25823,7 @@
             }
         }
     },
-    "24416": {
+    "20343": {
         "test39": {
             "onfalse": {
                 "comment": "absence de navigation thématique",
@@ -25824,7 +25847,7 @@
             }
         }
     },
-    "24417": {
+    "20344": {
         "test40": {
             "onfalse": {
                 "comment": "absence de navigation transversale",
@@ -25848,7 +25871,7 @@
             }
         }
     },
-    "24423": {
+    "20350": {
         "test28": {
             "onfalse": {
                 "comment": "aucune rubrique thématique n'est ouverte",
@@ -25884,7 +25907,7 @@
             }
         }
     },
-    "24425": {
+    "20352": {
         "test31": {
             "onfalse": {
                 "comment": "aucun PDF",
@@ -25894,11 +25917,11 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
+                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
                             "result": "nc"
                         }
                     }
@@ -25914,7 +25937,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test32": {
+                    "test34": {
                         "onfalse": {
                             "comment": "aucun DOC en dehors de la boîte en savoir plus",
                             "result": "c"
@@ -25930,7 +25953,7 @@
             }
         }
     },
-    "24443": {
+    "20370": {
         "test43": {
             "onfalse": {
                 "comment": "aucun lien externe dans les menus de navigation",
@@ -25942,7 +25965,7 @@
             }
         }
     },
-    "24444": {
+    "20371": {
         "TITLE": {
             "onfalse": {
                 "comment": "aucun élément TITLE n'a été détecté",
@@ -25966,7 +25989,7 @@
             }
         }
     },
-    "24446": {
+    "20373": {
         "test18": {
             "onfalse": {
                 "comment": "aucun élément A adjacent",
@@ -25978,7 +26001,7 @@
             }
         }
     },
-    "24447": {
+    "20374": {
         "test19": {
             "onfalse": {
                 "comment": "aucun élément A ayant le même texte et des cibles différentes",
@@ -25990,7 +26013,7 @@
             }
         }
     },
-    "24449": {
+    "20376": {
         "test20": {
             "onfalse": {
                 "comment": "aucun lien interne s'ouvrant dans une nouvelle fenêtre",
@@ -26002,7 +26025,7 @@
             }
         }
     },
-    "24454": {
+    "20381": {
         "test6": {
             "onfalse": {
                 "comment": "aucun TABLE complexe",
@@ -26063,13 +26086,13 @@
         }
     },
     "24564": {
-        "test26": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
             "onfalse": {
-                "comment": "aucune police ne possède une taille en unité absolue",
+                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police possède une taille en unité absolue",
+                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
                 "result": "nc"
             }
         }
@@ -26077,12 +26100,12 @@
     "24566": {
         "test27": {
             "onfalse": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "result": "nc"
             }
         }
     },
@@ -26169,11 +26192,11 @@
     "24609": {
         "test36": {
             "onfalse": {
-                "comment": "aucun H1 dans le contenu",
+                "comment": "moins de deux H1 dans le contenu",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins un H1 dans le contenu",
+                "comment": "au moins deux H1 dans le contenu",
                 "result": "nc"
             }
         },
@@ -26342,11 +26365,11 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
+                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
                             "result": "nc"
                         }
                     }
@@ -26362,7 +26385,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test32": {
+                    "test34": {
                         "onfalse": {
                             "comment": "aucun DOC en dehors de la boîte en savoir plus",
                             "result": "c"
@@ -26511,13 +26534,13 @@
         }
     },
     "26850": {
-        "test26": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
             "onfalse": {
-                "comment": "aucune police ne possède une taille en unité absolue",
+                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police possède une taille en unité absolue",
+                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
                 "result": "nc"
             }
         }
@@ -26593,11 +26616,11 @@
     "26887": {
         "test36": {
             "onfalse": {
-                "comment": "aucun H1 dans le contenu",
+                "comment": "moins de deux H1 dans le contenu",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins un H1 dans le contenu",
+                "comment": "au moins deux H1 dans le contenu",
                 "result": "nc"
             }
         },
@@ -26754,11 +26777,11 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
+                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
                             "result": "nc"
                         }
                     }
@@ -26774,7 +26797,7 @@
             },
             "ontrue": {
                 "chain": {
-                    "test32": {
+                    "test34": {
                         "onfalse": {
                             "comment": "aucun DOC en dehors de la boîte en savoir plus",
                             "result": "c"
