@@ -10903,12 +10903,12 @@
                 "chain": {
                     "H1_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H1 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H1 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H1 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -10925,12 +10925,12 @@
                 "chain": {
                     "H2_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H2 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H2 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H2 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -10947,12 +10947,12 @@
                 "chain": {
                     "H3_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H3 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H3 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H3 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -10969,12 +10969,12 @@
                 "chain": {
                     "H4_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H4 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H4 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H4 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -10991,12 +10991,12 @@
                 "chain": {
                     "H5_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H5 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H5 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H5 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -11013,12 +11013,12 @@
                 "chain": {
                     "H6_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H6 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H6 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H6 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -15498,12 +15498,12 @@
                 "chain": {
                     "H1_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H1 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H1 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H1 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -15520,12 +15520,12 @@
                 "chain": {
                     "H2_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H2 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H2 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H2 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -15542,12 +15542,12 @@
                 "chain": {
                     "H3_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H3 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H3 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H3 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -15564,12 +15564,12 @@
                 "chain": {
                     "H4_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H4 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H4 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H4 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -15586,12 +15586,12 @@
                 "chain": {
                     "H5_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H5 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H5 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H5 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },
@@ -15608,12 +15608,12 @@
                 "chain": {
                     "H6_W_TERMS_IN_META_KEYWORDS": {
                         "onfalse": {
-                            "comment": "aucun élément H6 dont au moins un terme est dans le meta keywords n'a été détecté",
-                            "result": "nc"
+                            "comment": "aucun élément H6 dont aucun terme n'est dans le meta keywords n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H6 dont aucun terme n'est dans le meta keywords a été détecté",
-                            "result": "c"
+                            "result": "nc"
                         }
                     }
                 },

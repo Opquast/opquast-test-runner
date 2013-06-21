@@ -208,12 +208,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("h" + level).each(function() {
                 //
-                var found = false;
-                var terms = $(this).text().trim().split(" ");
+                var found = false,
+                    terms = $(this).text().trim().split(" ");
+
                 try {
                     terms = $.merge(terms, $.trim($("img", this).attr("alt")).toLowerCase().split(" "));
-                } catch(e) {
-                }
+                } catch(e) {}
 
                 //
                 terms.some(function(value) {
