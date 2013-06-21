@@ -25183,12 +25183,12 @@
     "23912": {
         "test27": {
             "onfalse": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "nc"
+                "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "result": "c" 
             },
             "ontrue": {
-                "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "c"
+                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "result": "nc"
             }
         }
     },
