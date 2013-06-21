@@ -1044,6 +1044,7 @@ var logger;
      * @return
      */
     synthesize_results = function(arg_results) {
+        //alert(JSON.stringify(arg_results));
         try {
             //
             var _local_result = [];
