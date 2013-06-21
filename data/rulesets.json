@@ -26525,12 +26525,12 @@
     "26852": {
         "test27": {
             "onfalse": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "result": "nc"
             }
         }
     },

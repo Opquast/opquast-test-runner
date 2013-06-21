@@ -5,7 +5,7 @@ const file = require("file");
 const self = require("self");
 const {pathFor} = require("system");
 
-let fixtures = getHTMLFixtures('fixtures/rulesets/*'),
+let fixtures = getHTMLFixtures('fixtures/rulesets-debug/*'),
     server = startServer(9000);
 
 Object.keys(fixtures).forEach(function(root) {
