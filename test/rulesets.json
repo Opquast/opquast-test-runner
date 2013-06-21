@@ -6375,11 +6375,11 @@
         "test34": {
             "onfalse": {
                 "comment": "aucun DOC en dehors de la boîte en savoir plus",
-                "result": "c"
+                "result": "nc"
             },
             "ontrue": {
                 "comment": "au moins un DOC en dehors de la boîte en savoir plus",
-                "result": "nc"
+                "result": "c"
             }
         }
     },
