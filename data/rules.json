@@ -483,7 +483,7 @@
     "TEXTAREA_WO_TITLE_ATTR_WO_ANY_LABEL": "xpath@html://textarea[not(@title)][not(ancestor::form//label/@for=./@id or ancestor::label)]",
     "TEXTAREA_WO_UNIQUE_TITLE_ATTR_WO_UNIQUE_LABEL": "oqs@html:htmlTextareaWithoutTitleAndLabel",
     "TEXTAREA_W_ANY_LABEL_WO_FILLED_AND_UNIQUE_ID": "xpath@html://textarea[ancestor::form//label/@for=./@id or ancestor::label][normalize-space(@id)='' or normalize-space(@id)=normalize-space(preceding::*/@id) or normalize-space(@id)=normalize-space(following::*/@id)]",
-    "TEXTAREA_W_DEFAULT_VALUE": "xpath@html://textarea[normalize-space(text())!='']",
+    "TEXTAREA_W_DEFAULT_VALUE": "xpath@html://textarea[normalize-space(.)!='']",
     "TEXTAREA_W_FILLED_AND_UNIQUE_TITLE_ATTR": "xpath@html://textarea[normalize-space(@title)!=''][not(normalize-space(@title)=normalize-space(preceding::*/@title) or normalize-space(@title)=normalize-space(following::*/@title))]",
     "TEXT_ATTR": "xpath@html://body[@text]",
     "TH": "xpath@html://th",
@@ -539,5 +539,5 @@
     "test42": "xpath@html://a[starts-with(@href,'http://') or starts-with(@href,'https://')]",
     "test43": "oqs@html:linksNavigation",
     "test6": "xpath@html://table[.//tbody]",
-    "test_1": "xpath@html://a[@href][normalize-space(text())='Mentions légales']"
+    "test_1": "xpath@html://a[@href][normalize-space(translate(.,'M','m'))='mentions légales']"
 }
