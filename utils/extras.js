@@ -25,7 +25,7 @@ const extractEvents = function(win) {
     do {
         eventList = [];
         esl.getListenerInfoFor(tw.currentNode,{}).forEach(function(value, key, array) {
-            if (typeof(value.toSource) === "function") {
+            if (typeof(value.toSource) === "function" && value.toSource() !== null) {
                 eventList.push(value);
             }
         });

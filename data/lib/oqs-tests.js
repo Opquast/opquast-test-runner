@@ -471,7 +471,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             functions.forEach(function(element, index, array) {
                 if (reg.test(element)) {
                     //
-                    result.push(_function);
+                    result.push(element);
                 } else {
                     //
                     var aFunction = regFunction.exec(element);
@@ -5723,7 +5723,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
             });
 
-            promises.push(Q.resolve(_detectFunction("location\\.", $("body"), "onload")));
+            var bodyOnLoad = _detectFunction("location\\.", $("body"), "onload");
+            if (bodyOnLoad.length > 0 && bodyOnLoad[0] != '') {
+                promises.push(Q.resolve(bodyOnLoad));
+            }
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
@@ -5766,7 +5769,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsSetInterval = function jsSetInterval(doc) {
-        var reg = new RegExp().compile("setInterval\\(", "i"), promises = [];
+        var reg = new RegExp().compile("setInterval\\(", "i"),
+            promises = [];
 
         try {
             $("script:not([src])").each(function() {

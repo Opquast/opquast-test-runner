@@ -6275,18 +6275,6 @@
             }
         }
     },
-    "test26": {
-        "test26": {
-            "onfalse": {
-                "comment": "aucune police ne possède une taille en unité absolue",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins une police possède une taille en unité absolue",
-                "result": "c"
-            }
-        }
-    },
     "test27": {
         "test27": {
             "onfalse": {
