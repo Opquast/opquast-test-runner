@@ -1727,7 +1727,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlDefaultTitle = function htmlDefaultTitle(doc) {
         //
-        var result = [], reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \\d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
+        var result = [],
+            reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \\d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
 
         //
         try {
@@ -1761,7 +1762,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlDirAttribute = function htmlDirAttribute(doc) {
         //
-        var result = [], exclusions = ["APPLET", "BASE", "BASEFONT", "BR", "FRAME", "FRAMESET", "IFRAME", "PARAM", "SCRIPT"], values = ["", "ltr", "rtl"];
+        var result = [],
+            exclusions = ["APPLET", "BASE", "BASEFONT", "BR", "FRAME", "FRAMESET", "IFRAME", "PARAM", "SCRIPT"],
+            values = ["", "ltr", "rtl"];
 
         //
         try {

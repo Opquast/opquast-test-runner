@@ -95,7 +95,6 @@ var logger;
     // ------------------------------------------
 
     // ------------------------------------------
-    // Client API
     /**
      * Client API
      *
@@ -212,50 +211,6 @@ var logger;
     };
 
     /**
-     * Init on dom's load
-     *
-     * @author Fabrice Bonny, Mickaël Hoareau
-     * @version 1.0
-     */
-    /*function initJson() {
-        //
-        try {
-            //
-            if (tests === null || criteria === null) {
-                // load criteria and tests
-                $.get(api_url + "checklists/" + json_checklist + "/criteria/", function(data) {
-                    var _tmp = JSON.parse(data);
-
-                    //
-                    if (_tmp.test) {
-                        tests = _tmp.test;
-                    } else {
-                        logger.log('Init Error', 'tests not found');
-                    }
-
-                    //
-                    if (_tmp.criteria) {
-                        criteria = _tmp.criteria;
-                    } else {
-                        logger.log('Init Error', 'criteria not found');
-                    }
-                });
-            }
-
-            //
-            return true;
-        }
-
-        //
-        catch (err) {
-            logger.error("initJson", err);
-        }
-
-        //
-        return false;
-    }*/
-
-    /**
      *
      * @param doc
      * @return
@@ -332,12 +287,6 @@ var logger;
             res.filter(function(val) {
                 return val !== false;
             }).forEach(function(val) {
-                if ($.isArray(callback)) {
-                    callback.push({
-                        "media": val.media,
-                        "href": val.src
-                    });
-                }
                 subPromises.push(_analyseStylesheet(val.sheet, val.media, callback));
             });
             return Q.promised(Array).apply(null, subPromises);
@@ -433,8 +382,8 @@ var logger;
             for (var l = 0; l < rule.media.length; l++) {
                 var _media = rule.media.item && rule.media.item(l) || rule.media[l];
                 if ($.startsWith(_media, media) || $.startsWith(_media, "only " + media) || _media == "all") {
-                    var re = new RegExp().compile("['\"]([^'\"\\)]*)['\"]", "i");
-                    rule.href.match(re);
+                    var re = new RegExp().compile("[\('\"]+([^\('\"\)]+)", "i");
+                    re.test(rule.href);
                     var href = $.trim(RegExp.$1);
 
                     promises.push(
@@ -463,12 +412,6 @@ var logger;
                 res.filter(function(val) {
                     return val !== false;
                 }).forEach(function(val) {
-                    if ($.isArray(callback)) {
-                        callback.push({
-                            "media": val.media,
-                            "href": val.src
-                        });
-                    }
                     subPromises.push(_analyseStylesheet(val.sheet, val.media, callback));
                 });
                 return Q.promised(Array).apply(null, subPromises);
@@ -734,33 +677,24 @@ var logger;
         }
 
         //
-        var tmp;
+        var tmp
+            text = "",
+            treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+                acceptNode: function(_node) {
+                    //
+                    if (_node.tagName == "IMG") {
+                        text += " " + $(_node).attr("alt").trim();
+                    }
 
-        /*// cached
-        if($(node).data("_all_text")) {
-        tmp = $(node).data("_all_text");
-        }
+                    //
+                    else if (_node.nodeType == Node.TEXT_NODE) {
+                        text += " " + $.trim(_node.nodeValue);
+                    }
 
-        // not cached
-        else {*/
-        //
-        var text = "";
-        var treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
-            acceptNode: function(_node) {
-                //
-                if (_node.tagName == "IMG") {
-                    text += " " + $(_node).attr("alt").trim();
+                    //
+                    return NodeFilter.FILTER_ACCEPT;
                 }
-
-                //
-                else if (_node.nodeType == Node.TEXT_NODE) {
-                    text += " " + $.trim(_node.nodeValue);
-                }
-
-                //
-                return NodeFilter.FILTER_ACCEPT;
-            }
-        }, false);
+            }, false);
 
         //
         while (treeWalker.nextNode()) {
@@ -768,9 +702,6 @@ var logger;
 
         //
         tmp = $.trim(text.toLowerCase());
-        /*// caching
-        $(node).data("_all_text", tmp);
-        }*/
 
         //
         return tmp;
@@ -788,25 +719,16 @@ var logger;
         }
 
         //
-        var tmp;
+        var tmp,
+            text = "",
+            treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, {
+                acceptNode: function(_node) {
+                    text += " " + $.trim(_node.nodeValue);
 
-        /*// cached
-        if($(node).data("_all_text")) {
-        tmp = $(node).data("_all_text");
-        }
-
-        // not cached
-        else {*/
-        //
-        var text = "";
-        var treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, {
-            acceptNode: function(_node) {
-                text += " " + $.trim(_node.nodeValue);
-
-                //
-                return NodeFilter.FILTER_ACCEPT;
-            }
-        }, false);
+                    //
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            }, false);
 
         //
         while (treeWalker.nextNode()) {
@@ -814,9 +736,6 @@ var logger;
 
         //
         tmp = $.trim(text.toLowerCase());
-        /*// caching
-        $(node).data("_all_text", tmp);
-        }*/
 
         //
         return tmp;
@@ -1353,13 +1272,6 @@ var logger;
                         _comparison = new RegExp(_value + "$", "i");
                     }
 
-                    /* else if (re_ends_with.test(_test)) {
-                    //
-                    _property = RegExp.$1;
-                    _value = RegExp.$2;
-                    _comparison = new RegExp(_value + "$", "i");
-                    }*/
-
                     //
                     else if (contains.test(_test)) {
                         //
@@ -1581,8 +1493,7 @@ var logger;
     function apply_regexp_test(doc, test, language) {
         //
         var _result = [],
-            reg = new RegExp().compile(test, "i"),
-            scripts = doc.scripts;
+            reg = new RegExp().compile(test, "i");
 
         //
         try {
@@ -1618,13 +1529,74 @@ var logger;
 
             //
             else if (language == "css") {
-                _analyseStylesheets(doc, "screen", []).then(function(parse) {
-                    parse.forEach(function(element, index, array) {
-                        if (reg.test(element.content)) {
-                            _result.push(element.href);
-                        }
-                    });
+                // external
+                $("link[rel='stylesheet']").each(function() {
+                    var _this = this,
+                        _href = $(this).attr('href');
+
+                    // external
+                    if (_href && _href.length) {
+                        //
+                        $.ajax(_href, {
+                            async: false,
+                            success: function(data, textStatus, XMLHttpRequest) {
+                                //
+                                if (reg.test(data)) {
+                                    _result.push(_getDetails(_this));
+                                }
+                            },
+                            dataType: "text"
+                        });
+                    }
                 });
+
+                // internal
+                $('style').each(function() {
+                    //
+                    var _this = this,
+                        _data = $(this).text();
+
+                    //
+                    if (_data.length) {
+                        //
+                        if (reg.test(_data)) {
+                            _result.push(_getDetails(_this));
+                        }
+                    }
+                });
+
+                // imported
+                var _styleSheets = doc.styleSheets;
+
+                for (var i = 0; i < _styleSheets.length; i++) {
+                    //
+                    var sheet = _styleSheets[i],
+                        rules = sheet.cssRules;
+
+                    //
+                    for (var j = 0; j < rules.length; j++) {
+                        //
+                        if (rules[j].type == CSSRule.IMPORT_RULE) {
+                            var _sheet = rules[j].styleSheet,
+                                _href = _sheet.href;
+
+                            //
+                            if (_href && _href.length) {
+                                //
+                                $.ajax(_href, {
+                                    async: false,
+                                    success: function(data, textStatus, XMLHttpRequest) {
+                                        //
+                                        if (reg.test(data)) {
+                                            _result.push(_href);
+                                        }
+                                    },
+                                    dataType: "text"
+                                });
+                            }
+                        }
+                    }
+                }
             }
 
             //
@@ -1632,28 +1604,23 @@ var logger;
                 //
                 $("script").each(function() {
                     //
-                    var _src = $(this).attr("src"),
+                    var _this = this,
+                        _src = $(this).attr("src"),
                         _data = $(this).text();
 
                     // external
                     if (_src && _src.length) {
                         //
-                        if (!$.data(doc.body, _src)) {
-                            //
-                            $.ajax(_src, {
-                                async: false,
-                                success: function(data, textStatus, XMLHttpRequest) {
-                                    //
-                                    $.data(doc.body, _src, data);
-                                },
-                                dataType: "text"
-                            });
-                        }
-
-                        //
-                        if (reg.test($.data(doc.body, _src))) {
-                            _result.push(_getDetails(this));
-                        }
+                        $.ajax(_src, {
+                            async: false,
+                            success: function(data, textStatus, XMLHttpRequest) {
+                                //
+                                if (reg.test(data)) {
+                                    _result.push(_getDetails(_this));
+                                }
+                            },
+                            dataType: "text"
+                        });
                     }
 
                     // internal
