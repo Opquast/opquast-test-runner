@@ -27811,30 +27811,6 @@
             }
         }
     },
-    "29529": {
-        "IMG": {
-            "onfalse": {
-                "comment": "aucun élément IMG n'a été détecté",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "IMG_WO_ALT_ATTR": {
-                        "onfalse": {
-                            "comment": "aucun élément IMG sans attribut ALT n'a été détecté",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un élément IMG sans attribut ALT a été détecté",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément IMG a été détecté",
-                "result": "i"
-            }
-        }
-    },
     "29537": {
         "CSS_FOCUS_STYLE": {
             "onfalse": {

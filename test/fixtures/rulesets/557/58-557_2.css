@@ -1,0 +1,13 @@
+li {
+    color: red;
+}
+a.plop:focus {
+    outline-style: none;
+    color: red;
+}
+a.plop2:focus {
+    outline-color: transparent;
+}
+a.plop3:focus {
+    outline-width: 0;
+}

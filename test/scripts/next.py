@@ -11,7 +11,7 @@ for key, value in json_sets.items():
     if key in ['TABLE', 'FORM', 'LIST', 'IMG']:
         continue
     
-    val = dumps(value).replace('"nc"', '""').replace('"c"', '""').replace('"na"', '""').replace('"i"', '""')
+    val = dumps(value) #.replace('"nc"', '""').replace('"c"', '""').replace('"na"', '""').replace('"i"', '""')
     try:
         sets[val].append(key)
     except:
@@ -23,10 +23,11 @@ done = False
 rest = 0
 
 for key, value in sets.items():
-    if len(value) > 0:
+    if len(value) > 1:
         for val in value:
             if not exists(join(getcwd(), 'test/fixtures/rulesets/', val) + '/') and \
                     not exists(join(getcwd(), 'test/fixtures/rulesets-debug/', val) + '/') and \
+                    not exists(join(getcwd(), 'test/fixtures/rulesets-impossible/', val) + '/') and \
                     not exists(join(getcwd(), 'test/fixtures/rulesets-stock/', val) + '/'):
                 if done == False:
                     todo = True
