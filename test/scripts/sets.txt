@@ -1,2 +1,2 @@
-2572 of 2657 tests passed.
-Total time: 1783 seconds
+  opquast-tests/tests/test-sets.test 21615_8-2-21615_1: failure
+  opquast-tests/tests/test-sets.test 21615_8-2-21615_3: failure

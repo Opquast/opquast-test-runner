@@ -63,34 +63,6 @@
             }
         }
     },
-    "10119": {
-        "CSS_BACKGROUND_IMAGE": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "i"
-            }
-        },
-        "CSS_CONTENT": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "i"
-            }
-        }
-    },
-    "10148": {
-        "JS_REFRESH": {
-            "onfalse": {
-                "result": "na"
-            },
-            "ontrue": {
-                "result": "i"
-            }
-        }
-    },
     "10210": {
         "APPLET": {
             "onfalse": {
@@ -215,26 +187,6 @@
             }
         }
     },
-    "13639": {
-        "CHARSET_UNICODE": {
-            "onfalse": {
-                "result": "nc"
-            },
-            "ontrue": {
-                "result": "c"
-            }
-        }
-    },
-    "13654": {
-        "ROBOTS_W_VALID_SITEMAP": {
-            "onfalse": {
-                "result": "nc"
-            },
-            "ontrue": {
-                "result": "c"
-            }
-        }
-    },
     "13657": {
         "CSS_MEDIA_HANDHELD": {
             "onfalse": {
@@ -247,176 +199,8 @@
             }
         }
     },
-    "13662": {
-        "SCRIPT": {
-            "onfalse": {
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "JS_W_CR": {
-                        "onfalse": {
-                            "chain": {
-                                "JS_W_REDUDANT_SPACES": {
-                                    "onfalse": {
-                                        "result": "c"
-                                    },
-                                    "ontrue": {
-                                        "result": "nc"
-                                    }
-                                }
-                            },
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "result": "nc"
-                        }
-                    }
-                },
-                "result": "i"
-            }
-        }
-    },
-    "16221": {
-        "INLINKS": {
-            "onfalse": {
-                "result": "nc"
-            },
-            "ontrue": {
-                "result": "c"
-            }
-        }
-    },
-    "16240": {
-        "CSS_BACKGROUND_IMAGE": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "i"
-            }
-        },
-        "CSS_CONTENT": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "i"
-            }
-        }
-    },
-    "16267": {
-        "HTTP_404": {
-            "onfalse": {
-                "result": "nc"
-            },
-            "ontrue": {
-                "result": "c"
-            }
-        }
-    },
-    "19014": {
-        "SCRIPT": {
-            "onfalse": {
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "JS_W_CR": {
-                        "onfalse": {
-                            "chain": {
-                                "JS_W_REDUDANT_SPACES": {
-                                    "onfalse": {
-                                        "result": "c"
-                                    },
-                                    "ontrue": {
-                                        "result": "nc"
-                                    }
-                                }
-                            },
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "result": "nc"
-                        }
-                    }
-                },
-                "result": "i"
-            }
-        }
-    },
-    "19015": {
-        "LINK_STYLESHEET": {
-            "onfalse": {
-                "chain": {
-                    "STYLE": {
-                        "onfalse": {
-                            "result": "na"
-                        },
-                        "ontrue": {
-                            "chain": {
-                                "CSS_W_CR": {
-                                    "onfalse": {
-                                        "chain": {
-                                            "CSS_W_REDUDANT_SPACES": {
-                                                "onfalse": {
-                                                    "result": "c"
-                                                },
-                                                "ontrue": {
-                                                    "result": "nc"
-                                                }
-                                            }
-                                        },
-                                        "result": "c"
-                                    },
-                                    "ontrue": {
-                                        "result": "nc"
-                                    }
-                                }
-                            },
-                            "result": "i"
-                        }
-                    }
-                },
-                "result": "i"
-            },
-            "ontrue": {
-                "chain": {
-                    "CSS_W_CR": {
-                        "onfalse": {
-                            "chain": {
-                                "CSS_W_REDUDANT_SPACES": {
-                                    "onfalse": {
-                                        "result": "c"
-                                    },
-                                    "ontrue": {
-                                        "result": "nc"
-                                    }
-                                }
-                            },
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "result": "nc"
-                        }
-                    }
-                },
-                "result": "i"
-            }
-        }
-    },
     "19038": {
         "URI_UNIQUE_IN_PAGE": {
-            "onfalse": {
-                "result": "nc"
-            },
-            "ontrue": {
-                "result": "c"
-            }
-        }
-    },
-    "19039": {
-        "HTTP_WO_REDIRECT": {
             "onfalse": {
                 "result": "nc"
             },
@@ -588,16 +372,6 @@
     "19918": {
         "NO_REDIRECTION": {}
     },
-    "21435": {
-        "CSS_BACKGROUND_IMAGE": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "i"
-            }
-        }
-    },
     "21438": {
         "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_ON_SCREEN": {
             "onfalse": {
@@ -675,24 +449,6 @@
             },
             "ontrue": {
                 "result": "i"
-            }
-        }
-    },
-    "21630": {
-        "CSS_BACKGROUND_IMAGE": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "i"
-            }
-        },
-        "CSS_CONTENT": {
-            "onfalse": {
-                "result": "i"
-            },
-            "ontrue": {
-                "result": "nc"
             }
         }
     },
@@ -784,24 +540,6 @@
             }
         }
     },
-    "504": {
-        "CSS_BACKGROUND_IMAGE": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "i"
-            }
-        },
-        "CSS_CONTENT": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "i"
-            }
-        }
-    },
     "532": {
         "RESOURCE_DOWNLOADABLE": {
             "onfalse": {
@@ -812,26 +550,6 @@
             }
         }
     },
-    "576": {
-        "HTTP_WWW": {
-            "onfalse": {
-                "result": "nc"
-            },
-            "ontrue": {
-                "result": "c"
-            }
-        }
-    },
-    "578": {
-        "HTTP_404": {
-            "onfalse": {
-                "result": "nc"
-            },
-            "ontrue": {
-                "result": "c"
-            }
-        }
-    },
     "612": {
         "RESOURCE_DOWNLOADABLE": {
             "onfalse": {
@@ -839,16 +557,6 @@
             },
             "ontrue": {
                 "result": "i"
-            }
-        }
-    },
-    "620": {
-        "CSS_HOVER_LINKS": {
-            "onfalse": {
-                "result": "i"
-            },
-            "ontrue": {
-                "result": "nc"
             }
         }
     },
@@ -864,26 +572,6 @@
             }
         }
     },
-    "640": {
-        "CSS_GENERIC_FONT": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "nc"
-            }
-        }
-    },
-    "641": {
-        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "nc"
-            }
-        }
-    },
     "678": {
         "RESOURCE_PDF": {
             "onfalse": {
@@ -891,16 +579,6 @@
             },
             "ontrue": {
                 "result": "i"
-            }
-        }
-    },
-    "702": {
-        "CSS_FONTS_NUMBER": {
-            "onfalse": {
-                "result": "c"
-            },
-            "ontrue": {
-                "result": "nc"
             }
         }
     },
@@ -913,96 +591,6 @@
             "ontrue": {
                 "comment": "au moins une CSS pour le mobile (media handheld) a été détectée",
                 "result": "c"
-            }
-        }
-    },
-    "715": {
-        "SCRIPT": {
-            "onfalse": {
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "JS_W_CR": {
-                        "onfalse": {
-                            "chain": {
-                                "JS_W_REDUDANT_SPACES": {
-                                    "onfalse": {
-                                        "result": "c"
-                                    },
-                                    "ontrue": {
-                                        "result": "nc"
-                                    }
-                                }
-                            },
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "result": "nc"
-                        }
-                    }
-                },
-                "result": "i"
-            }
-        }
-    },
-    "716": {
-        "LINK_STYLESHEET": {
-            "onfalse": {
-                "chain": {
-                    "STYLE": {
-                        "onfalse": {
-                            "result": "na"
-                        },
-                        "ontrue": {
-                            "chain": {
-                                "CSS_W_CR": {
-                                    "onfalse": {
-                                        "chain": {
-                                            "CSS_W_REDUDANT_SPACES": {
-                                                "onfalse": {
-                                                    "result": "c"
-                                                },
-                                                "ontrue": {
-                                                    "result": "nc"
-                                                }
-                                            }
-                                        },
-                                        "result": "c"
-                                    },
-                                    "ontrue": {
-                                        "result": "nc"
-                                    }
-                                }
-                            },
-                            "result": "i"
-                        }
-                    }
-                },
-                "result": "i"
-            },
-            "ontrue": {
-                "chain": {
-                    "CSS_W_CR": {
-                        "onfalse": {
-                            "chain": {
-                                "CSS_W_REDUDANT_SPACES": {
-                                    "onfalse": {
-                                        "result": "c"
-                                    },
-                                    "ontrue": {
-                                        "result": "nc"
-                                    }
-                                }
-                            },
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "result": "nc"
-                        }
-                    }
-                },
-                "result": "i"
             }
         }
     }
