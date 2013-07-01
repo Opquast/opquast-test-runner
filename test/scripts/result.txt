@@ -7,14 +7,14 @@ RULES
 	STOCK
 		rules in JSON and not in dir
 		rules in dir and not in JSON
-RULESETS
+SETS
 	DONE
-		rulesets in JSON and not in dir
-		rulesets in dir and not in JSON
+		sets in JSON and not in dir
+		sets in dir and not in JSON
 	DEBUG
-		rulesets in dir and not in JSON
+		sets in dir and not in JSON
 	STOCK
-		rulesets in JSON and not in dir
+		sets in JSON and not in dir
 			19186
 			19187
 			19185
@@ -38,7 +38,7 @@ RULESETS
 			21438
 			21518
 			21452
-		rulesets in dir and not in JSON
+		sets in dir and not in JSON
 			10193
 			11341
 			1162

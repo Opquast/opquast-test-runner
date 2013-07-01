@@ -18,7 +18,7 @@ exports.dataRoot = dataRoot;
 
 var JS_FILES = [];
 var RULES = [];
-var RULESETS = [];
+var SETS = [];
 
 
 const addFilesToList = function(name, listRef) {
@@ -55,8 +55,8 @@ exports.addRules = addRules;
 exports.removeRules = removeRules;
 
 
-const addRuleSets = addFilesToList('rulesets', RULESETS);
-const removeRuleSets = removeFilesFromList('rulesets', RULESETS);
+const addRuleSets = addFilesToList('rulesets', SETS);
+const removeRuleSets = removeFilesFromList('rulesets', SETS);
 exports.addRuleSets = addRuleSets;
 exports.removeRuleSets = removeRuleSets;
 
@@ -67,7 +67,7 @@ const getRules = function() {
     RULES.forEach(function(uri) {
         result['rules'] = mix(result['rules'], JSON.parse(readURISync(uri)));
     });
-    RULESETS.forEach(function(uri) {
+    SETS.forEach(function(uri) {
         result['rulesets'] = mix(result['rulesets'], JSON.parse(readURISync(uri)));
     });
 

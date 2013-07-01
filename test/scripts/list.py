@@ -47,50 +47,50 @@ for dir in listdir(rules_stock_path):
     if dir not in rules_stock_json:
         print '\t\t\t' + dir
         
-rulesets_json_path = 'data/rulesets.json'
-rulesets_json = load(open(rulesets_json_path)).keys()
-rulesets_stock_json_path = 'test/rulesets-stock.json'
-rulesets_stock_json = load(open(rulesets_stock_json_path)).keys()
+sets_json_path = 'data/rulesets.json'
+sets_json = load(open(sets_json_path)).keys()
+sets_stock_json_path = 'test/sets-stock.json'
+sets_stock_json = load(open(sets_stock_json_path)).keys()
 
-rulesets_path = 'test/fixtures/rulesets/'
-rulesets_debug_path = 'test/fixtures/rulesets-debug/'
-rulesets_impossible_path = 'test/fixtures/rulesets-impossible/'
-rulesets_stock_path = 'test/fixtures/rulesets-stock/'
+sets_path = 'test/fixtures/sets/'
+sets_debug_path = 'test/fixtures/sets-debug/'
+sets_impossible_path = 'test/fixtures/sets-impossible/'
+sets_stock_path = 'test/fixtures/sets-stock/'
 
-print 'RULESETS'
+print 'SETS'
 print '\tDONE'
-print '\t\trulesets in JSON and not in dir'
+print '\t\tsets in JSON and not in dir'
 
-for rule in rulesets_json:
-    if not exists(join(getcwd(), rulesets_path, rule) + '/') and not exists(join(getcwd(), rulesets_debug_path, rule) + '/') \
-            and not exists(join(getcwd(), rulesets_impossible_path, rule) + '/') \
+for rule in sets_json:
+    if not exists(join(getcwd(), sets_path, rule) + '/') and not exists(join(getcwd(), sets_debug_path, rule) + '/') \
+            and not exists(join(getcwd(), sets_impossible_path, rule) + '/') \
             and rule not in ('FORM', 'LIST', 'TABLE', 'IMG'):
         print '\t\t\t' + rule
-    if exists(join(getcwd(), rulesets_stock_path, rule) + '/'):
+    if exists(join(getcwd(), sets_stock_path, rule) + '/'):
         print '\t\t\t\tin stock'
 
-print '\t\trulesets in dir and not in JSON'
+print '\t\tsets in dir and not in JSON'
          
-for dir in listdir(rulesets_path):
-    if dir not in rulesets_json:
+for dir in listdir(sets_path):
+    if dir not in sets_json:
         print '\t\t\t' + dir
         
 print '\tDEBUG'
-print '\t\trulesets in dir and not in JSON'
+print '\t\tsets in dir and not in JSON'
          
-for dir in listdir(rulesets_debug_path):
-    if dir not in rulesets_json:
+for dir in listdir(sets_debug_path):
+    if dir not in sets_json:
         print '\t\t\t' + dir
         
 print '\tSTOCK'
-print '\t\trulesets in JSON and not in dir'
+print '\t\tsets in JSON and not in dir'
 
-for rule in rulesets_stock_json:
-     if not exists(join(getcwd(), rulesets_stock_path, rule) + '/'):
+for rule in sets_stock_json:
+     if not exists(join(getcwd(), sets_stock_path, rule) + '/'):
          print '\t\t\t' + rule
          
-print '\t\trulesets in dir and not in JSON'
+print '\t\tsets in dir and not in JSON'
          
-for dir in listdir(rulesets_stock_path):
-    if dir not in rulesets_stock_json:
+for dir in listdir(sets_stock_path):
+    if dir not in sets_stock_json:
         print '\t\t\t' + dir

@@ -1,0 +1,9 @@
+{
+    "/fixe.jpg": {
+        "_url": "http://localhost:9000/fixe.jpg",
+        "_imageInfo": {
+            "width": 100,
+            "height": 100
+        }
+    }
+}

@@ -3,10 +3,10 @@ from os import listdir
 from json import load
 
 json_criteria = load(open('test/scripts/criteria.json'))
-id = ""
+id = "10107"
 
 for dir in listdir('test/fixtures'):
-    if dir not in ['rules', 'rules-debug', 'rules-stock', 'rulesets', 'rulesets-debug', 'rulesets-impossible', 'rulesets-stock'] and dir != id:
+    if dir not in ['rules', 'rules-debug', 'rules-impossible', 'rules-stock', 'sets', 'sets-debug', 'sets-impossible', 'sets-stock'] and dir != id:
         for x in range(20):
             _id = json_criteria[id].replace('.', '-').replace('[', '').replace(']', '')
             _dir = json_criteria[dir].replace('.', '-').replace('[', '').replace(']', '').lower()
@@ -33,6 +33,11 @@ for dir in listdir('test/fixtures'):
             
             try:
                 copy ('test/fixtures/%s/%s-%s_%s.js' % (id, _id, id, x + 1), 'test/fixtures/%s/%s-%s_%s.js' % (dir, _dir, dir, x + 1))
+            except:
+                pass
+            
+            try:
+                copy ('test/fixtures/%s/_all.json' % (id, _id, id, x + 1), 'test/fixtures/%s/_all.json' % (dir, _dir, dir, x + 1))
             except:
                 pass
             
