@@ -54,6 +54,7 @@ rulesets_stock_json = load(open(rulesets_stock_json_path)).keys()
 
 rulesets_path = 'test/fixtures/rulesets/'
 rulesets_debug_path = 'test/fixtures/rulesets-debug/'
+rulesets_impossible_path = 'test/fixtures/rulesets-impossible/'
 rulesets_stock_path = 'test/fixtures/rulesets-stock/'
 
 print 'RULESETS'
@@ -62,7 +63,8 @@ print '\t\trulesets in JSON and not in dir'
 
 for rule in rulesets_json:
     if not exists(join(getcwd(), rulesets_path, rule) + '/') and not exists(join(getcwd(), rulesets_debug_path, rule) + '/') \
-            and not exists(join(getcwd(), fixtures_path, rule) + '/') and rule not in ['FROM', 'LIST', 'TABLE', 'IMG']:
+            and not exists(join(getcwd(), rulesets_impossible_path, rule) + '/') \
+            and rule not in ('FORM', 'LIST', 'TABLE', 'IMG'):
         print '\t\t\t' + rule
     if exists(join(getcwd(), rulesets_stock_path, rule) + '/'):
         print '\t\t\t\tin stock'

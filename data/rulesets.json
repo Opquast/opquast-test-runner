@@ -2598,11 +2598,11 @@
         },
         "INPUT_WO_NEGATIVE_TABINDEX_ATTR": {
             "onfalse": {
-                "comment": "aucun élément INPUT n'a été détecté",
+                "comment": "aucun élément INPUT avec un attribut TABINDEX négatif n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
-                "comment": "au moins un élément INPUT a été détecté",
+                "comment": "au moins un élément INPUT avec un attribut TABINDEX négatif a été détecté",
                 "result": "i"
             }
         },
@@ -3716,18 +3716,6 @@
             "ontrue": {
                 "comment": "au moins une pop-up a été détectée",
                 "result": "nc"
-            }
-        }
-    },
-    "11313": {
-        "HTTP_WWW": {
-            "onfalse": {
-                "comment": "le site ne fonctionne pas avec et sans www.",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "le site fonctionne avec et sans www.",
-                "result": "c"
             }
         }
     },
@@ -9142,11 +9130,11 @@
         },
         "INPUT_WO_NEGATIVE_TABINDEX_ATTR": {
             "onfalse": {
-                "comment": "aucun élément INPUT n'a été détecté",
+                "comment": "aucun élément INPUT avec un attribut TABINDEX négatif n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
-                "comment": "au moins un élément INPUT a été détecté",
+                "comment": "au moins un élément INPUT avec un attribut TABINDEX négatif a été détecté",
                 "result": "i"
             }
         },
@@ -22764,24 +22752,70 @@
         }
     },
     "21630": {
-        "CSS_BACKGROUND_IMAGE": {
+        "LINK_STYLESHEET": {
             "onfalse": {
-                "comment": "aucune image ajoutée par CSS n'a été détecté",
-                "result": "c"
+                "chain": {
+                    "STYLE": {
+                        "onfalse": {
+                            "comment": "aucun élément STYLE n'a été détecté",
+                            "result": "na"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "CSS_BACKGROUND_IMAGE": {
+                                    "onfalse": {
+                                        "comment": "aucune image ajoutée par CSS n'a été détecté",
+                                        "result": "c"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins une image ajoutée par CSS a été détecté",
+                                        "result": "i"
+                                    }
+                                },
+                                "CSS_CONTENT": {
+                                    "onfalse": {
+                                        "comment": "aucun contenu textuel ajouté par CSS n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un contenu textuel ajouté par CSS a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément STYLE a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "aucun élément LINK avec l'attribut REL ayant la valeur STYLESHEET n'a été détecté",
+                "result": "i"
             },
             "ontrue": {
-                "comment": "au moins une image ajoutée par CSS a été détecté",
+                "chain": {
+                    "CSS_BACKGROUND_IMAGE": {
+                        "onfalse": {
+                            "comment": "aucune image ajoutée par CSS n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins une image ajoutée par CSS a été détecté",
+                            "result": "i"
+                        }
+                    },
+                    "CSS_CONTENT": {
+                        "onfalse": {
+                            "comment": "aucun contenu textuel ajouté par CSS n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un contenu textuel ajouté par CSS a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un LINK avec l'attribut REL ayant la valeur STYLESHEET a été détecté",
                 "result": "i"
-            }
-        },
-        "CSS_CONTENT": {
-            "onfalse": {
-                "comment": "aucun contenu textuel ajouté par CSS n'a été détecté",
-                "result": "i"
-            },
-            "ontrue": {
-                "comment": "au moins un contenu textuel ajouté par CSS a été détecté",
-                "result": "nc"
             }
         }
     },
@@ -31502,11 +31536,11 @@
         },
         "INPUT_WO_NEGATIVE_TABINDEX_ATTR": {
             "onfalse": {
-                "comment": "aucun élément INPUT n'a été détecté",
+                "comment": "aucun élément INPUT avec un attribut TABINDEX négatif n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
-                "comment": "au moins un élément INPUT a été détecté",
+                "comment": "au moins un élément INPUT avec un attribut TABINDEX négatif a été détecté",
                 "result": "i"
             }
         },

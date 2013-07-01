@@ -41,6 +41,8 @@ for key, value in sets.items():
                     move(join(getcwd(), 'test/fixtures/rulesets/', val), join(getcwd(), 'test/fixtures/'))
                 elif exists(join(getcwd(), 'test/fixtures/rulesets-debug/', val) + '/'):
                     move(join(getcwd(), 'test/fixtures/rulesets-debug/', val), join(getcwd(), 'test/fixtures/'))
+                elif exists(join(getcwd(), 'test/fixtures/rulesets-impossible/', val) + '/'):
+                    move(join(getcwd(), 'test/fixtures/rulesets-impossible/', val), join(getcwd(), 'test/fixtures/'))
                 elif exists(join(getcwd(), 'test/fixtures/rulesets-stock/', val) + '/'):
                     move(join(getcwd(), 'test/fixtures/rulesets-stock/', val), join(getcwd(), 'test/fixtures/'))
                 else:
