@@ -3,7 +3,7 @@ from os import listdir
 from json import load
 
 json_criteria = load(open('test/scripts/criteria.json'))
-id = "10107"
+id = ""
 
 for dir in listdir('test/fixtures'):
     if dir not in ['rules', 'rules-debug', 'rules-impossible', 'rules-stock', 'sets', 'sets-debug', 'sets-impossible', 'sets-stock'] and dir != id:

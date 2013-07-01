@@ -11,6 +11,7 @@ rules_stock_json = load(open(rules_stock_json_path)).keys()
 
 rules_path = 'test/fixtures/rules/'
 rules_debug_path = 'test/fixtures/rules-debug/'
+rules_impossible_path = 'test/fixtures/rules-impossible/'
 rules_stock_path = 'test/fixtures/rules-stock/'
 
 print 'RULES'
@@ -18,7 +19,8 @@ print '\tDONE'
 print '\t\trules in JSON and not in dir'
 
 for rule in rules_json:
-     if not exists(join(getcwd(), rules_path, rule) + '/') and not exists(join(getcwd(), rules_debug_path, rule) + '/'):
+     if not exists(join(getcwd(), rules_path, rule) + '/') and not exists(join(getcwd(), rules_debug_path, rule) + '/')\
+            and not exists(join(getcwd(), rules_impossible_path, rule) + '/'):
          print '\t\t\t' + rule
 
 print '\t\trules in dir and not in JSON'

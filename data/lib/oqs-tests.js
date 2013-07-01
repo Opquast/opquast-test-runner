@@ -3844,7 +3844,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 // is not text
-                if (content_type && content_type.split("/")[0] != "text" && $.inArray(content_type, ["application/javascript", "application/x-javascript"]) == -1 && !reg.test(content_type)) {
+                if (content_type && content_type.split("/")[0] != "text" &&
+                        $.inArray(content_type, ["application/javascript", "application/x-javascript", "image/svg+xml"]) == -1 &&
+                        !reg.test(content_type)) {
                     //
                     var tmp = _getHttpDetails(element.uri, element.headers);
 

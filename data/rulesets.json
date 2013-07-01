@@ -7266,25 +7266,25 @@
         }
     },
     "13684": {
-        "SELECT": {
+        "SELECT_W_3_OPTIONS": {
             "onfalse": {
-                "comment": "aucun élément SELECT n'a été détecté",
+                "comment": "aucun élément SELECT avec 3 OPTION ou plus n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
                 "chain": {
-                    "OPTGROUP": {
+                    "SELECT_W_3_OPTIONS_WO_OPTGROUP": {
                         "onfalse": {
-                            "comment": "aucun élément OPTGROUP n'a été détecté",
-                            "result": "i"
+                            "comment": "aucun élément SELECT avec 3 OPTION ou plus et sans OPTGROUP n'a été détecté",
+                            "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément OPTGROUP a été détecté",
-                            "result": "c"
+                            "comment": "au moins un élément SELECT avec 3 OPTION ou plus et sans OPTGROUP a été détecté",
+                            "result": "i"
                         }
                     }
                 },
-                "comment": "au moins un élément SELECT a été détecté",
+                "comment": "au moins un élément SELECT avec 3 OPTION ou plus a été détecté",
                 "result": "i"
             }
         }
@@ -9709,9 +9709,21 @@
         "DOCTYPE_PRESENT": {
             "onfalse": {
                 "comment": "le DOCTYPE est absent",
-                "result": "i"
+                "result": "na"
             },
             "ontrue": {
+                "chain": {
+                    "DOCTYPE_PLACED": {
+                        "onfalse": {
+                            "comment": "le DOCTYPE est mal positionné",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "le DOCTYPE est bien positionné",
+                            "result": "c"
+                        }
+                    }
+                },
                 "comment": "le DOCTYPE est présent",
                 "result": "c"
             }
