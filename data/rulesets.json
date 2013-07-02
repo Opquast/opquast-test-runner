@@ -27593,6 +27593,18 @@
             }
         }
     },
+    "29398": {
+        "A_W_MAILTO_HREF_ATTRIBUTE": {
+            "onfalse": {
+                "comment": "aucun élément A avec un HREF mailto n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec un HREF mailto a été détecté",
+                "result": "nc"
+            }
+        }
+    },
     "29436": {
         "CHARSET_UNICODE": {
             "onfalse": {
@@ -27626,6 +27638,42 @@
                 },
                 "comment": "le META CONTENT-TYPE précisant le CHARSET est présent",
                 "result": "i"
+            }
+        }
+    },
+    "29438": {
+        "CSS_SERIF_FONT": {
+            "onfalse": {
+                "comment": "aucune police serif connue n'a été détecté",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "au moins une police serif a été détectée",
+                "result": "nc"
+            }
+        }
+    },
+    "29439": {
+        "CSS_FONTS_NUMBER_4": {
+            "onfalse": {
+                "comment": "pas plus de 4 polices définies",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "plus de 4 polices définies",
+                "result": "nc"
+            }
+        }
+    },
+    "29441": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
+                "result": "nc"
             }
         }
     },

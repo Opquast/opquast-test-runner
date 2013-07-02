@@ -10,7 +10,6 @@ RULES
 SETS
 	DONE
 		sets in JSON and not in dir
-			13684
 		sets in dir and not in JSON
 	DEBUG
 		sets in dir and not in JSON

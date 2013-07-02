@@ -1180,6 +1180,40 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
+    window.cssNumberOfFonts4 = function cssNumberOfFonts4(doc) {
+        function callback(rule) {
+            var result = [];
+
+            if (rule && rule.parentStyleSheet && rule.declarations) {
+                for (var i = 0; i < rule.declarations.length; i++) {
+                    if (rule.declarations[i]["property"] == "font-family" && $.inArray(rule.declarations[i]["valueText"], genericFontStyle) == -1) {
+                        result = result.concat(rule.declarations[i]["valueText"].split(","));
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "screen", callback).then(function(result) {
+            result = result.map(function(val) {
+                return $.trim(val).toLowerCase().replace(/"/g, "").replace(/'/g, "");
+            }).filter(function(val) {
+                return $.inArray(val, genericFontStyle) == -1;
+            });
+            result = $.uniq(result);
+            return result.length <= 4 ? [] : result;
+        }).then(null, function(err) {
+            // Error Logging
+            logger.error("cssNumberOfFonts4", err);
+            return false;
+        });
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
     window.cssPixelFontSize = function cssPixelFontSize(doc) {
         function callback(rule) {
             var result = [];
@@ -1198,6 +1232,52 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
             // Error Logging
             logger.error("cssPixelFontSize", err);
+            return false;
+        });
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.cssSerifFont = function cssSerifFont(doc) {
+        function callback(rule) {
+            var result = [],
+                forbidden = [
+                    'times new roman', 'times',
+                    'bodoni',
+                    'garamond',
+                    'ms georgia', 'georgia',
+                    'palatino',
+                    'lucida',
+                    'ms serif',
+                    'bitstream',
+                    'serif'
+                ];
+
+            if (rule && rule.parentStyleSheet && rule.declarations) {
+                for (var i = 0; i < rule.declarations.length; i++) {
+                    if (rule.declarations[i]["property"] == "font-family"){
+                        var fonts = rule.declarations[i]["valueText"].split(";")[0].split(",").map(function(element) {
+                            return $.trim(element.toLowerCase().replace(/['"]/g, ""));
+                        });
+
+                        $.each(fonts, function() {
+                            if ($.inArray(this, forbidden) != -1) {
+                                result.push(_getCssDetails(rule, i));
+                                return false;
+                            }
+                        });
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
+            // Error Logging
+            logger.error("cssSerifFont", err);
             return false;
         });
     }
@@ -1481,6 +1561,50 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         catch (err) {
             // Error Logging
             logger.error("htmlAccessibilityLink", err);
+            result = false;
+        }
+
+        //
+        return result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.htmlAdjacentLinks = function htmlAdjacentLinks(doc) {
+        //
+        var result = [];
+
+        //
+        try {
+            var prev,
+                treeWalker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+                    acceptNode : function(_node) {
+                        if (_node.tagName && _node.tagName.toUpperCase() == 'A') {
+                            if (prev.tagName && prev.tagName.toUpperCase() == 'A') {
+                                prev = _node;
+                                return NodeFilter.FILTER_ACCEPT;
+                            } else {
+                                prev = _node;
+                                return NodeFilter.FILTER_REJECT;
+                            }
+                        } else {
+                            prev = _node;
+                            return NodeFilter.FILTER_SKIP;
+                        }
+                    }
+                }, false);
+
+            while (treeWalker.nextNode()) {
+                result.push(_getDetails(treeWalker.currentNode));
+            }
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("htmlAdjacentLinks", err);
             result = false;
         }
 
@@ -3834,6 +3958,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         var result = [],
             encoding = ["gzip", "deflate"],
+            mimes = [
+                "application/javascript",
+                "application/x-javascript",
+                "image/svg+xml",
+                "application/x-font-ttf",
+                "application/x-font-truetype",
+                "application/x-font-opentype",
+                "application/x-font-woff",
+                "application/vnd.ms-fontobject",
+                "applicaton/font-woff"
+            ],
             reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
 
         //
@@ -3844,9 +3979,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type == undefined && "undefined" || element.content_type;
 
                 // is not text
-                if (content_type && content_type.split("/")[0] != "text" &&
-                        $.inArray(content_type, ["application/javascript", "application/x-javascript", "image/svg+xml"]) == -1 &&
-                        !reg.test(content_type)) {
+                if (content_type && $.inArray(content_type.split("/")[0], ["text", "font"]) == -1 && $.inArray(content_type, mimes) == -1 && !reg.test(content_type)) {
                     //
                     var tmp = _getHttpDetails(element.uri, element.headers);
 
