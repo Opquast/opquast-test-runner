@@ -1,0 +1,11 @@
+{
+    "/test.png": {
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "Gzip"
+            }
+        ],
+        "_contentType": "image/png"
+    }
+}

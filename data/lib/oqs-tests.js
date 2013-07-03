@@ -6117,6 +6117,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if (resp.status === 200) {
                     return [sitemap];
                 }
+                return [];
             });
         }).then(null, function(err) {
             // Error Logging

@@ -1,0 +1,3 @@
+User-agent: *
+Crawl-delay: 1
+Sitemap: http://localhost:9000/sitemap.xml.gz
