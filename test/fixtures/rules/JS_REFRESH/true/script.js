@@ -1,5 +1,3 @@
 function bla() {
-    if (document.referer != document.location.href) {
-        location.replace('2.html');
-    }
+    setTimeout("location.replace('2.html')", 300000);
 }

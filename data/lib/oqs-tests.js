@@ -13,7 +13,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
     analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i"),
     jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
-    regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i");
+    regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
+    regSpaces = new RegExp().compile("[\\s\\n]{2,}", "g");
 
 (function($, window, undefined) {
     "use strict";
@@ -1819,12 +1820,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("a[title]").each(function() {
                 //
-                var _text = $(this).text().trim();
+                var $clone = $(this).clone();
+                $("img", $clone).replaceWith(function() {
+                    return " " + $(this).attr("alt") + " ";
+                });
 
                 //
-                $("img[alt]", this).each(function() {
-                    _text += " " + $.trim($(this).attr("alt"));
-                });
+                var _text = $.trim($clone.text()).replace(regSpaces, ' ');
 
                 //
                 if ($.trim($(this).attr("title")).length < $.trim(_text).length) {
@@ -2999,61 +3001,34 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlLinksTextNotUnique = function htmlLinksTextNotUnique(doc) {
         //
-        var result = [], links = {};
+        var result = [],
+            _nodes = {};
 
         //
         try {
             //
             $("a:not(:has(img))").each(function() {
                 //
-                var text = $.trim($(this).text()).toLowerCase(), title = $.trim($(this).attr("title")).toLowerCase(), context = text + "%|%" + title, href = $.URL($.trim($(this).attr("href")).toString()), _this = this;
-
-                //
-                if ($.inArray(context, Object.keys(links)) == -1) {
-                    //
-                    links[context] = [];
-                }
+                var text = $.trim($(this).text()).toLowerCase().replace(regSpaces, ''),
+                    title = $.trim($(this).attr("title")).toLowerCase(),
+                    context = text + "%|%" + title,
+                    href = $.URL($.trim($(this).attr("href"))).toString(),
+                    _this = this;
 
                 //
                 if (text != '') {
-                    links[context].push({
-                        "href" : href,
-                        "node" : _this
-                    });
+                    if ($.inArray(context, Object.keys(_nodes)) == -1) {
+                        _nodes[context] = {
+                            'href': href,
+                            'node': this
+                        };
+                    } else if (_nodes[context]['href'] != $.URL($.trim($(this).attr("href"))).toString()) {
+                        //
+                        result.push(_getDetails(_nodes[context]['node']));
+                        result.push(_getDetails(this));
+                    }
                 }
             });
-
-            //
-            for each (var context in Object.keys(links)) {
-                //
-                if (links[context].length > 1) {
-                    //
-                    var href = "", _tmp = [], diff = false;
-
-                    //
-                    for each (var obj in links[context]) {
-                        //
-                        _tmp.push(obj["node"]);
-
-                        //
-                        if (href != "" && href != obj["href"]) {
-                            diff = true;
-                        }
-
-                        //
-                        href = obj["href"];
-                    }
-
-                    //
-                    if (diff) {
-                        //
-                        for each (var node in _tmp) {
-                            //
-                            result.push(_getDetails(node));
-                        }
-                    }
-                }
-            }
         }
 
         //
@@ -6446,8 +6421,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksWithSameHref = function(doc) {
         //
         var _result = [],
-            _nodes = {"test":1},
-            _reg = new RegExp().compile("\\s{2,}", "g");
+            _nodes = {};
 
         //
         $("a[href]").each(function() {
@@ -6458,16 +6432,16 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             //
-            var _text = $.trim($clone.text()).replace(_reg, " ").toLowerCase();
+            var _text = $.trim($clone.text()).replace(regSpaces, " ").toLowerCase();
 
             //
             //if(_text != '') {
                 if ($.inArray(_text, Object.keys(_nodes)) == -1) {
                     _nodes[_text] = {
-                        'href': $(this).attr("href"),
+                        'href': $.URL($.trim($(this).attr("href"))).toString(),
                         'node': this
                     };
-                } else if (_nodes[_text]['href'] != $(this).attr("href")) {
+                } else if (_nodes[_text]['href'] != $.URL($.trim($(this).attr("href"))).toString()) {
                     //
                     _result.push(_getDetails(_nodes[_text]['node']));
                     _result.push(_getDetails(this));
