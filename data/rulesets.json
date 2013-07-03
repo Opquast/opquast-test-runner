@@ -3707,18 +3707,6 @@
             }
         }
     },
-    "11311": {
-        "JS_POPUP": {
-            "onfalse": {
-                "comment": "aucune pop-up  n'a été détectée",
-                "result": "i"
-            },
-            "ontrue": {
-                "comment": "au moins une pop-up a été détectée",
-                "result": "nc"
-            }
-        }
-    },
     "11314": {
         "404_DEFAULT": {
             "onfalse": {
@@ -3775,38 +3763,6 @@
             },
             "ontrue": {
                 "comment": "le serveur n'envoie pas de contenus compressés aux clients qui les acceptent",
-                "result": "nc"
-            }
-        }
-    },
-    "11319": {
-        "FRAME": {
-            "onfalse": {
-                "comment": "aucun élément FRAME n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément FRAME a été détecté",
-                "result": "nc"
-            }
-        },
-        "FRAMESET": {
-            "onfalse": {
-                "comment": "aucun élément FRAMESET n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément FRAMESET a été détecté",
-                "result": "nc"
-            }
-        },
-        "NOFRAMES": {
-            "onfalse": {
-                "comment": "aucun élément NOFRAMES n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément NOFRAMES a été détecté",
                 "result": "nc"
             }
         }
@@ -26326,18 +26282,6 @@
                 },
                 "comment": "au moins un TABLE complexe",
                 "result": "i"
-            }
-        }
-    },
-    "24389": {
-        "test14": {
-            "onfalse": {
-                "comment": "aucune URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
-                "result": "nc"
             }
         }
     },

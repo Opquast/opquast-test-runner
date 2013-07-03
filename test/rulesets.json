@@ -1,4 +1,16 @@
 {
+    "404_DEFAULT": {
+        "404_DEFAULT": {
+            "onfalse": {
+                "comment": "aucune page 404 par défaut n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une page 404 par défaut a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "ABBR_W_FILLED_TITLE_ATTR": {
         "ABBR_W_FILLED_TITLE_ATTR": {
             "onfalse": {

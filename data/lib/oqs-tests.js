@@ -6445,13 +6445,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksWithSameHref = function(doc) {
         //
         var _result = [],
-            _done = [],
-            _hrefs = {},
-            _text = "",
+            _nodes = {"test":1},
             _reg = new RegExp().compile("\\s{2,}", "g");
 
         //
-        $("a[href]", doc).each(function() {
+        $("a[href]").each(function() {
             //
             var $clone = $(this).clone();
             $("img", $clone).replaceWith(function() {
@@ -6459,17 +6457,21 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             //
-            _text = $.trim($clone.text()).replace(_reg, " ");
+            var _text = $.trim($clone.text()).replace(_reg, " ").toLowerCase();
 
             //
-            if ($.inArray(_text, _done) == -1) {
-                _done.push(_text);
-                _hrefs[_text] = $(this).attr("href");
-            } else if (_hrefs[_text] != $(this).attr("href")) {
-                //
-                _result.push(_getDetails(this));
-
-            }
+            //if(_text != '') {
+                if ($.inArray(_text, Object.keys(_nodes)) == -1) {
+                    _nodes[_text] = {
+                        'href': $(this).attr("href"),
+                        'node': this
+                    };
+                } else if (_nodes[_text]['href'] != $(this).attr("href")) {
+                    //
+                    _result.push(_getDetails(_nodes[_text]['node']));
+                    _result.push(_getDetails(this));
+                }
+            //}
         });
 
         //
