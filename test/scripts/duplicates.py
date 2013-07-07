@@ -4,50 +4,86 @@ from os.path import exists, join
 
 rules_path = 'test/fixtures/rules/'
 rules_debug_path = 'test/fixtures/rules-debug/'
+rules_impossible_path = 'test/fixtures/rules-impossible/'
 rules_stock_path = 'test/fixtures/rules-stock/'
 
-print 'DONE'
+print 'RULES'
+
+print '\tDONE'
 for dir in listdir(rules_path):
     if exists(join(getcwd(), rules_debug_path, dir) + '/'):
-        print '\t' + dir + ' exists in debug'
+        print '\t\t' + dir + ' exists in debug'
+    if exists(join(getcwd(), rules_impossible_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in impossible'
     if exists(join(getcwd(), rules_stock_path, dir) + '/'):
-        print '\t' + dir + ' exists in stock'
+        print '\t\t' + dir + ' exists in stock'
         
-print 'DEBUG'
+print '\tDEBUG'
 for dir in listdir(rules_debug_path):
     if exists(join(getcwd(), rules_path, dir) + '/'):
-        print '\t' + dir + ' exists in done'
+        print '\t\t' + dir + ' exists in done'
+    if exists(join(getcwd(), rules_impossible_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in impossible'
     if exists(join(getcwd(), rules_stock_path, dir) + '/'):
-        print '\t' + dir + ' exists in stock'
+        print '\t\t' + dir + ' exists in stock'
 
-print 'STOCK'
+print '\tIMPOSSIBLE'
+for dir in listdir(rules_impossible_path):
+    if exists(join(getcwd(), rules_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in done'
+    if exists(join(getcwd(), rules_debug_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in debug'
+    if exists(join(getcwd(), rules_stock_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in stock'
+
+print '\tSTOCK'
 for dir in listdir(rules_stock_path):
     if exists(join(getcwd(), rules_path, dir) + '/'):
-        print '\t' + dir + ' exists in done'
+        print '\t\t' + dir + ' exists in done'
     if exists(join(getcwd(), rules_debug_path, dir) + '/'):
-        print '\t' + dir + ' exists in debug'
+        print '\t\t' + dir + ' exists in debug'
+    if exists(join(getcwd(), rules_impossible_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in impossible'
         
-rulesets_path = 'test/fixtures/rulesets/'
-rulesets_debug_path = 'test/fixtures/rulesets-debug/'
-rulesets_stock_path = 'test/fixtures/rulesets-stock/'
+sets_path = 'test/fixtures/sets/'
+sets_debug_path = 'test/fixtures/sets-debug/'
+sets_impossible_path = 'test/fixtures/sets-impossible/'
+sets_stock_path = 'test/fixtures/sets-stock/'
 
-print 'DONE'
-for dir in listdir(rulesets_path):
-    if exists(join(getcwd(), rulesets_debug_path, dir) + '/'):
-        print '\t' + dir + ' exists in debug'
-    if exists(join(getcwd(), rulesets_stock_path, dir) + '/'):
-        print '\t' + dir + ' exists in stock'
+print 'SETS'
+
+print '\tDONE'
+for dir in listdir(sets_path):
+    if exists(join(getcwd(), sets_debug_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in debug'
+    if exists(join(getcwd(), sets_impossible_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in impossible'
+    if exists(join(getcwd(), sets_stock_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in stock'
         
-print 'DEBUG'
-for dir in listdir(rulesets_debug_path):
-    if exists(join(getcwd(), rulesets_path, dir) + '/'):
-        print '\t' + dir + ' exists in done'
-    if exists(join(getcwd(), rulesets_stock_path, dir) + '/'):
-        print '\t' + dir + ' exists in stock'
+print '\tDEBUG'
+for dir in listdir(sets_debug_path):
+    if exists(join(getcwd(), sets_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in done'
+    if exists(join(getcwd(), sets_impossible_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in impossible'
+    if exists(join(getcwd(), sets_stock_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in stock'
 
-print 'STOCK'
-for dir in listdir(rulesets_stock_path):
-    if exists(join(getcwd(), rulesets_path, dir) + '/'):
-        print '\t' + dir + ' exists in done'
-    if exists(join(getcwd(), rulesets_debug_path, dir) + '/'):
-        print '\t' + dir + ' exists in debug'
+print '\tIMPOSSIBLE'
+for dir in listdir(sets_impossible_path):
+    if exists(join(getcwd(), sets_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in done'
+    if exists(join(getcwd(), sets_debug_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in debug'
+    if exists(join(getcwd(), sets_stock_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in stock'
+
+print '\tSTOCK'
+for dir in listdir(sets_stock_path):
+    if exists(join(getcwd(), sets_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in done'
+    if exists(join(getcwd(), sets_debug_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in debug'
+    if exists(join(getcwd(), sets_impossible_path, dir) + '/'):
+        print '\t\t' + dir + ' exists in impossible'

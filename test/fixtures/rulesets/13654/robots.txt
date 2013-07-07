@@ -1,3 +1,0 @@
-User-agent: *
-Crawl-delay: 1
-Sitemap: http://www.temesis.com/sitemap.xml.gz

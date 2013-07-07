@@ -3,7 +3,7 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
     mimeHTML = ["text/html", "application/xhtml+xml"],
     mimeSyndication = ["application/rss+xml", "application/atom+xml", "application/xml", "text/xml"],
     mimeMultimedia = ["application/x-shockwave-flash", "application/octet-stream", "application/x-silverlight-app", "application/xaml+xml", "application/x-ms-xbap", "application/vnd.rn-realmedia", "application/ogg", "image/svg+xml"],
-    jsTypes = ["text/javascript", "application/javascript", "application/x-javascript"],
+    mimeJS = ["text/javascript", "application/javascript", "application/x-javascript"],
     genericFontStyle = ["serif", "sans-serif", "cursive", "fantasy", "monospace", "inherit"],
     atomNs = "http://www.w3.org/2005/Atom",
     fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"],
@@ -13,7 +13,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
     analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i"),
     jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
-    regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i");
+    regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
+    regSpaces = new RegExp().compile("[\\s\\n]{2,}", "g");
 
 (function($, window, undefined) {
     "use strict";
@@ -208,18 +209,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("h" + level).each(function() {
                 //
-                var found = false;
-                var terms = $(this).text().trim().split(" ");
+                var found = false,
+                    terms = $(this).text().trim().split(" ");
+
                 try {
                     terms = $.merge(terms, $.trim($("img", this).attr("alt")).toLowerCase().split(" "));
-                } catch(e) {
-                }
+                } catch(e) {}
 
                 //
-                terms.some(function(value) {
+                found = terms.some(function(value) {
                     //
                     if ($.inArray(value, keywords) != -1) {
-                        found = true;
                         return true;
                     } else {
                         return false;
@@ -260,18 +260,17 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("h" + level).each(function() {
                 //
-                var found = false;
-                var terms = $(this).text().trim().split(" ");
+                var found = false,
+                    terms = $(this).text().trim().split(" ");
+
                 try {
                     terms = $.merge(terms, $.trim($("img", this).attr("alt")).toLowerCase().split(" "));
-                } catch(e) {
-                }
+                } catch(e) {}
 
                 //
-                terms.some(function(value) {
+                found = terms.some(function(value) {
                     //
                     if ($.inArray(value, content) != -1) {
-                        found = true;
                         return true;
                     } else {
                         return false;
@@ -470,10 +469,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 functions = _event.split(";");
 
             //
-            functions.forEach(function(element, index, array) {
+            functions.forEach(function(element) {
                 if (reg.test(element)) {
                     //
-                    result.push(_function);
+                    result.push(element);
                 } else {
                     //
                     var aFunction = regFunction.exec(element);
@@ -625,7 +624,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 if (_color == "rgb(0, 0, 0)") {
                     //
-                    $(this).parents().each(function(index, Element) {
+                    $(this).parents().each(function() {
                         //
                         var _parentColor = $(this).css("color");
 
@@ -731,7 +730,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 if (_backgroundColor == "transparent") {
                     //
-                    $(this).parents().each(function(index, Element) {
+                    $(this).parents().each(function() {
                         //
                         var _parentBackgroundColor = $(this).css("background-color");
 
@@ -780,7 +779,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 if (_backgroundColor == "transparent") {
                     //
-                    $(this).parents().each(function(index, Element) {
+                    $(this).parents().each(function() {
                         //
                         var _parentBackgroundColor = $(this).css("background-color");
 
@@ -1018,15 +1017,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
+                return element.image_info;
+            }).forEach(function(element) {
                 //
-                if (element.image_info) {
-                    //
-                    images[element.uri] = {
-                        "width" : element.image_info["width"] + "px",
-                        "height" : element.image_info["height"] + "px"
-                    };
-                }
+                images[element.uri] = {
+                    "width" : element.image_info["width"] + "px",
+                    "height" : element.image_info["height"] + "px"
+                };
             });
 
             //
@@ -1182,6 +1180,40 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
+    window.cssNumberOfFonts4 = function cssNumberOfFonts4(doc) {
+        function callback(rule) {
+            var result = [];
+
+            if (rule && rule.parentStyleSheet && rule.declarations) {
+                for (var i = 0; i < rule.declarations.length; i++) {
+                    if (rule.declarations[i]["property"] == "font-family" && $.inArray(rule.declarations[i]["valueText"], genericFontStyle) == -1) {
+                        result = result.concat(rule.declarations[i]["valueText"].split(","));
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "screen", callback).then(function(result) {
+            result = result.map(function(val) {
+                return $.trim(val).toLowerCase().replace(/"/g, "").replace(/'/g, "");
+            }).filter(function(val) {
+                return $.inArray(val, genericFontStyle) == -1;
+            });
+            result = $.uniq(result);
+            return result.length <= 4 ? [] : result;
+        }).then(null, function(err) {
+            // Error Logging
+            logger.error("cssNumberOfFonts4", err);
+            return false;
+        });
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
     window.cssPixelFontSize = function cssPixelFontSize(doc) {
         function callback(rule) {
             var result = [];
@@ -1200,6 +1232,52 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
             // Error Logging
             logger.error("cssPixelFontSize", err);
+            return false;
+        });
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.cssSerifFont = function cssSerifFont(doc) {
+        function callback(rule) {
+            var result = [],
+                forbidden = [
+                    'times new roman', 'times',
+                    'bodoni',
+                    'garamond',
+                    'ms georgia', 'georgia',
+                    'palatino',
+                    'lucida',
+                    'ms serif',
+                    'bitstream',
+                    'serif'
+                ];
+
+            if (rule && rule.parentStyleSheet && rule.declarations) {
+                for (var i = 0; i < rule.declarations.length; i++) {
+                    if (rule.declarations[i]["property"] == "font-family"){
+                        var fonts = rule.declarations[i]["valueText"].split(";")[0].split(",").map(function(element) {
+                            return $.trim(element.toLowerCase().replace(/['"]/g, ""));
+                        });
+
+                        $.each(fonts, function() {
+                            if ($.inArray(this, forbidden) != -1) {
+                                result.push(_getCssDetails(rule, i));
+                                return false;
+                            }
+                        });
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
+            // Error Logging
+            logger.error("cssSerifFont", err);
             return false;
         });
     }
@@ -1494,6 +1572,50 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
+    window.htmlAdjacentLinks = function htmlAdjacentLinks(doc) {
+        //
+        var result = [];
+
+        //
+        try {
+            var prev,
+                treeWalker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+                    acceptNode : function(_node) {
+                        if (_node.tagName && _node.tagName.toUpperCase() == 'A') {
+                            if (prev.tagName && prev.tagName.toUpperCase() == 'A') {
+                                prev = _node;
+                                return NodeFilter.FILTER_ACCEPT;
+                            } else {
+                                prev = _node;
+                                return NodeFilter.FILTER_REJECT;
+                            }
+                        } else {
+                            prev = _node;
+                            return NodeFilter.FILTER_SKIP;
+                        }
+                    }
+                }, false);
+
+            while (treeWalker.nextNode()) {
+                result.push(_getDetails(treeWalker.currentNode));
+            }
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("htmlAdjacentLinks", err);
+            result = false;
+        }
+
+        //
+        return result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
     window.htmlAppletWithAlternativeNotInContent = function htmlAppletWithAlternativeNotInContent(doc) {
         //
         var result = [];
@@ -1503,14 +1625,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("applet[alt!='']").each(function() {
                 //
-                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" ");
-                var found = false;
+                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" "),
+                    found = false;
 
                 //
-                terms.some(function(value) {
+                found = terms.some(function(value) {
                     //
                     if ($.inArray(value, aContent) != -1) {
-                        found = true;
                         return true;
                     } else {
                         return false;
@@ -1587,14 +1708,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("area[alt!='']").each(function() {
                 //
-                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" ");
-                var found = false;
+                var terms = $.trim($(this).attr("alt")).toLowerCase().split(" "),
+                    found = false;
 
                 //
-                terms.some(function(value) {
+                found = terms.some(function(value) {
                     //
                     if ($.inArray(value, aContent) != -1) {
-                        found = true;
                         return true;
                     } else {
                         return false;
@@ -1699,12 +1819,13 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("a[title]").each(function() {
                 //
-                var _text = $(this).text().trim();
+                var $clone = $(this).clone();
+                $("img", $clone).replaceWith(function() {
+                    return " " + $(this).attr("alt") + " ";
+                });
 
                 //
-                $("img[alt]", this).each(function() {
-                    _text += " " + $.trim($(this).attr("alt"));
-                });
+                var _text = $.trim($clone.text()).replace(regSpaces, ' ');
 
                 //
                 if ($.trim($(this).attr("title")).length < $.trim(_text).length) {
@@ -1731,7 +1852,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlDefaultTitle = function htmlDefaultTitle(doc) {
         //
-        var result = [], reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \\d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
+        var result = [],
+            reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \\d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
 
         //
         try {
@@ -1765,7 +1887,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlDirAttribute = function htmlDirAttribute(doc) {
         //
-        var result = [], exclusions = ["APPLET", "BASE", "BASEFONT", "BR", "FRAME", "FRAMESET", "IFRAME", "PARAM", "SCRIPT"], values = ["", "ltr", "rtl"];
+        var result = [],
+            exclusions = ["APPLET", "BASE", "BASEFONT", "BR", "FRAME", "FRAMESET", "IFRAME", "PARAM", "SCRIPT"],
+            values = ["", "ltr", "rtl"];
 
         //
         try {
@@ -1913,13 +2037,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             promises = [];
 
         try {
-            sidecar.pageInfo.links.forEach(function(link) {
-                if ($.inArray((link.rel || "").toLowerCase(), ["icon", "shortcut icon"]) === -1) {
-                    return null;
-                }
-                promises.push(XHR.partial(link.uri).then(function(response) {
+            sidecar.pageInfo.links.filter(function(element){
+                return $.inArray((element.rel || '').toLowerCase(), ["icon", "shortcut icon"]) != -1;
+            }).forEach(function(element) {
+                promises.push(XHR.partial(element.uri).then(function(response) {
                     if($.inArray(response.status, [200, 301, 302, 304, 307]) !== -1) {
-                        return _getDetails($(link.tag + "[href='" + link.href + "'][rel='" + link.rel + "']").get(0));
+                        return _getDetails($(element.tag + "[href='" + element.href + "'][rel='" + element.rel + "']").get(0));
                     }
                     return null;
                 }).then(null, function(err) {
@@ -2353,12 +2476,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
+                return element.image_info && element.image_info.animated;
+            }).forEach(function(element) {
                 //
-                if (element.image_info && element.image_info.animated) {
-                    //
-                    animated.push(element.uri);
-                }
+                animated.push(element.uri);
             });
 
             //
@@ -2396,18 +2518,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
+                return element.image_info && $.inArray(element.content_type || '', formats) == -1;
+            }).forEach(function(element) {
                 //
-                if (element.image_info) {
-                    //
-                    var content_type = element.content_type == undefined && "undefined" || element.content_type;
-
-                    //
-                    if (content_type && $.inArray(content_type, formats) == -1) {
-                        //
-                        images.push(element.uri);
-                    }
-                }
+                images.push(element.uri);
             });
 
             //
@@ -2443,15 +2558,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
+                return element.image_info;
+            }).forEach(function(element) {
                 //
-                if (element.image_info) {
-                    //
-                    images[element.uri] = {
-                        "width" : element.image_info["width"],
-                        "height" : element.image_info["height"]
-                    };
-                }
+                images[element.uri] = {
+                    "width" : element.image_info["width"],
+                    "height" : element.image_info["height"]
+                };
             });
 
             //
@@ -2496,10 +2610,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     found = false;
 
                 //
-                terms.some(function(value) {
+                found = terms.some(function(value) {
                     //
                     if ($.inArray(value, aContent) != -1) {
-                        found = true;
                         return true;
                     } else {
                         return false;
@@ -2877,61 +2990,34 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlLinksTextNotUnique = function htmlLinksTextNotUnique(doc) {
         //
-        var result = [], links = {};
+        var result = [],
+            _nodes = {};
 
         //
         try {
             //
             $("a:not(:has(img))").each(function() {
                 //
-                var text = $.trim($(this).text()).toLowerCase(), title = $.trim($(this).attr("title")).toLowerCase(), context = text + "%|%" + title, href = $.URL($.trim($(this).attr("href")).toString()), _this = this;
-
-                //
-                if ($.inArray(context, Object.keys(links)) == -1) {
-                    //
-                    links[context] = [];
-                }
+                var text = $.trim($(this).text()).toLowerCase().replace(regSpaces, ''),
+                    title = $.trim($(this).attr("title")).toLowerCase(),
+                    context = text + "%|%" + title,
+                    href = $.URL($.trim($(this).attr("href"))).toString(),
+                    _this = this;
 
                 //
                 if (text != '') {
-                    links[context].push({
-                        "href" : href,
-                        "node" : _this
-                    });
+                    if ($.inArray(context, Object.keys(_nodes)) == -1) {
+                        _nodes[context] = {
+                            'href': href,
+                            'node': this
+                        };
+                    } else if (_nodes[context]['href'] != $.URL($.trim($(this).attr("href"))).toString()) {
+                        //
+                        result.push(_getDetails(_nodes[context]['node']));
+                        result.push(_getDetails(this));
+                    }
                 }
             });
-
-            //
-            for each (var context in Object.keys(links)) {
-                //
-                if (links[context].length > 1) {
-                    //
-                    var href = "", _tmp = [], diff = false;
-
-                    //
-                    for each (var obj in links[context]) {
-                        //
-                        _tmp.push(obj["node"]);
-
-                        //
-                        if (href != "" && href != obj["href"]) {
-                            diff = true;
-                        }
-
-                        //
-                        href = obj["href"];
-                    }
-
-                    //
-                    if (diff) {
-                        //
-                        for each (var node in _tmp) {
-                            //
-                            result.push(_getDetails(node));
-                        }
-                    }
-                }
-            }
         }
 
         //
@@ -3500,7 +3586,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.forEach(function(element) {
                 //
                 var url = element.uri.split("?")[0],
                     found = false;
@@ -3595,12 +3681,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                if (!(element.headers["cache-control"]) && !(element.headers["etag"]) && !(element.headers["expires"]) && !(element.headers["last-modified"])) {
-                    //
-                    result.push(_getHttpDetails(element.uri, element.headers));
-                }
+                return !(element.headers["cache-control"]) && !(element.headers["etag"]) && !(element.headers["expires"]) && !(element.headers["last-modified"]);
+            }).forEach(function(element) {
+                //
+                result.push(_getHttpDetails(element.uri, element.headers));
             });
         }
 
@@ -3625,15 +3711,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            var resources = sidecar.resources.filter(function(item) {
-                return $.inArray(item["content_type"], mimeHTML) != -1 && item['status'] == 200;
+            var resources = sidecar.resources.filter(function(element) {
+                return $.inArray(element.content_type || '', mimeHTML) != -1 && element.status == 200;
             });
 
             //
-            var charset = resources[0]["charset"] == undefined && "undefined" || resources[0]["charset"].toLowerCase();
+            var charset = resources[0]["charset"] || '';
 
             //
-            if (charset == doc.characterSet.toLowerCase()) {
+            if (charset.toLowerCase() == doc.characterSet.toLowerCase()) {
                 //
                 result.push(charset);
             }
@@ -3749,10 +3835,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
 
-                return content_type && (content_type.split("/")[0] == "text" || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1 || reg.test(content_type)) && element.headers["content-length"] > 300;
-            }).forEach(function(element, index, array) {
+                return element.status == 200 && (content_type.split("/")[0] == "text" || $.inArray(content_type, mimeJS) != -1 || reg.test(content_type)) &&
+                    element.headers["content-length"] > 300;
+            }).forEach(function(element) {
                 //
                 var tmp = _getHttpDetails(element.uri, element.headers);
 
@@ -3793,26 +3880,22 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
+                return ((element.content_type || '') == "application/json" || $.endsWith(element.uri, ".json")) && element.headers["content-length"] > 300;
+            }).forEach(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var tmp = _getHttpDetails(element.uri, element.headers);
 
-                // is text
-                if (content_type && (content_type == "application/json" || $.endsWith(element.uri, ".json")) && element.headers["content-length"] > 300) {
-                    //
-                    var tmp = _getHttpDetails(element.uri, element.headers);
-
-                    // has content-encoding
-                    if (element.headers["content-encoding"]) {
-                        // gzip or deflate
-                        if ($.inArray(element.headers["content-encoding"].toLowerCase(), encoding) == -1) {
-                            //
-                            result.push(tmp);
-                        }
-                    } else {
+                // has content-encoding
+                if (element.headers["content-encoding"]) {
+                    // gzip or deflate
+                    if ($.inArray(element.headers["content-encoding"].toLowerCase(), encoding) == -1) {
                         //
                         result.push(tmp);
                     }
+                } else {
+                    //
+                    result.push(tmp);
                 }
             });
         }
@@ -3836,28 +3919,32 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         var result = [],
             encoding = ["gzip", "deflate"],
+            mimes = [
+                "application/javascript",
+                "application/x-javascript",
+                "image/svg+xml",
+                "application/x-font-ttf",
+                "application/x-font-truetype",
+                "application/x-font-opentype",
+                "application/x-font-woff",
+                "application/vnd.ms-fontobject",
+                "applicaton/font-woff"
+            ],
             reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
 
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
 
-                // is not text
-                if (content_type && content_type.split("/")[0] != "text" && $.inArray(content_type, ["application/javascript", "application/x-javascript"]) == -1 && !reg.test(content_type)) {
+                return $.inArray(content_type.split("/")[0], ["text", "font"]) == -1 && $.inArray(content_type, mimes) == -1 && !reg.test(content_type) && element.headers["content-encoding"];
+            }).forEach(function(element) {
+                // gzip or deflate
+                if ($.inArray(element.headers["content-encoding"].toLowerCase(), encoding) != -1) {
                     //
-                    var tmp = _getHttpDetails(element.uri, element.headers);
-
-                    // has content-encoding
-                    if (element.headers["content-encoding"]) {
-                        // gzip or deflate
-                        if ($.inArray(element.headers["content-encoding"].toLowerCase(), encoding) != -1) {
-                            //
-                            result.push(tmp);
-                        }
-                    }
+                    result.push(_getHttpDetails(element.uri, element.headers));
                 }
             });
         }
@@ -3904,15 +3991,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
+                return (element.content_type || '') == "application/json" || $.endsWith(element.uri, ".json");
+            }).forEach(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
-
-                // is text
-                if (content_type && (content_type == "application/json" || $.endsWith(element.uri, ".json"))) {
-                    //
-                    result.push(element.uri);
-                }
+                result.push(element.uri);
             });
         }
 
@@ -3937,8 +4020,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            var resources = sidecar.resources.filter(function(item) {
-                return $.inArray(item["content_type"], mimeHTML) != -1 && item['status'] == 200;
+            var resources = sidecar.resources.filter(function(element) {
+                return $.inArray(element.content_type || '', mimeHTML) != -1 && element.status == 200;
             });
 
             //
@@ -3973,7 +4056,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         var promises = [];
         try {
             $("img[width!=1][height!=1][longdesc]").each(function() {
-                var longdesc = $.trim($(this).attr("longdesc")), _img = this;
+                var longdesc = $.trim($(this).attr("longdesc")),
+                    _img = this;
 
                 if (longdesc === "") {
                     promises.push(Q.resolve(_getDetails(_img)));
@@ -4012,8 +4096,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            var resources = sidecar.resources.filter(function(item) {
-                return $.inArray(item["content_type"], mimeHTML) != -1 && item['status'] == 200;
+            var resources = sidecar.resources.filter(function(element) {
+                return $.inArray(element.content_type || '', mimeHTML) != -1 && element.status == 200;
             });
 
             //
@@ -4069,12 +4153,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
+                return element.status == "403" && element.referrer == "";
+            }).forEach(function(element) {
                 //
-                if (element.status == "403" && element.referrer == "") {
-                    //
-                    result.push(element.uri);
-                }
+                result.push(element.uri);
             });
         }
 
@@ -4100,12 +4183,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
+                return element.status == "403" && element.referrer == "" && parseInt(element.headers["content-length"], 10) > 3000;
+            }).forEach(function(element) {
                 //
-                if (element.status == "403" && element.referrer == "" && parseInt(element["headers"]["content-length"], 10) > 3000) {
-                    //
-                    result.push(element.uri);
-                }
+                result.push(element.uri);
             });
         }
 
@@ -4131,12 +4213,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
+                return element.status == "404" && element.referrer == "";
+            }).forEach(function(element) {
                 //
-                if (element.status == "404" && element.referrer == "") {
-                    //
-                    result.push(element.uri);
-                }
+                result.push(element.uri);
             });
         }
 
@@ -4162,12 +4243,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
+                return element.status == "404" && element.referrer == "" && parseInt(element.headers["content-length"], 10) > 3000;
+            }).forEach(function(element) {
                 //
-                if (element.status == "404" && element.referrer == "" && parseInt(element["headers"]["content-length"], 10) > 3000) {
-                    //
-                    result.push(element.uri);
-                }
+                result.push(element.uri);
             });
         }
 
@@ -4194,12 +4274,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element){
+                return element.image_info && element.image_info["animated"];
+            }).forEach(function(element) {
                 //
-                if (element.image_info && element.image_info["animated"]) {
-                    //
-                    images.push(element.uri);
-                }
+                images.push(element.uri);
             });
 
             //
@@ -4236,22 +4315,22 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             promises = [];
 
         try {
-            sidecar.pageInfo.links.forEach(function(link) {
+            sidecar.pageInfo.links.forEach(function(element) {
                 // Note (Olivier 2013-03-02)
                 // This is crazy, we should not check every link on a page
                 // Attempt to reduce to some extensions. Not perfect but fine enough
-                var url = $.URL(link.uri);
+                var url = $.URL(element.uri);
                 if ($.inArray(url.path.split(".").pop().toLowerCase(), dl_extensions) === -1) {
                     return;
                 }
 
-                promises.push(XHR.partial(link.uri).then(function(response) {
+                promises.push(XHR.partial(element.uri).then(function(response) {
                     if (response.status !== 200) {
                         return null;
                     }
                     var mime = response.contentType.split("/");
                     if ($.inArray(mime[0], dl_families) !== -1 && ($.inArray(mime[1], dl_types) !== -1 || dl_reg.test(mime[1]))) {
-                        return link.uri;
+                        return element.uri;
                     }
 
                     return null;
@@ -4279,18 +4358,18 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.resPdf = function httpResourcePdf(doc) {
         var promises = [];
         try {
-            sidecar.pageInfo.links.forEach(function(link) {
+            sidecar.pageInfo.links.forEach(function(element) {
                 // Note (Olivier 2013-03-02)
                 // This is crazy, we should not check every link on a page
                 // Attempt to reduce to pdf extension. Not perfect but fine enough
-                var url = $.URL(link.uri);
+                var url = $.URL(element.uri);
                 if (url.path.split(".").pop().toLowerCase() !== "pdf") {
                     return;
                 }
 
-                promises.push(XHR.partial(link.uri).then(function(response) {
+                promises.push(XHR.partial(element.uri).then(function(response) {
                     if (response.status === 200 && response.contentType === "application/pdf") {
-                        return link.uri;
+                        return element.uri;
                     }
 
                     return null;
@@ -4356,15 +4435,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
 
+                return $.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1;
+            }).forEach(function(element) {
                 //
-                if (content_type && ($.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1)) {
-                    //
-                    objects.push(element.uri);
-                }
+                objects.push(element.uri);
             });
 
             //
@@ -4425,15 +4503,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
 
+                return $.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1;
+            }).forEach(function(element) {
                 //
-                if (content_type && ($.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1)) {
-                    //
-                    objects.push(element.uri);
-                }
+                objects.push(element.uri);
             });
 
             //
@@ -4493,33 +4570,32 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
 
-                // is static
-                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                return $.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1;
+            }).forEach(function(element) {
+                //
+                if (reg.test(element.headers["cache-control"] || '')) {
                     //
-                    if (element.headers["cache-control"] && reg.test(element.headers["cache-control"])) {
-                        //
-                        if (parseInt(RegExp.$1, 10) < 2592000) {
-                            //
-                            result.push(_getHttpDetails(element.uri, element.headers));
-                        }
-                    } else if (element.headers["expires"]) {
-                        //
-                        var expires = Date.parse(element.headers["expires"]),
-                            now = Date.parse(new Date().toString());
-
-                        //
-                        if (parseInt((expires - now) / 1000, 10) < 2592000) {
-                            //
-                            result.push(_getHttpDetails(element.uri, element.headers));
-                        }
-                    } else {
+                    if (parseInt(RegExp.$1, 10) < 2592000) {
                         //
                         result.push(_getHttpDetails(element.uri, element.headers));
                     }
+                } else if (element.headers["expires"]) {
+                    //
+                    var expires = Date.parse(element.headers["expires"]),
+                        now = Date.parse(new Date().toString());
+
+                    //
+                    if (parseInt((expires - now) / 1000, 10) < 2592000) {
+                        //
+                        result.push(_getHttpDetails(element.uri, element.headers));
+                    }
+                } else {
+                    //
+                    result.push(_getHttpDetails(element.uri, element.headers));
                 }
             });
         }
@@ -4548,19 +4624,18 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var domain = doc.location.hostname.split(".").slice(-2).join(".");
 
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
 
+                return $.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1;
+            }).forEach(function(element) {
                 //
-                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                var subdomain = $.URL.getDomain(element.uri);
+
+                if (subdomain != domain && $.endsWith(subdomain, domain)) {
                     //
-                    var subdomain = $.URL.getDomain(element.uri);
-
-                    if (subdomain != domain && $.endsWith(subdomain, domain)) {
-                        //
-                        result.push(subdomain);
-                    }
+                    result.push(subdomain);
                 }
             });
 
@@ -4603,20 +4678,19 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var domain = doc.location.hostname.split(".").slice(-2).join(".");
 
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
+
+                return $.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1;
+            }).forEach(function(element) {
+                //
+                var _domain = $.URL.getDomain(element.uri).split(".").slice(-2).join(".");
 
                 //
-                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
+                if (doc.location.href != element.uri && _domain == domain) {
                     //
-                    var _domain = $.URL.getDomain(element.uri).split(".").slice(-2).join(".");
-
-                    //
-                    if (doc.location.href != element.uri && _domain == domain) {
-                        //
-                        result.push(element.uri);
-                    }
+                    result.push(element.uri);
                 }
             });
         }
@@ -4644,17 +4718,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
-                //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+            sidecar.resources.filter(function(element){
+                var content_type = element.content_type || '';
 
+                return content_type == "text/css" || $.inArray(content_type, mimeJS) != -1;
+            }).forEach(function(element) {
                 //
-                if (content_type && ($.inArray(content_type, ["text/css", "text/javascript", "application/javascript", "application/x-javascript"]) != -1)) {
+                if (reg.test(element.uri)) {
                     //
-                    if (reg.test(element.uri)) {
-                        //
-                        result.push(_getHttpDetails(element.uri, element.headers));
-                    }
+                    result.push(_getHttpDetails(element.uri, element.headers));
                 }
             });
         }
@@ -4682,17 +4754,15 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
-                //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+            sidecar.resources.filter(function(element){
+                var content_type = element.content_type || '';
 
+                return content_type == "text/css" || $.inArray(content_type, mimeJS) != -1;
+            }).forEach(function(element) {
                 //
-                if (content_type && ($.inArray(content_type, ["text/css", "text/javascript", "application/javascript", "application/x-javascript"]) != -1)) {
+                if (reg.test(element.uri)) {
                     //
-                    if (reg.test(element.uri)) {
-                        //
-                        result.push(_getHttpDetails(element.uri, element.headers));
-                    }
+                    result.push(_getHttpDetails(element.uri, element.headers));
                 }
             });
         }
@@ -4719,18 +4789,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
 
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && element.headers["set-cookie"];
+            }).forEach(function(element) {
                 //
-                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
-                    //
-                    if (element.headers["set-cookie"]) {
-                        //
-                        result.push(_getHttpDetails(element.uri, element.headers));
-                    }
-                }
+                result.push(_getHttpDetails(element.uri, element.headers));
             });
         }
 
@@ -4757,18 +4823,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
 
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && reg.test(element.uri);
+            }).forEach(function(element) {
                 //
-                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
-                    //
-                    if (reg.test(element.uri)) {
-                        //
-                        result.push(_getHttpDetails(element.uri, element.headers));
-                    }
-                }
+                result.push(_getHttpDetails(element.uri, element.headers));
             });
         }
 
@@ -4791,23 +4853,18 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         var result = [],
             reg = new RegExp().compile("[^\\?]+\\?.+&.+$", "i");
-        ;
 
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
 
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && reg.test(element.uri);
+            }).forEach(function(element) {
                 //
-                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
-                    //
-                    if (reg.test(element.uri)) {
-                        //
-                        result.push(_getHttpDetails(element.uri, element.headers));
-                    }
-                }
+                result.push(_getHttpDetails(element.uri, element.headers));
             });
         }
 
@@ -4833,18 +4890,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                var content_type = element.content_type == undefined && "undefined" || element.content_type;
+                var content_type = element.content_type || '';
 
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && cdns.test(element.uri);
+            }).forEach(function(element) {
                 //
-                if (content_type && ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, ["application/javascript", "application/x-javascript"]) != -1)) {
-                    //
-                    if (cdns.test(element.uri)) {
-                        //
-                        result.push(element.uri);
-                    }
-                }
+                result.push(element.uri);
             });
         }
 
@@ -4902,12 +4955,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.resources.forEach(function(element, index, array) {
+            sidecar.resources.filter(function(element) {
                 //
-                if ($.inArray(element.status, redirect) != -1) {
-                    //
-                    result.push(_getHttpDetails(element.uri, element.headers));
-                }
+                return $.inArray(element.status, redirect) != -1;
+            }).forEach(function(element) {
+                //
+                result.push(_getHttpDetails(element.uri, element.headers));
             });
         }
 
@@ -4963,7 +5016,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             for (var idx in sidecar.events) {
                 //
-                sidecar.events[idx].events.forEach(function(element, index, array) {
+                sidecar.events[idx].events.forEach(function(element) {
                     //
                     if (element.type == "focus") {
                         //
@@ -5018,7 +5071,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     }
 
                     //
-                    sidecar.events[idx].events.forEach(function(element, index, array) {
+                    sidecar.events[idx].events.forEach(function(element) {
                         //
                         if (found && element.type == "click") {
                             //
@@ -5054,24 +5107,20 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
             });
 
-            sidecar.resources.forEach(function(item) {
-                if ($.inArray(item.content_type || "", jsTypes) === -1) {
-                    return;
-                }
+            sidecar.resources.filter(function(element){
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+            }).forEach(function(element) {
+                promises.push(XHR.get(element.uri).then(function(response) {
+                    var match = reg.exec(response.data);
+                    if (match !== null) {
+                        return element.uri + " (" + match[0] + ")";
+                    }
 
-                if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(XHR.get(item.uri).then(function(response) {
-                        var match = reg.exec(response.data);
-                        if (match !== null) {
-                            return item.uri + " (" + match[0] + ")";
-                        }
-
-                        return null;
-                    }).then(null, function(err) {
-                        logger.error("jsDocumentWrite", err);
-                        return false;
-                    }));
-                }
+                    return null;
+                }).then(null, function(err) {
+                    logger.error("jsDocumentWrite", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
@@ -5131,7 +5180,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             for (var idx in sidecar.events) {
                 //
-                sidecar.events[idx].events.forEach(function(element, index, array) {
+                sidecar.events[idx].events.forEach(function(element) {
                     //
                     if ($.inArray(element.type, ["mousedown", "mouseup", "mouseover", "mouseout", "focus", "blur", "keyup", "keydown"]) != -1) {
                         //
@@ -5166,7 +5215,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             for (var idx in sidecar.events) {
                 //
-                sidecar.events[idx].events.forEach(function(element, index, array) {
+                sidecar.events[idx].events.forEach(function(element) {
                     //
                     if ($.inArray(element.type, ["click", "mouseover", "mouseout", "focus", "blur"]) != -1) {
                         //
@@ -5228,7 +5277,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var events = [];
 
                 //
-                sidecar.events[idx].events.forEach(function(element, index, array) {
+                sidecar.events[idx].events.forEach(function(element) {
                     //
                     if ($.inArray(element.type, ["blur", "mouseout"]) != -1) {
                         //
@@ -5333,7 +5382,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     }
 
                     //
-                    sidecar.events[idx].events.forEach(function(element, index, array) {
+                    sidecar.events[idx].events.forEach(function(element) {
                         //
                         if (found && element.type == "click") {
                             //
@@ -5368,7 +5417,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             for (var idx in sidecar.events) {
                 //
-                sidecar.events[idx].events.forEach(function(element, index, array) {
+                sidecar.events[idx].events.forEach(function(element) {
                     if (element.type == "dblclick") {
                         //
                         result.push(_getDetails(sidecar.events[idx].node));
@@ -5454,7 +5503,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var events = [];
 
                 //
-                sidecar.events[idx].events.forEach(function(element, index, array) {
+                sidecar.events[idx].events.forEach(function(element) {
                     //
                     if ($.inArray(element.type, ["focus", "mouseover"]) != -1) {
                         //
@@ -5522,7 +5571,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var events = [];
 
                 //
-                sidecar.events[idx].events.forEach(function(element, index, array) {
+                sidecar.events[idx].events.forEach(function(element) {
                     //
                     if ($.inArray(element.type, ["mouseout", "blur"]) != -1) {
                         //
@@ -5590,7 +5639,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var events = [];
 
                 //
-                sidecar.events[idx].events.forEach(function(element, index, array) {
+                sidecar.events[idx].events.forEach(function(element) {
                     //
                     if ($.inArray(element.type, ["mouseover", "focus"]) != -1) {
                         //
@@ -5630,7 +5679,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             for (var idx in sidecar.events) {
                 //
-                sidecar.events[idx].events.forEach(function(element, index, array) {
+                sidecar.events[idx].events.forEach(function(element) {
                     //
                     if (element.type == "scroll") {
                         //
@@ -5699,35 +5748,34 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
             });
 
-            sidecar.resources.forEach(function(item) {
-                if ($.inArray(item.content_type || "", jsTypes) === -1) {
-                    return;
-                }
+            sidecar.resources.filter(function(element){
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+            }).forEach(function(element) {
+                promises.push(XHR.get(element.uri).then(function(response) {
+                    var m1 = reg1.exec(response.data),
+                        m2 = reg2.exec(response.data),
+                        m3 = reg3.exec(response.data);
 
-                if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(XHR.get(item.uri).then(function(response) {
-                        var m1 = reg1.exec(response.data),
-                            m2 = reg2.exec(response.data),
-                            m3 = reg3.exec(response.data);
+                    if (m1 !== null || m2 !== null || m3 !== null) {
+                        var found = [m1, m2, m3].map(function(val) {
+                            return val && val[1] || null;
+                        }).filter(function(val) {
+                            return val !== null;
+                        }).join(", ");
+                        return element.uri + " (" + found + ")";
+                    }
 
-                        if (m1 !== null || m2 !== null || m3 !== null) {
-                            var found = [m1, m2, m3].map(function(val) {
-                                return val && val[1] || null;
-                            }).filter(function(val) {
-                                return val !== null;
-                            }).join(", ");
-                            return item.uri + " (" + found + ")";
-                        }
-
-                        return null;
-                    }).then(null, function(err) {
-                        logger.error("jsRefresh", err);
-                        return false;
-                    }));
-                }
+                    return null;
+                }).then(null, function(err) {
+                    logger.error("jsRefresh", err);
+                    return false;
+                }));
             });
 
-            promises.push(Q.resolve(_detectFunction("location\\.", $("body"), "onload")));
+            var bodyOnLoad = _detectFunction("location\\.", $("body"), "onload");
+            if (bodyOnLoad.length > 0 && bodyOnLoad[0] != '') {
+                promises.push(Q.resolve(bodyOnLoad));
+            }
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
                 var _res = res.filter(function(v) v !== null);
@@ -5770,7 +5818,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsSetInterval = function jsSetInterval(doc) {
-        var reg = new RegExp().compile("setInterval\\(", "i"), promises = [];
+        var reg = new RegExp().compile("setInterval\\(", "i"),
+            promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -5779,24 +5828,20 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
             });
 
-            sidecar.resources.forEach(function(item) {
-                if ($.inArray(item.content_type || "", jsTypes) === -1) {
-                    return;
-                }
+            sidecar.resources.filter(function(element) {
+                return ($.inArray(element.content_type || '', mimeJS) != -1) && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+            }).forEach(function(element) {
+                promises.push(XHR.get(element.uri).then(function(response) {
+                    var match = reg.exec(response.data);
+                    if (match !== null) {
+                        return element.uri + " (" + match[0] + ")";
+                    }
 
-                if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(XHR.get(item.uri).then(function(response) {
-                        var match = reg.exec(response.data);
-                        if (match !== null) {
-                            return item.uri + " (" + match[0] + ")";
-                        }
-
-                        return null;
-                    }).then(null, function(err) {
-                        logger.error("jsSetInterval", err);
-                        return false;
-                    }));
-                }
+                    return null;
+                }).then(null, function(err) {
+                    logger.error("jsSetInterval", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
@@ -5825,24 +5870,20 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
             });
 
-            sidecar.resources.forEach(function(item) {
-                if ($.inArray(item.content_type || "", jsTypes) === -1) {
-                    return;
-                }
+            sidecar.resources.filter(function(element) {
+                return ($.inArray(element.content_type || '', mimeJS) === -1) && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+            }).forEach(function(element) {
+                promises.push(XHR.get(element.uri).then(function(response) {
+                    var match = reg.exec(response.data);
+                    if (match !== null) {
+                        return element.uri + " (" + match[0] + ")";
+                    }
 
-                if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(XHR.get(item.uri).then(function(response) {
-                        var match = reg.exec(response.data);
-                        if (match !== null) {
-                            return item.uri + " (" + match[0] + ")";
-                        }
-
-                        return null;
-                    }).then(null, function(err) {
-                        logger.error("jsSetTimeout", err);
-                        return false;
-                    }));
-                }
+                    return null;
+                }).then(null, function(err) {
+                    logger.error("jsSetTimeout", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
@@ -5869,7 +5910,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             for (var idx in sidecar.events) {
                 //
-                sidecar.events[idx].events.forEach(function(element, index, array) {
+                sidecar.events[idx].events.forEach(function(element) {
                     //
                     if ($.inArray(element.type, ["dblclick", "change", "scroll"]) != -1) {
                         //
@@ -5905,24 +5946,20 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 }
             });
 
-            sidecar.resources.forEach(function(item) {
-                if ($.inArray(item.content_type || "", jsTypes) === -1) {
-                    return;
-                }
+            sidecar.resources.filter(function(element) {
+                return ($.inArray(element.content_type || '', mimeJS) != -1) && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+            }).forEach(function(element) {
+                promises.push(XHR.get(element.uri).then(function(response) {
+                    var match = reg.exec(response.data);
+                    if (match !== null) {
+                        return element.uri + " (" + match[0] + ")";
+                    }
 
-                if (!cdns.test(item.uri) && !analytics.test(item.uri) && !jsFrameworks.test(item.uri)) {
-                    promises.push(XHR.get(item.uri).then(function(response) {
-                        var match = reg.exec(response.data);
-                        if (match !== null) {
-                            return item.uri + " (" + match[0] + ")";
-                        }
-
-                        return null;
-                    }).then(null, function(err) {
-                        logger.error("jsWindowOpen", err);
-                        return false;
-                    }));
-                }
+                    return null;
+                }).then(null, function(err) {
+                    logger.error("jsWindowOpen", err);
+                    return false;
+                }));
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
@@ -5979,6 +6016,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 if (resp.status === 200) {
                     return [sitemap];
                 }
+                return [];
             });
         }).then(null, function(err) {
             // Error Logging
@@ -6012,12 +6050,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         var promises = [];
 
         try {
-            sidecar.pageInfo.links.forEach(function(link) {
-                if (link.rel !== "alternate" || $.inArray(link.type, mimeSyndication) === -1) {
-                    return;
-                }
-
-                promises.push(XHR.get(link.uri).then(function(response) {
+            sidecar.pageInfo.links.filter(function(element) {
+                return element.rel == "alternate" || $.inArray(element.type, mimeSyndication) != -1;
+            }).forEach(function(element) {
+                promises.push(XHR.get(element.uri).then(function(response) {
                     if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
                         return null;
                     }
@@ -6076,12 +6112,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             promises = [];
 
         try {
-            sidecar.pageInfo.links.forEach(function(link) {
-                if (link.rel !== "alternate" || $.inArray(link.type, mimeSyndication) === -1) {
-                    return;
-                }
-
-                promises.push(XHR.get(link.uri).then(function(response) {
+            sidecar.pageInfo.links.filter(function(element) {
+                return element.rel == "alternate" || $.inArray(element.type, mimeSyndication) != -1;
+            }).forEach(function(element) {
+                promises.push(XHR.get(element.uri).then(function(response) {
                     if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
                         return null;
                     }
@@ -6144,12 +6178,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            sidecar.pageInfo.links.forEach(function(element, index, array) {
+            sidecar.pageInfo.links.filter(function(element) {
+                return element.rel == "alternate" && $.inArray(element.type, ["application/rss+xml", "application/atom+xml"]) != -1;
+            }).forEach(function(element) {
                 //
-                if (element.rel == "alternate" && $.inArray(element.type, ["application/rss+xml", "application/atom+xml"]) != -1) {
-                    //
-                    result.push(_getDetails($("link[rel='alternate'][href='" + element.href + "'][type='" + element.type + "']").get(0)));
-                }
+                result.push(_getDetails($("link[rel='alternate'][href='" + element.href + "'][type='" + element.type + "']").get(0)));
             });
         }
 
@@ -6172,12 +6205,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         var promises = [];
 
         try {
-            sidecar.pageInfo.links.forEach(function(link) {
-                if (link.rel !== "alternate" || $.inArray(link.type, mimeSyndication) === -1) {
-                    return;
-                }
-
-                promises.push(XHR.get(link.uri).then(function(response) {
+            sidecar.pageInfo.links.filter(function(element) {
+                return element.rel == "alternate" && $.inArray(element.type, mimeSyndication) != -1;
+            }).forEach(function(element) {
+                promises.push(XHR.get(element.uri).then(function(response) {
                     if (response.status !== 200 || $.inArray(response.contentType, mimeSyndication) === -1) {
                         return null;
                     }
@@ -6307,13 +6338,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksWithSameHref = function(doc) {
         //
         var _result = [],
-            _done = [],
-            _hrefs = {},
-            _text = "",
-            _reg = new RegExp().compile("\\s{2,}", "g");
+            _nodes = {};
 
         //
-        $("a[href]", doc).each(function() {
+        $("a[href]").each(function() {
             //
             var $clone = $(this).clone();
             $("img", $clone).replaceWith(function() {
@@ -6321,17 +6349,21 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             //
-            _text = $.trim($clone.text()).replace(_reg, " ");
+            var _text = $.trim($clone.text()).replace(regSpaces, " ").toLowerCase();
 
             //
-            if ($.inArray(_text, _done) == -1) {
-                _done.push(_text);
-                _hrefs[_text] = $(this).attr("href");
-            } else if (_hrefs[_text] != $(this).attr("href")) {
-                //
-                _result.push(_getDetails(this));
-
-            }
+            //if(_text != '') {
+                if ($.inArray(_text, Object.keys(_nodes)) == -1) {
+                    _nodes[_text] = {
+                        'href': $.URL($.trim($(this).attr("href"))).toString(),
+                        'node': this
+                    };
+                } else if (_nodes[_text]['href'] != $.URL($.trim($(this).attr("href"))).toString()) {
+                    //
+                    _result.push(_getDetails(_nodes[_text]['node']));
+                    _result.push(_getDetails(this));
+                }
+            //}
         });
 
         //

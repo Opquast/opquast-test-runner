@@ -1,0 +1,1 @@
+setTimeout(document.write("test"), 5000);

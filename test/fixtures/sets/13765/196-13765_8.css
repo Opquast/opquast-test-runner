@@ -1,0 +1,7 @@
+.email-address:before {
+	content: "Email: ";
+}
+
+.email-address {
+	background: url('fixe.jpg');
+}

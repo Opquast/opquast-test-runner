@@ -11,7 +11,7 @@ for key, value in json_sets.items():
     if key in ['TABLE', 'FORM', 'LIST', 'IMG']:
         continue
     
-    val = dumps(value).replace('"nc"', '""').replace('"c"', '""').replace('"na"', '""').replace('"i"', '""')
+    val = dumps(value) #.replace('"nc"', '""').replace('"c"', '""').replace('"na"', '""').replace('"i"', '""')
     try:
         sets[val].append(key)
     except:
@@ -25,9 +25,10 @@ rest = 0
 for key, value in sets.items():
     if len(value) > 1:
         for val in value:
-            if not exists(join(getcwd(), 'test/fixtures/rulesets/', val) + '/') and \
-                    not exists(join(getcwd(), 'test/fixtures/rulesets-debug/', val) + '/') and \
-                    not exists(join(getcwd(), 'test/fixtures/rulesets-stock/', val) + '/'):
+            if not exists(join(getcwd(), 'test/fixtures/sets/', val) + '/') and \
+                    not exists(join(getcwd(), 'test/fixtures/sets-debug/', val) + '/') and \
+                    not exists(join(getcwd(), 'test/fixtures/sets-impossible/', val) + '/') and \
+                    not exists(join(getcwd(), 'test/fixtures/sets-stock/', val) + '/'):
                 if done == False:
                     todo = True
 
@@ -36,12 +37,14 @@ for key, value in sets.items():
         
         if todo and done == False:
             for val in value:
-                if exists(join(getcwd(), 'test/fixtures/rulesets/', val) + '/'):
-                    move(join(getcwd(), 'test/fixtures/rulesets/', val), join(getcwd(), 'test/fixtures/'))
-                elif exists(join(getcwd(), 'test/fixtures/rulesets-debug/', val) + '/'):
-                    move(join(getcwd(), 'test/fixtures/rulesets-debug/', val), join(getcwd(), 'test/fixtures/'))
-                elif exists(join(getcwd(), 'test/fixtures/rulesets-stock/', val) + '/'):
-                    move(join(getcwd(), 'test/fixtures/rulesets-stock/', val), join(getcwd(), 'test/fixtures/'))
+                if exists(join(getcwd(), 'test/fixtures/sets/', val) + '/'):
+                    move(join(getcwd(), 'test/fixtures/sets/', val), join(getcwd(), 'test/fixtures/'))
+                elif exists(join(getcwd(), 'test/fixtures/sets-debug/', val) + '/'):
+                    move(join(getcwd(), 'test/fixtures/sets-debug/', val), join(getcwd(), 'test/fixtures/'))
+                elif exists(join(getcwd(), 'test/fixtures/sets-impossible/', val) + '/'):
+                    move(join(getcwd(), 'test/fixtures/sets-impossible/', val), join(getcwd(), 'test/fixtures/'))
+                elif exists(join(getcwd(), 'test/fixtures/sets-stock/', val) + '/'):
+                    move(join(getcwd(), 'test/fixtures/sets-stock/', val), join(getcwd(), 'test/fixtures/'))
                 else:
                     mkdir(join('test/fixtures/', val))
                     name = json_criteria[val].replace('.', '-').replace('[', '').replace(']', '') + '-' + str(val)
