@@ -14,6 +14,12 @@
 		<id>http://www.example.org/2005/01/01</id>
 		<updated>2005-12-12T12:00:00Z</updated>
 		<summary>Résumé</summary>
-		<content>Un peu de texte pour décrire mon info</content>
 	</entry>
+	<entry>
+        <title>Une autre actu</title>
+        <link href="http://www.example.org/2005/01/02" />
+        <id>http://www.example.org/2005/01/02</id>
+        <updated>2005-12-12T12:00:00Z</updated>
+        <content>Un peu de texte pour décrire mon info</content>
+    </entry>
 </feed>

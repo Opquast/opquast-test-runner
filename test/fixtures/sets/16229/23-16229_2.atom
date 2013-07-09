@@ -13,6 +13,5 @@
 		<link href="http://www.example.org/2005/01/01" />
 		<id>http://www.example.org/2005/01/01</id>
 		<updated>2005-12-12T12:00:00Z</updated>
-		<content>Un peu de texte pour décrire mon info</content>
 	</entry>
 </feed>

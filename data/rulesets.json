@@ -89,6 +89,28 @@
             }
         }
     },
+    "10059": {
+        "IMG_IN_A": {
+            "onfalse": {
+                "comment": "aucun élément IMG dans un A n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG dans un A a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG_IN_BUTTON": {
+            "onfalse": {
+                "comment": "aucun élément IMG dans un BUTTON n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG dans un BUTTON a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "10060": {
         "AREA": {
             "onfalse": {
@@ -3592,11 +3614,11 @@
     "11292": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
                 "result": "c"
             }
         },
@@ -5332,11 +5354,11 @@
     "11486": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
                 "result": "i"
             }
         }
@@ -6536,11 +6558,11 @@
     "13624": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
                 "result": "i"
             }
         }
@@ -10732,11 +10754,11 @@
     "16191": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
                 "result": "i"
             }
         }
@@ -10744,11 +10766,11 @@
     "16192": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
                 "result": "i"
             }
         }
@@ -10756,7 +10778,7 @@
     "16194": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -10772,7 +10794,7 @@
                         }
                     }
                 },
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
                 "result": "i"
             }
         }
@@ -11276,68 +11298,6 @@
             "ontrue": {
                 "comment": "le serveur renvoie un entête HTTP 404",
                 "result": "c"
-            }
-        }
-    },
-    "16657": {
-        "APPLET": {
-            "onfalse": {
-                "comment": "aucun élément APPLET n'a été détecté",
-                "result": "na"
-            },
-            "ontrue": {
-                "comment": "au moins un élément APPLET a été détecté",
-                "result": "i"
-            }
-        },
-        "AUDIO": {
-            "onfalse": {
-                "comment": "aucun élément AUDIO n'a été détecté",
-                "result": "na"
-            },
-            "ontrue": {
-                "comment": "au moins un élément AUDIO a été détecté",
-                "result": "i"
-            }
-        },
-        "CANVAS": {
-            "onfalse": {
-                "comment": "aucun élément CANVAS n'a été détecté",
-                "result": "na"
-            },
-            "ontrue": {
-                "comment": "au moins un élément CANVAS a été détecté",
-                "result": "i"
-            }
-        },
-        "EMBED": {
-            "onfalse": {
-                "comment": "aucun élément EMBED n'a été détecté",
-                "result": "na"
-            },
-            "ontrue": {
-                "comment": "au moins un élément EMBED a été détecté",
-                "result": "i"
-            }
-        },
-        "OBJECT": {
-            "onfalse": {
-                "comment": "aucun élément OBJECT n'a été détecté",
-                "result": "na"
-            },
-            "ontrue": {
-                "comment": "au moins un élément OBJECT a été détecté",
-                "result": "i"
-            }
-        },
-        "VIDEO": {
-            "onfalse": {
-                "comment": "aucun élément VIDEO n'a été détecté",
-                "result": "na"
-            },
-            "ontrue": {
-                "comment": "au moins un élément VIDEO a été détecté",
-                "result": "i"
             }
         }
     },
@@ -16516,7 +16476,7 @@
     "19465": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
                 "result": "na"
             },
             "ontrue": {
@@ -16532,7 +16492,7 @@
                         }
                     }
                 },
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
                 "result": "i"
             }
         }
@@ -28884,11 +28844,11 @@
     "29721": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
                 "result": "i"
             }
         }
@@ -33920,11 +33880,11 @@
     "625": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
                 "result": "i"
             }
         }

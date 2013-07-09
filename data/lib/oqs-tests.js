@@ -3683,7 +3683,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             sidecar.resources.filter(function(element) {
                 //
-                return !(element.headers["cache-control"]) && !(element.headers["etag"]) && !(element.headers["expires"]) && !(element.headers["last-modified"]);
+                return element.status == 200 && !element.headers["cache-control"] && !element.headers["etag"] &&
+                    !element.headers["expires"] && !element.headers["last-modified"] && !analytics.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -4574,7 +4575,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var content_type = element.content_type || '';
 
-                return $.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1;
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && !analytics.test(element.uri);
             }).forEach(function(element) {
                 //
                 if (reg.test(element.headers["cache-control"] || '')) {
@@ -4827,7 +4828,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var content_type = element.content_type || '';
 
-                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && reg.test(element.uri);
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && reg.test(element.uri) && !analytics.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -4861,7 +4862,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var content_type = element.content_type || '';
 
-                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && reg.test(element.uri);
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && reg.test(element.uri) && !analytics.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -6230,7 +6231,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                         });
                     } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
                         $("entry", data).each(function() {
-                            if ($("summary", this).length == 0) {
+                            if ($("summary", this).length == 0 && $("content", this).length == 0) {
                                 result.push(_getDetails(this));
                             }
                         });

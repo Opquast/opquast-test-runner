@@ -26,44 +26,6 @@
     "21708": "En d<C3><A9>sactivant le code CSS, l'ordre d'affichage du </span>contenu demeure-t-il logique ? Le sens du contenu est-t-il conserver ? Y-a-t-il une perte d'informations pertinentes ?&nbsp; Y-a-t-il un ajout&nbsp; d'informations pertinentes ?",
     "21714": "Compte tenu de sa nature, le contenu est-il formul<C3><A9> de fa<C3><A7>on compr<C3><A9>hensible pour les personnes auxquelles il est destin<C3><A9> ?",
     "21743": "<C3><80> l'exception de la feuille de style pour </span>l'impression, la taille d<E2><80><99>une police de caract<C3><A8>res est-elle sp<C3><A9>cifi<C3><A9>e avec une unit<C3><A9> de mesure en em, en pourcentage ou au moyen des valeurs xx-small, x-small, small, medium, large, x-large et xx-large ?",
-    "10059": {
-        "IMG_IN_A": {
-            "onfalse": {
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "IMG_IN_A_WO_TEXT": {
-                        "onfalse": {
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "result": "nc"
-                        }
-                    }
-                },
-                "result": "i"
-            }
-        },
-        "IMG_IN_BUTTON": {
-            "onfalse": {
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "IMG_IN_BUTTON_WO_TEXT": {
-                        "onfalse": {
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "result": "nc"
-                        }
-                    }
-                },
-                "result": "i"
-            }
-        }
-    },
     "10076": {
         "APPLET": {
             "onfalse": {

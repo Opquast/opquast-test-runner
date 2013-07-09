@@ -4022,11 +4022,11 @@
     "META_DESCRIPTION_FILLED": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
-                "comment": "aucun élément META DESCRIPTION ou META DESCRIPTION vide n'a été détecté",
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "un élément  META DESCRIPTION non vide a été détecté",
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
                 "result": "c"
             }
         }

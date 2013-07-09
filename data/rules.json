@@ -378,7 +378,7 @@
     "PLAINTEXT": "xpath@html://plaintext",
     "POSITIVE_TABINDEX_ATTR": "xpath@html://*[@tabindex>=0]",
     "PRE": "xpath@html://pre",
-    "P_WO_TEXT": "xpath@html://p[normalize-space(translate(.,' ',' '))=''][not(.//img) and not(.//input[translate(@type,'SUBMIT','submit')='submit' or translate(@type,'IMAGE','image')='image' or translate(@type,'TEX','tex')='text' or not(@type) or translate(@type,'PASWORD','pasword')='password']) and not(.//textarea) and not(.//applet) and not(.//embed) and not(.//object)]",
+    "P_WO_TEXT": "xpath@html://p[normalize-space(translate(.,' ',' '))=''][not(.//img) and not(.//input[translate(@type,'SUBMIT','submit')='submit' or translate(@type,'IMAGE','image')='image' or translate(@type,'TEX','tex')='text' or not(@type) or translate(@type,'PASWORD','pasword')='password']) and not(.//textarea) and not(.//applet) and not(.//embed) and not(.//object) and not(.//iframe)]",
     "P_W_FAKE_LIST": "xpath@html://p[(starts-with(normalize-space(translate(.,' ',' ')),'*') and following-sibling::p[starts-with(normalize-space(translate(.,' ',' ')),'*')]) or (starts-with(normalize-space(translate(.,' ',' ')),'-') and following-sibling::p[starts-with(normalize-space(translate(.,' ',' ')),'-')]) or (starts-with(normalize-space(translate(.,' ',' ')),'•') and following-sibling::p[starts-with(normalize-space(translate(.,' ',' ')),'•')])]",
     "RESOURCE_403": "oqs@http:httpResource403",
     "RESOURCE_403_MORE_THAN_3K": "oqs@http:httpResource403MoreThan3k",
