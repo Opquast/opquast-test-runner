@@ -11,7 +11,8 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
 
 var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
-    analytics = new RegExp().compile("^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/", "i"),
+    analytics = new RegExp().compile("(^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/|/piwik\\.php\\?)", "i"),
+    regCms = new RegExp().compile("/spip\\.php\\?action=cron", "i"),
     jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
     regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
     regSpaces = new RegExp().compile("[\\s\\n]{2,}", "g");
@@ -3684,7 +3685,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             sidecar.resources.filter(function(element) {
                 //
                 return element.status == 200 && !element.headers["cache-control"] && !element.headers["etag"] &&
-                    !element.headers["expires"] && !element.headers["last-modified"] && !analytics.test(element.uri);
+                    !element.headers["expires"] && !element.headers["last-modified"] && !analytics.test(element.uri) &&
+                    !regCms.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -4575,7 +4577,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var content_type = element.content_type || '';
 
-                return (($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS)) != -1) && !analytics.test(element.uri);
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
+                     !analytics.test(element.uri) && !regCms.test(element.uri);
             }).forEach(function(element) {
                 //
                 if (reg.test(element.headers["cache-control"] || '')) {
@@ -4828,7 +4831,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var content_type = element.content_type || '';
 
-                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && reg.test(element.uri) && !analytics.test(element.uri);
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
+                    reg.test(element.uri) && !analytics.test(element.uri) && !regCms.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -4862,7 +4866,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var content_type = element.content_type || '';
 
-                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && reg.test(element.uri) && !analytics.test(element.uri);
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
+                    reg.test(element.uri) && !analytics.test(element.uri) && !regCms.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -5872,7 +5877,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element) {
-                return ($.inArray(element.content_type || '', mimeJS) === -1) && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+                return ($.inArray(element.content_type || '', mimeJS) == -1) && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     var match = reg.exec(response.data);
