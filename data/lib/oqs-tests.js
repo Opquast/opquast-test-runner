@@ -4575,7 +4575,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var content_type = element.content_type || '';
 
-                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && !analytics.test(element.uri);
+                return (($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS)) != -1) && !analytics.test(element.uri);
             }).forEach(function(element) {
                 //
                 if (reg.test(element.headers["cache-control"] || '')) {
