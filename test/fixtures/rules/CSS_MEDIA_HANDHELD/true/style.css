@@ -1,0 +1,9 @@
+body {
+    background-color: #fff;
+}
+
+@media screen and (max-width: 640px) {
+    body {
+        color: #333;
+    }
+}

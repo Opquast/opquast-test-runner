@@ -1,0 +1,10 @@
+#foo {
+	background-image:url(bg.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+}
+#bar {
+	background-image:url(bg.png);
+	background-position:50% 50%;
+	background-repeat:no-repeat;
+}

@@ -1,0 +1,5 @@
+@media handheld and (min-width: 1px) {
+	body {
+		font-family: sans-serif;
+	}
+}
