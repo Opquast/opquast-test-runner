@@ -11,7 +11,7 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
 
 var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     regCdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
-    regAnalytics = new RegExp().compile("(^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/|/piwik\\.php\\?)", "i"),
+    regAnalytics = new RegExp().compile("((^https?://[^/]+\\.((google-analytics|xiti|cybermonitor|estat|smartadserver)\\.com/|(weborama)\\.fr|(contentspread)\\.net))|/piwik\\.php\\?)", "i"),
     regCms = new RegExp().compile("/spip\\.php\\?action=cron", "i"),
     regJsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
     regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
