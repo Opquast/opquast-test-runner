@@ -11,7 +11,7 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
 
 var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     regCdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
-    regAnalytics = new RegExp().compile("((^https?://[^/]+\\.((google-analytics|xiti|cybermonitor|estat|smartadserver)\\.com/|(weborama)\\.fr|(contentspread)\\.net))|/piwik\\.php\\?)", "i"),
+    regAnalytics = new RegExp().compile("((^https?://[^/]+\\.((google-analytics|xiti|cybermonitor|estat|smartadserver|tradedoubler)\\.com/|(weborama)\\.fr|(contentspread|doubleclick|ad4mat)\\.net))|/piwik\\.php\\?)", "i"),
     regCms = new RegExp().compile("/spip\\.php\\?action=cron", "i"),
     regJsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
     regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
@@ -3862,7 +3862,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return element.status == 200 && (content_type.split("/")[0] == "text" || $.inArray(content_type, mimeJS) != -1 || regXML.test(content_type)) &&
-                    element.headers["content-length"] > 300;
+                    element.headers["content-length"] > 300 && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 //
                 var tmp = _getHttpDetails(element.uri, element.headers);
