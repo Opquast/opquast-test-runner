@@ -10,12 +10,15 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
     badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"];
 
 var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
-    cdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
-    analytics = new RegExp().compile("(^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/|/piwik\\.php\\?)", "i"),
+    regCdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
+    regAnalytics = new RegExp().compile("(^https?://[^/]+\\.(google-analytics|xiti|cybermonitor|estat)\\.com/|/piwik\\.php\\?)", "i"),
     regCms = new RegExp().compile("/spip\\.php\\?action=cron", "i"),
-    jsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
+    regJsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
     regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
-    regSpaces = new RegExp().compile("[\\s\\n]{2,}", "g");
+    regSpaces = new RegExp().compile("[\\s\\n]{2,}", "g"),
+    regXML = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i"),
+    regDomain = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i"),
+    regBgImage = new RegExp().compile("^url\\(", "i");
 
 (function($, window, undefined) {
     "use strict";
@@ -47,7 +50,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("form").each(function() {
                 //
-                fields[i] = {}, fields[i][j] = {};
+                fields[i] = {},
+                fields[i][j] = {};
 
                 //
                 if ($("fieldset", $(this)).size() == 0) {
@@ -525,7 +529,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
@@ -551,7 +555,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         $(rule.mSelectorText).each(function() {
@@ -586,7 +590,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
@@ -620,7 +624,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("body").find(":not(input[type='hidden'])").andSelf().filter(function() {
                 //
-                var _backgroundColor = $(this).css("background-color"), _color = $(this).css("color");
+                var _backgroundColor = $(this).css("background-color"),
+                    _color = $(this).css("color");
 
                 //
                 if (_color == "rgb(0, 0, 0)") {
@@ -660,12 +665,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssBackgroundImage = function cssBackgroundImage(doc) {
         function callback(rule) {
-            var result = [],
-                reg = new RegExp().compile('^url\\(', "i");;
+            var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
-                    if (rule.declarations[i]["property"] == "background-image" && reg.test(rule.declarations[i]["valueText"])) {
+                    if (rule.declarations[i]["property"] == "background-image" && regBgImage.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
                     }
                 }
@@ -687,14 +691,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssBackgroundImageInSprite = function cssBackgroundImageInSprite(doc) {
         function callback(rule) {
-            var result = [], reg = new RegExp().compile('^url\\(', "i");;
+            var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "background-position" && rule.declarations[i]["valueText"] != "0 0") {
                         var node = $(rule.mSelectorText);
 
-                        if (reg.test(node.css("background-image")) && node.css("background-repeat") == "no-repeat") {
+                        if (regBgImage.test(node.css("background-image")) && node.css("background-repeat") == "no-repeat") {
                             result.push(_getCssDetails(rule, i));
                         }
 
@@ -725,8 +729,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("body").find(":not(input[type='hidden'])").andSelf().filter(function() {
                 //
-                var _backgroundColor = $(this).css("background-color");
-                var _backgroundImage = $(this).css("background-image");
+                var _backgroundColor = $(this).css("background-color"),
+                    _backgroundImage = $(this).css("background-image");
 
                 //
                 if (_backgroundColor == "transparent") {
@@ -774,8 +778,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("body").find(":not(input[type='hidden'])").andSelf().filter(function() {
                 //
-                var _backgroundColor = $(this).css("background-color");
-                var _color = $(this).css("color");
+                var _backgroundColor = $(this).css("background-color"),
+                    _color = $(this).css("color");
 
                 //
                 if (_backgroundColor == "transparent") {
@@ -851,7 +855,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "direction") {
                         result.push(_getCssDetails(rule, i));
@@ -877,7 +881,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "display" && rule.declarations[i]["valueText"] == "none") {
                         result.push(_getCssDetails(rule, i));
@@ -943,7 +947,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-family") {
                         var font = rule.declarations[i]["valueText"].split(",").pop().replace(/['"]/g, "").trim();
@@ -978,7 +982,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     var selectors = rule.mSelectorText.split(",").map(function(element) {
                         return $.trim(element);
@@ -1105,17 +1109,22 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.cssMediaHandheld = function cssMediaHandheld(doc) { let
-        callback = [];
+    window.cssMediaHandheld = function cssMediaHandheld(doc) {
+        function callback(rule) {
+            var result = [];
 
-        return _analyseStylesheets(doc, "handheld", callback).then(function() {
-            return callback.filter(function(element) {
-                var mediaText = element.media.mediaText;
-                return mediaText && $.inArray("handheld", mediaText.split(',')) != -1;
-            }).map(function(element) {
-                return element.href;
-            });
-        }).then(null, function(err) {
+            if (rule) {
+                if (rule.parentStyleSheet && $.inArray("handheld", rule.parentStyleSheet._extra.media) != -1) {
+                    result.push(rule.parentStyleSheet._extra.href);
+                } else if (rule.parentRule && $.inArray("handheld", rule.parentRule.media) != -1){
+                    result.push(rule.parentRule);
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "handheld", callback).then(null, function(err) {
             // Error Logging
             logger.error("cssMediaHandheld", err);
             return false;
@@ -1126,17 +1135,22 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.cssMediaPrint = function cssMediaPrint(doc) { let
-        callback = [];
+    window.cssMediaPrint = function cssMediaPrint(doc) {
+        function callback(rule) {
+            var result = [];
 
-        return _analyseStylesheets(doc, "print", callback).then(function() {
-            return callback.filter(function(element) {
-                var mediaText = element.media.mediaText;
-                return mediaText && $.inArray("print", mediaText.split(',')) != -1;
-            }).map(function(element) {
-                return element.href;
-            });
-        }).then(null, function(err) {
+            if (rule) {
+                if (rule.parentStyleSheet && $.inArray("print", rule.parentStyleSheet._extra.media) != -1) {
+                    result.push(rule.parentStyleSheet._extra.href);
+                } else if (rule.parentRule && $.inArray("print", rule.parentRule.media) != -1){
+                    result.push(rule.parentRule);
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "print", callback).then(null, function(err) {
             // Error Logging
             logger.error("cssMediaPrint", err);
             return false;
@@ -1151,7 +1165,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-family" && $.inArray(rule.declarations[i]["valueText"], genericFontStyle) == -1) {
                         result = result.concat(rule.declarations[i]["valueText"].split(","));
@@ -1185,7 +1199,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-family" && $.inArray(rule.declarations[i]["valueText"], genericFontStyle) == -1) {
                         result = result.concat(rule.declarations[i]["valueText"].split(","));
@@ -1219,7 +1233,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
@@ -1256,7 +1270,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     'serif'
                 ];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-family"){
                         var fonts = rule.declarations[i]["valueText"].split(";")[0].split(",").map(function(element) {
@@ -1325,7 +1339,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "text-align" && rule.declarations[i]["valueText"] == "justify") {
                         result.push(_getCssDetails(rule, i));
@@ -1416,11 +1430,12 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.cssUniversalSelector = function cssUniversalSelector(doc) {
         function callback(rule) {
-            var result = [];
+            var result = [],
+                regUniversalSelector = new RegExp().compile(" \\*", "g");
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
-                    if ($.endsWith(rule.mSelectorText, "\\*")) {
+                    if (regUniversalSelector.test(rule.mSelectorText)) {
                         result.push(_getCssDetails(rule, i));
                     }
                 }
@@ -1486,7 +1501,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         function callback(rule) {
             var result = [];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "visibility" && rule.declarations[i]["valueText"] == "hidden") {
                         result.push(_getCssDetails(rule, i));
@@ -1663,14 +1678,16 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlAreaNotUnique = function htmlAreaNotUnique(doc) {
         //
-        var result = [], links = {};
+        var result = [],
+            links = {};
 
         //
         try {
             //
             $("area[alt]").each(function() {
                 //
-                var context = $.trim($(this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase(), href = $.trim($(this).attr("href"));
+                var context = $.trim($(this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase(),
+                    href = $.trim($(this).attr("href"));
 
                 //
                 if ($.inArray(context, Object.keys(links)) != -1 && links[context] != href) {
@@ -1783,8 +1800,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("area").each(function() {
                 //
-                var href = $.trim($(this).attr("href"));
-                var alt = $.trim($(this).attr("alt")).toLowerCase();
+                var href = $.trim($(this).attr("href")),
+                    alt = $.trim($(this).attr("alt")).toLowerCase();
 
                 //
                 if ($.inArray(alt, Object.keys(area)) != -1 && area[alt] != href) {
@@ -1928,7 +1945,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("*[lang], *[xml\\:lang]").each(function() {
                 //
-                var _lang = $.trim($(this).attr("lang")).split("-")[0].toLowerCase(), _xml_lang = $.trim($(this).attr("xml:lang")).split("-")[0].toLowerCase();
+                var _lang = $.trim($(this).attr("lang")).split("-")[0].toLowerCase(),
+                    _xml_lang = $.trim($(this).attr("xml:lang")).split("-")[0].toLowerCase();
 
                 //
                 if (($(this).attr("lang") != undefined && $.inArray(_lang, langs) == -1) || ($(this).attr("xml:lang") != undefined && $.inArray(_xml_lang, langs) == -1)) {
@@ -2034,8 +2052,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.htmlFavicon = function htmlFavicon(doc) {
-        var result = [],
-            promises = [];
+        var promises = [];
 
         try {
             sidecar.pageInfo.links.filter(function(element){
@@ -2805,7 +2822,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlLinksImageNotUnique = function htmlLinksImageNotUnique(doc) {
         //
-        var result = [], links = {};
+        var result = [],
+            links = {};
 
         //
         try {
@@ -2915,7 +2933,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlLinksNotUnique = function htmlLinksNotUnique(doc) {
         //
-        var result = [], links = {};
+        var result = [],
+            links = {};
 
         //
         try {
@@ -2924,8 +2943,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 return $.trim($(this).text()) != "";
             }).each(function() {
                 //
-                var context = $.trim($(this).text()).toLowerCase() + "%|%" + $.trim($("img", this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase();
-                var href = $.trim($(this).attr("href"));
+                var context = $.trim($(this).text()).toLowerCase() + "%|%" + $.trim($("img", this).attr("alt")).toLowerCase() + "%|%" + $.trim($(this).attr("title")).toLowerCase(),
+                    href = $.trim($(this).attr("href"));
 
                 //
                 if ($.inArray(context, Object.keys(links)) != -1 && links[context] != href) {
@@ -2964,7 +2983,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("a:not(:has(img))").each(function() {
                 //
-                var text = $.trim($(this).text()).toLowerCase(), title = $.trim($(this).attr("title")).toLowerCase();
+                var text = $.trim($(this).text()).toLowerCase(),
+                    title = $.trim($(this).attr("title")).toLowerCase();
 
                 //
                 if (text != '' && $.inArray(text, badLinks) != -1 && (title == '' || $.inArray(title, badLinks) != -1)) {
@@ -3045,7 +3065,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             //
             $("a[title]:not(:has(img))").each(function() {
                 //
-                var text = $.trim($(this).text()).toLowerCase(), title = $.trim($(this).attr("title")).toLowerCase();
+                var text = $.trim($(this).text()).toLowerCase(),
+                    title = $.trim($(this).attr("title")).toLowerCase();
 
                 //
                 if (text != '' && (title == '' || title == text || $.inArray(title, badLinks) != -1)) {
@@ -3319,7 +3340,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.htmlNonHttpLinks = function htmlNonHttpLinks(doc) {
         //
-        var result = [], protocols = ["http:", "https:", "javascript:", "ftp:", "ftps:"];
+        var result = [],
+            protocols = ["http:", "https:", "javascript:", "ftp:", "ftps:"];
 
         //
         try {
@@ -3360,7 +3382,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var src = $.trim($(this).attr("src"));
 
                 //
-                if ((src != '' && !cdns.test(src) && !analytics.test(src) && !jsFrameworks.test(src)) || $.trim($(this).text()) != '') {
+                if ((src != '' && !regCdns.test(src) && !regAnalytics.test(src) && !regJsFrameworks.test(src)) || $.trim($(this).text()) != '') {
                     //
                     result.push(_getDetails(this));
                 }
@@ -3685,7 +3707,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             sidecar.resources.filter(function(element) {
                 //
                 return element.status == 200 && !element.headers["cache-control"] && !element.headers["etag"] &&
-                    !element.headers["expires"] && !element.headers["last-modified"] && !analytics.test(element.uri) &&
+                    !element.headers["expires"] && !element.headers["last-modified"] && !regAnalytics.test(element.uri) &&
                     !regCms.test(element.uri);
             }).forEach(function(element) {
                 //
@@ -3830,8 +3852,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.httpGzip = function httpGzip(doc) {
         //
         var result = [],
-            encoding = ["gzip", "deflate"],
-            reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
+            encoding = ["gzip", "deflate"];
 
         //
         try {
@@ -3840,7 +3861,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var content_type = element.content_type || '';
 
-                return element.status == 200 && (content_type.split("/")[0] == "text" || $.inArray(content_type, mimeJS) != -1 || reg.test(content_type)) &&
+                return element.status == 200 && (content_type.split("/")[0] == "text" || $.inArray(content_type, mimeJS) != -1 || regXML.test(content_type)) &&
                     element.headers["content-length"] > 300;
             }).forEach(function(element) {
                 //
@@ -3932,8 +3953,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 "application/x-font-woff",
                 "application/vnd.ms-fontobject",
                 "applicaton/font-woff"
-            ],
-            reg = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i");
+            ];
 
         //
         try {
@@ -3942,7 +3962,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var content_type = element.content_type || '';
 
-                return $.inArray(content_type.split("/")[0], ["text", "font"]) == -1 && $.inArray(content_type, mimes) == -1 && !reg.test(content_type) && element.headers["content-encoding"];
+                return $.inArray(content_type.split("/")[0], ["text", "font"]) == -1 && $.inArray(content_type, mimes) == -1 && !regXML.test(content_type) && element.headers["content-encoding"];
             }).forEach(function(element) {
                 // gzip or deflate
                 if ($.inArray(element.headers["content-encoding"].toLowerCase(), encoding) != -1) {
@@ -4057,6 +4077,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.pingLongdesc = function httpPingLongdesc(doc) {
         var promises = [];
+
         try {
             $("img[width!=1][height!=1][longdesc]").each(function() {
                 var longdesc = $.trim($(this).attr("longdesc")),
@@ -4360,6 +4381,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.resPdf = function httpResourcePdf(doc) {
         var promises = [];
+
         try {
             sidecar.pageInfo.links.forEach(function(element) {
                 // Note (Olivier 2013-03-02)
@@ -4578,7 +4600,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                     !analytics.test(element.uri) && !regCms.test(element.uri);
+                     !regAnalytics.test(element.uri) && !regCms.test(element.uri);
             }).forEach(function(element) {
                 //
                 if (reg.test(element.headers["cache-control"] || '')) {
@@ -4832,7 +4854,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                    reg.test(element.uri) && !analytics.test(element.uri) && !regCms.test(element.uri);
+                    reg.test(element.uri) && !regAnalytics.test(element.uri) && !regCms.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -4867,7 +4889,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                    reg.test(element.uri) && !analytics.test(element.uri) && !regCms.test(element.uri);
+                    reg.test(element.uri) && !regAnalytics.test(element.uri) && !regCms.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -4900,7 +4922,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 //
                 var content_type = element.content_type || '';
 
-                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && cdns.test(element.uri);
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) && regCdns.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(element.uri);
@@ -5104,7 +5126,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsDocumentWrite = function jsDocumentWrite(doc) {
-        var reg = new RegExp().compile("(document\\.write\\([^\\)]*\\))", "i"), promises = [];
+        var reg = new RegExp().compile("document\\.write\\(", "i"),
+            promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -5114,7 +5137,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element){
-                return $.inArray(element.content_type || '', mimeJS) != -1 && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     var match = reg.exec(response.data);
@@ -5755,7 +5778,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element){
-                return $.inArray(element.content_type || '', mimeJS) != -1 && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     var m1 = reg1.exec(response.data),
@@ -5835,7 +5858,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element) {
-                return ($.inArray(element.content_type || '', mimeJS) != -1) && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+                return ($.inArray(element.content_type || '', mimeJS) != -1) && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     var match = reg.exec(response.data);
@@ -5863,11 +5886,11 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     /**
      *
      * @param doc
-     * @todo terminate!
      * @return
      */
     window.jsSetTimeout = function jsSetTimeout(doc) {
-        var reg = new RegExp().compile("setTimeout\\(", "i"), promises = [];
+        var reg = new RegExp().compile("setTimeout\\(", "i"),
+            promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -5877,7 +5900,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element) {
-                return ($.inArray(element.content_type || '', mimeJS) == -1) && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     var match = reg.exec(response.data);
@@ -5943,7 +5966,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsWindowOpen = function jsWindowOpen(doc) {
         //
-        var reg = new RegExp().compile("(window|document)\\.open\\(", "i"), promises = [];
+        var reg = new RegExp().compile("(window|document)\\.open\\(", "i"),
+            promises = [];
 
         try {
             $("script:not([src])").each(function() {
@@ -5953,7 +5977,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element) {
-                return ($.inArray(element.content_type || '', mimeJS) != -1) && !cdns.test(element.uri) && !analytics.test(element.uri) && !jsFrameworks.test(element.uri);
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     var match = reg.exec(response.data);
@@ -6276,6 +6300,39 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.uriUniqueInPage = function htmlUriUniqueInPage(doc) {
+        //
+        var result = [],
+            uris = [];
+
+        //
+        try {
+            //
+            sidecar.resources.forEach(function(element, index, array) {
+                //
+                if ($.inArray(element.uri, uris) == -1) {
+                    uris.push(element.uri);
+                } else {
+
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("uriUniqueInPage", err);
+            result = false;
+        }
+
+        //
+        return result;
+    }
 
     /***************************************************************************/
     /******************************** CTIE *************************************/
@@ -6404,8 +6461,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksSpecialChars = function(doc) {
         //
         var _result = [],
-            _reg = new RegExp().compile("[A_Z_% ]", "g"),
-            _reg_domain = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i");
+            _reg = new RegExp().compile("[A_Z_% ]", "g");
 
         // current URL
         if (_reg.test(doc.location.hostname)) {
@@ -6419,7 +6475,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var _href = $.trim($(this).attr("href")), isInternal = true;
 
             //
-            if (_reg_domain.test(_href) && RegExp.$1 != doc.location.hostname) {
+            if (regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
                 isInternal = false;
             }
 
@@ -6443,7 +6499,6 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksInternal = function(doc) {
         //
         var _result = [],
-            _reg = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i"),
             _reg_doc = new RegExp().compile("\.(pdf|doc)$", "i");
 
         //
@@ -6459,7 +6514,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             }
 
             //
-            if (!isDoc && _reg.test(_href) && RegExp.$1 != doc.location.hostname) {
+            if (!isDoc && regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
                 isInternal = false;
             }
 
@@ -6479,8 +6534,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.linksNavigation = function(doc) {
         //
-        var _result = [],
-            _reg = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i");
+        var _result = [];
 
         //
         $("#navTools a[href], #thematicNav a[href], #transversalNav a[href]," + "#setcategoriesBox a[href]").each(function() {
@@ -6488,7 +6542,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var _href = $.trim($(this).attr("href"));
 
             //
-            if (_reg.test(_href) && RegExp.$1 != doc.location.hostname) {
+            if (regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
                 _result.push(_getDetails(this));
             }
         });
@@ -6540,7 +6594,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             var result = [],
                 authorized = ["arial", "verdana", "helvetica", "tahoma", "sans-serif", "inherit"];
 
-            if (rule && rule.parentStyleSheet && rule.declarations) {
+            if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
                     if (rule.declarations[i]["property"] == "font-family") {
                         var fonts = rule.declarations[i]["valueText"].split(";")[0].split(",").map(function(element) {

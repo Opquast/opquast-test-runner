@@ -1,0 +1,10 @@
+{
+    "/4-503_4.html": {
+        "headers": [
+            {
+                "name": "refresh",
+                "value": "3600"
+            }
+        ]
+    }
+}

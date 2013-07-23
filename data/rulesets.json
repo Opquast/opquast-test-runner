@@ -3533,6 +3533,18 @@
             }
         }
     },
+    "10239": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_IN_FORM": {
+            "onfalse": {
+                "comment": "aucune taille de police en pixel dans un formulaire n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une taille de police en pixel dans un formulaire a été détecté",
+                "result": "nc"
+            }
+        }
+    },
     "10242": {
         "APPLET": {
             "onfalse": {
@@ -3957,6 +3969,18 @@
             }
         }
     },
+    "11324": {
+        "CSS_MEDIA_HANDHELD": {
+            "onfalse": {
+                "comment": "aucune CSS pour le mobile n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour le mobile a été détectée",
+                "result": "c"
+            }
+        }
+    },
     "11361": {
         "IMG": {
             "onfalse": {
@@ -4219,6 +4243,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément VIDEO a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "11393": {
+        "RESOURCE_DOWNLOADABLE": {
+            "onfalse": {
+                "comment": "aucune ressource téléchargeable n'a été détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource téléchargeable a été détectée",
                 "result": "i"
             }
         }
@@ -5051,6 +5087,18 @@
             }
         }
     },
+    "11473": {
+        "RESOURCE_DOWNLOADABLE": {
+            "onfalse": {
+                "comment": "aucune ressource téléchargeable n'a été détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource téléchargeable a été détectée",
+                "result": "i"
+            }
+        }
+    },
     "11474": {
         "IMG": {
             "onfalse": {
@@ -5394,6 +5442,18 @@
             "ontrue": {
                 "comment": "au moins un élément A ouvrant un logiciel externe a été détecté",
                 "result": "i"
+            }
+        }
+    },
+    "11500": {
+        "CSS_MEDIA_PRINT": {
+            "onfalse": {
+                "comment": "aucune CSS pour l'impression n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour l'impression a été détectée",
+                "result": "c"
             }
         }
     },
@@ -5839,6 +5899,18 @@
             }
         }
     },
+    "11539": {
+        "RESOURCE_PDF": {
+            "onfalse": {
+                "comment": "aucun document PDF n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un document PDF a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "11540": {
         "FORM": {
             "onfalse": {
@@ -5978,6 +6050,18 @@
             "ontrue": {
                 "comment": "plus de 3 polices définies",
                 "result": "nc"
+            }
+        }
+    },
+    "11566": {
+        "CSS_MEDIA_HANDHELD": {
+            "onfalse": {
+                "comment": "aucune CSS pour le mobile n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour le mobile a été détectée",
+                "result": "c"
             }
         }
     },
@@ -6579,6 +6663,18 @@
             }
         }
     },
+    "13629": {
+        "CSS_MEDIA_PRINT": {
+            "onfalse": {
+                "comment": "aucune CSS pour l'impression n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour l'impression a été détectée",
+                "result": "c"
+            }
+        }
+    },
     "13630": {
         "CSS_GENERIC_FONT": {
             "onfalse": {
@@ -6740,6 +6836,18 @@
             "ontrue": {
                 "comment": "plus de 3 polices définies",
                 "result": "nc"
+            }
+        }
+    },
+    "13657": {
+        "CSS_MEDIA_HANDHELD": {
+            "onfalse": {
+                "comment": "aucune CSS pour le mobile n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour le mobile a été détectée",
+                "result": "c"
             }
         }
     },
@@ -11601,6 +11709,66 @@
             }
         }
     },
+    "19044": {
+        "CSS_UNIVERSAL_SELECTOR": {
+            "onfalse": {
+                "comment": "aucun sélecteur CSS universel (*) n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un sélecteur CSS universel (*) a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "19046": {
+        "CSS_BACKGROUND_IMAGE": {
+            "onfalse": {
+                "comment": "aucune image ajoutée par CSS n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CSS_BACKGROUND_IMAGE_IN_SPRITE": {
+                        "onfalse": {
+                            "comment": "aucun sprite CSS n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un sprite CSS a été détecté",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins une image ajoutée par CSS a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "19047": {
+        "CSS_BACKGROUND_IMAGE": {
+            "onfalse": {
+                "comment": "aucune image ajoutée par CSS n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CSS_BACKGROUND_IMAGE_IN_SPRITE": {
+                        "onfalse": {
+                            "comment": "aucun sprite CSS n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un sprite CSS a été détecté",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins une image ajoutée par CSS a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "19048": {
         "STATIC_VERSION_IN_PARAMS": {
             "onfalse": {
@@ -11778,6 +11946,18 @@
             "ontrue": {
                 "comment": "au moins un CDN détecté",
                 "result": "c"
+            }
+        }
+    },
+    "19064": {
+        "JS_DOCUMENT_WRITE": {
+            "onfalse": {
+                "comment": "aucune instruction document.write() n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une instruction document.write() a été détecté",
+                "result": "nc"
             }
         }
     },
@@ -12419,6 +12599,54 @@
             }
         }
     },
+    "19185": {
+        "JS_SET_TIMEOUT": {
+            "onfalse": {
+                "comment": "aucune instruction setTimeout n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une instruction setTimeout a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "19186": {
+        "JS_SET_INTERVAL": {
+            "onfalse": {
+                "comment": "aucune instruction setInterval n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une instruction setInterval a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "19187": {
+        "JS_WINDOW_OPEN": {
+            "onfalse": {
+                "comment": "aucune ouverture de nouvelle fenêtre n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une ouverture de nouvelle fenêtre a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "19190": {
+        "CSS_FONT_SIZE_W_PIXEL_VALUE": {
+            "onfalse": {
+                "comment": "aucune taille de police en pixel n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une taille de police en pixel a été détecté",
+                "result": "nc"
+            }
+        }
+    },
     "19191": {
         "CSS_FOCUS_STYLE": {
             "onfalse": {
@@ -12431,6 +12659,30 @@
             }
         }
     },
+    "19192": {
+        "CSS_TEXT_ALIGN_JUSTIFY": {
+            "onfalse": {
+                "comment": "aucun texte justifié n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un texte justifié a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "19193": {
+        "CSS_TEXT_INDENT_NEGATIVE": {
+            "onfalse": {
+                "comment": "aucun texte indenté négativement dans les styles n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un texte indenté négativement dans les styles a été détecté",
+                "result": "nc"
+            }
+        }
+    },
     "19195": {
         "TABLE_W_FAKE_TH_LINE": {
             "onfalse": {
@@ -12439,6 +12691,28 @@
             },
             "ontrue": {
                 "comment": "L'utilisation d'éléments TD quand l'ensemble des cellules d'une ligne contient du texte en gras constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "nc"
+            }
+        }
+    },
+    "19197": {
+        "CSS_DISPLAY_NONE": {
+            "onfalse": {
+                "comment": "aucun élément en display none n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément en display none a été détecté",
+                "result": "nc"
+            }
+        },
+        "CSS_VISIBILITY_HIDDEN": {
+            "onfalse": {
+                "comment": "aucun élément en visibility hidden n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément en visibility hidden a été détecté",
                 "result": "nc"
             }
         }
@@ -12475,6 +12749,18 @@
             },
             "ontrue": {
                 "comment": "L'utilisation d'éléments TD quand l'ensemble des cellules d'une colonne contient du texte en gras constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "nc"
+            }
+        }
+    },
+    "19214": {
+        "CSS_DIRECTION": {
+            "onfalse": {
+                "comment": "aucune direction dans les styles n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une direction dans les styles a été détecté",
                 "result": "nc"
             }
         }
@@ -15432,6 +15718,18 @@
             "ontrue": {
                 "comment": "au moins un élement avec un attribut VLINK a été détecté",
                 "result": "nc"
+            }
+        }
+    },
+    "19425": {
+        "CSS_MEDIA_PRINT": {
+            "onfalse": {
+                "comment": "aucune CSS pour l'impression n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour l'impression a été détectée",
+                "result": "c"
             }
         }
     },
@@ -19889,6 +20187,30 @@
             }
         }
     },
+    "21438": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_ON_SCREEN": {
+            "onfalse": {
+                "comment": "aucune taille de police en valeur absolue destinée à l'écran n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une taille de police en valeur absolue destinée à l'écran a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "21452": {
+        "CSS_TEXT_ALIGN_JUSTIFY": {
+            "onfalse": {
+                "comment": "aucun texte justifié n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un texte justifié a été détecté",
+                "result": "nc"
+            }
+        }
+    },
     "21462": {
         "INPUT_W_TYPE_CHECKBOX": {
             "onfalse": {
@@ -20915,6 +21237,68 @@
             }
         }
     },
+    "21516": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "HTTP_REFRESH": {
+            "onfalse": {
+                "comment": "le serveur n'envoie pas de commande de rafraîchissement de la page",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "le serveur envoie une commande de rafraîchissement de la page",
+                "result": "nc"
+            }
+        },
+        "JS_REFRESH": {
+            "onfalse": {
+                "comment": "la page n'est pas rafraîchie ou redirigée automatiquement",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "la page est rafraîchie ou redirigée automatiquement",
+                "result": "nc"
+            }
+        },
+        "META_REFRESH_SHORT": {
+            "onfalse": {
+                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte est présent",
+                "result": "nc"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "21517": {
         "META_REFRESH_URL": {
             "onfalse": {
@@ -20923,6 +21307,18 @@
             },
             "ontrue": {
                 "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une URL est présent",
+                "result": "i"
+            }
+        }
+    },
+    "21518": {
+        "JS_REFRESH": {
+            "onfalse": {
+                "comment": "la page n'est pas rafraîchie ou redirigée automatiquement",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "la page est rafraîchie ou redirigée automatiquement",
                 "result": "i"
             }
         }
@@ -23421,6 +23817,38 @@
             }
         }
     },
+    "21708": {
+        "CSS_CONTENT": {
+            "onfalse": {
+                "comment": "aucun contenu textuel ajouté par CSS n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un contenu textuel ajouté par CSS a été détecté",
+                "result": "i"
+            }
+        },
+        "CSS_DISPLAY_NONE": {
+            "onfalse": {
+                "comment": "aucun élément en display none n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément en display none a été détecté",
+                "result": "i"
+            }
+        },
+        "CSS_VISIBILITY_HIDDEN": {
+            "onfalse": {
+                "comment": "aucun élément en visibility hidden n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément en visibility hidden a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "21710": {
         "ACCESSIBILITY_LINK": {
             "onfalse": {
@@ -23430,6 +23858,18 @@
             "ontrue": {
                 "comment": "le lien accessibilité est présent",
                 "result": "c"
+            }
+        }
+    },
+    "21714": {
+        "CSS_TEXT_ALIGN_JUSTIFY": {
+            "onfalse": {
+                "comment": "aucun texte justifié n'a été détecté",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "au moins un texte justifié a été détecté",
+                "result": "nc"
             }
         }
     },
@@ -23810,6 +24250,18 @@
             "ontrue": {
                 "comment": "au moins un élément VIDEO a été détecté",
                 "result": "i"
+            }
+        }
+    },
+    "21743": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_ON_SCREEN": {
+            "onfalse": {
+                "comment": "aucune taille de police en valeur absolue destinée à l'écran n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une taille de police en valeur absolue destinée à l'écran a été détecté",
+                "result": "nc"
             }
         }
     },
@@ -32593,6 +33045,68 @@
             }
         }
     },
+    "503": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "HTTP_REFRESH": {
+            "onfalse": {
+                "comment": "le serveur n'envoie pas de commande de rafraîchissement de la page",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le serveur envoie une commande de rafraîchissement de la page",
+                "result": "i"
+            }
+        },
+        "JS_REFRESH": {
+            "onfalse": {
+                "comment": "la page n'est pas rafraîchie ou redirigée automatiquement",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "la page est rafraîchie ou redirigée automatiquement",
+                "result": "i"
+            }
+        },
+        "META_REFRESH_SHORT": {
+            "onfalse": {
+                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte est présent",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "504": {
         "CSS_BACKGROUND_IMAGE": {
             "onfalse": {
@@ -32745,6 +33259,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément VIDEO a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "532": {
+        "RESOURCE_DOWNLOADABLE": {
+            "onfalse": {
+                "comment": "aucune ressource téléchargeable n'a été détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource téléchargeable a été détectée",
                 "result": "i"
             }
         }
@@ -33577,6 +34103,18 @@
             }
         }
     },
+    "612": {
+        "RESOURCE_DOWNLOADABLE": {
+            "onfalse": {
+                "comment": "aucune ressource téléchargeable n'a été détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource téléchargeable a été détectée",
+                "result": "i"
+            }
+        }
+    },
     "613": {
         "IMG": {
             "onfalse": {
@@ -33920,6 +34458,18 @@
             "ontrue": {
                 "comment": "au moins un élément A ouvrant un logiciel externe a été détecté",
                 "result": "i"
+            }
+        }
+    },
+    "639": {
+        "CSS_MEDIA_PRINT": {
+            "onfalse": {
+                "comment": "aucune CSS pour l'impression n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour l'impression a été détectée",
+                "result": "c"
             }
         }
     },
@@ -34365,6 +34915,18 @@
             }
         }
     },
+    "678": {
+        "RESOURCE_PDF": {
+            "onfalse": {
+                "comment": "aucun document PDF n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un document PDF a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "679": {
         "FORM": {
             "onfalse": {
@@ -34504,6 +35066,18 @@
             "ontrue": {
                 "comment": "plus de 3 polices définies",
                 "result": "nc"
+            }
+        }
+    },
+    "705": {
+        "CSS_MEDIA_HANDHELD": {
+            "onfalse": {
+                "comment": "aucune CSS pour le mobile n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour le mobile a été détectée",
+                "result": "c"
             }
         }
     },

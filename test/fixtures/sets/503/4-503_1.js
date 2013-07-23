@@ -1,1 +1,1 @@
-setTimeout(document.write("test"), 30000);
+//setTimeout("document.write('test')", 30000);

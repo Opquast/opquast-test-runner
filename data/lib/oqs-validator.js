@@ -622,7 +622,17 @@ var logger;
      */
     window._getCssDetails = function _getCssDetails(rule, i) {
         //
-        return rule.parentStyleSheet._extra["href"] + " (ligne " + rule.currentLine + ") : " + rule.mSelectorText + " {" + rule.declarations[i]["parsedCssText"] + "}";
+        var parent = "";
+        try{
+            parent = rule.parentStyleSheet._extra["href"] + " (ligne " + rule.currentLine + ")";
+        }catch(e){
+            try{
+                parent = rule.parentRule;
+            }catch(e){}
+        }
+
+        //
+        return parent + " : " + rule.mSelectorText + " {" + rule.declarations[i]["parsedCssText"] + "}";
     }
 
     /**

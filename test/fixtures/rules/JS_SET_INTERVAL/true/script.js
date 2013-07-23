@@ -1,0 +1,1 @@
+setInterval("document.write('test')", 30000);

@@ -1043,6 +1043,18 @@
             }
         }
     },
+    "CSS_BACKGROUND_IMAGE_IN_SPRITE": {
+        "CSS_BACKGROUND_IMAGE_IN_SPRITE": {
+            "onfalse": {
+                "comment": "aucun sprite CSS n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un sprite CSS a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "CSS_CONTENT": {
         "CSS_CONTENT": {
             "onfalse": {
@@ -1051,6 +1063,30 @@
             },
             "ontrue": {
                 "comment": "au moins un contenu textuel ajouté par CSS a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_DIRECTION": {
+        "CSS_DIRECTION": {
+            "onfalse": {
+                "comment": "aucune direction dans les styles n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une direction dans les styles a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_DISPLAY_NONE": {
+        "CSS_DISPLAY_NONE": {
+            "onfalse": {
+                "comment": "aucun élément en display none n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément en display none a été détecté",
                 "result": "c"
             }
         }
@@ -1103,6 +1139,42 @@
             }
         }
     },
+    "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_IN_FORM": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_IN_FORM": {
+            "onfalse": {
+                "comment": "aucune taille de police en pixel dans un formulaire n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une taille de police en pixel dans un formulaire a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_ON_SCREEN": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_ON_SCREEN": {
+            "onfalse": {
+                "comment": "aucune taille de police en valeur absolue destinée à l'écran n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une taille de police en valeur absolue destinée à l'écran a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_FONT_SIZE_W_PIXEL_VALUE": {
+        "CSS_FONT_SIZE_W_PIXEL_VALUE": {
+            "onfalse": {
+                "comment": "aucune taille de police en pixel n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une taille de police en pixel a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "CSS_GENERIC_FONT": {
         "CSS_GENERIC_FONT": {
             "onfalse": {
@@ -1139,6 +1211,30 @@
             }
         }
     },
+    "CSS_MEDIA_HANDHELD": {
+        "CSS_MEDIA_HANDHELD": {
+            "onfalse": {
+                "comment": "aucune CSS pour le mobile n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour le mobile a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_MEDIA_PRINT": {
+        "CSS_MEDIA_PRINT": {
+            "onfalse": {
+                "comment": "aucune CSS pour l'impression n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour l'impression a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "CSS_SERIF_FONT": {
         "CSS_SERIF_FONT": {
             "onfalse": {
@@ -1147,6 +1243,30 @@
             },
             "ontrue": {
                 "comment": "au moins une police serif a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_TEXT_ALIGN_JUSTIFY": {
+        "CSS_TEXT_ALIGN_JUSTIFY": {
+            "onfalse": {
+                "comment": "aucun texte justifié n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un texte justifié a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_TEXT_INDENT_NEGATIVE": {
+        "CSS_TEXT_INDENT_NEGATIVE": {
+            "onfalse": {
+                "comment": "aucun texte indenté négativement dans les styles n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un texte indenté négativement dans les styles a été détecté",
                 "result": "c"
             }
         }
@@ -1163,6 +1283,18 @@
             }
         }
     },
+    "CSS_UNIVERSAL_SELECTOR": {
+        "CSS_UNIVERSAL_SELECTOR": {
+            "onfalse": {
+                "comment": "aucun sélecteur CSS universel (*) n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un sélecteur CSS universel (*) a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "CSS_UPPERCASE": {
         "CSS_UPPERCASE": {
             "onfalse": {
@@ -1171,6 +1303,18 @@
             },
             "ontrue": {
                 "comment": "au moins une suite de majuscules décoratives a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "CSS_VISIBILITY_HIDDEN": {
+        "CSS_VISIBILITY_HIDDEN": {
+            "onfalse": {
+                "comment": "aucun élément en visibility hidden n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément en visibility hidden a été détecté",
                 "result": "c"
             }
         }
@@ -3455,6 +3599,18 @@
             }
         }
     },
+    "JS_DOCUMENT_WRITE": {
+        "JS_DOCUMENT_WRITE": {
+            "onfalse": {
+                "comment": "aucune instruction document.write() n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une instruction document.write() a été détecté",
+                "result": "c"
+            }
+        }
+    },
     "JS_EVENT_BLUR_ON_FOCUS": {
         "JS_EVENT_BLUR_ON_FOCUS": {
             "onfalse": {
@@ -3715,6 +3871,42 @@
             },
             "ontrue": {
                 "comment": "au moins une fenêtre redimensionnée détectée",
+                "result": "c"
+            }
+        }
+    },
+    "JS_SET_INTERVAL": {
+        "JS_SET_INTERVAL": {
+            "onfalse": {
+                "comment": "aucune instruction setInterval n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une instruction setInterval a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "JS_SET_TIMEOUT": {
+        "JS_SET_TIMEOUT": {
+            "onfalse": {
+                "comment": "aucune instruction setTimeout n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une instruction setTimeout a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "JS_WINDOW_OPEN": {
+        "JS_WINDOW_OPEN": {
+            "onfalse": {
+                "comment": "aucune ouverture de nouvelle fenêtre n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ouverture de nouvelle fenêtre a été détecté",
                 "result": "c"
             }
         }
@@ -6067,6 +6259,18 @@
             },
             "ontrue": {
                 "comment": "au moins un élément UL a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "URI_UNIQUE_IN_PAGE": {
+        "URI_UNIQUE_IN_PAGE": {
+            "onfalse": {
+                "comment": "aucune ressource identique sous 2 URIs différentes n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource identique sous 2 URIs différentes a été détecté",
                 "result": "c"
             }
         }

@@ -1,0 +1,1 @@
+setTimeout("window.open('test')", 30000);
