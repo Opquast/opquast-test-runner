@@ -241,7 +241,7 @@ var logger;
                             "media": css.media,
                             "href": "interne"
                         };
-                        sheet.resolveVariables(media);
+                        //sheet.resolveVariables(media);
 
                         promises.push({
                             "src": "interne",
@@ -264,7 +264,7 @@ var logger;
                                 "media": css.media,
                                 "href": src
                             };
-                            sheet.resolveVariables(media);
+                            //sheet.resolveVariables(media);
 
                             return {
                                 "src": src,
@@ -360,13 +360,26 @@ var logger;
             // media walk
             for (var l = 0; l < rule.media.length; l++) {
                 //
-                var _media = rule.media.item && rule.media.item(l) || rule.media[l];
-                if ($.startsWith(_media, media) || $.startsWith(_media, "only " + media) || _media == "all") {
+                var _media = rule.media.item && rule.media.item(l) || rule.media[l],
+                    re = new RegExp().compile("(max-)?width\\: ?[1-4]\\d\\dpx", "i"),
+                    fake_handheld = false;
+
+                // screen and width <= 480px is treated as handheld
+                if($.startsWith(_media, "screen and") && re.test(_media)) {
+                    fake_handheld = true;
+                }
+
+                if ($.startsWith(_media, media) || $.startsWith(_media, "only " + media) || _media == "all" ||
+                        (fake_handheld && media == "handheld")) {
                     var rules = rule.cssRules,
                         result = [];
 
                     // rules walk
                     for (var k = 0; k < rules.length; k++) {
+                        if (fake_handheld) {
+                            rules[k].parentRule.media.push("handheld");
+                        }
+
                         result.push(_analyseRule(rules[k], media, callback));
                     }
 
@@ -394,7 +407,7 @@ var logger;
                                 "media": rule.media,
                                 "href": href
                             };
-                            sheet.resolveVariables(media);
+                            //sheet.resolveVariables(media);
 
                             return {
                                 "src": "interne",
