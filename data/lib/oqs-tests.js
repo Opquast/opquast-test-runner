@@ -480,12 +480,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     result.push(element);
                 } else {
                     //
-                    var aFunction = regFunction.exec(element);
-
-                    //
-                    if (aFunction && aFunction.length > 0) {
+                    if (regFunction.test(element)) {
                         //
-                        var _function = $.trim(aFunction[1]);
+                        var _function = $.trim(RegExp.$1);
 
                         //
                         if (_function != "") {
@@ -5150,9 +5147,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
-                    var match = reg.exec(response.data);
-                    if (match !== null) {
-                        return element.uri + " (" + match[0] + ")";
+                    if (reg.test(response.data)) {
+                        return element.uri + " (" + RegExp.$1 + ")";
                     }
 
                     return null;
@@ -5791,9 +5787,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
-                    var m1 = reg1.exec(response.data),
-                        m2 = reg2.exec(response.data),
-                        m3 = reg3.exec(response.data);
+                    var m1 = reg1.test(response.data),
+                        m2 = reg2.test(response.data),
+                        m3 = reg3.test(response.data);
 
                     if (m1 !== null || m2 !== null || m3 !== null) {
                         var found = [m1, m2, m3].map(function(val) {
@@ -5871,9 +5867,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
-                    var match = reg.exec(response.data);
-                    if (match !== null) {
-                        return element.uri + " (" + match[0] + ")";
+                    if (reg.test(response.data)) {
+                        return element.uri + " (" + RegExp.$1 + ")";
                     }
 
                     return null;
@@ -5913,9 +5908,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
-                    var match = reg.exec(response.data);
-                    if (match !== null) {
-                        return element.uri + " (" + match[0] + ")";
+                    if (reg.test(response.data)) {
+                        return element.uri + " (" + RegExp.$1 + ")";
                     }
 
                     return null;
@@ -5990,9 +5984,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                 return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
-                    var match = reg.exec(response.data);
-                    if (match !== null) {
-                        return element.uri + " (" + match[0] + ")";
+                    if (reg.test(response.data)) {
+                        return element.uri + " (" + RegExp.$1 + ")";
                     }
 
                     return null;
@@ -6024,9 +6017,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             if (response.status !== 200) {
                 return [];
             }
-            var match = reg.exec(response.data);
-            if (match !== null) {
-                return [match[1]];
+            if (reg.test(response.data)) {
+                return [RegExp.$1];
             }
             return [];
         }).then(null, function(err) {
@@ -6047,11 +6039,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
             if (response.status !== 200) {
                 return [];
             }
-            var match = reg.exec(response.data);
-            if (match === null) {
+            if (!reg.test(response.data)) {
                 return [];
             }
-            var sitemap = $.trim(match[1]);
+            var sitemap = $.trim(RegExp.$1);
             return XHR.partial(sitemap).then(function(resp) {
                 if (resp.status === 200) {
                     return [sitemap];

@@ -278,7 +278,7 @@ let _launchTests = function(domWindow, har, test, path) {
     });
 
     // New sandbox for testRunner
-    let sandbox = SandBox.sandbox(domWindow, {
+    let sandbox = SandBox.sandbox(null, {
         sandboxPrototype: domWindow,
         wantXrays: false,
         wantComponents: false
