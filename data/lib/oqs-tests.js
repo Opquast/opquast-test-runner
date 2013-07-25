@@ -4425,7 +4425,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            if (!regUnicode.test($("body").text()) || RegExp.$1 != '') {
+            if (!regUnicode.test(content)) {
                 //
                 result.push(doc.characterSet);
             }
