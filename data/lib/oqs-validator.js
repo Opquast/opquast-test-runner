@@ -361,7 +361,7 @@ var logger;
             for (var l = 0; l < rule.media.length; l++) {
                 //
                 var _media = rule.media.item && rule.media.item(l) || rule.media[l],
-                    re = new RegExp().compile("(max-)?width\\: ?[1-4]\\d\\dpx", "i"),
+                    re = new RegExp("(max-)?width\\: ?[1-4]\\d\\dpx", "i"),
                     fake_handheld = false;
 
                 // screen and width <= 480px is treated as handheld
@@ -395,7 +395,7 @@ var logger;
             for (var l = 0; l < rule.media.length; l++) {
                 var _media = rule.media.item && rule.media.item(l) || rule.media[l];
                 if ($.startsWith(_media, media) || $.startsWith(_media, "only " + media) || _media == "all") {
-                    var re = new RegExp().compile("[\('\"]+([^\('\"\)]+)", "i");
+                    var re = new RegExp("[\('\"]+([^\('\"\)]+)", "i");
                     re.test(rule.href);
                     var href = $.trim(RegExp.$1);
 
@@ -1236,15 +1236,15 @@ var logger;
             //
             else if (language == "css") {
                 // Regexps
-                var reg = new RegExp().compile("^(.+)\\[(.+)\\]$", "i"),
-                    reg_not = new RegExp().compile("^(.+)\\[not\\((.+)\\)\\]$", "i");
+                var reg = new RegExp("^(.+)\\[(.+)\\]$", "i"),
+                    reg_not = new RegExp("^(.+)\\[not\\((.+)\\)\\]$", "i");
 
                 //
-                var starts_with = new RegExp().compile("^starts-with\\(@(.+), ?'(.+)'\\)$", "i"),
-                    ends_with = new RegExp().compile("^ends-with\\(@(.+), ?'(.+)'\\)$", "i"),
-                    contains = new RegExp().compile("^contains\\(@(.+), ?'(.+)'\\)$", "i"),
-                    equals = new RegExp().compile("^@(.+), ?'(.+)'$", "i"),
-                    presence = new RegExp().compile("^@(.+)$", "i");
+                var starts_with = new RegExp("^starts-with\\(@(.+), ?'(.+)'\\)$", "i"),
+                    ends_with = new RegExp("^ends-with\\(@(.+), ?'(.+)'\\)$", "i"),
+                    contains = new RegExp("^contains\\(@(.+), ?'(.+)'\\)$", "i"),
+                    equals = new RegExp("^@(.+), ?'(.+)'$", "i"),
+                    presence = new RegExp("^@(.+)$", "i");
 
                 //
                 var inversion = false,
@@ -1516,7 +1516,7 @@ var logger;
     function apply_regexp_test(doc, test, language) {
         //
         var _result = [],
-            reg = new RegExp().compile(test, "i");
+            reg = new RegExp(test, "i");
 
         //
         try {
@@ -1703,8 +1703,8 @@ var logger;
     function apply_doctype_test(doc, test, language) {
         //
         var _result = [], dt = "",
-            reg1 = new RegExp().compile('<!DOCTYPE[^>]*>', "i"),
-            reg2 = new RegExp().compile('^\\s*<!DOCTYPE[^>]*>', "i");
+            reg1 = new RegExp('<!DOCTYPE[^>]*>', "i"),
+            reg2 = new RegExp('^\\s*<!DOCTYPE[^>]*>', "i");
         //@formatter:off
         var doctypes = [
             '<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">',
@@ -1844,7 +1844,7 @@ var logger;
             //
             if (language == "css") {
                 // Regexps
-                var reg = new RegExp().compile("^(.+?)\\[(.+)\\]$", "i");
+                var reg = new RegExp("^(.+?)\\[(.+)\\]$", "i");
                 reg.test(test);
 
                 //

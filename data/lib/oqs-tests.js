@@ -9,16 +9,16 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
     fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"],
     badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"];
 
-var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
-    regCdns = new RegExp().compile("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
-    regAnalytics = new RegExp().compile("((^https?://[^/]+\\.((google-analytics|xiti|cybermonitor|estat|smartadserver|tradedoubler)\\.com/|(weborama)\\.fr|(contentspread|doubleclick|ad4mat)\\.net))|/piwik\\.php\\?)", "i"),
-    regCms = new RegExp().compile("/spip\\.php\\?action=cron", "i"),
-    regJsFrameworks = new RegExp().compile("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
-    regAbsoluteFontSize = new RegExp().compile("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
-    regSpaces = new RegExp().compile("[\\s\\n]{2,}", "g"),
-    regXML = new RegExp().compile("^application/([a-z]+\\+)?xml$", "i"),
-    regDomain = new RegExp().compile("^https?\:\/\/([^\/\:]+)", "i"),
-    regBgImage = new RegExp().compile("^url\\(", "i");
+var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
+    regCdns = new RegExp("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
+    regAnalytics = new RegExp("((^https?://[^/]+\\.((google-analytics|xiti|cybermonitor|estat|smartadserver|tradedoubler)\\.com/|(weborama)\\.fr|(contentspread|doubleclick|ad4mat)\\.net))|/piwik\\.php\\?)", "i"),
+    regCms = new RegExp("/spip\\.php\\?action=cron", "i"),
+    regJsFrameworks = new RegExp("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore||xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
+    regAbsoluteFontSize = new RegExp("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
+    regSpaces = new RegExp("[\\s\\n]{2,}", "g"),
+    regXML = new RegExp("^application/([a-z]+\\+)?xml$", "i"),
+    regDomain = new RegExp("^https?\:\/\/([^\/\:]+)", "i"),
+    regBgImage = new RegExp("^url\\(", "i");
 
 (function($, window, undefined) {
     "use strict";
@@ -465,7 +465,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     function _detectFunction(exp, elements, attr) {
         var result = [],
-            reg = new RegExp().compile(exp, "i");
+            reg = new RegExp(exp, "i");
 
         //
         elements.each(function() {
@@ -901,7 +901,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.cssOutline = function cssOutline(doc) {
-        var reg = new RegExp().compile("(^| )([^ ]+):focus$", "i");
+        var reg = new RegExp("(^| )([^ ]+):focus$", "i");
 
         function callback(rule) {
             var result = [];
@@ -971,10 +971,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.cssHoverLinks = function cssHoverLinks(doc) {
-        var reg = new RegExp().compile("(^| )(a((#|\\.)[^ ]+)?|(#|\\.)[^ ]+):hover$", "i"),
-            reg2 = new RegExp().compile("^([-a-z]+-)?(height|width)$", "i"),
-            reg3 = new RegExp().compile("^(bottom|display|float|left|letter-spacing|position|right|text-align|text-indent|top)$", "i"),
-            reg4 = new RegExp().compile("^(font|border|margin|outline|padding)(-[-a-z]+)?$", "i");
+        var reg = new RegExp("(^| )(a((#|\\.)[^ ]+)?|(#|\\.)[^ ]+):hover$", "i"),
+            reg2 = new RegExp("^([-a-z]+-)?(height|width)$", "i"),
+            reg3 = new RegExp("^(bottom|display|float|left|letter-spacing|position|right|text-align|text-indent|top)$", "i"),
+            reg4 = new RegExp("^(font|border|margin|outline|padding)(-[-a-z]+)?$", "i");
 
         function callback(rule) {
             var result = [];
@@ -1428,7 +1428,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.cssUniversalSelector = function cssUniversalSelector(doc) {
         function callback(rule) {
             var result = [],
-                regUniversalSelector = new RegExp().compile(" \\*", "g");
+                regUniversalSelector = new RegExp(" \\*", "g");
 
             if (rule && rule.declarations) {
                 for (var i = 0; i < rule.declarations.length; i++) {
@@ -1456,7 +1456,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         var result = [],
             exclusions = ["ABBR", "ACRONYM", "ADDRESS", "BLOCKQUOTE", "CITE", "CODE", "KBD", "PRE", "Q", "RP", "RT", "RUBY", "SAMP", "SUB", "SUP", "TIME", "VAR", "IFRAME", "SCRIPT"],
-            reg = new RegExp().compile("^[^a-z0-9]*[A-Z][^a-z0-9]*[A-Z][^a-z0-9]*[A-Z][^a-z0-9]*$", "g");
+            reg = new RegExp("^[^a-z0-9]*[A-Z][^a-z0-9]*[A-Z][^a-z0-9]*[A-Z][^a-z0-9]*$", "g");
 
         //
         try {
@@ -1521,9 +1521,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.html404 = function html404(doc) {
-        var regApache = new RegExp().compile("<h1>\\s*Not Found\\s*</h1>\\s*<p>\\s*The requested URL /\\w+ was not found on this server.\\s*</p>\\s*<hr>\\s*<address>\\s*Apache/.* \\(.*\\).* Server at .* Port \\d+\\s*</address>", "i"),
-            regIIS = new RegExp().compile("<h1>\\s*The page cannot be found\\s*</h1>[\\s|\\S]*<h2>\\s*HTTP Error 404 - File or directory not found.\\s*<br>\\s*Internet Information Services \\(IIS\\)\\s*</h2>\\s*<hr>\\s*<p>\\s*Technical Information \\(for support personnel\\)\\s*</p>", "i"),
-            regNginx = new RegExp().compile("<center>\\s*<h1>\\s*404 Not Found\\s*</h1>\\s*</center>\\s*<hr>\\s*<center>\\s*nginx.*\\s*</center>", "i");
+        var regApache = new RegExp("<h1>\\s*Not Found\\s*</h1>\\s*<p>\\s*The requested URL /\\w+ was not found on this server.\\s*</p>\\s*<hr>\\s*<address>\\s*Apache/.* \\(.*\\).* Server at .* Port \\d+\\s*</address>", "i"),
+            regIIS = new RegExp("<h1>\\s*The page cannot be found\\s*</h1>[\\s|\\S]*<h2>\\s*HTTP Error 404 - File or directory not found.\\s*<br>\\s*Internet Information Services \\(IIS\\)\\s*</h2>\\s*<hr>\\s*<p>\\s*Technical Information \\(for support personnel\\)\\s*</p>", "i"),
+            regNginx = new RegExp("<center>\\s*<h1>\\s*404 Not Found\\s*</h1>\\s*</center>\\s*<hr>\\s*<center>\\s*nginx.*\\s*</center>", "i");
 
         return XHR.get("/azertyuiopqsdfghjklmwxcvbn").then(function(response) {
             var result = [];
@@ -1868,7 +1868,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.htmlDefaultTitle = function htmlDefaultTitle(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("^(untitled( document)?|welcome to adobe golive( \\d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
+            reg = new RegExp("^(untitled( document)?|welcome to adobe golive( \\d+)?|default( title| document| page)?|document sans nom|page (sans titre|par défaut))$", "i");
 
         //
         try {
@@ -1971,8 +1971,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.htmlFakeList = function htmlFakeList(doc) {
         //
         var result = [],
-            reg1 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*(<br ?\?>)+){2,}$", "im"),
-            reg2 = new RegExp().compile("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*){2,}$", "im");
+            reg1 = new RegExp("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*(<br ?\?>)+){2,}$", "im"),
+            reg2 = new RegExp("^(\\s*(-|\\*|\\+|#|>|&gt;|•|&bullet;).+\\s*){2,}$", "im");
 
         //
         try {
@@ -2011,8 +2011,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.htmlFakeOrderedList = function htmlFakeOrderedList(doc) {
         //
         var result = [],
-            reg1 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*(<br ?\?>)+){2,}$", "im"),
-            reg2 = new RegExp().compile("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*){2,}$", "im");
+            reg1 = new RegExp("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*(<br ?\?>)+){2,}$", "im"),
+            reg2 = new RegExp("^(\\s*(\\d|i|v|x)+\\s*(-|\\)|\\]).+\\s*){2,}$", "im");
 
         //
         try {
@@ -3124,7 +3124,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         //
         var result = [],
             charset = "",
-            reg = new RegExp().compile("^.+charset=(.+)$", "i");
+            reg = new RegExp("^.+charset=(.+)$", "i");
 
         //
         try {
@@ -3207,7 +3207,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.metaRefreshUrl = function htmlMetaRefreshUrl(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("^\\d+\\s*;\\s*url=(.+)$", "i");
+            reg = new RegExp("^\\d+\\s*;\\s*url=(.+)$", "i");
 
         //
         try {
@@ -3421,7 +3421,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.htmlSpaceBetweenLetters = function htmlSpaceBetweenLetters(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("(?:\\s+[A-Za-z]){3,}", "im");
+            reg = new RegExp("(?:\\s+[A-Za-z]){3,}", "im");
 
         //
         try {
@@ -3519,8 +3519,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.htmlUrlWithTermsNotInTitle = function htmlUrlWithTermsNotInTitle(doc) {
         //
         var result = [],
-            reg1 = new RegExp().compile("[\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "ig"),
-            reg2 = new RegExp().compile("[^a-zA-Z0-9àáâãäåæçèéêëìíîïñòóôõöùúûüýÿ]", "ig"),
+            reg1 = new RegExp("[\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "ig"),
+            reg2 = new RegExp("[^a-zA-Z0-9àáâãäåæçèéêëìíîïñòóôõöùúûüýÿ]", "ig"),
             url = doc.location.href.toLowerCase().replace(/[àáâãäå]/ig, "a").replace(/æ/ig, "ae").replace(/ç/ig, "c").replace(/[èéêë]/ig, "e").replace(/[ìíîï]/ig, "i").replace(/ñ/ig, "n").replace(/[òóôõö]/ig, "o").replace(/œ/ig, "oe").replace(/[ùúûü]/ig, "u").replace(/[ýÿ]/ig, "y"),
             terms = url.split(reg1);
 
@@ -3561,7 +3561,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.htmlUrlWithUnsafeChars = function htmlUrlWithUnsafeChars(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("[^a-z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "i");
+            reg = new RegExp("[^a-z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "i");
 
         //
         try {
@@ -4113,8 +4113,8 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.httpRefresh = function httpRefresh(doc) {
         //
         var result = [],
-            reg1 = new RegExp().compile("^(\\d+)$", "i"),
-            reg2 = new RegExp().compile("^(\\d+)\\s*;\\s*url=(.+)$", "i");
+            reg1 = new RegExp("^(\\d+)$", "i"),
+            reg2 = new RegExp("^(\\d+)\\s*;\\s*url=(.+)$", "i");
 
         //
         try {
@@ -4333,7 +4333,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         var dl_extensions = ["pdf", "doc", "odt", "xls", "ods", "zip"],
             dl_families = ["application"],
             dl_types = ["msword", "pdf", "zip", "octet-stream"],
-            dl_reg = new RegExp().compile("^vnd\.(oasis\.opendocument\.|\.ms-|openxmlformats-officedocument\.)", "i"),
+            dl_reg = new RegExp("^vnd\.(oasis\.opendocument\.|\.ms-|openxmlformats-officedocument\.)", "i"),
             promises = [];
 
         try {
@@ -4419,7 +4419,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.rightCharset = function httpRightCharset(doc) {
         //
-        var regUnicode = new RegExp().compile("([\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-\xBF]|[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}|\xED[\x80-\x9F][\x80-\xBF]|\xF0[\x90-\xBF][\x80-\xBF]{2}|[\xF1-\xF3][\x80-\xBF]{3}|\xF4[\x80-\x8F][\x80-\xBF]{2})", "m"),
+        var regUnicode = new RegExp("([\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-\xBF]|[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}|\xED[\x80-\x9F][\x80-\xBF]|\xF0[\x90-\xBF][\x80-\xBF]{2}|[\xF1-\xF3][\x80-\xBF]{3}|\xF4[\x80-\x8F][\x80-\xBF]{2})", "m"),
             result = [];
 
         //
@@ -4585,7 +4585,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.staticOneMonthCache = function httpStaticOneMonthCache(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("max-age=([0-9]+)", "i");
+            reg = new RegExp("max-age=([0-9]+)", "i");
 
         //
         try {
@@ -4736,7 +4736,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.staticVersionInName = function httpStaticVersionInName(doc) {
         //
         var result = [],
-            reg = new RegExp().compile(".+[-\\.]v?[-\\.0-9]{3,}(\\.min)?\\.[a-zA-Z]{2,}$", "i");
+            reg = new RegExp(".+[-\\.]v?[-\\.0-9]{3,}(\\.min)?\\.[a-zA-Z]{2,}$", "i");
 
         //
         try {
@@ -4773,7 +4773,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.staticVersionInParams = function httpStaticVersionInParams(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("[^\\?]+\\?(v=?)?[\\.0-9a-z]{3,}$", "i");
+            reg = new RegExp("[^\\?]+\\?(v=?)?[\\.0-9a-z]{3,}$", "i");
 
         //
         try {
@@ -4845,7 +4845,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.staticWithParams = function httpStaticWithParams(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("[^\\?]+\\?.+$", "i");
+            reg = new RegExp("[^\\?]+\\?.+$", "i");
 
         //
         try {
@@ -4881,7 +4881,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.staticWithSeveralParams = function httpStaticWithSeveralParams(doc) {
         //
         var result = [],
-            reg = new RegExp().compile("[^\\?]+\\?.+&.+$", "i");
+            reg = new RegExp("[^\\?]+\\?.+&.+$", "i");
 
         //
         try {
@@ -5130,7 +5130,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsDocumentWrite = function jsDocumentWrite(doc) {
-        var reg = new RegExp().compile("(document\\.write\\()", "i"),
+        var reg = new RegExp("(document\\.write\\()", "i"),
             promises = [];
 
         try {
@@ -5762,9 +5762,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsRefresh = function jsRefresh(doc) {
-        var reg1 = new RegExp().compile("(location\\.reload)", "i"),
-            reg2 = new RegExp().compile("(location\\.replace)", "i"),
-            reg3 = new RegExp().compile("(location(?:\\.href)?\\s*=)", "i"),
+        var reg1 = new RegExp("(location\\.reload)", "i"),
+            reg2 = new RegExp("(location\\.replace)", "i"),
+            reg3 = new RegExp("(location(?:\\.href)?\\s*=)", "i"),
             promises = [];
 
         try {
@@ -5801,7 +5801,10 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
                     found.filter(function(val) {
                         return val !== null;
                     }).join(", ");
-                    return element.uri + " (" + found + ")";
+
+                    if(found.length) {
+                        return element.uri + " (" + found + ")";
+                    }
 
                     return null;
                 }).then(null, function(err) {
@@ -5856,7 +5859,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsSetInterval = function jsSetInterval(doc) {
-        var reg = new RegExp().compile("(setInterval\\()", "i"),
+        var reg = new RegExp("(setInterval\\()", "i"),
             promises = [];
 
         try {
@@ -5897,7 +5900,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.jsSetTimeout = function jsSetTimeout(doc) {
-        var reg = new RegExp().compile("(setTimeout\\()", "i"),
+        var reg = new RegExp("(setTimeout\\()", "i"),
             promises = [];
 
         try {
@@ -5973,7 +5976,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      */
     window.jsWindowOpen = function jsWindowOpen(doc) {
         //
-        var reg = new RegExp().compile("((window|document)\\.open\\()", "i"),
+        var reg = new RegExp("((window|document)\\.open\\()", "i"),
             promises = [];
 
         try {
@@ -6014,16 +6017,14 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.robotsPresence = function robotsPresence(doc) {
-        var reg = new RegExp().compile("^user-agent\s*:(.+)$", "im");
+        var reg = new RegExp("[^#\s]+user-agent:(.+)", "ig");
 
         return XHR.get("/robots.txt").then(function(response) {
-            if (response.status !== 200) {
+            if (response.status !== 200 || !reg.test(response.data)) {
                 return [];
+            } else {
+                return [$.trim(RegExp.$1)];
             }
-            if (reg.test(response.data)) {
-                return [RegExp.$1];
-            }
-            return [];
         }).then(null, function(err) {
             // Error Logging
             logger.error("robotsPresence", err);
@@ -6036,21 +6037,31 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.robotsSitemap = function robotsSitemap(doc) {
-        var reg = new RegExp().compile("^sitemap\s*:(.+)$", "im");
+        var promises = [],
+            reg = new RegExp("[^#\s]+sitemap:(.+)", "ig");
 
         return XHR.get("/robots.txt").then(function(response) {
             if (response.status !== 200) {
                 return [];
             }
-            if (!reg.test(response.data)) {
-                return [];
+
+            while(reg.test(response.data)) {
+                var sitemap = $.trim(RegExp.$1);
+                promises.push(XHR.partial(sitemap).then(function(resp) {
+                    if (resp.status !== 200) {
+                        return [];
+                    } else {
+                        return [sitemap];
+                    }
+                }).then(null, function(err) {
+                    logger.error("robotsSitemap", err);
+                    return false;
+                }));
             }
-            var sitemap = $.trim(RegExp.$1);
-            return XHR.partial(sitemap).then(function(resp) {
-                if (resp.status === 200) {
-                    return [sitemap];
-                }
-                return [];
+
+            return Q.promised(Array).apply(null, promises).then(function(res) {
+                var _res = res.filter(function(v) v !== null);
+                return _res.some(function(v) v === false) ? false :_res;
             });
         }).then(null, function(err) {
             // Error Logging
@@ -6067,8 +6078,9 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         return XHR.partial("/sitemap.xml").then(function(response) {
             if (response.status !== 200) {
                 return [];
+            } else {
+                return [true];
             }
-            return [true];
         }).then(null, function(err) {
             // Error Logging
             logger.error("implicitSitemap", err);
@@ -6352,7 +6364,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
         var _result = [],
             sheets = doc.styleSheets,
             styles = [],
-            reg = new RegExp().compile("^([0-9.]+(p(t|c|x)|(c|m)m|in))$", "g");
+            reg = new RegExp("^([0-9.]+(p(t|c|x)|(c|m)m|in))$", "g");
 
         //
         function parseRule(rule) {
@@ -6465,7 +6477,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksSpecialChars = function(doc) {
         //
         var _result = [],
-            _reg = new RegExp().compile("[A_Z_% ]", "g");
+            _reg = new RegExp("[A_Z_% ]", "g");
 
         // current URL
         if (_reg.test(doc.location.hostname)) {
@@ -6503,7 +6515,7 @@ var regFunction = new RegExp().compile("([^\\s:{}&|]*)\\(", "i"),
     window.linksInternal = function(doc) {
         //
         var _result = [],
-            _reg_doc = new RegExp().compile("\.(pdf|doc)$", "i");
+            _reg_doc = new RegExp("\.(pdf|doc)$", "i");
 
         //
         $("a[href]").each(function() {
