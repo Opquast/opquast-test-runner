@@ -342,12 +342,21 @@ const xhrWrapper = function(evaluate, har) {
             evaluate(function(src, dest) {
                 let global = this;
                 global[dest] = Object.create(global[src]);
+                global[dest].cache = {}; // GET request cache
                 global[dest].query = function(url, method, data, headers, partial) {
                     // URL should be absolute
                     url = $.URL(url);
 
+                    if (this.cache[url] !== undefined) {
+                        return this.cache[url];
+                    }
+
                     // Always return a promise
-                    return global[src].query.call(this, url, method, data, headers, partial);
+                    let p = global[src].query.call(this, url, method, data, headers, partial);
+                    if (method === 'GET') {
+                        this.cache[url] = p;
+                    }
+                    return p
                 }
             }, src, dest);
         }

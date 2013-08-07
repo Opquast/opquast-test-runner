@@ -1076,47 +1076,52 @@ var logger;
      *            page The page to test
      */
     function loop_over_criteria(used_criteria) {
-        var promises = [],
-            results = [];
+        let results = [];
+        let stash = Object.keys(used_criteria);
 
-        var todo = Object.keys(used_criteria);
-        var p;
+        let execute = function(index) {
+            let {promise, reject, resolve} = Q.defer();
+            let res;
 
-        function decrementTodo(testID) {
-            todo = todo.filter(function(v) { return v != testID });
-        }
-
-        for (var index in used_criteria) {
             logger.log("loop_over_criteria", "criterion: " + index);
 
-            try {
-                p = loop_over_tests(index, used_criteria[index]);
-            } catch(err) {
-                p = Q.reject(err);
-            }
+            setTimeout(function() {
+                try {
+                    res = loop_over_tests(index, used_criteria[index]);
+                    resolve(res);
+                }
+                catch(e) {
+                    reject(e);
+                }
+            }, 1);
 
-            p.then(function(result) {
+            promise.then(function(result) {
                 results.push(result);
+                return result;
             })
-            .then(decrementTodo.bind(null, index), decrementTodo.bind(null, index));
+            .then(null, function(e) {
+                console.exception(e);
+            })
+            .then(function() {
+                stash = stash.filter(function(v) v != index);
+            });
+        };
 
-            promises.push(p);
+        for (var index in used_criteria) {
+            execute(index);
         }
 
-        /*
-        It looks crazy and we should be using Q.promised(Array) but for some reason it not
-        always works as excepted. We fall back to this crapy (but working) solution.
-        */
-        var deferred = Q.defer();
-
-        var interval = setInterval(function() {
-            if (todo.length === 0) {
+        // It looks crazy and we should be using Q.promised(Array) but for some reason it doest not
+        // always work as expected. We fall back to this crapy (but working) solution.
+        let D = Q.defer();
+        let interval = setInterval(function() {
+            if (stash.length == 0) {
                 clearInterval(interval);
-                deferred.resolve(results);
+                D.resolve(results);
             }
         },5);
 
-        return deferred.promise;
+        return D.promise;
     }
 
     /**
