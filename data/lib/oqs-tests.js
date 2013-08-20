@@ -330,8 +330,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                             label = "";
                         }
 
-                        // no label and no title or both
-                        if ((label == "" && title == "") || (label != "" && title != "")) {
+                        // no label and no title
+                        if (label == "" && title == "") {
                             //
                             nodes.push(this);
                         }
