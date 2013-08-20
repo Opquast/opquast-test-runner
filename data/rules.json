@@ -443,7 +443,7 @@
     "STATIC_W_SEVERAL_PARAMS": "oqs@http:staticWithSeveralParams",
     "STRIKE": "xpath@html://strike",
     "STYLE": "xpath@html://style",
-    "STYLE_ATTR": "xpath@html://*[@style]",
+    "STYLE_ATTR": "xpath@html://*[normalize-space(@style)!='']",
     "STYLE_INTERNAL": "oqs@css:cssInternalStyles",
     "TABLE": "xpath@html://table",
     "TABLE_FOR_COMPLEX_DATA": "xpath@html://table[tbody/tr[2][th[following-sibling::th]] or .//td[contains(normalize-space(@headers),' ')]]",
