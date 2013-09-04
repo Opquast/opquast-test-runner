@@ -6017,7 +6017,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.robotsPresence = function robotsPresence(doc) {
-        var reg = new RegExp("[^#\s]+user-agent:(.+)", "ig");
+        var reg = new RegExp("^user-agent:(.+)$", "im");
 
         return XHR.get("/robots.txt").then(function(response) {
             if (response.status !== 200 || !reg.test(response.data)) {
@@ -6038,7 +6038,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      */
     window.robotsSitemap = function robotsSitemap(doc) {
         var promises = [],
-            reg = new RegExp("[^#\s]+sitemap:(.+)", "ig");
+            reg = new RegExp("^sitemap:(.+)$", "im");
 
         return XHR.get("/robots.txt").then(function(response) {
             if (response.status !== 200) {
