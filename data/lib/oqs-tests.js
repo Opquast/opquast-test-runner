@@ -6038,7 +6038,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      */
     window.robotsSitemap = function robotsSitemap(doc) {
         var promises = [],
-            reg = new RegExp("^sitemap:(.+)$", "im");
+            reg = new RegExp("^sitemap:(.+)$", "img");
 
         return XHR.get("/robots.txt").then(function(response) {
             if (response.status !== 200) {
