@@ -6187,6 +6187,10 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                                 result.push(_getDetails(this));
                             });
                         }
+                    } else if (response.contentType == "application/atom+xml" || data.documentElement.namespaceURI == atomNs) {
+                        $("updated", data).each(function() {
+                            result.push(_getDetails(this));
+                        });
                     }
 
                     $.each(data.getElementsByTagNameNS(syNS, 'updatePeriod'), function() {

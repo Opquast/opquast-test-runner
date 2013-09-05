@@ -1,26 +1,17 @@
 <?xml version="1.0"?>
-<feed xmlns="http://www.w3.org/2005/Atom"
-xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
+<feed xmlns="http://www.w3.org/2005/Atom">
     <title>
         Mon site
     </title>
     <link href="http://www.example.org/"/>
     <link rel="self" href="http://labs.temesis.com/testcases/CRA/tests/66/66-11441_7.atom" />
+    <updated>2005-12-12T12:00:00Z</updated>
     <author>
         <name>
             Me
         </name>
     </author>
     <id>tag:example.com,2005:movies</id>
-    <sy:updatePeriod>
-        monthly
-    </sy:updatePeriod>
-    <sy:updateFrequency>
-        2
-    </sy:updateFrequency>
-    <sy:updateBase>
-        2005-01-01T12:00+00:00
-    </sy:updateBase>
     <entry>
         <title>
             Une actu
