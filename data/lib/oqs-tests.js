@@ -202,9 +202,10 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             //
             var keywords = [];
             try {
-                keywords = $("meta[name='keywords']").attr("content").trim().toLowerCase().split(" ");
-            } catch (e) {
-            }
+                keywords = $("meta[name='keywords']").attr("content").split(",").map(function(value){
+                    return $.trim(value).toLowerCase();
+                });
+            } catch (e) {}
 
             //
             if (keywords.length == 0) {
@@ -215,21 +216,26 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             $("h" + level).each(function() {
                 //
                 var found = false,
-                    terms = $(this).text().trim().split(" ");
+                    terms = $(this).text().split(" ").map(function(value){
+                        return $.trim(value).toLowerCase();
+                    });
 
                 try {
-                    terms = $.merge(terms, $.trim($("img", this).attr("alt")).toLowerCase().split(" "));
-                } catch(e) {}
+                    terms = $.merge(terms, $.trim($("img", this).attr("alt")).split(" ")).map(function(value){
+                        return $.trim(value).toLowerCase();
+                    });
+                } catch(e) {}console.log(terms);
 
                 //
                 found = terms.some(function(value) {
                     //
-                    if ($.inArray(value, keywords) != -1) {
+                    if ($.inArray(value, keywords) != -1 && terms != '') {
                         return true;
                     } else {
                         return false;
                     }
                 });
+
                 //
                 if (!found) {
                     result.push(_getDetails(this));
