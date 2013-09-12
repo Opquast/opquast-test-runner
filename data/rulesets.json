@@ -11012,7 +11012,7 @@
                     "H2": {
                         "onfalse": {
                             "comment": "aucun élément H2 n'a été détecté",
-                            "result": "nc"
+                            "result": "i"
                         },
                         "ontrue": {
                             "comment": "au moins un élément H2 a été détecté",
