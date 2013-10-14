@@ -33503,7 +33503,7 @@
             }
         }
     },
-    "30868": {
+    "31306": {
         "HTTP_GZIP": {
             "onfalse": {
                 "comment": "le serveur envoie des contenus compressés aux clients qui les acceptent",
@@ -33515,7 +33515,7 @@
             }
         }
     },
-    "30877": {
+    "31314": {
         "ROBOTS_PRESENCE": {
             "onfalse": {
                 "comment": "le robots.txt à la racine du site est absent ou vide",
@@ -33527,7 +33527,7 @@
             }
         }
     },
-    "30878": {
+    "31315": {
         "FAVICON": {
             "onfalse": {
                 "comment": "aucun appel valide à un favicon n'a été détecté",
@@ -33539,7 +33539,7 @@
             }
         }
     },
-    "30883": {
+    "31319": {
         "ROBOTS_W_VALID_SITEMAP": {
             "onfalse": {
                 "chain": {
@@ -33563,7 +33563,7 @@
             }
         }
     },
-    "30885": {
+    "31321": {
         "SCRIPT": {
             "onfalse": {
                 "comment": "aucun élément SCRIPT n'a été détecté",
@@ -33599,7 +33599,7 @@
             }
         }
     },
-    "30886": {
+    "31322": {
         "H1": {
             "onfalse": {
                 "comment": "aucun élément H1 n'a été détecté",
@@ -33623,7 +33623,7 @@
             }
         }
     },
-    "30895": {
+    "31333": {
         "SCRIPT": {
             "onfalse": {
                 "comment": "aucun élément SCRIPT n'a été détecté",
@@ -33647,7 +33647,7 @@
             }
         }
     },
-    "30901": {
+    "31339": {
         "HTTP_CACHE": {
             "onfalse": {
                 "comment": "le serveur envoie les informations permettant la mise en cache des contenus",
@@ -33659,7 +33659,7 @@
             }
         }
     },
-    "30908": {
+    "31346": {
         "FORM": {
             "onfalse": {
                 "comment": "aucun élément FORM n'a été détecté",
@@ -33671,7 +33671,7 @@
             }
         }
     },
-    "30909": {
+    "31347": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
                 "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
@@ -33683,7 +33683,7 @@
             }
         }
     },
-    "30916": {
+    "31354": {
         "INPUT_W_TYPE_CHECKBOX_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
             "onfalse": {
                 "comment": "aucun élément INPUT de type CHECKBOX avec un TITLE n'a été détecté",
@@ -33765,7 +33765,7 @@
             }
         }
     },
-    "30919": {
+    "31357": {
         "JS_POPUP": {
             "onfalse": {
                 "comment": "aucune pop-up  n'a été détectée",
@@ -33777,7 +33777,7 @@
             }
         }
     },
-    "30920": {
+    "31303": {
         "404_DEFAULT": {
             "onfalse": {
                 "comment": "aucune page 404 par défaut n'a été détecté",
@@ -33789,7 +33789,7 @@
             }
         }
     },
-    "30925": {
+    "31362": {
         "INPUT_W_TYPE_CHECKBOX": {
             "onfalse": {
                 "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
@@ -33861,7 +33861,7 @@
             }
         }
     },
-    "30927": {
+    "31364": {
         "INPUT_W_TYPE_CHECKBOX": {
             "onfalse": {
                 "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
@@ -33933,7 +33933,7 @@
             }
         }
     },
-    "30928": {
+    "31365": {
         "INPUT_W_TYPE_CHECKBOX": {
             "onfalse": {
                 "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
@@ -34005,7 +34005,7 @@
             }
         }
     },
-    "30933": {
+    "31370": {
         "IMG_ANIMATED": {
             "onfalse": {
                 "comment": "aucun élément animé",
@@ -34027,7 +34027,7 @@
             }
         }
     },
-    "30939": {
+    "31376": {
         "INPUT_W_TYPE_CHECKBOX": {
             "onfalse": {
                 "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
@@ -34099,7 +34099,7 @@
             }
         }
     },
-    "30945": {
+    "31380": {
         "TITLE": {
             "onfalse": {
                 "comment": "aucun élément TITLE n'a été détecté",
