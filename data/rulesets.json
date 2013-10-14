@@ -33503,7 +33503,19 @@
             }
         }
     },
-    "30868": {
+    "31303": {
+        "404_DEFAULT": {
+            "onfalse": {
+                "comment": "aucune page 404 par défaut n'a été détecté",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "au moins une page 404 par défaut a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "31306": {
         "HTTP_GZIP": {
             "onfalse": {
                 "comment": "le serveur envoie des contenus compressés aux clients qui les acceptent",
@@ -33515,7 +33527,7 @@
             }
         }
     },
-    "30877": {
+    "31314": {
         "ROBOTS_PRESENCE": {
             "onfalse": {
                 "comment": "le robots.txt à la racine du site est absent ou vide",
@@ -33527,7 +33539,7 @@
             }
         }
     },
-    "30878": {
+    "31315": {
         "FAVICON": {
             "onfalse": {
                 "comment": "aucun appel valide à un favicon n'a été détecté",
@@ -33539,7 +33551,7 @@
             }
         }
     },
-    "30883": {
+    "31319": {
         "ROBOTS_W_VALID_SITEMAP": {
             "onfalse": {
                 "chain": {
@@ -33563,7 +33575,7 @@
             }
         }
     },
-    "30885": {
+    "31321": {
         "SCRIPT": {
             "onfalse": {
                 "comment": "aucun élément SCRIPT n'a été détecté",
@@ -33599,7 +33611,7 @@
             }
         }
     },
-    "30886": {
+    "31322": {
         "H1": {
             "onfalse": {
                 "comment": "aucun élément H1 n'a été détecté",
@@ -33623,7 +33635,79 @@
             }
         }
     },
-    "30895": {
+    "31329": {
+        "LINK_STYLESHEET": {
+            "onfalse": {
+                "chain": {
+                    "STYLE": {
+                        "onfalse": {
+                            "comment": "aucun élément STYLE n'a été détecté",
+                            "result": "na"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "CSS_W_CR": {
+                                    "onfalse": {
+                                        "chain": {
+                                            "CSS_W_REDUDANT_SPACES": {
+                                                "onfalse": {
+                                                    "comment": "aucune CSS avec des espaces inutiles n'a été détectée",
+                                                    "result": "c"
+                                                },
+                                                "ontrue": {
+                                                    "comment": "au moins une CSS avec des espaces inutiles a été détecté",
+                                                    "result": "nc"
+                                                }
+                                            }
+                                        },
+                                        "comment": "aucune CSS avec des retours à la ligne inutiles n'a été détectée",
+                                        "result": "c"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins une CSS avec des retours à la ligne inutiles a été détectée",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément STYLE a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "aucun élément LINK avec l'attribut REL ayant la valeur STYLESHEET n'a été détecté",
+                "result": "i"
+            },
+            "ontrue": {
+                "chain": {
+                    "CSS_W_CR": {
+                        "onfalse": {
+                            "chain": {
+                                "CSS_W_REDUDANT_SPACES": {
+                                    "onfalse": {
+                                        "comment": "aucune CSS avec des espaces inutiles n'a été détectée",
+                                        "result": "c"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins une CSS avec des espaces inutiles a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "aucune CSS avec des retours à la ligne inutiles n'a été détectée",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins une CSS avec des retours à la ligne inutiles a été détectée",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un LINK avec l'attribut REL ayant la valeur STYLESHEET",
+                "result": "i"
+            }
+        }
+    },
+    "31333": {
         "SCRIPT": {
             "onfalse": {
                 "comment": "aucun élément SCRIPT n'a été détecté",
@@ -33647,7 +33731,43 @@
             }
         }
     },
-    "30901": {
+    "31334": {
+        "A_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément A non ancre n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "A_NOT_ANCHOR_SELF_WO_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun élément A vide n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément A vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément A non ancre a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31338": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
+                "result": "nc"
+            }
+        }
+    },
+    "31339": {
         "HTTP_CACHE": {
             "onfalse": {
                 "comment": "le serveur envoie les informations permettant la mise en cache des contenus",
@@ -33659,7 +33779,43 @@
             }
         }
     },
-    "30908": {
+    "31344": {
+        "TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "TITLE_W_TEXT": {
+                        "onfalse": {
+                            "comment": "TITLE est vide",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "TITLE_W_DEFAULT_VALUE": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TITLE avec une valeur par défaut n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "un élément TITLE avec une valeur par défaut a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "TITLE est rempli",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "un élement TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31346": {
         "FORM": {
             "onfalse": {
                 "comment": "aucun élément FORM n'a été détecté",
@@ -33671,7 +33827,7 @@
             }
         }
     },
-    "30909": {
+    "31347": {
         "META_DESCRIPTION_FILLED": {
             "onfalse": {
                 "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
@@ -33683,7 +33839,95 @@
             }
         }
     },
-    "30916": {
+    "31348": {
+        "RESOURCE_DOWNLOADABLE": {
+            "onfalse": {
+                "comment": "aucune ressource téléchargeable n'a été détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource téléchargeable a été détectée",
+                "result": "i"
+            }
+        }
+    },
+    "31351": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "BGSOUND": {
+            "onfalse": {
+                "comment": "aucun élément BGSOUND n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément BGSOUND a été détecté",
+                "result": "i"
+            }
+        },
+        "CANVAS": {
+            "onfalse": {
+                "comment": "aucun élément CANVAS n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément CANVAS a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG_ANIMATED": {
+            "onfalse": {
+                "comment": "aucun élément animé",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément animé",
+                "result": "i"
+            }
+        },
+        "RESOURCE_MULTIMEDIA": {
+            "onfalse": {
+                "comment": "aucune ressource multimédia n'a été détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource multimédia a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31352": {
+        "IMG": {
+            "onfalse": {
+                "comment": "aucun élément IMG n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "IMG_WO_ALT_ATTR": {
+                        "onfalse": {
+                            "comment": "aucun élément IMG sans attribut ALT n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément IMG sans attribut ALT a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément IMG a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31354": {
         "INPUT_W_TYPE_CHECKBOX_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
             "onfalse": {
                 "comment": "aucun élément INPUT de type CHECKBOX avec un TITLE n'a été détecté",
@@ -33765,7 +34009,7 @@
             }
         }
     },
-    "30919": {
+    "31357": {
         "JS_POPUP": {
             "onfalse": {
                 "comment": "aucune pop-up  n'a été détectée",
@@ -33777,19 +34021,69 @@
             }
         }
     },
-    "30920": {
-        "404_DEFAULT": {
+    "31360": {
+        "APPLET": {
             "onfalse": {
-                "comment": "aucune page 404 par défaut n'a été détecté",
-                "result": "i"
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
             },
             "ontrue": {
-                "comment": "au moins une page 404 par défaut a été détecté",
-                "result": "nc"
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "AUDIO": {
+            "onfalse": {
+                "comment": "aucun élément AUDIO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AUDIO a été détecté",
+                "result": "i"
+            }
+        },
+        "CANVAS": {
+            "onfalse": {
+                "comment": "aucun élément CANVAS n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément CANVAS a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        },
+        "VIDEO": {
+            "onfalse": {
+                "comment": "aucun élément VIDEO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément VIDEO a été détecté",
+                "result": "i"
             }
         }
     },
-    "30925": {
+    "31362": {
         "INPUT_W_TYPE_CHECKBOX": {
             "onfalse": {
                 "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
@@ -33861,7 +34155,19 @@
             }
         }
     },
-    "30927": {
+    "31363": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31364": {
         "INPUT_W_TYPE_CHECKBOX": {
             "onfalse": {
                 "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
@@ -33933,7 +34239,7 @@
             }
         }
     },
-    "30928": {
+    "31365": {
         "INPUT_W_TYPE_CHECKBOX": {
             "onfalse": {
                 "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
@@ -34005,7 +34311,7 @@
             }
         }
     },
-    "30933": {
+    "31370": {
         "IMG_ANIMATED": {
             "onfalse": {
                 "comment": "aucun élément animé",
@@ -34027,7 +34333,19 @@
             }
         }
     },
-    "30939": {
+    "31371": {
+        "LABEL": {
+            "onfalse": {
+                "comment": "aucun élément LABEL n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément LABEL a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31376": {
         "INPUT_W_TYPE_CHECKBOX": {
             "onfalse": {
                 "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
@@ -34099,7 +34417,7 @@
             }
         }
     },
-    "30945": {
+    "31380": {
         "TITLE": {
             "onfalse": {
                 "comment": "aucun élément TITLE n'a été détecté",
