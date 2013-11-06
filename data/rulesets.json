@@ -34453,6 +34453,3714 @@
             }
         }
     },
+    "31622": {
+        "IMG": {
+            "onfalse": {
+                "comment": "aucun élément IMG n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "IMG_WO_VALID_LONGDESC": {
+                        "onfalse": {
+                            "comment": "aucun élément IMG avec un attribut LONGDESC dont le contenu n'est pas une URI valide n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément IMG avec un attribut LONGDESC dont le contenu n'est pas une URI valide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément IMG a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31709": {
+        "IMG": {
+            "onfalse": {
+                "comment": "aucun élément IMG n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31710": {
+        "ALIGN_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut ALIGN n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut ALIGN a été détecté",
+                "result": "nc"
+            }
+        },
+        "ALINK_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut ALINK n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut ALINK a été détecté",
+                "result": "nc"
+            }
+        },
+        "BACKGROUND_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut BACKGROUND n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut BACKGROUND a été détecté",
+                "result": "nc"
+            }
+        },
+        "BASEFONT": {
+            "onfalse": {
+                "comment": "aucun élément BASEFONT n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément BASEFONT a été détecté",
+                "result": "nc"
+            }
+        },
+        "BGCOLOR_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut BGCOLOR n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut BGCOLOR a été détecté",
+                "result": "nc"
+            }
+        },
+        "BLINK": {
+            "onfalse": {
+                "comment": "aucun élément BLINK n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément BLINK a été détecté",
+                "result": "nc"
+            }
+        },
+        "BORDER_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut BORDER n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut BORDER a été détecté",
+                "result": "nc"
+            }
+        },
+        "CENTER": {
+            "onfalse": {
+                "comment": "aucun élément CENTER n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément CENTER a été détecté",
+                "result": "nc"
+            }
+        },
+        "COLOR_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut COLOR n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut COLOR a été détecté",
+                "result": "nc"
+            }
+        },
+        "FONT": {
+            "onfalse": {
+                "comment": "aucun élément FONT n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FONT a été détecté",
+                "result": "nc"
+            }
+        },
+        "LINK_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut LINK n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut LINK a été détecté",
+                "result": "nc"
+            }
+        },
+        "MARQUEE": {
+            "onfalse": {
+                "comment": "aucun élément MARQUEE n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément MARQUEE a été détecté",
+                "result": "nc"
+            }
+        },
+        "S": {
+            "onfalse": {
+                "comment": "aucun élément S n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de l'élément S constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "nc"
+            }
+        },
+        "STRIKE": {
+            "onfalse": {
+                "comment": "aucun élément STRIKE n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément STRIKE a été détecté",
+                "result": "nc"
+            }
+        },
+        "TEXT_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut TEXT n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut TEXT a été détecté",
+                "result": "nc"
+            }
+        },
+        "TT": {
+            "onfalse": {
+                "comment": "aucun élément TT n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TT a été détecté",
+                "result": "nc"
+            }
+        },
+        "U": {
+            "onfalse": {
+                "comment": "aucun élément U n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de l'élément U constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "nc"
+            }
+        },
+        "VLINK_ATTR": {
+            "onfalse": {
+                "comment": "aucun élement avec un attribut VLINK n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élement avec un attribut VLINK a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "31711": {
+        "H1": {
+            "onfalse": {
+                "comment": "aucun élément H1 n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément H1 a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "31715": {
+        "MARQUEE": {
+            "onfalse": {
+                "comment": "aucun élément MARQUEE n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément MARQUEE a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "31716": {
+        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_IN_FORM": {
+            "onfalse": {
+                "comment": "aucune taille de police en pixel dans un formulaire n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une taille de police en pixel dans un formulaire a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "31718": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "APPLET_WO_FILLED_ALT_ATTR": {
+                        "onfalse": {
+                            "comment": "aucun élément APPLET avec un attribut ALT vide n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément APPLET sans attribut ALT rempli a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "AREA": {
+            "onfalse": {
+                "comment": "aucun élément AREA n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "AREA_WO_FILLED_ALT_ATTR": {
+                        "onfalse": {
+                            "comment": "aucun élément AREA avec un attribut ALT vide n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément AREA avec un attribut ALT vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément AREA a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG": {
+            "onfalse": {
+                "comment": "aucun élément IMG n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "IMG_WO_ALT_ATTR": {
+                        "onfalse": {
+                            "comment": "aucun élément IMG sans attribut ALT n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément IMG sans attribut ALT a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément IMG a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_IMAGE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type IMAGE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_IMAGE_WO_FILLED_ALT_ATTR": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type IMAGE avec un attribut ALT vide n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément INPUT de type IMAGE avec un attribut ALT vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type IMAGE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31719": {
+        "DOCTYPE_PRESENT": {
+            "onfalse": {
+                "comment": "le DOCTYPE est absent",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "DOCTYPE_PLACED": {
+                        "onfalse": {
+                            "comment": "le DOCTYPE est mal positionné",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "le DOCTYPE est bien positionné",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "le DOCTYPE est présent",
+                "result": "c"
+            }
+        }
+    },
+    "31720": {
+        "DOCTYPE_PRESENT": {
+            "onfalse": {
+                "comment": "le DOCTYPE est absent",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "DOCTYPE_VALID": {
+                        "onfalse": {
+                            "comment": "aucune DTD placée avant l'élément HTML et conforme aux recommandations du W3C n'a été détectée",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "une DTD placée avant l'élément HTML et conforme aux recommandations du W3C a été détectée",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "le DOCTYPE est présent",
+                "result": "i"
+            }
+        }
+    },
+    "31721": {
+        "DOCTYPE_HTML_VALID": {
+            "onfalse": {
+                "comment": "le code est conforme au DOCTYPE",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le code n'est pas conforme au DOCTYPE",
+                "result": "c"
+            }
+        }
+    },
+    "31722": {
+        "DL": {
+            "onfalse": {
+                "comment": "aucun élément DL n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "DL_WO_DT_FIRST": {
+                        "onfalse": {
+                            "comment": "aucun élément DL dont le premier enfant n'est pas un élément DT n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément DL dont le premier enfant n'est pas un élément DT a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément DL a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31724": {
+        "BLINK": {
+            "onfalse": {
+                "comment": "aucun élément BLINK n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément BLINK a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "31725": {
+        "META_REFRESH_SHORT": {
+            "onfalse": {
+                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "META_REFRESH_URL": {
+                        "onfalse": {
+                            "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une URL n'a été détecté",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une URL est présent",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte est présent",
+                "result": "i"
+            }
+        }
+    },
+    "31726": {
+        "META_REFRESH_SHORT": {
+            "onfalse": {
+                "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "META_REFRESH_URL": {
+                        "onfalse": {
+                            "comment": "aucun élément META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une URL n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une URL est présent",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une durée courte est présent",
+                "result": "i"
+            }
+        }
+    },
+    "31727": {
+        "LISTING": {
+            "onfalse": {
+                "comment": "aucun élément LISTING n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément LISTING a été détecté",
+                "result": "nc"
+            }
+        },
+        "PLAINTEXT": {
+            "onfalse": {
+                "comment": "aucun élément PLAINTEXT n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément PLAINTEXT a été détecté",
+                "result": "nc"
+            }
+        },
+        "XMP": {
+            "onfalse": {
+                "comment": "aucun élément XMP n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément XMP a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "31730": {
+        "A_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément A non ancre n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "A_NOT_ANCHOR_SELF_WO_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun élément A vide n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément A vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément A non ancre a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31731": {
+        "TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élement TITLE a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "31733": {
+        "FIELDSET": {
+            "onfalse": {
+                "comment": "aucun élément FIELDSET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "FIELDSET_WO_LEGEND": {
+                        "onfalse": {
+                            "comment": "au moins un élément LEGEND a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "aucun élément LEGEND n'a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément FIELDSET a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31734": {
+        "H1_TO_H6": {
+            "onfalse": {
+                "comment": "aucun H1, H2, H3, H4, H5 ni H6 n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "H1_TO_H6_HIERACHICAL_ERROR": {
+                        "onfalse": {
+                            "comment": "aucune interruption dans la hiérarchie des titres n'a été détectée",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins une interruption dans la hiérarchie des titres a été détectée",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un H1, H2, H3, H4, H5 ou H6 a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31735": {
+        "DOCTYPE_PRESENT": {
+            "onfalse": {
+                "comment": "le DOCTYPE est absent",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le DOCTYPE est présent",
+                "result": "c"
+            }
+        }
+    },
+    "31736": {
+        "TABLE_W_TH_LINE_OR_COLUMN": {
+            "onfalse": {
+                "comment": "aucun élément TABLE contenant des éléments TH n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "TH_WO_FILLED_AND_UNIQUE_ID": {
+                        "onfalse": {
+                            "chain": {
+                                "TD_WO_TH": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TD dont l'attribut HEADERS ne correspond à aucun TH n'a été détecté",
+                                        "result": "c"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément TD dont l'attribut HEADERS ne correspond à aucun TH a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "aucun élément TH sans attribut ID unique n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément TH sans attribut ID unique a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément TABLE contenant des éléments TH a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31737": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG": {
+            "onfalse": {
+                "comment": "aucun élément IMG n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31740": {
+        "TABLE": {
+            "onfalse": {
+                "comment": "aucun élément TABLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31741": {
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_CHECKBOX_WO_FILLED_AND_UNIQUE_ID": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type CHECKBOX sans ID unique n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "INPUT_W_TYPE_CHECKBOX_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+                                    "onfalse": {
+                                        "comment": "aucun élément INPUT de type CHECKBOX sans TITLE rempli et sans ID unique n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins INPUT de type CHECKBOX sans TITLE rempli et sans ID unique a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément INPUT de type CHECKBOX sans ID unique a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type CHECKBOX a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type FILE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_FILE_WO_FILLED_AND_UNIQUE_ID": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type FILE sans ID unique n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "INPUT_W_TYPE_FILE_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+                                    "onfalse": {
+                                        "comment": "aucun élément INPUT de type FILE sans TITLE rempli et sans ID unique n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément INPUT de type FILE sans TITLE rempli et sans ID unique a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément INPUT de type FILE sans ID unique a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type FILE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type PASSWORD n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_PASSWORD_WO_FILLED_AND_UNIQUE_ID": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type PASSWORD sans ID unique n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "INPUT_W_TYPE_PASSWORD_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+                                    "onfalse": {
+                                        "comment": "aucun élément INPUT de type PASSWORD sans TITLE rempli et sans ID unique n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément INPUT de type PASSWORD sans TITLE rempli et sans ID unique a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément INPUT de type PASSWORD sans ID unique a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type PASSWORD a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type RADIO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_RADIO_WO_FILLED_AND_UNIQUE_ID": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type RADIO sans ID unique n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "INPUT_W_TYPE_RADIO_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+                                    "onfalse": {
+                                        "comment": "aucun élément INPUT de type RADIO sans TITLE rempli et sans ID unique n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément INPUT de type RADIO sans TITLE rempli et sans ID unique a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément INPUT de type RADIO sans ID unique a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type RADIO a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_TEXT_WO_FILLED_AND_UNIQUE_ID": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type TEXT sans ID unique n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "INPUT_W_TYPE_TEXT_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+                                    "onfalse": {
+                                        "comment": "aucun élément INPUT de type TEXT sans TITLE rempli et sans ID unique n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément INPUT de type TEXT sans TITLE rempli et sans ID unique a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément INPUT de type TEXT sans ID unique a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type TEXT a été détecté",
+                "result": "i"
+            }
+        },
+        "SELECT": {
+            "onfalse": {
+                "comment": "aucun élément SELECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SELECT_WO_FILLED_AND_UNIQUE_ID": {
+                        "onfalse": {
+                            "comment": "aucun élément SELECT sans ID unique n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "SELECT_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TEXTAREA sans TITLE rempli et sans ID unique n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément TEXTAREA sans TITLE rempli et sans ID unique a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément SELECT sans ID unique a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément SELECT a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "TEXTAREA_WO_FILLED_AND_UNIQUE_ID": {
+                        "onfalse": {
+                            "comment": "aucun élément TEXTAREA sans ID unique n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "TEXTAREA_WO_FILLED_TITLE_ATTR_WO_UNIQUE_ID": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TEXTAREA sans TITLE rempli et sans ID unique n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément TEXTAREA sans TITLE rempli et sans ID unique a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément TEXTAREA sans ID unique a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément TEXTAREA a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31742": {
+        "IMG_IN_A": {
+            "onfalse": {
+                "comment": "aucun élément IMG dans un A n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG dans un A a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG_IN_BUTTON": {
+            "onfalse": {
+                "comment": "aucun élément IMG dans un BUTTON n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG dans un BUTTON a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31743": {
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31744": {
+        "AREA": {
+            "onfalse": {
+                "comment": "aucun élément AREA n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_IMAGE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type IMAGE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type IMAGE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31745": {
+        "APPLET_IN_A": {
+            "onfalse": {
+                "comment": "aucun élément APPLET dans un A n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET dans un A a été détecté",
+                "result": "i"
+            }
+        },
+        "APPLET_IN_BUTTON": {
+            "onfalse": {
+                "comment": "aucun élément APPLET dans un BUTTON n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET dans un BUTTON a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED_IN_A": {
+            "onfalse": {
+                "comment": "aucun élément EMBED dans un A n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED dans un A a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED_IN_BUTTON": {
+            "onfalse": {
+                "comment": "aucun élément EMBED dans un BUTTON n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED dans un BUTTON a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG_IN_A": {
+            "onfalse": {
+                "comment": "aucun élément IMG dans un A n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG dans un A a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG_IN_BUTTON": {
+            "onfalse": {
+                "comment": "aucun élément IMG dans un BUTTON n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG dans un BUTTON a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT_IN_A": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT dans un A n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT dans un A a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT_IN_BUTTON": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT dans un BUTTON n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT dans un BUTTON a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31746": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "AREA_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément AREA ni vide, ni ancre n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA ni vide, ni ancre a été détecté",
+                "result": "i"
+            }
+        },
+        "A_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément A non ancre n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A non ancre a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31748": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG": {
+            "onfalse": {
+                "comment": "aucun élément IMG n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément IMG a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_IMAGE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type IMAGE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type IMAGE a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31750": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "AREA_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément AREA ni vide, ni ancre n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA ni vide, ni ancre a été détecté",
+                "result": "i"
+            }
+        },
+        "A_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément A non ancre n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A non ancre a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31752": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "AREA_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément AREA ni vide, ni ancre n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AREA ni vide, ni ancre a été détecté",
+                "result": "i"
+            }
+        },
+        "A_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément A non ancre n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A non ancre a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31754": {
+        "H1": {
+            "onfalse": {
+                "comment": "aucun élément H1 n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "H1_WO_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun élément H1 vide n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément H1 vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément H1 a été détecté",
+                "result": "i"
+            }
+        },
+        "H2": {
+            "onfalse": {
+                "comment": "aucun élément H2 n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "H2_WO_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun élément H2 vide n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément H2 vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément H2 a été détecté",
+                "result": "i"
+            }
+        },
+        "H3": {
+            "onfalse": {
+                "comment": "aucun élément H3 n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "H3_WO_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun élément H3 vide n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément H3 vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément H3 a été détecté",
+                "result": "i"
+            }
+        },
+        "H4": {
+            "onfalse": {
+                "comment": "aucun élément H4 n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "H4_WO_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun élément H4 vide n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément H4 vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément H4 a été détecté",
+                "result": "i"
+            }
+        },
+        "H5": {
+            "onfalse": {
+                "comment": "aucun élément H5 n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "H5_WO_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun élément H5 vide n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément H5 vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément H5 a été détecté",
+                "result": "i"
+            }
+        },
+        "H6": {
+            "onfalse": {
+                "comment": "aucun élément H6 n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "H6_WO_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun élément H6 vide n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément H6 vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément H6 a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31755": {
+        "FAKE_UNORDERED_LIST": {
+            "onfalse": {
+                "comment": "aucune liste non ordonnée simulée n'a été détectée",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "au moins une liste non ordonnée simulée a été détectée",
+                "result": "nc"
+            }
+        }
+    },
+    "31756": {
+        "FAKE_ORDERED_LIST": {
+            "onfalse": {
+                "comment": "aucune liste ordonnée simulée n'a été détectée",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "au moins une liste ordonnée simulée a été détectée",
+                "result": "nc"
+            }
+        }
+    },
+    "31759": {
+        "TABLE_W_TH": {
+            "onfalse": {
+                "comment": "aucun élément TABLE contenant des éléments TH n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "TH_WO_FILLED_AND_UNIQUE_ID_WO_SCOPE_ATTR": {
+                        "onfalse": {
+                            "chain": {
+                                "TD_WO_TH_OR_W_TH_WO_SCOPE_ATTR": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TD dont le HEADERS ne correspond à aucun TH n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément TD dont le HEADERS ne correspond à aucun TH a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "aucun élément TH sans ID unique ni SCOPE n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément TH sans ID unique ni SCOPE a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément TABLE contenant des éléments TH a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31760": {
+        "TABLE": {
+            "onfalse": {
+                "comment": "aucun élément TABLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TABLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31761": {
+        "TABLE": {
+            "onfalse": {
+                "comment": "aucun élément TABLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "TABLE_FOR_DATA": {
+                        "onfalse": {
+                            "comment": "aucun élément TABLE contenant un élément THEAD, TFOOT ou TH n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "TABLE_FOR_DATA_WO_CAPTION": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TABLE de données sans CAPTION n'a été détecté",
+                                        "result": "c"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément TABLE de données sans CAPTION a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément TABLE contenant un élément THEAD, TFOOT ou TH a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément TABLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31762": {
+        "TABLE": {
+            "onfalse": {
+                "comment": "aucun élément TABLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CAPTION_WO_UNIQUE_TEXT": {
+                        "onfalse": {
+                            "comment": "L'utilisation de contenus identiques pour plusieurs éléments CAPTION constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "tous les CAPTION ont un contenu textuel unique",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément TABLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31764": {
+        "CSS_BACKGROUND_IMAGE": {
+            "onfalse": {
+                "comment": "aucune image ajoutée par CSS n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une image ajoutée par CSS a été détecté",
+                "result": "i"
+            }
+        },
+        "CSS_CONTENT": {
+            "onfalse": {
+                "comment": "aucun contenu textuel ajouté par CSS n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un contenu textuel ajouté par CSS a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31765": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31766": {
+        "JS_EVENT_CLICK": {
+            "onfalse": {
+                "comment": "aucun ONCLICK sur un élément focusable n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un ONCLICK sur un élément focusable a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31767": {
+        "JS_EVENT_MOUSE_OR_KEYBOARD": {
+            "onfalse": {
+                "comment": "aucun élément avec onclick, onmouseover, onmouseout, onfocus ou onblur n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément avec onclick, onmouseover, onmouseout, onfocus ou onblur a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31768": {
+        "SCRIPT": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SCRIPT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31771": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG_ANIMATED": {
+            "onfalse": {
+                "comment": "aucun élément animé",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément animé",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31772": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG_ANIMATED": {
+            "onfalse": {
+                "comment": "aucun élément animé",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément animé",
+                "result": "i"
+            }
+        },
+        "RESOURCE_MULTIMEDIA_WO_AUDIO": {
+            "onfalse": {
+                "comment": "aucune ressource multimédia n'a été détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource multimédia a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31773": {
+        "SCRIPT": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SCRIPT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31774": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG_ANIMATED": {
+            "onfalse": {
+                "comment": "aucun élément animé",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément animé",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31775": {
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type TEXT a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31776": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31777": {
+        "JS_EVENT_SPECIFIC": {
+            "onfalse": {
+                "comment": "aucun ONSCROLL, ONDBLCLICK ou ONCHANGE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un ONSCROLL, ONDBLCLICK ou ONCHANGE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31778": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31779": {
+        "JS_EVENT_BLUR_ON_FOCUS": {
+            "onfalse": {
+                "comment": "aucun ONFOCUS n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un ONFOCUS a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31780": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31781": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31782": {
+        "A_W_TARGET_ATTR_BLANK": {
+            "onfalse": {
+                "comment": "aucun élément A avec un TARGET blank n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de l'attribut TARGET avec la valeur _BLANK sur l'élément A constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "i"
+            }
+        },
+        "FORM_W_TARGET_ATTR_BLANK": {
+            "onfalse": {
+                "comment": "aucun élément FORM avec un TARGET blank n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de l'attribut TARGET avec la valeur _BLANK sur l'élément FORM constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "i"
+            }
+        }
+    },
+    "31783": {
+        "AREA_W_TARGET_ATTR_BLANK": {
+            "onfalse": {
+                "comment": "aucun élément AREA avec un TARGET blank n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "L'utilisation de l'attribut TARGET avec la valeur _BLANK sur l'élément AREA constitue un risque. Vérifiez que cette utilisation n'enfreint pas les règles d'accessibilité.",
+                "result": "i"
+            }
+        },
+        "A_W_TARGET_ATTR_BLANK_W_IMG": {
+            "onfalse": {
+                "comment": "aucun élément A avec un TARGET blank n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec un TARGET blank a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31784": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31785": {
+        "JS_EVENT_MOUSE_OR_KEYBOARD": {
+            "onfalse": {
+                "comment": "aucun élément avec onclick, onmouseover, onmouseout, onfocus ou onblur n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément avec onclick, onmouseover, onmouseout, onfocus ou onblur a été détecté",
+                "result": "i"
+            }
+        },
+        "SCRIPT": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SCRIPT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31786": {
+        "JS_BODY_ONLAD": {
+            "onfalse": {
+                "comment": "aucun événement au chargement de la page n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "JS_POPUP": {
+                        "onfalse": {
+                            "comment": "aucune pop-up n'a été détectée",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins une pop-up a été détectée",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un événement au chargement de la page a été détecté",
+                "result": "i"
+            }
+        },
+        "SCRIPT": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SCRIPT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31787": {
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type CHECKBOX a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type FILE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type FILE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type PASSWORD n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type PASSWORD a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type RADIO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type RADIO a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type TEXT a été détecté",
+                "result": "i"
+            }
+        },
+        "SELECT_WO_FILLED_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans TITLE vide n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec TITLE vide a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA_WO_TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans attribut TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans attribut TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31788": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31789": {
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type CHECKBOX a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type FILE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type FILE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type PASSWORD n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type PASSWORD a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type RADIO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type RADIO a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type TEXT a été détecté",
+                "result": "i"
+            }
+        },
+        "SELECT": {
+            "onfalse": {
+                "comment": "aucun élément SELECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31792": {
+        "A_W_FILLED_HREF_ATTR_AND_WO_NEGATIVE_TABINDEX_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément A avec un HREF n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec un HREF a été détecté",
+                "result": "i"
+            }
+        },
+        "BUTTON_WO_NEGATIVE_TABINDEX_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément BUTTON avec un attribut TABINDEX négatif n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément BUTTON avec un attribut TABINDEX négatif a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_WO_NEGATIVE_TABINDEX_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément INPUT avec un attribut TABINDEX négatif n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT avec un attribut TABINDEX négatif a été détecté",
+                "result": "i"
+            }
+        },
+        "POSITIVE_TABINDEX_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément avec un TABINDEX n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément avec un TABINDEX a été détecté",
+                "result": "i"
+            }
+        },
+        "SELECT_WO_NEGATIVE_TABINDEX_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément SELECT avec un attribut TABINDEX négatif n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec un attribut TABINDEX négatif a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA_WO_NEGATIVE_TABINDEX_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA avec un attribut TABINDEX négatif n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA avec un attribut TABINDEX négatif a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31793": {
+        "FORM_WO_FIELDSET": {
+            "onfalse": {
+                "comment": "aucun élément FORM sans FIELDSET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM sans FIELDSET a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31794": {
+        "LEGEND": {
+            "onfalse": {
+                "comment": "aucun élément LEGEND n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "LEGEND_WO_FILLED_AND_UNIQUE_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun élément LEGEND vide ou non unique n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément LEGEND vide ou non unique a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément LEGEND a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31797": {
+        "TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "TITLE_W_TEXT": {
+                        "onfalse": {
+                            "comment": "TITLE est vide",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "TITLE_W_DEFAULT_VALUE": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TITLE avec une valeur par défaut n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "un élément TITLE avec une valeur par défaut a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "TITLE est rempli",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "un élement TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31801": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "HTTP_REFRESH": {
+            "onfalse": {
+                "comment": "le serveur n'envoie pas de commande de rafraîchissement de la page",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "le serveur envoie une commande de rafraîchissement de la page",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31802": {
+        "JS_REFRESH": {
+            "onfalse": {
+                "comment": "la page n'est pas rafraîchie ou redirigée automatiquement",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "la page est rafraîchie ou redirigée automatiquement",
+                "result": "i"
+            }
+        }
+    },
+    "31803": {
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_CHECKBOX_WO_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type CHECKBOX sans LABEL n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "INPUT_W_TYPE_CHECKBOX_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+                                    "onfalse": {
+                                        "comment": "aucun élément INPUT de type CHECKBOX sans LABEL et sans TITLE n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément INPUT de type CHECKBOX sans LABEL et sans TITLE a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément INPUT de type CHECKBOX sans LABEL a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type CHECKBOX a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type FILE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_FILE_WO_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type FILE sans LABEL n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "INPUT_W_TYPE_FILE_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+                                    "onfalse": {
+                                        "comment": "aucun élément INPUT de type FILE sans LABEL et sans TITLE n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément INPUT de type FILE sans LABEL et sans TITLE a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément INPUT de type FILE sans LABEL a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type FILE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type PASSWORD n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_PASSWORD_WO_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type PASSWORD sans LABEL n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "INPUT_W_TYPE_PASSWORD_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+                                    "onfalse": {
+                                        "comment": "aucun élément INPUT de type PASSWORD sans LABEL et sans TITLE n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément INPUT de type PASSWORD sans LABEL et sans TITLE a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément INPUT de type PASSWORD sans LABEL a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type PASSWORD a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type RADIO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_RADIO_WO_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type RADIO sans LABEL n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "INPUT_W_TYPE_RADIO_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+                                    "onfalse": {
+                                        "comment": "aucun élément INPUT de type RADIO sans LABEL et sans TITLE n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément INPUT de type RADIO sans LABEL et sans TITLE a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément INPUT de type RADIO sans LABEL a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type RADIO a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "INPUT_W_TYPE_TEXT_WO_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun élément INPUT de type TEXT sans LABEL n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "INPUT_W_TYPE_TEXT_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+                                    "onfalse": {
+                                        "comment": "aucun élément INPUT de type TEXT sans LABEL et sans TITLE n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément INPUT de type TEXT sans LABEL et sans TITLE a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément INPUT de type TEXT sans LABEL a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type TEXT a été détecté",
+                "result": "i"
+            }
+        },
+        "SELECT": {
+            "onfalse": {
+                "comment": "aucun élément SELECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SELECT_WO_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun élément SELECT sans LABEL n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "SELECT_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+                                    "onfalse": {
+                                        "comment": "aucun élément SELECT sans LABEL et sans TITLE n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément SELECT sans LABEL et sans TITLE a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément SELECT avec LABEL a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément SELECT a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "TEXTAREA_WO_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun élément TEXTAREA sans LABEL n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "TEXTAREA_WO_FILLED_TITLE_ATTR_WO_LABEL": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TEXTAREA sans LABEL et sans TITLE n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément TEXTAREA sans LABEL et sans TITLE a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément TEXTAREA sans LABEL a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément TEXTAREA a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31804": {
+        "TABLE_FOR_DATA2": {
+            "onfalse": {
+                "comment": "aucun élément TABLE de données n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "TABLE_FOR_DATA2_W_TH": {
+                        "onfalse": {
+                            "chain": {
+                                "TABLE_W_FAKE_TH": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TABLE avec des TH simulés n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un élément TABLE avec des TH simulés a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément TABLE de données sans TH a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "aucun élément TABLE de données sans TH n'a été détecté",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un élément TABLE de données a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31805": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SCRIPT": {
+                        "onfalse": {
+                            "comment": "aucun élément SCRIPT n'a été détecté",
+                            "result": "na"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément SCRIPT a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "AREA": {
+            "onfalse": {
+                "comment": "aucun élément AREA n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SCRIPT": {
+                        "onfalse": {
+                            "comment": "aucun élément SCRIPT n'a été détecté",
+                            "result": "na"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément SCRIPT a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément AREA a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SCRIPT": {
+                        "onfalse": {
+                            "comment": "aucun élément SCRIPT n'a été détecté",
+                            "result": "na"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément SCRIPT a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG": {
+            "onfalse": {
+                "comment": "aucun élément IMG n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SCRIPT": {
+                        "onfalse": {
+                            "comment": "aucun élément SCRIPT n'a été détecté",
+                            "result": "na"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément SCRIPT a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément IMG a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_IMAGE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type IMAGE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SCRIPT": {
+                        "onfalse": {
+                            "comment": "aucun élément SCRIPT n'a été détecté",
+                            "result": "na"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément SCRIPT a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément INPUT de type IMAGE a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SCRIPT": {
+                        "onfalse": {
+                            "comment": "aucun élément SCRIPT n'a été détecté",
+                            "result": "na"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément SCRIPT a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "31807": {
+        "SCRIPT": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SCRIPT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32218": {
+        "404_DEFAULT": {
+            "onfalse": {
+                "comment": "aucune page 404 par défaut n'a été détecté",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "au moins une page 404 par défaut a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "32219": {
+        "A_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun élément A non ancre n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "A_NOT_ANCHOR_SELF_WO_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun élément A vide n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément A vide a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément A non ancre a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32220": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
+                "result": "nc"
+            }
+        }
+    },
+    "32221": {
+        "LINK_STYLESHEET": {
+            "onfalse": {
+                "chain": {
+                    "STYLE": {
+                        "onfalse": {
+                            "comment": "aucun élément STYLE n'a été détecté",
+                            "result": "na"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "CSS_W_CR": {
+                                    "onfalse": {
+                                        "chain": {
+                                            "CSS_W_REDUDANT_SPACES": {
+                                                "onfalse": {
+                                                    "comment": "aucune CSS avec des espaces inutiles n'a été détectée",
+                                                    "result": "c"
+                                                },
+                                                "ontrue": {
+                                                    "comment": "au moins une CSS avec des espaces inutiles a été détecté",
+                                                    "result": "nc"
+                                                }
+                                            }
+                                        },
+                                        "comment": "aucune CSS avec des retours à la ligne inutiles n'a été détectée",
+                                        "result": "c"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins une CSS avec des retours à la ligne inutiles a été détectée",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "au moins un élément STYLE a été détecté",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "aucun élément LINK avec l'attribut REL ayant la valeur STYLESHEET n'a été détecté",
+                "result": "i"
+            },
+            "ontrue": {
+                "chain": {
+                    "CSS_W_CR": {
+                        "onfalse": {
+                            "chain": {
+                                "CSS_W_REDUDANT_SPACES": {
+                                    "onfalse": {
+                                        "comment": "aucune CSS avec des espaces inutiles n'a été détectée",
+                                        "result": "c"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins une CSS avec des espaces inutiles a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "aucune CSS avec des retours à la ligne inutiles n'a été détectée",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins une CSS avec des retours à la ligne inutiles a été détectée",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un LINK avec l'attribut REL ayant la valeur STYLESHEET",
+                "result": "i"
+            }
+        }
+    },
+    "32222": {
+        "SCRIPT": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "SCRIPT_WO_SRC": {
+                        "onfalse": {
+                            "comment": "aucun élément SCRIPT interne n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément SCRIPT interne a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément SCRIPT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32223": {
+        "H1": {
+            "onfalse": {
+                "comment": "aucun élément H1 n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "H1_TO_H6_HIERACHICAL_ERROR": {
+                        "onfalse": {
+                            "comment": "aucune interruption dans la hiérarchie des titres n'a été détectée",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins une interruption dans la hiérarchie des titres a été détectée",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément H1 a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32224": {
+        "HTTP_GZIP": {
+            "onfalse": {
+                "comment": "le serveur envoie des contenus compressés aux clients qui les acceptent",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le serveur n'envoie pas de contenus compressés aux clients qui les acceptent",
+                "result": "nc"
+            }
+        }
+    },
+    "32225": {
+        "SCRIPT": {
+            "onfalse": {
+                "comment": "aucun élément SCRIPT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "JS_W_CR": {
+                        "onfalse": {
+                            "chain": {
+                                "JS_W_REDUDANT_SPACES": {
+                                    "onfalse": {
+                                        "comment": "aucun JS avec des espaces inutiles n'a été détecté",
+                                        "result": "c"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un JS avec des espaces inutiles a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "aucun JS avec des retours à la ligne inutiles n'a été détecté",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un JS avec des retours à la ligne inutiles a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément SCRIPT a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32226": {
+        "ROBOTS_PRESENCE": {
+            "onfalse": {
+                "comment": "le robots.txt à la racine du site est absent ou vide",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le robots.txt à la racine du site est présent et non vide",
+                "result": "c"
+            }
+        }
+    },
+    "32227": {
+        "HTTP_CACHE": {
+            "onfalse": {
+                "comment": "le serveur envoie les informations permettant la mise en cache des contenus",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le serveur n'envoie pas d'information permettant la mise en cache des contenus",
+                "result": "nc"
+            }
+        }
+    },
+    "32228": {
+        "FAVICON": {
+            "onfalse": {
+                "comment": "aucun appel valide à un favicon n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un appel valide à un favicon a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "32229": {
+        "ROBOTS_W_VALID_SITEMAP": {
+            "onfalse": {
+                "chain": {
+                    "IMPLICIT_SITEMAP": {
+                        "onfalse": {
+                            "comment": "aucun sitemap n'a été trouvé",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "un sitemap a été trouvé à la racine du site",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "le robots.txt est absent ou n'indique pas de sitemap",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "le robots.txt est présent et indique un sitemap",
+                "result": "c"
+            }
+        }
+    },
+    "32230": {
+        "TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "TITLE_W_TEXT": {
+                        "onfalse": {
+                            "comment": "TITLE est vide",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "TITLE_W_DEFAULT_VALUE": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TITLE avec une valeur par défaut n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "un élément TITLE avec une valeur par défaut a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "TITLE est rempli",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "un élement TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32231": {
+        "RESOURCE_DOWNLOADABLE": {
+            "onfalse": {
+                "comment": "aucune ressource téléchargeable n'a été détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource téléchargeable a été détectée",
+                "result": "i"
+            }
+        }
+    },
+    "32232": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "BGSOUND": {
+            "onfalse": {
+                "comment": "aucun élément BGSOUND n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément BGSOUND a été détecté",
+                "result": "i"
+            }
+        },
+        "CANVAS": {
+            "onfalse": {
+                "comment": "aucun élément CANVAS n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément CANVAS a été détecté",
+                "result": "i"
+            }
+        },
+        "IMG_ANIMATED": {
+            "onfalse": {
+                "comment": "aucun élément animé",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément animé",
+                "result": "i"
+            }
+        },
+        "RESOURCE_MULTIMEDIA": {
+            "onfalse": {
+                "comment": "aucune ressource multimédia n'a été détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource multimédia a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32233": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32234": {
+        "LABEL": {
+            "onfalse": {
+                "comment": "aucun élément LABEL n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément LABEL a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32235": {
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun élément APPLET n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément APPLET a été détecté",
+                "result": "i"
+            }
+        },
+        "AUDIO": {
+            "onfalse": {
+                "comment": "aucun élément AUDIO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément AUDIO a été détecté",
+                "result": "i"
+            }
+        },
+        "CANVAS": {
+            "onfalse": {
+                "comment": "aucun élément CANVAS n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément CANVAS a été détecté",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun élément EMBED n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément EMBED a été détecté",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun élément OBJECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément OBJECT a été détecté",
+                "result": "i"
+            }
+        },
+        "VIDEO": {
+            "onfalse": {
+                "comment": "aucun élément VIDEO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément VIDEO a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32236": {
+        "IMG": {
+            "onfalse": {
+                "comment": "aucun élément IMG n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "IMG_WO_ALT_ATTR": {
+                        "onfalse": {
+                            "comment": "aucun élément IMG sans attribut ALT n'a été détecté",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément IMG sans attribut ALT a été détecté",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément IMG a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32237": {
+        "META_DESCRIPTION_FILLED": {
+            "onfalse": {
+                "comment": "aucun élément META DESCRIPTION non vide n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément META DESCRIPTION non vide a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32238": {
+        "INPUT_W_TYPE_CHECKBOX_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type CHECKBOX avec un TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type CHECKBOX avec un TITLE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type FILE avec un TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type FILE avec un TITLE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type PASSWORD avec un TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type PASSWORD avec un TITLE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type RADIO avec un TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type RADIO avec un TITLE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT avec un TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type TEXT avec un TITLE a été détecté",
+                "result": "i"
+            }
+        },
+        "LABEL": {
+            "onfalse": {
+                "comment": "aucun élément LABEL n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément LABEL a été détecté",
+                "result": "i"
+            }
+        },
+        "SELECT_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément SELECT avec un TITLE non vide et unique n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec un TITLE non vide et unique a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA avec un TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA avec un TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32239": {
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type CHECKBOX a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type FILE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type FILE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type PASSWORD n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type PASSWORD a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type RADIO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type RADIO a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type TEXT a été détecté",
+                "result": "i"
+            }
+        },
+        "SELECT": {
+            "onfalse": {
+                "comment": "aucun élément SELECT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32240": {
+        "IMG_ANIMATED": {
+            "onfalse": {
+                "comment": "aucun élément animé",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément animé",
+                "result": "i"
+            }
+        },
+        "RESOURCE_MULTIMEDIA": {
+            "onfalse": {
+                "comment": "aucune ressource multimédia n'a été détectée",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource multimédia a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32241": {
+        "TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "TITLE_W_TEXT": {
+                        "onfalse": {
+                            "comment": "TITLE est vide",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "TITLE_W_DEFAULT_VALUE": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TITLE avec une valeur par défaut n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "un élément TITLE avec une valeur par défaut a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "TITLE est rempli",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "un élement TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32242": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32243": {
+        "JS_POPUP": {
+            "onfalse": {
+                "comment": "aucune pop-up  n'a été détectée",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "au moins une pop-up a été détectée",
+                "result": "nc"
+            }
+        }
+    },
+    "32244": {
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type CHECKBOX a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type FILE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type FILE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type PASSWORD n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type PASSWORD a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type RADIO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type RADIO a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type TEXT a été détecté",
+                "result": "i"
+            }
+        },
+        "SELECT_WO_FILLED_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans TITLE vide n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec TITLE vide a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA_WO_TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans attribut TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans attribut TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32245": {
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type CHECKBOX a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type FILE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type FILE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type PASSWORD n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type PASSWORD a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type RADIO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type RADIO a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type TEXT a été détecté",
+                "result": "i"
+            }
+        },
+        "SELECT_WO_FILLED_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans TITLE vide n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec TITLE vide a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA_WO_TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans attribut TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans attribut TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32246": {
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type CHECKBOX n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type CHECKBOX a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type FILE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type FILE a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type PASSWORD n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type PASSWORD a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type RADIO n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type RADIO a été détecté",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun élément INPUT de type TEXT n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément INPUT de type TEXT a été détecté",
+                "result": "i"
+            }
+        },
+        "SELECT_WO_FILLED_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun élément SELECT sans TITLE vide n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément SELECT avec TITLE vide a été détecté",
+                "result": "i"
+            }
+        },
+        "TEXTAREA_WO_TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TEXTAREA sans attribut TITLE n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément TEXTAREA sans attribut TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
     "500": {
         "IMG": {
             "onfalse": {
