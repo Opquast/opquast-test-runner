@@ -6646,4 +6646,146 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             return false;
         });
     }
+
+    /***************************************************************************/
+    /******************************* SANOFI ************************************/
+    /***************************************************************************/
+
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.htmlTextRatio35 = function(doc) {
+        return XHR.get(doc.location.href).then(function(response) {
+            var html = unescape(encodeURIComponent(response.data)), html_length = html.length;
+
+            var text = html.replace(/document\.write\(.+?\)/g, '').replace(/<script[^>]*>.*?<\/script>/g, '').replace(/<script[^>]+>/g, '').replace(/<style[^>]*>.*?<\/style>/g, '').replace(/<[^>]+>/g, '').replace(/\s{2,}/g, ' ');
+            var text_length = text.length;
+
+            return (text_length/(html_length+text_length)*100) >= 35;
+        }).then(null, function(err) {
+            logger.error("textRatio", err);
+            return false;
+        });
+    }
+
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.httpStaticOnAnotherDomain = function(doc) {
+        //
+        var result = [];
+
+        //
+        try {
+            var domain = doc.location.hostname.split(".").slice(-2).join(".");
+
+            //
+            sidecar.resources.filter(function(element) {
+                //
+                var content_type = element.content_type || '';
+
+                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
+                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri) && !regCdns.test(element.uri);
+            }).forEach(function(element) {
+                //
+                var staticDomain = $.URL.getDomain(element.uri).split(".").slice(-2).join(".");
+
+                if (subdomain == domain) {
+                    //
+                    result.push(element.uri);
+                }
+            });
+
+            //
+            var tmp = [];
+            for each (var item in result) {
+                if ($.inArray(item, tmp) == -1) {
+                    tmp.push(item);
+                }
+            }
+            result = tmp;
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("httpStaticOnAnotherDomain", err);
+            result = false;
+        }
+
+        //
+        return result;
+    }
+
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.httpImagesMoreThan60Ko = function(doc) {
+        //
+        var result = [];
+
+        //
+        try {
+            //
+            sidecar.resources.filter(function(element) {
+                //
+                return ((element.content_type || '').split("/")[0] == "image");
+            }).forEach(function(element) {
+                //
+                if(element.size > 60000) {
+                    result.push(element.uri);
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("httpImagesMoreThan60Ko", err);
+            result = false;
+        }
+
+        //
+        return result;
+    }
+
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.htmlTrackingPresence = function(doc) {
+        //
+        var result = [];
+
+        //
+        try {
+            //
+            sidecar.resources.filter(function(element) {
+                //
+                return $.inArray((element.content_type || ''), mimeJS) != -1;
+            }).forEach(function(element) {
+                //
+                if($.endsWith(element.uri, '/xtclicks.js')) {
+                    result.push(element.uri);
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("htmlTrackingPresence", err);
+            result = false;
+        }
+
+        //
+        return result;
+    }
 })(jQuery, this);
