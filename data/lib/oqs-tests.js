@@ -10,8 +10,9 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
     badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"];
 
 var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
-    regCdns = new RegExp("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery)\\.com/", "i"),
-    regAnalytics = new RegExp("((^https?://[^/]+\\.((google-analytics|xiti|cybermonitor|estat|smartadserver|tradedoubler|sharethis|twitter|google|googleusercontent|gstatic)\\.com/|(weborama)\\.fr|(contentspread|doubleclick|ad4mat|facebook)\\.net))|/piwik\\.php\\?)", "i"),
+    regCdns = new RegExp("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery|gstatic|twimg)\\.com/", "i"),
+    regAnalytics = new RegExp("((^https?://[^/]+\\.((google-analytics|xiti|cybermonitor|estat|smartadserver|tradedoubler)\\.com/|(weborama)\\.fr|(contentspread|doubleclick|ad4mat)\\.net))|/piwik\\.php\\?)", "i"),
+    regSocial = new RegExp("(^https?://([^/]+\\.)?((addthis|sharethis|twitter|google|googleusercontent|gstatic)\\.com/|(facebook)\\.net))", "i"),
     regCms = new RegExp("/spip\\.php\\?action=cron", "i"),
     regJsFrameworks = new RegExp("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore|xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
     regAbsoluteFontSize = new RegExp("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
@@ -3385,7 +3386,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var src = $.trim($(this).attr("src"));
 
                 //
-                if ((src != '' && !regCdns.test(src) && !regAnalytics.test(src) && !regJsFrameworks.test(src)) || $.trim($(this).text()) != '') {
+                if ((src != '' && !regCdns.test(src) && !regAnalytics.test(src) && !regSocial.test(src) && !regJsFrameworks.test(src)) || $.trim($(this).text()) != '') {
                     //
                     result.push(_getDetails(this));
                 }
@@ -3711,7 +3712,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 //
                 return element.status == 200 && !element.headers["cache-control"] && !element.headers["etag"] &&
                     !element.headers["expires"] && !element.headers["last-modified"] && !regAnalytics.test(element.uri) &&
-                    !regCms.test(element.uri);
+                    !regSocial.test(element.uri) && !regCms.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -3865,7 +3866,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return element.status == 200 && (content_type.split("/")[0] == "text" || $.inArray(content_type, mimeJS) != -1 || regXML.test(content_type)) &&
-                    element.headers["content-length"] > 300 && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
+                    element.headers["content-length"] > 300 && !regAnalytics.test(element.uri) && !regSocial.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 //
                 var tmp = _getHttpDetails(element.uri, element.headers);
@@ -4601,7 +4602,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri) && !regCdns.test(element.uri);
+                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regSocial.test(element.uri) && !regCms.test(element.uri) &&
+                        !regCdns.test(element.uri);
             }).forEach(function(element) {
                 //
                 if (reg.test(element.headers["cache-control"] || '')) {
@@ -4656,7 +4658,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri) && !regCdns.test(element.uri);
+                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regSocial.test(element.uri) && !regCms.test(element.uri) &&
+                        !regCdns.test(element.uri);
             }).forEach(function(element) {
                 //
                 var subdomain = $.URL.getDomain(element.uri);
@@ -4711,7 +4714,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri) && !regCdns.test(element.uri);
+                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regSocial.test(element.uri) && !regCms.test(element.uri) &&
+                        !regCdns.test(element.uri);
             }).forEach(function(element) {
                 //
                 var _domain = $.URL.getDomain(element.uri).split(".").slice(-2).join(".");
@@ -4751,7 +4755,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri) && !regCdns.test(element.uri);
+                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regSocial.test(element.uri) && !regCms.test(element.uri) &&
+                        !regCdns.test(element.uri);
             }).forEach(function(element) {
                 //
                 if (reg.test(element.uri)) {
@@ -4788,7 +4793,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri) && !regCdns.test(element.uri);
+                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regSocial.test(element.uri) && !regCms.test(element.uri) &&
+                        !regCdns.test(element.uri);
             }).forEach(function(element) {
                 //
                 if (reg.test(element.uri)) {
@@ -4825,8 +4831,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri) && !regCdns.test(element.uri) &&
-                        element.headers["set-cookie"];
+                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regSocial.test(element.uri) && !regCms.test(element.uri) &&
+                        !regCdns.test(element.uri) && element.headers["set-cookie"];
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -4861,8 +4867,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri) && !regCdns.test(element.uri) &&
-                        reg.test(element.uri);
+                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regSocial.test(element.uri) && !regCms.test(element.uri) &&
+                        !regCdns.test(element.uri) && reg.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -4897,8 +4903,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri) && !regCdns.test(element.uri) &&
-                        reg.test(element.uri);
+                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regSocial.test(element.uri) && !regCms.test(element.uri) &&
+                        !regCdns.test(element.uri) && reg.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(_getHttpDetails(element.uri, element.headers));
@@ -4932,7 +4938,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var content_type = element.content_type || '';
 
                 return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri);
+                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regSocial.test(element.uri) &&
+                        !regCms.test(element.uri);
             }).forEach(function(element) {
                 //
                 result.push(element.uri);
@@ -5147,7 +5154,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element){
-                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) &&
+                        !regSocial.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     if (reg.test(response.data)) {
@@ -5787,7 +5795,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element){
-                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) &&
+                        !regSocial.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     var found = [];
@@ -5876,7 +5885,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element) {
-                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) &&
+                        !regSocial.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     if (reg.test(response.data)) {
@@ -5917,7 +5927,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element) {
-                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) &&
+                        !regSocial.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     if (reg.test(response.data)) {
@@ -5993,7 +6004,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             sidecar.resources.filter(function(element) {
-                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) && !regJsFrameworks.test(element.uri);
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) &&
+                        !regSocial.test(element.uri) && !regJsFrameworks.test(element.uri);
             }).forEach(function(element) {
                 promises.push(XHR.get(element.uri).then(function(response) {
                     if (reg.test(response.data)) {
@@ -6645,147 +6657,5 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssFontInList", err);
             return false;
         });
-    }
-
-    /***************************************************************************/
-    /******************************* SANOFI ************************************/
-    /***************************************************************************/
-
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.htmlTextRatio35 = function(doc) {
-        return XHR.get(doc.location.href).then(function(response) {
-            var html = unescape(encodeURIComponent(response.data)), html_length = html.length;
-
-            var text = html.replace(/document\.write\(.+?\)/g, '').replace(/<script[^>]*>.*?<\/script>/g, '').replace(/<script[^>]+>/g, '').replace(/<style[^>]*>.*?<\/style>/g, '').replace(/<[^>]+>/g, '').replace(/\s{2,}/g, ' ');
-            var text_length = text.length;
-
-            return (text_length/(html_length+text_length)*100) >= 35;
-        }).then(null, function(err) {
-            logger.error("textRatio", err);
-            return false;
-        });
-    }
-
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.httpStaticOnAnotherDomain = function(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            var domain = doc.location.hostname.split(".").slice(-2).join(".");
-
-            //
-            sidecar.resources.filter(function(element) {
-                //
-                var content_type = element.content_type || '';
-
-                return ($.inArray(content_type.split("/")[0], ["text", "image", "audio", "video"]) != -1 || $.inArray(content_type, mimeJS) != -1) &&
-                        $.inArray(content_type, mimeHTML) == -1 && !regAnalytics.test(element.uri) && !regCms.test(element.uri) && !regCdns.test(element.uri);
-            }).forEach(function(element) {
-                //
-                var staticDomain = $.URL.getDomain(element.uri).split(".").slice(-2).join(".");
-
-                if (subdomain == domain) {
-                    //
-                    result.push(element.uri);
-                }
-            });
-
-            //
-            var tmp = [];
-            for each (var item in result) {
-                if ($.inArray(item, tmp) == -1) {
-                    tmp.push(item);
-                }
-            }
-            result = tmp;
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("httpStaticOnAnotherDomain", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.httpImagesMoreThan60Ko = function(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            sidecar.resources.filter(function(element) {
-                //
-                return ((element.content_type || '').split("/")[0] == "image");
-            }).forEach(function(element) {
-                //
-                if(element.size > 60000) {
-                    result.push(element.uri);
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("httpImagesMoreThan60Ko", err);
-            result = false;
-        }
-
-        //
-        return result;
-    }
-
-    /**
-     *
-     * @param doc
-     * @return
-     */
-    window.htmlTrackingPresence = function(doc) {
-        //
-        var result = [];
-
-        //
-        try {
-            //
-            sidecar.resources.filter(function(element) {
-                //
-                return $.inArray((element.content_type || ''), mimeJS) != -1;
-            }).forEach(function(element) {
-                //
-                if($.endsWith(element.uri, '/xtclicks.js')) {
-                    result.push(element.uri);
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("htmlTrackingPresence", err);
-            result = false;
-        }
-
-        //
-        return result;
     }
 })(jQuery, this);
