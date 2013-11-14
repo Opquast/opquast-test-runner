@@ -11,8 +11,8 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
 
 var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     regCdns = new RegExp("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery|gstatic|twimg)\\.com/", "i"),
-    regAnalytics = new RegExp("((^https?://[^/]+\\.((google-analytics|xiti|cybermonitor|estat|smartadserver|tradedoubler)\\.com/|(weborama)\\.fr|(contentspread|doubleclick|ad4mat)\\.net))|/piwik\\.php\\?)", "i"),
-    regSocial = new RegExp("(^https?://([^/]+\\.)?((addthis|sharethis|twitter|google|googleusercontent|gstatic)\\.com/|(facebook)\\.net))", "i"),
+    regAnalytics = new RegExp("(^https?://[^/]+\\.((google-analytics|xiti|cybermonitor|estat|smartadserver|tradedoubler)\\.com|(weborama)\\.fr|(contentspread|doubleclick|ad4mat)\\.net)/)|/piwik\\.php\\?", "i"),
+    regSocial = new RegExp("(^https?://([^/]+\\.)?((addthis|sharethis|twitter|google|googleusercontent|gstatic)\\.com|(facebook)\\.net)/)", "i"),
     regCms = new RegExp("/spip\\.php\\?action=cron", "i"),
     regJsFrameworks = new RegExp("/(dojo|ext-core|jquery|jquery-ui|mootools(-(c|m)ore)?|piwik|prototype|modernizr|xtcore|xtclicks|yui)(\\.min)?\\.js(\\?[-\\.v0-9]+)?$", "i"),
     regAbsoluteFontSize = new RegExp("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
