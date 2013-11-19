@@ -3527,23 +3527,31 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         //
         var result = [],
             reg1 = new RegExp("[\\-\\_\\.\\+\\!\\*\\'\\(\\)\\,\\&\\/\\:\\;\\=\\?\\@\\#\\%\\[\\]]", "ig"),
-            reg2 = new RegExp("[^a-zA-Z0-9àáâãäåæçèéêëìíîïñòóôõöùúûüýÿ]", "ig"),
-            url = doc.location.href.toLowerCase().replace(/[àáâãäå]/ig, "a").replace(/æ/ig, "ae").replace(/ç/ig, "c").replace(/[èéêë]/ig, "e").replace(/[ìíîï]/ig, "i").replace(/ñ/ig, "n").replace(/[òóôõö]/ig, "o").replace(/œ/ig, "oe").replace(/[ùúûü]/ig, "u").replace(/[ýÿ]/ig, "y"),
-            terms = url.split(reg1);
+            reg2 = new RegExp("[^a-zA-Z0-9àáâãäåæçèéêëìíîïñòóôõöùúûüýÿ]", "ig");
 
         //
         try {
             //
-            var title = $("title").text().trim().toLowerCase().split(reg2);
+            var url_terms = doc.location.href.toLowerCase().split(reg1),
+                title_terms = $("title").text().trim().toLowerCase().replace(/[àáâãäå]/ig, "a").
+                                                                     replace(/æ/ig, "ae").
+                                                                     replace(/ç/ig, "c").
+                                                                     replace(/[èéêë]/ig, "e").
+                                                                     replace(/[ìíîï]/ig, "i").
+                                                                     replace(/ñ/ig, "n").
+                                                                     replace(/[òóôõö]/ig, "o").
+                                                                     replace(/œ/ig, "oe").
+                                                                     replace(/[ùúûü]/ig, "u").
+                                                                     replace(/[ýÿ]/ig, "y").split(reg2);
 
             //
-            terms = terms.filter(function(element) {
+            url_terms = url_terms.filter(function(element) {
                 return element.length >= 3;
             });
 
             //
-            if (terms.some(function(element) {
-                return $.inArray(element, title) != -1;
+            if (url_terms.some(function(element) {
+                return $.inArray(element, title_terms) != -1;
             })) {
                 //
                 result.push(true);
@@ -6499,7 +6507,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     window.linksSpecialChars = function(doc) {
         //
         var _result = [],
-            _reg = new RegExp("[A_Z_% ]", "g");
+            _reg = new RegExp("[A-Z_% ]", "g");
 
         // current URL
         if (_reg.test(doc.location.hostname)) {

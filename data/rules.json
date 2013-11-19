@@ -516,7 +516,6 @@
     "TITLE_WO_TEXT": "xpath@html://title[normalize-space(translate(.,' ',' '))='']",
     "TITLE_W_DEFAULT_VALUE": "oqs@html:htmlDefaultTitle",
     "TITLE_W_MORE_THAN_80_CHAR": "xpath@html://title[string-length(normalize-space(translate(.,' ',' ')))>80]",
-    "TITLE_W_SITE_NAME": "xpath@html://title[contains(normalize-space(translate(.,' ',' '),' - ')]",
     "TITLE_W_TEXT": "xpath@html://title[normalize-space(translate(.,' ',' '))!='']",
     "TT": "xpath@html://tt",
     "U": "xpath@html://u",
