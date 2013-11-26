@@ -17,7 +17,7 @@ for dir in listdir('test/fixtures'):
                 except:
                     pass
 
-            for file in ['_all.json', 'robots.txt', 'favicon.ico']:
+            for file in ['_all.json', 'robots.txt', 'favicon.ico', 'download.pdf']:
                 try:
                     copy ('test/fixtures/%s/%s' % (id, file), 'test/fixtures/%s/%s' % (dir, file))
                 except:
