@@ -33056,6 +33056,28 @@
         }
     },
     "30456": {
+        "CTIE_ASIDE_PAGEMORE": {
+            "onfalse": {
+                "comment": "aucun élément ASIDE avec la class page-more",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_ASIDE_PAGEMORE_MORE_THAN_15_LINKS": {
+                        "onfalse": {
+                            "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément ASIDE avec la classe page-more",
+                "result": "i"
+            }
+        },
         "test11": {
             "onfalse": {
                 "comment": "aucun élément DIV avec l'id relatedLinkBox",
@@ -38161,7 +38183,7 @@
             }
         }
     },
-   "500": {
+    "500": {
         "IMG": {
             "onfalse": {
                 "comment": "aucun élément IMG n'a été détecté",

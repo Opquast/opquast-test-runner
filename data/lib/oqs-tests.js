@@ -7,7 +7,11 @@ var langs = ['aa', 'aa-dj', 'aa-er', 'aa-er-saaho', 'aa-et', 'af', 'af-na', 'af-
     genericFontStyle = ["serif", "sans-serif", "cursive", "fantasy", "monospace", "inherit"],
     atomNs = "http://www.w3.org/2005/Atom",
     fonctionExclusions = ["if", "else", "while", "for", "switch", "case", "try", "catch"],
-    badLinks = ['cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', "plus d'infos"];
+    badLinks = [
+        '…', '[…]', '>>',
+        'ici', 'cliquez ici', 'lire la suite', 'pour lire la suite, cliquez ici', 'cliquez ici pour lire la suite', 'en savoir plus', 'plus', "plus d'infos",
+        'here', 'click here', 'read more', 'more', 'find out more'
+    ];
 
 var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     regCdns = new RegExp("^https?://[^/]+\\.(googleapis|aspnetcdn|yahooapis|amazonaws|jquery|gstatic|twimg)\\.com/", "i"),
