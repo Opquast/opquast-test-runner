@@ -538,7 +538,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
                     }
@@ -564,7 +564,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         $(rule.mSelectorText).each(function() {
                             if ($.inArray(this.tagName.toUpperCase(), ["BUTTON", "INPUT", "SELECT", "TEXTAREA"]) != -1) {
@@ -599,7 +599,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
                     }
@@ -676,7 +676,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "background-image" && regBgImage.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
                     }
@@ -702,7 +702,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "background-position" && rule.declarations[i]["valueText"] != "0 0") {
                         var node = $(rule.mSelectorText);
 
@@ -864,7 +864,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "direction") {
                         result.push(_getCssDetails(rule, i));
                     }
@@ -890,7 +890,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "display" && rule.declarations[i]["valueText"] == "none") {
                         result.push(_getCssDetails(rule, i));
                     }
@@ -918,7 +918,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     var selectors = rule.mSelectorText.split(",").map(function(element) {
                         return $.trim(element);
                     });
@@ -956,7 +956,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "font-family") {
                         var font = rule.declarations[i]["valueText"].split(",").pop().replace(/['"]/g, "").trim();
 
@@ -991,7 +991,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     var selectors = rule.mSelectorText.split(",").map(function(element) {
                         return $.trim(element);
                     });
@@ -1079,7 +1079,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var sheets = doc.styleSheets;
 
             // sheets walk
-            for (var i = 0; i < sheets.length; i++) {
+            for (var i = 0, j = sheets.length; i < j; i++) {
                 //
                 var sheet = sheets.item(i);
 
@@ -1089,7 +1089,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                     var rules = sheet.cssRules;
 
                     // rules walk
-                    for (var k = 0; k < rules.length; k++) {
+                    for (var k = 0, l = rules.length; k < l; k++) {
                         //
                         var rule = rules[k];
 
@@ -1174,7 +1174,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "font-family" && $.inArray(rule.declarations[i]["valueText"], genericFontStyle) == -1) {
                         result = result.concat(rule.declarations[i]["valueText"].split(","));
                     }
@@ -1208,7 +1208,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "font-family" && $.inArray(rule.declarations[i]["valueText"], genericFontStyle) == -1) {
                         result = result.concat(rule.declarations[i]["valueText"].split(","));
                     }
@@ -1242,7 +1242,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
                         result.push(_getCssDetails(rule, i));
                     }
@@ -1279,7 +1279,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 ];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "font-family"){
                         var fonts = rule.declarations[i]["valueText"].split(";")[0].split(",").map(function(element) {
                             return $.trim(element.toLowerCase().replace(/['"]/g, ""));
@@ -1348,7 +1348,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "text-align" && rule.declarations[i]["valueText"] == "justify") {
                         result.push(_getCssDetails(rule, i));
                     }
@@ -1442,7 +1442,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 regUniversalSelector = new RegExp(" \\*", "g");
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (regUniversalSelector.test(rule.mSelectorText)) {
                         result.push(_getCssDetails(rule, i));
                     }
@@ -1510,7 +1510,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             var result = [];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "visibility" && rule.declarations[i]["valueText"] == "hidden") {
                         result.push(_getCssDetails(rule, i));
                     }
@@ -6416,18 +6416,18 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         }
 
         // sheets walk
-        for (var i = 0; i < sheets.length; i++) {
+        for (var i = 0, j = sheets.length; i < j; i++) {
             //
             var rules = sheets.item(i).cssRules;
 
             // rules walk
-            for (var j = 0; j < rules.length; j++) {
-                parseRule(rules.item(j));
+            for (var k = 0, l = rules.length; k < l; k++) {
+                parseRule(rules.item(k));
             }
         }
 
         // styles walk
-        for (var k = 0; k < styles.length; k++) {
+        for (var k = 0, l = styles.length; k < l; k++) {
             //
             if (styles[k].fontSize !== "") {
                 //
@@ -6642,21 +6642,22 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     window.cssFontInList = function(doc) {
         function callback(rule) {
             var result = [],
-                authorized = ["arial", "verdana", "helvetica", "tahoma", "sans-serif", "inherit"];
+                coreFonts = ["arial","times new roman","arial black","courier new","verdana","courier","trebuchet ms","georgia","impact","arial narrow","helvetica","tahoma","times","andale mono"];
 
             if (rule && rule.declarations) {
-                for (var i = 0; i < rule.declarations.length; i++) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
                     if (rule.declarations[i]["property"] == "font-family") {
                         var fonts = rule.declarations[i]["valueText"].split(";")[0].split(",").map(function(element) {
                             return $.trim(element.toLowerCase().replace(/['"]/g, ""));
                         });
 
-                        $.each(fonts, function() {
-                            if ($.inArray(this, authorized) == -1) {
-                                result.push(_getCssDetails(rule, i));
-                                return false;
-                            }
+                        var isCoreFont = fonts.some(function(element) {
+                            return ($.inArray(element, coreFonts) != -1 || $.inArray(element, genericFontStyle) != -1);
                         });
+
+                        if(isCoreFont == false) {
+                            result.push(_getCssDetails(rule, i));
+                        }
                     }
                 }
             }
@@ -6669,5 +6670,84 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssFontInList", err);
             return false;
         });
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.cssAbsoluteFontSizeWithPixel = function cssAbsoluteFontSizeWithPixel(doc) {
+        function callback(rule) {
+            var result = [],
+                regAbsoluteFontSize = new RegExp("[0-9.]+(p(t|c)|(c|m)m|in)", "i");
+
+            if (rule && rule.declarations) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
+                    if (rule.declarations[i]["property"] == "font-size" && regAbsoluteFontSize.test(rule.declarations[i]["valueText"])) {
+                        result.push(_getCssDetails(rule, i));
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
+            // Error Logging
+            logger.error("cssAbsoluteFontSize", err);alert(err);
+            return false;
+        });
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.cssFontSizeLessThan12Px = function cssFontSizeLessThan12Px(doc) {
+        //
+        var _result = [],
+            fontSize = 12;
+
+        //
+        function walk(node) {
+            //
+            var _fontSize = parseInt(node.css("font-size"));
+
+            //
+            if (_fontSize >= fontSize) {
+                node.children().each(function() {
+                    walk($(this));
+                });
+            } else {
+                _result.push(_getDetails(node.get(0)));
+            }
+
+            //
+            return;
+        }
+
+        //
+        walk($("body"));
+
+        //
+        return _result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieHtmlWithLang = function ctieHtmlWithLang(doc) {
+        //
+        var _result = [],
+            lang = $('html').attr('lang');
+
+        //
+        if(lang != undefined && lang != '') {
+            _result.push(lang);
+        }
+
+        //
+        return _result;
     }
 })(jQuery, this);

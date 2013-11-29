@@ -77,5 +77,53 @@
     },
     "586": "Les captchas audio peuvent être réécoutés à volonté.",
     "611": "Le texte des documents PDF internes est sélectionnable.",
-    "685": "Les hyperliens consécutifs sont séparés visuellement."
+    "685": "Les hyperliens consécutifs sont séparés visuellement.",
+    "30578": {
+        "test40": {
+            "onfalse": {
+                "comment": "absence de navigation transversale",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test41": {
+                        "onfalse": {
+                            "comment": "la navigation transversale comporte 3 niveaux ou moins de profondeur",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "la navigation transversale comporte plus de 3 niveaux de profondeur",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "présence de la navigation transversale",
+                "result": "i"
+            }
+        }
+    },
+    "30604": {
+        "TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "TITLE_W_TEXT": {
+                        "onfalse": {
+                            "comment": "l'élément TITLE est vide",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "l'élément TITLE est non vide",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "un élement TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    }
 }

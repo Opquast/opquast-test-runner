@@ -1130,11 +1130,11 @@
     "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
         "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
             "onfalse": {
-                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
+                "comment": "aucun FONT-SIZE défini en taille absolue n'a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
+                "comment": "au moins un FONT-SIZE défini en taille absolue a été détecté",
                 "result": "c"
             }
         }
@@ -1339,6 +1339,186 @@
             },
             "ontrue": {
                 "comment": "au moins une CSS avec des espaces inutiles a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_ASIDE_PAGE_MORE": {
+        "CTIE_ASIDE_PAGE_MORE": {
+            "onfalse": {
+                "comment": "aucun élément ASIDE avec la class page-more",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément ASIDE avec la classe page-more",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
+        "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
+            "onfalse": {
+                "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_ASIDE_PAGE_SECONDARY": {
+        "CTIE_ASIDE_PAGE_SECONDARY": {
+            "onfalse": {
+                "comment": "aucun élément ASIDE avec la class page-secondary",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément ASIDE avec la classe page-secondary",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
+        "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
+            "onfalse": {
+                "comment": "aucun élément ASIDE avec la class page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément ASIDE avec la classe page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_CSS_FONT_SIZE_LESS_THAN_12_PX": {
+        "CTIE_CSS_FONT_SIZE_LESS_THAN_12_PX": {
+            "onfalse": {
+                "comment": "aucun FONT-SIZE de moins de 12px n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un FONT-SIZE de moins de 12px a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
+        "CTIE_CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
+            "onfalse": {
+                "comment": "aucun FONT-SIZE défini en taille absolue n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un FONT-SIZE défini en taille absolue a été détecté",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_DIV_PAGE_CONTENT": {
+        "CTIE_DIV_PAGE_CONTENT": {
+            "onfalse": {
+                "comment": "aucun élément DIV avec la class page-content",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément DIV avec la classe page-content",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
+        "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
+            "onfalse": {
+                "comment": "aucun élément DIV avec la class page-content avec plus de 3 éléments ASIDE avec la classe box",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un élément DIV avec la classe page-content avec plus de 3 éléments ASIDE avec la classe box",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_DOC": {
+        "CTIE_DOC": {
+            "onfalse": {
+                "comment": "aucun élément DOC dans le DIV avec l'id main",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément DOC dans le DIV avec l'id main",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
+        "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
+            "onfalse": {
+                "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_HTML_W_LANG": {
+        "CTIE_HTML_W_LANG": {
+            "onfalse": {
+                "comment": "l'attribut LANG de HTML est rempli",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "l'attribut LANG de HTML est vide ou absent",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_PDF": {
+        "CTIE_PDF": {
+            "onfalse": {
+                "comment": "aucun élément PDF dans le DIV avec l'id main",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément PDF dans le DIV avec l'id main",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
+        "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
+            "onfalse": {
+                "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_UL_NAV_PRIMARY": {
+        "CTIE_UL_NAV_PRIMARY": {
+            "onfalse": {
+                "comment": "aucun NAV avec le role navigation et contenant un UL avec la classe nav-primary",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un NAV avec le role navigation et contenant un UL avec la classe nav-primary",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_UL_NAV_PRIMARY_LI": {
+        "CTIE_UL_NAV_PRIMARY_LI": {
+            "onfalse": {
+                "comment": "au moins un UL avec la classe nav-primary contenant un UL avec moins de 2 LI",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "aucun UL avec la classe nav-primary contenant un UL avec moins de 2 LI",
                 "result": "c"
             }
         }

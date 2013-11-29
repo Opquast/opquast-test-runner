@@ -33056,14 +33056,14 @@
         }
     },
     "30456": {
-        "CTIE_ASIDE_PAGEMORE": {
+        "CTIE_ASIDE_PAGE_MORE": {
             "onfalse": {
                 "comment": "aucun élément ASIDE avec la class page-more",
                 "result": "na"
             },
             "ontrue": {
                 "chain": {
-                    "CTIE_ASIDE_PAGEMORE_MORE_THAN_15_LINKS": {
+                    "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
                         "onfalse": {
                             "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
                             "result": "c"
@@ -33123,17 +33123,61 @@
                 "comment": "au moins un élément avec la classe rightBox",
                 "result": "i"
             }
+        },
+        "CTIE_ASIDE_PAGE_SECONDARY": {
+            "onfalse": {
+                "comment": "aucun élément ASIDE avec la class page-secondary",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
+                        "onfalse": {
+                            "comment": "aucun élément ASIDE avec la class page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "un élément ASIDE avec la classe page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément ASIDE avec la classe page-secondary",
+                "result": "c"
+            }
+        },
+        "CTIE_DIV_PAGE_CONTENT": {
+            "onfalse": {
+                "comment": "aucun élément DIV avec la class page-content",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
+                        "onfalse": {
+                            "comment": "aucun élément DIV avec la class page-content avec plus de 3 éléments ASIDE avec la classe box",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "un élément DIV avec la classe page-content avec plus de 3 éléments ASIDE avec la classe box",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément DIV avec la classe page-content",
+                "result": "c"
+            }
         }
     },
     "30489": {
-        "test1": {
+        "CTIE_HTML_W_LANG": {
             "onfalse": {
-                "comment": "l'attribut LANG de HTML est rempli",
-                "result": "i"
-            },
-            "ontrue": {
                 "comment": "l'attribut LANG de HTML est vide ou absent",
                 "result": "nc"
+            },
+            "ontrue": {
+                "comment": "l'attribut LANG de HTML est rempli",
+                "result": "i"
             }
         }
     },
@@ -33239,52 +33283,28 @@
             }
         }
     },
-    "30578": {
-        "test40": {
-            "onfalse": {
-                "comment": "absence de navigation transversale",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test41": {
-                        "onfalse": {
-                            "comment": "la navigation transversale comporte 3 niveaux ou moins de profondeur",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "la navigation transversale comporte plus de 3 niveaux de profondeur",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "présence de la navigation transversale",
-                "result": "i"
-            }
-        }
-    },
     "30584": {
         "test28": {
             "onfalse": {
-                "comment": "aucune rubrique thématique n'est ouverte",
+                "comment": "aucun élement DIV avec l'id thematicNav et contenant un DIV avec la classe navOn",
                 "result": "na"
             },
             "ontrue": {
                 "chain": {
                     "test29": {
                         "onfalse": {
-                            "comment": "aucune sous-rubrique thématique n'est présente",
+                            "comment": "aucun élement DIV avec l'id navOn et contenant un DIV avec la classe subNav",
                             "result": "nc"
                         },
                         "ontrue": {
                             "chain": {
                                 "test30": {
                                     "onfalse": {
-                                        "comment": "la sous-rubrique thématique ne contient pas d'entrée",
+                                        "comment": "aucun élement DIV avec la class subNav et contenant plus d'un LI",
                                         "result": "nc"
                                     },
                                     "ontrue": {
-                                        "comment": "la sous-rubrique thématique contient au moins une entrée",
+                                        "comment": "un élement DIV avec la class subNav et contenant plus d'un LI",
                                         "result": "c"
                                     }
                                 }
@@ -33294,7 +33314,29 @@
                         }
                     }
                 },
-                "comment": "une rubrique thématique est ouverte",
+                "comment": "au moins un élement DIV avec l'id thematicNav et contenant un DIV avec la classe navOn",
+                "result": "i"
+            }
+        },
+        "CTIE_UL_NAV_PRIMARY": {
+            "onfalse": {
+                "comment": "aucun UL avec la classe nav-primary",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_UL_NAV_PRIMARY_LI": {
+                        "onfalse": {
+                            "comment": "aucun UL avec la classe nav-primary et contenant plus d'un LI",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un UL avec la classe nav-primary et contenant plus d'un LI",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un UL avec la classe nav-primary",
                 "result": "i"
             }
         }
@@ -33322,6 +33364,28 @@
                 "result": "i"
             }
         },
+        "CTIE_PDF": {
+            "onfalse": {
+                "comment": "aucun élément PDF dans le DIV avec l'id main",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
+                        "onfalse": {
+                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément PDF dans le DIV avec l'id main",
+                "result": "i"
+            }
+        },
         "test33": {
             "onfalse": {
                 "comment": "aucun DOC",
@@ -33343,6 +33407,28 @@
                 "comment": "au moins un DOC",
                 "result": "i"
             }
+        },
+        "CTIE_DOC": {
+            "onfalse": {
+                "comment": "aucun élément DOC dans le DIV avec l'id main",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
+                        "onfalse": {
+                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément DOC dans le DIV avec l'id main",
+                "result": "i"
+            }
         }
     },
     "30603": {
@@ -33354,30 +33440,6 @@
             "ontrue": {
                 "comment": "au moins un lien externe dans les menus de navigation",
                 "result": "nc"
-            }
-        }
-    },
-    "30604": {
-        "TITLE": {
-            "onfalse": {
-                "comment": "aucun élément TITLE n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "chain": {
-                    "TITLE_W_TEXT": {
-                        "onfalse": {
-                            "comment": "l'élément TITLE est vide",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément TITLE est non vide",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "un élement TITLE a été détecté",
-                "result": "i"
             }
         }
     },
@@ -33454,7 +33516,7 @@
         }
     },
     "30640": {
-        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
+        "CTIE_CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
             "onfalse": {
                 "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
                 "result": "c"
@@ -33466,7 +33528,7 @@
         }
     },
     "30641": {
-        "test25": {
+        "CTIE_CSS_FONT_SIZE_LESS_THAN_12_PX": {
             "onfalse": {
                 "comment": "aucune police ne possède une taille inférieure à 75% ou 0.75em",
                 "result": "c"
