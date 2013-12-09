@@ -1,0 +1,9 @@
+body a:link {
+    color: blue;
+}
+body.foo a:visited {
+    color: purple;
+}
+body.bar a:visited {
+    color: #0000ff;
+}
