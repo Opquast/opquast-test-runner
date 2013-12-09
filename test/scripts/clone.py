@@ -10,48 +10,15 @@ for dir in listdir('test/fixtures'):
         for x in range(20):
             _id = json_criteria[id].replace('.', '-').replace('[', '').replace(']', '')
             _dir = json_criteria[dir].replace('.', '-').replace('[', '').replace(']', '').lower()
-            
-            try:
-                copy ('test/fixtures/%s/%s-%s_%s.html' % (id, _id, id, x + 1), 'test/fixtures/%s/%s-%s_%s.html' % (dir, _dir, dir, x + 1))
-            except:
-                pass
-            
-            try:
-                copy ('test/fixtures/%s/%s-%s_%s.css' % (id, _id, id, x + 1), 'test/fixtures/%s/%s-%s_%s.css' % (dir, _dir, dir, x + 1))
-            except:
-                pass
-            
-            try:
-                copy ('test/fixtures/%s/%s-%s_%s.print.css' % (id, _id, id, x + 1), 'test/fixtures/%s/%s-%s_%s.print.css' % (dir, _dir, dir, x + 1))
-            except:
-                pass
-            
-            try:
-                copy ('test/fixtures/%s/%s-%s_%s.screen.css' % (id, _id, id, x + 1), 'test/fixtures/%s/%s-%s_%s.screen.css' % (dir, _dir, dir, x + 1))
-            except:
-                pass
-            
-            try:
-                copy ('test/fixtures/%s/%s-%s_%s.js' % (id, _id, id, x + 1), 'test/fixtures/%s/%s-%s_%s.js' % (dir, _dir, dir, x + 1))
-            except:
-                pass
-            
-            try:
-                copy ('test/fixtures/%s/_all.json' % (id, _id, id, x + 1), 'test/fixtures/%s/_all.json' % (dir, _dir, dir, x + 1))
-            except:
-                pass
-            
-            try:
-                copy ('test/fixtures/%s/%s-%s_%s.json' % (id, _id, id, x + 1), 'test/fixtures/%s/%s-%s_%s.json' % (dir, _dir, dir, x + 1))
-            except:
-                pass
-            
-            try:
-                copy ('test/fixtures/%s/%s-%s_%s.rss' % (id, _id, id, x + 1), 'test/fixtures/%s/%s-%s_%s.rss' % (dir, _dir, dir, x + 1))
-            except:
-                pass
-            
-            try:
-                copy ('test/fixtures/%s/%s-%s_%s.atom' % (id, _id, id, x + 1), 'test/fixtures/%s/%s-%s_%s.atom' % (dir, _dir, dir, x + 1))
-            except:
-                pass
+
+            for format in ['html', 'css', 'screen.css', 'print.css', 'js', 'json', 'rss', 'atom']:
+                try:
+                    copy ('test/fixtures/%s/%s-%s_%s.%s' % (id, _id, id, x + 1, format), 'test/fixtures/%s/%s-%s_%s.%s' % (dir, _dir, dir, x + 1, format))
+                except:
+                    pass
+
+            for file in ['_all.json', 'robots.txt', 'favicon.ico', 'download.pdf']:
+                try:
+                    copy ('test/fixtures/%s/%s' % (id, file), 'test/fixtures/%s/%s' % (dir, file))
+                except:
+                    pass

@@ -1,9 +1,79 @@
-p {
-    font-family: "Arial", "Verdana", "Helvetica", "Tahoma";
+#p1 {
+    font-family: Lucida, "Arial";
 }
 
-@media print {
-    p {
-        font-family: serif;
-    }
+#p2 {
+    font-family: Lucida, "Times New Roman";
+}
+
+#p3 {
+    font-family: Lucida, "Arial Black";
+}
+
+#p4 {
+    font-family: Lucida, "Courier New";
+}
+
+#p5 {
+    font-family: Lucida, "Verdana";
+}
+
+#p6 {
+    font-family: Lucida, "Courier";
+}
+
+#p7 {
+    font-family: Lucida, "Trebuchet MS";
+}
+
+#p8 {
+    font-family: Lucida, "Georgia";
+}
+
+#p9 {
+    font-family: Lucida, "Impact";
+}
+
+#p10 {
+    font-family: Lucida, "Arial Narrow";
+}
+
+#p11 {
+    font-family: Lucida, "Helvetica";
+}
+
+#p12 {
+    font-family: Lucida, "Tahoma";
+}
+
+#p13 {
+    font-family: Lucida, "Times";
+}
+
+#p14 {
+    font-family: Lucida, "Andale Mono";
+}
+
+#p15 {
+    font-family: Lucida, serif;
+}
+
+#p16 {
+    font-family: Lucida, sans-serif;
+}
+
+#p17 {
+    font-family: Lucida, cursive;
+}
+
+#p18 {
+    font-family: Lucida, fantasy;
+}
+
+#p19 {
+    font-family: Lucida, monospace;
+}
+
+#p20 {
+    font-family: Lucida, inherit;
 }

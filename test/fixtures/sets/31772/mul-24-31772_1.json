@@ -1,0 +1,11 @@
+{
+    "/fixe.gif": {
+        "_imageInfo": {
+            "height": 10,
+            "width": 10
+        }
+    },
+    "/audio.mp3": {
+        "_contentType": "audio/mpeg"
+    }
+}
