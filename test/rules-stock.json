@@ -14,5 +14,7 @@
     "H6_W_TERMS_NOT_IN_CONTENT": "oqs@html:htmlH6WithTermsNotInContent",
     "IMG_W_EMPTY_ALT_ATTR": "xpath@html://img[@alt][normalize-space(@alt)='']",
     "IMPLICIT_FAVICON": "oqs@html:implicitFavicon",
-    "META_ROBOTS_FILLED": "xpath@html://meta[translate(@name,'ROBTS','robts')='robots'][normalize-space(@content)!='']"
+    "META_ROBOTS_FILLED": "xpath@html://meta[translate(@name,'ROBTS','robts')='robots'][normalize-space(@content)!='']",
+    "URI_UNIQUE_IN_PAGE": "oqs@html:uriUniqueInPage",
+    "test24": "xpath@html://table[.//tbody][not(.//th)]"
 }

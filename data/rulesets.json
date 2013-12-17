@@ -17431,6 +17431,30 @@
             }
         }
     },
+    "20385": {
+        "CTIE_BAD_FORMATS": {
+            "onfalse": {
+                "comment": "aucun document téléchargeable dans un format autre que PDF",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un document téléchargeable dans un format autre que PDF",
+                "result": "nc"
+            }
+        }
+    },
+    "20395": {
+        "CTIE_LINKS_LENGTH": {
+            "onfalse": {
+                "comment": "aucun lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "nc"
+            }
+        }
+    },
     "21251": {
         "IMG": {
             "onfalse": {
@@ -25269,1894 +25293,6 @@
             }
         }
     },
-    "23216": {
-        "test6": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test23": {
-                        "onfalse": {
-                            "comment": "aucun TABLE complexe sans attribut SUMMARY",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un TABLE complexe sans attribut SUMMARY",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un TABLE complexe",
-                "result": "i"
-            }
-        }
-    },
-    "23265": {
-        "test25": {
-            "onfalse": {
-                "comment": "aucune police ne possède une taille inférieure à 75% ou 0.75em",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une police possède une taille inférieure à 75% ou 0.75em",
-                "result": "nc"
-            }
-        }
-    },
-    "23266": {
-        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
-            "onfalse": {
-                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
-                "result": "nc"
-            }
-        }
-    },
-    "23267": {
-        "CSS_FONTS_NUMBER": {
-            "onfalse": {
-                "comment": "pas plus de 3 polices définies",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "plus de 3 polices définies",
-                "result": "nc"
-            }
-        }
-    },
-    "23269": {
-        "test27": {
-            "onfalse": {
-                "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "nc"
-            }
-        }
-    },
-    "23306": {
-        "test42": {
-            "onfalse": {
-                "comment": "aucun lien externe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test21": {
-                        "onfalse": {
-                            "comment": "aucun lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un lien externe",
-                "result": "i"
-            }
-        }
-    },
-    "23308": {
-        "test1": {
-            "onfalse": {
-                "comment": "l'attribut LANG de HTML est rempli",
-                "result": "i"
-            },
-            "ontrue": {
-                "comment": "l'attribut LANG de HTML est vide ou absent",
-                "result": "nc"
-            }
-        }
-    },
-    "23309": {
-        "FRAME": {
-            "onfalse": {
-                "comment": "aucun élément FRAME n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément FRAME a été détecté",
-                "result": "nc"
-            }
-        },
-        "FRAMESET": {
-            "onfalse": {
-                "comment": "aucun élément FRAMESET n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément FRAMESET a été détecté",
-                "result": "nc"
-            }
-        },
-        "NOFRAMES": {
-            "onfalse": {
-                "comment": "aucun élément NOFRAMES n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément NOFRAMES a été détecté",
-                "result": "nc"
-            }
-        }
-    },
-    "23314": {
-        "H1_TO_H6_HIERACHICAL_ERROR": {
-            "onfalse": {
-                "comment": "aucune interruption dans la hiérarchie des titres",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une interruption dans la hiérarchie des titres",
-                "result": "nc"
-            }
-        }
-    },
-    "23315": {
-        "test36": {
-            "onfalse": {
-                "comment": "moins de deux H1 dans le contenu",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins deux H1 dans le contenu",
-                "result": "nc"
-            }
-        },
-        "test37": {
-            "onfalse": {
-                "comment": "aucun H6 dans le contenu",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un H6 dans le contenu",
-                "result": "nc"
-            }
-        }
-    },
-    "23361": {
-        "test11": {
-            "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
-            }
-        }
-    },
-    "23363": {
-        "test38": {
-            "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test13": {
-                        "onfalse": {
-                            "comment": "3 éléments ou moins avec la classe rightBox",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "plus de 3 éléments avec la classe rightBox",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément avec la classe rightBox",
-                "result": "i"
-            }
-        }
-    },
-    "23428": {
-        "test14": {
-            "onfalse": {
-                "comment": "aucune URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
-                "result": "nc"
-            }
-        }
-    },
-    "23456": {
-        "test39": {
-            "onfalse": {
-                "comment": "absence de navigation thématique",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test15": {
-                        "onfalse": {
-                            "comment": "la navigation thématique comporte 5 niveaux ou moins de profondeur",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "la navigation thématique comporte plus de 5 niveaux de profondeur",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "présence de la navigation thématique",
-                "result": "i"
-            }
-        }
-    },
-    "23457": {
-        "test40": {
-            "onfalse": {
-                "comment": "absence de navigation transversale",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test41": {
-                        "onfalse": {
-                            "comment": "la navigation transversale comporte 3 niveaux ou moins de profondeur",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "la navigation transversale comporte plus de 3 niveaux de profondeur",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "présence de la navigation transversale",
-                "result": "i"
-            }
-        }
-    },
-    "23463": {
-        "test28": {
-            "onfalse": {
-                "comment": "aucune rubrique thématique n'est ouverte",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test29": {
-                        "onfalse": {
-                            "comment": "aucune sous-rubrique thématique n'est présente",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "chain": {
-                                "test30": {
-                                    "onfalse": {
-                                        "comment": "la sous-rubrique thématique ne contient pas d'entrée",
-                                        "result": "nc"
-                                    },
-                                    "ontrue": {
-                                        "comment": "la sous-rubrique thématique contient au moins une entrée",
-                                        "result": "c"
-                                    }
-                                }
-                            },
-                            "comment": "une sous-rubrique thématique est présente",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "une rubrique thématique est ouverte",
-                "result": "i"
-            }
-        }
-    },
-    "23465": {
-        "test31": {
-            "onfalse": {
-                "comment": "aucun PDF",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test32": {
-                        "onfalse": {
-                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un PDF",
-                "result": "i"
-            }
-        },
-        "test33": {
-            "onfalse": {
-                "comment": "aucun DOC",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test34": {
-                        "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un DOC",
-                "result": "i"
-            }
-        }
-    },
-    "23483": {
-        "test43": {
-            "onfalse": {
-                "comment": "aucun lien externe dans les menus de navigation",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un lien externe dans les menus de navigation",
-                "result": "nc"
-            }
-        }
-    },
-    "23484": {
-        "TITLE": {
-            "onfalse": {
-                "comment": "aucun élément TITLE n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "chain": {
-                    "TITLE_W_TEXT": {
-                        "onfalse": {
-                            "comment": "l'élément TITLE est vide",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément TITLE est non vide",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "un élement TITLE a été détecté",
-                "result": "i"
-            }
-        }
-    },
-    "23486": {
-        "test18": {
-            "onfalse": {
-                "comment": "aucun élément A adjacent",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins 2 éléments A adjacents",
-                "result": "nc"
-            }
-        }
-    },
-    "23487": {
-        "test19": {
-            "onfalse": {
-                "comment": "aucun élément A ayant le même texte et des cibles différentes",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins 2 éléments A ayant le même texte et des cibles différentes",
-                "result": "nc"
-            }
-        }
-    },
-    "23489": {
-        "test20": {
-            "onfalse": {
-                "comment": "aucun lien interne s'ouvrant dans une nouvelle fenêtre",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un lien interne s'ouvrant dans une nouvelle fenêtre",
-                "result": "nc"
-            }
-        }
-    },
-    "23490": {
-        "test6": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test24": {
-                        "onfalse": {
-                            "comment": "aucun TABLE complexe sans TH",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un TABLE complexe sans TH",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un TABLE complexe",
-                "result": "i"
-            }
-        }
-    },
-    "23494": {
-        "test6": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test22": {
-                        "onfalse": {
-                            "comment": "aucun TABLE complexe sans CAPTION",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un TABLE complexe sans CAPTION",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un TABLE complexe",
-                "result": "i"
-            }
-        }
-    },
-    "23505": {
-        "test42": {
-            "onfalse": {
-                "comment": "aucun lien externe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test21": {
-                        "onfalse": {
-                            "comment": "aucun lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un lien externe",
-                "result": "i"
-            }
-        }
-    },
-    "23520": {
-        "test6": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test23": {
-                        "onfalse": {
-                            "comment": "aucun TABLE complexe sans attribut SUMMARY",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un TABLE complexe sans attribut SUMMARY",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un TABLE complexe",
-                "result": "i"
-            }
-        }
-    },
-    "23569": {
-        "test25": {
-            "onfalse": {
-                "comment": "aucune police ne possède une taille inférieure à 75% ou 0.75em",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une police possède une taille inférieure à 75% ou 0.75em",
-                "result": "nc"
-            }
-        }
-    },
-    "23570": {
-        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
-            "onfalse": {
-                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
-                "result": "nc"
-            }
-        }
-    },
-    "23571": {
-        "CSS_FONTS_NUMBER": {
-            "onfalse": {
-                "comment": "pas plus de 3 polices définies",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "plus de 3 polices définies",
-                "result": "nc"
-            }
-        }
-    },
-    "23573": {
-        "test27": {
-            "onfalse": {
-                "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "nc"
-            }
-        }
-    },
-    "23610": {
-        "test42": {
-            "onfalse": {
-                "comment": "aucun lien externe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test21": {
-                        "onfalse": {
-                            "comment": "aucun lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un lien externe",
-                "result": "i"
-            }
-        }
-    },
-    "23612": {
-        "test1": {
-            "onfalse": {
-                "comment": "l'attribut LANG de HTML est rempli",
-                "result": "i"
-            },
-            "ontrue": {
-                "comment": "l'attribut LANG de HTML est vide ou absent",
-                "result": "nc"
-            }
-        }
-    },
-    "23613": {
-        "FRAME": {
-            "onfalse": {
-                "comment": "aucun élément FRAME n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément FRAME a été détecté",
-                "result": "nc"
-            }
-        },
-        "FRAMESET": {
-            "onfalse": {
-                "comment": "aucun élément FRAMESET n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément FRAMESET a été détecté",
-                "result": "nc"
-            }
-        },
-        "NOFRAMES": {
-            "onfalse": {
-                "comment": "aucun élément NOFRAMES n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément NOFRAMES a été détecté",
-                "result": "nc"
-            }
-        }
-    },
-    "23618": {
-        "H1_TO_H6_HIERACHICAL_ERROR": {
-            "onfalse": {
-                "comment": "aucune interruption dans la hiérarchie des titres",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une interruption dans la hiérarchie des titres",
-                "result": "nc"
-            }
-        }
-    },
-    "23619": {
-        "test36": {
-            "onfalse": {
-                "comment": "moins de deux H1 dans le contenu",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins deux H1 dans le contenu",
-                "result": "nc"
-            }
-        },
-        "test37": {
-            "onfalse": {
-                "comment": "aucun H6 dans le contenu",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un H6 dans le contenu",
-                "result": "nc"
-            }
-        }
-    },
-    "23665": {
-        "test11": {
-            "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
-            }
-        }
-    },
-    "23667": {
-        "test38": {
-            "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test13": {
-                        "onfalse": {
-                            "comment": "3 éléments ou moins avec la classe rightBox",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "plus de 3 éléments avec la classe rightBox",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément avec la classe rightBox",
-                "result": "i"
-            }
-        }
-    },
-    "23732": {
-        "test14": {
-            "onfalse": {
-                "comment": "aucune URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
-                "result": "nc"
-            }
-        }
-    },
-    "23760": {
-        "test39": {
-            "onfalse": {
-                "comment": "absence de navigation thématique",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test15": {
-                        "onfalse": {
-                            "comment": "la navigation thématique comporte 5 niveaux ou moins de profondeur",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "la navigation thématique comporte plus de 5 niveaux de profondeur",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "présence de la navigation thématique",
-                "result": "i"
-            }
-        }
-    },
-    "23761": {
-        "test40": {
-            "onfalse": {
-                "comment": "absence de navigation transversale",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test41": {
-                        "onfalse": {
-                            "comment": "la navigation transversale comporte 3 niveaux ou moins de profondeur",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "la navigation transversale comporte plus de 3 niveaux de profondeur",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "présence de la navigation transversale",
-                "result": "i"
-            }
-        }
-    },
-    "23767": {
-        "test28": {
-            "onfalse": {
-                "comment": "aucune rubrique thématique n'est ouverte",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test29": {
-                        "onfalse": {
-                            "comment": "aucune sous-rubrique thématique n'est présente",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "chain": {
-                                "test30": {
-                                    "onfalse": {
-                                        "comment": "la sous-rubrique thématique ne contient pas d'entrée",
-                                        "result": "nc"
-                                    },
-                                    "ontrue": {
-                                        "comment": "la sous-rubrique thématique contient au moins une entrée",
-                                        "result": "c"
-                                    }
-                                }
-                            },
-                            "comment": "une sous-rubrique thématique est présente",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "une rubrique thématique est ouverte",
-                "result": "i"
-            }
-        }
-    },
-    "23769": {
-        "test31": {
-            "onfalse": {
-                "comment": "aucun PDF",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test32": {
-                        "onfalse": {
-                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un PDF",
-                "result": "i"
-            }
-        },
-        "test33": {
-            "onfalse": {
-                "comment": "aucun DOC",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test34": {
-                        "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un DOC",
-                "result": "i"
-            }
-        }
-    },
-    "23787": {
-        "test43": {
-            "onfalse": {
-                "comment": "aucun lien externe dans les menus de navigation",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un lien externe dans les menus de navigation",
-                "result": "nc"
-            }
-        }
-    },
-    "23788": {
-        "TITLE": {
-            "onfalse": {
-                "comment": "aucun élément TITLE n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "chain": {
-                    "TITLE_W_TEXT": {
-                        "onfalse": {
-                            "comment": "l'élément TITLE est vide",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément TITLE est non vide",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "un élement TITLE a été détecté",
-                "result": "i"
-            }
-        }
-    },
-    "23790": {
-        "test18": {
-            "onfalse": {
-                "comment": "aucun élément A adjacent",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins 2 éléments A adjacents",
-                "result": "nc"
-            }
-        }
-    },
-    "23791": {
-        "test19": {
-            "onfalse": {
-                "comment": "aucun élément A ayant le même texte et des cibles différentes",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins 2 éléments A ayant le même texte et des cibles différentes",
-                "result": "nc"
-            }
-        }
-    },
-    "23793": {
-        "test20": {
-            "onfalse": {
-                "comment": "aucun lien interne s'ouvrant dans une nouvelle fenêtre",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un lien interne s'ouvrant dans une nouvelle fenêtre",
-                "result": "nc"
-            }
-        }
-    },
-    "23794": {
-        "test6": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test24": {
-                        "onfalse": {
-                            "comment": "aucun TABLE complexe sans TH",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un TABLE complexe sans TH",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un TABLE complexe",
-                "result": "i"
-            }
-        }
-    },
-    "23798": {
-        "test6": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test22": {
-                        "onfalse": {
-                            "comment": "aucun TABLE complexe sans CAPTION",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un TABLE complexe sans CAPTION",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un TABLE complexe",
-                "result": "i"
-            }
-        }
-    },
-    "23864": {
-        "test6": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test23": {
-                        "onfalse": {
-                            "comment": "aucun TABLE complexe sans attribut SUMMARY",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un TABLE complexe sans attribut SUMMARY",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un TABLE complexe",
-                "result": "i"
-            }
-        }
-    },
-    "23909": {
-        "test25": {
-            "onfalse": {
-                "comment": "aucune police ne possède une taille inférieure à 75% ou 0.75em",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une police possède une taille inférieure à 75% ou 0.75em",
-                "result": "nc"
-            }
-        }
-    },
-    "23910": {
-        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
-            "onfalse": {
-                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
-                "result": "nc"
-            }
-        }
-    },
-    "23912": {
-        "test27": {
-            "onfalse": {
-                "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "nc"
-            }
-        }
-    },
-    "23947": {
-        "test42": {
-            "onfalse": {
-                "comment": "aucun lien externe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test21": {
-                        "onfalse": {
-                            "comment": "aucun lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un lien externe",
-                "result": "i"
-            }
-        }
-    },
-    "23949": {
-        "test1": {
-            "onfalse": {
-                "comment": "l'attribut LANG de HTML est rempli",
-                "result": "i"
-            },
-            "ontrue": {
-                "comment": "l'attribut LANG de HTML est vide ou absent",
-                "result": "nc"
-            }
-        }
-    },
-    "23950": {
-        "FRAME": {
-            "onfalse": {
-                "comment": "aucun élément FRAME n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément FRAME a été détecté",
-                "result": "nc"
-            }
-        },
-        "FRAMESET": {
-            "onfalse": {
-                "comment": "aucun élément FRAMESET n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément FRAMESET a été détecté",
-                "result": "nc"
-            }
-        },
-        "NOFRAMES": {
-            "onfalse": {
-                "comment": "aucun élément NOFRAMES n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément NOFRAMES a été détecté",
-                "result": "nc"
-            }
-        }
-    },
-    "23955": {
-        "H1_TO_H6_HIERACHICAL_ERROR": {
-            "onfalse": {
-                "comment": "aucune interruption dans la hiérarchie des titres",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une interruption dans la hiérarchie des titres",
-                "result": "nc"
-            }
-        }
-    },
-    "23956": {
-        "test36": {
-            "onfalse": {
-                "comment": "moins de deux H1 dans le contenu",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins deux H1 dans le contenu",
-                "result": "nc"
-            }
-        },
-        "test37": {
-            "onfalse": {
-                "comment": "aucun H6 dans le contenu",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un H6 dans le contenu",
-                "result": "nc"
-            }
-        }
-    },
-    "24000": {
-        "test11": {
-            "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
-            }
-        }
-    },
-    "24002": {
-        "test38": {
-            "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test13": {
-                        "onfalse": {
-                            "comment": "3 éléments ou moins avec la classe rightBox",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "plus de 3 éléments avec la classe rightBox",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément avec la classe rightBox",
-                "result": "i"
-            }
-        }
-    },
-    "24066": {
-        "test14": {
-            "onfalse": {
-                "comment": "aucune URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
-                "result": "nc"
-            }
-        }
-    },
-    "24093": {
-        "test39": {
-            "onfalse": {
-                "comment": "absence de navigation thématique",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test15": {
-                        "onfalse": {
-                            "comment": "la navigation thématique comporte 5 niveaux ou moins de profondeur",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "la navigation thématique comporte plus de 5 niveaux de profondeur",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "présence de la navigation thématique",
-                "result": "i"
-            }
-        }
-    },
-    "24094": {
-        "test40": {
-            "onfalse": {
-                "comment": "absence de navigation transversale",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test41": {
-                        "onfalse": {
-                            "comment": "la navigation transversale comporte 3 niveaux ou moins de profondeur",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "la navigation transversale comporte plus de 3 niveaux de profondeur",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "présence de la navigation transversale",
-                "result": "i"
-            }
-        }
-    },
-    "24100": {
-        "test28": {
-            "onfalse": {
-                "comment": "aucune rubrique thématique n'est ouverte",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test29": {
-                        "onfalse": {
-                            "comment": "aucune sous-rubrique thématique n'est présente",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "chain": {
-                                "test30": {
-                                    "onfalse": {
-                                        "comment": "la sous-rubrique thématique ne contient pas d'entrée",
-                                        "result": "nc"
-                                    },
-                                    "ontrue": {
-                                        "comment": "la sous-rubrique thématique contient au moins une entrée",
-                                        "result": "c"
-                                    }
-                                }
-                            },
-                            "comment": "une sous-rubrique thématique est présente",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "une rubrique thématique est ouverte",
-                "result": "i"
-            }
-        }
-    },
-    "24102": {
-        "test31": {
-            "onfalse": {
-                "comment": "aucun PDF",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test32": {
-                        "onfalse": {
-                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un PDF",
-                "result": "i"
-            }
-        },
-        "test33": {
-            "onfalse": {
-                "comment": "aucun DOC",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test34": {
-                        "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un DOC",
-                "result": "i"
-            }
-        }
-    },
-    "24120": {
-        "test43": {
-            "onfalse": {
-                "comment": "aucun lien externe dans les menus de navigation",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un lien externe dans les menus de navigation",
-                "result": "nc"
-            }
-        }
-    },
-    "24121": {
-        "TITLE": {
-            "onfalse": {
-                "comment": "aucun élément TITLE n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "chain": {
-                    "TITLE_W_TEXT": {
-                        "onfalse": {
-                            "comment": "l'élément TITLE est vide",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément TITLE est non vide",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "un élement TITLE a été détecté",
-                "result": "i"
-            }
-        }
-    },
-    "24123": {
-        "test18": {
-            "onfalse": {
-                "comment": "aucun élément A adjacent",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins 2 éléments A adjacents",
-                "result": "nc"
-            }
-        }
-    },
-    "24124": {
-        "test19": {
-            "onfalse": {
-                "comment": "aucun élément A ayant le même texte et des cibles différentes",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins 2 éléments A ayant le même texte et des cibles différentes",
-                "result": "nc"
-            }
-        }
-    },
-    "24126": {
-        "test20": {
-            "onfalse": {
-                "comment": "aucun lien interne s'ouvrant dans une nouvelle fenêtre",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un lien interne s'ouvrant dans une nouvelle fenêtre",
-                "result": "nc"
-            }
-        }
-    },
-    "24131": {
-        "test6": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test22": {
-                        "onfalse": {
-                            "comment": "aucun TABLE complexe sans CAPTION",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un TABLE complexe sans CAPTION",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un TABLE complexe",
-                "result": "i"
-            }
-        }
-    },
-    "24520": {
-        "test6": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test23": {
-                        "onfalse": {
-                            "comment": "aucun TABLE complexe sans attribut SUMMARY",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un TABLE complexe sans attribut SUMMARY",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un TABLE complexe",
-                "result": "i"
-            }
-        }
-    },
-    "24563": {
-        "test25": {
-            "onfalse": {
-                "comment": "aucune police ne possède une taille inférieure à 75% ou 0.75em",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une police possède une taille inférieure à 75% ou 0.75em",
-                "result": "nc"
-            }
-        }
-    },
-    "24564": {
-        "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
-            "onfalse": {
-                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
-                "result": "nc"
-            }
-        }
-    },
-    "24566": {
-        "test27": {
-            "onfalse": {
-                "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
-                "result": "nc"
-            }
-        }
-    },
-    "24600": {
-        "test42": {
-            "onfalse": {
-                "comment": "aucun lien externe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test21": {
-                        "onfalse": {
-                            "comment": "aucun lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un lien externe ne s'ouvrant pas dans une nouvelle fenêtre",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un lien externe",
-                "result": "i"
-            }
-        }
-    },
-    "24602": {
-        "test1": {
-            "onfalse": {
-                "comment": "l'attribut LANG de HTML est rempli",
-                "result": "i"
-            },
-            "ontrue": {
-                "comment": "l'attribut LANG de HTML est vide ou absent",
-                "result": "nc"
-            }
-        }
-    },
-    "24603": {
-        "FRAME": {
-            "onfalse": {
-                "comment": "aucun élément FRAME n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément FRAME a été détecté",
-                "result": "nc"
-            }
-        },
-        "FRAMESET": {
-            "onfalse": {
-                "comment": "aucun élément FRAMESET n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément FRAMESET a été détecté",
-                "result": "nc"
-            }
-        },
-        "NOFRAMES": {
-            "onfalse": {
-                "comment": "aucun élément NOFRAMES n'a été détecté",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un élément NOFRAMES a été détecté",
-                "result": "nc"
-            }
-        }
-    },
-    "24608": {
-        "H1_TO_H6_HIERACHICAL_ERROR": {
-            "onfalse": {
-                "comment": "aucune interruption dans la hiérarchie des titres",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une interruption dans la hiérarchie des titres",
-                "result": "nc"
-            }
-        }
-    },
-    "24609": {
-        "test36": {
-            "onfalse": {
-                "comment": "moins de deux H1 dans le contenu",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins deux H1 dans le contenu",
-                "result": "nc"
-            }
-        },
-        "test37": {
-            "onfalse": {
-                "comment": "aucun H6 dans le contenu",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un H6 dans le contenu",
-                "result": "nc"
-            }
-        }
-    },
-    "24651": {
-        "test11": {
-            "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
-            }
-        }
-    },
-    "24653": {
-        "test38": {
-            "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test13": {
-                        "onfalse": {
-                            "comment": "3 éléments ou moins avec la classe rightBox",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "plus de 3 éléments avec la classe rightBox",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément avec la classe rightBox",
-                "result": "i"
-            }
-        }
-    },
-    "24717": {
-        "test14": {
-            "onfalse": {
-                "comment": "aucune URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins une URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
-                "result": "nc"
-            }
-        }
-    },
-    "24744": {
-        "test39": {
-            "onfalse": {
-                "comment": "absence de navigation thématique",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test15": {
-                        "onfalse": {
-                            "comment": "la navigation thématique comporte 5 niveaux ou moins de profondeur",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "la navigation thématique comporte plus de 5 niveaux de profondeur",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "présence de la navigation thématique",
-                "result": "i"
-            }
-        }
-    },
-    "24745": {
-        "test40": {
-            "onfalse": {
-                "comment": "absence de navigation transversale",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test41": {
-                        "onfalse": {
-                            "comment": "la navigation transversale comporte 3 niveaux ou moins de profondeur",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "la navigation transversale comporte plus de 3 niveaux de profondeur",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "présence de la navigation transversale",
-                "result": "i"
-            }
-        }
-    },
-    "24751": {
-        "test28": {
-            "onfalse": {
-                "comment": "aucune rubrique thématique n'est ouverte",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test29": {
-                        "onfalse": {
-                            "comment": "aucune sous-rubrique thématique n'est présente",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "chain": {
-                                "test30": {
-                                    "onfalse": {
-                                        "comment": "la sous-rubrique thématique ne contient pas d'entrée",
-                                        "result": "nc"
-                                    },
-                                    "ontrue": {
-                                        "comment": "la sous-rubrique thématique contient au moins une entrée",
-                                        "result": "c"
-                                    }
-                                }
-                            },
-                            "comment": "une sous-rubrique thématique est présente",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "une rubrique thématique est ouverte",
-                "result": "i"
-            }
-        }
-    },
-    "24753": {
-        "test31": {
-            "onfalse": {
-                "comment": "aucun PDF",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test32": {
-                        "onfalse": {
-                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un PDF",
-                "result": "i"
-            }
-        },
-        "test33": {
-            "onfalse": {
-                "comment": "aucun DOC",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test34": {
-                        "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un DOC",
-                "result": "i"
-            }
-        }
-    },
-    "24771": {
-        "test43": {
-            "onfalse": {
-                "comment": "aucun lien externe dans les menus de navigation",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un lien externe dans les menus de navigation",
-                "result": "nc"
-            }
-        }
-    },
-    "24772": {
-        "TITLE": {
-            "onfalse": {
-                "comment": "aucun élément TITLE n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "chain": {
-                    "TITLE_W_TEXT": {
-                        "onfalse": {
-                            "comment": "l'élément TITLE est vide",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément TITLE est non vide",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "un élement TITLE a été détecté",
-                "result": "i"
-            }
-        }
-    },
-    "24774": {
-        "test18": {
-            "onfalse": {
-                "comment": "aucun élément A adjacent",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins 2 éléments A adjacents",
-                "result": "nc"
-            }
-        }
-    },
-    "24775": {
-        "test19": {
-            "onfalse": {
-                "comment": "aucun élément A ayant le même texte et des cibles différentes",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins 2 éléments A ayant le même texte et des cibles différentes",
-                "result": "nc"
-            }
-        }
-    },
-    "24777": {
-        "test20": {
-            "onfalse": {
-                "comment": "aucun lien interne s'ouvrant dans une nouvelle fenêtre",
-                "result": "c"
-            },
-            "ontrue": {
-                "comment": "au moins un lien interne s'ouvrant dans une nouvelle fenêtre",
-                "result": "nc"
-            }
-        }
-    },
-    "24782": {
-        "test6": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test22": {
-                        "onfalse": {
-                            "comment": "aucun TABLE complexe sans CAPTION",
-                            "result": "i"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un TABLE complexe sans CAPTION",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un TABLE complexe",
-                "result": "i"
-            }
-        }
-    },
     "26806": {
         "test6": {
             "onfalse": {
@@ -27178,6 +25314,18 @@
                 },
                 "comment": "au moins un TABLE complexe",
                 "result": "i"
+            }
+        }
+    },
+    "26833": {
+        "CTIE_HEADERS_FONT_SIZE": {
+            "onfalse": {
+                "comment": "aucun titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "nc"
             }
         }
     },
@@ -27213,6 +25361,18 @@
             },
             "ontrue": {
                 "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "result": "nc"
+            }
+        }
+    },
+    "26865": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
                 "result": "nc"
             }
         }
@@ -27602,6 +25762,18 @@
                 },
                 "comment": "au moins un TABLE complexe",
                 "result": "i"
+            }
+        }
+    },
+    "27082": {
+        "CTIE_BAD_FORMATS": {
+            "onfalse": {
+                "comment": "aucun document téléchargeable dans un format autre que PDF",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un document téléchargeable dans un format autre que PDF",
+                "result": "nc"
             }
         }
     },
@@ -33102,28 +31274,6 @@
         }
     },
     "30458": {
-        "test38": {
-            "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test13": {
-                        "onfalse": {
-                            "comment": "3 éléments ou moins avec la classe rightBox",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "plus de 3 éléments avec la classe rightBox",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément avec la classe rightBox",
-                "result": "i"
-            }
-        },
         "CTIE_ASIDE_PAGE_SECONDARY": {
             "onfalse": {
                 "comment": "aucun élément ASIDE avec la class page-secondary",
@@ -33166,6 +31316,64 @@
                 },
                 "comment": "un élément DIV avec la classe page-content",
                 "result": "c"
+            }
+        },
+        "test38": {
+            "onfalse": {
+                "comment": "aucun élément avec la classe rightBox",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test13": {
+                        "onfalse": {
+                            "comment": "3 éléments ou moins avec la classe rightBox",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "plus de 3 éléments avec la classe rightBox",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément avec la classe rightBox",
+                "result": "i"
+            }
+        }
+    },
+    "30460": {
+        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+            "onfalse": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "result": "c"
+            }
+        }
+    },
+    "30470": {
+        "RESOURCE_MULTIMEDIA_WO_AUDIO": {
+            "onfalse": {
+                "comment": "aucun élément multimedia",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_MULTIMEDIA_LESS_THAN_600_400": {
+                        "onfalse": {
+                            "comment": "aucun élément multimedia ne fait plus de 600 par 400 px",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "un moins un élément multimedia fait plus de 600 par 400 px",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un moins un élément multimedia",
+                "result": "i"
             }
         }
     },
@@ -33247,6 +31455,30 @@
             }
         }
     },
+    "30545": {
+        "CTIE_DOMAIN_PUBLIC_LU": {
+            "onfalse": {
+                "comment": "le domaine est au format www.domain.public.lu",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le domaine n'est pas au format www.domain.public.lu",
+                "result": "nc"
+            }
+        }
+    },
+    "30549": {
+        "HTTP_WWW": {
+            "onfalse": {
+                "comment": "le site ne fonctionne pas avec et sans www.",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le site fonctionne avec et sans www.",
+                "result": "c"
+            }
+        }
+    },
     "30551": {
         "test14": {
             "onfalse": {
@@ -33284,6 +31516,72 @@
         }
     },
     "30584": {
+        "CTIE_NAV_INDEX": {
+            "onfalse": {
+                "comment": "aucun NAV avec la classe index",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_NAV_INDEX_SECTION": {
+                        "onfalse": {
+                            "comment": "un NAV avec la classe index et contenant moins de deux SECTION avec la classe index-section",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "aucun NAV avec la classe index et contenant moins de deux SECTION avec la classe index-section",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un NAV avec la classe index",
+                "result": "i"
+            }
+        },
+        "CTIE_UL_NAV_LOCAL": {
+            "onfalse": {
+                "comment": "aucun UL avec la classe nav-local et dans un NAV avec le role navigation",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_UL_NAV_LOCAL_LI": {
+                        "onfalse": {
+                            "comment": "un UL avec la classe nav-local, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "aucun UL avec la classe nav-local, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un UL avec la classe nav-local et dans un NAV avec le role navigation",
+                "result": "i"
+            }
+        },
+        "CTIE_UL_NAV_PRIMARY": {
+            "onfalse": {
+                "comment": "aucun UL avec la classe nav-primary et dans un NAV avec le role navigation",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_UL_NAV_PRIMARY_LI": {
+                        "onfalse": {
+                            "comment": "un UL avec la classe nav-primary, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "aucun UL avec la classe nav-primary, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un UL avec la classe nav-primary et dans un NAV avec le role navigation",
+                "result": "i"
+            }
+        },
         "test28": {
             "onfalse": {
                 "comment": "aucun élement DIV avec l'id thematicNav et contenant un DIV avec la classe navOn",
@@ -33317,50 +31615,28 @@
                 "comment": "au moins un élement DIV avec l'id thematicNav et contenant un DIV avec la classe navOn",
                 "result": "i"
             }
-        },
-        "CTIE_UL_NAV_PRIMARY": {
-            "onfalse": {
-                "comment": "aucun UL avec la classe nav-primary",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "CTIE_UL_NAV_PRIMARY_LI": {
-                        "onfalse": {
-                            "comment": "aucun UL avec la classe nav-primary et contenant plus d'un LI",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un UL avec la classe nav-primary et contenant plus d'un LI",
-                            "result": "c"
-                        }
-                    }
-                },
-                "comment": "au moins un UL avec la classe nav-primary",
-                "result": "i"
-            }
         }
     },
     "30586": {
-        "test31": {
+        "CTIE_DOC": {
             "onfalse": {
-                "comment": "aucun PDF",
+                "comment": "aucun élément DOC dans le DIV avec l'id main",
                 "result": "na"
             },
             "ontrue": {
                 "chain": {
-                    "test32": {
+                    "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
+                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
+                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
                             "result": "nc"
                         }
                     }
                 },
-                "comment": "au moins un PDF",
+                "comment": "au moins un élément DOC dans le DIV avec l'id main",
                 "result": "i"
             }
         },
@@ -33386,6 +31662,28 @@
                 "result": "i"
             }
         },
+        "test31": {
+            "onfalse": {
+                "comment": "aucun PDF",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test32": {
+                        "onfalse": {
+                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un PDF",
+                "result": "i"
+            }
+        },
         "test33": {
             "onfalse": {
                 "comment": "aucun DOC",
@@ -33407,28 +31705,6 @@
                 "comment": "au moins un DOC",
                 "result": "i"
             }
-        },
-        "CTIE_DOC": {
-            "onfalse": {
-                "comment": "aucun élément DOC dans le DIV avec l'id main",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
-                        "onfalse": {
-                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément DOC dans le DIV avec l'id main",
-                "result": "i"
-            }
         }
     },
     "30603": {
@@ -33439,6 +31715,18 @@
             },
             "ontrue": {
                 "comment": "au moins un lien externe dans les menus de navigation",
+                "result": "nc"
+            }
+        }
+    },
+    "30605": {
+        "CTIE_LINK_TO_SELF": {
+            "onfalse": {
+                "comment": "aucun lien vers la page en cours",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien vers la page en cours",
                 "result": "nc"
             }
         }
@@ -33503,14 +31791,62 @@
             }
         }
     },
-    "30639": {
-        "test27": {
+    "30617": {
+        "CTIE_LINKS_LENGTH": {
             "onfalse": {
-                "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "comment": "aucun lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "comment": "au moins un lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "nc"
+            }
+        }
+    },
+    "30627": {
+        "CTIE_TEXT_ALIGN_LEFT": {
+            "onfalse": {
+                "comment": "aucun texte non aligné à gauche sans justification",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un texte non aligné à gauche sans justification",
+                "result": "nc"
+            }
+        }
+    },
+    "30631": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
+                "result": "nc"
+            }
+        }
+    },
+    "30637": {
+        "CTIE_LINKS_EXTERNAL": {
+            "onfalse": {
+                "comment": "aucun lien externe ou vers un document téléchargeable ne s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien externe ou vers un document téléchargeable s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "nc"
+            }
+        }
+    },
+    "30639": {
+        "test27": {
+            "onfalse": {
+                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
                 "result": "nc"
             }
         }
@@ -33530,12 +31866,48 @@
     "30641": {
         "CTIE_CSS_FONT_SIZE_LESS_THAN_12_PX": {
             "onfalse": {
-                "comment": "aucune police ne possède une taille inférieure à 75% ou 0.75em",
+                "comment": "aucune police ne possède une taille inférieure à 12px",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police possède une taille inférieure à 75% ou 0.75em",
+                "comment": "au moins une police possède une taille inférieure à 12px",
+                "result": "i"
+            }
+        }
+    },
+    "30651": {
+        "CTIE_HEADERS_FONT_SIZE": {
+            "onfalse": {
+                "comment": "aucun titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un titre dont la taille du texte est supérieure à 3 fois la taille de référence",
                 "result": "nc"
+            }
+        }
+    },
+    "30653": {
+        "CTIE_LOGO_RENOW": {
+            "onfalse": {
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
+                        "onfalse": {
+                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "result": "i"
             }
         }
     },
@@ -33584,6 +31956,18 @@
                 },
                 "comment": "au moins un TABLE complexe",
                 "result": "i"
+            }
+        }
+    },
+    "30704": {
+        "CTIE_BAD_FORMATS": {
+            "onfalse": {
+                "comment": "aucun document téléchargeable dans un format autre que PDF",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un document téléchargeable dans un format autre que PDF",
+                "result": "nc"
             }
         }
     },

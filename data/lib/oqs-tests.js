@@ -22,7 +22,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     regAbsoluteFontSize = new RegExp("[0-9.]+(p(t|c|x)|(c|m)m|in)", "i"),
     regSpaces = new RegExp("[\\s\\n]{2,}", "g"),
     regXML = new RegExp("^application/([a-z]+\\+)?xml$", "i"),
-    regDomain = new RegExp("^https?\:\/\/([^\/\:]+)", "i"),
+    regDomain = new RegExp("^(https?\:)?\/\/([^\/\:]+)", "i"),
     regBgImage = new RegExp("^url\\(", "i");
 
 (function($, window, undefined) {
@@ -1602,27 +1602,20 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            var prev,
-                treeWalker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
-                    acceptNode : function(_node) {
-                        if (_node.tagName && _node.tagName.toUpperCase() == 'A') {
-                            if (prev.tagName && prev.tagName.toUpperCase() == 'A') {
-                                prev = _node;
-                                return NodeFilter.FILTER_ACCEPT;
-                            } else {
-                                prev = _node;
-                                return NodeFilter.FILTER_REJECT;
-                            }
-                        } else {
-                            prev = _node;
-                            return NodeFilter.FILTER_SKIP;
-                        }
-                    }
-                }, false);
+            var prevIsLink = false;
 
-            while (treeWalker.nextNode()) {
-                result.push(_getDetails(treeWalker.currentNode));
-            }
+            $("a").parent().contents().each(function(){
+                if(prevIsLink && this.tagName == 'A') {
+                    result.push(_getDetails(this));
+                }
+                if(this.nodeType == 3) {
+                    if($(this).text().trim() != '') {
+                        prevIsLink = false;
+                    }
+                } else {
+                    prevIsLink = this.tagName == 'A';
+                }
+            });
         }
 
         //
@@ -6393,7 +6386,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.noRelativeSize = function(doc) {
+    window.noRelativeSize = function noRelativeSize(doc) {
         //
         var _result = [],
             sheets = doc.styleSheets,
@@ -6415,29 +6408,39 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             }
         }
 
-        // sheets walk
-        for (var i = 0, j = sheets.length; i < j; i++) {
-            //
-            var rules = sheets.item(i).cssRules;
+        //
+        try {
+            // sheets walk
+            for (var i = 0, j = sheets.length; i < j; i++) {
+                //
+                var rules = sheets.item(i).cssRules;
 
-            // rules walk
-            for (var k = 0, l = rules.length; k < l; k++) {
-                parseRule(rules.item(k));
+                // rules walk
+                for (var k = 0, l = rules.length; k < l; k++) {
+                    parseRule(rules.item(k));
+                }
+            }
+
+            // styles walk
+            for (var k = 0, l = styles.length; k < l; k++) {
+                //
+                if (styles[k].fontSize !== "") {
+                    //
+                    var _fontsize = styles[k].fontSize;
+
+                    //
+                    if (reg.test(_fontsize)) {
+                        _result.push(RegExp.$1);
+                    }
+                }
             }
         }
 
-        // styles walk
-        for (var k = 0, l = styles.length; k < l; k++) {
-            //
-            if (styles[k].fontSize !== "") {
-                //
-                var _fontsize = styles[k].fontSize;
-
-                //
-                if (reg.test(_fontsize)) {
-                    _result.push(RegExp.$1);
-                }
-            }
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("noRelativeSize", err);
+            _result = false;
         }
 
         //
@@ -6448,36 +6451,46 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.linksWithSameHref = function(doc) {
+    window.linksWithSameHref = function linksWithSameHref(doc) {
         //
         var _result = [],
             _nodes = {};
 
         //
-        $("a[href]").each(function() {
+        try {
             //
-            var $clone = $(this).clone();
-            $("img", $clone).replaceWith(function() {
-                return " " + $(this).attr("alt") + " ";
+            $("a[href]").each(function() {
+                //
+                var $clone = $(this).clone();
+                $("img", $clone).replaceWith(function() {
+                    return " " + $(this).attr("alt") + " ";
+                });
+
+                //
+                var _text = $.trim($clone.text()).replace(regSpaces, " ").toLowerCase();
+
+                //
+                //if(_text != '') {
+                    if ($.inArray(_text, Object.keys(_nodes)) == -1) {
+                        _nodes[_text] = {
+                            'href': $.URL($.trim($(this).attr("href"))).toString(),
+                            'node': this
+                        };
+                    } else if (_nodes[_text]['href'] != $.URL($.trim($(this).attr("href"))).toString()) {
+                        //
+                        _result.push(_getDetails(_nodes[_text]['node']));
+                        _result.push(_getDetails(this));
+                    }
+                //}
             });
+        }
 
-            //
-            var _text = $.trim($clone.text()).replace(regSpaces, " ").toLowerCase();
-
-            //
-            //if(_text != '') {
-                if ($.inArray(_text, Object.keys(_nodes)) == -1) {
-                    _nodes[_text] = {
-                        'href': $.URL($.trim($(this).attr("href"))).toString(),
-                        'node': this
-                    };
-                } else if (_nodes[_text]['href'] != $.URL($.trim($(this).attr("href"))).toString()) {
-                    //
-                    _result.push(_getDetails(_nodes[_text]['node']));
-                    _result.push(_getDetails(this));
-                }
-            //}
-        });
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("linksWithSameHref", err);
+            _result = false;
+        }
 
         //
         return _result;
@@ -6487,18 +6500,28 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.linksESP = function(doc) {
+    window.linksESP = function linksESP(doc) {
         //
         var _result = [];
 
         //
-        $("#contentBody a[href$='pdf'], #contentBody a[href$='doc']").each(function() {
+        try {
             //
-            if ($("#relatedLinkBox a[href='" + $(this).attr("href") + "']").size() == 0) {
+            $("#contentBody a[href$='pdf'], #contentBody a[href$='doc']").each(function() {
                 //
-                _result.push(_getDetails(this));
-            }
-        });
+                if ($("#relatedLinkBox a[href='" + $(this).attr("href") + "']").size() == 0) {
+                    //
+                    _result.push(_getDetails(this));
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("linksESP", err);
+            _result = false;
+        }
 
         //
         return _result;
@@ -6508,35 +6531,45 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.linksSpecialChars = function(doc) {
+    window.linksSpecialChars = function linksSpecialChars(doc) {
         //
         var _result = [],
             _reg = new RegExp("[A-Z_% ]", "g");
 
-        // current URL
-        if (_reg.test(doc.location.hostname)) {
-            //
-            _result.push(doc.location.href);
+        //
+        try {
+            // current URL
+            if (_reg.test(doc.location.hostname)) {
+                //
+                _result.push(doc.location.href);
+            }
+
+            // links
+            $("a[href]").each(function() {
+                //
+                var _href = $.trim($(this).attr("href")), isInternal = true;
+
+                //
+                if (regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
+                    isInternal = false;
+                }
+
+                //
+                if (isInternal) {
+                    //
+                    if (_href.toLowerCase() != _href || _reg.test($(this).attr("href"))) {
+                        _result.push(_getDetails(this));
+                    }
+                }
+            });
         }
 
-        // links
-        $("a[href]").each(function() {
-            //
-            var _href = $.trim($(this).attr("href")), isInternal = true;
-
-            //
-            if (regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
-                isInternal = false;
-            }
-
-            //
-            if (isInternal) {
-                //
-                if (_href.toLowerCase() != _href || _reg.test($(this).attr("href"))) {
-                    _result.push(_getDetails(this));
-                }
-            }
-        });
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("linksSpecialChars", err);
+            _result = false;
+        }
 
         //
         return _result;
@@ -6546,33 +6579,43 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.linksInternal = function(doc) {
+    window.linksInternal = function linksInternal(doc) {
         //
         var _result = [],
             _reg_doc = new RegExp("\.(pdf|doc)$", "i");
 
         //
-        $("a[href]").each(function() {
+        try {
             //
-            var _href = $.trim($(this).attr("href")),
-                isInternal = true,
-                isDoc = false;
+            $("a[href]").each(function() {
+                //
+                var _href = $.trim($(this).attr("href")),
+                    isInternal = true,
+                    isDoc = false;
 
-            //
-            if (_reg_doc.test(_href)) {
-                isDoc = true;
-            }
+                //
+                if (_reg_doc.test(_href)) {
+                    isDoc = true;
+                }
 
-            //
-            if (!isDoc && regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
-                isInternal = false;
-            }
+                //
+                if (!isDoc && regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
+                    isInternal = false;
+                }
 
-            //
-            if (!isDoc && isInternal && $(this).attr("target") == "_blank") {
-                _result.push(_getDetails(this));
-            }
-        });
+                //
+                if (!isDoc && isInternal && $(this).attr("target") == "_blank") {
+                    _result.push(_getDetails(this));
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("linksInternal", err);
+            _result = false;
+        }
 
         //
         return _result;
@@ -6582,20 +6625,30 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.linksNavigation = function(doc) {
+    window.linksNavigation = function linksNavigation(doc) {
         //
         var _result = [];
 
         //
-        $("#navTools a[href], #thematicNav a[href], #transversalNav a[href]," + "#setcategoriesBox a[href]").each(function() {
+        try {
             //
-            var _href = $.trim($(this).attr("href"));
+            $("#navTools a[href], #thematicNav a[href], #transversalNav a[href]," + "#setcategoriesBox a[href]").each(function() {
+                //
+                var _href = $.trim($(this).attr("href"));
 
-            //
-            if (regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
-                _result.push(_getDetails(this));
-            }
-        });
+                //
+                if (regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
+                    _result.push(_getDetails(this));
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("linksNavigation", err);
+            _result = false;
+        }
 
         //
         return _result;
@@ -6605,7 +6658,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.minimumFontSize = function(doc) {
+    window.minimumFontSize = function minimumFontSize(doc) {
         //
         var _result = [],
             fontSize = parseInt($("html").css("font-size")) * .75;
@@ -6629,7 +6682,17 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         }
 
         //
-        walk($("body"));
+        try {
+            //
+            walk($("body"));
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("minimumFontSize", err);
+            _result = false;
+        }
 
         //
         return _result;
@@ -6639,7 +6702,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.cssFontInList = function(doc) {
+    window.cssFontInList = function cssFontInList(doc) {
         function callback(rule) {
             var result = [],
                 coreFonts = ["arial","times new roman","arial black","courier new","verdana","courier","trebuchet ms","georgia","impact","arial narrow","helvetica","tahoma","times","andale mono"];
@@ -6694,7 +6757,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
             // Error Logging
-            logger.error("cssAbsoluteFontSize", err);alert(err);
+            logger.error("cssAbsoluteFontSizeWithPixel", err);
             return false;
         });
     }
@@ -6727,7 +6790,17 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         }
 
         //
-        walk($("body"));
+        try {
+            //
+            walk($("body"));
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("cssFontSizeLessThan12Px", err);
+            _result = false;
+        }
 
         //
         return _result;
@@ -6743,8 +6816,451 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             lang = $('html').attr('lang');
 
         //
-        if(lang != undefined && lang != '') {
-            _result.push(lang);
+        try {
+            //
+            if(lang != undefined && lang != '') {
+                _result.push(lang);
+            }
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("ctieHtmlWithLang", err);
+            _result = false;
+        }
+
+        //
+        return _result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieHomepageLessThan300Ko = function ctieHomepageLessThan300Ko(doc) {
+        //
+        var _result = [],
+            length = 0;
+
+        //
+        try {
+            //
+            sidecar.resources.forEach(function(element) {
+                //
+                length += parseInt(element.headers["content-length"], 10);
+            });
+
+            if(length <= 300000) {
+                _result.push(true);
+            }
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("ctieHomepageLessThan300Ko", err);
+            _result = false;
+        }
+
+        //
+        return _result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieMultimediaLessThan600400 = function ctieMultimediaLessThan600400(doc) {
+        //
+        var _result = [],
+            mm_families = ["video"],
+            objects = [];
+
+        //
+        try {
+            //
+            sidecar.resources.filter(function(element) {
+                //
+                var content_type = element.content_type || '';
+
+                return $.inArray(content_type, mimeMultimedia) != -1 || $.inArray(content_type.split("/")[0], mm_families) != -1;
+            }).forEach(function(element) {
+                //
+                objects.push(element.uri);
+            });
+
+            //
+            $("embed").each(function() {
+                //
+                var src = _absolutizeURL($(this).attr("src"));
+
+                //
+                if ($.inArray(src, objects) != -1) {
+                    //
+                    if($(this).attr("width") > 600 || parseInt($(this).css("width"), 10) > 600 ||
+                        $(this).attr("height") > 400 || parseInt($(this).css("height"), 10) > 400) {
+                        _result.push(_getDetails(this));
+                    }
+                }
+            });
+
+            //
+            $("object").each(function() {
+                //
+                var src = _absolutizeURL($(this).attr("data")),
+                    width = $("param[name='width']", this).attr("value"),
+                    height = $("param[name='height']", this).attr("value");
+
+                //
+                if ($.inArray(src, objects) != -1) {
+                    //
+                    if($(this).attr("width") > 600 || width > 600 || parseInt($(this).css("width"), 10) > 600 ||
+                        $(this).attr("height") > 400 || height > 400 || parseInt($(this).css("height"), 10) > 400) {
+                        _result.push(_getDetails(this));
+                    }
+                } else {
+                    $("param[name='src']", this).each(function() {
+                        //
+                        var src = _absolutizeURL($(this).attr("value"));
+
+                        //
+                        if ($.inArray(src, objects) != -1) {
+                            //
+                            if($(this).attr("width") > 600 || width > 600 || parseInt($(this).css("width"), 10) > 600 ||
+                                $(this).attr("height") > 400 || height > 400 || parseInt($(this).css("height"), 10) > 400) {
+                                _result.push(_getDetails(this));
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("ctieMultimediaLessThan600400", err);
+            _result = false;
+        }
+
+        //
+        return _result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieVisitedLinksStyle = function ctieVisitedLinksStyle(doc) {
+        //
+        var _result = [],
+            reg = new RegExp("(^| )(a((#|\\.)[^ ]+)?|(#|\\.)[^ ]+):visited$", "i"),
+            reg2 = new RegExp("^([-a-z]+-)?(height|width)$", "i");
+
+        //
+        function callback(rule) {
+            var result = [];
+
+            if (rule && rule.declarations) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
+                    var selectors = rule.mSelectorText.split(",").map(function(element) {
+                        return $.trim(element);
+                    });
+
+                    for each (var selector in selectors) {
+                        if (reg.test(selector)) {
+                            var selectorLink = selector.replace(/:visited$/, ""),
+                                property = rule.declarations[i]["property"];
+
+                            if ($(selectorLink).get(0)) {
+                                var color = $(selectorLink).css(property),
+                                    tmp = document.createElement("a");
+
+                                $(tmp).css("color", rule.declarations[i]["valueText"]);
+
+                                if(color == $(tmp).css("color")) {
+                                    result.push(_getCssDetails(rule, i));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
+            // Error Logging
+            logger.error("cssHoverLinks", err);
+            return false;
+        });
+
+            //
+            /*$("a").each(function() {
+                var _link = getComputedStyle(this, ':link').getPropertyCSSValue('color').cssText,
+                    _visited = getComputedStyle(this, ':visited').getPropertyCSSValue('color').cssText;alert(_link);alert(_visited);
+
+                if (_link == _visited) {
+                    //
+                    _result.push(_getDetails(this));
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("ctieVisitedLinksStyle", err);
+            _result = false;
+        }
+
+        //
+        return _result;*/
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieDomainPublicLu = function ctieDomainPublicLu(doc) {
+        //
+        var result = [];
+
+        //
+        try {
+            //
+            var domain = doc.location.hostname.split(".");
+
+            //
+            if (domain[0] == 'www') {
+                domain.shift();
+            }
+
+            //
+            if(domain[1] != 'public' || domain[2] != 'lu') {
+                result.push(true);
+            }
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("ctieDomainPublicLu", err);
+            result = false;
+        }
+
+        //
+        return result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieLinkToSelf = function ctieLinkToSelf(doc) {
+        //
+        var result = [];
+
+        //
+        try {
+            //
+            var self = doc.location.href.split('#')[0];
+
+            //
+            $("a[href]:not([href='']):not([href^='#'])").each(function() {
+                //
+                var href = _absolutizeURL($(this).attr("href"));
+
+                if(href == self) {
+                    result.push(_getDetails(this));
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("ctieLinkToSelf", err);
+            result = false;
+        }
+
+        //
+        return result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieTextAlignLeft = function ctieTextAlignLeft(doc) {
+        function callback(rule) {
+            var result = [];
+
+            if (rule && rule.declarations) {
+                for (var i = 0, j = rule.declarations.length; i < j; i++) {
+                    if (rule.declarations[i]["property"] == "text-align" && $.inArray(rule.declarations[i]["valueText"], ["left", "inherit"]) == -1) {
+                        result.push(_getCssDetails(rule, i));
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
+            // Error Logging
+            logger.error("ctieTextAlignLeft", err);
+            return false;
+        });
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieLinksExternal = function ctieLinksExternal(doc) {
+        //
+        var _result = [],
+            _reg_doc = new RegExp("\.(pdf|doc)$", "i"),
+            regNewWindow = new RegExp("nouvelle fenêtre|new window|neues fenster", "i");
+
+        //
+        try {
+            //
+            $("a[href]").each(function() {
+                //
+                var _href = $.trim($(this).attr("href")),
+                    isExternal = false,
+                    isDoc = false;
+
+                //
+                if (_reg_doc.test(_href)) {
+                    isDoc = true;
+                } else if (regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
+                    isExternal = true;
+                }
+
+                //
+                if (isDoc || isExternal) {
+                     if($(this).attr("target") != "_blank" ||
+                            (!regNewWindow.test($(this).attr("title")) && !regNewWindow.test($(this).text()))
+                     ) {
+                        _result.push(_getDetails(this));
+                     }
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("linksExternal", err);
+            _result = false;
+        }
+
+        //
+        return _result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieBadFormats = function ctieBadFormats(doc) {
+        //
+        var _result = [],
+            regExtension = new RegExp("\.(xlsx?|docx?|pptx?|txt|rtf|zip|rar|od(t|s))$", "i");
+
+        //
+        try {
+            //
+            $("a[href]").each(function() {
+                //
+                var _href = $.trim($(this).attr("href"));
+
+                //
+                if (regExtension.test(_href)) {
+                     _result.push(_getDetails(this));
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("ctieBadFormats", err);
+            _result = false;
+        }
+
+        //
+        return _result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieLinksLength = function ctieLinksLength(doc) {
+        //
+        var _result = [];
+
+        //
+        try {
+            //
+            $("#main a[href]").each(function() {
+                //
+                var _length = $(this).text().trim().length;
+
+                //
+                if (_length < 5 || _length > 80) {
+                     _result.push(_getDetails(this));
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("ctieLinksLength", err);
+            _result = false;
+        }
+
+        //
+        return _result;
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.ctieHeadersFontSize = function ctieHeadersFontSize(doc) {
+        //
+        var _result = [];
+
+        //
+        try {
+            //
+            var fontSize = parseInt($("body").css("font-size"), 10);
+
+            //
+            $(":header").each(function() {
+                //
+                var hFontSize = parseInt($(this).css("font-size"), 10);
+
+                //
+                if (hFontSize > (3 * fontSize)) {
+                     _result.push(_getDetails(this));
+                }
+            });
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("ctieHeadersFontSize", err);
+            _result = false;
         }
 
         //

@@ -1391,6 +1391,18 @@
             }
         }
     },
+    "CTIE_BAD_FORMATS": {
+        "CTIE_BAD_FORMATS": {
+            "onfalse": {
+                "comment": "aucun document téléchargeable dans un format autre que PDF",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un document téléchargeable dans un format autre que PDF",
+                "result": "c"
+            }
+        }
+    },
     "CTIE_CSS_FONT_SIZE_LESS_THAN_12_PX": {
         "CTIE_CSS_FONT_SIZE_LESS_THAN_12_PX": {
             "onfalse": {
@@ -1463,6 +1475,42 @@
             }
         }
     },
+    "CTIE_DOMAIN_PUBLIC_LU": {
+        "CTIE_DOMAIN_PUBLIC_LU": {
+            "onfalse": {
+                "comment": "le domaine est au format www.domain.public.lu",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le domaine n'est pas au format www.domain.public.lu",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_HEADERS_FONT_SIZE": {
+        "CTIE_HEADERS_FONT_SIZE": {
+            "onfalse": {
+                "comment": "aucun titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+            "onfalse": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "result": "c"
+            }
+        }
+    },
     "CTIE_HTML_W_LANG": {
         "CTIE_HTML_W_LANG": {
             "onfalse": {
@@ -1471,6 +1519,102 @@
             },
             "ontrue": {
                 "comment": "l'attribut LANG de HTML est vide ou absent",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_LINKS_EXTERNAL": {
+        "CTIE_LINKS_EXTERNAL": {
+            "onfalse": {
+                "comment": "aucun lien externe ou vers un document téléchargeable ne s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un lien externe ou vers un document téléchargeable s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_LINKS_LENGTH": {
+        "CTIE_LINKS_LENGTH": {
+            "onfalse": {
+                "comment": "aucun lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_LINK_TO_SELF": {
+        "CTIE_LINK_TO_SELF": {
+            "onfalse": {
+                "comment": "aucun lien vers la page en cours",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un lien vers la page en cours",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_LOGO_RENOW": {
+        "CTIE_LOGO_RENOW": {
+            "onfalse": {
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
+        "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
+            "onfalse": {
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_MULTIMEDIA_LESS_THAN_600_400": {
+        "CTIE_MULTIMEDIA_LESS_THAN_600_400": {
+            "onfalse": {
+                "comment": "aucun élément multimedia ne fait plus de 600 par 400 px",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un moins un élément multimedia fait plus de 600 par 400 px",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_NAV_INDEX": {
+        "CTIE_NAV_INDEX": {
+            "onfalse": {
+                "comment": "un NAV avec la classe index",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "aucun NAV avec la classe index",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_NAV_INDEX_SECTION": {
+        "CTIE_NAV_INDEX_SECTION": {
+            "onfalse": {
+                "comment": "un NAV avec la classe index et contenant moins de deux SECTION avec la classe index-section",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "aucun NAV avec la classe index et contenant moins de deux SECTION avec la classe index-section",
                 "result": "c"
             }
         }
@@ -1499,6 +1643,42 @@
             }
         }
     },
+    "CTIE_TEXT_ALIGN_LEFT": {
+        "CTIE_TEXT_ALIGN_LEFT": {
+            "onfalse": {
+                "comment": "aucun texte non aligné à gauche sans justification",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un texte non aligné à gauche sans justification",
+                "result": "nc"
+            }
+        }
+    },
+    "CTIE_UL_NAV_LOCAL": {
+        "CTIE_UL_NAV_LOCAL": {
+            "onfalse": {
+                "comment": "un UL avec la classe nav-local et dans un NAV avec le role navigation",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "aucun UL avec la classe nav-local et dans un NAV avec le role navigation",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_UL_NAV_LOCAL_LI": {
+        "CTIE_UL_NAV_LOCAL_LI": {
+            "onfalse": {
+                "comment": "un UL avec la classe nav-local, dans un NAV avec le role navigation et contenant moins de deux LI",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "aucun UL avec la classe nav-local, dans un NAV avec le role navigation et contenant moins de deux LI",
+                "result": "c"
+            }
+        }
+    },
     "CTIE_UL_NAV_PRIMARY": {
         "CTIE_UL_NAV_PRIMARY": {
             "onfalse": {
@@ -1519,6 +1699,18 @@
             },
             "ontrue": {
                 "comment": "aucun UL avec la classe nav-primary contenant un UL avec moins de 2 LI",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_VISITED_LINKS_STYLE": {
+        "CTIE_VISITED_LINKS_STYLE": {
+            "onfalse": {
+                "comment": "les liens visités et non visités ont le même style",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "les liens visités et non visités n'ont pas le même style",
                 "result": "c"
             }
         }
@@ -6443,18 +6635,6 @@
             }
         }
     },
-    "URI_UNIQUE_IN_PAGE": {
-        "URI_UNIQUE_IN_PAGE": {
-            "onfalse": {
-                "comment": "aucune ressource identique sous 2 URIs différentes n'a été détecté",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins une ressource identique sous 2 URIs différentes a été détecté",
-                "result": "c"
-            }
-        }
-    },
     "URL_W_TERMS_NOT_IN_TITLE": {
         "URL_W_TERMS_NOT_IN_TITLE": {
             "onfalse": {
@@ -6667,18 +6847,6 @@
             },
             "ontrue": {
                 "comment": "au moins un TABLE complexe sans attribut SUMMARY",
-                "result": "c"
-            }
-        }
-    },
-    "test24": {
-        "test24": {
-            "onfalse": {
-                "comment": "aucun TABLE complexe sans TH",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un TABLE complexe sans TH",
                 "result": "c"
             }
         }
