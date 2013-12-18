@@ -1,0 +1,8 @@
+{
+    "/test.mp4": {
+        "_contentType": "video/mpeg"
+    },
+    "/test.mp3": {
+        "_contentType": "audio/mpeg"
+    }
+}

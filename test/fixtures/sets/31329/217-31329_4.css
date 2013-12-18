@@ -1,5 +1,10 @@
-/* Ceci est un commentaire qui occupe plusieurs lignes ! */
 body {
-	color:purple;
-	background-color:#d8da3d
+    color: purple;
+    background-color: #d8da3d;
+    font-size: 12px;
+}
+p {
+    color: purple;
+    background-color: #d8da3d;
+    font-size: 12px;
 }

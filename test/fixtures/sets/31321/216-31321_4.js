@@ -1,6 +1,8 @@
-/* Ceci est un commentaire 
-qui occupe plusieurs lignes ! */ 
+document.write('test');
 
-   document.write('test'); 
+document.write('test');
 
-// autre commentaire
+document.write('test');
+
+document.write('test');
+

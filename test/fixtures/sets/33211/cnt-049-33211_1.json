@@ -1,0 +1,29 @@
+{
+    "/cnt-049-33211_1.html": {
+        "_contentType": "text/html",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 100000
+            }
+        ]
+    },
+    "/script.js": {
+        "_contentType": "text/javascript",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 100000
+            }
+        ]
+    },
+    "/style.css": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 100000
+            }
+        ]
+    }
+}

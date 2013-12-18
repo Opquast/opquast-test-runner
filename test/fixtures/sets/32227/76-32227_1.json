@@ -1,5 +1,5 @@
 {
-    "/76-575_1.html": {
+    "/76-32227_1.html": {
         "headers": [
             {
                 "name": "etag",
@@ -7,7 +7,7 @@
             }
         ]
     },
-    "/76-575_1.js": {
+    "/76-32227_1.js": {
         "headers": [
             {
                 "name": "expires",
@@ -15,7 +15,7 @@
             }
         ]
     },
-    "/76-575_1.css": {
+    "/76-32227_1.css": {
         "headers": [
             {
                 "name": "last-modified",
@@ -23,7 +23,7 @@
             }
         ]
     },
-    "/76-575_1.png": {
+    "/76-32227_1.png": {
         "headers": [
             {
                 "name": "cache-control",
