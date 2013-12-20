@@ -1606,19 +1606,21 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            var prevIsLink = false;
+            $("a").parent().each(function(){
+                var prevIsLink = false;
 
-            $("a").parent().contents().each(function(){
-                if(prevIsLink && this.tagName == 'A') {
-                    result.push(_getDetails(this));
-                }
-                if(this.nodeType == 3) {
-                    if($(this).text().trim() != '') {
-                        prevIsLink = false;
+                $(this).contents().each(function(){
+                    if(prevIsLink && this.tagName == 'A') {
+                        result.push(_getDetails(this));
                     }
-                } else {
-                    prevIsLink = this.tagName == 'A';
-                }
+                    if(this.nodeType == 3) {
+                        if($(this).text().trim() != '') {
+                            prevIsLink = false;
+                        }
+                    } else {
+                        prevIsLink = this.tagName == 'A';
+                    }
+                });
             });
         }
 
@@ -6894,7 +6896,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.ctieHomepageLessThan300Ko = function ctieHomepageLessThan300Ko(doc) {
+    window.ctieHomepageMoreThan300Ko = function ctieHomepageMoreThan300Ko(doc) {
         //
         var _result = [],
             length = 0;
@@ -6907,15 +6909,15 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 length += parseInt(element.headers["content-length"], 10);
             });
 
-            if(length <= 300000) {
-                _result.push(true);
+            if(length > 300000) {
+                return [length / 1000 + " Ko"];
             }
         }
 
         //
         catch (err) {
             // Error Logging
-            logger.error("ctieHomepageLessThan300Ko", err);
+            logger.error("ctieHomepageMoreThan300Ko", err);
             _result = false;
         }
 

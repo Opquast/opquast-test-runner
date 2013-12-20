@@ -1499,14 +1499,14 @@
             }
         }
     },
-    "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
-        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+    "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
                 "result": "c"
             }
         }

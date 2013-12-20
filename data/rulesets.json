@@ -17254,14 +17254,14 @@
         }
     },
     "20255": {
-        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
             }
         }
     },
@@ -25624,14 +25624,14 @@
         }
     },
     "26934": {
-        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
             }
         }
     },
@@ -31498,14 +31498,14 @@
         }
     },
     "30460": {
-        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
             }
         }
     },
@@ -36834,14 +36834,14 @@
         }
     },
     "32730": {
-        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
             }
         }
     },
@@ -37235,6 +37235,18 @@
             },
             "ontrue": {
                 "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "result": "nc"
+            }
+        }
+    },
+    "32946": {
+        "test18": {
+            "onfalse": {
+                "comment": "aucun élément A adjacent",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins 2 éléments A adjacents",
                 "result": "nc"
             }
         }
@@ -37689,6 +37701,18 @@
             }
         }
     },
+    "33145": {
+        "test18": {
+            "onfalse": {
+                "comment": "aucun élément A adjacent",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins 2 éléments A adjacents",
+                "result": "nc"
+            }
+        }
+    },
     "33146": {
         "CTIE_ASIDE_PAGE_SECONDARY": {
             "onfalse": {
@@ -37794,14 +37818,14 @@
         }
     },
     "33211": {
-        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
             }
         }
     },

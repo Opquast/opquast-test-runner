@@ -124,7 +124,7 @@
     "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": "xpath@html://div[@id='main']//a[contains(@href,'.doc') and substring-after('.doc',@href)=''][not(ancestor::aside[contains(concat(' ',normalize-space(@class),' '),' page-more ')])]",
     "CTIE_DOMAIN_PUBLIC_LU": "oqs@http:ctieDomainPublicLu",
     "CTIE_HEADERS_FONT_SIZE": "oqs@css:ctieHeadersFontSize",
-    "CTIE_HOMEPAGE_LESS_THAN_300_KO": "oqs@http:ctieHomepageLessThan300Ko",
+    "CTIE_HOMEPAGE_MORE_THAN_300_KO": "oqs@http:ctieHomepageMoreThan300Ko",
     "CTIE_HTML_W_LANG": "oqs@html:ctieHtmlWithLang",
     "CTIE_LINKS_EXTERNAL": "oqs@html:ctieLinksExternal",
     "CTIE_LINKS_LENGTH": "oqs@html:ctieLinksLength",
