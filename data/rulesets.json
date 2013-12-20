@@ -17313,6 +17313,18 @@
             }
         }
     },
+    "20316": {
+        "test14": {
+            "onfalse": {
+                "comment": "aucune URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
+                "result": "nc"
+            }
+        }
+    },
     "20343": {
         "test39": {
             "onfalse": {
@@ -36977,6 +36989,18 @@
             }
         }
     },
+    "32935": {
+        "test14": {
+            "onfalse": {
+                "comment": "aucune URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
+                "result": "nc"
+            }
+        }
+    },
     "32939": {
         "CTIE_NAV_INDEX": {
             "onfalse": {
@@ -37436,6 +37460,18 @@
             "ontrue": {
                 "comment": "l'attribut LANG de HTML est rempli",
                 "result": "i"
+            }
+        }
+    },
+    "33135": {
+        "test14": {
+            "onfalse": {
+                "comment": "aucune URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une URL contenant une majuscule, un caractère spécial, un soulignement ou une espace",
+                "result": "nc"
             }
         }
     },

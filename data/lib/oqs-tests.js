@@ -6906,7 +6906,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             //
             sidecar.resources.forEach(function(element) {
                 //
-                length += parseInt(element.headers["content-length"], 10);
+                length += element.size;
             });
 
             if(length > 300000) {
