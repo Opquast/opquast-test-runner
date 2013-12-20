@@ -1,3 +1,14 @@
 div {
     font-family: Machin, Tahoma;
 }
+
+p {
+    font-family: Test;
+}
+
+@font-face {
+    font-family: "Test";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/fonts/test.woff") format("woff");
+}

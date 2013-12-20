@@ -17019,6 +17019,18 @@
             }
         }
     },
+    "20146": {
+        "CTIE_HEADERS_FONT_SIZE": {
+            "onfalse": {
+                "comment": "aucun titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "nc"
+            }
+        }
+    },
     "20162": {
         "test25": {
             "onfalse": {
@@ -17046,11 +17058,47 @@
     "20165": {
         "test27": {
             "onfalse": {
-                "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "result": "nc"
+            }
+        }
+    },
+    "20170": {
+        "CTIE_LINKS_EXTERNAL": {
+            "onfalse": {
+                "comment": "aucun lien externe ou vers un document téléchargeable ne s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien externe ou vers un document téléchargeable s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "nc"
+            }
+        }
+    },
+    "20178": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
+                "result": "nc"
+            }
+        }
+    },
+    "20181": {
+        "CTIE_TEXT_ALIGN_LEFT": {
+            "onfalse": {
+                "comment": "aucun texte non aligné à gauche sans justification",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un texte non aligné à gauche sans justification",
                 "result": "nc"
             }
         }
@@ -17080,14 +17128,14 @@
         }
     },
     "20201": {
-        "test1": {
+        "CTIE_HTML_W_LANG": {
             "onfalse": {
-                "comment": "l'attribut LANG de HTML est rempli",
-                "result": "i"
-            },
-            "ontrue": {
                 "comment": "l'attribut LANG de HTML est vide ou absent",
                 "result": "nc"
+            },
+            "ontrue": {
+                "comment": "l'attribut LANG de HTML est rempli",
+                "result": "i"
             }
         }
     },
@@ -17202,6 +17250,66 @@
                 },
                 "comment": "au moins un élément avec la classe rightBox",
                 "result": "i"
+            }
+        }
+    },
+    "20255": {
+        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+            "onfalse": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "result": "c"
+            }
+        }
+    },
+    "20266": {
+        "CTIE_MULTIMEDIA_LESS_THAN_600_400": {
+            "onfalse": {
+                "comment": "aucun élément multimedia ne fait plus de 600 par 400 px",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "un moins un élément multimedia fait plus de 600 par 400 px",
+                "result": "nc"
+            }
+        }
+    },
+    "20275": {
+        "CTIE_VISITED_LINKS_STYLE": {
+            "onfalse": {
+                "comment": "les liens visités et non visités ont le même style",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "les liens visités et non visités n'ont pas le même style",
+                "result": "c"
+            }
+        }
+    },
+    "20310": {
+        "CTIE_DOMAIN_PUBLIC_LU": {
+            "onfalse": {
+                "comment": "le domaine est au format www.domain.public.lu",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le domaine n'est pas au format www.domain.public.lu",
+                "result": "nc"
+            }
+        }
+    },
+    "20314": {
+        "HTTP_WWW": {
+            "onfalse": {
+                "comment": "le site ne fonctionne pas avec et sans www.",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le site fonctionne avec et sans www.",
+                "result": "c"
             }
         }
     },
@@ -17347,27 +17455,15 @@
             }
         }
     },
-    "20371": {
-        "TITLE": {
+    "20372": {
+        "CTIE_LINK_TO_SELF": {
             "onfalse": {
-                "comment": "aucun élément TITLE n'a été détecté",
-                "result": "nc"
+                "comment": "aucun lien vers la page en cours",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "TITLE_W_TEXT": {
-                        "onfalse": {
-                            "comment": "l'élément TITLE est vide",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément TITLE est non vide",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "un élement TITLE a été détecté",
-                "result": "i"
+                "comment": "au moins un lien vers la page en cours",
+                "result": "nc"
             }
         }
     },
@@ -25356,11 +25452,23 @@
     "26852": {
         "test27": {
             "onfalse": {
-                "comment": "aucune police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Tohama, Verdana ou Helvetica",
+                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "result": "nc"
+            }
+        }
+    },
+    "26857": {
+        "CTIE_LINKS_EXTERNAL": {
+            "onfalse": {
+                "comment": "aucun lien externe ou vers un document téléchargeable ne s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien externe ou vers un document téléchargeable s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
                 "result": "nc"
             }
         }
@@ -25377,15 +25485,27 @@
             }
         }
     },
-    "26880": {
-        "test1": {
+    "26868": {
+        "CTIE_TEXT_ALIGN_LEFT": {
             "onfalse": {
-                "comment": "l'attribut LANG de HTML est rempli",
-                "result": "i"
+                "comment": "aucun texte non aligné à gauche sans justification",
+                "result": "c"
             },
             "ontrue": {
+                "comment": "au moins un texte non aligné à gauche sans justification",
+                "result": "nc"
+            }
+        }
+    },
+    "26880": {
+        "CTIE_HTML_W_LANG": {
+            "onfalse": {
                 "comment": "l'attribut LANG de HTML est vide ou absent",
                 "result": "nc"
+            },
+            "ontrue": {
+                "comment": "l'attribut LANG de HTML est rempli",
+                "result": "i"
             }
         }
     },
@@ -25503,6 +25623,42 @@
             }
         }
     },
+    "26934": {
+        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+            "onfalse": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "result": "c"
+            }
+        }
+    },
+    "26945": {
+        "CTIE_MULTIMEDIA_LESS_THAN_600_400": {
+            "onfalse": {
+                "comment": "aucun élément multimedia ne fait plus de 600 par 400 px",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "un moins un élément multimedia fait plus de 600 par 400 px",
+                "result": "nc"
+            }
+        }
+    },
+    "26954": {
+        "CTIE_VISITED_LINKS_STYLE": {
+            "onfalse": {
+                "comment": "les liens visités et non visités ont le même style",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "les liens visités et non visités n'ont pas le même style",
+                "result": "c"
+            }
+        }
+    },
     "26996": {
         "test42": {
             "onfalse": {
@@ -25547,30 +25703,6 @@
                     }
                 },
                 "comment": "présence de la navigation thématique",
-                "result": "i"
-            }
-        }
-    },
-    "27000": {
-        "test40": {
-            "onfalse": {
-                "comment": "absence de navigation transversale",
-                "result": "na"
-            },
-            "ontrue": {
-                "chain": {
-                    "test41": {
-                        "onfalse": {
-                            "comment": "la navigation transversale comporte 3 niveaux ou moins de profondeur",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "la navigation transversale comporte plus de 3 niveaux de profondeur",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "présence de la navigation transversale",
                 "result": "i"
             }
         }
@@ -25669,27 +25801,15 @@
             }
         }
     },
-    "27025": {
-        "TITLE": {
+    "27026": {
+        "CTIE_LINK_TO_SELF": {
             "onfalse": {
-                "comment": "aucun élément TITLE n'a été détecté",
-                "result": "nc"
+                "comment": "aucun lien vers la page en cours",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "TITLE_W_TEXT": {
-                        "onfalse": {
-                            "comment": "l'élément TITLE est vide",
-                            "result": "nc"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément TITLE est non vide",
-                            "result": "i"
-                        }
-                    }
-                },
-                "comment": "un élement TITLE a été détecté",
-                "result": "i"
+                "comment": "au moins un lien vers la page en cours",
+                "result": "nc"
             }
         }
     },
@@ -25726,6 +25846,42 @@
             "ontrue": {
                 "comment": "au moins un lien interne s'ouvrant dans une nouvelle fenêtre",
                 "result": "nc"
+            }
+        }
+    },
+    "27030": {
+        "CTIE_LINKS_LENGTH": {
+            "onfalse": {
+                "comment": "aucun lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "nc"
+            }
+        }
+    },
+    "27047": {
+        "CTIE_DOMAIN_PUBLIC_LU": {
+            "onfalse": {
+                "comment": "le domaine est au format www.domain.public.lu",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le domaine n'est pas au format www.domain.public.lu",
+                "result": "nc"
+            }
+        }
+    },
+    "27051": {
+        "HTTP_WWW": {
+            "onfalse": {
+                "comment": "le site ne fonctionne pas avec et sans www.",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le site fonctionne avec et sans www.",
+                "result": "c"
             }
         }
     },
@@ -31354,26 +31510,14 @@
         }
     },
     "30470": {
-        "RESOURCE_MULTIMEDIA_WO_AUDIO": {
+        "CTIE_MULTIMEDIA_LESS_THAN_600_400": {
             "onfalse": {
-                "comment": "aucun élément multimedia",
-                "result": "na"
+                "comment": "aucun élément multimedia ne fait plus de 600 par 400 px",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_MULTIMEDIA_LESS_THAN_600_400": {
-                        "onfalse": {
-                            "comment": "aucun élément multimedia ne fait plus de 600 par 400 px",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "un moins un élément multimedia fait plus de 600 par 400 px",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un moins un élément multimedia",
-                "result": "i"
+                "comment": "un moins un élément multimedia fait plus de 600 par 400 px",
+                "result": "nc"
             }
         }
     },
@@ -31452,6 +31596,18 @@
             "ontrue": {
                 "comment": "au moins un H6 dans le contenu",
                 "result": "nc"
+            }
+        }
+    },
+    "30508": {
+        "CTIE_VISITED_LINKS_STYLE": {
+            "onfalse": {
+                "comment": "les liens visités et non visités ont le même style",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "les liens visités et non visités n'ont pas le même style",
+                "result": "c"
             }
         }
     },
@@ -31887,30 +32043,6 @@
             }
         }
     },
-    "30653": {
-        "CTIE_LOGO_RENOW": {
-            "onfalse": {
-                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
-                "result": "nc"
-            },
-            "ontrue": {
-                "chain": {
-                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
-                        "onfalse": {
-                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
-                "result": "i"
-            }
-        }
-    },
     "30684": {
         "test6": {
             "onfalse": {
@@ -31968,6 +32100,30 @@
             "ontrue": {
                 "comment": "au moins un document téléchargeable dans un format autre que PDF",
                 "result": "nc"
+            }
+        }
+    },
+    "30714": {
+        "CTIE_LOGO_RENOW": {
+            "onfalse": {
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
+                        "onfalse": {
+                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "result": "i"
             }
         }
     },
@@ -36625,6 +36781,1050 @@
             },
             "ontrue": {
                 "comment": "au moins un élément TEXTAREA sans attribut TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "32653": {
+        "CTIE_LOGO_RENOW": {
+            "onfalse": {
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
+                        "onfalse": {
+                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "result": "i"
+            }
+        }
+    },
+    "32686": {
+        "CTIE_LINKS_EXTERNAL": {
+            "onfalse": {
+                "comment": "aucun lien externe ou vers un document téléchargeable ne s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien externe ou vers un document téléchargeable s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "nc"
+            }
+        }
+    },
+    "32716": {
+        "CTIE_LINKS_LENGTH": {
+            "onfalse": {
+                "comment": "aucun lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "nc"
+            }
+        }
+    },
+    "32730": {
+        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+            "onfalse": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "result": "c"
+            }
+        }
+    },
+    "32738": {
+        "CTIE_MULTIMEDIA_LESS_THAN_600_400": {
+            "onfalse": {
+                "comment": "aucun élément multimedia ne fait plus de 600 par 400 px",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "un moins un élément multimedia fait plus de 600 par 400 px",
+                "result": "nc"
+            }
+        }
+    },
+    "32797": {
+        "CTIE_LINK_TO_SELF": {
+            "onfalse": {
+                "comment": "aucun lien vers la page en cours",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien vers la page en cours",
+                "result": "nc"
+            }
+        }
+    },
+    "32817": {
+        "CTIE_BAD_FORMATS": {
+            "onfalse": {
+                "comment": "aucun document téléchargeable dans un format autre que PDF",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un document téléchargeable dans un format autre que PDF",
+                "result": "nc"
+            }
+        }
+    },
+    "32827": {
+        "CTIE_TEXT_ALIGN_LEFT": {
+            "onfalse": {
+                "comment": "aucun texte non aligné à gauche sans justification",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un texte non aligné à gauche sans justification",
+                "result": "nc"
+            }
+        }
+    },
+    "32831": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
+                "result": "nc"
+            }
+        }
+    },
+    "32845": {
+        "CTIE_VISITED_LINKS_STYLE": {
+            "onfalse": {
+                "comment": "les liens visités et non visités ont le même style",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "les liens visités et non visités n'ont pas le même style",
+                "result": "c"
+            }
+        }
+    },
+    "32850": {
+        "HTTP_WWW": {
+            "onfalse": {
+                "comment": "le site ne fonctionne pas avec et sans www.",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le site fonctionne avec et sans www.",
+                "result": "c"
+            }
+        }
+    },
+    "32887": {
+        "CTIE_DOMAIN_PUBLIC_LU": {
+            "onfalse": {
+                "comment": "le domaine est au format www.domain.public.lu",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le domaine n'est pas au format www.domain.public.lu",
+                "result": "nc"
+            }
+        }
+    },
+    "32918": {
+        "CTIE_HEADERS_FONT_SIZE": {
+            "onfalse": {
+                "comment": "aucun titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "nc"
+            }
+        }
+    },
+    "32929": {
+        "CTIE_CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
+            "onfalse": {
+                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "32931": {
+        "CTIE_HTML_W_LANG": {
+            "onfalse": {
+                "comment": "l'attribut LANG de HTML est vide ou absent",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "l'attribut LANG de HTML est rempli",
+                "result": "i"
+            }
+        }
+    },
+    "32939": {
+        "CTIE_NAV_INDEX": {
+            "onfalse": {
+                "comment": "aucun NAV avec la classe index",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_NAV_INDEX_SECTION": {
+                        "onfalse": {
+                            "comment": "un NAV avec la classe index et contenant moins de deux SECTION avec la classe index-section",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "aucun NAV avec la classe index et contenant moins de deux SECTION avec la classe index-section",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un NAV avec la classe index",
+                "result": "i"
+            }
+        },
+        "CTIE_UL_NAV_LOCAL": {
+            "onfalse": {
+                "comment": "aucun UL avec la classe nav-local et dans un NAV avec le role navigation",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_UL_NAV_LOCAL_LI": {
+                        "onfalse": {
+                            "comment": "un UL avec la classe nav-local, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "aucun UL avec la classe nav-local, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un UL avec la classe nav-local et dans un NAV avec le role navigation",
+                "result": "i"
+            }
+        },
+        "CTIE_UL_NAV_PRIMARY": {
+            "onfalse": {
+                "comment": "aucun UL avec la classe nav-primary et dans un NAV avec le role navigation",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_UL_NAV_PRIMARY_LI": {
+                        "onfalse": {
+                            "comment": "un UL avec la classe nav-primary, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "aucun UL avec la classe nav-primary, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un UL avec la classe nav-primary et dans un NAV avec le role navigation",
+                "result": "i"
+            }
+        },
+        "test28": {
+            "onfalse": {
+                "comment": "aucun élement DIV avec l'id thematicNav et contenant un DIV avec la classe navOn",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test29": {
+                        "onfalse": {
+                            "comment": "aucun élement DIV avec l'id navOn et contenant un DIV avec la classe subNav",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "test30": {
+                                    "onfalse": {
+                                        "comment": "aucun élement DIV avec la class subNav et contenant plus d'un LI",
+                                        "result": "nc"
+                                    },
+                                    "ontrue": {
+                                        "comment": "un élement DIV avec la class subNav et contenant plus d'un LI",
+                                        "result": "c"
+                                    }
+                                }
+                            },
+                            "comment": "une sous-rubrique thématique est présente",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élement DIV avec l'id thematicNav et contenant un DIV avec la classe navOn",
+                "result": "i"
+            }
+        }
+    },
+    "32940": {
+        "CTIE_ASIDE_PAGE_MORE": {
+            "onfalse": {
+                "comment": "aucun élément ASIDE avec la class page-more",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
+                        "onfalse": {
+                            "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément ASIDE avec la classe page-more",
+                "result": "i"
+            }
+        },
+        "test11": {
+            "onfalse": {
+                "comment": "aucun élément DIV avec l'id relatedLinkBox",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test12": {
+                        "onfalse": {
+                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément DIV avec l'id relatedLinkBox",
+                "result": "i"
+            }
+        }
+    },
+    "32942": {
+        "CTIE_CSS_FONT_SIZE_LESS_THAN_12_PX": {
+            "onfalse": {
+                "comment": "aucune police ne possède une taille inférieure à 12px",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police possède une taille inférieure à 12px",
+                "result": "i"
+            }
+        }
+    },
+    "32943": {
+        "CTIE_DOC": {
+            "onfalse": {
+                "comment": "aucun élément DOC dans le DIV avec l'id main",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
+                        "onfalse": {
+                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément DOC dans le DIV avec l'id main",
+                "result": "i"
+            }
+        },
+        "CTIE_PDF": {
+            "onfalse": {
+                "comment": "aucun élément PDF dans le DIV avec l'id main",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
+                        "onfalse": {
+                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément PDF dans le DIV avec l'id main",
+                "result": "i"
+            }
+        },
+        "test31": {
+            "onfalse": {
+                "comment": "aucun PDF",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test32": {
+                        "onfalse": {
+                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un PDF",
+                "result": "i"
+            }
+        },
+        "test33": {
+            "onfalse": {
+                "comment": "aucun DOC",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test34": {
+                        "onfalse": {
+                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un DOC",
+                "result": "i"
+            }
+        }
+    },
+    "32945": {
+        "test27": {
+            "onfalse": {
+                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "result": "nc"
+            }
+        }
+    },
+    "32947": {
+        "CTIE_ASIDE_PAGE_SECONDARY": {
+            "onfalse": {
+                "comment": "aucun élément ASIDE avec la class page-secondary",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
+                        "onfalse": {
+                            "comment": "aucun élément ASIDE avec la class page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "un élément ASIDE avec la classe page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément ASIDE avec la classe page-secondary",
+                "result": "c"
+            }
+        },
+        "CTIE_DIV_PAGE_CONTENT": {
+            "onfalse": {
+                "comment": "aucun élément DIV avec la class page-content",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
+                        "onfalse": {
+                            "comment": "aucun élément DIV avec la class page-content avec plus de 3 éléments ASIDE avec la classe box",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "un élément DIV avec la classe page-content avec plus de 3 éléments ASIDE avec la classe box",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément DIV avec la classe page-content",
+                "result": "c"
+            }
+        },
+        "test38": {
+            "onfalse": {
+                "comment": "aucun élément avec la classe rightBox",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test13": {
+                        "onfalse": {
+                            "comment": "3 éléments ou moins avec la classe rightBox",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "plus de 3 éléments avec la classe rightBox",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément avec la classe rightBox",
+                "result": "i"
+            }
+        }
+    },
+    "32953": {
+        "CTIE_MULTIMEDIA_LESS_THAN_600_400": {
+            "onfalse": {
+                "comment": "aucun élément multimedia ne fait plus de 600 par 400 px",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "un moins un élément multimedia fait plus de 600 par 400 px",
+                "result": "nc"
+            }
+        }
+    },
+    "33002": {
+        "CTIE_BAD_FORMATS": {
+            "onfalse": {
+                "comment": "aucun document téléchargeable dans un format autre que PDF",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un document téléchargeable dans un format autre que PDF",
+                "result": "nc"
+            }
+        }
+    },
+    "33006": {
+        "CTIE_LINK_TO_SELF": {
+            "onfalse": {
+                "comment": "aucun lien vers la page en cours",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien vers la page en cours",
+                "result": "nc"
+            }
+        }
+    },
+    "33034": {
+        "CTIE_TEXT_ALIGN_LEFT": {
+            "onfalse": {
+                "comment": "aucun texte non aligné à gauche sans justification",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un texte non aligné à gauche sans justification",
+                "result": "nc"
+            }
+        }
+    },
+    "33038": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
+                "result": "nc"
+            }
+        }
+    },
+    "33057": {
+        "HTTP_WWW": {
+            "onfalse": {
+                "comment": "le site ne fonctionne pas avec et sans www.",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le site fonctionne avec et sans www.",
+                "result": "c"
+            }
+        }
+    },
+    "33091": {
+        "CTIE_DOMAIN_PUBLIC_LU": {
+            "onfalse": {
+                "comment": "le domaine est au format www.domain.public.lu",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le domaine n'est pas au format www.domain.public.lu",
+                "result": "nc"
+            }
+        }
+    },
+    "33120": {
+        "CTIE_HEADERS_FONT_SIZE": {
+            "onfalse": {
+                "comment": "aucun titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un titre dont la taille du texte est supérieure à 3 fois la taille de référence",
+                "result": "nc"
+            }
+        }
+    },
+    "33129": {
+        "CTIE_CSS_FONT_SIZE_W_ABSOLUTE_VALUE": {
+            "onfalse": {
+                "comment": "aucun FONT-SIZE définie en taille absolue n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un FONT-SIZE définie en taille absolue a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "33131": {
+        "CTIE_HTML_W_LANG": {
+            "onfalse": {
+                "comment": "l'attribut LANG de HTML est vide ou absent",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "l'attribut LANG de HTML est rempli",
+                "result": "i"
+            }
+        }
+    },
+    "33138": {
+        "CTIE_NAV_INDEX": {
+            "onfalse": {
+                "comment": "aucun NAV avec la classe index",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_NAV_INDEX_SECTION": {
+                        "onfalse": {
+                            "comment": "un NAV avec la classe index et contenant moins de deux SECTION avec la classe index-section",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "aucun NAV avec la classe index et contenant moins de deux SECTION avec la classe index-section",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un NAV avec la classe index",
+                "result": "i"
+            }
+        },
+        "CTIE_UL_NAV_LOCAL": {
+            "onfalse": {
+                "comment": "aucun UL avec la classe nav-local et dans un NAV avec le role navigation",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_UL_NAV_LOCAL_LI": {
+                        "onfalse": {
+                            "comment": "un UL avec la classe nav-local, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "aucun UL avec la classe nav-local, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un UL avec la classe nav-local et dans un NAV avec le role navigation",
+                "result": "i"
+            }
+        },
+        "CTIE_UL_NAV_PRIMARY": {
+            "onfalse": {
+                "comment": "aucun UL avec la classe nav-primary et dans un NAV avec le role navigation",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_UL_NAV_PRIMARY_LI": {
+                        "onfalse": {
+                            "comment": "un UL avec la classe nav-primary, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "aucun UL avec la classe nav-primary, dans un NAV avec le role navigation et contenant moins de deux LI",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "au moins un UL avec la classe nav-primary et dans un NAV avec le role navigation",
+                "result": "i"
+            }
+        },
+        "test28": {
+            "onfalse": {
+                "comment": "aucun élement DIV avec l'id thematicNav et contenant un DIV avec la classe navOn",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test29": {
+                        "onfalse": {
+                            "comment": "aucun élement DIV avec l'id navOn et contenant un DIV avec la classe subNav",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "test30": {
+                                    "onfalse": {
+                                        "comment": "aucun élement DIV avec la class subNav et contenant plus d'un LI",
+                                        "result": "nc"
+                                    },
+                                    "ontrue": {
+                                        "comment": "un élement DIV avec la class subNav et contenant plus d'un LI",
+                                        "result": "c"
+                                    }
+                                }
+                            },
+                            "comment": "une sous-rubrique thématique est présente",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "au moins un élement DIV avec l'id thematicNav et contenant un DIV avec la classe navOn",
+                "result": "i"
+            }
+        }
+    },
+    "33139": {
+        "CTIE_ASIDE_PAGE_MORE": {
+            "onfalse": {
+                "comment": "aucun élément ASIDE avec la class page-more",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
+                        "onfalse": {
+                            "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément ASIDE avec la classe page-more",
+                "result": "i"
+            }
+        },
+        "test11": {
+            "onfalse": {
+                "comment": "aucun élément DIV avec l'id relatedLinkBox",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test12": {
+                        "onfalse": {
+                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément DIV avec l'id relatedLinkBox",
+                "result": "i"
+            }
+        }
+    },
+    "33141": {
+        "CTIE_CSS_FONT_SIZE_LESS_THAN_12_PX": {
+            "onfalse": {
+                "comment": "aucune police ne possède une taille inférieure à 12px",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police possède une taille inférieure à 12px",
+                "result": "i"
+            }
+        }
+    },
+    "33142": {
+        "CTIE_DOC": {
+            "onfalse": {
+                "comment": "aucun élément DOC dans le DIV avec l'id main",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
+                        "onfalse": {
+                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément DOC dans le DIV avec l'id main",
+                "result": "i"
+            }
+        },
+        "CTIE_PDF": {
+            "onfalse": {
+                "comment": "aucun élément PDF dans le DIV avec l'id main",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
+                        "onfalse": {
+                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément PDF dans le DIV avec l'id main",
+                "result": "i"
+            }
+        },
+        "test31": {
+            "onfalse": {
+                "comment": "aucun PDF",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test32": {
+                        "onfalse": {
+                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un PDF",
+                "result": "i"
+            }
+        },
+        "test33": {
+            "onfalse": {
+                "comment": "aucun DOC",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test34": {
+                        "onfalse": {
+                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un DOC",
+                "result": "i"
+            }
+        }
+    },
+    "33144": {
+        "test27": {
+            "onfalse": {
+                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "result": "nc"
+            }
+        }
+    },
+    "33146": {
+        "CTIE_ASIDE_PAGE_SECONDARY": {
+            "onfalse": {
+                "comment": "aucun élément ASIDE avec la class page-secondary",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
+                        "onfalse": {
+                            "comment": "aucun élément ASIDE avec la class page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "un élément ASIDE avec la classe page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément ASIDE avec la classe page-secondary",
+                "result": "c"
+            }
+        },
+        "CTIE_DIV_PAGE_CONTENT": {
+            "onfalse": {
+                "comment": "aucun élément DIV avec la class page-content",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
+                        "onfalse": {
+                            "comment": "aucun élément DIV avec la class page-content avec plus de 3 éléments ASIDE avec la classe box",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "un élément DIV avec la classe page-content avec plus de 3 éléments ASIDE avec la classe box",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "un élément DIV avec la classe page-content",
+                "result": "c"
+            }
+        },
+        "test38": {
+            "onfalse": {
+                "comment": "aucun élément avec la classe rightBox",
+                "result": "na"
+            },
+            "ontrue": {
+                "chain": {
+                    "test13": {
+                        "onfalse": {
+                            "comment": "3 éléments ou moins avec la classe rightBox",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "plus de 3 éléments avec la classe rightBox",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "au moins un élément avec la classe rightBox",
+                "result": "i"
+            }
+        }
+    },
+    "33150": {
+        "CTIE_VISITED_LINKS_STYLE": {
+            "onfalse": {
+                "comment": "les liens visités et non visités ont le même style",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "les liens visités et non visités n'ont pas le même style",
+                "result": "c"
+            }
+        }
+    },
+    "33151": {
+        "CTIE_LINKS_EXTERNAL": {
+            "onfalse": {
+                "comment": "aucun lien externe ou vers un document téléchargeable ne s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien externe ou vers un document téléchargeable s'ouvre dans la même fenêtre ou ne précise pas qu'il s'ouvre dans un nouvelle fenêtre",
+                "result": "nc"
+            }
+        }
+    },
+    "33197": {
+        "CTIE_LINKS_LENGTH": {
+            "onfalse": {
+                "comment": "aucun lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un lien dont le texte est inférieur à 5 caractères ou supérieur à 80",
+                "result": "nc"
+            }
+        }
+    },
+    "33211": {
+        "CTIE_HOMEPAGE_LESS_THAN_300_KO": {
+            "onfalse": {
+                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "result": "c"
+            }
+        }
+    },
+    "33232": {
+        "CTIE_LOGO_RENOW": {
+            "onfalse": {
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
+                        "onfalse": {
+                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "result": "nc"
+                        }
+                    }
+                },
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
                 "result": "i"
             }
         }

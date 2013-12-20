@@ -2258,11 +2258,11 @@
     "H1_W_TERMS_IN_META_KEYWORDS": {
         "H1_W_TERMS_IN_META_KEYWORDS": {
             "onfalse": {
-                "comment": "aucun élément H1 dont au moins un terme est dans le meta keywords n'a été détecté",
+                "comment": "au moins un élément H1 dont aucun terme n'est dans le meta keywords a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un élément H1 dont aucun terme n'est dans le meta keywords a été détecté",
+                "comment": "aucun élément H1 dont aucun terme n'est dans le meta keywords n'a été détecté",
                 "result": "c"
             }
         }
@@ -2306,11 +2306,11 @@
     "H2_W_TERMS_IN_META_KEYWORDS": {
         "H2_W_TERMS_IN_META_KEYWORDS": {
             "onfalse": {
-                "comment": "aucun élément H2 dont au moins un terme est dans le meta keywords n'a été détecté",
+                "comment": "au moins un élément H2 dont aucun terme n'est dans le meta keywords a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un élément H2 dont aucun terme n'est dans le meta keywords a été détecté",
+                "comment": "aucun élément H2 dont aucun terme n'est dans le meta keywords n'a été détecté",
                 "result": "c"
             }
         }
@@ -2354,11 +2354,11 @@
     "H3_W_TERMS_IN_META_KEYWORDS": {
         "H3_W_TERMS_IN_META_KEYWORDS": {
             "onfalse": {
-                "comment": "aucun élément H3 dont au moins un terme est dans le meta keywords n'a été détecté",
+                "comment": "au moins un élément H3 dont aucun terme n'est dans le meta keywords a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un élément H3 dont aucun terme n'est dans le meta keywords a été détecté",
+                "comment": "aucun élément H3 dont aucun terme n'est dans le meta keywords n'a été détecté",
                 "result": "c"
             }
         }
@@ -2402,11 +2402,11 @@
     "H4_W_TERMS_IN_META_KEYWORDS": {
         "H4_W_TERMS_IN_META_KEYWORDS": {
             "onfalse": {
-                "comment": "aucun élément H4 dont au moins un terme est dans le meta keywords n'a été détecté",
+                "comment": "au moins un élément H4 dont aucun terme n'est dans le meta keywords a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un élément H4 dont aucun terme n'est dans le meta keywords a été détecté",
+                "comment": "aucun élément H4 dont aucun terme n'est dans le meta keywords n'a été détecté",
                 "result": "c"
             }
         }
@@ -2450,11 +2450,11 @@
     "H5_W_TERMS_IN_META_KEYWORDS": {
         "H5_W_TERMS_IN_META_KEYWORDS": {
             "onfalse": {
-                "comment": "aucun élément H5 dont au moins un terme est dans le meta keywords n'a été détecté",
+                "comment": "au moins un élément H5 dont aucun terme n'est dans le meta keywords a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un élément H5 dont aucun terme n'est dans le meta keywords a été détecté",
+                "comment": "aucun élément H5 dont aucun terme n'est dans le meta keywords n'a été détecté",
                 "result": "c"
             }
         }
@@ -2498,11 +2498,11 @@
     "H6_W_TERMS_IN_META_KEYWORDS": {
         "H6_W_TERMS_IN_META_KEYWORDS": {
             "onfalse": {
-                "comment": "aucun élément H6 dont au moins un terme est dans le meta keywords n'a été détecté",
+                "comment": "au moins un élément H6 dont aucun terme n'est dans le meta keywords a été détecté",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "au moins un élément H6 dont aucun terme n'est dans le meta keywords a été détecté",
+                "comment": "aucun élément H6 dont aucun terme n'est dans le meta keywords n'a été détecté",
                 "result": "c"
             }
         }
@@ -6703,18 +6703,6 @@
             },
             "ontrue": {
                 "comment": "au moins un élément XMP a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "test1": {
-        "test1": {
-            "onfalse": {
-                "comment": "l'attribut LANG de HTML est rempli",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "l'attribut LANG de HTML est vide ou absent",
                 "result": "c"
             }
         }

@@ -430,6 +430,13 @@ var logger;
                 return Q.promised(Array).apply(null, subPromises);
             });
         }
+
+        // font-face rule
+        else if (rule.type == CSSRule.FONT_FACE_RULE) {
+            if (typeof(callback) === "object") {
+                return rule;
+            }
+        }
     }
 
     /**

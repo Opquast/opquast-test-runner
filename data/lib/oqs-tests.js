@@ -200,17 +200,22 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      */
     function _htmlHeaderWithTermsInMetaKeywords(level) {
         //
-        var result = [];
+        var result = [],
+            keywords = [];
 
         //
         try {
             //
-            var keywords = [];
-            try {
-                keywords = $("meta[name='keywords']").attr("content").split(",").map(function(value){
+            keywords = $("meta[name='keywords']");
+
+            //
+            if (!keywords) {
+                return result;
+            } else {
+                keywords = keywords.attr("content").split(",").map(function(value){
                     return $.trim(value).toLowerCase();
                 });
-            } catch (e) {}
+            }
 
             //
             if (keywords.length == 0) {
@@ -221,20 +226,19 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             $("h" + level).each(function() {
                 //
                 var found = false,
-                    terms = $(this).text().split(" ").map(function(value){
-                        return $.trim(value).toLowerCase();
-                    });
+                    terms = [];
 
-                try {
-                    terms = $.merge(terms, $.trim($("img", this).attr("alt")).split(" ")).map(function(value){
-                        return $.trim(value).toLowerCase();
-                    });
-                } catch(e) {}console.log(terms);
+                terms = $.merge(
+                    $(this).text().trim().split(" "),
+                    $.trim($("img", this).attr("alt")).split(" ")
+                ).map(function(value){
+                    return $.trim(value).toLowerCase();
+                });
 
                 //
                 found = terms.some(function(value) {
                     //
-                    if ($.inArray(value, keywords) != -1 && terms != '') {
+                    if ($.inArray(value, keywords) != -1) {
                         return true;
                     } else {
                         return false;
@@ -6376,6 +6380,41 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         //
         return result;
     }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.compactCSS = function compactCSS(doc) {
+        $.get("//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css",
+            function(data){
+                var length = data.length,
+                    tmp = data.replace(/\/\*[\s\S]+?\*\//gm, '').
+                                replace(/[\t\n\r]+/g, ' ').
+                                replace(/\s{2,}/g, ' ').
+                                replace(/\s*([:,;(){}])\s*/g, '$1');
+            console.log(Math.round((100-(tmp.length*100/length))*100)/100);
+            console.log(tmp);
+        });
+    }
+    /**
+     *
+     * @param doc
+     * @return
+     */
+    window.compactJS = function compactJS(doc) {
+        $.get("//code.jquery.com/jquery-2.0.2.js",
+            function(data){
+                var length = data.length,
+                    tmp = data.replace(/\/\*[\s\S]+?\*\//gm, '').
+                                replace(/(.*)\/\/.*/g, '$1').
+                                replace(/[\t\n\r]+/g, '').
+                                replace(/\s{2,}/g, ' ').
+                                replace(/\s*([?|&-:+,;=(){}[\]])\s*/g, '$1');
+            console.log(Math.round((100-(tmp.length*100/length))*100)/100);
+            console.log(tmp);
+        });
+    }
 
     /***************************************************************************/
     /******************************** CTIE *************************************/
@@ -6550,7 +6589,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var _href = $.trim($(this).attr("href")), isInternal = true;
 
                 //
-                if (regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
+                if (regDomain.test(_href) && RegExp.$2 != doc.location.hostname) {
                     isInternal = false;
                 }
 
@@ -6599,7 +6638,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 }
 
                 //
-                if (!isDoc && regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
+                if (!isDoc && regDomain.test(_href) && RegExp.$2 != doc.location.hostname) {
                     isInternal = false;
                 }
 
@@ -6637,7 +6676,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 var _href = $.trim($(this).attr("href"));
 
                 //
-                if (regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
+                if (regDomain.test(_href) && RegExp.$2 != doc.location.hostname) {
                     _result.push(_getDetails(this));
                 }
             });
@@ -6703,9 +6742,14 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.cssFontInList = function cssFontInList(doc) {
+        var coreFonts = [
+            "arial", "times new roman", "arial black", "courier new", "verdana",
+            "courier", "trebuchet ms", "georgia", "impact", "arial narrow",
+            "helvetica", "tahoma", "times", "andale mono"
+        ];
+
         function callback(rule) {
-            var result = [],
-                coreFonts = ["arial","times new roman","arial black","courier new","verdana","courier","trebuchet ms","georgia","impact","arial narrow","helvetica","tahoma","times","andale mono"];
+            var result = [];
 
             if (rule && rule.declarations) {
                 for (var i = 0, j = rule.declarations.length; i < j; i++) {
@@ -6728,9 +6772,21 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             return result;
         }
 
+        _analyseStylesheets(doc, "screen", []).then(function(result) {
+            for (var i = 0, j = result.length; i < j; i++) {
+                for (var k = 0, l = result[i].descriptors.length; k < l; k++) {
+                    var desc = result[i].descriptors[k]
+
+                    if (desc.property == "font-family"){
+                        coreFonts.push($.trim(desc.valueText.toLowerCase().replace(/['"]/g, "")));
+                    }
+                }
+            }
+        });
+
         return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
             // Error Logging
-            logger.error("cssFontInList", err);
+            logger.error("cssAbsoluteFontSizeWithPixel", err);
             return false;
         });
     }
@@ -6813,12 +6869,12 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     window.ctieHtmlWithLang = function ctieHtmlWithLang(doc) {
         //
         var _result = [],
-            lang = $('html').attr('lang');
+            lang = $.trim($('html').attr('lang'));
 
         //
         try {
             //
-            if(lang != undefined && lang != '') {
+            if(lang != '') {
                 _result.push(lang);
             }
         }
@@ -6935,6 +6991,13 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                     });
                 }
             });
+
+            $("img").each(function(){
+                if(parseInt($(this).css("width"), 10) > 600 ||
+                        parseInt($(this).css("height"), 10) > 400) {
+                    _result.push(_getDetails(this));
+                }
+            });
         }
 
         //
@@ -6996,28 +7059,6 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssHoverLinks", err);
             return false;
         });
-
-            //
-            /*$("a").each(function() {
-                var _link = getComputedStyle(this, ':link').getPropertyCSSValue('color').cssText,
-                    _visited = getComputedStyle(this, ':visited').getPropertyCSSValue('color').cssText;alert(_link);alert(_visited);
-
-                if (_link == _visited) {
-                    //
-                    _result.push(_getDetails(this));
-                }
-            });
-        }
-
-        //
-        catch (err) {
-            // Error Logging
-            logger.error("ctieVisitedLinksStyle", err);
-            _result = false;
-        }
-
-        //
-        return _result;*/
     }
     /**
      *
@@ -7138,7 +7179,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 //
                 if (_reg_doc.test(_href)) {
                     isDoc = true;
-                } else if (regDomain.test(_href) && RegExp.$1 != doc.location.hostname) {
+                } else if (regDomain.test(_href) && RegExp.$2 != doc.location.hostname) {
                     isExternal = true;
                 }
 

@@ -1,3 +1,10 @@
 var foo = "bla";
-
+var bar = "bla";
+var foo = "bla";
+var bar = "bla";
+var foo = "bla";
+var bar = "bla";
+var foo = "bla";
+var bar = "bla";
+var foo = "bla";
 var bar = "bla";
