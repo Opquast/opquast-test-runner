@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>
+		Mon site
+	</title>
+	<link href="http://www.example.org/"/>
+	<link rel="self" href="http://labs.temesis.com/testcases/CRA/tests/66/66-11441_7.atom" />
+	<author>
+		<name>
+			Me
+		</name>
+	</author>
+	<id>
+		tag:example.com,2005:movies
+	</id>
+	<entry>
+		<title>
+			Une actu
+		</title>
+		<link href="http://www.example.org/2005/01/01" />
+		<id>
+			http://www.example.org/2005/01/01
+		</id>
+		<content>
+			Un peu de texte pour décrire mon info
+		</content>
+	</entry>
+</feed>

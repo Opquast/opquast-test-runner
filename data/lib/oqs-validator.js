@@ -1536,7 +1536,7 @@ var logger;
             if (language == "html") {
                 //
                 if (reg.test(sidecar.plainText)) {
-                    _result = [RegExp.$1];
+                    _result = [true];
                 }
             }
 
