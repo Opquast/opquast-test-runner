@@ -5006,7 +5006,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     window.httpWoRedirect = function httpWoRedirect(doc) {
         //
         var result = [],
-            redirect = ["301", "302", "307"];
+            redirect = [301, 302, 307];
 
         //
         try {

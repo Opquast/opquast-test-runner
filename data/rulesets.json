@@ -11664,12 +11664,12 @@
     "19039": {
         "HTTP_WO_REDIRECT": {
             "onfalse": {
-                "comment": "au moins une redirection HTTP a été détectée",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "aucune redirection HTTP n'a été détectée",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une redirection HTTP a été détectée",
+                "result": "nc"
             }
         }
     },
