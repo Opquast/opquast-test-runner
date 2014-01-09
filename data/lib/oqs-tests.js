@@ -6840,7 +6840,9 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                     walk($(this));
                 });
             } else {
-                _result.push(_getDetails(node.get(0)));
+                details = _getDetails(node.get(0));
+                details.extra = _fontSize;
+                _result.push(details);
             }
 
             //
