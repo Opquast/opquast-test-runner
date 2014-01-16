@@ -1343,26 +1343,14 @@
             }
         }
     },
-    "CTIE_ASIDE_PAGE_MORE": {
-        "CTIE_ASIDE_PAGE_MORE": {
-            "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-more",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un élément ASIDE avec la classe page-more",
-                "result": "c"
-            }
-        }
-    },
     "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
         "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
             "onfalse": {
-                "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
+                "comment": "aucun élément ASIDE avec la class page-more contenant plus de 15 liens",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
+                "comment": "au moins un élément ASIDE avec la class page-more contenant plus de 15 liens",
                 "result": "c"
             }
         }
@@ -6683,26 +6671,14 @@
             }
         }
     },
-    "test11": {
-        "test11": {
-            "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "c"
-            }
-        }
-    },
     "test12": {
         "test12": {
             "onfalse": {
-                "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
                 "result": "c"
             }
         }

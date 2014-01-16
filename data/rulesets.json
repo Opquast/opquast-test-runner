@@ -17206,26 +17206,14 @@
         }
     },
     "20250": {
-        "test11": {
+        "test12": {
             "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "nc"
             }
         }
     },
@@ -17412,7 +17400,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins un PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },
@@ -17434,7 +17422,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins un DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },
@@ -25576,26 +25564,14 @@
         }
     },
     "26929": {
-        "test11": {
+        "test12": {
             "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "nc"
             }
         }
     },
@@ -25746,7 +25722,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins un PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },
@@ -25768,7 +25744,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins un DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },
@@ -31372,48 +31348,24 @@
         }
     },
     "30456": {
-        "CTIE_ASIDE_PAGE_MORE": {
+        "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
             "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-more",
-                "result": "na"
+                "comment": "aucun élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
-                        "onfalse": {
-                            "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément ASIDE avec la classe page-more",
-                "result": "i"
+                "comment": "au moins un élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "nc"
             }
         },
-        "test11": {
+        "test12": {
             "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "nc"
             }
         }
     },
@@ -31735,11 +31687,11 @@
                 "chain": {
                     "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "i"
                         }
                     }
@@ -31757,11 +31709,11 @@
                 "chain": {
                     "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "i"
                         }
                     }
@@ -31784,7 +31736,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins un PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },
@@ -31806,7 +31758,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins un DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },
@@ -37044,48 +36996,24 @@
         }
     },
     "32940": {
-        "CTIE_ASIDE_PAGE_MORE": {
+        "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
             "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-more",
-                "result": "na"
+                "comment": "aucun élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
-                        "onfalse": {
-                            "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément ASIDE avec la classe page-more",
-                "result": "i"
+                "comment": "au moins un élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "nc"
             }
         },
-        "test11": {
+        "test12": {
             "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "nc"
             }
         }
     },
@@ -37111,11 +37039,11 @@
                 "chain": {
                     "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "i"
                         }
                     }
@@ -37133,11 +37061,11 @@
                 "chain": {
                     "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "i"
                         }
                     }
@@ -37160,7 +37088,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins un PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },
@@ -37182,7 +37110,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins un DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },
@@ -37482,48 +37410,24 @@
         }
     },
     "33139": {
-        "CTIE_ASIDE_PAGE_MORE": {
+        "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
             "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-more",
-                "result": "na"
+                "comment": "aucun élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
-                        "onfalse": {
-                            "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément ASIDE avec la classe page-more",
-                "result": "i"
+                "comment": "au moins un élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "nc"
             }
         },
-        "test11": {
+        "test12": {
             "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "nc"
             }
         }
     },
@@ -37549,11 +37453,11 @@
                 "chain": {
                     "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "i"
                         }
                     }
@@ -37571,11 +37475,11 @@
                 "chain": {
                     "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "i"
                         }
                     }
@@ -37598,7 +37502,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins un PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },
@@ -37620,7 +37524,7 @@
                         },
                         "ontrue": {
                             "comment": "au moins un DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "result": "i"
                         }
                     }
                 },
