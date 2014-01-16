@@ -11664,12 +11664,12 @@
     "19039": {
         "HTTP_WO_REDIRECT": {
             "onfalse": {
-                "comment": "au moins une redirection HTTP a été détectée",
-                "result": "nc"
-            },
-            "ontrue": {
                 "comment": "aucune redirection HTTP n'a été détectée",
                 "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une redirection HTTP a été détectée",
+                "result": "nc"
             }
         }
     },
@@ -17058,11 +17058,11 @@
     "20165": {
         "test27": {
             "onfalse": {
-                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times, Andale Mono ou une police chargée depuis le CDN",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times, Andale Mono ou une police chargée depuis le CDN",
                 "result": "nc"
             }
         }
@@ -17206,50 +17206,26 @@
         }
     },
     "20250": {
-        "test11": {
+        "test12": {
             "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "nc"
             }
         }
     },
     "20252": {
-        "test38": {
+        "test13": {
             "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "na"
+                "comment": "3 éléments ou moins avec la classe rightBox",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test13": {
-                        "onfalse": {
-                            "comment": "3 éléments ou moins avec la classe rightBox",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "plus de 3 éléments avec la classe rightBox",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément avec la classe rightBox",
-                "result": "i"
+                "comment": "plus de 3 éléments avec la classe rightBox",
+                "result": "nc"
             }
         }
     },
@@ -17419,12 +17395,12 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "comment": "au moins un PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
+                            "result": "i"
                         }
                     }
                 },
@@ -17441,12 +17417,12 @@
                 "chain": {
                     "test34": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "comment": "au moins un DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
+                            "result": "i"
                         }
                     }
                 },
@@ -25464,11 +25440,11 @@
     "26852": {
         "test27": {
             "onfalse": {
-                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times, Andale Mono ou une police chargée depuis le CDN",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times, Andale Mono ou une police chargée depuis le CDN",
                 "result": "nc"
             }
         }
@@ -25588,50 +25564,26 @@
         }
     },
     "26929": {
-        "test11": {
+        "test12": {
             "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "nc"
             }
         }
     },
     "26931": {
-        "test38": {
+        "test13": {
             "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "na"
+                "comment": "3 éléments ou moins avec la classe rightBox",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test13": {
-                        "onfalse": {
-                            "comment": "3 éléments ou moins avec la classe rightBox",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "plus de 3 éléments avec la classe rightBox",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément avec la classe rightBox",
-                "result": "i"
+                "comment": "plus de 3 éléments avec la classe rightBox",
+                "result": "nc"
             }
         }
     },
@@ -25765,12 +25717,12 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "comment": "au moins un PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
+                            "result": "i"
                         }
                     }
                 },
@@ -25787,12 +25739,12 @@
                 "chain": {
                     "test34": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "comment": "au moins un DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
+                            "result": "i"
                         }
                     }
                 },
@@ -31396,116 +31348,56 @@
         }
     },
     "30456": {
-        "CTIE_ASIDE_PAGE_MORE": {
+        "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
             "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-more",
-                "result": "na"
+                "comment": "aucun élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
-                        "onfalse": {
-                            "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément ASIDE avec la classe page-more",
-                "result": "i"
+                "comment": "au moins un élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "nc"
             }
         },
-        "test11": {
+        "test12": {
             "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "nc"
             }
         }
     },
     "30458": {
-        "CTIE_ASIDE_PAGE_SECONDARY": {
+        "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
             "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-secondary",
-                "result": "na"
+                "comment": "aucun élément ASIDE avec la class page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
-                        "onfalse": {
-                            "comment": "aucun élément ASIDE avec la class page-secondary avec plus de 3 éléments SECTION avec la classe box",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "un élément ASIDE avec la classe page-secondary avec plus de 3 éléments SECTION avec la classe box",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément ASIDE avec la classe page-secondary",
-                "result": "c"
+                "comment": "un élément ASIDE avec la classe page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                "result": "nc"
             }
         },
-        "CTIE_DIV_PAGE_CONTENT": {
+        "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
             "onfalse": {
-                "comment": "aucun élément DIV avec la class page-content",
-                "result": "na"
+                "comment": "aucun élément DIV avec la class page-content avec plus de 3 éléments ASIDE avec la classe box",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
-                        "onfalse": {
-                            "comment": "aucun élément DIV avec la class page-content avec plus de 3 éléments ASIDE avec la classe box",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "un élément DIV avec la classe page-content avec plus de 3 éléments ASIDE avec la classe box",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec la classe page-content",
-                "result": "c"
+                "comment": "un élément DIV avec la classe page-content avec plus de 3 éléments ASIDE avec la classe box",
+                "result": "nc"
             }
         },
-        "test38": {
+        "test13": {
             "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "na"
+                "comment": "3 éléments ou moins avec la classe rightBox",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test13": {
-                        "onfalse": {
-                            "comment": "3 éléments ou moins avec la classe rightBox",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "plus de 3 éléments avec la classe rightBox",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément avec la classe rightBox",
-                "result": "i"
+                "comment": "plus de 3 éléments avec la classe rightBox",
+                "result": "nc"
             }
         }
     },
@@ -31795,12 +31687,12 @@
                 "chain": {
                     "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
-                            "result": "nc"
+                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
+                            "result": "i"
                         }
                     }
                 },
@@ -31817,12 +31709,12 @@
                 "chain": {
                     "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
-                            "result": "nc"
+                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
+                            "result": "i"
                         }
                     }
                 },
@@ -31839,12 +31731,12 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF dans le DIV avec l'id contentBody et en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "comment": "au moins un PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
+                            "result": "i"
                         }
                     }
                 },
@@ -31861,12 +31753,12 @@
                 "chain": {
                     "test34": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "comment": "au moins un DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
+                            "result": "i"
                         }
                     }
                 },
@@ -32010,11 +31902,11 @@
     "30639": {
         "test27": {
             "onfalse": {
-                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times, Andale Mono ou une police chargée depuis le CDN",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times, Andale Mono ou une police chargée depuis le CDN",
                 "result": "nc"
             }
         }
@@ -32118,23 +32010,23 @@
     "30714": {
         "CTIE_LOGO_RENOW": {
             "onfalse": {
-                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un href support/apropos/index.html#referentiel",
                 "result": "nc"
             },
             "ontrue": {
                 "chain": {
-                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
+                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER": {
                         "onfalse": {
-                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER",
                             "result": "nc"
                         }
                     }
                 },
-                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un href support/apropos/index.html#referentiel",
                 "result": "i"
             }
         }
@@ -36800,23 +36692,23 @@
     "32653": {
         "CTIE_LOGO_RENOW": {
             "onfalse": {
-                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un href support/apropos/index.html#referentiel",
                 "result": "nc"
             },
             "ontrue": {
                 "chain": {
-                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
+                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER": {
                         "onfalse": {
-                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER",
                             "result": "nc"
                         }
                     }
                 },
-                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un href support/apropos/index.html#referentiel",
                 "result": "i"
             }
         }
@@ -37104,48 +36996,24 @@
         }
     },
     "32940": {
-        "CTIE_ASIDE_PAGE_MORE": {
+        "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
             "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-more",
-                "result": "na"
+                "comment": "aucun élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
-                        "onfalse": {
-                            "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément ASIDE avec la classe page-more",
-                "result": "i"
+                "comment": "au moins un élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "nc"
             }
         },
-        "test11": {
+        "test12": {
             "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "nc"
             }
         }
     },
@@ -37171,12 +37039,12 @@
                 "chain": {
                     "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
-                            "result": "nc"
+                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
+                            "result": "i"
                         }
                     }
                 },
@@ -37193,12 +37061,12 @@
                 "chain": {
                     "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
-                            "result": "nc"
+                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
+                            "result": "i"
                         }
                     }
                 },
@@ -37215,12 +37083,12 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "comment": "au moins un PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
+                            "result": "i"
                         }
                     }
                 },
@@ -37237,12 +37105,12 @@
                 "chain": {
                     "test34": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "comment": "au moins un DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
+                            "result": "i"
                         }
                     }
                 },
@@ -37254,11 +37122,11 @@
     "32945": {
         "test27": {
             "onfalse": {
-                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times, Andale Mono ou une police chargée depuis le CDN",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times, Andale Mono ou une police chargée depuis le CDN",
                 "result": "nc"
             }
         }
@@ -37276,70 +37144,34 @@
         }
     },
     "32947": {
-        "CTIE_ASIDE_PAGE_SECONDARY": {
+        "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
             "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-secondary",
-                "result": "na"
+                "comment": "aucun élément ASIDE avec la class page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
-                        "onfalse": {
-                            "comment": "aucun élément ASIDE avec la class page-secondary avec plus de 3 éléments SECTION avec la classe box",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "un élément ASIDE avec la classe page-secondary avec plus de 3 éléments SECTION avec la classe box",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément ASIDE avec la classe page-secondary",
-                "result": "c"
+                "comment": "un élément ASIDE avec la classe page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                "result": "nc"
             }
         },
-        "CTIE_DIV_PAGE_CONTENT": {
+        "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
             "onfalse": {
-                "comment": "aucun élément DIV avec la class page-content",
-                "result": "na"
+                "comment": "aucun élément DIV avec la class page-content avec plus de 3 éléments ASIDE avec la classe box",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
-                        "onfalse": {
-                            "comment": "aucun élément DIV avec la class page-content avec plus de 3 éléments ASIDE avec la classe box",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "un élément DIV avec la classe page-content avec plus de 3 éléments ASIDE avec la classe box",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec la classe page-content",
-                "result": "c"
+                "comment": "un élément DIV avec la classe page-content avec plus de 3 éléments ASIDE avec la classe box",
+                "result": "nc"
             }
         },
-        "test38": {
+        "test13": {
             "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "na"
+                "comment": "3 éléments ou moins avec la classe rightBox",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test13": {
-                        "onfalse": {
-                            "comment": "3 éléments ou moins avec la classe rightBox",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "plus de 3 éléments avec la classe rightBox",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément avec la classe rightBox",
-                "result": "i"
+                "comment": "plus de 3 éléments avec la classe rightBox",
+                "result": "nc"
             }
         }
     },
@@ -37578,48 +37410,24 @@
         }
     },
     "33139": {
-        "CTIE_ASIDE_PAGE_MORE": {
+        "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
             "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-more",
-                "result": "na"
+                "comment": "aucun élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_ASIDE_PAGE_MORE_MORE_THAN_15_LINKS": {
-                        "onfalse": {
-                            "comment": "l'élément ASIDE avec la class page-more contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément ASIDE avec la class page-more contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément ASIDE avec la classe page-more",
-                "result": "i"
+                "comment": "au moins un élément ASIDE avec la class page-more contenant plus de 15 liens",
+                "result": "nc"
             }
         },
-        "test11": {
+        "test12": {
             "onfalse": {
-                "comment": "aucun élément DIV avec l'id relatedLinkBox",
-                "result": "na"
+                "comment": "aucun élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test12": {
-                        "onfalse": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient 15 liens ou moins",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "l'élément DIV avec l'id relatedLinkBox contient plus de 15 liens",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec l'id relatedLinkBox",
-                "result": "i"
+                "comment": "au moins un élément DIV avec l'id relatedLinkBox contenant plus de 15 liens",
+                "result": "nc"
             }
         }
     },
@@ -37645,12 +37453,12 @@
                 "chain": {
                     "CTIE_DOC_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
-                            "result": "nc"
+                            "comment": "au moins un élément DOC dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
+                            "result": "i"
                         }
                     }
                 },
@@ -37667,12 +37475,12 @@
                 "chain": {
                     "CTIE_PDF_NOT_IN_ASIDE_PAGE_MORE": {
                         "onfalse": {
-                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
+                            "comment": "aucun élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors de l'élément ASIDE avec la class page-more",
-                            "result": "nc"
+                            "comment": "au moins un élément PDF dans le DIV avec l'id main et en dehors d'un élément ASIDE avec la class page-more, page-secondary ou box ou d'un élément avec la classe right-box",
+                            "result": "i"
                         }
                     }
                 },
@@ -37689,12 +37497,12 @@
                 "chain": {
                     "test32": {
                         "onfalse": {
-                            "comment": "aucun PDF en dehors de la boîte en savoir plus",
+                            "comment": "aucun PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un PDF en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "comment": "au moins un PDF dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
+                            "result": "i"
                         }
                     }
                 },
@@ -37711,12 +37519,12 @@
                 "chain": {
                     "test34": {
                         "onfalse": {
-                            "comment": "aucun DOC en dehors de la boîte en savoir plus",
+                            "comment": "aucun DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "au moins un DOC en dehors de la boîte en savoir plus",
-                            "result": "nc"
+                            "comment": "au moins un DOC dans le DIV avec l'id contentBody en dehors de la boîte en savoir plus",
+                            "result": "i"
                         }
                     }
                 },
@@ -37728,11 +37536,11 @@
     "33144": {
         "test27": {
             "onfalse": {
-                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "comment": "aucune police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times, Andale Mono ou une police chargée depuis le CDN",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times ou Andale Mono",
+                "comment": "au moins une police autre qu'Arial, Times New Roman, Arial Black, Courier New, Verdana, Courier, Trebuchet MS, Georgia, Impact, Arial Narrow, Helvetica, Tahoma, Times, Andale Mono ou une police chargée depuis le CDN",
                 "result": "nc"
             }
         }
@@ -37750,70 +37558,34 @@
         }
     },
     "33146": {
-        "CTIE_ASIDE_PAGE_SECONDARY": {
+        "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
             "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-secondary",
-                "result": "na"
+                "comment": "aucun élément ASIDE avec la class page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
-                        "onfalse": {
-                            "comment": "aucun élément ASIDE avec la class page-secondary avec plus de 3 éléments SECTION avec la classe box",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "un élément ASIDE avec la classe page-secondary avec plus de 3 éléments SECTION avec la classe box",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément ASIDE avec la classe page-secondary",
-                "result": "c"
+                "comment": "un élément ASIDE avec la classe page-secondary avec plus de 3 éléments SECTION avec la classe box",
+                "result": "nc"
             }
         },
-        "CTIE_DIV_PAGE_CONTENT": {
+        "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
             "onfalse": {
-                "comment": "aucun élément DIV avec la class page-content",
-                "result": "na"
+                "comment": "aucun élément DIV avec la class page-content avec plus de 3 éléments ASIDE avec la classe box",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "CTIE_DIV_PAGE_CONTENT_MORE_THAN_3_BOXES": {
-                        "onfalse": {
-                            "comment": "aucun élément DIV avec la class page-content avec plus de 3 éléments ASIDE avec la classe box",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "un élément DIV avec la classe page-content avec plus de 3 éléments ASIDE avec la classe box",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "un élément DIV avec la classe page-content",
-                "result": "c"
+                "comment": "un élément DIV avec la classe page-content avec plus de 3 éléments ASIDE avec la classe box",
+                "result": "nc"
             }
         },
-        "test38": {
+        "test13": {
             "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "na"
+                "comment": "3 éléments ou moins avec la classe rightBox",
+                "result": "c"
             },
             "ontrue": {
-                "chain": {
-                    "test13": {
-                        "onfalse": {
-                            "comment": "3 éléments ou moins avec la classe rightBox",
-                            "result": "c"
-                        },
-                        "ontrue": {
-                            "comment": "plus de 3 éléments avec la classe rightBox",
-                            "result": "nc"
-                        }
-                    }
-                },
-                "comment": "au moins un élément avec la classe rightBox",
-                "result": "i"
+                "comment": "plus de 3 éléments avec la classe rightBox",
+                "result": "nc"
             }
         }
     },
@@ -37868,23 +37640,23 @@
     "33232": {
         "CTIE_LOGO_RENOW": {
             "onfalse": {
-                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un href support/apropos/index.html#referentiel",
                 "result": "nc"
             },
             "ontrue": {
                 "chain": {
-                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
+                    "CTIE_LOGO_RENOW_NOT_IN_FOOTER": {
                         "onfalse": {
-                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER",
                             "result": "c"
                         },
                         "ontrue": {
-                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                            "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER",
                             "result": "nc"
                         }
                     }
                 },
-                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un href support/apropos/index.html#referentiel",
                 "result": "i"
             }
         }

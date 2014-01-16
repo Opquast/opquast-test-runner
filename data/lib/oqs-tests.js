@@ -1606,7 +1606,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            $("a").parent().each(function(){
+            $("div#main a, div#contentBoby a").parent().each(function(){
                 var prevIsLink = false;
 
                 $(this).contents().each(function(){
@@ -5006,7 +5006,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     window.httpWoRedirect = function httpWoRedirect(doc) {
         //
         var result = [],
-            redirect = ["301", "302", "307"];
+            redirect = [301, 302, 307];
 
         //
         try {
@@ -6840,7 +6840,9 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                     walk($(this));
                 });
             } else {
-                _result.push(_getDetails(node.get(0)));
+                var details = _getDetails(node.get(0));
+                details.extra = _fontSize + 'px';
+                _result.push(details);
             }
 
             //
