@@ -1606,7 +1606,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            $("a").parent().each(function(){
+            $("div#main a, div#contentBoby a").parent().each(function(){
                 var prevIsLink = false;
 
                 $(this).contents().each(function(){
@@ -6840,8 +6840,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                     walk($(this));
                 });
             } else {
-                details = _getDetails(node.get(0));
-                details.extra = _fontSize;
+                var details = _getDetails(node.get(0));
+                details.extra = _fontSize + 'px';
                 _result.push(details);
             }
 

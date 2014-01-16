@@ -1367,18 +1367,6 @@
             }
         }
     },
-    "CTIE_ASIDE_PAGE_SECONDARY": {
-        "CTIE_ASIDE_PAGE_SECONDARY": {
-            "onfalse": {
-                "comment": "aucun élément ASIDE avec la class page-secondary",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un élément ASIDE avec la classe page-secondary",
-                "result": "c"
-            }
-        }
-    },
     "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
         "CTIE_ASIDE_PAGE_SECONDARY_MORE_THAN_3_BOXES": {
             "onfalse": {
@@ -1423,18 +1411,6 @@
             },
             "ontrue": {
                 "comment": "au moins un FONT-SIZE défini en taille absolue a été détecté",
-                "result": "c"
-            }
-        }
-    },
-    "CTIE_DIV_PAGE_CONTENT": {
-        "CTIE_DIV_PAGE_CONTENT": {
-            "onfalse": {
-                "comment": "aucun élément DIV avec la class page-content",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "un élément DIV avec la classe page-content",
                 "result": "c"
             }
         }
@@ -1562,23 +1538,23 @@
     "CTIE_LOGO_RENOW": {
         "CTIE_LOGO_RENOW": {
             "onfalse": {
-                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un href support/apropos/index.html#referentiel",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un rel license et un href support/apropos/index.html#referentiel",
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png contenu dans un A avec un href support/apropos/index.html#referentiel",
                 "result": "c"
             }
         }
     },
-    "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
-        "CTIE_LOGO_RENOW_NOT_IN_FOOTER_CONTENTINFO": {
+    "CTIE_LOGO_RENOW_NOT_IN_FOOTER": {
+        "CTIE_LOGO_RENOW_NOT_IN_FOOTER": {
             "onfalse": {
-                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                "comment": "aucune IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER avec le role contentinfo",
+                "comment": "une IMG avec un alt Renow et un src //cdn.public.lu/pictures/logos/renow.png en dehors d'un FOOTER",
                 "result": "c"
             }
         }
@@ -6967,18 +6943,6 @@
             },
             "ontrue": {
                 "comment": "au moins un H6 dans le contenu",
-                "result": "c"
-            }
-        }
-    },
-    "test38": {
-        "test38": {
-            "onfalse": {
-                "comment": "aucun élément avec la classe rightBox",
-                "result": "nc"
-            },
-            "ontrue": {
-                "comment": "au moins un élément avec la classe rightBox",
                 "result": "c"
             }
         }
