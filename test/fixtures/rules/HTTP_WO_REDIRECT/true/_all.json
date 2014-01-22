@@ -1,6 +1,6 @@
 {
-    "/test.html": {
-        "status": "301",
+    "/index.html": {
+        "status": 301,
         "statusText": "Moved Permanently"
     }
 }

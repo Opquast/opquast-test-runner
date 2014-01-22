@@ -1,0 +1,29 @@
+{
+    "/1.html": {
+        "_contentType": "text/html",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 250000
+            }
+        ]
+    },
+    "/script.js": {
+        "_contentType": "text/javascript",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 200000
+            }
+        ]
+    },
+    "/style.css": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 150001
+            }
+        ]
+    }
+}
