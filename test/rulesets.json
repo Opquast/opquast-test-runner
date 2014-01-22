@@ -1466,11 +1466,11 @@
     "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
         "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 600 Ko",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "comment": "le poids de la page d'accueil est supérieur à 600 Ko",
                 "result": "c"
             }
         }

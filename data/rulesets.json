@@ -17232,11 +17232,11 @@
     "20255": {
         "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 600 Ko",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "comment": "le poids de la page d'accueil est supérieur à 600 Ko",
                 "result": "nc"
             }
         }
@@ -25602,11 +25602,11 @@
     "26934": {
         "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 600 Ko",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "comment": "le poids de la page d'accueil est supérieur à 600 Ko",
                 "result": "nc"
             }
         }
@@ -31428,11 +31428,11 @@
     "30460": {
         "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 600 Ko",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "comment": "le poids de la page d'accueil est supérieur à 600 Ko",
                 "result": "nc"
             }
         }
@@ -36776,11 +36776,11 @@
     "32730": {
         "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 600 Ko",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "comment": "le poids de la page d'accueil est supérieur à 600 Ko",
                 "result": "nc"
             }
         }
@@ -37688,11 +37688,11 @@
     "33211": {
         "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
-                "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
+                "comment": "le poids de la page d'accueil est inférieur ou égal à 600 Ko",
                 "result": "c"
             },
             "ontrue": {
-                "comment": "le poids de la page d'accueil est supérieur à 300 Ko",
+                "comment": "le poids de la page d'accueil est supérieur à 600 Ko",
                 "result": "nc"
             }
         }

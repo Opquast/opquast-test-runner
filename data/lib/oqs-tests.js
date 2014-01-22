@@ -7262,11 +7262,14 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             //
             $("#main a[href]").each(function() {
                 //
-                var _length = $(this).text().trim().length;
+                var _text = $(this).text().trim(),
+                    _length = _text.length;
 
                 //
                 if (_length < 5 || _length > 80) {
-                     _result.push(_getDetails(this));
+                    var details = _getDetails(this);
+                    details.extra = _text;
+                    _result.push(details);
                 }
             });
         }
