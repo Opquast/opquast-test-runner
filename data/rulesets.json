@@ -17230,7 +17230,7 @@
         }
     },
     "20255": {
-        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "c"
@@ -17256,12 +17256,24 @@
     "20275": {
         "CTIE_VISITED_LINKS_STYLE": {
             "onfalse": {
-                "comment": "les liens visités et non visités ont le même style",
+                "comment": "les liens visités n'ont aucun style appliqué",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "les liens visités et non visités n'ont pas le même style",
-                "result": "c"
+                "chain": {
+                    "CTIE_VISITED_LINKS_SAME_STYLE": {
+                        "onfalse": {
+                            "comment": "les liens visités et non visités ont le même style",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "les liens visités et non visités n'ont pas le même style",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "les liens visités ont un style appliqué",
+                "result": "i"
             }
         }
     },
@@ -17523,7 +17535,7 @@
             },
             "ontrue": {
                 "comment": "au moins un document téléchargeable dans un format autre que PDF",
-                "result": "nc"
+                "result": "i"
             }
         }
     },
@@ -25588,7 +25600,7 @@
         }
     },
     "26934": {
-        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "c"
@@ -25614,12 +25626,24 @@
     "26954": {
         "CTIE_VISITED_LINKS_STYLE": {
             "onfalse": {
-                "comment": "les liens visités et non visités ont le même style",
+                "comment": "les liens visités n'ont aucun style appliqué",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "les liens visités et non visités n'ont pas le même style",
-                "result": "c"
+                "chain": {
+                    "CTIE_VISITED_LINKS_SAME_STYLE": {
+                        "onfalse": {
+                            "comment": "les liens visités et non visités ont le même style",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "les liens visités et non visités n'ont pas le même style",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "les liens visités ont un style appliqué",
+                "result": "i"
             }
         }
     },
@@ -25893,7 +25917,7 @@
             },
             "ontrue": {
                 "comment": "au moins un document téléchargeable dans un format autre que PDF",
-                "result": "nc"
+                "result": "i"
             }
         }
     },
@@ -31402,7 +31426,7 @@
         }
     },
     "30460": {
-        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "c"
@@ -31506,12 +31530,24 @@
     "30508": {
         "CTIE_VISITED_LINKS_STYLE": {
             "onfalse": {
-                "comment": "les liens visités et non visités ont le même style",
+                "comment": "les liens visités n'ont aucun style appliqué",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "les liens visités et non visités n'ont pas le même style",
-                "result": "c"
+                "chain": {
+                    "CTIE_VISITED_LINKS_SAME_STYLE": {
+                        "onfalse": {
+                            "comment": "les liens visités et non visités ont le même style",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "les liens visités et non visités n'ont pas le même style",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "les liens visités ont un style appliqué",
+                "result": "i"
             }
         }
     },
@@ -32003,7 +32039,7 @@
             },
             "ontrue": {
                 "comment": "au moins un document téléchargeable dans un format autre que PDF",
-                "result": "nc"
+                "result": "i"
             }
         }
     },
@@ -36738,7 +36774,7 @@
         }
     },
     "32730": {
-        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "c"
@@ -36781,7 +36817,7 @@
             },
             "ontrue": {
                 "comment": "au moins un document téléchargeable dans un format autre que PDF",
-                "result": "nc"
+                "result": "i"
             }
         }
     },
@@ -36812,12 +36848,24 @@
     "32845": {
         "CTIE_VISITED_LINKS_STYLE": {
             "onfalse": {
-                "comment": "les liens visités et non visités ont le même style",
+                "comment": "les liens visités n'ont aucun style appliqué",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "les liens visités et non visités n'ont pas le même style",
-                "result": "c"
+                "chain": {
+                    "CTIE_VISITED_LINKS_SAME_STYLE": {
+                        "onfalse": {
+                            "comment": "les liens visités et non visités ont le même style",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "les liens visités et non visités n'ont pas le même style",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "les liens visités ont un style appliqué",
+                "result": "i"
             }
         }
     },
@@ -37195,7 +37243,7 @@
             },
             "ontrue": {
                 "comment": "au moins un document téléchargeable dans un format autre que PDF",
-                "result": "nc"
+                "result": "i"
             }
         }
     },
@@ -37592,12 +37640,24 @@
     "33150": {
         "CTIE_VISITED_LINKS_STYLE": {
             "onfalse": {
-                "comment": "les liens visités et non visités ont le même style",
+                "comment": "les liens visités n'ont aucun style appliqué",
                 "result": "nc"
             },
             "ontrue": {
-                "comment": "les liens visités et non visités n'ont pas le même style",
-                "result": "c"
+                "chain": {
+                    "CTIE_VISITED_LINKS_SAME_STYLE": {
+                        "onfalse": {
+                            "comment": "les liens visités et non visités ont le même style",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "les liens visités et non visités n'ont pas le même style",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "les liens visités ont un style appliqué",
+                "result": "i"
             }
         }
     },
@@ -37626,7 +37686,7 @@
         }
     },
     "33211": {
-        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "c"

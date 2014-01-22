@@ -1463,8 +1463,8 @@
             }
         }
     },
-    "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
-        "CTIE_HOMEPAGE_MORE_THAN_300_KO": {
+    "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
+        "CTIE_HOMEPAGE_MORE_THAN_600_KO": {
             "onfalse": {
                 "comment": "le poids de la page d'accueil est inférieur ou égal à 300 Ko",
                 "result": "nc"
@@ -1667,14 +1667,26 @@
             }
         }
     },
-    "CTIE_VISITED_LINKS_STYLE": {
-        "CTIE_VISITED_LINKS_STYLE": {
+    "CTIE_VISITED_LINKS_SAME_STYLE": {
+        "CTIE_VISITED_LINKS_SAME_STYLE": {
             "onfalse": {
                 "comment": "les liens visités et non visités ont le même style",
                 "result": "nc"
             },
             "ontrue": {
                 "comment": "les liens visités et non visités n'ont pas le même style",
+                "result": "c"
+            }
+        }
+    },
+    "CTIE_VISITED_LINKS_STYLE": {
+        "CTIE_VISITED_LINKS_STYLE": {
+            "onfalse": {
+                "comment": "les liens visités n'ont aucun style appliqué",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "les liens visités ont un style appliqué",
                 "result": "c"
             }
         }

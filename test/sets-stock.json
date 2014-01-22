@@ -1278,7 +1278,7 @@
         }
     },
     "24025": {
-        "CTIE_VISITED_LINKS_STYLE": {
+        "CTIE_VISITED_LINKS_SAME_STYLE": {
             "onfalse": {
                 "comment": "les liens visités et non visités n'ont pas le même style",
                 "result": "c"

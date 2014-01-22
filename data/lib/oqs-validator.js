@@ -219,10 +219,15 @@ var logger;
         var css,
             src,
             promises = [],
-            _styleSheets = doc.styleSheets;
+            _styleSheets = doc.styleSheets,
+            regExclude = new RegExp('^https?://[^/]+\\.readspeaker\\.com/', 'i');
 
-        for (var i = 0; i < _styleSheets.length; i++) {
+        for (var i = 0, j = _styleSheets.length; i < j; i++) {
             css = _styleSheets.item(i);
+
+            if(regExclude.test(css.href)) {
+                break;
+            }
 
             if(css.media.length == 0) {
                 css.media.appendMedium("all");
@@ -701,37 +706,23 @@ var logger;
      * @return
      */
     window._getAllText = function _getAllText(node) {
-        //
-        if (node == undefined) {
-            return "";
-        }
+        var tmp = "";
 
         //
-        var tmp
-            text = "",
-            treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
-                acceptNode: function(_node) {
-                    //
-                    if (_node.tagName == "IMG") {
-                        text += " " + $(_node).attr("alt").trim();
+        if (node != undefined) {
+            //
+            $(node).find('*').contents().filter(
+                function(){
+                    if(this.nodeType == Node.TEXT_NODE) {
+                        tmp += this.nodeValue + " ";
                     }
 
-                    //
-                    else if (_node.nodeType == Node.TEXT_NODE) {
-                        text += " " + $.trim(_node.nodeValue);
+                    else if(this.tagName = 'IMG') {
+                        tmp += $.trim($(this).attr(alt));
                     }
-
-                    //
-                    return NodeFilter.FILTER_ACCEPT;
                 }
-            }, false);
-
-        //
-        while (treeWalker.nextNode()) {
+            );
         }
-
-        //
-        tmp = $.trim(text.toLowerCase());
 
         //
         return tmp;
@@ -744,28 +735,18 @@ var logger;
      */
     window._getAllTextWoAlt = function _getAllTextWoAlt(node) {
         //
-        if (node == undefined) {
-            return "";
-        }
+        var tmp = "";
 
         //
-        var tmp,
-            text = "",
-            treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, {
-                acceptNode: function(_node) {
-                    text += " " + $.trim(_node.nodeValue);
-
-                    //
-                    return NodeFilter.FILTER_ACCEPT;
+        if (node != undefined) {
+            $(node).find('*').contents().filter(
+                function(){
+                    if(this.nodeType == Node.TEXT_NODE) {
+                        tmp += this.nodeValue + " ";
+                    }
                 }
-            }, false);
-
-        //
-        while (treeWalker.nextNode()) {
+            );
         }
-
-        //
-        tmp = $.trim(text.toLowerCase());
 
         //
         return tmp;
@@ -1744,16 +1725,14 @@ var logger;
                 if (test == "present") {
                     // detected
                     if (doc.doctype) {
-                        _dt = doc.doctype;
-                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase() + ' PUBLIC';
+                        var _dt = doc.doctype,
+                            dt;
 
                         //
-                        if (_dt.publicId != '') {
-                            dt += ' "' + _dt.publicId + '"';
-                        }
-                        if (_dt.systemId != '') {
-                            dt += ' "' + _dt.systemId + '"';
-                        }
+                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase()
+                        dt += (_dt.publicId == '' && _dt.systemId != '') ? ' SYSTEM' : ' PUBLIC';
+                        dt += _dt.publicId != '' ? ' "' + _dt.publicId + '"' : '';
+                        dt += _dt.systemId != '' ? ' "' + _dt.systemId + '"' : '';
                         dt += '>';
 
                         //
@@ -1772,16 +1751,14 @@ var logger;
                 else if (test == "placed") {
                     // detected
                     if (doc.doctype) {
-                        _dt = doc.doctype;
-                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase() + ' PUBLIC';
+                        var _dt = doc.doctype,
+                            dt;
 
                         //
-                        if (_dt.publicId != '') {
-                            dt += ' "' + _dt.publicId + '"';
-                        }
-                        if (_dt.systemId != '') {
-                            dt += ' "' + _dt.systemId + '"';
-                        }
+                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase()
+                        dt += (_dt.publicId == '' && _dt.systemId != '') ? ' SYSTEM' : ' PUBLIC';
+                        dt += _dt.publicId != '' ? ' "' + _dt.publicId + '"' : '';
+                        dt += _dt.systemId != '' ? ' "' + _dt.systemId + '"' : '';
                         dt += '>';
 
                         //
@@ -1800,16 +1777,14 @@ var logger;
                 else if (test == "valid") {
                     // detected
                     if (doc.doctype) {
-                        _dt = doc.doctype;
-                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase() + ' PUBLIC';
+                        var _dt = doc.doctype,
+                            dt;
 
                         //
-                        if (_dt.publicId != '') {
-                            dt += ' "' + _dt.publicId + '"';
-                        }
-                        if (_dt.systemId != '') {
-                            dt += ' "' + _dt.systemId + '"';
-                        }
+                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase()
+                        dt += (_dt.publicId == '' && _dt.systemId != '') ? ' SYSTEM' : ' PUBLIC';
+                        dt += _dt.publicId != '' ? ' "' + _dt.publicId + '"' : '';
+                        dt += _dt.systemId != '' ? ' "' + _dt.systemId + '"' : '';
                         dt += '>';
 
                         // valid
@@ -1952,7 +1927,9 @@ var logger;
             reg = new RegExp("^([a-z]+)@([a-z]+):(.+)$", "i");
 
         reg.test(test);
-        var _scheme = RegExp.$1, _language = RegExp.$2, _test = RegExp.$3;
+        var _scheme = RegExp.$1,
+            _language = RegExp.$2,
+            _test = RegExp.$3;
 
         logger.log('apply_test', JSON.stringify([_scheme, _language, _test]));
 

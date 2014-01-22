@@ -68,13 +68,19 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                             label = "";
 
                         try {
-                            label = _getAllText($("label[for='" + id + "']").get(0));
+                            var _tmp = $("label[for='" + id + "']").get(0);
+                            if(_tmp){
+                                label = _getAllText(_tmp);
+                            }
                         } catch(e) {}
 
                         //
                         if (implicit && label == "") {
                             try {
-                                label = _getAllText($(this).parents("label").get(0));
+                                var _tmp = $(this).parents("label").get(0);
+                                if(_tmp){
+                                    label = _getAllText(_tmp);
+                                }
                             } catch(e) {}
                         }
 
@@ -6046,7 +6052,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.robotsPresence = function robotsPresence(doc) {
-        var reg = new RegExp("^user-agent:(.+)$", "im");
+        var reg = new RegExp("^(user-agent|sitemap):(.+)$", "im");
 
         return XHR.get("/robots.txt").then(function(response) {
             if (response.status !== 200 || !reg.test(response.data)) {
@@ -6586,9 +6592,10 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             }
 
             // links
-            $("a[href]").each(function() {
+            $("a[href]:not([href^='mailto:']):not([href^='tel:'])").each(function() {
                 //
-                var _href = $.trim($(this).attr("href")), isInternal = true;
+                var _href = $.trim($(this).attr("href")),
+                    isInternal = true;
 
                 //
                 if (regDomain.test(_href) && RegExp.$2 != doc.location.hostname) {
@@ -6898,7 +6905,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.ctieHomepageMoreThan300Ko = function ctieHomepageMoreThan300Ko(doc) {
+    window.ctieHomepageMoreThan600Ko = function ctieHomepageMoreThan600Ko(doc) {
         //
         var _result = [],
             length = 0;
@@ -6908,10 +6915,10 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             //
             sidecar.resources.forEach(function(element) {
                 //
-                length += element.size;
+                length += element.headers['content-length'];
             });
 
-            if(length > 300000) {
+            if(length > 600000) {
                 return [length / 1000 + " Ko"];
             }
         }
@@ -6919,7 +6926,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         //
         catch (err) {
             // Error Logging
-            logger.error("ctieHomepageMoreThan300Ko", err);
+            logger.error("ctieHomepageMoreThan600Ko", err);
             _result = false;
         }
 
@@ -7019,11 +7026,10 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @param doc
      * @return
      */
-    window.ctieVisitedLinksStyle = function ctieVisitedLinksStyle(doc) {
+    window.ctieVisitedLinksSameStyle = function ctieVisitedLinksSameStyle(doc) {
         //
         var _result = [],
-            reg = new RegExp("(^| )(a((#|\\.)[^ ]+)?|(#|\\.)[^ ]+):visited$", "i"),
-            reg2 = new RegExp("^([-a-z]+-)?(height|width)$", "i");
+            reg = new RegExp("(^| )(a((#|\\.)[^ ]+)?|(#|\\.)[^ ]+):visited$", "i");
 
         //
         function callback(rule) {
@@ -7040,13 +7046,13 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                             var selectorLink = selector.replace(/:visited$/, ""),
                                 property = rule.declarations[i]["property"];
 
-                            if ($(selectorLink).get(0)) {
+                            if (property == "color" && $(selectorLink).get(0)) {
                                 var color = $(selectorLink).css(property),
                                     tmp = document.createElement("a");
 
                                 $(tmp).css("color", rule.declarations[i]["valueText"]);
 
-                                if(color == $(tmp).css("color")) {
+                                if(color != $(tmp).css("color")) {
                                     result.push(_getCssDetails(rule, i));
                                 }
                             }
@@ -7060,7 +7066,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         return _analyseStylesheets(doc, "screen", callback).then(null, function(err) {
             // Error Logging
-            logger.error("cssHoverLinks", err);
+            logger.error("ctieVisitedLinksSameStyle", err);
             return false;
         });
     }
@@ -7174,7 +7180,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            $("a[href]").each(function() {
+            $("a[href]:not([href^='//app.eu.readspeaker.com/'])").each(function() {
                 //
                 var _href = $.trim($(this).attr("href")),
                     isExternal = false,
