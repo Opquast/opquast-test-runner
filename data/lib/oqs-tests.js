@@ -1612,7 +1612,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         try {
-            $("div#main a, div#contentBoby a").parent().each(function(){
+            $("div#main, div#contentBoby").find("a").parent().each(function(){
                 var prevIsLink = false;
 
                 $(this).contents().each(function(){
