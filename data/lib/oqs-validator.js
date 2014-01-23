@@ -627,13 +627,7 @@ var logger;
             }
 
             // CSS
-            /*try {
-                tmp.selector = _getSelector(_item);
-            }
-
-            catch(e) {
-
-            }*/
+            tmp.selector = _getSelector(_item);
 
             // Text
             try {
