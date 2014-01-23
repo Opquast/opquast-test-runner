@@ -460,7 +460,7 @@ var logger;
 
             //
             if (node.hasAttribute("id")) {
-                idx = 'id="' + node.id + '"';
+                idx = '@id="' + node.id + '"';
 
                 //
                 xpath = "//" + xname + "[" + idx + "]" + xpath;
@@ -581,18 +581,21 @@ var logger;
                 "tag": "",
                 "namespace": "",
                 "attributes": [],
-                "xpath": ""
+                "xpath": "",
+                "selector": "",
+                "text": "",
+                "extra": ""
             };
 
             // item
             tmp.tag = _item.localName;
 
-            //
+            // namespace
             if (_item.namespaceURI) {
                 tmp.namespace = _item.namespaceURI;
             }
 
-            //
+            // attributes
             for (var j = 0; j < _attributes.length; j++) {
                 //
                 var _attribute = _attributes[j];
@@ -611,7 +614,7 @@ var logger;
                 tmp.attributes.push(_tmp);
             }
 
-            // parent
+            // XPath
             try {
                 // xpath
                 tmp.xpath = _getXPath(_item);
@@ -623,7 +626,16 @@ var logger;
                 tmp.xpath = "/" + _item.localName;
             }
 
-            tmp.selector = _getSelector(_item);
+            // CSS
+            /*try {
+                tmp.selector = _getSelector(_item);
+            }
+
+            catch(e) {
+
+            }*/
+
+            // Text
             try {
                 tmp.text = _item.outerHTML.replace(/</g, "&lt;").replace(/>/g, "&gt;").substr(0, 200);
             } catch(e) {
