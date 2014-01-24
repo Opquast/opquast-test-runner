@@ -596,14 +596,14 @@ var logger;
             }
 
             // attributes
-            for (var j = 0; j < _attributes.length; j++) {
+            for (var j = 0, k = _attributes.length; j < k; j++) {
                 //
-                var _attribute = _attributes[j];
-                var _tmp = {
-                    "name": _attribute.nodeName,
-                    "namespace": "",
-                    "value": _attribute.nodeValue
-                };
+                var _attribute = _attributes[j],
+                    _tmp = {
+                        "name": _attribute.nodeName,
+                        "namespace": "",
+                        "value": _attribute.nodeValue
+                    };
 
                 //
                 if (_attribute.namespaceURI) {
