@@ -7175,22 +7175,25 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         //
         var _result = [],
             _reg_doc = new RegExp("\.(pdf|doc)$", "i"),
-            regNewWindow = new RegExp("nouvelle fenêtre|new window|neues fenster", "i");
+            regNewWindow = new RegExp("nouvelle fenêtre|new window|neues fenster", "i"),
+            regReadSpeaker = new RegExp("(https?:)?\/\/app\.eu\.readspeaker\.com\/", "i");
 
         //
         try {
             //
-            $("a[href]:not([href^='//app.eu.readspeaker.com/'])").each(function() {
+            $("a[href]").each(function() {
                 //
                 var _href = $.trim($(this).attr("href")),
                     isExternal = false,
                     isDoc = false;
 
                 //
-                if (_reg_doc.test(_href)) {
-                    isDoc = true;
-                } else if (regDomain.test(_href) && RegExp.$2 != doc.location.hostname) {
-                    isExternal = true;
+                if(!regReadSpeaker.test(_href)) {
+                    if (_reg_doc.test(_href)) {
+                        isDoc = true;
+                    } else if (regDomain.test(_href) && RegExp.$2 != doc.location.hostname) {
+                        isExternal = true;
+                    }
                 }
 
                 //
@@ -7262,13 +7265,12 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             //
             $("#main a[href]").each(function() {
                 //
-                var _text = $(this).text().trim(),
-                    _length = _text.length;
+                var _length = $(this).text().trim().length;
 
                 //
                 if (_length < 5 || _length > 80) {
                     var details = _getDetails(this);
-                    details.extra = _text;
+                    details.extra = _length;
                     _result.push(details);
                 }
             });
