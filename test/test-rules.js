@@ -1,9 +1,9 @@
 "use strict";
 const {openPage, getHarObject, launchTests, getHTMLFixtures, startServer} = require("./tools");
 
-const file = require("file");
-const self = require("self");
-const {pathFor} = require("system");
+const file = require("sdk/io/file");
+const self = require("sdk/self");
+const {pathFor} = require("sdk/system");
 
 let fixtures = getHTMLFixtures('fixtures/rules/*'),
     server = startServer(9000);
