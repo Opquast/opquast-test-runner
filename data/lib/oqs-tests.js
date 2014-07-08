@@ -235,11 +235,13 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                     terms = [];
 
                 terms = $.merge(
-                    $(this).text().trim().split(" "),
+                    $(this).text().trim().replace(/\.$/, '').split(" "),
                     $.trim($("img", this).attr("alt")).split(" ")
                 ).map(function(value){
                     return $.trim(value).toLowerCase();
                 });
+
+                terms = terms.filter(Boolean); // Remove empty strings
 
                 //
                 found = terms.some(function(value) {
