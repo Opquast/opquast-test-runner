@@ -276,7 +276,7 @@ var logger;
                                 "content": response.data,
                                 "sheet": sheet,
                                 "media": media
-                            }
+                            };
                         }).then(null, function(err) {
                             logger.error("_analyseStylesheets", err);
                             return false;
@@ -302,7 +302,7 @@ var logger;
             });
             return result;
         });
-    }
+    };
 
     /**
      *
@@ -644,7 +644,7 @@ var logger;
 
         //
         return tmp;
-    }
+    };
 
     /**
      *
@@ -664,7 +664,7 @@ var logger;
 
         //
         return parent + " : " + rule.mSelectorText + " {" + rule.declarations[i]["parsedCssText"] + "}";
-    }
+    };
 
     /**
      *
@@ -674,7 +674,7 @@ var logger;
     window._getInlineCssDetails = function _getInlineCssDetails(rule, i, item) {
         //
         return "style en ligne sur " + _getXPath(item) + " : " + rule.declarations[i]["parsedCssText"];
-    }
+    };
 
     /**
      *
@@ -690,7 +690,7 @@ var logger;
 
         //
         return "entête HTTP de " + url + " :" + _headers;
-    }
+    };
 
     /**
      *
@@ -704,7 +704,7 @@ var logger;
 
         //
         return a.href;
-    }
+    };
 
     /**
      *
@@ -732,7 +732,7 @@ var logger;
 
         //
         return tmp;
-    }
+    };
 
     /**
      *
@@ -756,7 +756,7 @@ var logger;
 
         //
         return tmp;
-    }
+    };
 
     /**
      * Get a page in the pages stack
@@ -1036,7 +1036,7 @@ var logger;
 
         //
         return false;
-    }
+    };
 
     /**
      * Analyse the page
@@ -1053,7 +1053,7 @@ var logger;
             // Error Logging
             logger.error("analyze", err);
         });
-    }
+    };
 
     /**
      * Test all the criteria
@@ -1210,7 +1210,7 @@ var logger;
                     //
                     nsResolver = function(prefix) {
                         return 'http://www.w3.org/1999/xhtml';
-                    }
+                    };
 
                     // replace tags by xhtml:tags and reverse for functions (like count() or text())
                     test = test.replace(new RegExp("(/+)([^@])", "g"), "$1xhtml:$2").replace(new RegExp("(::)([^@])", "g"), "$1xhtml:$2").replace(new RegExp("xhtml:([-a-zA-Z]+\\()", "g"), "$1");
@@ -1735,7 +1735,7 @@ var logger;
                             dt;
 
                         //
-                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase()
+                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase();
                         dt += (_dt.publicId == '' && _dt.systemId != '') ? ' SYSTEM' : ' PUBLIC';
                         dt += _dt.publicId != '' ? ' "' + _dt.publicId + '"' : '';
                         dt += _dt.systemId != '' ? ' "' + _dt.systemId + '"' : '';
@@ -1761,7 +1761,7 @@ var logger;
                             dt;
 
                         //
-                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase()
+                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase();
                         dt += (_dt.publicId == '' && _dt.systemId != '') ? ' SYSTEM' : ' PUBLIC';
                         dt += _dt.publicId != '' ? ' "' + _dt.publicId + '"' : '';
                         dt += _dt.systemId != '' ? ' "' + _dt.systemId + '"' : '';
@@ -1787,7 +1787,7 @@ var logger;
                             dt;
 
                         //
-                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase()
+                        dt = '<!DOCTYPE ' + _dt.name.toLowerCase();
                         dt += (_dt.publicId == '' && _dt.systemId != '') ? ' SYSTEM' : ' PUBLIC';
                         dt += _dt.publicId != '' ? ' "' + _dt.publicId + '"' : '';
                         dt += _dt.systemId != '' ? ' "' + _dt.systemId + '"' : '';

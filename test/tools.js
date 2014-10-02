@@ -29,7 +29,7 @@ const wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindow
 const statuses = {
     200: "200 OK",
     404: "404 Not found"
-}
+};
 
 const openPage = function(url) {
     let win = wm.getMostRecentWindow('navigator:browser');
@@ -40,7 +40,7 @@ const openPage = function(url) {
     let timeout;
 
     function _load() {
-        clearTimeout(timeout)
+        clearTimeout(timeout);
         browser.removeEventListener('load', _load, true);
         setTimeout(function() {
             D.resolve({
@@ -107,7 +107,7 @@ const openTab = function() {
             let timeout;
 
             function _load() {
-                clearTimeout(timeout)
+                clearTimeout(timeout);
                 browser.removeEventListener('load', _load, true);
                 setTimeout(function() {
                     D.resolve({
@@ -140,14 +140,14 @@ const openTab = function() {
             browser.loadURI(url);
 
             return D.promise;
-        }
+        };
 
         return {
             tab: tab,
             browser: browser,
             open: open,
             close: close
-        }
+        };
     });
 };
 exports.openTab = openTab;

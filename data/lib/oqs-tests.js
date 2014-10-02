@@ -565,7 +565,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssAbsoluteFontSize", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -600,7 +600,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssAbsoluteFontSizeInForm", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -629,7 +629,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssAbsoluteFontSizeOnScreen", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -677,7 +677,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -703,7 +703,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssBackgroundImage", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -734,7 +734,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssBackgroundImageInSprite", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -783,7 +783,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -832,7 +832,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      * @param doc
      * @return
@@ -865,7 +865,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -891,7 +891,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssDirection", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -917,7 +917,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssDisplayNone", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -957,7 +957,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssOutline", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -987,7 +987,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssGenericFont", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1028,7 +1028,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssHoverLinks", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1075,7 +1075,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1124,7 +1124,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      * @param doc
      * @return
@@ -1149,7 +1149,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssMediaHandheld", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1175,7 +1175,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssMediaPrint", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1209,7 +1209,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssNumberOfFonts", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1243,7 +1243,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssNumberOfFonts4", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1269,7 +1269,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssPixelFontSize", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1315,7 +1315,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssSerifFont", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1349,7 +1349,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1375,7 +1375,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssTextAlignJustify", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1410,7 +1410,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1442,7 +1442,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1469,7 +1469,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssUniversalSelector", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1511,7 +1511,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1566,7 +1566,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("html404", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -1726,7 +1726,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1770,7 +1770,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1800,7 +1800,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1837,7 +1837,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1877,7 +1877,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1912,7 +1912,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1945,7 +1945,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1980,7 +1980,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -2020,7 +2020,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -2060,7 +2060,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -2092,7 +2092,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("htmlFavicon", err);
             return false;
         }
-    }
+    };
     /**
      *
      * @param doc
@@ -2123,7 +2123,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -2162,7 +2162,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -2193,7 +2193,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -2242,7 +2242,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -2291,7 +2291,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -5861,7 +5861,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("jsRefresh", err);
             return false;
         }
-    }
+    };
     /**
      *
      * @param doc
@@ -5928,7 +5928,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("jsSetInterval", err);
             return false;
         }
-    }
+    };
     /**
      *
      * @param doc
@@ -5970,7 +5970,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("jsSetTimeout", err);
             return false;
         }
-    }
+    };
     /**
      *
      * @param doc
@@ -6004,7 +6004,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -6067,7 +6067,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("robotsPresence", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -6282,7 +6282,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
