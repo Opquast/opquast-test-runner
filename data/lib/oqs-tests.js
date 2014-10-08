@@ -1537,7 +1537,119 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("cssVisibilityHidden", err);
             return false;
         });
-    }
+    };
+
+    window.cssWithCarriageReturn = function cssWithCarriageRturn(doc) {
+        // "regexp@css:((\\S|\\s)+;\\s*\\n){10,}"
+        var reg = new RegExp("(\\S|\\s)+;\\s*$", "i"),
+            promises = [],
+            _result = [];
+
+        // external
+        $("link[rel='stylesheet']", doc).each(function() {
+            var _this = this,
+                _href = $(this).attr('href');
+
+            // external
+            if (_href && _href.length) {
+                promises.push(
+                    $.ajax(_href, {
+                        async: true,
+                        dataType: "text"
+                    }).done(function(data, textStatus, XMLHttpRequest) {
+                        var splitText = data.split('\n');
+                        var reg_counter = 0;
+
+                        if (splitText.length >= 10) {
+                            $.each(splitText, function(index, value) {
+                                if (reg.test(value)) {
+                                    reg_counter+=1;
+                                }
+                            });
+
+                            if (reg_counter >= 10) {
+                                _result.push(_getDetails(_this));
+                            }
+                        }
+                    })
+                );
+            }
+        });
+
+        // internal
+        $('style', doc).each(function() {
+            var _this = this,
+                _data = $(this).text();
+
+            if (_data.length) {
+                var splitText = _data.split('\n');
+                var reg_counter = 0;
+
+                if (splitText.length >= 10) {
+                    $.each(splitText, function(index, value) {
+                        if (reg.test(value)) {
+                            reg_counter+=1;
+                        }
+                    });
+
+                    if (reg_counter >= 10) {
+                        promises.push(_getDetails(_this));
+                        _result.push(_getDetails(_this));
+                    }
+                }
+                //promises.push(Q.resolve(false));
+            }
+        });
+
+        // imported
+        var _styleSheets = doc.styleSheets;
+
+        for (var i = 0; i < _styleSheets.length; i++) {
+            //
+            var sheet = _styleSheets[i],
+                rules = sheet.cssRules;
+
+            //
+            for (var j = 0; j < rules.length; j++) {
+                //
+                if (rules[j].type == CSSRule.IMPORT_RULE) {
+                    var _sheet = rules[j].styleSheet,
+                        _href = _sheet.href;
+
+                    if (_href && _href.length) {
+
+                        promises.push(
+                            $.ajax(_href, {
+                                async: true,
+                                dataType: "text"
+                            }).done(function(data, textStatus, XMLHttpRequest) {
+                                var splitText = data.split('\n');
+                                var reg_counter = 0;
+
+                                if (splitText.length >= 10) {
+                                    $.each(splitText, function(index, value) {
+                                        if (reg.test(value)) {
+                                            reg_counter+=1;
+                                        }
+                                    });
+                                    if (reg_counter >= 10) {
+                                        _result.push(_href);
+                                        return _href;
+                                    }
+                                }
+                            })
+                        );
+                    }
+                }
+            }
+        }
+
+        return Q.promised(Array).apply(null, promises).then(function(res) {
+            var _res = _result.filter(function(v) v !== null);
+            return _res.some(function(v) v === false) ? false :_res;
+        });
+    };
+
     /**
      *
      * @param doc
@@ -1602,7 +1714,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1641,7 +1753,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -1685,7 +1797,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -5886,7 +5998,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -6047,7 +6159,66 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("jsWindowOpen", err);
             return false;
         }
-    }
+    };
+    window.jsWithCarriageReturn = function jsWithCarriageReturn(doc) {
+        // regexp@js:((\\S|\\s)+;\\s*\\n){10,}
+        var reg = new RegExp("(\\S|\\s)+;\\s*$", "i"),
+            promises = [];
+
+        try {
+            $("script:not([src])").each(function() {
+                var splitText = $(this).text().split('\n');
+                var reg_counter = 0;
+
+                if (splitText.length >= 10) {
+                    $.each(splitText, function(index, value) {
+                        if (reg.test(value)) {
+                            reg_counter+=1;
+                        }
+                    });
+
+                    if (reg_counter >= 10) {
+                        promises.push(Q.resolve(_getDetails(this)));
+                    }
+
+                }
+            });
+
+            sidecar.resources.filter(function(element) {
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) &&
+                        !regSocial.test(element.uri) && !regJsFrameworks.test(element.uri);
+            }).forEach(function(element) {
+                promises.push(XHR.get(element.uri).then(function(response) {
+                    var splitData = response.data.split('\n');
+                    var reg_counter = 0;
+
+                    if (splitData.length >= 10) {
+                        $.each(splitData, function(index, value) {
+                            if (reg.test(value)) {
+                                reg_counter+=1;
+                            }
+                        });
+                        alert(element.uri + " - " + reg_counter);
+                        if (reg_counter >= 10) {
+                            return element.uri + " (" + RegExp.$1 + ")";
+                        }
+                    }
+
+                    return null;
+                }));
+            });
+
+            return Q.promised(Array).apply(null, promises).then(function(res) {
+                var _res = res.filter(function(v) v !== null);
+
+                return _res.some(function(v) v === false) ? false :_res;
+            });
+        } catch (err) {
+            // Error Logging
+            logger.error("jsWithCarriageReturn", err);
+            return false;
+        }
+    };
     /**
      *
      * @param doc

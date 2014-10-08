@@ -1561,13 +1561,11 @@ var logger;
                         //
                         $.ajax(_href, {
                             async: false,
-                            success: function(data, textStatus, XMLHttpRequest) {
-                                //
-                                if (reg.test(data)) {
-                                    _result.push(_getDetails(_this));
-                                }
-                            },
                             dataType: "text"
+                        }).done(function(data, textStatus, XMLHttpRequest) {
+                            if (reg.test(data)) {
+                                _result.push(_getDetails(_this));
+                            }
                         });
                     }
                 });
@@ -1607,13 +1605,11 @@ var logger;
                                 //
                                 $.ajax(_href, {
                                     async: false,
-                                    success: function(data, textStatus, XMLHttpRequest) {
-                                        //
-                                        if (reg.test(data)) {
-                                            _result.push(_href);
-                                        }
-                                    },
                                     dataType: "text"
+                                }).done(function(data, textStatus, XMLHttpRequest) {
+                                    if (reg.test(data)) {
+                                        _result.push(_href);
+                                    }
                                 });
                             }
                         }
@@ -1635,13 +1631,11 @@ var logger;
                         //
                         $.ajax(_src, {
                             async: false,
-                            success: function(data, textStatus, XMLHttpRequest) {
-                                //
-                                if (reg.test(data)) {
-                                    _result.push(_getDetails(_this));
-                                }
-                            },
                             dataType: "text"
+                        }).done(function(data, textStatus, XMLHttpRequest) {
+                            if (reg.test(data)) {
+                                _result.push(_getDetails(_this));
+                            }
                         });
                     }
 
@@ -1662,16 +1656,17 @@ var logger;
 
                 //
                 $.ajax({
-                    async: false,
+                    async: true,
                     url: _location + '/robots.txt',
                     type: "GET",
-                    success: function(data, textStatus, XMLHttpRequest) {
-                        //
-                        if (reg.test(data)) {
-                            _result = [RegExp.$1];
-                        }
-                    },
-                    dataType: "text"
+                    dataType: "text",
+                    xhrFields: {
+                        withCredentials: true
+                    }
+                }).done(function(data, textStatus, XMLHttpRequest) {
+                    if (reg.test(data)) {
+                        _result = [RegExp.$1];
+                    }
                 });
             }
         }
