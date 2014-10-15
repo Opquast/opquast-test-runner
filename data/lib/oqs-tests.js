@@ -6397,7 +6397,6 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                                 reg_counter+=1;
                             }
                         });
-                        alert(element.uri + " - " + reg_counter);
                         if (reg_counter >= 10) {
                             return element.uri + " (" + RegExp.$1 + ")";
                         }
@@ -6457,7 +6456,6 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                                 reg_counter+=1;
                             }
                         });
-                        alert(element.uri + " - " + reg_counter);
                         if (reg_counter >= 10) {
                             return element.uri + " (" + RegExp.$1 + ")";
                         }
