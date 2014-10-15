@@ -6361,7 +6361,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     };
     window.jsWithCarriageReturn = function jsWithCarriageReturn(doc) {
         // regexp@js:((\\S|\\s)+;\\s*\\n){10,}
-        var reg = new RegExp("(\\S|\\s)+;\\s*$", "i"),
+        var reg = new RegExp("(\\S|\\s)+;\\s*", "i"),
             promises = [];
 
         try {
