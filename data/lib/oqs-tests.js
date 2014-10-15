@@ -1650,6 +1650,117 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         });
     };
 
+    window.cssWithRedundantSpaces = function cssWithRedundantSpaces(doc) {
+        // "regexp@css:((\\s{4,}|\\t)(.|\\n)+?(?!    |\\t)){10,}"
+        var reg = new RegExp("^(\\s{4,}|\\t).+?", "i"),
+            promises = [],
+            _result = [];
+
+        // external
+        $("link[rel='stylesheet']", doc).each(function() {
+            var _this = this,
+                _href = $(this).attr('href');
+
+            // external
+            if (_href && _href.length) {
+                promises.push(
+                    $.ajax(_href, {
+                        async: true,
+                        dataType: "text"
+                    }).done(function(data, textStatus, XMLHttpRequest) {
+                        var splitText = data.split('\n');
+                        var reg_counter = 0;
+
+                        if (splitText.length >= 10) {
+                            $.each(splitText, function(index, value) {
+                                if (reg.test(value)) {
+                                    reg_counter+=1;
+                                }
+                            });
+
+                            if (reg_counter >= 10) {
+                                _result.push(_getDetails(_this));
+                            }
+                        }
+                    })
+                );
+            }
+        });
+
+        // internal
+        $('style', doc).each(function() {
+            var _this = this,
+                _data = $(this).text();
+
+            if (_data.length) {
+                var splitText = _data.split('\n');
+                var reg_counter = 0;
+
+                if (splitText.length >= 10) {
+                    $.each(splitText, function(index, value) {
+                        if (reg.test(value)) {
+                            reg_counter+=1;
+                        }
+                    });
+
+                    if (reg_counter >= 10) {
+                        promises.push(_getDetails(_this));
+                        _result.push(_getDetails(_this));
+                    }
+                }
+                //promises.push(Q.resolve(false));
+            }
+        });
+
+        // imported
+        var _styleSheets = doc.styleSheets;
+
+        for (var i = 0; i < _styleSheets.length; i++) {
+            //
+            var sheet = _styleSheets[i],
+                rules = sheet.cssRules;
+
+            //
+            for (var j = 0; j < rules.length; j++) {
+                //
+                if (rules[j].type == CSSRule.IMPORT_RULE) {
+                    var _sheet = rules[j].styleSheet,
+                        _href = _sheet.href;
+
+                    if (_href && _href.length) {
+
+                        promises.push(
+                            $.ajax(_href, {
+                                async: true,
+                                dataType: "text"
+                            }).done(function(data, textStatus, XMLHttpRequest) {
+                                var splitText = data.split('\n');
+                                var reg_counter = 0;
+
+                                if (splitText.length >= 10) {
+                                    $.each(splitText, function(index, value) {
+                                        if (reg.test(value)) {
+                                            reg_counter+=1;
+                                        }
+                                    });
+                                    if (reg_counter >= 10) {
+                                        _result.push(_href);
+                                        return _href;
+                                    }
+                                }
+                            })
+                        );
+                    }
+                }
+            }
+        }
+
+        return Q.promised(Array).apply(null, promises).then(function(res) {
+            var _res = _result.filter(function(v) v !== null);
+            return _res.some(function(v) v === false) ? false :_res;
+        });
+    };
+
     /**
      *
      * @param doc
@@ -3525,7 +3636,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -3533,7 +3644,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      */
     window.selectSameLabelsTitles = function htmlSelectSameLabelsTitles(doc) {
         return _htmlSameLabelsTitles("select");
-    }
+    };
     /**
      *
      * @param doc
@@ -3542,7 +3653,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     window.htmlSelectWithoutTitleAndLabel = function htmlSelectWithoutTitleAndLabel(doc) {
         //
         return _htmlFieldWithoutTitleAndLabel("select", false);
-    }
+    };
     /**
      *
      * @param doc
@@ -3574,7 +3685,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -3622,7 +3733,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -3631,7 +3742,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     window.textareaSameLabelsTitles = function htmlTextareaSameLabelsTitles(doc) {
         //
         return _htmlSameLabelsTitles("textarea");
-    }
+    };
     /**
      *
      * @param doc
@@ -3640,7 +3751,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     window.htmlTextareaWithoutTitleAndLabel = function htmlTextareaWithoutTitleAndLabel(doc) {
         //
         return _htmlFieldWithoutTitleAndLabel("textarea", false);
-    }
+    };
     /**
      *
      * @param doc
@@ -3690,7 +3801,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -3730,7 +3841,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -3777,7 +3888,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -3809,7 +3920,95 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
+
+    window.htmlWithCarriageReturn = function htmlWithCarriageReturn(doc) {
+        // "regexp@html:((\\S|\\s)+\\n\\s*\\n){10,}",
+        var result = [],
+            reg = new RegExp("^(\\S|\\s)+$", "i"),
+            reg2 = new RegExp("^\\s*$", "i");
+
+        //
+        try {
+            //
+            if ($("html").length) {
+                //
+                var source_html = sidecar.plainText;
+
+                var splitText = source_html.split('\n');
+                var reg1_flag = false;
+                var reg_counter = 0;
+
+                if (splitText.length >= 10) {
+                    $.each(splitText, function(index, value) {
+                        if (reg1_flag && reg2.test(value)) {
+                            reg_counter+=1;
+                        }
+                        if (reg.test(value)) {
+                            reg1_flag = true;
+                        } else {
+                            reg1_flag = false;
+                        }
+                    });
+                    if (reg_counter >= 10) {
+                        result.push(_getDetails($("html").get(0)));
+                    }
+
+                }
+            };
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("htmlWithCarriageReturn", err);
+            result = false;
+        }
+
+        //
+        return result;
+    };
+
+    window.htmlWithRedundantSpaces = function htmlWithRedundantSpaces(doc) {
+        // "regexp@html:((\\s{4,}|\\t)(.|\\n)+?(?!    |\\t)){10,}"
+        var result = [],
+            reg = new RegExp("^(\\s{4,}|\\t).+?", "i");
+
+        //
+        try {
+            //
+            if ($("html").length) {
+                //
+                var source_html = sidecar.plainText;
+
+                var splitText = source_html.split('\n');
+                var reg_counter = 0;
+
+                if (splitText.length >= 10) {
+                    $.each(splitText, function(index, value) {
+                        if (reg.test(value)) {
+                            reg_counter+=1;
+                        }
+                    });
+                    if (reg_counter >= 10) {
+                        result.push(_getDetails($("html").get(0)));
+                    }
+
+                }
+            };
+        }
+
+        //
+        catch (err) {
+            // Error Logging
+            logger.error("htmlWithRedundantSpaces", err);
+            result = false;
+        }
+
+        //
+        return result;
+    };
+
     /**
      *
      * @param doc
@@ -3826,7 +4025,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("http404", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -3859,7 +4058,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -3894,7 +4093,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -3926,7 +4125,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -3950,7 +4149,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             logger.error("countryServer", err);
             return false;
         });
-    }
+    };
     /**
      *
      * @param doc
@@ -3978,7 +4177,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -4025,7 +4224,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
         //
         return result;
-    }
+    };
     /**
      *
      * @param doc
@@ -6216,6 +6415,66 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         } catch (err) {
             // Error Logging
             logger.error("jsWithCarriageReturn", err);
+            return false;
+        }
+    };
+    window.jsWithRedundantSpaces = function jsWithRedundantSpaces(doc) {
+        // regexp@js:((\\s{4,}|\\t)(.|\\n)+?(?!    |\\t)){10,}
+
+        var reg = new RegExp("^(\\s{4,}|\\t).+?", "i"),
+            promises = [];
+
+        try {
+            $("script:not([src])").each(function() {
+                var splitText = $(this).text().split('\n');
+                var reg_counter = 0;
+
+                if (splitText.length >= 10) {
+                    $.each(splitText, function(index, value) {
+                        if (reg.test(value)) {
+                            reg_counter+=1;
+                        }
+                    });
+
+                    if (reg_counter >= 10) {
+                        promises.push(Q.resolve(_getDetails(this)));
+                    }
+
+                }
+            });
+
+            sidecar.resources.filter(function(element) {
+                return $.inArray(element.content_type || '', mimeJS) != -1 && !regCdns.test(element.uri) && !regAnalytics.test(element.uri) &&
+                        !regSocial.test(element.uri) && !regJsFrameworks.test(element.uri);
+            }).forEach(function(element) {
+                promises.push(XHR.get(element.uri).then(function(response) {
+                    var splitData = response.data.split('\n');
+                    var reg_counter = 0;
+
+                    if (splitData.length >= 10) {
+                        $.each(splitData, function(index, value) {
+                            if (reg.test(value)) {
+                                reg_counter+=1;
+                            }
+                        });
+                        alert(element.uri + " - " + reg_counter);
+                        if (reg_counter >= 10) {
+                            return element.uri + " (" + RegExp.$1 + ")";
+                        }
+                    }
+
+                    return null;
+                }));
+            });
+
+            return Q.promised(Array).apply(null, promises).then(function(res) {
+                var _res = res.filter(function(v) v !== null);
+
+                return _res.some(function(v) v === false) ? false :_res;
+            });
+        } catch (err) {
+            // Error Logging
+            logger.error("jsWithRedundantSpaces", err);
             return false;
         }
     };
