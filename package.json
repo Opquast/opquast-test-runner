@@ -1,7 +1,7 @@
 {
     "name": "opquast-tests",
     "fullName": "Opquast Test Framework (core code)",
-    "description": "",
+    "description": "This is the automated tests for the Opquast project",
     "author": "Temesis SAS (http://www.temesis.com/)",
     "contributors": [
         "Fabrice Bonny <fabrice.bonny@temesis.com>",
