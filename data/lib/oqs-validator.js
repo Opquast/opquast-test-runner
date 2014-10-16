@@ -2020,14 +2020,21 @@ var logger;
                     for (var subtest_id in test_actions.ontrue.chain) {
                         var subtest_actions = test_actions.ontrue.chain[subtest_id];
                         var subtest = tests[subtest_id];
+
                         promises.push(apply_test(doc, subtest, subtest_actions));
                     }
 
                     return Q.promised(Array).apply(null, promises).then(function(res){
                         res.forEach(function(r) {
-                            $.merge(_g_results, r.results);
-                            $.merge(_g_comments, r.comments);
-                            $.merge(_g_details, r.details);
+                            try {
+                                $.merge(_g_results, r.results);
+                                $.merge(_g_comments, r.comments);
+                                $.merge(_g_details, r.details);
+                            } catch (e) {
+                                $.merge(_g_results, ['i']);
+                                $.merge(_g_comments, ['Le test a échoué']);
+                                $.merge(_g_details, []);
+                            }
                         });
                         return {
                             results: _g_results,

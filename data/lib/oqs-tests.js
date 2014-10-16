@@ -1541,7 +1541,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
     window.cssWithCarriageReturn = function cssWithCarriageRturn(doc) {
         // "regexp@css:((\\S|\\s)+;\\s*\\n){10,}"
-        var reg = new RegExp("(\\S|\\s)+;\\s*$", "i"),
+        var reg = new RegExp("(\\S|\\s)+;\\s*", "i"),
             promises = [],
             _result = [];
 
@@ -1571,6 +1571,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                                 _result.push(_getDetails(_this));
                             }
                         }
+                    }).fail(function(data, textStatus, XMLHttpRequest) {
+                        _result.push(false);
                     })
                 );
             }
@@ -1593,11 +1595,9 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                     });
 
                     if (reg_counter >= 10) {
-                        promises.push(_getDetails(_this));
                         _result.push(_getDetails(_this));
                     }
                 }
-                //promises.push(Q.resolve(false));
             }
         });
 
@@ -1634,7 +1634,6 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                                     });
                                     if (reg_counter >= 10) {
                                         _result.push(_href);
-                                        return _href;
                                     }
                                 }
                             })
@@ -1704,11 +1703,9 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                     });
 
                     if (reg_counter >= 10) {
-                        promises.push(_getDetails(_this));
                         _result.push(_getDetails(_this));
                     }
                 }
-                //promises.push(Q.resolve(false));
             }
         });
 
@@ -1745,7 +1742,6 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                                     });
                                     if (reg_counter >= 10) {
                                         _result.push(_href);
-                                        return _href;
                                     }
                                 }
                             })
