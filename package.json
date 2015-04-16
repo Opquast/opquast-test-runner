@@ -6,8 +6,9 @@
     "contributors": [
         "Fabrice Bonny <fabrice.bonny@temesis.com>",
         "Mickael Hoareau <mickael.hoareau@temesis.com>",
-        "Olivier Meunier <olivier.meunier@temesis.com>"
+        "Olivier Meunier <olivier.meunier@temesis.com>",
+        "Samuel Martin <samuel.martin@temesis.com>"
     ],
-    "version": "1.6.7",
+    "version": "1.6.8",
     "license": "MPL 2.0"
 }
