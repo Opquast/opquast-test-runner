@@ -49755,6 +49755,210 @@
             }
         }
     },
+    "39788": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "39791": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "39793": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "40137": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun élément FORM n'a été détecté",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un élément FORM a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "39883": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun élément autre que A souligné",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément autre que A souligné",
+                "result": "nc"
+            }
+        }
+    },
+    "39939": {
+        "CSS_FONT_SIZE_LESS_THAN_12_PX": {
+            "onfalse": {
+                "comment": "aucune police ne possède une taille inférieure à 12px",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une police possède une taille inférieure à 12px",
+                "result": "i"
+            }
+        }
+    },
+    "39954": {
+        "TITLE": {
+            "onfalse": {
+                "comment": "aucun élément TITLE n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "TITLE_W_TEXT": {
+                        "onfalse": {
+                            "comment": "TITLE est vide",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "chain": {
+                                "TITLE_W_DEFAULT_VALUE": {
+                                    "onfalse": {
+                                        "comment": "aucun élément TITLE avec une valeur par défaut n'a été détecté",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "un élément TITLE avec une valeur par défaut a été détecté",
+                                        "result": "nc"
+                                    }
+                                }
+                            },
+                            "comment": "TITLE est rempli",
+                            "result": "i"
+                        }
+                    }
+                },
+                "comment": "un élement TITLE a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "40027": {
+        "A_W_MAILTO_HREF_ATTRIBUTE": {
+            "onfalse": {
+                "comment": "aucun élément A avec un HREF mailto n'a été détecté",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un élément A avec un HREF mailto a été détecté",
+                "result": "nc"
+            }
+        }
+    },
+    "40062": {
+        "CSS_MEDIA_PRINT": {
+            "onfalse": {
+                "comment": "aucune CSS pour l'impression n'a été détectée",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins une CSS pour l'impression a été détectée",
+                "result": "c"
+            }
+        }
+    },
+    "40076": {
+        "FAVICON": {
+            "onfalse": {
+                "comment": "aucun appel valide à un favicon n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un appel valide à un favicon a été détecté",
+                "result": "i"
+            }
+        }
+    },
+    "40109": {
+        "CHARSET_UNICODE": {
+            "onfalse": {
+                "comment": "l'encodage détecté n'est pas UTF-8",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "l'encodage détecté est UTF-8",
+                "result": "c"
+            }
+        }
+    },
+    "40110": {
+        "META_CHARSET_VALID": {
+            "onfalse": {
+                "comment": "aucun élément META CONTENT-TYPE précisant le CHARSET n'a été détecté",
+                "result": "nc"
+            },
+            "ontrue": {
+                "chain": {
+                    "META_CHARSET_REAL": {
+                        "onfalse": {
+                            "comment": "le CHARSET précisé par le META CONTENT-TYPE ne correspond pas au charset réél",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "le CHARSET précisé par le META CONTENT-TYPE correspond au charset réél",
+                            "result": "c"
+                        }
+                    }
+                },
+                "comment": "le META CONTENT-TYPE précisant le CHARSET est présent",
+                "result": "i"
+            }
+        }
+    },
+    "40113": {
+        "CSS_FONTS_NUMBER_4": {
+            "onfalse": {
+                "comment": "pas plus de 4 polices définies",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "plus de 4 polices définies",
+                "result": "nc"
+            }
+        }
+    },
+    "40112": {
+        "CSS_SERIF_FONT": {
+            "onfalse": {
+                "comment": "aucune police serif connue n'a été détecté",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "au moins une police serif a été détectée",
+                "result": "nc"
+            }
+        }
+    },
     "FORM": {
         "FORM": {
             "onfalse": {
