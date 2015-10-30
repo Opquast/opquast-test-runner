@@ -684,7 +684,7 @@ var logger;
     window._getHttpDetails = function _getHttpDetails(url, headers) {
         //
         var _headers = "";
-        for each (header in Object.keys(headers)) {
+        for (header of Object.keys(headers)) {
             _headers += "\n" + header + ": " + headers[header];
         }
 
