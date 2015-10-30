@@ -163,7 +163,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                                             var _type = "text";
 
                                             //
-                                            for each (var attribute in _tmp["attributes"]) {
+                                            for (var attribute of _tmp["attributes"]) {
                                                 if (attribute["name"] == "type") {
                                                     _type = attribute["value"];
                                                 }
@@ -520,7 +520,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                                 try {
                                     var fn = window;
 
-                                    for each (var i in _function.split(".")) {
+                                    for (var i of _function.split(".")) {
                                         fn = fn[i];
                                     }
 
@@ -935,7 +935,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                         return $.trim(element);
                     });
 
-                    for each (var selector in selectors) {
+                    for (var selector of selectors) {
                         if (reg.test(selector)) {
                             var selectorOut = selector.replace(/:focus/, "");
 
@@ -1008,7 +1008,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                         return $.trim(element);
                     });
 
-                    for each (var selector in selectors) {
+                    for (var selector of selectors) {
                         if (reg.test(selector)) {
                             var selectorOut = selector.replace(/:hover$/, ""), property = rule.declarations[i]["property"];
 
@@ -3858,7 +3858,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
                 if ($.inArray(url, urls) == -1) {
                     //
-                    for each (var _url in urls) {
+                    for (var _url of urls) {
                         //
                         if (_url.toLowerCase() == url.toLowerCase()) {
                             //
@@ -4998,7 +4998,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
             //
             var tmp = [];
-            for each (var item in result) {
+            for (var item of result) {
                 if ($.inArray(item, tmp) == -1) {
                     tmp.push(item);
                 }
@@ -7467,7 +7467,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                         return $.trim(element);
                     });
 
-                    for each (var selector in selectors) {
+                    for (var selector of selectors) {
                         if (reg.test(selector)) {
                             var selectorLink = selector.replace(/:visited$/, ""),
                                 property = rule.declarations[i]["property"];
