@@ -93,6 +93,7 @@
     "CSS_FOCUS_STYLE": "oqs@css:cssOutline",
     "CSS_FONTS_NUMBER": "oqs@css:cssNumberOfFonts",
     "CSS_FONTS_NUMBER_4": "oqs@css:cssNumberOfFonts4",
+    "CSS_FONT_SIZE_LESS_THAN_12_PX": "oqs@css:cssFontSizeLessThan12Px",
     "CSS_FONT_SIZE_W_ABSOLUTE_VALUE": "oqs@css:cssAbsoluteFontSize",
     "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_IN_FORM": "oqs@css:cssAbsoluteFontSizeInForm",
     "CSS_FONT_SIZE_W_ABSOLUTE_VALUE_ON_SCREEN": "oqs@css:cssAbsoluteFontSizeOnScreen",
