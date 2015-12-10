@@ -600,9 +600,9 @@ var logger;
                 //
                 var _attribute = _attributes[j],
                     _tmp = {
-                        "name": _attribute.nodeName,
+                        "name": _attribute.name,
                         "namespace": "",
-                        "value": _attribute.nodeValue
+                        "value": _attribute.value
                     };
 
                 //

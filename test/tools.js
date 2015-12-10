@@ -16,7 +16,7 @@ const {readURI} = require('sdk/net/url');
 const self = require("sdk/self");
 const {pathFor} = require("sdk/system");
 const {getBrowserForTab, getOwnerWindow} = require('sdk/tabs/utils');
-const {startServerAsync} = require('sdk/test/httpd');
+const {startServerAsync} = require('./httpd');
 const {setTimeout, clearTimeout} = require('sdk/timers');
 const {URL} = require('sdk/url');
 
