@@ -1,3 +1,3 @@
 function bla() {
-    setTimeout("location.replace('2.html')", 300000);
+    setTimeout("location.replace('http://www.example.com/')", 300000);
 }

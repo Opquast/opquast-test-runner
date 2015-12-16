@@ -2,10 +2,8 @@ from json import load
 from os import listdir, getcwd
 from os.path import exists, join
 
-rules_path = 'test/fixtures/rules/'
-rules_debug_path = 'test/fixtures/rules-debug/'
-rules_impossible_path = 'test/fixtures/rules-impossible/'
-rules_stock_path = 'test/fixtures/rules-stock/'
+from paths import *
+
 
 print 'RULES'
 
@@ -17,7 +15,7 @@ for dir in listdir(rules_path):
         print '\t\t' + dir + ' exists in impossible'
     if exists(join(getcwd(), rules_stock_path, dir) + '/'):
         print '\t\t' + dir + ' exists in stock'
-        
+
 print '\tDEBUG'
 for dir in listdir(rules_debug_path):
     if exists(join(getcwd(), rules_path, dir) + '/'):
@@ -44,11 +42,6 @@ for dir in listdir(rules_stock_path):
         print '\t\t' + dir + ' exists in debug'
     if exists(join(getcwd(), rules_impossible_path, dir) + '/'):
         print '\t\t' + dir + ' exists in impossible'
-        
-sets_path = 'test/fixtures/sets/'
-sets_debug_path = 'test/fixtures/sets-debug/'
-sets_impossible_path = 'test/fixtures/sets-impossible/'
-sets_stock_path = 'test/fixtures/sets-stock/'
 
 print 'SETS'
 
@@ -60,7 +53,7 @@ for dir in listdir(sets_path):
         print '\t\t' + dir + ' exists in impossible'
     if exists(join(getcwd(), sets_stock_path, dir) + '/'):
         print '\t\t' + dir + ' exists in stock'
-        
+
 print '\tDEBUG'
 for dir in listdir(sets_debug_path):
     if exists(join(getcwd(), sets_path, dir) + '/'):

@@ -602,7 +602,7 @@ var logger;
                     _tmp = {
                         "name": _attribute.nodeName,
                         "namespace": "",
-                        "value": _attribute.nodeValue
+                        "value": _attribute.value
                     };
 
                 //

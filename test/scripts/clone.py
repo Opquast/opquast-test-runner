@@ -1,24 +1,55 @@
-from shutil import copy
-from os import listdir
-from json import load
+from json import load, dumps
+from os import getcwd
+from os.path import exists, join
+from shutil import copytree
 
-json_criteria = load(open('test/scripts/criteria.json'))
-id = ""
+from paths import *
 
-for dir in listdir('test/fixtures'):
-    if dir not in ['rules', 'rules-debug', 'rules-impossible', 'rules-stock', 'sets', 'sets-debug', 'sets-impossible', 'sets-stock'] and dir != id:
-        for x in range(20):
-            _id = json_criteria[id].replace('.', '-').replace('[', '').replace(']', '')
-            _dir = json_criteria[dir].replace('.', '-').replace('[', '').replace(']', '').lower()
 
-            for format in ['html', 'css', 'screen.css', 'print.css', 'js', 'json', 'rss', 'atom']:
-                try:
-                    copy ('test/fixtures/%s/%s-%s_%s.%s' % (id, _id, id, x + 1, format), 'test/fixtures/%s/%s-%s_%s.%s' % (dir, _dir, dir, x + 1, format))
-                except:
-                    pass
+sets = {}
+json_sets = load(open(sets_json_path))
 
-            for file in ['_all.json', 'robots.txt', 'favicon.ico', 'download.pdf']:
-                try:
-                    copy ('test/fixtures/%s/%s' % (id, file), 'test/fixtures/%s/%s' % (dir, file))
-                except:
-                    pass
+for key, value in json_sets.items():
+    if key in ['TABLE', 'FORM', 'LIST', 'IMG']:
+        continue
+
+    val = dumps(value)
+    try:
+        sets[val].append(key)
+    except:
+        sets[val] = []
+        sets[val].append(key)
+
+for key, value in sets.items():
+    ok = []
+    ko = []
+    types = []
+
+    for v in value:
+        if exists(join(getcwd(), sets_path, v)):
+            ok.append(v)
+            types.append('N')
+        elif exists(join(getcwd(), sets_debug_path, v)):
+            ok.append(v)
+            types.append('D')
+        elif exists(join(getcwd(), sets_impossible_path, v)):
+            ok.append(v)
+            types.append('I')
+        else:
+            ko.append(v)
+
+    if len(ok) and len(ko):
+        types = set(types)
+
+        print types
+        print "%s => %s" % (ok, ko)
+
+        for dir in ko:
+            if len(types) > 1:
+                print 'mix'
+            elif types == set(['N']):
+                copytree(join(getcwd(), sets_path, ok[0]), join(getcwd(), sets_path, dir))
+            elif types == set(['D']):
+                copytree(join(getcwd(), sets_debug_path, ok[0]), join(getcwd(), sets_debug_path, dir))
+            elif types == set(['I']):
+                copytree(join(getcwd(), sets_impossible_path, ok[0]), join(getcwd(), sets_impossible_path, dir))
