@@ -18,9 +18,10 @@ Object.keys(fixtures).forEach(function(root) {
             let html_uri = server.getURI(html_file.split("/").slice(-1));
 
             openPage(html_uri).then(function(result) {
+// FIXME e10s: do not use contentWindow
                 let har = getHarObject(result.browser.contentWindow, html_file, fixtures[root].json);
 
-                return launchTests(result.browser.contentWindow, har, rule).then(function(res){
+                return launchTests(result.browser, har, rule).then(function(res){
                     res.tests.oaa_results.forEach(function(test) {
                         if(test.id == rule) {
                             assert.ok((expected == "true" && test.result == "c") || (expected == "false" && test.result == "nc"), rule + " " + expected);

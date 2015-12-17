@@ -18,6 +18,7 @@ Object.keys(fixtures).forEach(function(root) {
             let html_uri = server.getURI(html_file.split("/").pop());
 
             openPage(html_uri).then(function(result) {
+// FIXME e10s: do not use contentWindow
                 let foo = {},
                     bar={'c':0,'nc':0,'na':0,'i':0},
                     har = getHarObject(result.browser.contentWindow, html_file, fixtures[root].json);
@@ -27,7 +28,7 @@ Object.keys(fixtures).forEach(function(root) {
                     foo[aElement[0].toLowerCase()] = parseInt(aElement[1], 10);
                 });
 
-                return launchTests2(result.browser.contentWindow, har, rule).then(function(result){
+                return launchTests2(result.browser, har, rule).then(function(result){
                     result.tests.oaa_results.forEach(function(test) {
                         test.results_list.map(function(element){
                             bar[element]++;

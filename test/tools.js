@@ -268,7 +268,8 @@ const getHarObject = function(window, htmlFile, jsonFiles) {
 exports.getHarObject = getHarObject;
 
 
-let _launchTests = function(domWindow, har, test, path) {
+let _launchTests = function(browser, har, test, path) {
+    let domWindow = browser.contentWindow;
     let startTime = new Date();
 
     // Prepare checklists
@@ -328,15 +329,15 @@ let _launchTests = function(domWindow, har, test, path) {
     });
 };
 
-let launchTests = function(domWindow, har, test) {
-    return _launchTests(domWindow, har, test, 'rulesets.json');
+let launchTests = function(browser, har, test) {
+    return _launchTests(browser, har, test, 'rulesets.json');
 };
 
 exports.launchTests = launchTests;
 
 
-let launchTests2 = function(domWindow, har, test) {
-    return _launchTests(domWindow, har, test, '../data/rulesets.json');
+let launchTests2 = function(browser, har, test) {
+    return _launchTests(browser, har, test, '../data/rulesets.json');
 };
 
 exports.launchTests2 = launchTests2;
