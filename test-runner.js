@@ -1,5 +1,6 @@
 'use strict';
 
+const {Ci, Cu} = require("chrome");
 const {mix} = require('sdk/core/heritage');
 const promise = require('sdk/core/promise');
 const SandBox = require('sdk/loader/sandbox');
