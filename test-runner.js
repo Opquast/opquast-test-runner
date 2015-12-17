@@ -9,7 +9,7 @@ const {descriptor} = require('toolkit/loader');
 
 const {validateOptions} = require('sdk/deprecated/api-utils');
 
-const {dnsLookup, extractEvents, xhr} = require('./utils/extras');
+const {dnsLookup, extractEvents, xhr} =  Cu.import(module.uri.replace('test-runner.js', 'utils/extras.jsm'), {});
 const {har2res} = require('./utils/har-tools');
 
 // Javascript files location

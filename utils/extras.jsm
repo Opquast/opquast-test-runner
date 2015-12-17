@@ -1,8 +1,14 @@
 "use strict";
 
-const {Cc, Ci, Cr} = require("chrome");
-const Q = require("sdk/core/promise");
-const {stringify} = require("sdk/querystring");
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+var Cu = Components.utils;
+var Cr = Components.results;
+
+
+var EXPORTED_SYMBOLS = [ 'extractEvents', 'dnsLookup', 'xhr' ];
+
+const Q = Cu.import('resource://gre/modules/Promise.jsm', {}).Promise;
 
 const esl = Cc["@mozilla.org/eventlistenerservice;1"]
             .getService(Ci.nsIEventListenerService);
@@ -36,8 +42,6 @@ const extractEvents = function(win) {
 
     return events;
 };
-exports.extractEvents = extractEvents;
-
 
 const dnsLookup = function(domain, callback) {
     let deffered = Q.defer();
@@ -67,8 +71,6 @@ const dnsLookup = function(domain, callback) {
 
     return promise;
 };
-exports.dnsLookup = dnsLookup;
-
 
 const xhr = {
     Request: function() {
@@ -160,7 +162,18 @@ const xhr = {
             xr.setRequestHeader(i, headers[i]);
         }
 
-        xr.send(stringify(data));
+        if (data && typeof(data) == 'string') {
+            xr.send(data);
+        }
+        else if (data) {
+            let formData = Cc['@mozilla.org/files/formdata;1'].
+                            createInstance(Ci.nsIDOMFormData);
+            Object.keys(data).forEach(function(name) { formData.append(name, data[name]); });
+            xr.send(formData);
+        }
+        else {
+            xr.send(null);
+        }
         return result.promise;
     },
 
@@ -176,4 +189,4 @@ const xhr = {
         return this.query(url, "GET", null, headers, true);
     }
 };
-exports.xhr = xhr;
+
