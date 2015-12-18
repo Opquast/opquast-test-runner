@@ -1551,26 +1551,33 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         //
         try {
             //
-            var treeWalker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT, {
-                acceptNode : function(_node) {
-                    //
-                    if ($.inArray(_node.tagName.toUpperCase(), exclusions) == -1) {
-					    var _tmp = $(_node).clone().children().remove().end().text();
+            $("body").find("*").andSelf().each(function() {
+             	//
+				var parents = $(this).parents(), found = false;;
+				
+				if ($.inArray(this.tagName.toUpperCase(), exclusions) != -1) {
+					return true;
+				}
+				
+				$(parents).each(function() {
+					if($.inArray(this.tagName.toUpperCase(), exclusions) != -1) {
+						found = true;
 						
-						if(_tmp == _tmp.toUpperCase() && _tmp != _tmp.toLowerCase()) {
-                        	return NodeFilter.FILTER_ACCEPT;
-                    	}
-                    }
-
-                    return NodeFilter.FILTER_REJECT;
-                }
-            }, false);
-
-            //
-            while (treeWalker.nextNode()) {
+						return false;
+					}
+				});
+				
+				if (found) {
+					return true;
+				}
+				
                 //
-                result.push(_getDetails(treeWalker.currentNode));
-            }
+            	var _tmp = $(this).clone().children().remove().end().text();
+					
+				if(_tmp == _tmp.toUpperCase() && _tmp != _tmp.toLowerCase()) {
+                	result.push(_getDetails(this));
+            	}
+            });
         }
 
         //
@@ -3555,8 +3562,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     window.moreExtThenIntLinks = function htmlMoreExtThenIntLinks(doc) {
         //
         var result = [],
-            int = [],
-            ext = [];
+            int_links = [],
+            ext_links = [];
 
         //
         try {
@@ -3580,18 +3587,18 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
                         //
                         if (link == domain) {
-                            int.push(this);
+                            int_links.push(this);
                         } else {
-                            ext.push(this);
+                            ext_links.push(this);
                         }
                     }
                 }
             });
 
             //
-            if (ext.length > int.length) {
+            if (ext_links.length > int_links.length) {
                 //
-                result = ext.map(_getDetails);
+                result = ext_links.map(_getDetails);
             }
         }
 
@@ -6355,7 +6362,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
 
                     return null;
                 }).then(null, function(err) {
-                    logger.error("jsRefresh", err);
+                    logger.error("jsRedirect", err);
                     return false;
                 }));
             });
@@ -6371,7 +6378,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
         } catch (err) {
             // Error Logging
-            logger.error("jsRefresh", err);
+            logger.error("jsRedirect", err);
             return false;
         }
     };
@@ -6692,7 +6699,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
      * @return
      */
     window.robotsPresence = function robotsPresence(doc) {
-        var reg = new RegExp("^(user-agent|sitemap):(.+)$", "im");
+        var reg = new RegExp("^(user-agent|sitemap):(.+)$", "img");
 
         return XHR.get("/robots.txt").then(function(response) {
             if (response.status !== 200 || !reg.test(response.data)) {
@@ -6720,8 +6727,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                 return [];
             }
 
-            while(reg.test(response.data)) {
-                var sitemap = $.trim(RegExp.$1);
+            if(reg.test(response.data)) {
+            	var sitemap = $.trim(RegExp.$1);
                 promises.push(XHR.partial(sitemap).then(function(resp) {
                     if (resp.status !== 200) {
                         return [];
@@ -6732,12 +6739,14 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
                     logger.error("robotsSitemap", err);
                     return false;
                 }));
+                
+                return Q.promised(Array).apply(null, promises).then(function(res) {
+		            var _res = res.filter(function(v) v !== null);
+		            return _res.some(function(v) v === false) ? false :_res;
+		        });
+            } else {
+            	return [];
             }
-
-            return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
-            });
         }).then(null, function(err) {
             // Error Logging
             logger.error("robotsSitemap", err);

@@ -1,0 +1,35 @@
+{
+    "/GR-63-29631_1.html": {
+        "_contentType": "text/html",
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "gzip"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    },
+    "/GR-63-29631_1.js": {
+        "_contentType": "text/javascript",
+        "headers": [
+            {
+                "name": "content-length",
+                "value": 300
+            }
+        ]
+    },
+    "/GR-63-29631_1.css": {
+        "_contentType": "text/css",
+        "headers": [
+            {
+                "name": "content-encoding",
+                "value": "deflate"
+            }, {
+                "name": "content-length",
+                "value": 301
+            }
+        ]
+    }
+}

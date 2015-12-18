@@ -8,9 +8,10 @@ $.URL = function(url) {
     if (!(this instanceof $.URL)) {
         return new $.URL(url);
     }
-
-    var node = document.createElement("a");
-    node.href = url;
+    
+    //var node = document.createElement("a");
+    //node.href = url;
+    var node = $('<a href="' + url + '"></a>"')[0];
 
     this.scheme = node.protocol.split(":")[0];      // => "http"
     this.hostname = node.hostname;                  // => "example.com"

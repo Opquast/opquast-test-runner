@@ -1,5 +1,10 @@
+# -*- coding: utf-8 -*-
+
 from json import load
-from os import listdir
+from os import listdir, getcwd
+from os.path import join
+from shutil import move
+from sys import exc_info
 
 from paths import *
 
@@ -59,3 +64,47 @@ print sorted(rulesets_json.difference(rulesets_dir))
 print '----------------'
 print "in dir and not in json"
 print sorted(rulesets_dir.difference(rulesets_json))
+
+json_criteria = load(open(join(getcwd(), 'test/scripts', 'criteria.json')))
+
+print '----------------'
+print 'SETS'
+for id in listdir(join(getcwd(), sets_path)):
+    for file in listdir(join(getcwd(), sets_path, id)):
+        try:
+            name = json_criteria[id].replace('[', '').replace(']', '').replace('.', '-').replace(' ', '').replace(u'É', 'E').replace(u'é', 'e').upper()
+            _name = '-'.join(file.split('-')[:-1])
+            _id = file.split('-')[-1].split('_')[0]
+
+            if _name not in (name, '') or _id not in (id, ''):
+                _file = '%s-%s_%s' % (name, id, file.split('_')[1])
+                move(join(getcwd(), sets_path, id, file), join(getcwd(), sets_path, id, _file))
+
+        except:
+            print '\t\t%s (%s)' % (file, exc_info()[0])
+
+print '----------------'
+print 'DEBUG'
+for id in listdir(join(getcwd(), sets_debug_path)):
+    for file in listdir(join(getcwd(), sets_debug_path, id)):
+        try:
+            name = json_criteria[id].replace('[', '').replace(']', '').replace('.', '-').replace(' ', '').replace(u'É', 'E').replace(u'é', 'e').upper()
+            _name = '-'.join(file.split('-')[:-1])
+            _id = file.split('-')[-1].split('_')[0]
+
+            if _name not in (name, '') or _id not in (id, ''):
+                _file = '%s-%s_%s' % (name, id, file.split('_')[1])
+                move(join(getcwd(), sets_debug_path, id, file), join(getcwd(), sets_debug_path, id, _file))
+
+        except:
+            print '\t\t%s (%s)' % (file, exc_info()[0])
+
+# for dir in listdir(join(getcwd(), sets_debug_path)):
+#     for file in listdir(join(getcwd(), sets_path, dir)):
+#         if '.html' in file and dir not in file:
+#             print "debug: %s <> %s" % (dir, file)
+#
+# for dir in listdir(join(getcwd(), sets_impossible_path)):
+#     for file in listdir(join(getcwd(), sets_path, dir)):
+#         if '.html' in file and dir not in file:
+#             print "impossible: %s <> %s" % (dir, file)

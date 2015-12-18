@@ -1,0 +1,21 @@
+/* Ceci est un commentaire
+ qui occupe plusieurs lignes ! */
+body {
+	color: purple;
+	background-color: yellow;
+	font-size: 16px;
+	font-family: Arial;
+	font-style: italic;
+	border: 5px solid red;
+}
+
+/* Ceci est un commentaire
+ qui occupe plusieurs lignes ! */
+p {
+	color: blue;
+	background-color: pink;
+	font-size: 16px;
+	font-family: Arial;
+	font-style: italic;
+	border: 5px solid red;
+}

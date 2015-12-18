@@ -12,5 +12,7 @@ sets_debug_path = 'test/fixtures/sets-debug/'
 sets_impossible_path = 'test/fixtures/sets-impossible/'
 sets_stock_path = 'test/fixtures/sets-stock/'
 
+sets_zombies_path = 'test/fixtures/zombies/'
+
 sets_json_path = 'data/rulesets.json'
 sets_stock_json_path = 'test/rulesets-stock.json'
