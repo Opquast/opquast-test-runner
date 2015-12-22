@@ -106,16 +106,16 @@ const createTestRunner = function(opts) {
         },
         har: {
             is: ['object'],
-            ok: function(val) typeof(val.entries) !== 'undefined' && Array.isArray(val.entries)
+            ok: (val) => { return typeof(val.entries) !== 'undefined' && Array.isArray(val.entries)}
         },
         extractObjects: {
-            map: function(val) typeof(val) === 'boolean' && val || false
+            map: (val) => { return typeof(val) === 'boolean' && val || false}
         },
         timeout: {
-            map: function(val) parseInt(val) || -1
+            map: (val) => { return parseInt(val) || -1 }
         },
         runOptions: {
-            map: function(val) typeof(val) === 'object' && val || {}
+            map: (val) => { return typeof(val) === 'object' && val || {}}
         }
     };
 
@@ -124,16 +124,16 @@ const createTestRunner = function(opts) {
     // Tests runner options
     let runRequirements = {
         debug_validator: {
-            map: function(val) typeof(val) === 'boolean' ? val : false,
+            map: (val) => typeof(val) === 'boolean' ? val : false,
         },
         timing_validator: {
-            map: function(val) typeof(val) === 'boolean' ? val : false,
+            map: (val) => typeof(val) === 'boolean' ? val : false,
         },
         show_errors: {
-            map: function(val) typeof(val) === 'boolean' ? val : false,
+            map: (val) => typeof(val) === 'boolean' ? val : false,
         },
         config_saveAndRefresh_delay: {
-            map: function(val) typeof(val) === 'number' ? parseInt(val) : 1000,
+            map: (val) => typeof(val) === 'number' ? parseInt(val) : 1000,
         }
     };
     options.runOptions = validateOptions(options.runOptions, runRequirements);
