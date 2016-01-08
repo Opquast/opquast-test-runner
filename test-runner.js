@@ -95,12 +95,11 @@ addRuleSets(dataRoot + '/rulesets.json');
 
 
 // Test Runner
-const createTestRunner = function(opts) {
+const createTestRunner = function(domWindow, opts) {
     // Global options
+    // note: we cannot set domWindow into options, as we stringify options
+    // later and domWindow is not "json" compatible
     let requirements = {
-        sandbox: {
-            is: ['object']
-        },
         plainText: {
             is: ['string']
         },
@@ -116,6 +115,9 @@ const createTestRunner = function(opts) {
         },
         runOptions: {
             map: (val) => { return typeof(val) === 'object' && val || {}}
+        },
+        createResourceIfEmpty: {
+            map: (val) => { return typeof(val) === 'boolean' && val || false}
         }
     };
 
@@ -138,10 +140,14 @@ const createTestRunner = function(opts) {
     };
     options.runOptions = validateOptions(options.runOptions, runRequirements);
 
+    let sandbox = SandBox.sandbox(null, {
+        sandboxPrototype: domWindow,
+        wantXrays: false,
+        wantComponents: false
+    });
 
     let resources = [];
     let pageInfo = {};
-
 
     let injectJS = function(path) {
         let code = null;
@@ -151,13 +157,13 @@ const createTestRunner = function(opts) {
             throw new Error('Unable to open "' + path + '".');
         }
 
-        SandBox.evaluate(options.sandbox, code);
+        SandBox.evaluate(sandbox, code);
     };
 
     let evaluate = function(func) {
         let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
         let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
-        return SandBox.evaluate(options.sandbox, code);
+        return SandBox.evaluate(sandbox, code);
     };
 
 
@@ -178,7 +184,7 @@ const createTestRunner = function(opts) {
 
         // Add some needed globals
         let _xhr = xhrWrapper(evaluate, options.har);
-        Object.defineProperties(options.sandbox, descriptor({
+        Object.defineProperties(sandbox, descriptor({
             dnsLookup: dnsLookup,
             extractEvents: extractEvents,
             Q: promise,
@@ -194,25 +200,46 @@ const createTestRunner = function(opts) {
             return $.extractPageInfo();
         })));
 
+        let p;
         // Extract flash objects if asked for
         if (!options.extractObjects) {
-            return promise.resolve().then(function() {
+            p = promise.resolve().then(function() {
+                har2res(options.har, resources);
+            });
+        }
+        else {
+            p =  evaluate(function() {
+                return $.extractObjects();
+            })
+            .then(function(swfObjects) {
+                swfObjects.forEach(function(entry) {
+                    if (entry !== null) {
+                        options.har.entries.push(entry);
+                    }
+                });
+                // Convert resources
                 har2res(options.har, resources);
             });
         }
 
-        return evaluate(function() {
-            return $.extractObjects();
-        })
-        .then(function(swfObjects) {
-            swfObjects.forEach(function(entry) {
-                if (entry !== null) {
-                    options.har.entries.push(entry);
-                }
-            });
-
-            // Convert resources
-            har2res(options.har, resources);
+        return p.then(function() {
+            if (options.createResourceIfEmpty && resources.length === 0) {
+                let doc = domWindow.document;
+                resources.push({
+                    date: doc.lastModified,
+                    modified: doc.lastModified,
+                    expires: null,
+                    content_type: doc.contentType,
+                    charset: doc.characterSet,
+                    size: domWindow.XMLSerializer().serializeToString(doc).length,
+                    headers: {},
+                    uri: domWindow.location.href,
+                    referrer: "",
+                    method: "GET",
+                    status: 200,
+                    status_text: "200 OK"
+                });
+            }
         });
     };
 
@@ -277,15 +304,16 @@ const createTestRunner = function(opts) {
             if (timeout) {
                 clearTimeout(timeout);
             }
-            deferred.resolve(result);
+            deferred.resolve({
+                pageInfo: pageInfo,
+                resources: resources,
+                results: result
+            });
         });
-
         return deferred.promise;
     };
 
     return {
-        pageInfo: pageInfo,
-        resources: resources,
         init: init,
         run: runTests
     };

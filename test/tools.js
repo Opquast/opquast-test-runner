@@ -11,7 +11,6 @@ const {Cc, Ci} = require('chrome');
 const {mix} = require('sdk/core/heritage');
 const Q = require('sdk/core/promise');
 const file = require("sdk/io/file");
-const SandBox = require("sdk/loader/sandbox");
 const {readURI} = require('sdk/net/url');
 const self = require("sdk/self");
 const {pathFor} = require("sdk/system");
@@ -278,16 +277,8 @@ let _launchTests = function(browser, har, test, path) {
         checklists = JSON.parse(result);
     });
 
-    // New sandbox for testRunner
-    let sandbox = SandBox.sandbox(null, {
-        sandboxPrototype: domWindow,
-        wantXrays: false,
-        wantComponents: false
-    });
-
     // Launch tests
-    let runner = testRunner.create({
-        sandbox: sandbox,
+    let runner = testRunner.create(domWindow, {
         har: har,
         plainText: har.entries[0].response.content.text,
         extractObjects: false
@@ -297,15 +288,16 @@ let _launchTests = function(browser, har, test, path) {
     addRuleSets(URL(path, module.uri).toString());
 
     return runner.run([test])
-    .then(function(results) {
+    .then(function(runnerData) {
+        let {pageInfo, resources, results } = runnerData;
         // Format result set
         return {
             "tests": {
-                "title": runner.pageInfo.title || "",
-                "links": runner.pageInfo.links || [],
-                "images": runner.pageInfo.images || [],
-                "stats": runner.pageInfo.stats,
-                "resources": runner.resources || [],
+                "title": pageInfo.title || "",
+                "links": pageInfo.links || [],
+                "images": pageInfo.images || [],
+                "stats": pageInfo.stats,
+                "resources": resources || [],
                 "oaa_results": results.filter(function(v) {
                     return v.id in checklists;
                 }).map(function(v) {
