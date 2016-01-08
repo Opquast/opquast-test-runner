@@ -5,8 +5,7 @@ var Ci = Components.interfaces;
 var Cu = Components.utils;
 var Cr = Components.results;
 
-
-var EXPORTED_SYMBOLS = [ 'extractEvents', 'dnsLookup', 'xhr' ];
+this.EXPORTED_SYMBOLS = [ 'extractEvents', 'dnsLookup', 'xhr' ];
 
 const Q = Cu.import('resource://gre/modules/Promise.jsm', {}).Promise;
 
@@ -19,7 +18,7 @@ const threadManager = Cc["@mozilla.org/thread-manager;1"]
 const xmlhttprequest = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"];
 
 
-const extractEvents = function(win) {
+this.extractEvents = function(win) {
     let tw = win.document.createTreeWalker(
         win.document,
         win.NodeFilter.SHOW_ELEMENT,
@@ -43,7 +42,7 @@ const extractEvents = function(win) {
     return events;
 };
 
-const dnsLookup = function(domain, callback) {
+this.dnsLookup = function(domain, callback) {
     let deffered = Q.defer();
     var listener = {
         onLookupComplete: function(inRequest, inRecord, inStatus) {
@@ -72,7 +71,7 @@ const dnsLookup = function(domain, callback) {
     return promise;
 };
 
-const xhr = {
+this.xhr = {
     Request: function() {
         return xmlhttprequest.createInstance();
     },

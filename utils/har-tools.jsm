@@ -1,7 +1,7 @@
 "use strict";
 var EXPORTED_SYMBOLS = [ 'har2res'];
 
-var har2res = function(har, destination) {
+this.har2res = function(har, destination) {
     // Convert har entries to legacy resources format
     let startTime = null;
     let seenURLs = [];
