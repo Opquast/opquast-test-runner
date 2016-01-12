@@ -142,21 +142,29 @@ const createTestRunner = function(domWindow, opts) {
     };
     options.runOptions = validateOptions(options.runOptions, runRequirements);
 
-    let remoteRunner = createRemoteRunner(domWindow);
-    remoteRunner.init();
-
     let resources = [];
     let pageInfo = {};
 
-    let injectJS = function(path) {
+    let getJsFileSource = function(path) {
         let code = null;
         try {
             code = readURISync(path);
         } catch(e) {
             throw new Error('Unable to open "' + path + '".');
         }
+        return code;
+    };
+
+    let injectJS = function(path) {
+        let code = getJsFileSource(path);
         remoteRunner.evaluate(code, path);
     };
+
+    let getJSSource = function (func) {
+        let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
+        let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
+        return code;
+    }
 
     let evaluate = function(func) {
         let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
@@ -164,35 +172,33 @@ const createTestRunner = function(domWindow, opts) {
         return remoteRunner.evaluate(code, '');
     };
 
+    let baseURI = module.uri.replace('test-runner.js', '');
+    let remoteRunner = createRemoteRunner(domWindow, dataRoot, baseURI);
+
+
     let init = function() {
         // Set pageInfo and resources
         if (resources.length > 0) {
             return promise.resolve();
         }
 
+        let runnerOptions = {
+            initialSource: getJsFileSource(dataRoot + '/lib/jquery-1.9.1.min.js'),
+            har: options.har,
+            oqs_utils: getJsFileSource(dataRoot + '/lib/oqs-utils.js')
+        }
+
         // Inject jQuery & coexist with other versions
-        injectJS(dataRoot + '/lib/jquery-1.9.1.min.js');
-        evaluate(function() {
+        runnerOptions.initialSource += getJSSource(function() {
             // Doing this removes our jQuery from the page but provides a global
             // jQuery version in sandbox
             this.jQuery = $.noConflict(true);
             this.$ = this.jQuery;
         });
 
-        // Add some needed globals
-        let _xhr = xhrWrapper(evaluate, options.har);
-        Object.defineProperties(remoteRunner.sandbox, descriptor({
-            dnsLookup: dnsLookup,
-            extractEvents: extractEvents,
-            Q: promise,
-            _XHR: _xhr.cls
-        }));
-
-        // Wrap XHR (provides global XHR in sandbox)
-        _xhr.wrap('_XHR', 'XHR');
+        remoteRunner.init(runnerOptions);
 
         // Extract page information
-        injectJS(dataRoot + '/lib/oqs-utils.js');
         Object.defineProperties(pageInfo, descriptor(evaluate(function() {
             return $.extractPageInfo();
         })));
@@ -317,84 +323,3 @@ const createTestRunner = function(domWindow, opts) {
 };
 
 exports.create = createTestRunner;
-
-/**
- * wrapper for the xhr object (see extras.jsm)
- *
- * it overrides the query() method. This new query()
- * methods looks in a har collection, the requested url
- * before doing the true request.
- *
- * @return object
- *     - cls: the wrapped xhr
- *     - wrap: a function that wrap XHR inside a sandox
- */
-const xhrWrapper = function(evaluate, har) {
-    let entryToResponse = function(entry, partial) {
-        let result = {
-            status: entry.response.status,
-            statusText: entry.response.statusText,
-            headers: entry.response.headers,
-            content_type: null,
-            data: partial ? '' : entry.response.content.text,
-            xml: null
-        };
-
-        result.getHeader = function(name) {
-            var value = [];
-            this.headers.forEach(function(v) {
-                if (v.name.toLowerCase() === name.toLowerCase()) {
-                    value.push(v.value);
-                }
-            });
-
-            return (value.length === 0) ? null : value.join(',');
-        };
-
-        return result;
-    };
-
-    let _xhr = Object.create(xhr);
-    _xhr.query = function(url, method, data, headers, partial) {
-        if (method === 'GET' && har.entries !== undefined) {
-            let entry = null;
-            har.entries.forEach(function(v) {
-                if (v._url == url) {
-                    entry = v;
-                }
-            });
-
-            if (entry && (entry.response.content.text || partial)) {
-                return promise.resolve(entryToResponse(entry, partial));
-            }
-        }
-
-        return xhr.query.call(this, url, method, data, headers, partial);
-    };
-
-    return {
-        cls: _xhr,
-        wrap: function(src, dest) {
-            evaluate(function(src, dest) {
-                let global = this;
-                global[dest] = Object.create(global[src]);
-                global[dest].cache = {}; // GET request cache
-                global[dest].query = function(url, method, data, headers, partial) {
-                    // URL should be absolute
-                    url = $.URL(url);
-
-                    if (this.cache[url] !== undefined) {
-                        return this.cache[url];
-                    }
-
-                    // Always return a promise
-                    let p = global[src].query.call(this, url, method, data, headers, partial);
-                    if (method === 'GET') {
-                        this.cache[url] = p;
-                    }
-                    return p
-                }
-            }, src, dest);
-        }
-    };
-};
