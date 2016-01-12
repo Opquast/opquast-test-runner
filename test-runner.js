@@ -3,7 +3,6 @@
 const {Ci, Cu} = require("chrome");
 const {mix} = require('sdk/core/heritage');
 const promise = require('sdk/core/promise');
-const SandBox = require('sdk/loader/sandbox');
 const {readURISync} = require('sdk/net/url');
 const {clearTimeout, setTimeout} = require('sdk/timers');
 const {descriptor} = require('toolkit/loader');
@@ -12,6 +11,9 @@ const {validateOptions} = require('sdk/deprecated/api-utils');
 
 var {dnsLookup, extractEvents, xhr} =  Cu.import(module.uri.replace('test-runner.js', 'utils/extras.jsm'), {});
 var {har2res} = Cu.import(module.uri.replace('test-runner.js', 'utils/har-tools.jsm'), {})
+
+const {createRemoteRunner} = require('./frame-script');
+
 
 // Javascript files location
 const dataRoot = require('sdk/url').URL('../data', module.uri);
@@ -140,11 +142,8 @@ const createTestRunner = function(domWindow, opts) {
     };
     options.runOptions = validateOptions(options.runOptions, runRequirements);
 
-    let sandbox = SandBox.sandbox(null, {
-        sandboxPrototype: domWindow,
-        wantXrays: false,
-        wantComponents: false
-    });
+    let remoteRunner = createRemoteRunner(domWindow);
+    remoteRunner.init();
 
     let resources = [];
     let pageInfo = {};
@@ -156,16 +155,14 @@ const createTestRunner = function(domWindow, opts) {
         } catch(e) {
             throw new Error('Unable to open "' + path + '".');
         }
-
-        SandBox.evaluate(sandbox, code);
+        remoteRunner.evaluate(code, path);
     };
 
     let evaluate = function(func) {
         let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
         let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
-        return SandBox.evaluate(sandbox, code);
+        return remoteRunner.evaluate(code, '');
     };
-
 
     let init = function() {
         // Set pageInfo and resources
@@ -184,7 +181,7 @@ const createTestRunner = function(domWindow, opts) {
 
         // Add some needed globals
         let _xhr = xhrWrapper(evaluate, options.har);
-        Object.defineProperties(sandbox, descriptor({
+        Object.defineProperties(remoteRunner.sandbox, descriptor({
             dnsLookup: dnsLookup,
             extractEvents: extractEvents,
             Q: promise,
@@ -321,7 +318,17 @@ const createTestRunner = function(domWindow, opts) {
 
 exports.create = createTestRunner;
 
-
+/**
+ * wrapper for the xhr object (see extras.jsm)
+ *
+ * it overrides the query() method. This new query()
+ * methods looks in a har collection, the requested url
+ * before doing the true request.
+ *
+ * @return object
+ *     - cls: the wrapped xhr
+ *     - wrap: a function that wrap XHR inside a sandox
+ */
 const xhrWrapper = function(evaluate, har) {
     let entryToResponse = function(entry, partial) {
         let result = {
