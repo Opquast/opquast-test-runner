@@ -143,7 +143,6 @@ const createTestRunner = function(domWindow, opts) {
     options.runOptions = validateOptions(options.runOptions, runRequirements);
 
     let resources = [];
-    let pageInfo = {};
 
     let getJsFileSource = function(path) {
         let code = null;
@@ -197,11 +196,6 @@ const createTestRunner = function(domWindow, opts) {
         });
 
         remoteRunner.init(runnerOptions);
-
-        // Extract page information
-        Object.defineProperties(pageInfo, descriptor(evaluate(function() {
-            return $.extractPageInfo();
-        })));
 
         let p;
         // Extract flash objects if asked for
@@ -301,14 +295,14 @@ const createTestRunner = function(domWindow, opts) {
                 return analyze(this.criteria).then(function(results) {
                     return synthesize_results(results);
                 });
-            }, options, pageInfo, resources, rules, rulesets);
+            }, options, remoteRunner.pageInfo, resources, rules, rulesets);
         })
         .then(function(result) {
             if (timeout) {
                 clearTimeout(timeout);
             }
             deferred.resolve({
-                pageInfo: pageInfo,
+                pageInfo: remoteRunner.pageInfo,
                 resources: resources,
                 results: result
             });

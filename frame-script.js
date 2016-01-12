@@ -51,6 +51,7 @@ const _remoteRunner = function(window, dataRoot, baseURI) {
     }
 
     let sandbox = createSandbox(window);
+    let pageInfo = {};
 
     let evaluateFunc = function(func) {
         let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
@@ -75,7 +76,10 @@ const _remoteRunner = function(window, dataRoot, baseURI) {
         _xhr.wrap('_XHR', 'XHR');
 
         evaluateSandbox(sandbox, options.oqs_utils, dataRoot + '/lib/oqs-utils.js');
-
+        // Extract page information
+        Object.defineProperties(pageInfo, descriptor(evaluateFunc(function() {
+            return $.extractPageInfo();
+        })));
     }
 
     return {
@@ -84,6 +88,7 @@ const _remoteRunner = function(window, dataRoot, baseURI) {
         
         // ---- properties that will be private
         sandbox: null,
+        pageInfo: pageInfo,
         evaluate : function(source, file) {
             return evaluateSandbox(sandbox, source, file);
         }
