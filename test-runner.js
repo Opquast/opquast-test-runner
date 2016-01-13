@@ -1,23 +1,22 @@
 'use strict';
 
-const {Ci, Cu} = require("chrome");
+const {Ci, Cu, Cc} = require("chrome");
 const {mix} = require('sdk/core/heritage');
 const promise = require('sdk/core/promise');
 const {readURISync} = require('sdk/net/url');
 const {clearTimeout, setTimeout} = require('sdk/timers');
-const {descriptor} = require('toolkit/loader');
 
 const {validateOptions} = require('sdk/deprecated/api-utils');
 
-var {dnsLookup, extractEvents, xhr} =  Cu.import(module.uri.replace('test-runner.js', 'utils/extras.jsm'), {});
-var {har2res} = Cu.import(module.uri.replace('test-runner.js', 'utils/har-tools.jsm'), {})
-
-const {createFrameScript} = require('./frame-script');
-
+var globalMM = Cc["@mozilla.org/globalmessagemanager;1"]
+              .getService(Ci.nsIMessageListenerManager);
+let frameScriptLoaded = false;
 
 // Javascript files location
 const dataRoot = require('sdk/url').URL('../data', module.uri);
 exports.dataRoot = dataRoot;
+
+const baseURI = module.uri.replace('test-runner.js', '');
 
 var JS_FILES = [];
 var RULES = [];
@@ -95,7 +94,34 @@ addJSFiles(
 addRules(dataRoot + '/rules.json');
 addRuleSets(dataRoot + '/rulesets.json');
 
-/*
+/**
+ * @return string the source code of the given js file
+ */
+function getJsFileSource (path) {
+    let code = null;
+    try {
+        code = readURISync(path);
+    } catch(e) {
+        throw new Error('Unable to open "' + path + '".');
+    }
+    return code;
+};
+
+/**
+ * @return string the source code of the given function
+ */
+function getJSSource (func) {
+    let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
+    let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
+    return code;
+}
+
+/**
+ * use to create a method that will call an API via a message manager,
+ * and return results via a Promise
+ * @return function
+ * @see createRemoteRunner
+ */
 function createMessagingFunc(browser, messageName) {
 
     let func = function (parameters) {
@@ -103,59 +129,49 @@ function createMessagingFunc(browser, messageName) {
         let mmg = browser.messageManager;
         let onInitEnd = {
             receiveMessage : function(message) {
-                mmg.removeMessageListener(messageName+"_resp", onInitEnd);
+                if (!(message.target instanceof Ci.nsIDOMXULElement)) {
+                    // if message does not come from <browser>, let's ignore it.
+                    // In theory, this case does not happened...
+                    return
+                }
+                if (browser.outerWindowID !=  message.target.outerWindowID) {
+                    // this message is not for our browser.
+                    return;
+                }
+                globalMM.removeMessageListener(messageName+"_resp", onInitEnd);
                 deferred.resolve(message.data);
             }
         }
 
-        mmg.addMessageListener(messageName+"_resp", onInitEnd);
+        globalMM.addMessageListener(messageName+"_resp", onInitEnd);
         mmg.sendAsyncMessage(messageName, parameters);
         return deferred.promise;
     }
-
     return func;
 }
 
+/**
+ * create an object that proxify message call to the frame script
+ */
 function createRemoteRunner(browser) {
     let proxy = {
-        init : createMessagingFuncTemp(browser, "opq:init"),
+        init : createMessagingFunc(browser, "opq:init"),
+        run :  createMessagingFunc(browser, "opq:run"),
     };
     return proxy;
 }
 
-*/
-
-// FIXME to remove when using true remote frame scripts
-function createMessagingFuncTemp(frameScript, messageName) {
-
-    let func = function (parameters) {
-        let deferred = promise.defer();
-        let onInitEnd = {
-            receiveMessage : function(message) {
-                deferred.resolve(message.data);
-            }
-        }
-        frameScript.sendMessage(messageName, JSON.parse(JSON.stringify(parameters)), onInitEnd);
-        return deferred.promise;
+function loadFrameScript() {
+    if (!frameScriptLoaded) {
+        let frameScriptUri = module.uri.replace('test-runner', 'frame-script');
+        globalMM.loadFrameScript(frameScriptUri, true);
+        frameScriptLoaded = true;
     }
-
-    return func;
 }
-
-
-function createRemoteRunnerTemp(window) {
-    let frameScript = createFrameScript(window);
-    let proxy = {
-        init : createMessagingFuncTemp(frameScript, "opq:init"),
-        run : createMessagingFuncTemp(frameScript, "opq:run"),
-    };
-    return proxy;
-}
-
-
 
 // Test Runner
-const createTestRunner = function(domWindow, opts) {
+const createTestRunner = function(browser, opts) {
+    let domWindow = browser.contentWindow;
     // Global options
     // note: we cannot set domWindow into options, as we stringify options
     // later and domWindow is not "json" compatible
@@ -200,27 +216,8 @@ const createTestRunner = function(domWindow, opts) {
     };
     options.runOptions = validateOptions(options.runOptions, runRequirements);
 
-    let getJsFileSource = function(path) {
-        let code = null;
-        try {
-            code = readURISync(path);
-        } catch(e) {
-            throw new Error('Unable to open "' + path + '".');
-        }
-        return code;
-    };
-
-    let getJSSource = function (func) {
-        let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
-        let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
-        return code;
-    }
-
-    let baseURI = module.uri.replace('test-runner.js', '');
-
-    // FIXME when using true frame script,
-    // call createRemoteRunner instead and pass browser object 
-    let remoteRunner = createRemoteRunnerTemp(domWindow);
+    loadFrameScript();
+    let remoteRunner = createRemoteRunner(browser);
     let initDone = false;
 
     /**

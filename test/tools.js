@@ -278,7 +278,7 @@ let _launchTests = function(browser, har, test, path) {
     });
 
     // Launch tests
-    let runner = testRunner.create(domWindow, {
+    let runner = testRunner.create(browser, {
         har: har,
         plainText: har.entries[0].response.content.text,
         extractObjects: false

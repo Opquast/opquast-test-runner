@@ -1,9 +1,10 @@
 'use strict';
 
-// for the moment, this is a simple module, but when it will be finished
-// it will be a true frame-script running in a tab process
+const Cc = Components.classes;
+const Ci = Components.interfaces;
+const Cu = Components.utils;
+const CC = Components.Constructor;
 
-const {Ci, Cu, Cc, CC} = require("chrome");
 const systemPrincipal = CC('@mozilla.org/systemprincipal;1', 'nsIPrincipal')();
 const Promise = Cu.import('resource://gre/modules/commonjs/sdk/core/promise.js', {}).Promise;
 
@@ -34,23 +35,6 @@ function evaluateSandbox(sandbox, source, file) {
                      file,
                      1);
 }
-
-// ---- to remove for real frame script
-
-var _listeners = {};
-var _resultListeners = {};
-function addMessageListener(message, listener) {
-    _listeners[message] = listener
-}
-function sendSyncMessage(message, parameters) {
-    parameters = parameters || {};
-    _resultListeners[message].receiveMessage({
-        data : JSON.parse(JSON.stringify(parameters))
-    });
-}
-
-// ----
-
 
 var extras = false;
 var harTools = false;
@@ -184,28 +168,18 @@ const createRunner = function(window) {
     };
 
     return {
-        // temp function
-        sendMessage: function(message, parameters, resultListener) {
-            _resultListeners[message+"_resp"] = resultListener;
-            _listeners[message].receiveMessage({
-                _frameScript : this,
-                data: parameters
-            });
-        },
-
         // ---- methods which will be called by message listeners
         init: init,
         run: run
     };
 }
-exports.createFrameScript = createRunner;
-// var runner = createRunner(content);
 
+var runner = null;
 
 addMessageListener('opq:init', {
     receiveMessage: function(message) {
-        let p = message._frameScript.init(message.data)
-        //let p = runner.init(message.data)
+        runner = createRunner(content);
+        let p = runner.init(message.data)
         .then(function(){
             sendSyncMessage("opq:init_resp");
         })
@@ -214,8 +188,7 @@ addMessageListener('opq:init', {
 
 addMessageListener('opq:run', {
     receiveMessage: function(message) {
-        let p = message._frameScript.run(message.data)
-        //let p = runner.run(message.data)
+        let p = runner.run(message.data)
         .then(function(results){
             sendSyncMessage("opq:run_resp", results);
         })
