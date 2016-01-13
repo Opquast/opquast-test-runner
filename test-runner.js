@@ -147,6 +147,7 @@ function createRemoteRunnerTemp(window) {
     let frameScript = createFrameScript(window);
     let proxy = {
         init : createMessagingFuncTemp(frameScript, "opq:init"),
+        run : createMessagingFuncTemp(frameScript, "opq:run"),
 
         // FIXME to remove when using true remote frame scripts
         get pageInfo () {
@@ -292,8 +293,6 @@ const createTestRunner = function(domWindow, opts) {
             rulesets = _rulesets;
         }
 
-        let deferred = promise.defer();
-
         let timeout = null;
         if (options.timeout > 0) {
             timeout = setTimeout(function() {
@@ -301,46 +300,27 @@ const createTestRunner = function(domWindow, opts) {
             }, options.timeout);
         }
 
-        init()
+        return init()
         .then(function() {
             // Now we can run tests
+            let parameters = {
+                rules: rules,
+                rulesets : rulesets,
+                jsFiles : {},
+                plainText : options.plainText,
+                runOptions : options.runOptions
+            }
             getJSFiles().forEach(function(uri) {
-                injectJS(uri);
+                parameters.jsFiles[uri] = getJsFileSource(uri);
             });
-
-            return evaluate(function(options, pageInfo, resources, rules, rulesets) {
-                let events = extractEvents(window);
-                this.sidecar = {
-                    resources: resources,
-                    events: events,
-                    pageInfo: pageInfo,
-                    plainText: options.plainText
-                };
-
-                // Set options
-                for (var k in options.runOptions) {
-                    this[k] = options.runOptions[k];
-                }
-
-                // Run tests
-                this.tests = rules;
-                this.criteria = rulesets;
-                return analyze(this.criteria).then(function(results) {
-                    return synthesize_results(results);
-                });
-            }, options, remoteRunner.pageInfo, remoteRunner.resources, rules, rulesets);
+            return remoteRunner.run(parameters);
         })
-        .then(function(result) {
+        .then(function(results) {
             if (timeout) {
                 clearTimeout(timeout);
             }
-            deferred.resolve({
-                pageInfo: remoteRunner.pageInfo,
-                resources: remoteRunner.resources,
-                results: result
-            });
+            return results;
         });
-        return deferred.promise;
     };
 
     return {

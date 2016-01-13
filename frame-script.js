@@ -139,7 +139,49 @@ const createRunner = function(window) {
                 });
             }
         });
-    }
+    };
+
+    let run = function(parameters) {
+        for (let uri in parameters.jsFiles) {
+            evaluateSandbox(sandbox, parameters.jsFiles[uri], uri);
+        }
+        let deferred = Promise.defer();
+        let p = evaluateFunc(function(plainText, runOptions, pageInfo, resources, rules, rulesets) {
+                let events = extractEvents(window);
+                this.sidecar = {
+                    resources: resources,
+                    events: events,
+                    pageInfo: pageInfo,
+                    plainText: plainText
+                };
+
+                // Set options
+                for (var k in runOptions) {
+                    this[k] = runOptions[k];
+                }
+
+                // Run tests
+                this.tests = rules;
+                this.criteria = rulesets;
+                return analyze(this.criteria).then(function(results) {
+                    return synthesize_results(results);
+                });
+            },
+            parameters.plainText,
+            parameters.runOptions,
+            pageInfo,
+            resources,
+            parameters.rules,
+            parameters.rulesets);
+        p.then(function(result) {
+            deferred.resolve({
+                results: result,
+                pageInfo : pageInfo,
+                resources : resources
+            });
+        });
+        return deferred.promise;
+    };
 
     return {
         // temp function
@@ -153,8 +195,9 @@ const createRunner = function(window) {
 
         // ---- methods which will be called by message listeners
         init: init,
+        run: run,
 
-        // ---- properties that will be private
+        // ---- properties that will be private and not accesible from chrome script
         pageInfo: pageInfo,
         resources: resources,
         evaluate : function(source, file) {
@@ -175,6 +218,17 @@ addMessageListener('opq:init', {
         })
     }
 });
+
+addMessageListener('opq:run', {
+    receiveMessage: function(message) {
+        let p = message._frameScript.run(message.data)
+        //let p = runner.run(message.data)
+        .then(function(results){
+            sendSyncMessage("opq:run_resp", results);
+        })
+    }
+});
+
 
 
 /**
