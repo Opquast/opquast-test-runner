@@ -107,13 +107,14 @@ const createRunner = function(window) {
         return p.then(function() {
             if (options.createResourceIfEmpty && resources.length === 0) {
                 let doc = window.document;
+                let serializer = new window.XMLSerializer();
                 resources.push({
                     date: doc.lastModified,
                     modified: doc.lastModified,
                     expires: null,
                     content_type: doc.contentType,
                     charset: doc.characterSet,
-                    size: window.XMLSerializer().serializeToString(doc).length,
+                    size: serializer.serializeToString(doc).length,
                     headers: {},
                     uri: window.location.href,
                     referrer: "",
