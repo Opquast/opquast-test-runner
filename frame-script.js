@@ -195,14 +195,7 @@ const createRunner = function(window) {
 
         // ---- methods which will be called by message listeners
         init: init,
-        run: run,
-
-        // ---- properties that will be private and not accesible from chrome script
-        pageInfo: pageInfo,
-        resources: resources,
-        evaluate : function(source, file) {
-            return evaluateSandbox(sandbox, source, file);
-        }
+        run: run
     };
 }
 exports.createFrameScript = createRunner;

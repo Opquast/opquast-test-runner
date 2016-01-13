@@ -148,15 +148,6 @@ function createRemoteRunnerTemp(window) {
     let proxy = {
         init : createMessagingFuncTemp(frameScript, "opq:init"),
         run : createMessagingFuncTemp(frameScript, "opq:run"),
-
-        // FIXME to remove when using true remote frame scripts
-        get pageInfo () {
-            return frameScript.pageInfo
-        },
-        get resources () {
-            return frameScript.resources
-        },
-        evaluate : frameScript.evaluate
     };
     return proxy;
 }
@@ -219,22 +210,11 @@ const createTestRunner = function(domWindow, opts) {
         return code;
     };
 
-    let injectJS = function(path) {
-        let code = getJsFileSource(path);
-        remoteRunner.evaluate(code, path);
-    };
-
     let getJSSource = function (func) {
         let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
         let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
         return code;
     }
-
-    let evaluate = function(func) {
-        let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
-        let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
-        return remoteRunner.evaluate(code, '');
-    };
 
     let baseURI = module.uri.replace('test-runner.js', '');
 
@@ -244,7 +224,6 @@ const createTestRunner = function(domWindow, opts) {
     let initDone = false;
 
     /**
-     * Set pageInfo and resources
      * @return Promise
      */
     let init = function() {
