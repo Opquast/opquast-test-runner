@@ -95,9 +95,7 @@ addJSFiles(
 addRules(dataRoot + '/rules.json');
 addRuleSets(dataRoot + '/rulesets.json');
 
-
-
-
+/*
 function createMessagingFunc(browser, messageName) {
 
     let func = function (parameters) {
@@ -118,6 +116,15 @@ function createMessagingFunc(browser, messageName) {
     return func;
 }
 
+function createRemoteRunner(browser) {
+    let proxy = {
+        init : createMessagingFuncTemp(browser, "opq:init"),
+    };
+    return proxy;
+}
+
+*/
+
 // FIXME to remove when using true remote frame scripts
 function createMessagingFuncTemp(frameScript, messageName) {
 
@@ -136,7 +143,7 @@ function createMessagingFuncTemp(frameScript, messageName) {
 }
 
 
-function createRemoteRunner(browser, window) {
+function createRemoteRunnerTemp(window) {
     let frameScript = createFrameScript(window);
     let proxy = {
         init : createMessagingFuncTemp(frameScript, "opq:init"),
@@ -144,6 +151,9 @@ function createRemoteRunner(browser, window) {
         // FIXME to remove when using true remote frame scripts
         get pageInfo () {
             return frameScript.pageInfo
+        },
+        get resources () {
+            return frameScript.resources
         },
         evaluate : frameScript.evaluate
     };
@@ -198,8 +208,6 @@ const createTestRunner = function(domWindow, opts) {
     };
     options.runOptions = validateOptions(options.runOptions, runRequirements);
 
-    let resources = [];
-
     let getJsFileSource = function(path) {
         let code = null;
         try {
@@ -229,21 +237,29 @@ const createTestRunner = function(domWindow, opts) {
 
     let baseURI = module.uri.replace('test-runner.js', '');
 
-    // FIXME pass browser object when using true frame script
-    let remoteRunner = createRemoteRunner(null, domWindow);
+    // FIXME when using true frame script,
+    // call createRemoteRunner instead and pass browser object 
+    let remoteRunner = createRemoteRunnerTemp(domWindow);
+    let initDone = false;
 
+    /**
+     * Set pageInfo and resources
+     * @return Promise
+     */
     let init = function() {
-        // Set pageInfo and resources
-        if (resources.length > 0) {
+        if (initDone) {
             return promise.resolve();
         }
+        initDone = true;
 
         let runnerOptions = {
             dataRoot: dataRoot,
             baseURI: baseURI,
             initialSource: getJsFileSource(dataRoot + '/lib/jquery-1.9.1.min.js'),
+            oqs_utils: getJsFileSource(dataRoot + '/lib/oqs-utils.js'),
             har: options.har,
-            oqs_utils: getJsFileSource(dataRoot + '/lib/oqs-utils.js')
+            extractObjects : options.extractObjects,
+            createResourceIfEmpty: options.createResourceIfEmpty
         }
 
         // Inject jQuery & coexist with other versions
@@ -254,50 +270,7 @@ const createTestRunner = function(domWindow, opts) {
             this.$ = this.jQuery;
         });
 
-        let p = remoteRunner.init(runnerOptions);
-
-        // Extract flash objects if asked for
-        if (!options.extractObjects) {
-            p = p.then(function() {
-                har2res(options.har, resources);
-            });
-        }
-        else {
-            p =  p.then(function() {
-                return evaluate(function() {
-                    return $.extractObjects();
-                });
-            })
-            .then(function(swfObjects) {
-                swfObjects.forEach(function(entry) {
-                    if (entry !== null) {
-                        options.har.entries.push(entry);
-                    }
-                });
-                // Convert resources
-                har2res(options.har, resources);
-            });
-        }
-
-        return p.then(function() {
-            if (options.createResourceIfEmpty && resources.length === 0) {
-                let doc = domWindow.document;
-                resources.push({
-                    date: doc.lastModified,
-                    modified: doc.lastModified,
-                    expires: null,
-                    content_type: doc.contentType,
-                    charset: doc.characterSet,
-                    size: domWindow.XMLSerializer().serializeToString(doc).length,
-                    headers: {},
-                    uri: domWindow.location.href,
-                    referrer: "",
-                    method: "GET",
-                    status: 200,
-                    status_text: "200 OK"
-                });
-            }
-        });
+        return remoteRunner.init(runnerOptions);
     };
 
 
@@ -355,7 +328,7 @@ const createTestRunner = function(domWindow, opts) {
                 return analyze(this.criteria).then(function(results) {
                     return synthesize_results(results);
                 });
-            }, options, remoteRunner.pageInfo, resources, rules, rulesets);
+            }, options, remoteRunner.pageInfo, remoteRunner.resources, rules, rulesets);
         })
         .then(function(result) {
             if (timeout) {
@@ -363,7 +336,7 @@ const createTestRunner = function(domWindow, opts) {
             }
             deferred.resolve({
                 pageInfo: remoteRunner.pageInfo,
-                resources: resources,
+                resources: remoteRunner.resources,
                 results: result
             });
         });

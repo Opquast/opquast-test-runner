@@ -60,6 +60,7 @@ const createRunner = function(window) {
 
     let sandbox = createSandbox(window);
     let pageInfo = {};
+    let resources = [];
 
     let evaluateFunc = function(func) {
         let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
@@ -95,6 +96,49 @@ const createRunner = function(window) {
         Object.defineProperties(pageInfo, descriptor(evaluateFunc(function() {
             return $.extractPageInfo();
         })));
+
+        let p;
+        // Extract flash objects if asked for
+        if (!options.extractObjects) {
+            p = Promise.resolve().then(function() {
+                harTools.har2res(options.har, resources);
+            });
+        }
+        else {
+            p =  Promise.resolve().then(function(){
+                return evaluateFunc(function() {
+                    return $.extractObjects();
+                });
+            })
+            .then(function(swfObjects) {
+                swfObjects.forEach(function(entry) {
+                    if (entry !== null) {
+                        options.har.entries.push(entry);
+                    }
+                });
+                // Convert resources
+                harTools.har2res(options.har, resources);
+            });
+        }
+        return p.then(function() {
+            if (options.createResourceIfEmpty && resources.length === 0) {
+                let doc = window.document;
+                resources.push({
+                    date: doc.lastModified,
+                    modified: doc.lastModified,
+                    expires: null,
+                    content_type: doc.contentType,
+                    charset: doc.characterSet,
+                    size: window.XMLSerializer().serializeToString(doc).length,
+                    headers: {},
+                    uri: window.location.href,
+                    referrer: "",
+                    method: "GET",
+                    status: 200,
+                    status_text: "200 OK"
+                });
+            }
+        });
     }
 
     return {
@@ -112,6 +156,7 @@ const createRunner = function(window) {
 
         // ---- properties that will be private
         pageInfo: pageInfo,
+        resources: resources,
         evaluate : function(source, file) {
             return evaluateSandbox(sandbox, source, file);
         }
@@ -123,9 +168,11 @@ exports.createFrameScript = createRunner;
 
 addMessageListener('opq:init', {
     receiveMessage: function(message) {
-        message._frameScript.init(message.data);
-        //runner.init(message.data);
-        sendSyncMessage("opq:init_resp");
+        let p = message._frameScript.init(message.data)
+        //let p = runner.init(message.data)
+        .then(function(){
+            sendSyncMessage("opq:init_resp");
+        })
     }
 });
 
