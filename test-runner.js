@@ -12,7 +12,7 @@ const {validateOptions} = require('sdk/deprecated/api-utils');
 var {dnsLookup, extractEvents, xhr} =  Cu.import(module.uri.replace('test-runner.js', 'utils/extras.jsm'), {});
 var {har2res} = Cu.import(module.uri.replace('test-runner.js', 'utils/har-tools.jsm'), {})
 
-const {createRemoteRunner} = require('./frame-script');
+const {createFrameScript} = require('./frame-script');
 
 
 // Javascript files location
@@ -96,6 +96,62 @@ addRules(dataRoot + '/rules.json');
 addRuleSets(dataRoot + '/rulesets.json');
 
 
+
+
+function createMessagingFunc(browser, messageName) {
+
+    let func = function (parameters) {
+        let deferred = promise.defer();
+        let mmg = browser.messageManager;
+        let onInitEnd = {
+            receiveMessage : function(message) {
+                mmg.removeMessageListener(messageName+"_resp", onInitEnd);
+                deferred.resolve(message.data);
+            }
+        }
+
+        mmg.addMessageListener(messageName+"_resp", onInitEnd);
+        mmg.sendAsyncMessage(messageName, parameters);
+        return deferred.promise;
+    }
+
+    return func;
+}
+
+// FIXME to remove when using true remote frame scripts
+function createMessagingFuncTemp(frameScript, messageName) {
+
+    let func = function (parameters) {
+        let deferred = promise.defer();
+        let onInitEnd = {
+            receiveMessage : function(message) {
+                deferred.resolve(message.data);
+            }
+        }
+        frameScript.sendMessage(messageName, JSON.parse(JSON.stringify(parameters)), onInitEnd);
+        return deferred.promise;
+    }
+
+    return func;
+}
+
+
+function createRemoteRunner(browser, window) {
+    let frameScript = createFrameScript(window);
+    let proxy = {
+        init : createMessagingFuncTemp(frameScript, "opq:init"),
+
+        // FIXME to remove when using true remote frame scripts
+        get pageInfo () {
+            return frameScript.pageInfo
+        },
+        evaluate : frameScript.evaluate
+    };
+    return proxy;
+}
+
+
+
 // Test Runner
 const createTestRunner = function(domWindow, opts) {
     // Global options
@@ -172,8 +228,9 @@ const createTestRunner = function(domWindow, opts) {
     };
 
     let baseURI = module.uri.replace('test-runner.js', '');
-    let remoteRunner = createRemoteRunner(domWindow, dataRoot, baseURI);
 
+    // FIXME pass browser object when using true frame script
+    let remoteRunner = createRemoteRunner(null, domWindow);
 
     let init = function() {
         // Set pageInfo and resources
@@ -182,6 +239,8 @@ const createTestRunner = function(domWindow, opts) {
         }
 
         let runnerOptions = {
+            dataRoot: dataRoot,
+            baseURI: baseURI,
             initialSource: getJsFileSource(dataRoot + '/lib/jquery-1.9.1.min.js'),
             har: options.har,
             oqs_utils: getJsFileSource(dataRoot + '/lib/oqs-utils.js')
@@ -195,18 +254,19 @@ const createTestRunner = function(domWindow, opts) {
             this.$ = this.jQuery;
         });
 
-        remoteRunner.init(runnerOptions);
+        let p = remoteRunner.init(runnerOptions);
 
-        let p;
         // Extract flash objects if asked for
         if (!options.extractObjects) {
-            p = promise.resolve().then(function() {
+            p = p.then(function() {
                 har2res(options.har, resources);
             });
         }
         else {
-            p =  evaluate(function() {
-                return $.extractObjects();
+            p =  p.then(function() {
+                return evaluate(function() {
+                    return $.extractObjects();
+                });
             })
             .then(function(swfObjects) {
                 swfObjects.forEach(function(entry) {

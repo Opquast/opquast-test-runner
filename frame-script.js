@@ -9,6 +9,7 @@ const Promise = Cu.import('resource://gre/modules/commonjs/sdk/core/promise.js',
 
 const getOwnIdentifiers = x => [...Object.getOwnPropertyNames(x),
                                 ...Object.getOwnPropertySymbols(x)];
+
 const descriptor = function descriptor(object) {
   let value = {};
   getOwnIdentifiers(object).forEach(function(name) {
@@ -16,7 +17,6 @@ const descriptor = function descriptor(object) {
   });
   return value;
 };
-
 
 function createSandbox(window) {
     let options = {
@@ -35,20 +35,28 @@ function evaluateSandbox(sandbox, source, file) {
                      1);
 }
 
+// ---- to remove for real frame script
 
+var _listeners = {};
+var _resultListeners = {};
+function addMessageListener(message, listener) {
+    _listeners[message] = listener
+}
+function sendSyncMessage(message, parameters) {
+    parameters = parameters || {};
+    _resultListeners[message].receiveMessage({
+        data : JSON.parse(JSON.stringify(parameters))
+    });
+}
+
+// ----
 
 
 var extras = false;
 var harTools = false;
 
-const _remoteRunner = function(window, dataRoot, baseURI) {
+const createRunner = function(window) {
 
-    if (!extras) {
-        extras = {};
-        Cu.import(baseURI+'utils/extras.jsm', extras);
-        harTools = {}
-        Cu.import(baseURI+'utils/har-tools.jsm', harTools);
-    }
 
     let sandbox = createSandbox(window);
     let pageInfo = {};
@@ -60,6 +68,13 @@ const _remoteRunner = function(window, dataRoot, baseURI) {
     };
 
     let init = function(options) {
+
+        if (!extras) {
+            extras = {};
+            Cu.import(options.baseURI+'utils/extras.jsm', extras);
+            harTools = {}
+            Cu.import(options.baseURI+'utils/har-tools.jsm', harTools);
+        }
 
         evaluateSandbox(sandbox, options.initialSource, 'jquery')
 
@@ -75,7 +90,7 @@ const _remoteRunner = function(window, dataRoot, baseURI) {
         // Wrap XHR (provides global XHR in sandbox)
         _xhr.wrap('_XHR', 'XHR');
 
-        evaluateSandbox(sandbox, options.oqs_utils, dataRoot + '/lib/oqs-utils.js');
+        evaluateSandbox(sandbox, options.oqs_utils, options.dataRoot + '/lib/oqs-utils.js');
         // Extract page information
         Object.defineProperties(pageInfo, descriptor(evaluateFunc(function() {
             return $.extractPageInfo();
@@ -83,21 +98,36 @@ const _remoteRunner = function(window, dataRoot, baseURI) {
     }
 
     return {
-        // ---- methods for which the call should be replaced by a message
+        // temp function
+        sendMessage: function(message, parameters, resultListener) {
+            _resultListeners[message+"_resp"] = resultListener;
+            _listeners[message].receiveMessage({
+                _frameScript : this,
+                data: parameters
+            });
+        },
+
+        // ---- methods which will be called by message listeners
         init: init,
-        
+
         // ---- properties that will be private
-        sandbox: null,
         pageInfo: pageInfo,
         evaluate : function(source, file) {
             return evaluateSandbox(sandbox, source, file);
         }
     };
 }
-exports.createRemoteRunner = _remoteRunner;
+exports.createFrameScript = createRunner;
+// var runner = createRunner(content);
 
 
-
+addMessageListener('opq:init', {
+    receiveMessage: function(message) {
+        message._frameScript.init(message.data);
+        //runner.init(message.data);
+        sendSyncMessage("opq:init_resp");
+    }
+});
 
 
 /**
