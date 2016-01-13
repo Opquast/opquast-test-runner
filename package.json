@@ -8,8 +8,8 @@
         "Mickael Hoareau <mickael.hoareau@temesis.com>",
         "Olivier Meunier <olivier.meunier@temesis.com>",
         "Samuel Martin <samuel.martin@temesis.com>",
-	"Laurent Jouanneau <laurent@innophi.com>"
+        "Laurent Jouanneau <laurent@innophi.com>"
     ],
-    "version": "1.7.0",
+    "version": "1.8.0b1",
     "license": "MPL 2.0"
 }
