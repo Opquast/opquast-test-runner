@@ -1,7 +1,7 @@
 {
     "name": "opquast-tests",
-    "fullName": "Opquast Test Framework (core code)",
-    "description": "This is the automated tests for the Opquast project",
+    "title": "Opquast Test Framework",
+    "description": "Core of the Opquast analyser that checks rules (tests) onto a web pages",
     "author": "Temesis SAS (http://www.temesis.com/)",
     "contributors": [
         "Fabrice Bonny <fabrice.bonny@temesis.com>",
@@ -10,6 +10,11 @@
         "Samuel Martin <samuel.martin@temesis.com>",
         "Laurent Jouanneau <laurent@innophi.com>"
     ],
-    "version": "1.8.0b1",
-    "license": "MPL 2.0"
+    "version": "1.8.0-beta.1",
+    "license": "MPL-2.0",
+    "engines": {
+      "firefox": ">=40"
+    },
+    "multiprocess" : true
+
 }

@@ -13,7 +13,7 @@ var globalMM = Cc["@mozilla.org/globalmessagemanager;1"]
 let frameScriptLoaded = false;
 
 // Javascript files location
-const dataRoot = require('sdk/url').URL('../data', module.uri);
+const dataRoot = require('sdk/url').URL('data', module.uri);
 exports.dataRoot = dataRoot;
 
 const baseURI = module.uri.replace('test-runner.js', '');
