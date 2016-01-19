@@ -1,12 +1,16 @@
-function foobar() {
-    var foo="bla",
-        bar="bla",
-        foo="bla",
-        bar="bla",
-        foo="bla",
-        bar="bla",
-        foo="bla",
-        bar="bla",
-        foo="bla",
-        bar="bla";
+/* Ceci est un commentaire
+qui occupe plusieurs lignes ! */
+
+function foobar(){
+	try {
+		if(true == true) {
+			document.write("ok");
+		} else {
+			document.write("ko");
+		}
+	}
+	
+	catch(err) {
+		// rien
+	}
 }

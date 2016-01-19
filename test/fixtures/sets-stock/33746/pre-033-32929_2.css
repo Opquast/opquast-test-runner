@@ -1,0 +1,11 @@
+@import url("pre-033-32929_2.screen.css") screen;
+
+@media handheld, print {
+	body {
+		font-size: 12px;
+	}
+}
+
+p {
+	font:1em/110% sans-serif
+}

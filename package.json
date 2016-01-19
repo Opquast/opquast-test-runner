@@ -16,5 +16,4 @@
       "firefox": ">=40"
     },
     "multiprocess" : true
-
 }

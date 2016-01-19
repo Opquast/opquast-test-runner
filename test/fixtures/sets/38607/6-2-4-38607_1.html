@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-desc" content="liens non composites ou sans title" />
+		<meta http-equiv="X-results" content="C:0,NC:0,NA:5,I:0" />
+		<title>testcase IMA-01</title>
+	</head>
+	<body>
+		<p>
+			<a href="">bla<canvas></canvas></a>
+			<a href="" title="">
+			<canvas>
+				plop
+			</canvas></a>
+			<a href="" title="">bla</a>
+		</p>
+		<p>
+			<a href="">bla
+			<embed type="image/png"></embed>
+			</a>
+			<a href="" title="">bla</a>
+		</p>
+		<p>
+			<a href="">bla<img src="test.png" /></a>
+			<a href="" title=""><img src="test.png" /></a>
+			<a href="" title="">bla</a>
+		</p>
+		<p>
+			<a href="">bla <object type="image/png"></object> </a>
+			<a href="" title="">
+			<object type="image/png">
+				plop
+			</object> </a>
+			<a href="" title="">bla</a>
+		</p>
+		<p>
+			<a href="">bla<svg></svg></a>
+			<a href="" title="">
+			<svg>
+				plop
+			</svg></a>
+			<a href="" title="">bla</a>
+		</p>
+	</body>
+</html>
