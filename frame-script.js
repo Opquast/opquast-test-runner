@@ -168,10 +168,17 @@ const createRunner = function(window) {
         return deferred.promise;
     };
 
+    let reset = function() {
+        sandbox = null;
+        pageInfo = {};
+        resources = [];
+    }
+
     return {
         // ---- methods which will be called by message listeners
         init: init,
-        run: run
+        run: run,
+        reset: reset
     };
 }
 
@@ -196,7 +203,13 @@ addMessageListener('opq:run', {
     }
 });
 
-
+addMessageListener('opq:deactivate', {
+    receiveMessage: function(message) {
+        if (runner) {
+            runner.reset();
+        }
+    }
+});
 
 /**
  * wrapper for the xhr object (see extras.jsm)

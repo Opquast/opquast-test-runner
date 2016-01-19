@@ -8,8 +8,11 @@ const {clearTimeout, setTimeout} = require('sdk/timers');
 
 const {validateOptions} = require('sdk/deprecated/api-utils');
 
+const unload = require('sdk/system/unload');
+
 var globalMM = Cc["@mozilla.org/globalmessagemanager;1"]
-              .getService(Ci.nsIMessageListenerManager);
+              .getService(Ci.nsIMessageListenerManager)
+              .QueryInterface(Ci.nsIMessageBroadcaster);
 let frameScriptLoaded = false;
 
 // Javascript files location
@@ -169,6 +172,24 @@ function loadFrameScript() {
     }
 }
 
+/**
+ * Remove the frame-script
+ *
+ * Note: it doesn't remove already loaded frame-script. It just prevents the
+ * loading of the frame-script into new tabs
+ */
+function unloadFrameScript() {
+    if (frameScriptLoaded) {
+        let frameScriptUri = module.uri.replace('test-runner', 'frame-script');
+        globalMM.removeDelayedFrameScript(frameScriptUri);
+        frameScriptLoaded = false;
+    }
+    // send a message to do cleanup into already loaded frame-scripts
+    globalMM.broadcastAsyncMessage('opq:deactivate');
+}
+
+unload.when(unloadFrameScript);
+
 // Test Runner
 const createTestRunner = function(browser, opts) {
     let domWindow = browser.contentWindow;
@@ -306,3 +327,5 @@ const createTestRunner = function(browser, opts) {
 };
 
 exports.create = createTestRunner;
+
+
