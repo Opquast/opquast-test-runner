@@ -25,6 +25,9 @@ const {addRuleSets} = require("opquast-tests/test-runner");
 
 const wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
 
+const ioService = Cc['@mozilla.org/network/io-service;1'].getService(Ci.nsIIOService);
+
+
 // ---- frame script management
 
 var globalMM = Cc["@mozilla.org/globalmessagemanager;1"]
@@ -183,15 +186,7 @@ const getHarObject = function(windowInfo, htmlFile, jsonFiles) {
         jsonAll = JSON.parse(readBinaryURI(jsonFileAll));
     }
     if (jsonFiles.indexOf(jsonFileOne) !== -1) {
-        try {
-            jsonOne = readBinaryURI(jsonFileOne);
-            jsonOne = JSON.parse(readBinaryURI(jsonFileOne));
-        }
-        catch(e) {
-            dump("error reading "+jsonFileOne+": "+e+"\n")
-            dump("jsonOne: "+jsonOne+"\n");
-            jsonOne = '';
-        }
+        jsonOne = JSON.parse(readBinaryURI(jsonFileOne));
     }
 
     if (jsonAll && jsonAll["*"]) {
@@ -313,7 +308,7 @@ const getXPIContent = function(glob) {
     fp.initWithPath(path);
     xpi.open(fp);
 
-    let entries = xpi.findEntries(basePath + glob);
+    let entries = xpi.findEntries(basePath + "/" + glob);
     let entry;
     let fileList = [];
     while (entries.hasMore()) {
@@ -450,8 +445,7 @@ const MIME_TYPES = {
 
 
 const readBinaryURI = function(uri) {
-    let ioservice = Cc['@mozilla.org/network/io-service;1'].getService(Ci.nsIIOService);
-    let channel = ioservice.newChannel(uri, 'UTF-8', null);
+    let channel = ioService.newChannel(uri, 'UTF-8', null);
     let stream = Cc['@mozilla.org/binaryinputstream;1'].
                   createInstance(Ci.nsIBinaryInputStream);
     stream.setInputStream(channel.open());
@@ -467,3 +461,4 @@ const readBinaryURI = function(uri) {
 
     return data;
 };
+
