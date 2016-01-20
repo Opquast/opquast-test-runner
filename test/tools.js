@@ -18,12 +18,32 @@ const {getBrowserForTab, getOwnerWindow} = require('sdk/tabs/utils');
 const {startServerAsync} = require('./httpd');
 const {setTimeout, clearTimeout} = require('sdk/timers');
 const {URL} = require('sdk/url');
+const unload = require('sdk/system/unload');
 
 const testRunner = require("opquast-tests/test-runner");
 const {addRuleSets} = require("opquast-tests/test-runner");
 
 const wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
 
+// ---- frame script management
+
+var globalMM = Cc["@mozilla.org/globalmessagemanager;1"]
+              .getService(Ci.nsIMessageListenerManager)
+let frameScriptUri = module.uri.replace('tools', 'frame-script');
+globalMM.loadFrameScript(frameScriptUri, true);
+let frameScriptLoaded = true;
+
+const removeFrameScript = function () {
+    if (frameScriptLoaded) {
+        let frameScriptUri = module.uri.replace('tools', 'frame-script');
+        globalMM.removeDelayedFrameScript(frameScriptUri);
+        frameScriptLoaded = false;
+    }
+}
+
+unload.when(removeFrameScript);
+
+// ------
 
 const statuses = {
     200: "200 OK",
@@ -34,132 +54,68 @@ const openPage = function(url) {
     let win = wm.getMostRecentWindow('navigator:browser');
     let tab = win.gBrowser.tabContainer.getItemAtIndex(0);
     let browser = getBrowserForTab(tab);
-
+    let bmmg = browser.messageManager;
     let D = Q.defer();
     let timeout;
 
-    function _load() {
-        clearTimeout(timeout);
-        browser.removeEventListener('load', _load, true);
-        setTimeout(function() {
-            D.resolve({
-                url: url,
-                tab: tab,
-                browser: browser,
-                loadFailed:false
-            });
-        }, 500);
+    let onMessage = {
+        receiveMessage : function(message) {
+            if (!(message.target instanceof Ci.nsIDOMXULElement)) {
+                // if message does not come from <browser>, let's ignore it.
+                // In theory, this case does not happened...
+                return
+            }
+            if (browser.outerWindowID !=  message.target.outerWindowID) {
+                // this message is not for our browser.
+                return;
+            }
+            clearTimeout(timeout);
+            globalMM.removeMessageListener("tests:document-loaded", onMessage);
+            setTimeout(function() {
+                D.resolve({
+                    url: url,
+                    tab: tab,
+                    browser: browser,
+                    loadFailed:false,
+                    windowInfo: message.data
+                });
+            }, 200);
+        }
     }
 
     // in case on no load event (error during a request for ex),
     // we should be able to continue tests
     timeout = setTimeout(function() {
-        browser.removeEventListener('load', _load, true);
+        globalMM.removeMessageListener("tests:document-loaded", onMessage);
         D.resolve({
             url: url,
             tab: tab,
             browser: browser,
-            loadFailed:true
+            loadFailed:true,
+            windowInfo: {
+                url : browser.documentURI.spec,
+                mimeType : browser.documentContentType,
+                charset : browser.characterSet,
+                referer : "",
+                x_results : {}
+            }
         });
     }, 5000);
 
-    browser.addEventListener('load', _load, true);
-
-    browser.loadURI(url);
-
+    globalMM.addMessageListener("tests:document-loaded", onMessage);
+    browser.loadURI(url.toString());
     return D.promise;
 };
 exports.openPage = openPage;
 
-
-const openTab = function() {
-    let win = wm.getMostRecentWindow('navigator:browser');
-    let container = win.gBrowser.tabContainer;
-
-    let d1 = Q.defer();
-    container.addEventListener('TabOpen', function _open(evt) {
-        container.removeEventListener('TabOpen', _open, true);
-        d1.resolve({
-            tab: evt.target,
-            browser: getBrowserForTab(evt.target)
-        });
-    }, true);
-
-    let tab = win.gBrowser.addTab();
-
-    return d1.promise.then(function(result) {
-        let {browser, tab} = result;
-
-        let close = function() {
-            let D = Q.defer();
-            container.addEventListener('TabClose', function _close() {
-                container.removeEventListener('TabClose', _close, true);
-                D.resolve();
-            }, true);
-            getOwnerWindow(tab).gBrowser.removeTab(tab);
-
-            return D;
-        };
-
-        let open = function(url) {
-            let D = Q.defer();
-            let timeout;
-
-            function _load() {
-                clearTimeout(timeout);
-                browser.removeEventListener('load', _load, true);
-                setTimeout(function() {
-                    D.resolve({
-                        url: url,
-                        tab: tab,
-                        browser: browser,
-                        open: open,
-                        close: close,
-                        loadFailed:false
-                    });
-                }, 500);
-            }
-
-            // in case on no load event (error during a request for ex),
-            // we should be able to continue tests
-            timeout = setTimeout(function() {
-                browser.removeEventListener('load', _load, true);
-                D.resolve({
-                    url: url,
-                    tab: tab,
-                    browser: browser,
-                    open: open,
-                    close: close,
-                    loadFailed:true
-                });
-            }, 5000);
-
-            browser.addEventListener('load', _load, true);
-
-            browser.loadURI(url);
-
-            return D.promise;
-        };
-
-        return {
-            tab: tab,
-            browser: browser,
-            open: open,
-            close: close
-        };
-    });
-};
-exports.openTab = openTab;
-
-
-let fakeHarEntry = function(window, url) {
+let fakeHarEntry = function(windowInfo, url) {
     let mimeType = "",
         charset = "";
 
     if (typeof(url) === "undefined") {
-        url = window.location.href;
-        mimeType = window.document.contentType;
-        charset = window.document.characterSet;
+        url = windowInfo.url;
+        mimeType = windowInfo.contentType;
+        charset = windowInfo.characterSet;
     }
 
     return {
@@ -196,7 +152,7 @@ let fakeHarEntry = function(window, url) {
             'bodySize': 0,
             '_contentType': mimeType,
             '_contentCharset': charset,
-            '_referrer': window.document.referrer,
+            '_referrer': windowInfo.referrer,
             '_imageInfo': undefined
         },
         'cache': {},
@@ -209,8 +165,8 @@ let fakeHarEntry = function(window, url) {
 };
 
 
-const getHarObject = function(window, htmlFile, jsonFiles) {
-    let entries = [fakeHarEntry(window)];
+const getHarObject = function(windowInfo, htmlFile, jsonFiles) {
+    let entries = [fakeHarEntry(windowInfo)];
 
     // Read page source
     entries[0].response.content.text = readBinaryURI(htmlFile);
@@ -227,7 +183,15 @@ const getHarObject = function(window, htmlFile, jsonFiles) {
         jsonAll = JSON.parse(readBinaryURI(jsonFileAll));
     }
     if (jsonFiles.indexOf(jsonFileOne) !== -1) {
-        jsonOne = JSON.parse(readBinaryURI(jsonFileOne));
+        try {
+            jsonOne = readBinaryURI(jsonFileOne);
+            jsonOne = JSON.parse(readBinaryURI(jsonFileOne));
+        }
+        catch(e) {
+            dump("error reading "+jsonFileOne+": "+e+"\n")
+            dump("jsonOne: "+jsonOne+"\n");
+            jsonOne = '';
+        }
     }
 
     if (jsonAll && jsonAll["*"]) {
@@ -251,7 +215,7 @@ const getHarObject = function(window, htmlFile, jsonFiles) {
                 return;
             }
 
-            let entry = fakeHarEntry(window, URL(k, entries[0]._url).toString());
+            let entry = fakeHarEntry(windowInfo, URL(k, entries[0]._url).toString());
             entry.response = mix(entry.response, jsonOne[k]);
             entries.push(entry);
         });
@@ -268,7 +232,6 @@ exports.getHarObject = getHarObject;
 
 
 let _launchTests = function(browser, har, test, path) {
-    let domWindow = browser.contentWindow;
     let startTime = new Date();
 
     // Prepare checklists
@@ -341,12 +304,16 @@ const getXPIContent = function(glob) {
 
     let baseURI = URL("/", module.uri);
     let basePath = file.dirname(URL(module.uri).path);
+    if (basePath.charAt(0) == '/') {
+        basePath = basePath.slice(1);
+    }
+    let basePathLength = basePath.split("/").length;
 
     let path = file.join(pathFor("ProfD"), "extensions", self.id + ".xpi");
     fp.initWithPath(path);
     xpi.open(fp);
 
-    let entries = xpi.findEntries("resources" + basePath + "/" + glob);
+    let entries = xpi.findEntries(basePath + glob);
     let entry;
     let fileList = [];
     while (entries.hasMore()) {
@@ -359,8 +326,8 @@ const getXPIContent = function(glob) {
     fileList.sort();
     return fileList.map(function(v) {
         return {
-            "url": URL(v.split("/").slice(1).join("/"), baseURI).toString(),
-            "entry": v.split("/").slice(basePath.split("/").length).join("/")
+            "url": URL(v, baseURI).toString(),
+            "entry": v.split("/").slice(basePathLength).join("/")
         };
     });
 };
@@ -413,7 +380,6 @@ const startServer = function(port) {
                 let ext = resURI.split(".").slice(-1).join("");
                 let mime = "text/plain; charset=UTF-8";
                 let contents;
-
                 if (MIME_TYPES[ext] !== undefined) {
                     mime = MIME_TYPES[ext];
                 }

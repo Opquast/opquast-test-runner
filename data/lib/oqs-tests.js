@@ -6215,8 +6215,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6293,8 +6293,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             }
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
