@@ -600,7 +600,7 @@ var logger;
                 //
                 var _attribute = _attributes[j],
                     _tmp = {
-                        "name": _attribute.nodeName,
+                        "name": _attribute.name,
                         "namespace": "",
                         "value": _attribute.value
                     };
@@ -1097,7 +1097,7 @@ var logger;
                 console.exception(e);
             })
             .then(function() {
-                stash = stash.filter(function(v) v != index);
+                stash = stash.filter((v) => v != index);
             });
         };
 
@@ -1167,8 +1167,8 @@ var logger;
                 $.merge(res.comments, r.comments);
                 $.merge(res.details, r.details);
             });
-            res.comments = res.comments.filter(function(v) v !== null && v !== undefined);
-            res.details = res.details.filter(function(v) v !== null && v !== undefined);
+            res.comments = res.comments.filter((v) => v !== null && v !== undefined);
+            res.details = res.details.filter((v) => v !== null && v !== undefined);
             return res;
         }).then(null, function(err) {
             // Error Logging

@@ -6,7 +6,7 @@ const self = require("sdk/self");
 const {pathFor} = require("sdk/system");
 
 let fixtures = getHTMLFixtures('fixtures/rules/*'),
-    server = startServer(9000);
+    server = startServer(9010);
 
 Object.keys(fixtures).forEach(function(root) {
     fixtures[root].html.forEach(function(html_file) {
@@ -18,9 +18,9 @@ Object.keys(fixtures).forEach(function(root) {
             let html_uri = server.getURI(html_file.split("/").slice(-1));
 
             openPage(html_uri).then(function(result) {
-                let har = getHarObject(result.browser.contentWindow, html_file, fixtures[root].json);
+                let har = getHarObject(result.windowInfo, html_file, fixtures[root].json);
 
-                return launchTests(result.browser.contentWindow, har, rule).then(function(res){
+                return launchTests(result.browser, har, rule).then(function(res){
                     res.tests.oaa_results.forEach(function(test) {
                         if(test.id == rule) {
                             assert.ok((expected == "true" && test.result == "c") || (expected == "false" && test.result == "nc"), rule + " " + expected);
@@ -36,4 +36,3 @@ Object.keys(fixtures).forEach(function(root) {
 
 require("sdk/preferences/service").set("plugins.click_to_play", true);
 require("sdk/preferences/service").set("accessibility.blockautorefresh", true);
-require("sdk/test").run(exports);

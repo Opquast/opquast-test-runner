@@ -1715,8 +1715,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         }
 
         return Q.promised(Array).apply(null, promises).then(function(res) {
-            var _res = _result.filter(function(v) v !== null);
-            return _res.some(function(v) v === false) ? false :_res;
+            var _res = _result.filter((v) => v !== null);
+            return _res.some((v) => v === false) ? false :_res;
         });
     };
 
@@ -1822,8 +1822,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
         }
 
         return Q.promised(Array).apply(null, promises).then(function(res) {
-            var _res = _result.filter(function(v) v !== null);
-            return _res.some(function(v) v === false) ? false :_res;
+            var _res = _result.filter((v) => v !== null);
+            return _res.some((v) => v === false) ? false :_res;
         });
     };
 
@@ -2374,8 +2374,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch(err) {
             logger.error("htmlFavicon", err);
@@ -4500,8 +4500,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch(err) {
             logger.error("pingLongdesc", err);
@@ -4766,8 +4766,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -4806,8 +4806,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -5566,8 +5566,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6215,8 +6215,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6293,8 +6293,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             }
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6366,8 +6366,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             }
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6433,8 +6433,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6475,8 +6475,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6552,8 +6552,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6614,9 +6614,9 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
+                var _res = res.filter((v) => v !== null);
 
-                return _res.some(function(v) v === false) ? false :_res;
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6676,9 +6676,9 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
+                var _res = res.filter((v) => v !== null);
 
-                return _res.some(function(v) v === false) ? false :_res;
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch (err) {
             // Error Logging
@@ -6735,8 +6735,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             }
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         }).then(null, function(err) {
             // Error Logging
@@ -6814,8 +6814,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch(err) {
             // Error Logging
@@ -6882,8 +6882,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch(err) {
             // Error Logging
@@ -6969,8 +6969,8 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
             });
 
             return Q.promised(Array).apply(null, promises).then(function(res) {
-                var _res = res.filter(function(v) v !== null);
-                return _res.some(function(v) v === false) ? false :_res;
+                var _res = res.filter((v) => v !== null);
+                return _res.some((v) => v === false) ? false :_res;
             });
         } catch(err) {
             // Error Logging
