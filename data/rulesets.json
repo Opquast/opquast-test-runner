@@ -29149,12 +29149,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément DATALIST sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément DATALIST sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément DATALIST a été détecté",
+				"comment": "au moins un élément DATALIST a été détecté",
 				"result": "i"
 			}
 		},
@@ -29171,12 +29171,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type CHECKBOX sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type CHECKBOX sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type CHECKBOX a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX a été détecté",
 				"result": "i"
 			}
 		},
@@ -29193,12 +29193,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type COLOR sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type COLOR sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type COLOR a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR a été détecté",
 				"result": "i"
 			}
 		},
@@ -29215,12 +29215,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type DATE sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type DATE sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type DATE a été détecté",
+				"comment": "au moins un élément INPUT de type DATE a été détecté",
 				"result": "i"
 			}
 		},
@@ -29237,12 +29237,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type EMAIL sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type EMAIL sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type EMAIL a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL a été détecté",
 				"result": "i"
 			}
 		},
@@ -29259,12 +29259,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type FILE sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type FILE sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type FILE a été détecté",
+				"comment": "au moins un élément INPUT de type FILE a été détecté",
 				"result": "i"
 			}
 		},
@@ -29281,12 +29281,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type NUMBER sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type NUMBER sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type NUMBER a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER a été détecté",
 				"result": "i"
 			}
 		},
@@ -29303,12 +29303,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type PASSWORD sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type PASSWORD sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type PASSWORD a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD a été détecté",
 				"result": "i"
 			}
 		},
@@ -29325,12 +29325,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type RADIO sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type RADIO sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type RADIO a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO a été détecté",
 				"result": "i"
 			}
 		},
@@ -29347,12 +29347,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type RANGE sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type RANGE sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type RANGE a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE a été détecté",
 				"result": "i"
 			}
 		},
@@ -29369,12 +29369,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type SEARCH sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type SEARCH sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type SEARCH a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH a été détecté",
 				"result": "i"
 			}
 		},
@@ -29391,12 +29391,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type TEL sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type TEL sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type TEL a été détecté",
+				"comment": "au moins un élément INPUT de type TEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -29413,12 +29413,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type TEXT sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type TEXT sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type TEXT a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT a été détecté",
 				"result": "i"
 			}
 		},
@@ -29435,12 +29435,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type TIME sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type TIME sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type TIME a été détecté",
+				"comment": "au moins un élément INPUT de type TIME a été détecté",
 				"result": "i"
 			}
 		},
@@ -29457,12 +29457,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type URL sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément INPUT de type URL sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément INPUT de type URL a été détecté",
+				"comment": "au moins un élément INPUT de type URL a été détecté",
 				"result": "i"
 			}
 		},
@@ -29479,12 +29479,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément KEYGEN sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément KEYGEN sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément KEYGEN a été détecté",
+				"comment": "au moins un élément KEYGEN a été détecté",
 				"result": "i"
 			}
 		},
@@ -29501,12 +29501,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément METER sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément METER sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément METER a été détecté",
+				"comment": "au moins un élément METER a été détecté",
 				"result": "i"
 			}
 		},
@@ -29523,34 +29523,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément OPTGROUP sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément OPTGROUP sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément OPTGROUP a été détecté",
-				"result": "i"
-			}
-		},
-		"OPTION": {
-			"onfalse": {
-				"comment": "aucun élément OPTION n'a été détecté",
-				"result": "na"
-			},
-			"ontrue": {
-				"chain": {
-					"OPTION_WO_TITLE_ATTR_WO_LABEL_WO_ARIA-LABEL_ATTR_WO_ARIA-LABELLEDBY_ATTR": {
-						"onfalse": {
-							"comment": "aucun élément OPTION sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY n'a été détecté",
-							"result": "c"
-						},
-						"ontrue": {
-							"comment": "aucun moins un élément OPTION sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
-							"result": "nc"
-						}
-					}
-				},
-				"comment": "aucun moins un élément OPTION a été détecté",
+				"comment": "au moins un élément OPTGROUP a été détecté",
 				"result": "i"
 			}
 		},
@@ -29567,12 +29545,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément OUTPUT sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément OUTPUT sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément OUTPUT a été détecté",
+				"comment": "au moins un élément OUTPUT a été détecté",
 				"result": "i"
 			}
 		},
@@ -29589,12 +29567,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément PROGRESS sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément PROGRESS sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément PROGRESS a été détecté",
+				"comment": "au moins un élément PROGRESS a été détecté",
 				"result": "i"
 			}
 		},
@@ -29611,12 +29589,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément SELECT sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément SELECT sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément SELECT a été détecté",
+				"comment": "au moins un élément SELECT a été détecté",
 				"result": "i"
 			}
 		},
@@ -29633,12 +29611,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément TEXTAREA sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
+							"comment": "au moins un élément TEXTAREA sans attribut TITLE, ni LABEL, ni attribut ARIA-LABEL, ni attribut ARIA-LABELLEDBY a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément TEXTAREA a été détecté",
+				"comment": "au moins un élément TEXTAREA a été détecté",
 				"result": "i"
 			}
 		}
@@ -29657,7 +29635,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément DATALIST avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément DATALIST avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29667,7 +29645,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type CHECKBOX avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type CHECKBOX avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29677,7 +29655,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type COLOR avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type COLOR avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29687,7 +29665,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type DATE avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type DATE avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29697,7 +29675,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type EMAIL avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type EMAIL avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29707,7 +29685,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type FILE avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type FILE avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29717,7 +29695,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type NUMBER avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type NUMBER avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29727,7 +29705,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type PASSWORD avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type PASSWORD avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29737,7 +29715,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type RADIO avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type RADIO avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29747,7 +29725,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type RANGE avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type RANGE avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29757,7 +29735,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type SEARCH avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type SEARCH avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29767,7 +29745,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type TEL avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type TEL avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29777,7 +29755,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type TEXT avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type TEXT avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29787,7 +29765,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type TIME avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type TIME avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29797,7 +29775,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément INPUT de type URL avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément INPUT de type URL avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29807,7 +29785,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément KEYGEN avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément KEYGEN avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29817,7 +29795,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément METER avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément METER avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29827,7 +29805,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément OPTGROUP avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément OPTGROUP avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29837,7 +29815,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément OPTION avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément OPTION avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29847,7 +29825,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément OUTPUT avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément OUTPUT avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29857,7 +29835,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément PROGRESS avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément PROGRESS avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29867,7 +29845,7 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément SELECT avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément SELECT avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					},
@@ -29877,12 +29855,12 @@
 							"result": "c"
 						},
 						"ontrue": {
-							"comment": "aucun moins un élément TEXTAREA avec un LABEL sans attribut FOR a été détecté",
+							"comment": "au moins un élément TEXTAREA avec un LABEL sans attribut FOR a été détecté",
 							"result": "nc"
 						}
 					}
 				},
-				"comment": "aucun moins un élément LABEL a été détecté",
+				"comment": "au moins un élément LABEL a été détecté",
 				"result": "i"
 			}
 		}
@@ -29894,7 +29872,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -29904,7 +29882,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -29914,7 +29892,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -29924,7 +29902,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -29934,7 +29912,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -29944,7 +29922,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -29954,7 +29932,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -29964,7 +29942,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -29974,7 +29952,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -29984,7 +29962,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -29994,7 +29972,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30004,7 +29982,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30014,7 +29992,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30024,7 +30002,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30034,7 +30012,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30044,7 +30022,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30054,7 +30032,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30064,7 +30042,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30074,7 +30052,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30084,7 +30062,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30094,7 +30072,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30104,7 +30082,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30114,7 +30092,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		}
@@ -30126,7 +30104,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément LABEL a été détecté",
+				"comment": "au moins un élément LABEL a été détecté",
 				"result": "i"
 			}
 		}
@@ -30138,7 +30116,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30148,7 +30126,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30158,7 +30136,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30168,7 +30146,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30178,7 +30156,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30188,7 +30166,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30198,7 +30176,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30208,7 +30186,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30218,7 +30196,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30228,7 +30206,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30238,7 +30216,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30248,7 +30226,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30258,7 +30236,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30268,7 +30246,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30278,7 +30256,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30288,7 +30266,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30298,7 +30276,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément METER avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30308,7 +30286,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30318,7 +30296,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30328,7 +30306,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30338,7 +30316,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30348,7 +30326,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		},
@@ -30358,7 +30336,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut TITLE a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut TITLE a été détecté",
 				"result": "i"
 			}
 		}
@@ -30370,7 +30348,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30380,7 +30358,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30390,7 +30368,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30400,7 +30378,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30410,7 +30388,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30420,7 +30398,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30430,7 +30408,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30440,7 +30418,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30450,7 +30428,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30460,7 +30438,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30470,7 +30448,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30480,7 +30458,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30490,7 +30468,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30500,7 +30478,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30510,7 +30488,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30520,7 +30498,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30530,7 +30508,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30540,7 +30518,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30550,7 +30528,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30560,7 +30538,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30570,7 +30548,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30580,7 +30558,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -30590,7 +30568,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		}
@@ -30602,7 +30580,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30612,7 +30590,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30622,7 +30600,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30632,7 +30610,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30642,7 +30620,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30652,7 +30630,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30662,7 +30640,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30672,7 +30650,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30682,7 +30660,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30692,7 +30670,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30702,7 +30680,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30712,7 +30690,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30722,7 +30700,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30732,7 +30710,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30742,7 +30720,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30752,7 +30730,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30762,7 +30740,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30772,7 +30750,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30782,7 +30760,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30792,7 +30770,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30802,7 +30780,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30812,7 +30790,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30822,7 +30800,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		}
@@ -30834,7 +30812,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément DATALIST avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30844,7 +30822,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30854,7 +30832,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30864,7 +30842,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30874,7 +30852,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30884,7 +30862,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30894,7 +30872,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30904,7 +30882,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30914,7 +30892,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30924,7 +30902,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30934,7 +30912,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30944,7 +30922,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30954,7 +30932,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30964,7 +30942,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30974,7 +30952,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30984,7 +30962,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément KEYGEN avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -30994,7 +30972,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément METER avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31004,7 +30982,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTGROUP avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31014,7 +30992,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTION avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31024,7 +31002,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OUTPUT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31034,7 +31012,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément PROGRESS avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31044,7 +31022,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément SELECT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31054,7 +31032,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément TEXTAREA avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		}
@@ -31066,7 +31044,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément DATALIST avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31076,7 +31054,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31086,7 +31064,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31096,7 +31074,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31106,7 +31084,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31116,7 +31094,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31126,7 +31104,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31136,7 +31114,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31146,7 +31124,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31156,7 +31134,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31166,7 +31144,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31176,7 +31154,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31186,7 +31164,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31196,7 +31174,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31206,7 +31184,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31216,7 +31194,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément KEYGEN avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31226,7 +31204,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément METER avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31236,7 +31214,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTGROUP avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31246,7 +31224,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTION avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31256,7 +31234,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OUTPUT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31266,7 +31244,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément PROGRESS avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31276,7 +31254,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément SELECT avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31286,7 +31264,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément TEXTAREA avec une étiquette LABEL, ARIA-LABEL ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		}
@@ -31484,7 +31462,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31494,7 +31472,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31504,7 +31482,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31514,7 +31492,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31524,7 +31502,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31534,7 +31512,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31544,7 +31522,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31554,7 +31532,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31564,7 +31542,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31574,7 +31552,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31584,7 +31562,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31594,7 +31572,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31604,7 +31582,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31614,7 +31592,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31624,7 +31602,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31634,7 +31612,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31644,7 +31622,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31654,7 +31632,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31664,7 +31642,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31674,7 +31652,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31684,7 +31662,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31694,7 +31672,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		},
@@ -31704,7 +31682,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-LABEL, ARIA-REQUIRED ou REQUIRED a été détecté",
 				"result": "i"
 			}
 		}
@@ -31716,7 +31694,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31726,7 +31704,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31736,7 +31714,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31746,7 +31724,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31756,7 +31734,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31766,7 +31744,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31776,7 +31754,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31786,7 +31764,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31796,7 +31774,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31806,7 +31784,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31816,7 +31794,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31826,7 +31804,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31836,7 +31814,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31846,7 +31824,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31856,7 +31834,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31866,7 +31844,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31876,7 +31854,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31886,7 +31864,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31896,7 +31874,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31906,7 +31884,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31916,7 +31894,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31926,7 +31904,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -31936,7 +31914,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		}
@@ -31948,7 +31926,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -31958,7 +31936,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -31968,7 +31946,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -31978,7 +31956,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -31988,7 +31966,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -31998,7 +31976,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32008,7 +31986,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32018,7 +31996,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32028,7 +32006,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32038,7 +32016,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32048,7 +32026,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32058,7 +32036,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32068,7 +32046,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32078,7 +32056,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32088,7 +32066,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32098,7 +32076,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32108,7 +32086,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32118,7 +32096,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32128,7 +32106,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32138,7 +32116,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32148,7 +32126,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32158,7 +32136,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		},
@@ -32168,7 +32146,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-LABEL ou ARIA-INVALID a été détecté",
 				"result": "i"
 			}
 		}
@@ -32180,7 +32158,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32190,7 +32168,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32200,7 +32178,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32210,7 +32188,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32220,7 +32198,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32230,7 +32208,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32240,7 +32218,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32250,7 +32228,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32260,7 +32238,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32270,7 +32248,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32280,7 +32258,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32290,7 +32268,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32300,7 +32278,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32310,7 +32288,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32320,7 +32298,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32330,7 +32308,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32340,7 +32318,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32350,7 +32328,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32360,7 +32338,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32370,7 +32348,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32380,7 +32358,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32390,7 +32368,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32400,7 +32378,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		}
@@ -32412,7 +32390,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32422,7 +32400,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32432,7 +32410,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32442,7 +32420,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32452,7 +32430,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32462,7 +32440,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32472,7 +32450,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32482,7 +32460,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32492,7 +32470,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32502,7 +32480,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32512,7 +32490,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32522,7 +32500,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32532,7 +32510,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32542,7 +32520,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32552,7 +32530,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32562,7 +32540,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32572,7 +32550,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32582,7 +32560,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32592,7 +32570,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32602,7 +32580,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32612,7 +32590,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32622,7 +32600,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32632,7 +32610,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		}
@@ -32644,7 +32622,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32654,7 +32632,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32664,7 +32642,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32674,7 +32652,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32684,7 +32662,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32694,7 +32672,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32704,7 +32682,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32714,7 +32692,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32724,7 +32702,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32734,7 +32712,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32744,7 +32722,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32754,7 +32732,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32764,7 +32742,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32774,7 +32752,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32784,7 +32762,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32794,7 +32772,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32804,7 +32782,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32814,7 +32792,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32824,7 +32802,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32834,7 +32812,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32844,7 +32822,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32854,7 +32832,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -32864,7 +32842,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-DESCRIBEDBY ou ARIA-LABELLEDBY a été détecté",
 				"result": "i"
 			}
 		}
@@ -32876,7 +32854,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32886,7 +32864,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32896,7 +32874,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32906,7 +32884,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32916,7 +32894,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32926,7 +32904,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32936,7 +32914,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32946,7 +32924,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32956,7 +32934,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32966,7 +32944,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32976,7 +32954,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32986,7 +32964,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -32996,7 +32974,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33006,7 +32984,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33016,7 +32994,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33026,7 +33004,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33036,7 +33014,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33046,7 +33024,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33056,7 +33034,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33066,7 +33044,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33076,7 +33054,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33086,7 +33064,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33096,7 +33074,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		}
@@ -33108,7 +33086,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33118,7 +33096,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33128,7 +33106,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33138,7 +33116,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33148,7 +33126,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33158,7 +33136,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33168,7 +33146,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33178,7 +33156,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33188,7 +33166,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33198,7 +33176,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33208,7 +33186,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33218,7 +33196,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33228,7 +33206,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33238,7 +33216,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33248,7 +33226,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33258,7 +33236,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33268,7 +33246,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33278,7 +33256,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33288,7 +33266,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33298,7 +33276,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33308,7 +33286,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33318,7 +33296,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33328,7 +33306,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		}
@@ -33340,7 +33318,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33350,7 +33328,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33360,7 +33338,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33370,7 +33348,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33380,7 +33358,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33390,7 +33368,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33400,7 +33378,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33410,7 +33388,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33420,7 +33398,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33430,7 +33408,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33440,7 +33418,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33450,7 +33428,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33460,7 +33438,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33470,7 +33448,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33480,7 +33458,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33490,7 +33468,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33500,7 +33478,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33510,7 +33488,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33520,7 +33498,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33530,7 +33508,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33540,7 +33518,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33550,7 +33528,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		},
@@ -33560,7 +33538,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-LABEL a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-LABEL a été détecté",
 				"result": "i"
 			}
 		}
@@ -33572,7 +33550,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément DATALIST avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément DATALIST avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33582,7 +33560,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type CHECKBOX avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type CHECKBOX avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33592,7 +33570,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type COLOR avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type COLOR avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33602,7 +33580,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type DATE avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type DATE avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33612,7 +33590,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type EMAIL avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type EMAIL avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33622,7 +33600,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type FILE avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type FILE avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33632,7 +33610,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type NUMBER avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type NUMBER avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33642,7 +33620,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type PASSWORD avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type PASSWORD avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33652,7 +33630,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RADIO avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RADIO avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33662,7 +33640,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type RANGE avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type RANGE avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33672,7 +33650,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type SEARCH avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type SEARCH avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33682,7 +33660,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEL avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEL avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33692,7 +33670,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TEXT avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TEXT avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33702,7 +33680,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type TIME avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type TIME avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33712,7 +33690,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément INPUT de type URL avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément INPUT de type URL avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33722,7 +33700,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément KEYGEN avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément KEYGEN avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33732,7 +33710,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément METER avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément METER avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33742,7 +33720,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTGROUP avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément OPTGROUP avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33752,7 +33730,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OPTION avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément OPTION avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33762,7 +33740,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément OUTPUT avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément OUTPUT avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33772,7 +33750,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément PROGRESS avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément PROGRESS avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33782,7 +33760,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément SELECT avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément SELECT avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		},
@@ -33792,7 +33770,7 @@
 				"result": "na"
 			},
 			"ontrue": {
-				"comment": "aucun moins un élément TEXTAREA avec un attribut ARIA-DESCRIBEDBY a été détecté",
+				"comment": "au moins un élément TEXTAREA avec un attribut ARIA-DESCRIBEDBY a été détecté",
 				"result": "i"
 			}
 		}
@@ -33848,13 +33826,13 @@
 				"result": "nc"
 			}
 		},
-		"STRUCTURE_W_ROLE_BANNER_NAVIGATION_MAIN_CONTENTINFO_NOT_UNIQUE": {
+		"STRUCTURE_W_ROLE_BANNER_SEARCH_MAIN_CONTENTINFO_NOT_UNIQUE": {
 			"onfalse": {
-				"comment": "aucun attribut role BANNER, NAVIGATION, MAIN ou CONTENINFO en double n'a été détecté",
+				"comment": "aucun attribut role BANNER, SEARCH, MAIN ou CONTENINFO en double n'a été détecté",
 				"result": "c"
 			},
 			"ontrue": {
-				"comment": "au moins un attribut role BANNER, NAVIGATION, MAIN ou CONTENINFO en double a été détecté",
+				"comment": "au moins un attribut role BANNER, SEARCH, MAIN ou CONTENINFO en double a été détecté",
 				"result": "nc"
 			}
 		}
@@ -33975,7 +33953,7 @@
 			},
 			"ontrue": {
 				"comment": "au moins un élément A avec un TARGET blank a été détecté",
-				"result": "nc"
+				"result": "i"
 			}
 		},
 		"JS_NEW_WINDOW": {

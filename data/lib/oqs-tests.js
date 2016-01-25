@@ -3735,7 +3735,7 @@ var regFunction = new RegExp("([^\\s:{}&|]*)\\(", "i"),
     window.htmlSpaceBetweenLetters = function htmlSpaceBetweenLetters(doc) {
         //
         var result = [],
-            reg = new RegExp("(?:\\s+[A-Za-z]){3,}", "im");
+            reg = new RegExp("(?:\\s+[A-Za-z]){4,}", "im");
 
         //
         try {
