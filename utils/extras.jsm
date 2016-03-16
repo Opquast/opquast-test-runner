@@ -1,8 +1,13 @@
 "use strict";
 
-const {Cc, Ci, Cr} = require("chrome");
-const Q = require("sdk/core/promise");
-const {stringify} = require("sdk/querystring");
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+var Cu = Components.utils;
+var Cr = Components.results;
+
+this.EXPORTED_SYMBOLS = [ 'extractEvents', 'dnsLookup', 'xhr' ];
+
+const Q = Cu.import('resource://gre/modules/Promise.jsm', {}).Promise;
 
 const esl = Cc["@mozilla.org/eventlistenerservice;1"]
             .getService(Ci.nsIEventListenerService);
@@ -13,7 +18,7 @@ const threadManager = Cc["@mozilla.org/thread-manager;1"]
 const xmlhttprequest = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"];
 
 
-const extractEvents = function(win) {
+this.extractEvents = function(win) {
     let tw = win.document.createTreeWalker(
         win.document,
         win.NodeFilter.SHOW_ELEMENT,
@@ -36,10 +41,8 @@ const extractEvents = function(win) {
 
     return events;
 };
-exports.extractEvents = extractEvents;
 
-
-const dnsLookup = function(domain, callback) {
+this.dnsLookup = function(domain, callback) {
     let deffered = Q.defer();
     var listener = {
         onLookupComplete: function(inRequest, inRecord, inStatus) {
@@ -67,10 +70,8 @@ const dnsLookup = function(domain, callback) {
 
     return promise;
 };
-exports.dnsLookup = dnsLookup;
 
-
-const xhr = {
+this.xhr = {
     Request: function() {
         return xmlhttprequest.createInstance();
     },
@@ -160,7 +161,18 @@ const xhr = {
             xr.setRequestHeader(i, headers[i]);
         }
 
-        xr.send(stringify(data));
+        if (data && typeof(data) == 'string') {
+            xr.send(data);
+        }
+        else if (data) {
+            let formData = Cc['@mozilla.org/files/formdata;1'].
+                            createInstance(Ci.nsIDOMFormData);
+            Object.keys(data).forEach(function(name) { formData.append(name, data[name]); });
+            xr.send(formData);
+        }
+        else {
+            xr.send(null);
+        }
         return result.promise;
     },
 
@@ -176,4 +188,4 @@ const xhr = {
         return this.query(url, "GET", null, headers, true);
     }
 };
-exports.xhr = xhr;
+

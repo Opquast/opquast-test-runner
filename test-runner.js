@@ -1,20 +1,25 @@
 'use strict';
 
+const {Ci, Cu, Cc} = require("chrome");
 const {mix} = require('sdk/core/heritage');
 const promise = require('sdk/core/promise');
-const SandBox = require('sdk/loader/sandbox');
 const {readURISync} = require('sdk/net/url');
 const {clearTimeout, setTimeout} = require('sdk/timers');
-const {descriptor} = require('toolkit/loader');
 
 const {validateOptions} = require('sdk/deprecated/api-utils');
 
-const {dnsLookup, extractEvents, xhr} = require('./utils/extras');
-const {har2res} = require('./utils/har-tools');
+const unload = require('sdk/system/unload');
+
+var globalMM = Cc["@mozilla.org/globalmessagemanager;1"]
+              .getService(Ci.nsIMessageListenerManager)
+              .QueryInterface(Ci.nsIMessageBroadcaster);
+let frameScriptLoaded = false;
 
 // Javascript files location
-const dataRoot = require('sdk/url').URL('../data', module.uri);
+const dataRoot = require('sdk/url').URL('data', module.uri);
 exports.dataRoot = dataRoot;
+
+const baseURI = module.uri.replace('test-runner.js', '');
 
 var JS_FILES = [];
 var RULES = [];
@@ -92,29 +97,124 @@ addJSFiles(
 addRules(dataRoot + '/rules.json');
 addRuleSets(dataRoot + '/rulesets.json');
 
+/**
+ * @return string the source code of the given js file
+ */
+function getJsFileSource (path) {
+    let code = null;
+    try {
+        code = readURISync(path);
+    } catch(e) {
+        throw new Error('Unable to open "' + path + '".');
+    }
+    return code;
+};
+
+/**
+ * @return string the source code of the given function
+ */
+function getJSSource (func) {
+    let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
+    let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
+    return code;
+}
+
+/**
+ * use to create a method that will call an API via a message manager,
+ * and return results via a Promise
+ * @return function
+ * @see createRemoteRunner
+ */
+function createMessagingFunc(browser, messageName) {
+
+    let func = function (parameters) {
+        let deferred = promise.defer();
+        let mmg = browser.messageManager;
+        let onInitEnd = {
+            receiveMessage : function(message) {
+                if (!(message.target instanceof Ci.nsIDOMXULElement)) {
+                    // if message does not come from <browser>, let's ignore it.
+                    // In theory, this case does not happened...
+                    return
+                }
+                if (browser.outerWindowID !=  message.target.outerWindowID) {
+                    // this message is not for our browser.
+                    return;
+                }
+                globalMM.removeMessageListener(messageName+"_resp", onInitEnd);
+                deferred.resolve(message.data);
+            }
+        }
+
+        globalMM.addMessageListener(messageName+"_resp", onInitEnd);
+        mmg.sendAsyncMessage(messageName, parameters);
+        return deferred.promise;
+    }
+    return func;
+}
+
+/**
+ * create an object that proxify message call to the frame script
+ */
+function createRemoteRunner(browser) {
+    let proxy = {
+        init : createMessagingFunc(browser, "opq:init"),
+        run :  createMessagingFunc(browser, "opq:run"),
+    };
+    return proxy;
+}
+
+function loadFrameScript() {
+    if (!frameScriptLoaded) {
+        let frameScriptUri = module.uri.replace('test-runner', 'frame-script');
+        globalMM.loadFrameScript(frameScriptUri, true);
+        frameScriptLoaded = true;
+    }
+}
+
+/**
+ * Remove the frame-script
+ *
+ * Note: it doesn't remove already loaded frame-script. It just prevents the
+ * loading of the frame-script into new tabs
+ */
+function unloadFrameScript() {
+    if (frameScriptLoaded) {
+        let frameScriptUri = module.uri.replace('test-runner', 'frame-script');
+        globalMM.removeDelayedFrameScript(frameScriptUri);
+        frameScriptLoaded = false;
+    }
+    // send a message to do cleanup into already loaded frame-scripts
+    globalMM.broadcastAsyncMessage('opq:deactivate');
+}
+
+unload.when(unloadFrameScript);
 
 // Test Runner
-const createTestRunner = function(opts) {
+const createTestRunner = function(browser, opts) {
+    let domWindow = browser.contentWindow;
     // Global options
+    // note: we cannot set domWindow into options, as we stringify options
+    // later and domWindow is not "json" compatible
     let requirements = {
-        sandbox: {
-            is: ['object']
-        },
         plainText: {
             is: ['string']
         },
         har: {
             is: ['object'],
-            ok: function(val) typeof(val.entries) !== 'undefined' && Array.isArray(val.entries)
+            ok: (val) => { return typeof(val.entries) !== 'undefined' && Array.isArray(val.entries)}
         },
         extractObjects: {
-            map: function(val) typeof(val) === 'boolean' && val || false
+            map: (val) => { return typeof(val) === 'boolean' && val || false}
         },
         timeout: {
-            map: function(val) parseInt(val) || -1
+            map: (val) => { return parseInt(val) || -1 }
         },
         runOptions: {
-            map: function(val) typeof(val) === 'object' && val || {}
+            map: (val) => { return typeof(val) === 'object' && val || {}}
+        },
+        createResourceIfEmpty: {
+            map: (val) => { return typeof(val) === 'boolean' && val || false}
         }
     };
 
@@ -123,96 +223,52 @@ const createTestRunner = function(opts) {
     // Tests runner options
     let runRequirements = {
         debug_validator: {
-            map: function(val) typeof(val) === 'boolean' ? val : false,
+            map: (val) => typeof(val) === 'boolean' ? val : false,
         },
         timing_validator: {
-            map: function(val) typeof(val) === 'boolean' ? val : false,
+            map: (val) => typeof(val) === 'boolean' ? val : false,
         },
         show_errors: {
-            map: function(val) typeof(val) === 'boolean' ? val : false,
+            map: (val) => typeof(val) === 'boolean' ? val : false,
         },
         config_saveAndRefresh_delay: {
-            map: function(val) typeof(val) === 'number' ? parseInt(val) : 1000,
+            map: (val) => typeof(val) === 'number' ? parseInt(val) : 1000,
         }
     };
     options.runOptions = validateOptions(options.runOptions, runRequirements);
 
+    loadFrameScript();
+    let remoteRunner = createRemoteRunner(browser);
+    let initDone = false;
 
-    let resources = [];
-    let pageInfo = {};
-
-
-    let injectJS = function(path) {
-        let code = null;
-        try {
-            code = readURISync(path);
-        } catch(e) {
-            throw new Error('Unable to open "' + path + '".');
-        }
-
-        SandBox.evaluate(options.sandbox, code);
-    };
-
-    let evaluate = function(func) {
-        let args = JSON.stringify(Array.prototype.slice.call(arguments).slice(1));
-        let code = '(' + func.toSource() + ').apply(this, ' + args + ')';
-        return SandBox.evaluate(options.sandbox, code);
-    };
-
-
+    /**
+     * @return Promise
+     */
     let init = function() {
-        // Set pageInfo and resources
-        if (resources.length > 0) {
+        if (initDone) {
             return promise.resolve();
+        }
+        initDone = true;
+
+        let runnerOptions = {
+            dataRoot: dataRoot,
+            baseURI: baseURI,
+            initialSource: getJsFileSource(dataRoot + '/lib/jquery-1.9.1.min.js'),
+            oqs_utils: getJsFileSource(dataRoot + '/lib/oqs-utils.js'),
+            har: options.har,
+            extractObjects : options.extractObjects,
+            createResourceIfEmpty: options.createResourceIfEmpty
         }
 
         // Inject jQuery & coexist with other versions
-        injectJS(dataRoot + '/lib/jquery-1.9.1.min.js');
-        evaluate(function() {
+        runnerOptions.initialSource += getJSSource(function() {
             // Doing this removes our jQuery from the page but provides a global
             // jQuery version in sandbox
             this.jQuery = $.noConflict(true);
             this.$ = this.jQuery;
         });
 
-        // Add some needed globals
-        let _xhr = xhrWrapper(evaluate, options.har);
-        Object.defineProperties(options.sandbox, descriptor({
-            dnsLookup: dnsLookup,
-            extractEvents: extractEvents,
-            Q: promise,
-            _XHR: _xhr.cls
-        }));
-
-        // Wrap XHR (provides global XHR in sandbox)
-        _xhr.wrap('_XHR', 'XHR');
-
-        // Extract page information
-        injectJS(dataRoot + '/lib/oqs-utils.js');
-        Object.defineProperties(pageInfo, descriptor(evaluate(function() {
-            return $.extractPageInfo();
-        })));
-
-        // Extract flash objects if asked for
-        if (!options.extractObjects) {
-            return promise.resolve().then(function() {
-                har2res(options.har, resources);
-            });
-        }
-
-        return evaluate(function() {
-            return $.extractObjects();
-        })
-        .then(function(swfObjects) {
-            swfObjects.forEach(function(entry) {
-                if (entry !== null) {
-                    options.har.entries.push(entry);
-                }
-            });
-
-            // Convert resources
-            har2res(options.har, resources);
-        });
+        return remoteRunner.init(runnerOptions);
     };
 
 
@@ -234,8 +290,6 @@ const createTestRunner = function(opts) {
             rulesets = _rulesets;
         }
 
-        let deferred = promise.defer();
-
         let timeout = null;
         if (options.timeout > 0) {
             timeout = setTimeout(function() {
@@ -243,48 +297,30 @@ const createTestRunner = function(opts) {
             }, options.timeout);
         }
 
-        init()
+        return init()
         .then(function() {
             // Now we can run tests
+            let parameters = {
+                rules: rules,
+                rulesets : rulesets,
+                jsFiles : {},
+                plainText : options.plainText,
+                runOptions : options.runOptions
+            }
             getJSFiles().forEach(function(uri) {
-                injectJS(uri);
+                parameters.jsFiles[uri] = getJsFileSource(uri);
             });
-
-            return evaluate(function(options, pageInfo, resources, rules, rulesets) {
-                let events = extractEvents(window);
-                this.sidecar = {
-                    resources: resources,
-                    events: events,
-                    pageInfo: pageInfo,
-                    plainText: options.plainText
-                };
-
-                // Set options
-                for (var k in options.runOptions) {
-                    this[k] = options.runOptions[k];
-                }
-
-                // Run tests
-                this.tests = rules;
-                this.criteria = rulesets;
-                return analyze(this.criteria).then(function(results) {
-                    return synthesize_results(results);
-                });
-            }, options, pageInfo, resources, rules, rulesets);
+            return remoteRunner.run(parameters);
         })
-        .then(function(result) {
+        .then(function(results) {
             if (timeout) {
                 clearTimeout(timeout);
             }
-            deferred.resolve(result);
+            return results;
         });
-
-        return deferred.promise;
     };
 
     return {
-        pageInfo: pageInfo,
-        resources: resources,
         init: init,
         run: runTests
     };
@@ -293,72 +329,3 @@ const createTestRunner = function(opts) {
 exports.create = createTestRunner;
 
 
-const xhrWrapper = function(evaluate, har) {
-    let entryToResponse = function(entry, partial) {
-        let result = {
-            status: entry.response.status,
-            statusText: entry.response.statusText,
-            headers: entry.response.headers,
-            content_type: null,
-            data: partial ? '' : entry.response.content.text,
-            xml: null
-        };
-
-        result.getHeader = function(name) {
-            var value = [];
-            this.headers.forEach(function(v) {
-                if (v.name.toLowerCase() === name.toLowerCase()) {
-                    value.push(v.value);
-                }
-            });
-
-            return (value.length === 0) ? null : value.join(',');
-        };
-
-        return result;
-    };
-
-    let _xhr = Object.create(xhr);
-    _xhr.query = function(url, method, data, headers, partial) {
-        if (method === 'GET' && har.entries !== undefined) {
-            let entry = null;
-            har.entries.forEach(function(v) {
-                if (v._url == url) {
-                    entry = v;
-                }
-            });
-
-            if (entry && (entry.response.content.text || partial)) {
-                return promise.resolve(entryToResponse(entry, partial));
-            }
-        }
-
-        return xhr.query.call(this, url, method, data, headers, partial);
-    };
-
-    return {
-        cls: _xhr,
-        wrap: function(src, dest) {
-            evaluate(function(src, dest) {
-                let global = this;
-                global[dest] = Object.create(global[src]);
-                global[dest].cache = {}; // GET request cache
-                global[dest].query = function(url, method, data, headers, partial) {
-                    // URL should be absolute
-                    url = $.URL(url);
-
-                    if (this.cache[url] !== undefined) {
-                        return this.cache[url];
-                    }
-
-                    // Always return a promise
-                    let p = global[src].query.call(this, url, method, data, headers, partial);
-                    if (method === 'GET') {
-                        this.cache[url] = p;
-                    }
-                    return p
-                }
-            }, src, dest);
-        }
-    };
-};
