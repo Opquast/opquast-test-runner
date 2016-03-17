@@ -44120,5 +44120,1123 @@
 				"result": "i"
 			}
 		}
-	}
+	},
+    "43546": {
+        "TABLE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment TABLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment TABLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "TH_WO_FILLED_AND_UNIQUE_ID_WO_SCOPE_ATTR": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment TH sans ID unique ni SCOPE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "i",
+                            "chain": {
+                                "TD_WO_TH_OR_W_TH_WO_SCOPE_ATTR": {
+                                    "onfalse": {
+                                        "comment": "aucun \u00e9l\u00e9ment TD dont le HEADERS ne correspond \u00e0 aucun TH n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "au moins un \u00e9l\u00e9ment TD dont le HEADERS ne correspond \u00e0 aucun TH a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                                        "result": "nc"
+                                    }
+                                }
+                            }
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment TH sans ID unique ni SCOPE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "43547": {
+        "INPUT_W_TYPE_RADIO_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type RADIO avec un TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type RADIO avec un TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "TEXTAREA_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment TEXTAREA avec un TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment TEXTAREA avec un TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "SELECT_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment SELECT avec un TITLE non vide et unique n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment SELECT avec un TITLE non vide et unique a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "LABEL": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment LABEL n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment LABEL a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type FILE avec un TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type FILE avec un TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type TEXT avec un TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type TEXT avec un TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_CHECKBOX_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type CHECKBOX avec un TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type CHECKBOX avec un TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD_W_FILLED_AND_UNIQUE_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type PASSWORD avec un TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type PASSWORD avec un TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43548": {
+        "JS_POPUP": {
+            "onfalse": {
+                "comment": "aucune pop-up  n'a \u00e9t\u00e9 d\u00e9tect\u00e9e",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "au moins une pop-up a \u00e9t\u00e9 d\u00e9tect\u00e9e",
+                "result": "nc"
+            }
+        }
+    },
+    "43550": {
+        "RESOURCE_MULTIMEDIA": {
+            "onfalse": {
+                "comment": "aucune ressource multim\u00e9dia n'a \u00e9t\u00e9 d\u00e9tect\u00e9e",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource multim\u00e9dia a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "IMG_ANIMATED": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment anim\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment anim\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43551": {
+        "LABEL": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment LABEL n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment LABEL a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43552": {
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type FILE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type FILE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type TEXT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type TEXT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type CHECKBOX n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type CHECKBOX a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type RADIO n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type RADIO a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "SELECT_WO_FILLED_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment SELECT sans TITLE vide n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment SELECT avec TITLE vide a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type PASSWORD n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type PASSWORD a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "TEXTAREA_WO_TITLE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment TEXTAREA sans attribut TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment TEXTAREA sans attribut TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43553": {
+        "IMG": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment IMG n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment IMG a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "IMG_WO_ALT_ATTR": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment IMG sans attribut ALT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "i"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment IMG sans attribut ALT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "43554": {
+        "RESOURCE_DOWNLOADABLE": {
+            "onfalse": {
+                "comment": "aucune ressource t\u00e9l\u00e9chargeable n'a \u00e9t\u00e9 d\u00e9tect\u00e9e",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource t\u00e9l\u00e9chargeable a \u00e9t\u00e9 d\u00e9tect\u00e9e",
+                "result": "i"
+            }
+        }
+    },
+    "43555": {
+        "TITLE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un \u00e9lement TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "TITLE_W_TEXT": {
+                        "onfalse": {
+                            "comment": "TITLE est vide",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "TITLE est rempli",
+                            "result": "i",
+                            "chain": {
+                                "TITLE_W_DEFAULT_VALUE": {
+                                    "onfalse": {
+                                        "comment": "aucun \u00e9l\u00e9ment TITLE avec une valeur par d\u00e9faut n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "un \u00e9l\u00e9ment TITLE avec une valeur par d\u00e9faut a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                                        "result": "nc"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "43556": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment FORM n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment FORM a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43557": {
+        "404_DEFAULT": {
+            "onfalse": {
+                "comment": "aucune page 404 par d\u00e9faut n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            },
+            "ontrue": {
+                "comment": "au moins une page 404 par d\u00e9faut a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            }
+        }
+    },
+    "43558": {
+        "CSS_CONTENT": {
+            "onfalse": {
+                "comment": "aucun contenu textuel ajout\u00e9 par CSS n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un contenu textuel ajout\u00e9 par CSS a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "CSS_BACKGROUND_IMAGE": {
+            "onfalse": {
+                "comment": "aucune image ajout\u00e9e par CSS n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins une image ajout\u00e9e par CSS a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43560": {
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type FILE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type FILE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type TEXT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type TEXT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type CHECKBOX n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type CHECKBOX a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type RADIO n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type RADIO a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "SELECT_WO_FILLED_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment SELECT sans TITLE vide n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment SELECT avec TITLE vide a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type PASSWORD n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type PASSWORD a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "TEXTAREA_WO_TITLE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment TEXTAREA sans attribut TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment TEXTAREA sans attribut TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43595": {
+        "SCRIPT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment SCRIPT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment SCRIPT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "SCRIPT_WO_SRC": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment SCRIPT interne n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment SCRIPT interne a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "43596": {
+        "HTTP_GZIP": {
+            "onfalse": {
+                "comment": "le serveur envoie des contenus compress\u00e9s aux clients qui les acceptent",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le serveur n'envoie pas de contenus compress\u00e9s aux clients qui les acceptent",
+                "result": "nc"
+            }
+        }
+    },
+    "43597": {
+        "ROBOTS_PRESENCE": {
+            "onfalse": {
+                "comment": "le robots.txt \u00e0 la racine du site est absent ou vide",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "le robots.txt \u00e0 la racine du site est pr\u00e9sent et non vide",
+                "result": "c"
+            }
+        }
+    },
+    "43598": {
+        "FAVICON": {
+            "onfalse": {
+                "comment": "aucun appel valide \u00e0 un favicon n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un appel valide \u00e0 un favicon a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            }
+        }
+    },
+    "43599": {
+        "ROBOTS_W_VALID_SITEMAP": {
+            "onfalse": {
+                "comment": "le robots.txt est absent ou n'indique pas de sitemap",
+                "result": "i",
+                "chain": {
+                    "IMPLICIT_SITEMAP": {
+                        "onfalse": {
+                            "comment": "aucun sitemap n'a \u00e9t\u00e9 trouv\u00e9",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "un sitemap a \u00e9t\u00e9 trouv\u00e9 \u00e0 la racine du site",
+                            "result": "c"
+                        }
+                    }
+                }
+            },
+            "ontrue": {
+                "comment": "le robots.txt est pr\u00e9sent et indique un sitemap",
+                "result": "c"
+            }
+        }
+    },
+    "43601": {
+        "H1": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment H1 n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment H1 a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "H1_TO_H6_HIERACHICAL_ERROR": {
+                        "onfalse": {
+                            "comment": "aucune interruption dans la hi\u00e9rarchie des titres n'a \u00e9t\u00e9 d\u00e9tect\u00e9e",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins une interruption dans la hi\u00e9rarchie des titres a \u00e9t\u00e9 d\u00e9tect\u00e9e",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "43603": {
+        "A_NOT_ANCHOR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment A non ancre n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment A non ancre a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "A_NOT_ANCHOR_SELF_WO_TEXT": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment A vide n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment A vide a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "43604": {
+        "CSS_UNDERLINE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment autre que A soulign\u00e9",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment autre que A soulign\u00e9",
+                "result": "nc"
+            }
+        }
+    },
+    "43605": {
+        "HTTP_CACHE": {
+            "onfalse": {
+                "comment": "le serveur envoie les informations permettant la mise en cache des contenus",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le serveur n'envoie pas d'information permettant la mise en cache des contenus",
+                "result": "nc"
+            }
+        }
+    },
+    "43606": {
+        "TEXTAREA": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment TEXTAREA n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment TEXTAREA a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "TEXTAREA_WO_FILLED_AND_UNIQUE_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment TEXTAREA sans LABEL unique n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment TEXTAREA sans LABEL unique a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        },
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type FILE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type FILE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "INPUT_W_TYPE_FILE_WO_FILLED_AND_UNIQUE_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment INPUT de type FILE sans LABEL unique n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment INPUT de type FILE sans LABEL unique a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type TEXT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type TEXT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "INPUT_W_TYPE_TEXT_WO_FILLED_AND_UNIQUE_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment INPUT de type TEXT sans LABEL unique n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment INPUT de type TEXT sans LABEL unique a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        },
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type CHECKBOX n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type CHECKBOX a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "INPUT_W_TYPE_CHECKBOX_WO_FILLED_AND_UNIQUE_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment INPUT de type CHECKBOX sans LABEL unique n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment INPUT de type CHECKBOX sans LABEL unique a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type RADIO n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type RADIO a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "INPUT_W_TYPE_RADIO_WO_FILLED_AND_UNIQUE_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment INPUT de type RADIO sans LABEL unique n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment INPUT de type RADIO sans LABEL unique a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type PASSWORD n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type PASSWORD a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "INPUT_W_TYPE_PASSWORD_WO_FILLED_AND_UNIQUE_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment INPUT de type PASSWORD sans LABEL unique n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment INPUT de type PASSWORD sans LABEL unique a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        },
+        "SELECT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment SELECT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment SELECT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "SELECT_WO_FILLED_AND_UNIQUE_LABEL": {
+                        "onfalse": {
+                            "comment": "aucun \u00e9l\u00e9ment SELECT sans LABEL unique n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "c"
+                        },
+                        "ontrue": {
+                            "comment": "au moins un \u00e9l\u00e9ment SELECT sans LABEL unique a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                            "result": "nc"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "43607": {
+        "TITLE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un \u00e9lement TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i",
+                "chain": {
+                    "TITLE_W_TEXT": {
+                        "onfalse": {
+                            "comment": "TITLE est vide",
+                            "result": "nc"
+                        },
+                        "ontrue": {
+                            "comment": "TITLE est rempli",
+                            "result": "i",
+                            "chain": {
+                                "TITLE_W_DEFAULT_VALUE": {
+                                    "onfalse": {
+                                        "comment": "aucun \u00e9l\u00e9ment TITLE avec une valeur par d\u00e9faut n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                                        "result": "i"
+                                    },
+                                    "ontrue": {
+                                        "comment": "un \u00e9l\u00e9ment TITLE avec une valeur par d\u00e9faut a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                                        "result": "nc"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "43608": {
+        "FORM": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment FORM n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment FORM a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43609": {
+        "META_DESCRIPTION_FILLED": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment META DESCRIPTION non vide n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "nc"
+            },
+            "ontrue": {
+                "comment": "un \u00e9l\u00e9ment META DESCRIPTION non vide a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43610": {
+        "RESOURCE_MULTIMEDIA": {
+            "onfalse": {
+                "comment": "aucune ressource multim\u00e9dia n'a \u00e9t\u00e9 d\u00e9tect\u00e9e",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins une ressource multim\u00e9dia a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "BGSOUND": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment BGSOUND n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment BGSOUND a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment APPLET n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment APPLET a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "CANVAS": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment CANVAS n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment CANVAS a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "IMG_ANIMATED": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment anim\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment anim\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43611": {
+        "CANVAS": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment CANVAS n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment CANVAS a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment OBJECT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment OBJECT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment APPLET n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment APPLET a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "VIDEO": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment VIDEO n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment VIDEO a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment EMBED n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment EMBED a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "AUDIO": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment AUDIO n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment AUDIO a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43612": {
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type FILE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type FILE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type TEXT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type TEXT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type CHECKBOX n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type CHECKBOX a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type RADIO n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type RADIO a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "SELECT_WO_FILLED_TITLE_ATTR": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment SELECT sans TITLE vide n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment SELECT avec TITLE vide a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type PASSWORD n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type PASSWORD a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "TEXTAREA_WO_TITLE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment TEXTAREA sans attribut TITLE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment TEXTAREA sans attribut TITLE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43613": {
+        "TEXTAREA": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment TEXTAREA n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment TEXTAREA a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_FILE": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type FILE n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type FILE a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_TEXT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type TEXT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type TEXT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_CHECKBOX": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type CHECKBOX n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type CHECKBOX a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_RADIO": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type RADIO n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type RADIO a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "INPUT_W_TYPE_PASSWORD": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment INPUT de type PASSWORD n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment INPUT de type PASSWORD a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "SELECT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment SELECT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "na"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment SELECT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    },
+    "43614": {
+        "JS_REFRESH": {
+            "onfalse": {
+                "comment": "la page n'est pas rafra\u00eechie ou redirig\u00e9e automatiquement",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "la page est rafra\u00eechie ou redirig\u00e9e automatiquement",
+                "result": "i"
+            }
+        },
+        "HTTP_REFRESH": {
+            "onfalse": {
+                "comment": "le serveur n'envoie pas de commande de rafra\u00eechissement de la page",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "le serveur envoie une commande de rafra\u00eechissement de la page",
+                "result": "i"
+            }
+        },
+        "META_REFRESH_SHORT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une dur\u00e9e courte n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "un META avec un attribut HTTP-EQUIV ayant la valeur refresh avec une dur\u00e9e courte est pr\u00e9sent",
+                "result": "i"
+            }
+        },
+        "OBJECT": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment OBJECT n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment OBJECT a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "APPLET": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment APPLET n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment APPLET a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        },
+        "EMBED": {
+            "onfalse": {
+                "comment": "aucun \u00e9l\u00e9ment EMBED n'a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "c"
+            },
+            "ontrue": {
+                "comment": "au moins un \u00e9l\u00e9ment EMBED a \u00e9t\u00e9 d\u00e9tect\u00e9",
+                "result": "i"
+            }
+        }
+    }
 }
